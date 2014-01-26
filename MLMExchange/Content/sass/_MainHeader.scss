@@ -1,0 +1,65 @@
+$headerButton_Height: 84px;
+
+.main-header
+{
+  //@include susy-grid-background;
+  height: $headerButton_Height + 10px;
+
+  .text
+   {
+     color: white;
+     text-align: center;
+     line-height: $headerButton_Height;
+    font-size: 24px;
+   }
+
+  .main-header-top
+  {
+    .b-button
+    {
+      height: $headerButton_Height;
+    }
+
+     .buttons
+     {
+       @include prefix(1);
+       .b-button
+       {
+         @include span-columns(2,12);
+
+         &.about-us
+         {
+          background-color: #00A79D;
+         }
+         &.faq
+         {
+           background-color: #27AAE1;
+         }
+         &.contacts
+         {
+           background-color: #1C75BC;
+         }
+       }
+     }
+
+     .main-registration-block
+     {
+       @include span-columns(5 omega, 12);
+       background-color: #2A7CA0;
+
+       .b-button
+       {
+         background-color: #2A7CA0;
+
+         &.enter-button
+         {
+           @include span-columns(2, 12);
+         }
+         &.register-button
+         {
+           @include span-columns(3 omega, 12);
+         }
+       }
+     }
+  }
+}

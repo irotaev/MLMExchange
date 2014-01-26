@@ -1,0 +1,35 @@
+﻿@model MLMExchange.Models.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <section class="main-authorization">
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = "Введите логин" })
+                @Html.ValidationMessageFor(x => x.Login)
+            </div>
+      
+            <div>
+                @Html.TextBoxFor(x => x.Password, new { type = "password", placeholder = "Введите пароль" })
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+      
+            <div>
+                <input type="submit" value="Отправить" />
+                <a href="@Url.Action("Register")">Зарегистрироваться</a>
+            </div>
+        }
+    </section>
+</body>
+</html>

@@ -1,0 +1,43 @@
+@import "susy";
+@import "compass/css3/opacity";
+@import "compass/css3/box-shadow";
+
+//#region GridSettings
+$total-columns: 12;
+$column-width: 62px;
+$gutter-width: 20px;
+$grid-padding: 0;
+
+$container-style: static;
+//#endregion
+
+//#region Font-sizes
+$font-s: 10px;
+$font-n: 12px;
+$font-nb: 14px;
+$font-b: 16px;
+$font-h: 20px;
+//#endrergion
+
+//#region Colors
+$grey_1: #A7A9AC;
+$grey_2: #68696B;
+$red_1: #ED1C24;
+$red_2: rgba(237, 52, 47, 0.06);
+//#endregion
+
+@mixin b-sb($title_bg: #3077B7)
+{
+  border: 1px solid $grey_1;
+
+  .b-sb__title
+  {
+    height: 46px;
+    background-color: $title_bg;
+  }
+
+  .b-sb__content
+  {
+    padding: 10px;
+  }
+}

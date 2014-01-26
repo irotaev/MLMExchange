@@ -1,0 +1,23 @@
+$menuButton_Height: 60px;
+
+.main-top-menu
+{
+  .b-button
+  {
+    @include  span-columns(3, 12);
+    @include nth-omega(last);
+
+    height: $menuButton_Height;
+    background-color: #32BFB2;
+  }
+
+  .text
+  {
+    line-height: $menuButton_Height;
+    font-size: $font-b;
+    text-align: center;
+    color: $grey_2;
+  }
+
+  height: $menuButton_Height + 10px;
+}

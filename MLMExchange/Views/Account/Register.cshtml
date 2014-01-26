@@ -1,0 +1,49 @@
+﻿@model MLMExchange.Models.Registration.UserModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="b-sb registration-block">
+    <header class="b-sb__title">
+        <h1 class="text">@MLMExchange.Properties.ResourcesA.UserRegistartion</h1>
+    </header>
+
+    <div class="b-sb__content registration-form">
+        @using (Html.BeginForm())
+        {
+            <div class="b-ib">
+                @Html.ValidationMessageFor(x => x.Login, null, new { @class = "b-ib__validation-message" })
+                @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = "Введите логин", @class = "b-ib__input" })
+            </div>
+      
+            <div class="b-ib">
+                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
+                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
+            </div>
+            
+            <div class="b-ib">
+                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
+                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
+            </div>
+            
+            <div class="b-ib">
+                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
+                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
+            </div>
+            
+            <div class="b-ib">
+                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
+                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
+            </div>
+            
+            <div class="b-ib">
+                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
+                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
+            </div>
+      
+            <input class="b-button register-button" type="submit" value="Зарегестрироваться" />
+        }
+    </div>
+</section>

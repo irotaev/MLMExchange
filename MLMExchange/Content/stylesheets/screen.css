@@ -1,0 +1,226 @@
+/* line 17, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header {
+  height: 94px;
+}
+/* line 9, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .text {
+  color: white;
+  text-align: center;
+  line-height: 84px;
+  font-size: 24px;
+}
+/* line 19, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .b-button {
+  height: 84px;
+}
+/* line 24, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons {
+  padding-left: 82px;
+}
+/* line 27, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button {
+  width: 144px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+}
+/* line 31, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button.about-us {
+  background-color: #00A79D;
+}
+/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button.faq {
+  background-color: #27AAE1;
+}
+/* line 39, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button.contacts {
+  background-color: #1C75BC;
+}
+/* line 46, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block {
+  width: 390px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  background-color: #2A7CA0;
+}
+/* line 51, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button {
+  background-color: #2A7CA0;
+}
+/* line 55, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.enter-button {
+  width: 144px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+}
+/* line 59, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.register-button {
+  width: 226px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+
+/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu {
+  height: 70px;
+}
+/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu .b-button {
+  width: 226px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  height: 60px;
+  background-color: #32BFB2;
+}
+/* line 184, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+.main-top-menu .b-button:last-child {
+  float: right;
+  margin-right: 0;
+}
+/* line 15, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu .text {
+  line-height: 60px;
+  font-size: 16px;
+  text-align: center;
+  color: #68696b;
+}
+
+/* line 2, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainFooter.scss */
+.main-footer {
+  position: absolute;
+  float: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #27AAE1;
+  height: 56px;
+}
+
+/* line 10, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.b-button {
+  border: none;
+  display: block;
+  cursor: pointer;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 17, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.b-button:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;
+}
+
+/* line 23, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.b-sb {
+  border: 1px solid #a7a9ac;
+}
+/* line 34, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+.b-sb .b-sb__title {
+  height: 46px;
+  background-color: #3077b7;
+}
+/* line 40, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+.b-sb .b-sb__content {
+  padding: 10px;
+}
+
+/* line 28, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 12px;
+}
+
+/* line 42, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.main-wrapper {
+  position: relative;
+  *zoom: 1;
+  width: 964px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+/* line 38, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.main-wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}

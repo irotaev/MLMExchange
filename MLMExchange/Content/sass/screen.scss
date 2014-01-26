@@ -1,0 +1,48 @@
+@import "compass/reset";
+@import "Framework";
+
+
+@import "MainHeader";
+@import "MainTopMenu";
+@import "MainFooter";
+
+.b-button
+{
+  border: none;
+  display: block;
+  cursor: pointer;
+  @include opacity(1);
+
+  &:hover
+  {
+    @include opacity(0.9);
+  }
+}
+
+.b-sb
+{
+  @include b-sb();
+}
+
+html, body
+{
+  height: 100%;
+  width: 100%;
+}
+
+//#region Fonts
+body
+{
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: $font-n;
+}
+//#endregion
+
+.main-wrapper
+{
+  position: relative;
+  @include container;
+  height: 100%;
+}
+
+
