@@ -1,49 +1,85 @@
-﻿@model MLMExchange.Models.Registration.UserModel
+﻿@using MLMExchange.Lib
+@model MLMExchange.Models.Registration.UserModel
 
 @{
-    ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
+  ViewBag.Title = "Register";
+  Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
 <section class="b-sb registration-block">
-    <header class="b-sb__title">
-        <h1 class="text">@MLMExchange.Properties.ResourcesA.UserRegistartion</h1>
-    </header>
+  <header class="b-sb__title">
+    <h1 class="text">@MLMExchange.Properties.ResourcesA.UserRegistartion</h1>
+  </header>
+  
+  <div class="b-sb__content registration-form" id="registration-form">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.Login)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterLogin</label>
+        @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterLogin, @class = "b-ib__input" })
+      </div>
+      
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.Password)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPassword</label>
+        @Html.TextBoxFor(x => x.Password, new { type = "password", placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = "b-ib__input" })
+      </div>
+      
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.PasswordConfirmation)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation</label>
+        @Html.TextBoxFor(x => x.PasswordConfirmation, new { type = "password", placeholder = @MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation, @class = "b-ib__input" })
+      </div>
+      
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.Name)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterName</label>
+        @Html.TextBoxFor(x => x.Name, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterName, @class = "b-ib__input" })
+      </div>
+      
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.Surname)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterSurname</label>
+        @Html.TextBoxFor(x => x.Surname, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterSurname, @class = "b-ib__input" })
+      </div>
+      
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.Patronymic)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPatronymic</label>
+        @Html.TextBoxFor(x => x.Patronymic, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterPatronymic, @class = "b-ib__input" })
+      </div>
 
-    <div class="b-sb__content registration-form">
-        @using (Html.BeginForm())
-        {
-            <div class="b-ib">
-                @Html.ValidationMessageFor(x => x.Login, null, new { @class = "b-ib__validation-message" })
-                @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = "Введите логин", @class = "b-ib__input" })
-            </div>
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.Email)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterEmail</label>
+        @Html.TextBoxFor(x => x.Email, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterEmail, @class = "b-ib__input" })
+      </div>
       
-            <div class="b-ib">
-                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
-                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
-            </div>
-            
-            <div class="b-ib">
-                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
-                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
-            </div>
-            
-            <div class="b-ib">
-                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
-                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
-            </div>
-            
-            <div class="b-ib">
-                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
-                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
-            </div>
-            
-            <div class="b-ib">
-                @Html.ValidationMessageFor(x => x.PasswordHash, null, new { @class = "b-ib__validation-message" })
-                @Html.TextBoxFor(x => x.PasswordHash, new { type = "password", placeholder = "Введите пароль", @class = "b-ib__input" })
-            </div>
+      <div class="b-ib b-ib_content_photo">
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.AddPhoto</label>
+        @Html.TextBoxFor(x => x.Photo, new { type = "file", placeholder = @MLMExchange.Properties.ResourcesA.AddPhoto, @class = "b-ib__input b-ib_choose-file" })
+
+        <i class="b-ib__file-preview"><img class="b-ib__image" src=""/></i>
+        <input class="b-button b-ib_file-chooser" type="button" title="@MLMExchange.Properties.ResourcesA.Upload" value="@MLMExchange.Properties.ResourcesA.Upload" />
+      </div>
       
-            <input class="b-button register-button" type="submit" value="Зарегестрироваться" />
-        }
+      <input class="b-button register-button" type="submit" value=@MLMExchange.Properties.ResourcesA.Register />
+    }
+  </div>
+</section>
+
+<section class="additional-info">
+  <i class="registration-icon"></i>
+
+  <article class="b-ai register-info">
+    <div class="text b-ai_text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan sodales pulvinar.
+      Nam tincidunt tortor et dolor commodo vehicula. Cras eget scelerisque libero,
+      sit amet consequat lectus. Praesent tempor, sapien vestibulum ultricies vehicula, dolor velit gravida nulla,
+      in porta augue tellus ac purus. Sed varius sed lacus at eleifend. Maecenas placerat augue vitae diam sollicitudin molestie.
+      Quisque euismod, ante et sagittis sagittis, orci mauris pellentesque nisl, vitae sagittis mauris dolor sed sapien.
+      Mauris gravida libero sed dictum condimentum
     </div>
+  </article>
 </section>

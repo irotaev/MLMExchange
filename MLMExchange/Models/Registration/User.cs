@@ -12,10 +12,28 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public long Id { get; set; }
 
-    [Required(ErrorMessage = "Введите пожалуйста логин")]
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]    
     public string Login { get; set; }
 
-    [Required(ErrorMessage = "Введите пожалуйста парооль")]
-    public string PasswordHash { get; set; }
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Password { get; set; }
+
+    [System.Web.Mvc.Compare("Password", ErrorMessageResourceName = "PasswordDoesnotMatchWithPasswordConfirmation", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string PasswordConfirmation { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Name { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Surname { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Patronymic { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Email { get; set; }
+
+    public HttpPostedFileBase Photo { get; set; }
   }
 }

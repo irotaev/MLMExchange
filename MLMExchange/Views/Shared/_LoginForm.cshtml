@@ -1,0 +1,26 @@
+﻿@using MLMExchange.Lib
+@model MLMExchange.Models.Registration.LoginModel
+
+<div class="login-section">
+  <div class="login-area-arrow"></div>
+
+  <div class="login-enter-area">
+    @using (Html.BeginForm("Login", "Account"))
+    {
+      <div class="b-ib input-group">
+        @Html.CustomValidationMessageFor(x => x.Login)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterLogin</label>
+        @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterLogin, @class = "b-ib__input" })
+      </div>
+
+      <div class="b-ib input-group">
+        @Html.CustomValidationMessageFor(x => x.Password)
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPassword</label>
+        @Html.TextBoxFor(x => x.Password, new { type = "password", placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = "b-ib__input" })
+      </div>
+
+      <input class="b-button register-button" type="submit" value="@MLMExchange.Properties.ResourcesA.EnterButton" />
+    }
+  </div>
+</div>
+

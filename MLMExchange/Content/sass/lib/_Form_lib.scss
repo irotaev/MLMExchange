@@ -1,0 +1,149 @@
+@import "../Framework";
+@import "compass/utilities/sprites";
+
+@import "Form/s_*.png";
+@include all-Form-sprites;
+
+// Кнопка
+@mixin b-form-button($color: green)
+{
+  @if ($color == green)
+  {
+    background-color: #41C480;
+  }
+
+  height: 40px;
+  font-size: $font-nb;
+  color: white;
+
+  .text
+  {
+    font-size: $font-nb;
+    line-height: 40px;
+  }
+}
+
+// блок вводимой информации (input-block)
+@mixin b-ib()
+{
+  position: relative;
+  margin-top: 10px;
+
+  .b-ib__input
+  {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid $grey_1;
+    height: 35px;
+    padding-left: 5px;
+    color: $grey_2;
+    width: 100%;
+
+    &.input-validation-error
+    {
+      border-color: $red_1;
+      @include box-shadow(0 0 10px $red_1);
+    }
+  }
+
+  // Для полей с иконками
+  .b-ib__input-wrapper
+  {
+    position: relative;
+
+    .b-ib__icon
+    {
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      z-index: 100;
+    }
+
+    &.b-ib__input-wrapper_input-type_password
+    {
+      .b-ib__icon
+      {
+        @extend .Form-s_password-fiel-lock_black;
+        width: 29px; height: 34px;
+
+        &.focused
+        {
+          @extend .Form-s_password-fiel-lock_blue;
+        }
+      }
+    }
+  }
+
+  .b-ib__validation-message
+  {
+    box-sizing: border-box;
+  }
+  .b-ib__validation-message.field-validation-error
+  {
+    display: block;
+    width: 100%;
+    font-size: $font-s;
+    height: 20px;
+    line-height: 16px;
+    padding: 2px;
+    border: 1px solid $red_1;
+    margin-bottom: 10px;
+    color: $red_1;
+    background-color: white;
+  }
+  .b-ib__validation-message.field-validation-valid
+  {
+    display: none;
+  }
+
+  .b-ib__validation-message--arrow {display: none;}
+  .field-validation-error + .b-ib__validation-message--arrow
+  {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 26px;
+    z-index: 100;
+    background: url("#{$I_D}Form/validation-arrow.png") left no-repeat;
+    display: block;
+  }
+
+  .b-ib__label
+  {
+    display: none;
+  }
+
+  // Для поля фото
+  &.b-ib_content_photo
+  {
+    position: relative;
+    @include clearfix;
+
+    .b-ib_choose-file {display: none;}
+
+    .b-ib__file-preview
+    {
+      position: relative;
+      display: block;
+      width: 60%;
+      height: 220px;
+      border: 2px dotted #999999;
+      margin-right: 5%;
+      padding: 2px;
+      float: left;
+
+      .b-ib__image
+      {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .b-ib_file-chooser
+    {
+      @include b-form-button;
+      width: 35%;
+      float: left;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -136,14 +137,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Authorization.cs" />
-    <Compile Include="Helpers\View.cs" />
+    <Compile Include="WebLogic\Authorization.cs" />
+    <Compile Include="Lib\Ms5Hasher.cs" />
+    <Compile Include="Lib\View.cs" />
+    <Compile Include="Lib\ValidationExtensions.cs" />
+    <Compile Include="WebLogic\CurrentSession.cs" />
     <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Registration\Login.cs" />
     <Compile Include="Models\Registration\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs" />
@@ -154,8 +159,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\AccountRegister\register-icon.png" />
+    <Content Include="Content\images\Form\anonymous-user.png" />
+    <Content Include="Content\images\Form\validation-arrow.png" />
+    <Content Include="Content\images\Header\LoginArea\login-area-arrow.png" />
+    <Content Include="Content\stylesheets\ie.css" />
+    <Content Include="Content\stylesheets\IE_lt_9.css" />
+    <Content Include="Content\stylesheets\pages\Account__Register.css" />
+    <Content Include="Content\stylesheets\pages\IE_lt_9.css" />
+    <Content Include="Content\stylesheets\print.css" />
+    <Content Include="Content\stylesheets\screen.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\html5shiv-printshiv.js" />
+    <Content Include="Scripts\html5shiv-printshiv.min.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\html5shiv.min.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
@@ -171,6 +191,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\require.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -182,14 +203,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\_LoginForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
+    <Folder Include="Scripts\Private\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -206,11 +228,19 @@
       <LastGenOutput>ResourcesA.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\Framework\RequireJs\config.ts" />
+    <TypeScriptCompile Include="Scripts\Lib\Form.ts" />
+    <TypeScriptCompile Include="Scripts\Lib\Site.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
@@ -234,6 +264,18 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup Condition="'$(configuration)' == 'debug'">
+    <TypeScriptTarget>es5</TypeScriptTarget>
+    <typescriptincludecomments>true</typescriptincludecomments>
+    <typescriptsourcemap>true</typescriptsourcemap>
+    <typescriptmodulekind>amd</typescriptmodulekind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(configuration)' == 'release'">
+    <typescripttarget>es5</typescripttarget>
+    <typescriptincludecomments>false</typescriptincludecomments>
+    <typescriptsourcemap>false</typescriptsourcemap>
+    <typescriptmodulekind>amd</typescriptmodulekind>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

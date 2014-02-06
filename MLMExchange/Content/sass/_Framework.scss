@@ -2,11 +2,15 @@
 @import "compass/css3/opacity";
 @import "compass/css3/box-shadow";
 
+$sass_Dir: "/Content/sass";
+$I_D: "Content/images";
+
 //#region GridSettings
 $total-columns: 12;
 $column-width: 62px;
 $gutter-width: 20px;
 $grid-padding: 0;
+@include border-box-sizing;
 
 $container-style: static;
 //#endregion
@@ -24,20 +28,14 @@ $grey_1: #A7A9AC;
 $grey_2: #68696B;
 $red_1: #ED1C24;
 $red_2: rgba(237, 52, 47, 0.06);
+$blue_1: #45a2d0;
 //#endregion
 
-@mixin b-sb($title_bg: #3077B7)
+@mixin _with-grid-settings($columns)
 {
-  border: 1px solid $grey_1;
 
-  .b-sb__title
+  @include with-grid-settings($columns, (($column-width*$total-columns + $gutter-width*$total-columns - $gutter-width*$columns)/$columns), $gutter-width, $grid-padding)
   {
-    height: 46px;
-    background-color: $title_bg;
-  }
-
-  .b-sb__content
-  {
-    padding: 10px;
+    @content;
   }
 }

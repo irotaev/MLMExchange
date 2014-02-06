@@ -10,60 +10,117 @@
   <title>_MainLayout</title>
 
   <!--Инициализация HTML5 элементов для IE (версия ниже 9)-->
-  <!--[if lt IE 9]>
+  @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
+  {
     <script src="~/Scripts/html5shiv.min.js"></script>
     <script src="~/Scripts/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+    <script src="~/Scripts/jquery-1.11.0.min.js"></script>
+  }
 
-  <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+  @if (!Context.Request.Browser.Type.Contains("IE") && !Context.Request.Browser.Type.Contains("InternetExplorer"))
+  {
+    <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+  }
 
   <!--MS unobstractive validation-->
   <script src="~/Scripts/jquery.validate.js"></script>
   <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+  <script src="~/Scripts/require.js"></script>
+  <script src="~/Scripts/Framework/RequireJs/config.js"></script>
 
   <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
-  @(new MLMExchange.Helpers.GetViewStyle(ViewContext).RenderPrivateStyle())
+  @(new MLMExchange.Lib.GetViewStyle(ViewContext).RenderPrivateStyle())
+
+  @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
+  {
+    <link href="~/Content/stylesheets/IE_lt_9.css" rel="stylesheet" />
+  }
 </head>
 <body>
+  <!--#region Дейолтные параметры для формы-->
+  <script type="text/javascript">
+    require(["jquery", "Lib/Form"], function ($, formModule) {
+      $(function () {
+        $.each($("form"), function (index, form) {
+          new formModule.Form($(form)).ApplyDefaults();
+        });
+      });
+    });
+  </script>
+  <!--#endregion-->
+
   <div class="main-wrapper">
 
-    <header class="main-header">
-      <div class="main-header-top">
-        <nav class="buttons">
-          <a class="b-button about-us" title="@MLMExchange.Properties.ResourcesA.AboutUs">
-            <div class="text">@MLMExchange.Properties.ResourcesA.AboutUs</div>
-          </a>
-          <a class="b-button faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
-            <div class="text">FAQ</div>
-          </a>
-          <a class="b-button contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
-            <div class="text">@MLMExchange.Properties.ResourcesA.Contacts</div>
-          </a>
-        </nav>
+    <section class="main-changable-content clearfix">
+      <header class="main-header">
+        <div class="main-header-top">
+          <nav class="buttons">
+            <a class="b-button faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
+              <div class="text">FAQ</div>
+            </a>
+            <a class="b-button contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
+              <div class="text">@MLMExchange.Properties.ResourcesA.Contacts</div>
+            </a>
+          </nav>
 
-        <div class="main-registration-block">
-          <div class="b-button enter-button"><div class="text">@MLMExchange.Properties.ResourcesA.Enter</div></div>
+          <div class="main-registration-block">
+            <div class="b-button enter-button">
+              <div class="text">@MLMExchange.Properties.ResourcesA.Enter</div>
 
-          <div class="b-button register-button"><div class="text">@MLMExchange.Properties.ResourcesA.Registration</div></div>
+              @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
+            </div>
+
+            <div class="b-button register-button">
+              <div class="text">@MLMExchange.Properties.ResourcesA.Registration</div>
+            </div>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-      <nav class="main-top-menu">
-          <a class="b-button birga-link"><div class="text">Пункт меню</div></a>
-          <a class="b-button birga-link"><div class="text">Пункт меню</div></a>
-          <a class="b-button birga-link"><div class="text">Пункт меню</div></a>
-          <a class="b-button birga-link"><div class="text">Пункт меню</div></a>
-      </nav>
+      @*<nav class="main-top-menu">
+          <a class="b-button birga-link">
+            <div class="text">Пункт меню</div>
+          </a>
+          <a class="b-button birga-link">
+            <div class="text">Пункт меню</div>
+          </a>
+          <a class="b-button birga-link">
+            <div class="text">Пункт меню</div>
+          </a>
+          <a class="b-button birga-link">
+            <div class="text">Пункт меню</div>
+          </a>
+        </nav>*@
 
-    <section class="main-changeble-content">
       @RenderBody()
+
+      <footer class="main-footer">
+        <hr class="b-hr" />
+
+        <div class="buttons">
+          <div class="b-button home">
+            <i class="b-icon"></i>
+            <div class="b-text">На главную</div>
+          </div>
+          <div class="b-button home">
+            <i class="b-icon"></i>
+            <div class="b-text">На главную</div>
+          </div>
+          <div class="b-button home">
+            <i class="b-icon"></i>
+            <div class="b-text">На главную</div>
+          </div>
+          <div class="b-button home">
+            <i class="b-icon"></i>
+            <div class="b-text">На главную</div>
+          </div>
+          <div class="b-button home ie8-last-child">
+            <i class="b-icon"></i>
+            <div class="b-text">На главную</div>
+          </div>
+        </div>
+      </footer>
     </section>
-
-
-    <footer class="main-footer">
-
-    </footer>    
   </div>
 </body>
 </html>

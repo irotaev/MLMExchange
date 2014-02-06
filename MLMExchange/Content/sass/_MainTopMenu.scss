@@ -1,11 +1,12 @@
 $menuButton_Height: 60px;
+$main-top-menu_Height: $menuButton_Height + 10;
 
 .main-top-menu
 {
   .b-button
   {
     @include  span-columns(3, 12);
-    @include nth-omega(last);
+    &:last-child {@include omega;}
 
     height: $menuButton_Height;
     background-color: #32BFB2;
@@ -19,5 +20,5 @@ $menuButton_Height: 60px;
     color: $grey_2;
   }
 
-  height: $menuButton_Height + 10px;
+  height: $main-top-menu_Height;
 }

@@ -63,111 +63,183 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header {
-  height: 94px;
-}
-/* line 9, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .text {
-  color: white;
-  text-align: center;
-  line-height: 84px;
-  font-size: 24px;
-}
-/* line 19, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .b-button {
-  height: 84px;
-}
-/* line 24, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .buttons {
-  padding-left: 82px;
-}
-/* line 27, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .buttons .b-button {
-  width: 144px;
-  float: left;
-  margin-right: 20px;
-  display: inline;
-}
-/* line 31, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .buttons .b-button.about-us {
-  background-color: #00A79D;
-}
-/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .buttons .b-button.faq {
-  background-color: #27AAE1;
-}
-/* line 39, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .buttons .b-button.contacts {
-  background-color: #1C75BC;
-}
-/* line 46, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .main-registration-block {
-  width: 390px;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
-  background-color: #2A7CA0;
-}
-/* line 51, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .main-registration-block .b-button {
-  background-color: #2A7CA0;
-}
-/* line 55, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .main-registration-block .b-button.enter-button {
-  width: 144px;
-  float: left;
-  margin-right: 20px;
-  display: inline;
-}
-/* line 59, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
-.main-header .main-header-top .main-registration-block .b-button.register-button {
-  width: 226px;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
-.main-top-menu {
-  height: 70px;
+/* line 3, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+.b-hr {
+  height: 0;
+  margin: 0;
+  color: #10485b;
 }
-/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
-.main-top-menu .b-button {
-  width: 226px;
-  float: left;
-  margin-right: 20px;
-  display: inline;
-  height: 60px;
-  background-color: #32BFB2;
+
+/* line 12, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
 }
-/* line 184, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
-.main-top-menu .b-button:last-child {
-  float: right;
-  margin-right: 0;
+
+/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+.b-ai {
+  display: block;
+  border: 1px solid #32BFB2;
 }
-/* line 15, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
-.main-top-menu .text {
-  line-height: 60px;
-  font-size: 16px;
-  text-align: center;
+/* line 47, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-ai .b-ai_text {
+  margin: 10px;
+}
+
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 50, Form/s_*.png */
+.Form-sprite, .Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon, .Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
+  background: url('../images/Form-s21f3809381.png') no-repeat;
+}
+
+/* line 60, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
+  background-position: 0 0;
+}
+
+/* line 60, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
+  background-position: 0 -34px;
+}
+
+/* line 4, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form.scss */
+.b-ib {
+  position: relative;
+  margin-top: 10px;
+}
+/* line 33, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #a7a9ac;
+  height: 35px;
+  padding-left: 5px;
   color: #68696b;
+  width: 100%;
 }
-
-/* line 2, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainFooter.scss */
-.main-footer {
+/* line 43, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.input-validation-error {
+  border-color: #ed1c24;
+  -webkit-box-shadow: 0 0 10px #ed1c24;
+  -moz-box-shadow: 0 0 10px #ed1c24;
+  box-shadow: 0 0 10px #ed1c24;
+}
+/* line 51, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input-wrapper {
+  position: relative;
+}
+/* line 55, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input-wrapper .b-ib__icon {
   position: absolute;
-  float: none;
-  bottom: 0;
+  right: 2px;
+  top: 2px;
+  z-index: 100;
+}
+/* line 65, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
+  width: 29px;
+  height: 34px;
+}
+/* line 78, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__validation-message {
+  box-sizing: border-box;
+}
+/* line 82, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__validation-message.field-validation-error {
+  display: block;
+  width: 100%;
+  font-size: 10px;
+  height: 20px;
+  line-height: 16px;
+  padding: 2px;
+  border: 1px solid #ed1c24;
+  margin-bottom: 10px;
+  color: #ed1c24;
+  background-color: white;
+}
+/* line 95, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__validation-message.field-validation-valid {
+  display: none;
+}
+/* line 99, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__validation-message--arrow {
+  display: none;
+}
+/* line 101, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .field-validation-error + .b-ib__validation-message--arrow {
+  position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  background-color: #27AAE1;
-  height: 56px;
+  height: 26px;
+  z-index: 100;
+  background: url("Content/imagesForm/validation-arrow.png") left no-repeat;
+  display: block;
+}
+/* line 111, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__label {
+  display: none;
+}
+/* line 117, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo {
+  position: relative;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 121, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib_choose-file {
+  display: none;
+}
+/* line 124, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib__file-preview {
+  position: relative;
+  display: block;
+  width: 60%;
+  height: 220px;
+  border: 2px dotted #999999;
+  margin-right: 5%;
+  padding: 2px;
+  float: left;
+}
+/* line 135, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib__file-preview .b-ib__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* line 143, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib_file-chooser {
+  background-color: #41C480;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+  width: 35%;
+  float: left;
+}
+/* line 20, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib_file-chooser .text {
+  font-size: 14px;
+  line-height: 40px;
 }
 
-/* line 10, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 10, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-button {
   border: none;
   display: block;
@@ -175,39 +247,42 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 17, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 17, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
 }
 
-/* line 23, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 23, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-sb {
   border: 1px solid #a7a9ac;
+  -webkit-box-shadow: 8px 8px 10px 0 #68696b;
+  -moz-box-shadow: 8px 8px 10px 0 #68696b;
+  box-shadow: 8px 8px 10px 0 #68696b;
 }
-/* line 34, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+/* line 29, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title {
   height: 46px;
   background-color: #3077b7;
 }
-/* line 40, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+/* line 35, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__content {
   padding: 10px;
 }
 
-/* line 28, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 28, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 35, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 body {
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 12px;
 }
 
-/* line 42, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 42, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .main-wrapper {
   position: relative;
   *zoom: 1;
@@ -223,4 +298,264 @@ body {
   content: "";
   display: table;
   clear: both;
+}
+
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 50, Form/s_*.png */
+.Form-sprite, .Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon, .Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
+  background: url('../images/Form-s21f3809381.png') no-repeat;
+}
+
+/* line 60, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
+  background-position: 0 0;
+}
+
+/* line 60, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
+  background-position: 0 -34px;
+}
+
+/* line 6, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header {
+  height: 84px;
+}
+/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .text {
+  color: white;
+  text-align: center;
+  line-height: 64px;
+  font-size: 24px;
+}
+/* line 21, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .b-button {
+  height: 64px;
+}
+/* line 26, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons {
+  padding-left: 164px;
+}
+/* line 29, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button {
+  width: 144px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+}
+/* line 33, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button.about-us {
+  background-color: #45a2d0;
+}
+/* line 37, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button.faq {
+  background-color: #27AAE1;
+}
+/* line 41, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons .b-button.contacts {
+  background-color: #1C75BC;
+}
+/* line 48, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block {
+  position: relative;
+  width: 390px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  background-color: #2A7CA0;
+}
+/* line 54, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button {
+  background-color: #2A7CA0;
+}
+/* line 58, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.enter-button {
+  width: 144px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+}
+/* line 62, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.enter-button:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  background-color: #45a2d0;
+  cursor: default;
+}
+/* line 64, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.enter-button:hover .login-section {
+  display: block;
+}
+/* line 69, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.register-button {
+  width: 226px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 75, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .login-section {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  cursor: default;
+}
+/* line 83, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .login-section .login-area-arrow {
+  position: absolute;
+  top: -17px;
+  left: 30px;
+  width: 83px;
+  height: 52px;
+  background: url("Content/imagesHeader/LoginArea/login-area-arrow.png") center no-repeat;
+  z-index: 100;
+}
+/* line 93, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .login-section .login-enter-area {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 390px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  background-color: #45a2d0;
+  padding: 15px;
+  -webkit-box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
+  -moz-box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
+  box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
+}
+/* line 102, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .login-section .login-enter-area .input-group {
+  margin-bottom: 15px;
+}
+/* line 107, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button {
+  background-color: #41C480;
+  height: 40px;
+  font-size: 14px;
+  color: white;
+}
+/* line 20, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button .text {
+  font-size: 14px;
+  line-height: 40px;
+}
+
+/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu {
+  height: 70px;
+}
+/* line 7, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu .b-button {
+  width: 226px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  height: 60px;
+  background-color: #32BFB2;
+}
+/* line 9, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu .b-button:last-child {
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 16, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+.main-top-menu .text {
+  line-height: 60px;
+  font-size: 16px;
+  text-align: center;
+  color: #68696b;
+}
+
+/* line 4, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+}
+/* line 10, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .b-hr {
+  width: 830px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 19, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons {
+  *zoom: 1;
+  width: 964px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 38, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.main-footer .buttons:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 23, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button {
+  position: relative;
+  height: 130px;
+  width: 176.8px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+}
+/* line 184, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+.main-footer .buttons .b-button:last-child {
+  float: right;
+  margin-right: 0;
+}
+/* line 27, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button.ie8-last-child {
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 30, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button .b-icon {
+  display: block;
+  height: 107px;
+  width: 107px;
+  background-image: url(/Content/sass/Footer/button-home.png);
+  margin: 0 auto;
+}
+/* line 39, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button .b-text {
+  margin-top: 5px;
+  overflow: hidden;
+  text-align: center;
+  color: #a7a9ac;
+}
+
+/* line 2, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainChangableContent.scss */
+.main-changable-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  min-height: 100%;
+  padding: 0 0 190px 0;
+  width: 100%;
 }

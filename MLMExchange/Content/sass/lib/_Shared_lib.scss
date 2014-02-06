@@ -1,0 +1,64 @@
+@mixin b-hr($color: #10485B)
+{
+  height: 0;
+  margin: 0;
+  color: $color;
+}
+
+// Зачистка концов
+@mixin clearfix
+{
+  &:after
+  {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+}
+
+// Основной блок контента
+@mixin b-sb($title_bg: #3077B7)
+{
+  border: 1px solid $grey_1;
+  @include box-shadow(8px 8px 10px 0 $grey_2);
+
+  .b-sb__title
+  {
+    height: 46px;
+    background-color: $title_bg;
+  }
+
+  .b-sb__content
+  {
+    padding: 10px;
+  }
+}
+
+// Блок дополнительной информации (b-additional-info)
+@mixin b-ai
+{
+  display: block;
+  border: 1px solid #32BFB2;
+
+  .b-ai_text
+  {
+    margin: 10px;
+  }
+}
+
+// box-sizing с учетом firefox
+@mixin box-sizing($flag)
+{
+  @if ($flag == 'border-box')
+  {
+    box-sizing: $flag;
+    -moz-box-sizing: $flag;
+  }
+  @else
+  {
+    box-sizing: $flag;
+  }
+}

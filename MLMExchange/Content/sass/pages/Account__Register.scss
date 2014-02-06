@@ -1,9 +1,9 @@
 @import "../Framework";
-@import "../lib/Forms";
 
 .registration-block
 {
   @include span-columns(7, 12);
+  @include box-sizing(border-box);
 
   .text
   {
@@ -15,7 +15,7 @@
 
   .registration-form
   {
-    @include span-columns(5, 12);
+    @include span-columns(6, 12);
     @include prefix(1);
 
     .register-button
@@ -27,5 +27,25 @@
       font-size: $font-nb;
       color: white;
     }
+  }
+}
+
+.additional-info
+{
+  @include prefix(1);
+  @include span-columns(5 omega, 12);
+
+  .registration-icon
+  {
+    display: block;
+    background-image: url("#{$I_D}AccountRegister/register-icon.png");
+    width: 257px;
+    height: 83px;
+  }
+
+  .register-info
+  {
+    margin-top: 15px;
+    font-size: $font-h;
   }
 }

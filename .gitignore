@@ -213,3 +213,13 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+
+#############
+## MCExchange
+#############
+
+MyCrypto/
+MLMExchange/bin
+MLMExchange/Content/.sass-cache
+MLMExchange/Content/.sass-cache

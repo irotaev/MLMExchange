@@ -1,10 +1,10 @@
 @import "compass/reset";
 @import "Framework";
 
+// Libs
+@import "lib/Shared";
+@import "lib/Form";
 
-@import "MainHeader";
-@import "MainTopMenu";
-@import "MainFooter";
 
 .b-button
 {
@@ -43,6 +43,12 @@ body
   position: relative;
   @include container;
   height: 100%;
+  //@include susy-grid-background;
 }
+
+@import "MainHeader";
+@import "MainTopMenu";
+@import "Footer/_MainFooter";
+@import "MainChangableContent";
 
 
