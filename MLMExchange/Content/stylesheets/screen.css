@@ -168,21 +168,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 10px;
   height: 20px;
   line-height: 16px;
-  padding: 2px;
   border: 1px solid #ed1c24;
   margin-bottom: 10px;
   color: #ed1c24;
   background-color: white;
 }
-/* line 95, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 94, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-valid {
   display: none;
 }
-/* line 99, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 98, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message--arrow {
   display: none;
 }
-/* line 101, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 100, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .field-validation-error + .b-ib__validation-message--arrow {
   position: absolute;
   top: 0;
@@ -190,7 +189,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   right: 0;
   height: 26px;
   z-index: 100;
-  background: url("Content/imagesForm/validation-arrow.png") left no-repeat;
+  padding: 2px;
+  background: url("/Content/images/Form/validation-arrow.png") left no-repeat;
   display: block;
 }
 /* line 111, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
@@ -416,7 +416,7 @@ body {
   left: 30px;
   width: 83px;
   height: 52px;
-  background: url("Content/imagesHeader/LoginArea/login-area-arrow.png") center no-repeat;
+  background: url("/Content/images/Header/LoginArea/login-area-arrow.png") center no-repeat;
   z-index: 100;
 }
 /* line 93, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */

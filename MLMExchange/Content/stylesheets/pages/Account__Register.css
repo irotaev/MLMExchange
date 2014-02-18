@@ -56,7 +56,7 @@
 /* line 39, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .additional-info .registration-icon {
   display: block;
-  background-image: url("Content/imagesAccountRegister/register-icon.png");
+  background-image: url("/Content/images/AccountRegister/register-icon.png");
   width: 257px;
   height: 83px;
 }
