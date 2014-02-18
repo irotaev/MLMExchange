@@ -8,6 +8,9 @@ using System.Web.Mvc.Html;
 
 namespace MLMExchange.Lib
 {
+  /// <summary>
+  /// Валидация. Расширение HtmlHelper
+  /// </summary>
   public static class ValidationExtensions
   {
     public static MvcHtmlString CustomValidationMessageFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)

@@ -1,26 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace MLMExchange.Lib
 {
-  public class GetViewStyle
+  /// <summary>
+  /// Управление стилями представления
+  /// </summary>
+  public class ViewStyle
   {
-    protected const string _PrivateStyleDir = "Content\\stylesheets\\pages\\";
+    protected readonly string _PrivateStyleDir;
     protected ViewContext _ViewContext;
 
-    public GetViewStyle(ViewContext viewContext)
+    public ViewStyle(ViewContext viewContext)
     {
+      _PrivateStyleDir = Path.Combine("Content", "stylesheets", "pages");
       _ViewContext = viewContext;
     }
 
-    public MvcHtmlString RenderPrivateStyle()
+    /// <summary>
+    /// Сгенерировать стиль для конкретной страницы
+    /// </summary>
+    /// <returns>Стиль</returns>
+    public MvcHtmlString RenderPrivatePageStyle()
     {
-      string pageName = _ViewContext.RouteData.Values["controller"] + "__" + _ViewContext.RouteData.Values["action"];
-      string fullStylePath = HttpContext.Current.Server.MapPath(@"~/" + _PrivateStyleDir + pageName + ".css");
-      string stylePath = "\\" + _PrivateStyleDir + pageName + ".css";
+      string pageName = String.Format("{0}__{1}", _ViewContext.RouteData.Values["controller"], _ViewContext.RouteData.Values["action"]);
+      string fullStylePath = HttpContext.Current.Server.MapPath(@"~/" + Path.Combine(_PrivateStyleDir, pageName + ".css"));
+      string stylePath = "\\" + Path.Combine(_PrivateStyleDir, pageName + ".css");
 
       if (!System.IO.File.Exists(fullStylePath))
         return null;

@@ -25,7 +25,7 @@
   <script src="~/Scripts/Framework/RequireJs/config.js"></script>
 
   <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
-  @(new MLMExchange.Lib.GetViewStyle(ViewContext).RenderPrivateStyle())
+  @(new MLMExchange.Lib.ViewStyle(ViewContext).RenderPrivatePageStyle())
 
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
   {
