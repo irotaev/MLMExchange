@@ -39,6 +39,8 @@ define(["require", "exports", "jquery"], function(require, exports) {
                 });
             });
 
+            //#endregion
+            //#region Замок для поля с паролем
             if (navigator.userAgent.indexOf("MSIE 9") < 0 && navigator.userAgent.indexOf("MSIE 8") < 0 && navigator.userAgent.indexOf("MSIE 7") < 0) {
                 var passwordFields = this._$Form.find(".b-ib__input[type='password']");
 

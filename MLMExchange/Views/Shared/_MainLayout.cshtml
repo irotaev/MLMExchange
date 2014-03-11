@@ -19,9 +19,10 @@
   }
 
   <!--MS unobstractive validation-->
-  <script src="~/Scripts/jquery.validate.js"></script>
-  <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+  <script src="~/Scripts/jquery.validate.min.js"></script>
+  <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
   <script src="~/Scripts/require.js"></script>
+  <!--Стоит отдельно от require.js, т.к. нужна синхронная загрузка-->
   <script src="~/Scripts/Framework/RequireJs/config.js"></script>
 
   <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
@@ -33,7 +34,7 @@
   }
 </head>
 <body>
-  <!--#region Дейолтные параметры для формы-->
+  <!--#region Дефолтные параметры для формы-->
   <script type="text/javascript">
     require(["jquery", "Lib/Form"], function ($, formModule) {
       $(function () {

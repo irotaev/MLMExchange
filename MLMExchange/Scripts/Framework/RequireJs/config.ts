@@ -1,6 +1,4 @@
-﻿/// <reference path="../../typings/requirejs/require.d.ts" />
-
-requirejs.config(() =>
+﻿(<any>requirejs).config((() =>
 {
   var jqueryVersion: string = null;
 
@@ -26,4 +24,4 @@ requirejs.config(() =>
   //#endregion
 
   return config;
-}());
+})());

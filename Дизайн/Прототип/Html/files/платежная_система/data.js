@@ -1,0 +1,146 @@
+﻿$axure.loadCurrentPage({
+  "url":"платежная_система.html",
+  "generationDate":new Date(1393265791685.81),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable",
+"IsRegistred"],
+  "page":{
+    "packageId":"1ed86da188704dedacf21041029d56b6",
+    "type":"Axure:Page",
+    "name":"Платежная система",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"auto",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"Applied Font",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"d3038755399c4876975524998c5995d8",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"buttonShape",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":140,
+              "y":50},
+            "size":{
+              "width":820,
+              "height":660}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"a97099f61dfc4c1ab4481aa699f9ddf7",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":140,
+                  "y":50},
+                "size":{
+                  "width":820,
+                  "height":660}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/платежная_система/u0.png"}},
+{
+          "id":"73c7137a00b14c0288be32e48978514e",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":170,
+              "y":80},
+            "size":{
+              "width":270,
+              "height":150}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"8327c5400d0b44c8b8012ece608603f2",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":170,
+                  "y":80},
+                "size":{
+                  "width":270,
+                  "height":150}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/платежная_система/u2.png"}},
+{
+          "id":"156253bb49ee4ccc902610b817c4a212",
+          "label":"",
+          "type":"buttonShape",
+          "styleType":"h1",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":395,
+              "y":361.5},
+            "size":{
+              "width":310,
+              "height":37}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"d70f4d7302414095af5855b0d5f99618",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":395,
+                  "y":361.5},
+                "size":{
+                  "width":310,
+                  "height":37}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"resources/images/transparent.gif"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "d3038755399c4876975524998c5995d8":{
+      "scriptId":"u0"},
+    "a97099f61dfc4c1ab4481aa699f9ddf7":{
+      "scriptId":"u1"},
+    "73c7137a00b14c0288be32e48978514e":{
+      "scriptId":"u2"},
+    "8327c5400d0b44c8b8012ece608603f2":{
+      "scriptId":"u3"},
+    "156253bb49ee4ccc902610b817c4a212":{
+      "scriptId":"u4"},
+    "d70f4d7302414095af5855b0d5f99618":{
+      "scriptId":"u5"}}});

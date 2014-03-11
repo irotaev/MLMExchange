@@ -9,7 +9,7 @@ $I_D: "/Content/images/";
 $total-columns: 12;
 $column-width: 62px;
 $gutter-width: 20px;
-$grid-padding: 0;
+$grid-padding: 20px;
 @include border-box-sizing;
 
 $container-style: static;

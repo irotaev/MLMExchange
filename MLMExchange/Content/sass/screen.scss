@@ -35,6 +35,7 @@ body
 {
   font-family: Tahoma, Geneva, sans-serif;
   font-size: $font-n;
+  background-color: #A3C2D1;
 }
 //#endregion
 
@@ -43,6 +44,7 @@ body
   position: relative;
   @include container;
   height: 100%;
+  background-color: white;
   //@include susy-grid-background;
 }
 

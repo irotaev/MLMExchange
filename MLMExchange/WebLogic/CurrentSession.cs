@@ -40,7 +40,7 @@ namespace MLMExchange.Lib
           {
             using (var transaction = session.BeginTransaction())
             {
-              L.User findUser = session.QueryOver<L.User>().List().FirstOrDefault(u => u.Login == _Session["Login"]);
+              L.User findUser = session.QueryOver<L.User>().List().FirstOrDefault(u => u.Login == (string)_Session["Login"]);
 
               if (findUser != null)
                 _CurrentUser = findUser;
