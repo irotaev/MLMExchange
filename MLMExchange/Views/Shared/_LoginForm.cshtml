@@ -16,7 +16,7 @@
       <div class="b-ib input-group">
         @Html.CustomValidationMessageFor(x => x.Password)
         <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPassword</label>
-        @Html.TextBoxFor(x => x.Password, new { type = "password", placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = "b-ib__input" })
+        @Html.PasswordFor(x => x.Password, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = "b-ib__input" })
       </div>
 
       <input class="b-button register-button" type="submit" value="@MLMExchange.Properties.ResourcesA.EnterButton" />

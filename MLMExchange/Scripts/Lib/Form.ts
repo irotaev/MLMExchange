@@ -61,8 +61,9 @@ export class Form
       {
         var replacedObject = $("<div class='b-ib__input-wrapper b-ib__input-wrapper_input-type_password'><i class='b-ib__icon'></div></div>").replaceAll($(field));
 
-        replacedObject.append($(field).clone(true, true));
-        $(field).remove();
+        replacedObject.append($(field));
+
+        //$(field).remove();
 
         var $field = replacedObject.find(".b-ib__input");
 

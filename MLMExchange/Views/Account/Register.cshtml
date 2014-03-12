@@ -23,13 +23,13 @@
       <div class="b-ib">
         @Html.CustomValidationMessageFor(x => x.Password)
         <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPassword</label>
-        @Html.TextBoxFor(x => x.Password, new { type = "password", placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = "b-ib__input" })
+        @Html.PasswordFor(x => x.Password, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = "b-ib__input" })
       </div>
       
       <div class="b-ib">
         @Html.CustomValidationMessageFor(x => x.PasswordConfirmation)
         <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation</label>
-        @Html.TextBoxFor(x => x.PasswordConfirmation, new { type = "password", placeholder = @MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation, @class = "b-ib__input" })
+        @Html.PasswordFor(x => x.PasswordConfirmation, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation, @class = "b-ib__input" })
       </div>
       
       <div class="b-ib">

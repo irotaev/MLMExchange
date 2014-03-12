@@ -39,17 +39,15 @@ define(["require", "exports", "jquery"], function(require, exports) {
                 });
             });
 
-            //#endregion
-            //#region Замок для поля с паролем
             if (navigator.userAgent.indexOf("MSIE 9") < 0 && navigator.userAgent.indexOf("MSIE 8") < 0 && navigator.userAgent.indexOf("MSIE 7") < 0) {
                 var passwordFields = this._$Form.find(".b-ib__input[type='password']");
 
                 $.each(passwordFields, function (index, field) {
                     var replacedObject = $("<div class='b-ib__input-wrapper b-ib__input-wrapper_input-type_password'><i class='b-ib__icon'></div></div>").replaceAll($(field));
 
-                    replacedObject.append($(field).clone(true, true));
-                    $(field).remove();
+                    replacedObject.append($(field));
 
+                    //$(field).remove();
                     var $field = replacedObject.find(".b-ib__input");
 
                     $field.focus(function (event) {

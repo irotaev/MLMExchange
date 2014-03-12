@@ -19,7 +19,7 @@
   }
 
   <!--MS unobstractive validation-->
-  <script src="~/Scripts/jquery.validate.min.js"></script>
+  <script src="~/Scripts/jquery.validate.js"></script>
   <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
   <script src="~/Scripts/require.js"></script>
   <!--Стоит отдельно от require.js, т.к. нужна синхронная загрузка-->
@@ -29,7 +29,7 @@
   @(new MLMExchange.Lib.ViewStyle(ViewContext).RenderPrivatePageStyle())
 
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
-  {
+  { 
     <link href="~/Content/stylesheets/IE_lt_9.css" rel="stylesheet" />
   }
 </head>
