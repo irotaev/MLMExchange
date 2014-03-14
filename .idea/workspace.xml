@@ -76,22 +76,49 @@
       <file leaf-file-name="screen.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="0" selection-start="586" selection-end="586" vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="799">
+            <state line="45" column="0" selection-start="506" selection-end="506" vertical-scroll-proportion="-24.884615" vertical-offset="118" max-vertical-offset="1037">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_Shared_lib.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Shared_lib.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="15" selection-start="103" selection-end="111" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="391">
               <folding>
-                <element signature="e#109#234#0" expanded="false" />
-                <element signature="e#200#232#0" expanded="false" />
-                <element signature="e#242#264#0" expanded="false" />
-                <element signature="e#277#311#0" expanded="false" />
+                <element signature="e#29#75#0" expanded="false" />
+                <element signature="e#112#247#0" expanded="false" />
+                <element signature="e#126#245#0" expanded="false" />
+                <element signature="e#307#506#0" expanded="false" />
+                <element signature="e#403#459#0" expanded="false" />
+                <element signature="e#480#504#0" expanded="false" />
+                <element signature="e#574#664#0" expanded="false" />
+                <element signature="e#639#662#0" expanded="false" />
+                <element signature="e#722#853#0" expanded="false" />
+                <element signature="e#756#812#0" expanded="false" />
+                <element signature="e#823#851#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_Form_lib.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_Form_lib.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Form_lib.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="14" selection-start="453" selection-end="464" vertical-scroll-proportion="0.3611416" vertical-offset="198" max-vertical-offset="2635">
+            <state line="31" column="14" selection-start="453" selection-end="464" vertical-scroll-proportion="-12.653846" vertical-offset="198" max-vertical-offset="2635">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_MainFooter.scss" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/Footer/_MainFooter.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="35" selection-start="703" selection-end="703" vertical-scroll-proportion="0.5734494" vertical-offset="0" max-vertical-offset="919">
+              <folding>
+                <element signature="e#839#1419#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,7 +126,7 @@
       <file leaf-file-name="_MainChangableContent.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/_MainChangableContent.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="238">
+            <state line="3" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="221">
               <folding />
             </state>
           </provider>
@@ -122,25 +149,25 @@
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Forms.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Form.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/pages/IE_lt_9.scss" />
-        <option value="$PROJECT_DIR$/MLMExchange/Content/sass/Footer/_MainFooter.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/stylesheets/IE_lt_9.css" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/IE_lt_9.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/_MainHeader.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/pages/Account__Register.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/_framework.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/_Framework.scss" />
-        <option value="$PROJECT_DIR$/MLMExchange/Content/sass/_MainChangableContent.scss" />
-        <option value="$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss" />
         <option value="$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Form_lib.scss" />
+        <option value="$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss" />
+        <option value="$PROJECT_DIR$/MLMExchange/Content/sass/_MainChangableContent.scss" />
+        <option value="$PROJECT_DIR$/MLMExchange/Content/sass/Footer/_MainFooter.scss" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1873" />
-    <option name="height" value="1096" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1855" />
+    <option name="height" value="1078" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -170,6 +197,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,10 +297,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MLMExchange" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MLMExchange" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MLMExchange" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Content" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Footer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,7 +335,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="FullScreen" value="false" />
     <property name="SearchEverywhereHistory" value="plugin" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/MLMExchange/Content" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -393,14 +446,15 @@
       <workItem from="1392961513749" duration="675000" />
       <workItem from="1394565424571" duration="799000" />
       <workItem from="1394627096178" duration="1431000" />
+      <workItem from="1394799160105" duration="2736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62215000" />
+    <option name="totallyTimeSpent" value="64951000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1873" height="1096" extended-state="7" />
+    <frame x="1" y="1" width="1855" height="1078" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -421,7 +475,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2197092" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21968462" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -451,11 +505,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/_MainHeader.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="1" selection-start="1" selection-end="1" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/pages/Account__Register.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="19" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="969" />
@@ -490,12 +539,7 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="10" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1003">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -546,12 +590,7 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="44" column="4" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="1003">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -592,12 +631,7 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="1" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="918">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -631,12 +665,7 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="1" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="918">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -670,12 +699,7 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="1" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="918">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -694,12 +718,7 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -723,11 +742,6 @@
         <state line="22" column="85" selection-start="809" selection-end="809" vertical-scroll-proportion="0.22014537" vertical-offset="162" max-vertical-offset="2108" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/Footer/_MainFooter.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="22" selection-start="386" selection-end="386" vertical-scroll-proportion="0.43543223" vertical-offset="0" max-vertical-offset="937" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/_MainHeader.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="1" selection-start="26" selection-end="26" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="2023" />
@@ -736,13 +750,6 @@
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/ie.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="963" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Shared_lib.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="307" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="1173">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/pages/Account__Register.scss">
@@ -757,29 +764,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Form_lib.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="14" selection-start="453" selection-end="464" vertical-scroll-proportion="-12.653846" vertical-offset="198" max-vertical-offset="2635">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Shared_lib.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="15" selection-start="103" selection-end="111" vertical-scroll-proportion="-2.6153846" vertical-offset="0" max-vertical-offset="391">
+          <folding>
+            <element signature="e#29#75#0" expanded="false" />
+            <element signature="e#112#247#0" expanded="false" />
+            <element signature="e#126#245#0" expanded="false" />
+            <element signature="e#307#506#0" expanded="false" />
+            <element signature="e#403#459#0" expanded="false" />
+            <element signature="e#480#504#0" expanded="false" />
+            <element signature="e#574#664#0" expanded="false" />
+            <element signature="e#639#662#0" expanded="false" />
+            <element signature="e#722#853#0" expanded="false" />
+            <element signature="e#756#812#0" expanded="false" />
+            <element signature="e#823#851#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/_MainChangableContent.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="160" selection-end="160" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="238">
+        <state line="3" column="0" selection-start="48" selection-end="48" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="221">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/screen.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="586" selection-end="586" vertical-scroll-proportion="-22.23077" vertical-offset="0" max-vertical-offset="799">
-          <folding>
-            <element signature="e#109#234#0" expanded="false" />
-            <element signature="e#200#232#0" expanded="false" />
-            <element signature="e#242#264#0" expanded="false" />
-            <element signature="e#277#311#0" expanded="false" />
-          </folding>
+        <state line="45" column="0" selection-start="506" selection-end="506" vertical-scroll-proportion="-24.884615" vertical-offset="118" max-vertical-offset="1037">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/lib/_Form_lib.scss">
+    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/config.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="14" selection-start="453" selection-end="464" vertical-scroll-proportion="0.3611416" vertical-offset="198" max-vertical-offset="2635">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="945">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MLMExchange/Content/sass/Footer/_MainFooter.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="35" selection-start="703" selection-end="703" vertical-scroll-proportion="0.5734494" vertical-offset="0" max-vertical-offset="919">
+          <folding>
+            <element signature="e#839#1419#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

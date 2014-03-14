@@ -4,7 +4,7 @@
 // Libs
 @import "lib/Shared";
 @import "lib/Form";
-
+@import "MetroUICss_Override";
 
 .b-button
 {
@@ -33,7 +33,7 @@ html, body
 //#region Fonts
 body
 {
-  font-family: Tahoma, Geneva, sans-serif;
+  //font-family: Tahoma, Geneva, sans-serif;
   font-size: $font-n;
   background-color: #A3C2D1;
 }
@@ -43,7 +43,6 @@ body
 {
   position: relative;
   @include container;
-  height: 100%;
   background-color: white;
   //@include susy-grid-background;
 }

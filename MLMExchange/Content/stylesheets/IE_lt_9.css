@@ -5,16 +5,16 @@
   box-sizing: border-box;
 }
 
-/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 6, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib .b-ib__label {
   display: block;
   margin-bottom: 10px;
 }
-/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: block;
 }
-/* line 15, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 15, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview, .b-ib.b-ib_content_photo .b-ib_file-chooser {
   display: none;
 }
