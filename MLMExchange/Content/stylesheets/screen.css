@@ -1,3 +1,4 @@
+@charset "IBM866";
 /* line 17, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -239,7 +240,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 40px;
 }
 
-/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/*
+* Перебитие css-правил из metro ui css
+***/
+/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+.metro h1, .metro h2, .metro h3, .metro h4, .metro h5, .metro h6 {
+  margin: 0;
+}
+
+/* line 10, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-button {
   border: none;
   display: block;
@@ -247,13 +256,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 18, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 17, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
   opacity: 0.9;
 }
 
-/* line 24, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 23, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-sb {
   border: 1px solid #a7a9ac;
   -webkit-box-shadow: 8px 8px 10px 0 #68696b;
@@ -270,36 +279,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 10px;
 }
 
-/* line 29, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 28, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 36, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 body {
-  font-family: Tahoma, Geneva, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   background-color: #A3C2D1;
-}
-
-/* line 44, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
-.main-wrapper {
-  position: relative;
-  *zoom: 1;
-  width: 1004px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 100%;
-  background-color: white;
-}
-/* line 38, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-.main-wrapper:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
@@ -482,15 +471,15 @@ body {
   color: #68696b;
 }
 
-/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 5, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 150px;
+  height: 230px;
 }
-/* line 10, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .b-hr {
   width: 830px;
   margin-top: 0;
@@ -499,6 +488,59 @@ body {
   margin-right: auto;
 }
 /* line 19, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons {
+  width: 275.2px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  position: relative;
+  margin-bottom: 10px;
+}
+/* line 25, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons .sosial-button {
+  width: 308px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  width: 75px;
+  height: 75px;
+  background-color: #f2f2f2;
+}
+/* line 184, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+.main-footer .sosial-buttons .sosial-button:last-child {
+  float: right;
+  margin-right: 0;
+}
+/* line 31, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons .sosial-button .icon {
+  width: 48px;
+  height: 48px;
+  margin-top: 13.5px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+/* line 36, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons .sosial-button .icon.twitter {
+  background: url("/Content/sass/Footer/twitter.png") center no-repeat;
+}
+/* line 40, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons .sosial-button .icon.facebook {
+  background: url("/Content/sass/Footer/facebook.png") center no-repeat;
+}
+/* line 44, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons .sosial-button .icon.vkontakte {
+  background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
+}
+/* line 50, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .sosial-buttons .sosial-button_location_last {
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 57, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons {
   *zoom: 1;
   width: 1004px;
@@ -513,7 +555,7 @@ body {
   display: table;
   clear: both;
 }
-/* line 23, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 61, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button {
   position: relative;
   height: 130px;
@@ -527,14 +569,14 @@ body {
   float: right;
   margin-right: 0;
 }
-/* line 27, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 65, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button.ie8-last-child {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-/* line 30, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 68, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon {
   display: block;
   height: 107px;
@@ -542,7 +584,7 @@ body {
   background-image: url(/Content/sass/Footer/button-home.png);
   margin: 0 auto;
 }
-/* line 39, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 77, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-text {
   margin-top: 5px;
   overflow: hidden;
@@ -552,12 +594,28 @@ body {
 
 /* line 2, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainChangableContent.scss */
 .main-changable-content {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  right: 10px;
+  position: relative;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   min-height: 100%;
-  padding: 0 0 190px 0;
+}
+
+/* line 48, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.main-wrapper {
+  position: relative;
+  *zoom: 1;
+  width: 1004px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  min-height: 100%;
+  padding-bottom: 270px;
+}
+/* line 38, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.main-wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
 }
