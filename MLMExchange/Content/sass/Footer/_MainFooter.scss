@@ -18,6 +18,7 @@ $sosial-button_Bg-color: #F2F2F2;
   {
     .sosial-buttons {
       @include span-columns(3 omega, 10);
+      margin-right: 20px;
       position: relative;
       margin-bottom: 10px;
 

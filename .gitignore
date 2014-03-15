@@ -224,4 +224,6 @@ MLMExchange/bin/
 MLMExchange/Content/.sass-cache/
 MLMExchange/Content/.sass-cache/
 .idea/
+Content/.idea
+Content/stylesheets
 Logic/bin/

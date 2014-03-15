@@ -243,20 +243,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Перебитие css-правил из metro ui css
 ***/
-<<<<<<< HEAD
 /* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
-=======
-/* line 6, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
->>>>>>> 88556eb
 .metro h1, .metro h2, .metro h3, .metro h4, .metro h5, .metro h6 {
   margin: 0;
 }
 
-<<<<<<< HEAD
 /* line 10, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
-=======
-/* line 10, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
->>>>>>> 88556eb
 .b-button {
   border: none;
   display: block;
@@ -299,27 +291,6 @@ body {
   background-color: #A3C2D1;
 }
 
-<<<<<<< HEAD
-=======
-/* line 43, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
-.main-wrapper {
-  position: relative;
-  *zoom: 1;
-  width: 1004px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: white;
-}
-/* line 38, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-.main-wrapper:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
->>>>>>> 88556eb
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -500,11 +471,7 @@ body {
   color: #68696b;
 }
 
-<<<<<<< HEAD
 /* line 5, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
 .main-footer {
   position: absolute;
   bottom: 0;
@@ -512,11 +479,7 @@ body {
   right: 0;
   height: 230px;
 }
-<<<<<<< HEAD
 /* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
 .main-footer .b-hr {
   width: 830px;
   margin-top: 0;
@@ -524,25 +487,18 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-<<<<<<< HEAD
 /* line 19, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 19, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
 .main-footer .sosial-buttons {
   width: 275.2px;
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
+  margin-right: 20px;
   position: relative;
   margin-bottom: 10px;
 }
-<<<<<<< HEAD
-/* line 25, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 25, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 26, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons .sosial-button {
   width: 308px;
   float: left;
@@ -557,11 +513,7 @@ body {
   float: right;
   margin-right: 0;
 }
-<<<<<<< HEAD
-/* line 31, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 31, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 32, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons .sosial-button .icon {
   width: 48px;
   height: 48px;
@@ -570,46 +522,26 @@ body {
   margin-right: auto;
   display: block;
 }
-<<<<<<< HEAD
-/* line 36, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 37, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons .sosial-button .icon.twitter {
   background: url("/Content/sass/Footer/twitter.png") center no-repeat;
 }
-/* line 40, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 41, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons .sosial-button .icon.facebook {
   background: url("/Content/sass/Footer/facebook.png") center no-repeat;
 }
-/* line 44, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 45, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons .sosial-button .icon.vkontakte {
   background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
 }
-/* line 50, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 36, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-.main-footer .sosial-buttons .sosial-button .icon.twitter {
-  background: url("/Content/sass/Footer/twitter.png") center no-repeat;
-}
-/* line 40, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-.main-footer .sosial-buttons .sosial-button .icon.facebook {
-  background: url("/Content/sass/Footer/facebook.png") center no-repeat;
-}
-/* line 44, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-.main-footer .sosial-buttons .sosial-button .icon.vkontakte {
-  background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
-}
-/* line 50, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 51, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons .sosial-button_location_last {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-<<<<<<< HEAD
-/* line 57, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 57, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 58, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons {
   *zoom: 1;
   width: 1004px;
@@ -624,11 +556,7 @@ body {
   display: table;
   clear: both;
 }
-<<<<<<< HEAD
-/* line 61, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 61, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 62, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button {
   position: relative;
   height: 130px;
@@ -642,22 +570,14 @@ body {
   float: right;
   margin-right: 0;
 }
-<<<<<<< HEAD
-/* line 65, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 65, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 66, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button.ie8-last-child {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-<<<<<<< HEAD
-/* line 68, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 68, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 69, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon {
   display: block;
   height: 107px;
@@ -665,11 +585,7 @@ body {
   background-image: url(/Content/sass/Footer/button-home.png);
   margin: 0 auto;
 }
-<<<<<<< HEAD
-/* line 77, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
-=======
-/* line 77, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
->>>>>>> 88556eb
+/* line 78, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-text {
   margin-top: 5px;
   overflow: hidden;
@@ -683,7 +599,6 @@ body {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   min-height: 100%;
-<<<<<<< HEAD
 }
 
 /* line 48, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
@@ -704,7 +619,4 @@ body {
   content: "";
   display: table;
   clear: both;
-=======
-  padding: 0 0 270px 0;
->>>>>>> 88556eb
 }
