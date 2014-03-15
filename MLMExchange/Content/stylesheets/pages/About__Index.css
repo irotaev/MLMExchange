@@ -1,0 +1,86 @@
+/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 4, ../../sass/pages/About__Index.scss */
+.about-block {
+  width: 554px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 8, ../../sass/pages/About__Index.scss */
+.about-block .about-ptext {
+  font-size: 16px;
+}
+/* line 12, ../../sass/pages/About__Index.scss */
+.about-block .text {
+  color: #ffffff;
+  text-align: center;
+  font-size: 24px;
+  line-height: 46px;
+}
+/* line 18, ../../sass/pages/About__Index.scss */
+.about-block .text .about-text {
+  width: 472px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  padding-left: 82px;
+}
+
+/* line 26, ../../sass/pages/About__Index.scss */
+.additional-info {
+  padding-left: 82px;
+  width: 390px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 31, ../../sass/pages/About__Index.scss */
+.additional-info .about-icon {
+  display: block;
+  background-image: url("/Content/images/AboutIndex/about-icon.png");
+  width: 257px;
+  height: 87px;
+}
+/* line 39, ../../sass/pages/About__Index.scss */
+.additional-info .about-info {
+  background: #ffffff;
+  margin-top: 15px;
+  position: relative;
+  font-size: 20px;
+  border: 1px solid #000000;
+}
+/* line 47, ../../sass/pages/About__Index.scss */
+.additional-info .about-info:after, .additional-info .about-info:before {
+  right: 100%;
+  top: 10%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+/* line 58, ../../sass/pages/About__Index.scss */
+.additional-info .about-info:after {
+  border-color: rgba(255, 255, 255, 0);
+  border-right-color: #ffffff;
+  border-width: 20px;
+  margin-top: -20px;
+}
+/* line 64, ../../sass/pages/About__Index.scss */
+.additional-info .about-info:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-right-color: #000000;
+  border-width: 21px;
+  margin-top: -21px;
+}
