@@ -93,7 +93,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
   border: 1px solid #32BFB2;
 }
-/* line 47, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 55, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-ai .b-ai_text {
   margin: 10px;
 }
@@ -246,6 +246,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro h1, .metro h2, .metro h3, .metro h4, .metro h5, .metro h6 {
   margin: 0;
+  font-size: 16px;
+  line-height: 16px;
+}
+
+/* line 9, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+* {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /* line 10, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
@@ -274,7 +283,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 46px;
   background-color: #3077b7;
 }
-/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 34, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-sb .b-sb__title .b-sb__text {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  line-height: 46px;
+}
+/* line 43, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__content {
   padding: 10px;
 }
