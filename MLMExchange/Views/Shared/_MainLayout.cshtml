@@ -3,7 +3,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width" />
-  <title>_MainLayout</title>
+  <title>@ViewBag.Title</title>
 
   <!--Инициализация HTML5 элементов для IE (версия ниже 9)-->
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
@@ -108,28 +108,36 @@
 
       <hr class="b-hr" />
       <nav class="buttons">
-        <div class="b-button home">
-          <a href="/About/Index/">
-            <i class="b-icon"></i>
+        <div class="b-button">
+          <a href="/about">
+            <i class="b-icon home"></i>
             <div class="b-text">
-              о компании
+              @MLMExchange.Properties.ResourcesA.AboutUs
             </div>
           </a>
         </div>
-        <div class="b-button home">
-          <i class="b-icon"></i>
+        <div class="b-button">
+            <a href="/agreement">
+          <i class="b-icon agreement"></i>
+          <div class="b-text">
+              Соглашение
+          </div>
+            </a>
+        </div>
+        <div class="b-button">
+            <a href="/copyright">
+          <i class="b-icon copyright"></i>
+          <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.CopyRight
+          </div>
+            </a>
+        </div>
+        <div class="b-button">
+          <i class="b-icon home"></i>
           <div class="b-text">На главную</div>
         </div>
-        <div class="b-button home">
-          <i class="b-icon"></i>
-          <div class="b-text">На главную</div>
-        </div>
-        <div class="b-button home">
-          <i class="b-icon"></i>
-          <div class="b-text">На главную</div>
-        </div>
-        <div class="b-button home ie8-last-child">
-          <i class="b-icon"></i>
+        <div class="b-button ie8-last-child">
+          <i class="b-icon home"></i>
           <div class="b-text">На главную</div>
         </div>
       </nav>

@@ -596,10 +596,21 @@ body {
   display: block;
   height: 107px;
   width: 107px;
-  background-image: url(/Content/sass/Footer/button-home.png);
   margin: 0 auto;
 }
-/* line 86, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 84, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button .b-icon.home {
+  background-image: url(/Content/sass/Footer/button-home.png);
+}
+/* line 89, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button .b-icon.agreement {
+  background-image: url(/Content/sass/Footer/button-agreement.png);
+}
+/* line 94, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+.main-footer .buttons .b-button .b-icon.copyright {
+  background-image: url(/Content/sass/Footer/button-copyright.png);
+}
+/* line 100, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-text {
   margin-top: 5px;
   overflow: hidden;

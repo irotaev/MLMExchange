@@ -78,8 +78,22 @@ $sosial-button_Bg-color: #F2F2F2;
           display: block;
           height: 107px;
           width: 107px;
-          background-image: url(#{$sass_Dir}/Footer/button-home.png);
           margin: 0 auto;
+
+          &.home
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-home.png);
+          }
+
+          &.agreement
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-agreement.png);
+          }
+
+          &.copyright
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-copyright.png);
+          }
         }
 
         .b-text

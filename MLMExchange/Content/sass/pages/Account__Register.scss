@@ -43,6 +43,9 @@
   .register-info
   {
     margin-top: 15px;
+    position: relative;
+    background: white;
     font-size: $font-h;
+    border: 1px solid black;
   }
 }

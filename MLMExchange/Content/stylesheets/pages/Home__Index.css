@@ -13,45 +13,48 @@
   *margin-left: -20px;
   display: inline;
   margin-bottom: 20px;
+  padding-right: 1px;
 }
-/* line 9, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 10, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__rows {
   position: absolute;
   z-index: 1;
   display: table;
-  width: 100%;
-  border: 1px solid  #666666;
+  width: 964px;
+  margin: auto;
 }
-/* line 18, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 19, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__row {
-  display: table-row;
-  width: 100%;
+  margin: 0;
 }
 /* line 24, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.slider-block .slider-block__cell_max .slider-block__cell_min {
+  display: table-cell !important;
+  display: inline;
+}
+/* line 30, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_max {
   float: left;
-  display: table-column;
-  width: 275.43px;
+  width: 28.5714286%;
   height: 100px;
   background-color: #eee;
-  border: 1px solid #000000;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  border: 3px solid #a7a9ac;
 }
-/* line 35, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 38, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.slider-block .slider-block__cell_max h2 {
+  text-align: center;
+  vertical-align: middle;
+  margin: 35px;
+}
+/* line 46, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_min {
   float: left;
-  display: table-column;
-  width: 137.71px;
+  width: 14.2857143%;
   height: 100px;
-  border: 1px solid #000000;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  border: 3px solid #a7a9ac;
 }
 
-/* line 46, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 55, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block {
   width: 554px;
   float: left;
@@ -61,28 +64,33 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 51, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 60, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__text {
   font-size: 16px;
 }
-/* line 56, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 65, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news__text {
   margin: 5px;
 }
-/* line 61, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 70, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news {
   border: 2px dotted #a7a9ac;
   margin-top: 10px;
   margin-bottom: 30px;
 }
-/* line 68, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 77, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news__date {
   background: #c8e5f6;
   margin-top: -20px;
   float: right;
 }
+/* line 84, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.home-block .home-block__news__date span {
+  padding: 10px;
+  font-size: 10px;
+}
 
-/* line 76, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 91, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info {
   padding-left: 82px;
   width: 390px;
@@ -91,14 +99,14 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 81, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 96, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info .home-icon {
   display: block;
   background-image: url("/Content/images/AboutIndex/about-icon.png");
   width: 257px;
   height: 87px;
 }
-/* line 89, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 104, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info .home-info {
   background: white;
   margin-top: 15px;
@@ -107,7 +115,7 @@
   border: 1px solid black;
 }
 
-/* line 99, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 114, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block {
   width: 964px;
   float: right;

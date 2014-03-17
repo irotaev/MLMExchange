@@ -56,5 +56,8 @@
 /* line 44, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .additional-info .register-info {
   margin-top: 15px;
+  position: relative;
+  background: white;
   font-size: 20px;
+  border: 1px solid black;
 }

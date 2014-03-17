@@ -1,0 +1,35 @@
+@import "../Framework";
+
+.agree-block
+{
+  @include span-columns(7, 12);
+  @include box-sizing(border-box);
+
+  .agree-block__text
+    {
+    font-size: $font-b;
+  }
+}
+
+.additional-info
+  {
+  @include prefix(1);
+  @include span-columns(5 omega, 12);
+
+  .agree-icon
+  {
+    display: block;
+    background-image: url("#{$I_D}AboutIndex/about-icon.png");
+    width: 257px;
+    height: 87px;
+  }
+
+  .agree-info
+  {
+    background: white;
+    margin-top: 15px;
+    position: relative;
+    font-size: $font-h;
+    border: 1px solid #000000;
+  }
+}

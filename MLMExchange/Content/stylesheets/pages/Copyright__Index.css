@@ -1,0 +1,46 @@
+/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 4, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
+.copyright-block {
+  width: 554px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 9, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
+.copyright-block .copyright-block__text {
+  font-size: 16px;
+}
+
+/* line 15, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
+.additional-info {
+  padding-left: 82px;
+  width: 390px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 20, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
+.additional-info .copyright-icon {
+  display: block;
+  background-image: url("/Content/images/AboutIndex/about-icon.png");
+  width: 257px;
+  height: 87px;
+}
+/* line 28, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
+.additional-info .copyright-info {
+  background: white;
+  margin-top: 15px;
+  position: relative;
+  font-size: 20px;
+  border: 1px solid #000000;
+}

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = @MLMExchange.Properties.ResourcesA.HomePage;
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -46,7 +46,12 @@
         <script>
             $(function () {
                 $("#carousel1").carousel({
-                    height: 300
+                    height: 300,
+                    period: 3000,
+                    duration: 2000,
+                    markers: {
+                        show : false
+                    }
                 });
             })
         </script>
@@ -58,22 +63,22 @@
     </header>
     <div class="b-sb__content home-block__text">
         <div class="home-block__news">
-            <div class="home-block__news__date">22.04.2014</div>
+            <div class="home-block__news__date"><span>22.04.2014</span></div>
             <div class="home-block__news__text">Что-то произошло на бирже...</div>
         </div>
 
         <div class="home-block__news">
-            <div class="home-block__news__date">22.04.2014</div>
+            <div class="home-block__news__date"><span>22.04.2014</span></div>
             <div class="home-block__news__text">Что-то произошло на бирже...</div>
         </div>
 
         <div class="home-block__news">
-            <div class="home-block__news__date">22.04.2014</div>
+            <div class="home-block__news__date"><span>22.04.2014</span></div>
             <div class="home-block__news__text">Что-то произошло на бирже...</div>
         </div>
 
         <div class="home-block__news">
-            <div class="home-block__news__date">22.04.2014</div>
+            <div class="home-block__news__date"><span>22.04.2014</span></div>
             <div class="home-block__news__text">Что-то произошло на бирже...</div>
         </div>
     </div>
