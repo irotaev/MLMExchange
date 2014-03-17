@@ -14,7 +14,7 @@ namespace MLMExchange.Models.Registration
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]    
     public string Login { get; set; }
-
+      
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [DataType(DataType.Password)]
     public string Password { get; set; }

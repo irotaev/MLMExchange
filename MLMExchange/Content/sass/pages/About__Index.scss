@@ -1,0 +1,73 @@
+@import "../Framework";
+
+.about-block
+{
+  @include span-columns(7, 12);
+  @include box-sizing(border-box);
+
+  .about-block__text
+  {
+    font-size: $font-b;
+  }
+
+//  .text
+//  {
+//    color: #ffffff;
+//    text-align: center;
+//    font-size: 24px;
+//    line-height: 46px;
+//
+//    .about-text
+//    {
+//      @include span-columns(6, 12);
+//      @include prefix(1);
+//    }
+//  }
+}
+
+.additional-info
+{
+  @include prefix(1);
+  @include span-columns(5 omega, 12);
+
+  .about-icon
+  {
+    display: block;
+    background-image: url("#{$I_D}AboutIndex/about-icon.png");
+    width: 257px;
+    height: 87px;
+  }
+
+  .about-info
+  {
+    background: white;
+    margin-top: 15px;
+    position: relative;
+    font-size: $font-h;
+    border: 1px solid #000000;
+  }
+
+//  .about-info:after, .about-info:before {
+//    right: 100%;
+//    top: 10%;
+//    border: solid transparent;
+//    content: " ";
+//    height: 0;
+//    width: 0;
+//    position: absolute;
+//    pointer-events: none;
+//  }
+//
+//  .about-info:after {
+//    border-color: rgba(255, 255, 255, 0);
+//    border-right-color: #ffffff;
+//    border-width: 20px;
+//    margin-top: -20px;
+//  }
+//  .about-info:before {
+//    border-color: rgba(0, 0, 0, 0);
+//    border-right-color: #000000;
+//    border-width: 21px;
+//    margin-top: -21px;
+//  }
+}

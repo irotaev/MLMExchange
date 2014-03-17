@@ -19,21 +19,20 @@
   }
 
   <!--MS unobstractive validation-->
-  <script src="~/Scripts/jquery.validate.js"></script>
+  <script src="~/Scripts/jquery.validate.min.js"></script>
   <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
   <script src="~/Scripts/require.js"></script>
   <!--Стоит отдельно от require.js, т.к. нужна синхронная загрузка-->
   <script src="~/Scripts/Framework/RequireJs/config.js"></script>
   <script src="~/Content/MetroUICSS/min/jquery.widjet.min.js"></script>
   <script src="~/Content/MetroUICSS/min/metro.min.js"></script>
-  
 
   <link href="~/Content/MetroUICSS/min/metro-bootstrap.min.css" rel="stylesheet" />
   <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
   @(new MLMExchange.Lib.ViewStyle(ViewContext).RenderPrivatePageStyle())
 
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
-  { 
+  {
     <link href="~/Content/stylesheets/IE_lt_9.css" rel="stylesheet" />
   }
 </head>
@@ -96,40 +95,45 @@
         </nav>*@
 
       @RenderBody()
+    </section>
 
-      <footer class="main-footer">
-        <div class="sosial-buttons">
+    <div class="main-footer">
+      <div class="sosial-buttons__outer-wrapper">
+        <div class="sosial-buttons__inner-wrapper">
           <div class="b-button sosial-button"><i class="icon twitter"></i></div>
           <div class="b-button sosial-button"><i class="icon facebook"></i></div>
           <div class="b-button sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
         </div>
+      </div>
 
-        <hr class="b-hr" />
-
-        <nav class="buttons">
-          <div class="b-button home">
+      <hr class="b-hr" />
+      <nav class="buttons">
+        <div class="b-button home">
+          <a href="/About/Index/">
             <i class="b-icon"></i>
-            <div class="b-text">На главную</div>
-          </div>
-          <div class="b-button home">
-            <i class="b-icon"></i>
-            <div class="b-text">На главную</div>
-          </div>
-          <div class="b-button home">
-            <i class="b-icon"></i>
-            <div class="b-text">На главную</div>
-          </div>
-          <div class="b-button home">
-            <i class="b-icon"></i>
-            <div class="b-text">На главную</div>
-          </div>
-          <div class="b-button home ie8-last-child">
-            <i class="b-icon"></i>
-            <div class="b-text">На главную</div>
-          </div>
-        </nav>
-      </footer>
-    </section>
+            <div class="b-text">
+              о компании
+            </div>
+          </a>
+        </div>
+        <div class="b-button home">
+          <i class="b-icon"></i>
+          <div class="b-text">На главную</div>
+        </div>
+        <div class="b-button home">
+          <i class="b-icon"></i>
+          <div class="b-text">На главную</div>
+        </div>
+        <div class="b-button home">
+          <i class="b-icon"></i>
+          <div class="b-text">На главную</div>
+        </div>
+        <div class="b-button home ie8-last-child">
+          <i class="b-icon"></i>
+          <div class="b-text">На главную</div>
+        </div>
+      </nav>
+    </div>
   </div>
 </body>
 </html>

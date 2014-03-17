@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace MLMExchange.Controllers
 {
-  public class HomeController : Controller
-  {
-    public ActionResult Index()
+    public class AboutController : Controller
     {
-      return View();
+        public ActionResult Index()
+        {
+            return View();
+        }
+
     }
-  }
 }
