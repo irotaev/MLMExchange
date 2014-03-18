@@ -32,11 +32,12 @@
 /* line 20, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
 .additional-info .copyright-icon {
   display: block;
-  background-image: url("/Content/images/AboutIndex/about-icon.png");
+  background-image: url("/Content/images/CopyrightIndex/copyright-icon.png");
+  background-repeat: no-repeat;
   width: 257px;
   height: 87px;
 }
-/* line 28, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
+/* line 29, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Copyright__Index.scss */
 .additional-info .copyright-info {
   background: white;
   margin-top: 15px;

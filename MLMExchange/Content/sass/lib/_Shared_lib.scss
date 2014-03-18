@@ -19,6 +19,41 @@
   }
 }
 
+@mixin b-mb($title_bg: #3077B7)
+{
+  @include box-shadow(8px 8px 10px 0 $grey_2);
+  border: 1px solid $grey_1;
+
+  .b-mb__clearbg
+  {
+    content: "";
+    position: absolute;
+    width: 552px;
+    height: 5px;
+    z-index: 2;
+    background-color: #FFFFFF;
+  }
+
+  .b-mb__title
+  {
+    height: 46px;
+    background-color: $title_bg;
+
+    .b-mb__text
+    {
+      color: white;
+      text-align: center;
+      font-size: 24px;
+      line-height: 46px;
+    }
+  }
+
+  .b-mb__content
+  {
+    padding: 10px;
+  }
+}
+
 // Основной блок контента
 @mixin b-sb($title_bg: #3077B7)
 {

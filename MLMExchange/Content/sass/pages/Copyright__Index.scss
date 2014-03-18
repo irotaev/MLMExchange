@@ -19,7 +19,8 @@
   .copyright-icon
     {
     display: block;
-    background-image: url("#{$I_D}AboutIndex/about-icon.png");
+    background-image: url("#{$I_D}CopyrightIndex/copyright-icon.png");
+    background-repeat: no-repeat;
     width: 257px;
     height: 87px;
   }

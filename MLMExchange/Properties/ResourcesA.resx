@@ -165,6 +165,9 @@
   <data name="HomePage" xml:space="preserve">
     <value>Главная страница</value>
   </data>
+  <data name="MyCryptPage" xml:space="preserve">
+    <value>My-Crypt биржа</value>
+  </data>
   <data name="PasswordDoesnotMatchWithPasswordConfirmation" xml:space="preserve">
     <value>Пароль и подтверждение пароля не совпадают</value>
   </data>

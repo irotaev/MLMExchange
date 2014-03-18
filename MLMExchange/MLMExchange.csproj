@@ -142,6 +142,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CopyRightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyCryptController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -272,6 +273,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Agreement\Index.cshtml" />
     <Content Include="Views\CopyRight\Index.cshtml" />
+    <Content Include="Views\Mycrypt\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

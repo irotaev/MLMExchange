@@ -24,6 +24,11 @@
   @include b-sb();
 }
 
+.b-mb
+{
+  @include b-mb();
+}
+
 html, body
 {
   height: 100%;

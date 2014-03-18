@@ -205,6 +205,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My-Crypt биржа.
+        /// </summary>
+        public static string MyCryptPage {
+            get {
+                return ResourceManager.GetString("MyCryptPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пароль и подтверждение пароля не совпадают.
         /// </summary>
         public static string PasswordDoesnotMatchWithPasswordConfirmation {

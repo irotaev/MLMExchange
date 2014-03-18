@@ -93,7 +93,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
   border: 1px solid #32BFB2;
 }
-/* line 55, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 90, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-ai .b-ai_text {
   margin: 10px;
 }
@@ -278,30 +278,63 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-shadow: 8px 8px 10px 0 #68696b;
   box-shadow: 8px 8px 10px 0 #68696b;
 }
-/* line 29, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 64, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title {
   height: 46px;
   background-color: #3077b7;
 }
-/* line 34, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 69, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title .b-sb__text {
   color: white;
   text-align: center;
   font-size: 24px;
   line-height: 46px;
 }
-/* line 43, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 78, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__content {
   padding: 10px;
 }
 
 /* line 28, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.b-mb {
+  -webkit-box-shadow: 8px 8px 10px 0 #68696b;
+  -moz-box-shadow: 8px 8px 10px 0 #68696b;
+  box-shadow: 8px 8px 10px 0 #68696b;
+  border: 1px solid #a7a9ac;
+}
+/* line 28, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-mb .b-mb__clearbg {
+  content: "";
+  position: absolute;
+  width: 552px;
+  height: 5px;
+  z-index: 2;
+  background-color: #FFFFFF;
+}
+/* line 38, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-mb .b-mb__title {
+  height: 46px;
+  background-color: #3077b7;
+}
+/* line 43, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-mb .b-mb__title .b-mb__text {
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  line-height: 46px;
+}
+/* line 52, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-mb .b-mb__content {
+  padding: 10px;
+}
+
+/* line 33, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/screen.scss */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 35, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 40, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/screen.scss */
 body {
   font-size: 13px;
   background-color: #A3C2D1;
@@ -626,7 +659,7 @@ body {
   min-height: 100%;
 }
 
-/* line 48, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 53, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .main-wrapper {
   position: relative;
   *zoom: 1;

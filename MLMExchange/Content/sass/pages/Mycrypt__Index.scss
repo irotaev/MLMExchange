@@ -1,0 +1,54 @@
+@import "../Framework";
+
+.youtube-block
+{
+  width: 300px;
+  height: 200px;
+  border: 6px solid $orange;
+  background-color: #231F20;
+  float: right;
+  margin: 0 0 1em 1em;
+
+  h1
+  {
+    font-size: $font-h;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 75px;
+  }
+}
+
+.mycrypt-block
+  {
+  @include span-columns(7, 12);
+  margin-bottom: 100px;
+
+  .sub-title
+  {
+    font-size: $font-h;
+    color: $grey_2;
+  }
+
+  .mycrypt-block__text
+  {
+    @include span-columns(12, 12);
+    background: white;
+    font-size: $font-b;
+  }
+}
+
+.additional-info
+  {
+  @include prefix(1);
+  @include span-columns(5 omega, 12);
+
+  .mycrypt-icon
+    {
+    display: block;
+    background-image: url("#{$I_D}MycryptIndex/mycrypt-icon.png");
+    background-repeat: no-repeat;
+    width: 257px;
+    height: 87px;
+  }
+}
