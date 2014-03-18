@@ -19,36 +19,41 @@
   }
 }
 
-.mycrypt-block
-  {
-  @include span-columns(7, 12);
-  margin-bottom: 100px;
-
-  .sub-title
-  {
-    font-size: $font-h;
-    color: $grey_2;
-  }
-
-  .mycrypt-block__text
-  {
-    @include span-columns(12, 12);
-    background: white;
-    font-size: $font-b;
-  }
+.mycrypt-exchange
+{
+  @include span-columns(12 omega, 12);
 }
 
-.additional-info
-  {
-  @include prefix(1);
-  @include span-columns(5 omega, 12);
-
-  .mycrypt-icon
-    {
-    display: block;
-    background-image: url("#{$I_D}MycryptIndex/mycrypt-icon.png");
-    background-repeat: no-repeat;
-    width: 257px;
-    height: 87px;
-  }
-}
+//.mycrypt-block
+//  {
+//  @include span-columns(7, 12);
+//  margin-bottom: 100px;
+//
+//  .sub-title
+//  {
+//    font-size: $font-h;
+//    color: $grey_2;
+//  }
+//
+//  .mycrypt-block__text
+//  {
+//    @include span-columns(12, 12);
+//    background: white;
+//    font-size: $font-b;
+//  }
+//}
+//
+//.additional-info
+//  {
+//  @include prefix(1);
+//  @include span-columns(5 omega, 12);
+//
+//  .mycrypt-icon
+//    {
+//    display: block;
+//    background-image: url("#{$I_D}MycryptIndex/mycrypt-icon.png");
+//    background-repeat: no-repeat;
+//    width: 257px;
+//    height: 87px;
+//  }
+//}

@@ -19,47 +19,9 @@
   }
 }
 
-@mixin b-mb($title_bg: #3077B7)
-{
-  @include box-shadow(8px 8px 10px 0 $grey_2);
-  border: 1px solid $grey_1;
-
-  .b-mb__clearbg
-  {
-    content: "";
-    position: absolute;
-    width: 552px;
-    height: 5px;
-    z-index: 2;
-    background-color: #FFFFFF;
-  }
-
-  .b-mb__title
-  {
-    height: 46px;
-    background-color: $title_bg;
-
-    .b-mb__text
-    {
-      color: white;
-      text-align: center;
-      font-size: 24px;
-      line-height: 46px;
-    }
-  }
-
-  .b-mb__content
-  {
-    padding: 10px;
-  }
-}
-
 // Основной блок контента
 @mixin b-sb($title_bg: #3077B7)
 {
-  border: 1px solid $grey_1;
-  @include box-shadow(8px 8px 10px 0 $grey_2);
-
   .b-sb__title
   {
     height: 46px;
@@ -78,7 +40,95 @@
   {
     padding: 10px;
   }
+
+
+  border: 1px solid $grey_1;
+  @include box-shadow(8px 8px 10px 0 $grey_2);
+
+  &.b-sb__type__with-icon
+  {
+    border: none; @include box-shadow(none);
+
+    .b-sb__top-section
+    {
+      position: relative;
+      @include clearfix;
+
+      @include _with-grid-settings(10)
+      {
+        .b-sb__header
+        {
+          border: 1px solid $grey_1; border-bottom: none;
+          @include box-shadow(10px 10px 10px $grey_2);
+          z-index: -100;
+          @include span-columns(5, 10);
+
+          .b-sb__header--content
+          {
+            height: 100px;
+          }
+        }
+        
+        .b-sb__icon
+        {
+          @include span-columns(3 omega, 10);
+          height: 87px;
+        }
+
+        .b-sb__border-top
+        {
+          position: absolute;
+          @include span-columns(5 omega, 10);
+          @include box-sizing(content-box);
+          padding-left: $gutter-width;
+          border-top: 1px solid $grey_1;
+          height: 0;
+          bottom: 0; right: 0;
+        }
+      }
+    }
+
+    .b-sb__content
+    {
+      position: relative;
+      z-index: 100;
+      border: 1px solid $grey_1; border-top: none;
+      @include box-shadow(10px 10px 10px $grey_2);
+    }
+  }
 }
+
+
+
+
+//    &.b-sb_type_sectionable
+//    {
+//      .b-sb__title
+//      {
+//        @include span-column(4, 10);
+//      }
+//
+//      .b-sb__icon
+//      {
+//        @include prefix(3);
+//        @include span-column(3 omega, 10);
+//        background-color: red;
+//      }
+//
+//      .b-sb__first-section
+//      {
+//        width: 100;
+//        border: 1px solid $grey_1; border-bottom: none;
+//      }
+//
+//      .b-sb__second-section
+//      {
+//        width: 100%;
+//        @include box-sizing(border-box);
+//        border: 1px solid $grey_1; border-top: none;
+//        @include box-shadow(5px 5px 10px $grey_2);
+//      }
+//    }
 
 // Блок дополнительной информации (b-additional-info)
 @mixin b-ai
