@@ -1,9 +1,29 @@
+@import "framework";
+
+$metro__button_Active_Color: $blue_3;
+
 /*
 * Перебитие css-правил из metro ui css
 ***/
 
 .metro {
   h1, h2, h3, h4, h5, h6 {margin: 0; font-size: $font-b; line-height: $font-b;}
+
+  div, p
+  {
+    font-size: $font-b;
+    color: $grey_2;
+  }
+
+  .button
+  {
+    padding: 0; margin: 0;
+
+    &:active
+    {
+      background-color: $metro__button_Active_Color;
+    }
+  }
 }
 
 .metro .stepper

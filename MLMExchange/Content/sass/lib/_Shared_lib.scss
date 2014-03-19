@@ -1,3 +1,7 @@
+@import "compass/css3/transition";
+
+$b-button_Active_Color: #B4CEF5;
+
 @mixin b-hr($color: #10485B)
 {
   color: $color;
@@ -37,7 +41,8 @@
 
   .b-sb__content
   {
-    padding: 10px;
+    padding: 20px;
+    text-align: center;
   }
 
 
@@ -123,38 +128,6 @@
   }
 }
 
-
-
-
-//    &.b-sb_type_sectionable
-//    {
-//      .b-sb__title
-//      {
-//        @include span-column(4, 10);
-//      }
-//
-//      .b-sb__icon
-//      {
-//        @include prefix(3);
-//        @include span-column(3 omega, 10);
-//        background-color: red;
-//      }
-//
-//      .b-sb__first-section
-//      {
-//        width: 100;
-//        border: 1px solid $grey_1; border-bottom: none;
-//      }
-//
-//      .b-sb__second-section
-//      {
-//        width: 100%;
-//        @include box-sizing(border-box);
-//        border: 1px solid $grey_1; border-top: none;
-//        @include box-shadow(5px 5px 10px $grey_2);
-//      }
-//    }
-
 // Блок дополнительной информации (b-additional-info)
 @mixin b-ai
 {
@@ -163,20 +136,53 @@
 
   .b-ai_text
   {
-    margin: 10px;
+    margin: 20px;
+    overflow: hidden;
+    font-size: $font-b-b;
+    color: $grey_1;
+    text-align: center;
   }
 }
 
-// box-sizing с учетом firefox
-//@mixin box-sizing($flag)
-//{
-//  @if ($flag == 'border-box')
-//  {
-//    box-sizing: $flag;
-//    -moz-box-sizing: $flag;
-//}
-//  @else
-//  {
-//    box-sizing: $flag;
-//  }
-//}
+// Кнопки
+@mixin b-button
+{
+  border: none;
+  display: block;
+  cursor: pointer;
+  @include opacity(1);
+
+  &:hover
+  {
+    @include opacity(0.9);
+
+    border-bottom: 3px solid $red_1;
+
+    @include transition(border-bottom 0.15s linear);
+  }
+
+  &:not(.b-button_action_no-active)
+  {
+    &:active
+    {
+      background-color: $b-button_Active_Color;
+    }
+  }
+
+  //#region m: Цвета кнопок
+  &.b-button_color_light-blue
+  {
+    background-color: $blue_1;
+  }
+
+  &.b-button_color_normal-blue
+  {
+    background-color: $blue_2;
+  }
+
+  &.b-button_color_light-grey
+  {
+    background-color: $grey_3;
+  }
+  //#endregion
+}

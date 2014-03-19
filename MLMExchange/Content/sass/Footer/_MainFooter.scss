@@ -1,6 +1,5 @@
 $main-footer_Height: 230px;
 
-$sosial-button_Bg-color: #F2F2F2;
 .main-footer
 {
   position: absolute;
@@ -29,7 +28,6 @@ $sosial-button_Bg-color: #F2F2F2;
       {
         width: 75px; height: 75px;
         margin-right: 15px;
-        background-color: $sosial-button_Bg-color;
         float: left;
 
         .icon {
@@ -105,6 +103,7 @@ $sosial-button_Bg-color: #F2F2F2;
           overflow: hidden;
           text-align: center;
           color: $grey_1;
+          font-size: $font-n;
         }
       }
     }
