@@ -1,11 +1,102 @@
-/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+@charset "IBM866";
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 4, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+* Относится к видео
+*/
+/* line 3, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video.scss */
+.b-videos {
+  width: 964px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+  position: relative;
+}
+/* line 19, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+.b-videos .b-videos__video-wrapper {
+  width: 45%;
+  float: left;
+  margin-right: 10%;
+  display: inline;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  height: 250px;
+  border: 10px solid #f15a29;
+  -webkit-transition: border 0.35s;
+  -moz-transition: border 0.35s;
+  -o-transition: border 0.35s;
+  transition: border 0.35s;
+  z-index: 100;
+}
+/* line 184, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+.b-videos .b-videos__video-wrapper:nth-child(2n) {
+  float: right;
+  margin-right: 0;
+}
+/* line 31, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+.b-videos .b-videos__video-wrapper:hover {
+  border-color: transparent;
+}
+/* line 33, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+.b-videos .b-videos__video-wrapper:hover .b-videos__additional-info {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 37, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+.b-videos .b-videos__video-wrapper .b-videos__video {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+/* line 44, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+.b-videos .b-videos__video-wrapper .b-videos__additional-info {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -45px;
+  background-color: #f0f0f0;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -webkit-transition: opacity 0.35s;
+  -moz-transition: opacity 0.35s;
+  -o-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+  z-index: -10;
+}
+/* line 53, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+.b-videos .b-videos__video-wrapper .b-videos__additional-info .b-videos__text {
+  position: absolute;
+  padding: 5px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  line-height: 30px;
+  color: #68696b;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .about-block {
   width: 554px;
   float: left;
@@ -15,12 +106,12 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 9, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
+/* line 10, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .about-block .about-block__text {
-  font-size: 16px;
+  font-size: 20px;
 }
 
-/* line 29, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
+/* line 16, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .additional-info {
   padding-left: 82px;
   width: 390px;
@@ -29,14 +120,14 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 34, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
+/* line 21, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .additional-info .about-icon {
   display: block;
   background-image: url("/Content/images/AboutIndex/about-icon.png");
   width: 257px;
   height: 87px;
 }
-/* line 42, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
+/* line 29, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .additional-info .about-info {
   background: white;
   margin-top: 15px;

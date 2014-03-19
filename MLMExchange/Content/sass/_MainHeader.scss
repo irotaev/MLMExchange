@@ -28,19 +28,6 @@ $headerButton_Height: 64px;
        .b-button
        {
          @include span-columns(2,12);
-
-         &.about-us
-         {
-          background-color: $blue_1;
-         }
-         &.faq
-         {
-           background-color: #27AAE1;
-         }
-         &.contacts
-         {
-           background-color: #1C75BC;
-         }
        }
      }
 
@@ -68,6 +55,11 @@ $headerButton_Height: 64px;
          &.register-button
          {
            @include span-columns(3 omega, 12);
+
+           &:active
+           {
+             background-color: $blue_3;
+           }
          }
        }
 

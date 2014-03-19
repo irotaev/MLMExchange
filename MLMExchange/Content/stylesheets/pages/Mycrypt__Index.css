@@ -1,11 +1,11 @@
-/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 4, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 4, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .youtube-block {
   width: 300px;
   height: 200px;
@@ -14,7 +14,7 @@
   float: right;
   margin: 0 0 1em 1em;
 }
-/* line 13, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 13, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .youtube-block h1 {
   font-size: 20px;
   color: white;
@@ -23,7 +23,7 @@
   margin-top: 75px;
 }
 
-/* line 23, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 23, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .mycrypt-exchange {
   width: 964px;
   float: right;

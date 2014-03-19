@@ -57,10 +57,10 @@
       <header class="main-header">
         <div class="main-header-top">
           <nav class="buttons">
-            <a class="b-button faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
+            <a class="b-button b-button_color_light-blue faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
               <div class="text">FAQ</div>
             </a>
-            <a class="b-button contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
+            <a class="b-button b-button_color_normal-blue contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
               <div class="text">@MLMExchange.Properties.ResourcesA.Contacts</div>
             </a>
           </nav>
@@ -79,36 +79,21 @@
         </div>
       </header>
 
-      @*<nav class="main-top-menu">
-          <a class="b-button birga-link">
-            <div class="text">Пункт меню</div>
-          </a>
-          <a class="b-button birga-link">
-            <div class="text">Пункт меню</div>
-          </a>
-          <a class="b-button birga-link">
-            <div class="text">Пункт меню</div>
-          </a>
-          <a class="b-button birga-link">
-            <div class="text">Пункт меню</div>
-          </a>
-        </nav>*@
-
       @RenderBody()
     </section>
 
     <div class="main-footer">
       <div class="sosial-buttons__outer-wrapper">
         <div class="sosial-buttons__inner-wrapper">
-          <div class="b-button sosial-button"><i class="icon twitter"></i></div>
-          <div class="b-button sosial-button"><i class="icon facebook"></i></div>
-          <div class="b-button sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
+          <div class="b-button b-button_color_light-grey sosial-button"><i class="icon twitter"></i></div>
+          <div class="b-button b-button_color_light-grey sosial-button"><i class="icon facebook"></i></div>
+          <div class="b-button b-button_color_light-grey sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
         </div>
       </div>
 
       <hr class="b-hr" />
       <nav class="buttons">
-        <div class="b-button">
+        <div class="b-button b-button_action_no-active">
           <a href="/about">
             <i class="b-icon home"></i>
             <div class="b-text">
@@ -116,37 +101,37 @@
             </div>
           </a>
         </div>
-        <div class="b-button">
-            <a href="/mycrypt">
-          <i class="b-icon agreement"></i>
-          <div class="b-text">
+        <div class="b-button b-button_action_no-active">
+          <a href="/mycrypt">
+            <i class="b-icon agreement"></i>
+            <div class="b-text">
               @MLMExchange.Properties.ResourcesA.MyCryptPage
-          </div>
-            </a>
+            </div>
+          </a>
         </div>
-        <div class="b-button">
-            <a href="/copyright">
-          <i class="b-icon copyright"></i>
-          <div class="b-text">
+        <div class="b-button b-button_action_no-active">
+          <a href="/copyright">
+            <i class="b-icon copyright"></i>
+            <div class="b-text">
               @MLMExchange.Properties.ResourcesA.CopyRight
-          </div>
-            </a>
+            </div>
+          </a>
         </div>
-        <div class="b-button">
-            <a href="/faq">
-                <i class="b-icon agreement"></i>
-                <div class="b-text">
-                    @MLMExchange.Properties.ResourcesA.FAQ
-                </div>
-            </a>
+        <div class="b-button b-button_action_no-active">
+          <a href="/faq">
+            <i class="b-icon agreement"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.FAQ
+            </div>
+          </a>
         </div>
-        <div class="b-button ie8-last-child">
-            <a href="/contacts">
-                <i class="b-icon agreement"></i>
-                <div class="b-text">
-                    @MLMExchange.Properties.ResourcesA.Contacts
-                </div>
-            </a>
+        <div class="b-button b-button_action_no-active ie8-last-child">
+          <a href="/contacts">
+            <i class="b-icon agreement"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.Contacts
+            </div>
+          </a>
         </div>
       </nav>
     </div>

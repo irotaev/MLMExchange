@@ -1,4 +1,5 @@
 @import "../Framework";
+@import "../lib/Video";
 
 .slider-block
 {
@@ -63,11 +64,14 @@
 
   .home-block__news__text
   {
-    margin: 5px;
+    margin: 10px;
+    margin-top: 15px;
+    text-align: left;
   }
 
   .home-block__news
   {
+    position: relative;
     border: 2px dotted $grey_1;
     margin-top: 10px;
     margin-bottom: 30px;
@@ -75,15 +79,21 @@
 
   .home-block__news__date
   {
+    position: absolute;
+    right: 10px; top: -15px;
+    height: 30px;
+    width: 100px;
+    padding: 5px;
+    overflow: hidden;
     background: $turquoise;
-    margin-top: -20px;
-    float: right;
+    @include box-sizing(border-box);
   }
 
   .home-block__news__date span
   {
-    padding: 10px;
-    font-size: $font-s;
+    display: block;
+    height: 20px; line-height: 20px;
+    font-size: $font-n;
   }
 }
 
@@ -112,5 +122,6 @@
 
 .tab-block
 {
+  margin: {top: 40px; bottom: 30px;}
   @include span-columns(12 omega, 12);
 }
