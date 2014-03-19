@@ -1,8 +1,7 @@
 @mixin b-hr($color: #10485B)
 {
-  height: 0;
-  margin: 0;
   color: $color;
+  width: 80%;
 }
 
 // Зачистка концов
@@ -65,7 +64,15 @@
 
           .b-sb__header--content
           {
-            height: 100px;
+            height: 70px;
+
+            h2
+            {
+              font-size: $font-h;
+              color: gray;
+              margin: 2px;
+              text-align: center;
+            }
           }
         }
         
@@ -73,6 +80,23 @@
         {
           @include span-columns(3 omega, 10);
           height: 87px;
+          .all-icon
+          {
+            display: block;
+            width: 257px;
+            height: 87px;
+            &.mycrypt-icon
+            {
+              background-image: url("#{$I_D}MycryptIndex/mycrypt-icon.png");
+              background-repeat: no-repeat;
+            }
+
+            &.contacts-icon
+              {
+              background-image: url("#{$I_D}ContactsIndex/contacts-icon.png");
+              background-repeat: no-repeat;
+            }
+          }
         }
 
         .b-sb__border-top
@@ -90,7 +114,8 @@
 
     .b-sb__content
     {
-      position: relative;
+      @include span-columns(12 omega, 12);
+
       z-index: 100;
       border: 1px solid $grey_1; border-top: none;
       @include box-shadow(10px 10px 10px $grey_2);

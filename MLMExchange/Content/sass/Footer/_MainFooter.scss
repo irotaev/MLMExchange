@@ -83,16 +83,19 @@ $sosial-button_Bg-color: #F2F2F2;
           &.home
             {
             background-image: url(#{$sass_Dir}/Footer/button-home.png);
+            background-repeat: no-repeat;
           }
 
           &.agreement
             {
             background-image: url(#{$sass_Dir}/Footer/button-agreement.png);
+            background-repeat: no-repeat;
           }
 
           &.copyright
             {
             background-image: url(#{$sass_Dir}/Footer/button-copyright.png);
+            background-repeat: no-repeat;
           }
         }
 

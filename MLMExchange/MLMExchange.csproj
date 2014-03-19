@@ -140,7 +140,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AgreementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\CopyRightController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyCryptController.cs" />
     <Compile Include="Global.asax.cs">
@@ -274,6 +276,8 @@
     <Content Include="Views\Agreement\Index.cshtml" />
     <Content Include="Views\CopyRight\Index.cshtml" />
     <Content Include="Views\Mycrypt\Index.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

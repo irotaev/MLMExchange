@@ -1,20 +1,20 @@
-/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 6, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib .b-ib__label {
   display: block;
   margin-bottom: 10px;
 }
-/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 11, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: block;
 }
-/* line 15, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 15, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview, .b-ib.b-ib_content_photo .b-ib_file-chooser {
   display: none;
 }

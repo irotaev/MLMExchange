@@ -1,0 +1,31 @@
+/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 4, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+.contacts-exchange {
+  width: 964px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 10, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+.contacts-exchange .contacts-form .contacts-button {
+  width: 226px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  background-color: #0076c0;
+  color: white;
+  height: 40px;
+  font-size: 14px;
+}
+/* line 19, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+.contacts-exchange .contacts-form textarea {
+  resize: none;
+}

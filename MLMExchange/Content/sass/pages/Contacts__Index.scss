@@ -1,0 +1,23 @@
+@import "../Framework";
+
+.contacts-exchange
+{
+  @include span-columns(12 omega, 12);
+
+  .contacts-form
+  {
+    .contacts-button
+      {
+      @include span-columns(3 omega, 12);
+      background-color: $blue_2;
+      color: white;
+      height: 40px;
+      font-size: $font-nb;
+    }
+
+    textarea
+    {
+      resize: none;
+    }
+  }
+}

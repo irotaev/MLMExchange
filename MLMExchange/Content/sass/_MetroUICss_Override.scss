@@ -6,6 +6,11 @@
   h1, h2, h3, h4, h5, h6 {margin: 0; font-size: $font-b; line-height: $font-b;}
 }
 
+.metro .stepper
+{
+  margin-top: 50px;
+}
+
 * {
   @include box-sizing(content-box);
 }
