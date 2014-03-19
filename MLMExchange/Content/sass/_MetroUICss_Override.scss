@@ -1,4 +1,5 @@
 @import "framework";
+@import "lib/Shared_lib";
 
 $metro__button_Active_Color: $blue_3;
 
@@ -23,6 +24,11 @@ $metro__button_Active_Color: $blue_3;
     {
       background-color: $metro__button_Active_Color;
     }
+  }
+
+  hr
+  {
+    @include b-hr;
   }
 }
 

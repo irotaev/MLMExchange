@@ -1,6 +1,7 @@
-﻿(requirejs).config((function () {
+﻿requirejs.config((function () {
     var jqueryVersion = null;
 
+    //#region Версия JQuery для разный браузеров
     if (navigator.userAgent.indexOf("MSIE 8") || navigator.userAgent.indexOf("MSIE 7") || navigator.userAgent.indexOf("MSIE 6")) {
         jqueryVersion = 'jquery-1.11.0.min';
     } else {

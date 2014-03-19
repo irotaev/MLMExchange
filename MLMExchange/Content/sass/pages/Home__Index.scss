@@ -4,7 +4,7 @@
 .slider-block
 {
   @include span-columns(12 omega, 12);
-  margin-bottom: 20px;
+  margin-bottom: 70px;
   padding-right: 1px;
 
   .slider-block__rows
@@ -72,7 +72,7 @@
   .home-block__news
   {
     position: relative;
-    border: 2px dotted $grey_1;
+    border: 1px solid $grey_1;
     margin-top: 10px;
     margin-bottom: 30px;
   }
@@ -80,12 +80,13 @@
   .home-block__news__date
   {
     position: absolute;
-    right: 10px; top: -15px;
+    right: 10px; top: -16px;
     height: 30px;
     width: 100px;
     padding: 5px;
     overflow: hidden;
     background: $turquoise;
+    border: 1px solid $grey_1;
     @include box-sizing(border-box);
   }
 
@@ -122,6 +123,6 @@
 
 .tab-block
 {
-  margin: {top: 40px; bottom: 30px;}
+  margin: {top: 70px; bottom: 70px;};
   @include span-columns(12 omega, 12);
 }

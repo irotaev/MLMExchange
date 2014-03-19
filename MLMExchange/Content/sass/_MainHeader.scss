@@ -5,7 +5,7 @@ $headerButton_Height: 64px;
 .main-header
 {
   //@include susy-grid-background;
-  height: $headerButton_Height + 20px;
+  height: $headerButton_Height;
 
   .text
    {

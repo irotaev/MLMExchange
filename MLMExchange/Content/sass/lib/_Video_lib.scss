@@ -1,6 +1,8 @@
 @import "../framework";
 @import "compass/css3/transition";
 
+$b-videos__video-wrapper_Border-color: #E2ECFA;
+
 /*
 * Относится к видео
 */
@@ -9,7 +11,7 @@
 {
   @include span-columns(12 omega, 12);
   padding: {left: 30px; right: 30px;};
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 
   @include with-grid-settings(2, 45%, 10%)
   {
@@ -23,8 +25,8 @@
 
       position: relative;
       height: 250px;
-      border: 10px solid $orange;
-      @include transition(border 0.35s);
+      border: 10px solid $b-videos__video-wrapper_Border-color;
+      @include transition(border 0.55s);
       z-index: 100;
 
       &:hover
@@ -43,17 +45,17 @@
       .b-videos__additional-info
       {
         position: absolute;
-        top: -15px; left: -15px; right: -15px; bottom: -45px;
+        top: -30px; left: -30px; right: -30px; bottom: -65px;
         background-color: $grey_3;
         @include opacity(0);
-        @include transition(opacity 0.35s);
+        @include transition(opacity 0.55s);
         z-index: -10;
 
         .b-videos__text
         {
           position: absolute;
           padding: 5px;
-          bottom: 0; left: 0; right: 0;
+          bottom: 15px; left: 0; right: 0;
           height: 40px; line-height: 30px;
           color: $grey_2;
           font-size: $font-b;

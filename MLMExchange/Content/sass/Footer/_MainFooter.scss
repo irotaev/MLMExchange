@@ -1,17 +1,10 @@
-$main-footer_Height: 230px;
+$main-footer_Height: 280px;
 
 .main-footer
 {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: $main-footer_Height;
-
-  .b-hr
-  {
-    width: 830px;
-    margin: {top: 0; bottom: 10px; left: auto; right: auto;}
-  }
-
 
   @include _with-grid-settings(10)
   {
