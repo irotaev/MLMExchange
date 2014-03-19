@@ -1,45 +1,45 @@
 ﻿@using MLMExchange.Lib
 @{
-    ViewBag.Title = MLMExchange.Properties.ResourcesA.Contacts;
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.Contacts;
+  Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
 <section class="b-sb b-sb__type__with-icon contacts-exchange">
-    <header class="b-sb__top-section">
-        <div class="b-sb__header">
-            <div class="b-sb__title">
-                <h1 class="b-sb__text">@MLMExchange.Properties.ResourcesA.Contacts</h1>
-            </div>
+  <header class="b-sb__top-section">
+    <div class="b-sb__header">
+      <div class="b-sb__title">
+        <h1 class="b-sb__text">@MLMExchange.Properties.ResourcesA.Contacts</h1>
+      </div>
 
-            <div class="b-sb__header--content">
+      <div class="b-sb__header--content">
 
-                <h2 class="sub-title">Оставте сообщение администраторам</h2>
+        <h2 class="sub-title">Оставте сообщение администраторам</h2>
 
-            </div>
-        </div>
-
-        <aside class="b-sb__icon">
-            <i class="all-icon contacts-icon"></i>
-        </aside>
-        <div class="b-sb__border-top"></div>
-    </header>
-
-    <div class="b-sb__content">
-
-        <div class="b-sb__first-section">
-            
-        </div>
-
-        <div class="contacts-form">
-            @using (Html.BeginForm("Send", "Contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
-            {
-                <textarea  style="width: 100%; margin-bottom: 10px" rows="10" autofocus></textarea>
-                <input class="b-button contacts-button" type="submit" value="Отправить" />
-            }
-            <div id="stepper-action" class="stepper diamond" data-steps="2" data-role="stepper"></div>   
-            <div class="actions">
-                <button class="button" onclick="$('#stepper-action').stepper('next')">Next</button>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <aside class="b-sb__icon">
+      <i class="all-icon contacts-icon"></i>
+    </aside>
+    <div class="b-sb__border-top"></div>
+  </header>
+
+  <div class="b-sb__content">
+
+    <div class="b-sb__first-section">
+
+    </div>
+
+    <div class="contacts-form">
+      @using (Html.BeginForm("Send", "Contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+      {
+        <textarea style="width: 100%; margin-bottom: 10px" rows="10" autofocus></textarea>
+        <input class="b-button contacts-button" type="submit" value="Отправить" />
+      }
+      <div id="stepper-action" class="stepper diamond" data-steps="2" data-role="stepper"></div>
+      <div class="actions">
+        <button class="button" onclick="$('#stepper-action').stepper('next')">Next</button>
+      </div>
+    </div>
+  </div>
 </section>
