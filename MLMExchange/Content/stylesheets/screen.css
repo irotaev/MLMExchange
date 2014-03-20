@@ -71,7 +71,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
 }
 
-/* line 3, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 3, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-hr {
   display: block;
   border: none;
@@ -99,8 +99,50 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color', endColorstr='#ffffff',GradientType=1 );
   /* IE6-8 */
 }
+/* line 30, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-hr.b-hr_orientation_left {
+  background: #68696b;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY4Njk2YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iI2YyZjJmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #68696b), color-stop(51%, #f2f2f2), color-stop(100%, white));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #68696b 0%, #f2f2f2 51%, #ffffff 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#68696b', endColorstr='#ffffff',GradientType=1 );
+  /* IE6-8 */
+}
+/* line 45, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-hr.b-hr_orientation_right {
+  background: #ffffff;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iI2YyZjJmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ODY5NmIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(49%, #f2f2f2), color-stop(100%, #68696b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #ffffff 0%, #f2f2f2 49%, #68696b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#68696b',GradientType=1 );
+  /* IE6-8 */
+}
 
-/* line 34, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 63, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .clearfix:after {
   content: ".";
   display: block;
@@ -110,12 +152,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 0;
 }
 
-/* line 5, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-ai {
   display: block;
   border: 1px solid #32BFB2;
 }
-/* line 160, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 189, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-ai .b-ai_text {
   margin: 20px;
   overflow: hidden;
@@ -124,7 +166,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
 }
 
-/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 6, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-button {
   border: none;
   display: block;
@@ -132,34 +174,41 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 178, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
-.b-button:hover {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
-  opacity: 0.9;
+/* line 209, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-button.b-button_hover-animate_border-bottom:hover {
   border-bottom: 3px solid #ed1c24;
-  -webkit-transition: border-bottom 0.15s linear;
-  -moz-transition: border-bottom 0.15s linear;
-  -o-transition: border-bottom 0.15s linear;
-  transition: border-bottom 0.15s linear;
+  -webkit-transition: border-bottom 0.2s linear;
+  -moz-transition: border-bottom 0.2s linear;
+  -o-transition: border-bottom 0.2s linear;
+  transition: border-bottom 0.2s linear;
 }
-/* line 189, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 218, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-button.b-button_hover-animate_opacity:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  -webkit-transition: opacity 0.15s linear;
+  -moz-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+/* line 227, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button:not(.b-button_action_no-active):active {
   background-color: #b4cef5;
 }
-/* line 196, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 234, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_light-blue {
   background-color: #45a2d0;
 }
-/* line 201, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 239, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_normal-blue {
   background-color: #0076c0;
 }
-/* line 206, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 244, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_light-grey {
   background-color: #f0f0f0;
 }
 
-/* line 7, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 7, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-scc {
   width: 964px;
   float: right;
@@ -190,12 +239,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-position: 0 -34px;
 }
 
-/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form.scss */
+/* line 4, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form.scss */
 .b-ib {
   position: relative;
   margin-top: 10px;
 }
-/* line 33, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 33, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input {
   position: relative;
   box-sizing: border-box;
@@ -205,34 +254,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   color: #68696b;
   width: 100%;
 }
-/* line 43, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 43, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error {
   border-color: #ed1c24;
   -webkit-box-shadow: 0 0 10px #ed1c24;
   -moz-box-shadow: 0 0 10px #ed1c24;
   box-shadow: 0 0 10px #ed1c24;
 }
-/* line 51, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 51, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper {
   position: relative;
 }
-/* line 55, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 55, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper .b-ib__icon {
   position: absolute;
   right: 2px;
   top: 2px;
   z-index: 100;
 }
-/* line 65, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 65, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
   width: 29px;
   height: 34px;
 }
-/* line 78, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 78, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message {
   box-sizing: border-box;
 }
-/* line 82, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 82, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-error {
   display: block;
   width: 100%;
@@ -244,15 +293,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   color: #ed1c24;
   background-color: white;
 }
-/* line 94, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 94, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-valid {
   display: none;
 }
-/* line 98, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 98, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message--arrow {
   display: none;
 }
-/* line 100, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 100, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .field-validation-error + .b-ib__validation-message--arrow {
   position: absolute;
   top: 0;
@@ -264,21 +313,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("/Content/images/Form/validation-arrow.png") left no-repeat;
   display: block;
 }
-/* line 111, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 111, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__label {
   display: none;
 }
-/* line 117, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 117, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo {
   position: relative;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 121, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 121, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: none;
 }
-/* line 124, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 124, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview {
   position: relative;
   display: block;
@@ -289,13 +338,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 2px;
   float: left;
 }
-/* line 135, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 135, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview .b-ib__image {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 143, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 143, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser {
   background-color: #41C480;
   height: 40px;
@@ -304,7 +353,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 35%;
   float: left;
 }
-/* line 20, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 20, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser .text {
   font-size: 14px;
   line-height: 40px;
@@ -320,27 +369,27 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Перебитие css-правил из metro ui css
 ***/
-/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro h1, .metro h2, .metro h3, .metro h4, .metro h5, .metro h6 {
   margin: 0;
   font-size: 20px;
   line-height: 20px;
 }
-/* line 14, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 14, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro div, .metro p {
   font-size: 20px;
   color: #68696b;
 }
-/* line 20, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 20, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .button {
   padding: 0;
   margin: 0;
 }
-/* line 24, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 24, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .button:active {
   background-color: #0055d4;
 }
-/* line 30, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 30, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro hr {
   display: block;
   border: none;
@@ -368,44 +417,86 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color', endColorstr='#ffffff',GradientType=1 );
   /* IE6-8 */
 }
+/* line 30, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.metro hr.b-hr_orientation_left {
+  background: #68696b;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY4Njk2YiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iI2YyZjJmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #68696b), color-stop(51%, #f2f2f2), color-stop(100%, white));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #68696b 0%, #f2f2f2 51%, white 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #68696b 0%, #f2f2f2 51%, #ffffff 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#68696b', endColorstr='#ffffff',GradientType=1 );
+  /* IE6-8 */
+}
+/* line 45, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.metro hr.b-hr_orientation_right {
+  background: #ffffff;
+  /* Old browsers */
+  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ5JSIgc3RvcC1jb2xvcj0iI2YyZjJmMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ODY5NmIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(49%, #f2f2f2), color-stop(100%, #68696b));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, white 0%, #f2f2f2 49%, #68696b 100%);
+  /* IE10+ */
+  background: linear-gradient(to right, #ffffff 0%, #f2f2f2 49%, #68696b 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#68696b',GradientType=1 );
+  /* IE6-8 */
+}
 
-/* line 36, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 36, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .stepper {
   margin-top: 50px;
 }
 
-/* line 40, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 40, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
 
-/* line 12, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 12, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-sb {
   border: 1px solid #a7a9ac;
   -webkit-box-shadow: 8px 8px 10px 0 #68696b;
   -moz-box-shadow: 8px 8px 10px 0 #68696b;
   box-shadow: 8px 8px 10px 0 #68696b;
 }
-/* line 48, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 77, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title {
   height: 46px;
   background-color: #3077b7;
 }
-/* line 53, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 82, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title .b-sb__text {
   color: white;
   text-align: center;
   font-size: 24px;
   line-height: 46px;
 }
-/* line 62, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 91, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__content {
   padding: 20px;
   text-align: center;
 }
-/* line 72, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 101, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon {
   position: relative;
   z-index: 10;
@@ -414,12 +505,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-shadow: none;
   box-shadow: none;
 }
-/* line 78, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 107, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section {
   position: relative;
   z-index: -10;
 }
-/* line 34, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 63, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section:after {
   content: ".";
   display: block;
@@ -428,7 +519,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 0;
   height: 0;
 }
-/* line 86, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 115, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__header {
   border: 1px solid #a7a9ac;
   border-bottom: none;
@@ -441,18 +532,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: 20px;
   display: inline;
 }
-/* line 93, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 122, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__header .b-sb__header--content {
   height: 100px;
 }
-/* line 97, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 126, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__header .b-sb__header--content h2 {
   font-size: 20px;
   color: gray;
   margin: 2px;
   text-align: center;
 }
-/* line 107, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 136, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon {
   width: 275.2px;
   float: right;
@@ -461,23 +552,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: inline;
   height: 87px;
 }
-/* line 111, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 140, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon .all-icon {
   display: block;
   width: 257px;
   height: 87px;
 }
-/* line 116, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 145, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon .all-icon.mycrypt-icon {
   background-image: url("/Content/images/MycryptIndex/mycrypt-icon.png");
   background-repeat: no-repeat;
 }
-/* line 122, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 151, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon .all-icon.contacts-icon {
   background-image: url("/Content/images/ContactsIndex/contacts-icon.png");
   background-repeat: no-repeat;
 }
-/* line 130, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 159, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__border-top {
   position: absolute;
   width: 373.6px;
@@ -494,7 +585,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   bottom: 0;
   right: 0;
 }
-/* line 143, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 172, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__content {
   width: 964px;
   float: right;
@@ -510,15 +601,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: white;
 }
 
-/* line 17, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 17, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 24, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 24, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 body {
-  background-color: #A3C2D1;
+  background-color: #EEE;
 }
 
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
@@ -543,33 +634,33 @@ body {
   background-position: 0 -34px;
 }
 
-/* line 6, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 6, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header {
   height: 64px;
 }
-/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .text {
   color: white;
   text-align: center;
   line-height: 64px;
   font-size: 24px;
 }
-/* line 21, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 21, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .b-button {
   height: 64px;
 }
-/* line 26, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 26, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .buttons {
   padding-left: 164px;
 }
-/* line 29, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 29, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .buttons .b-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 35, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block {
   position: relative;
   width: 390px;
@@ -579,29 +670,29 @@ body {
   display: inline;
   background-color: #2A7CA0;
 }
-/* line 41, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 41, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button {
   background-color: #2A7CA0;
 }
-/* line 45, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 45, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 49, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 49, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   background-color: #45a2d0;
   cursor: default;
 }
-/* line 51, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 51, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover .login-section {
   display: block;
 }
-/* line 56, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 56, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button {
   width: 226px;
   float: right;
@@ -609,11 +700,11 @@ body {
   *margin-left: -20px;
   display: inline;
 }
-/* line 60, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 60, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button:active {
   background-color: #0055d4;
 }
-/* line 67, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 67, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section {
   position: absolute;
   top: 64px;
@@ -622,7 +713,7 @@ body {
   display: none;
   cursor: default;
 }
-/* line 75, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 75, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-area-arrow {
   position: absolute;
   top: -17px;
@@ -632,7 +723,7 @@ body {
   background: url("/Content/images/Header/LoginArea/login-area-arrow.png") center no-repeat;
   z-index: 100;
 }
-/* line 85, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 85, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area {
   position: absolute;
   top: 20px;
@@ -648,28 +739,28 @@ body {
   -moz-box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
   box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
 }
-/* line 94, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 94, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .input-group {
   margin-bottom: 15px;
 }
-/* line 99, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 99, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button {
   background-color: #41C480;
   height: 40px;
   font-size: 14px;
   color: white;
 }
-/* line 20, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 20, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button .text {
   font-size: 14px;
   line-height: 40px;
 }
 
-/* line 5, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu {
   height: 70px;
 }
-/* line 7, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 7, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu .b-button {
   width: 226px;
   float: left;
@@ -678,14 +769,14 @@ body {
   height: 60px;
   background-color: #32BFB2;
 }
-/* line 9, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 9, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu .b-button:last-child {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-/* line 16, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 16, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu .text {
   line-height: 60px;
   font-size: 20px;
@@ -693,7 +784,7 @@ body {
   color: #68696b;
 }
 
-/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 4, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer {
   position: absolute;
   bottom: 0;
@@ -701,13 +792,13 @@ body {
   right: 0;
   height: 280px;
 }
-/* line 11, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__outer-wrapper {
   margin-right: 20px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 13, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 13, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper {
   position: relative;
   margin-bottom: 10px;
@@ -716,14 +807,14 @@ body {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 21, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 21, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button {
   width: 75px;
   height: 75px;
   margin-right: 15px;
   float: left;
 }
-/* line 26, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 26, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon {
   width: 48px;
   height: 48px;
@@ -732,27 +823,27 @@ body {
   margin-right: auto;
   display: block;
 }
-/* line 31, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 31, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon.twitter {
   background: url("/Content/sass/Footer/twitter.png") center no-repeat;
 }
-/* line 35, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 35, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon.facebook {
   background: url("/Content/sass/Footer/facebook.png") center no-repeat;
 }
-/* line 39, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 39, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon.vkontakte {
   background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
 }
-/* line 45, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 45, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button:last-child {
   margin-right: 0;
 }
-/* line 50, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 50, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .sosial-button_location_last {
   margin-right: 0;
 }
-/* line 57, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 57, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons {
   *zoom: 1;
   width: 1004px;
@@ -767,7 +858,7 @@ body {
   display: table;
   clear: both;
 }
-/* line 61, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 61, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button {
   position: relative;
   height: 130px;
@@ -781,36 +872,36 @@ body {
   float: right;
   margin-right: 0;
 }
-/* line 65, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 65, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button.ie8-last-child {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-/* line 68, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 68, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon {
   display: block;
   height: 107px;
   width: 107px;
   margin: 0 auto;
 }
-/* line 75, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 75, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.home {
   background-image: url(/Content/sass/Footer/button-home.png);
   background-repeat: no-repeat;
 }
-/* line 81, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 81, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.agreement {
   background-image: url(/Content/sass/Footer/button-agreement.png);
   background-repeat: no-repeat;
 }
-/* line 87, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 87, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.copyright {
   background-image: url(/Content/sass/Footer/button-copyright.png);
   background-repeat: no-repeat;
 }
-/* line 94, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 94, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-text {
   margin-top: 5px;
   overflow: hidden;
@@ -819,7 +910,7 @@ body {
   font-size: 13px;
 }
 
-/* line 2, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainChangableContent.scss */
+/* line 2, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/_MainChangableContent.scss */
 .main-changable-content {
   position: relative;
   box-sizing: border-box;
@@ -827,7 +918,7 @@ body {
   min-height: 100%;
 }
 
-/* line 36, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 36, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .main-wrapper {
   position: relative;
   *zoom: 1;

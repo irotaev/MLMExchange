@@ -6,10 +6,10 @@ define(["require", "exports", "jquery"], function(require, exports) {
     var Site = (function () {
         function Site() {
         }
-        /**
+        Site.ApplySiteSettings = /**
         * Применить настройки к сайту
         */
-        Site.ApplySiteSettings = function () {
+        function () {
         };
         return Site;
     })();
