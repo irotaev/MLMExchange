@@ -221,9 +221,12 @@ pip-log.txt
 
 MyCrypto/
 MLMExchange/bin/
+MLMExchange/Web.config
+MLMExchange/Web.Debug.config
+MLMExchange/Web.Release.config
 MLMExchange/Content/.sass-cache/
 MLMExchange/Content/.sass-cache/
 .idea/
-Content/.idea
-Content/stylesheets/
+MLMExchange/Content/.idea
+MLMExchange/Content/stylesheets/
 Logic/bin/
