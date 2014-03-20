@@ -25,21 +25,39 @@
   </header>
 
   <div class="b-sb__content">
-
-    <div class="b-sb__first-section">
-
-    </div>
-
-    <div class="contacts-form">
-      @using (Html.BeginForm("Send", "Contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
-      {
-        <textarea style="width: 100%; margin-bottom: 10px" rows="10" autofocus></textarea>
-        <input class="b-button contacts-button" type="submit" value="Отправить" />
-      }
-      <div id="stepper-action" class="stepper diamond" data-steps="2" data-role="stepper"></div>
-      <div class="actions">
-        <button class="button" onclick="$('#stepper-action').stepper('next')">Next</button>
+    <div class="b-sb__content__left">
+      <div class="contacts-form">
+        @using (Html.BeginForm("Send", "Contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+          <fieldset>
+            <label>Name: </label>
+            <div class="input-control text" data-role="input-control">
+              <input type="text" name="name" placeholder="type your name" />
+            </div>
+            <label>E-Mail: </label>
+            <div class="input-control text" data-role="input-control">
+              <input type="text" name="email" placeholder="type your e-mail" />
+            </div>
+            <textarea style="width: 100%; margin-bottom: 10px" rows="10" autofocus placeholder="text of message"></textarea>
+            <input class="b-button contacts-button" type="submit" value="Отправить" />
+          </fieldset>
+        }
       </div>
+    </div>
+    <div class="b-sb__content__right">
+      <fieldset>
+        <legend>Contacts</legend>
+        <p class="b-sb__text" style="font-size: 11pt; text-align:right;">
+          You can contact me using the form
+          to your left, altematively you can use
+          of the links below:
+        </p>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px; margin-top: 5px; ">Address: Corporation, Inc. 123 Aolsom Ave, CA 246012</div>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">Phone: +7(123)456 56 12</div>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">E-Mail: lolol@gmail.com</div>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">Skype: lolol</div>
+        <div style="border: 1px solid black"><img src="http://www.oneexchangecorp.com/images/map.gif" alt="Alternate Text" /></div>
+      </fieldset>
     </div>
   </div>
 </section>
