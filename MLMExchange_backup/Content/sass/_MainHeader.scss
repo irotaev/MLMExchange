@@ -1,0 +1,106 @@
+@import "lib/Form_lib";
+
+$headerButton_Height: 64px;
+
+.main-header
+{
+  //@include susy-grid-background;
+  height: $headerButton_Height;
+
+  .text
+   {
+     color: white;
+     text-align: center;
+     line-height: $headerButton_Height;
+    font-size: 24px;
+   }
+
+  .main-header-top
+  {
+    .b-button
+    {
+      height: $headerButton_Height;
+    }
+
+     .buttons
+     {
+       @include prefix(2);
+       .b-button
+       {
+         @include span-columns(2,12);
+       }
+     }
+
+     .main-registration-block
+     {
+       position: relative;
+       @include span-columns(5 omega, 12);
+       background-color: #2A7CA0;
+
+       .b-button
+       {
+         background-color: #2A7CA0;
+
+         &.enter-button
+         {
+           @include span-columns(2, 12);
+
+           &:hover
+           {
+             @include opacity(1); background-color: $blue_1;
+             .login-section {display: block;}
+             cursor: default;
+           }
+         }
+         &.register-button
+         {
+           @include span-columns(3 omega, 12);
+
+           &:active
+           {
+             background-color: $blue_3;
+           }
+         }
+       }
+
+       .login-section
+       {
+         position: absolute;
+         top: $headerButton_Height; left: 0;
+         z-index: 1000;
+         display: none;
+         cursor: default;
+
+         .login-area-arrow
+         {
+           position: absolute;
+           top: -17px;
+           left: 30px;
+           width: 83px; height: 52px;
+           background: url("#{$I_D}Header/LoginArea/login-area-arrow.png") center no-repeat;
+           z-index: 100;
+         }
+
+         .login-enter-area
+         {
+           position: absolute;
+           top: 20px; left: 0;
+           @include span-columns(5 omega, 12);
+           background-color: $blue_1;
+           padding: 15px;
+           @include box-shadow(0 0 10px 0 rgba(91, 91, 91, 0.85));
+
+           .input-group
+           {
+             margin-bottom: 15px;
+           }
+
+           .register-button
+           {
+             @include b-form-button;
+           }
+         }
+       }
+     }
+  }
+}

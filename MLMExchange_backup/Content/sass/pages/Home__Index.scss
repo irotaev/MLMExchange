@@ -1,0 +1,129 @@
+@import "../Framework";
+@import "../lib/Video";
+
+.slider-block
+{
+  @include span-columns(12 omega, 12);
+  margin-bottom: 70px;
+  padding-right: 1px;
+
+  .slider-block__rows
+  {
+    position: absolute;
+    z-index: 1;
+    display:  table;
+    width: 964px;
+    margin: auto;
+  }
+
+  .slider-block__row
+  {
+    margin: 0;
+  }
+
+  .slider-block__cell_max .slider-block__cell_min
+  {
+    display: table-cell !important;
+    display: inline;
+  }
+
+  .slider-block__cell_max
+  {
+    float: left;
+    width: 28.5714286%;
+    height: 100px;
+    background-color: #eee;
+    border: 3px solid $grey_1;
+
+    h2
+    {
+      text-align: center;
+      vertical-align: middle;
+      margin: 35px;
+    }
+  }
+
+  .slider-block__cell_min
+  {
+    float: left;
+    width: 14.2857143%;
+    height: 100px;
+    border: 3px solid $grey_1;
+  }
+}
+
+.home-block
+{
+  @include span-columns(7, 12);
+  @include box-sizing(border-box);
+
+  .home-block__text
+  {
+    font-size: $font-b;
+  }
+
+  .home-block__news__text
+  {
+    margin: 10px;
+    margin-top: 15px;
+    text-align: left;
+  }
+
+  .home-block__news
+  {
+    position: relative;
+    border: 1px solid $grey_1;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .home-block__news__date
+  {
+    position: absolute;
+    right: 10px; top: -16px;
+    height: 30px;
+    width: 100px;
+    padding: 5px;
+    overflow: hidden;
+    background: $turquoise;
+    border: 1px solid $grey_1;
+    @include box-sizing(border-box);
+    text-align: center;
+  }
+
+  .home-block__news__date span
+  {
+    display: block;
+    height: 20px; line-height: 20px;
+    font-size: $font-n;
+  }
+}
+
+.additional-info
+{
+  @include prefix(1);
+  @include span-columns(5 omega, 12);
+
+  .home-icon
+  {
+    display: block;
+    background-image: url("#{$I_D}AboutIndex/about-icon.png");
+    width: 257px;
+    height: 87px;
+  }
+
+  .home-info
+  {
+    background: white;
+    margin-top: 15px;
+    position: relative;
+    font-size: $font-b;
+    border: 1px solid black;
+  }
+}
+
+.tab-block
+{
+  margin: {top: 70px; bottom: 70px;};
+  @include span-columns(12 omega, 12);
+}

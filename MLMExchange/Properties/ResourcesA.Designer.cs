@@ -133,6 +133,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Введите текст сообщения.
+        /// </summary>
+        public static string EnterMessageText {
+            get {
+                return ResourceManager.GetString("EnterMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введите имя.
         /// </summary>
         public static string EnterName {
@@ -174,6 +183,15 @@ namespace MLMExchange.Properties {
         public static string EnterSurname {
             get {
                 return ResourceManager.GetString("EnterSurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите заголовок.
+        /// </summary>
+        public static string EnterTitle {
+            get {
+                return ResourceManager.GetString("EnterTitle", resourceCulture);
             }
         }
         
@@ -237,6 +255,15 @@ namespace MLMExchange.Properties {
         public static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отправить.
+        /// </summary>
+        public static string SendButton {
+            get {
+                return ResourceManager.GetString("SendButton", resourceCulture);
             }
         }
         

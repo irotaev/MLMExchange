@@ -1,0 +1,51 @@
+@import "../Framework";
+
+.registration-block
+{
+  @include span-columns(7, 12);
+  @include box-sizing(border-box);
+
+  .text
+  {
+
+  }
+
+  .registration-form
+  {
+    @include span-columns(6, 12);
+    @include prefix(1);
+
+    .register-button
+    {
+      margin-top: 10px;
+      background-color: #41C480;
+      @include span-columns(3 omega, 12);
+      height: 40px;
+      font-size: $font-nb;
+      color: white;
+    }
+  }
+}
+
+.additional-info
+{
+  @include prefix(1);
+  @include span-columns(5 omega, 12);
+
+  .registration-icon
+  {
+    display: block;
+    background-image: url("#{$I_D}AccountRegister/register-icon.png");
+    width: 257px;
+    height: 83px;
+  }
+
+  .register-info
+  {
+    margin-top: 15px;
+    position: relative;
+    background: white;
+    font-size: $font-h;
+    border: 1px solid black;
+  }
+}

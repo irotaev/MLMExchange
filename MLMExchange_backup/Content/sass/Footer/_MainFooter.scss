@@ -1,0 +1,104 @@
+$main-footer_Height: 280px;
+
+.main-footer
+{
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: $main-footer_Height;
+
+  @include _with-grid-settings(10)
+  {
+    .sosial-buttons__outer-wrapper {margin-right: 20px; @include clearfix;}
+
+    .sosial-buttons__inner-wrapper {
+      position: relative;
+      margin-bottom: 10px;
+      width: 255px;
+      float: right;
+      @include clearfix;
+
+      .sosial-button
+      {
+        width: 75px; height: 75px;
+        margin-right: 15px;
+        float: left;
+
+        .icon {
+          width: 48px; height: 48px;
+          margin: {top: 13.5px; left: auto; right: auto;};
+          display: block;
+
+          &.twitter {
+            background: url("/Content/sass/Footer/twitter.png") center no-repeat;
+          }
+
+          &.facebook {
+            background: url("/Content/sass/Footer/facebook.png") center no-repeat;
+          }
+
+          &.vkontakte {
+            background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
+          }
+        }
+
+        &:last-child
+        {
+          margin-right: 0;
+        }
+
+        .sosial-button_location_last
+        {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .buttons
+    {
+      @include container;
+
+      .b-button
+      {
+        position: relative;
+        height: 130px;
+        @include span-columns(2, 10);
+        @include nth-omega(last); &.ie8-last-child {@include omega;}
+
+        .b-icon
+        {
+          display: block;
+          height: 107px;
+          width: 107px;
+          margin: 0 auto;
+
+          &.home
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-home.png);
+            background-repeat: no-repeat;
+          }
+
+          &.agreement
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-agreement.png);
+            background-repeat: no-repeat;
+          }
+
+          &.copyright
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-copyright.png);
+            background-repeat: no-repeat;
+          }
+        }
+
+        .b-text
+        {
+          margin-top: 5px;
+          overflow: hidden;
+          text-align: center;
+          color: $grey_1;
+          font-size: $font-n;
+        }
+      }
+    }
+  }
+}

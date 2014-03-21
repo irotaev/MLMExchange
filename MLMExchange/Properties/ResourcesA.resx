@@ -141,6 +141,9 @@
   <data name="EnterLogin" xml:space="preserve">
     <value>Введите логин</value>
   </data>
+  <data name="EnterMessageText" xml:space="preserve">
+    <value>Введите текст сообщения</value>
+  </data>
   <data name="EnterName" xml:space="preserve">
     <value>Введите имя</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="EnterSurname" xml:space="preserve">
     <value>Введите фамилию</value>
+  </data>
+  <data name="EnterTitle" xml:space="preserve">
+    <value>Введите заголовок</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>Вопросы</value>
@@ -176,6 +182,9 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="SendButton" xml:space="preserve">
+    <value>Отправить</value>
   </data>
   <data name="Upload" xml:space="preserve">
     <value>Загрузить</value>

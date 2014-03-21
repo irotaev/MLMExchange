@@ -1,4 +1,6 @@
 ﻿@using MLMExchange.Lib
+@model MLMExchange.Models.ContactMessageModel
+
 @{
   ViewBag.Title = MLMExchange.Properties.ResourcesA.Contacts;
   Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -12,9 +14,6 @@
       </div>
 
       <div class="b-sb__header--content">
-
-        <h2 class="sub-title">Оставте сообщение администраторам</h2>
-
       </div>
     </div>
 
@@ -25,39 +24,42 @@
   </header>
 
   <div class="b-sb__content">
-    <div class="b-sb__content__left">
-      <div class="contacts-form">
-        @using (Html.BeginForm("Send", "Contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-          <fieldset>
-            <label>Name: </label>
-            <div class="input-control text" data-role="input-control">
-              <input type="text" name="name" placeholder="type your name" />
+    @using (Html.BeginForm("Contacts", "Index", FormMethod.Post, new { @class = "b-f" }))
+    {
+      <section class="pb-cf">
+        <div class="pb-cf__form-fields-wrapper">
+          <div class="b-ib pb-cf__field pb-cf__field_name_name">
+            @Html.CustomValidationMessageFor(x => x.UserName)
+            <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterName</label>
+            @Html.TextBoxFor(x => x.UserName, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterName, @class = "b-ib__input" })
+          </div>
+
+          <div class="b-ib pb-cf__field pb-cf__field_name_title">
+            @Html.CustomValidationMessageFor(x => x.Title)
+            <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterTitle</label>
+            @Html.TextBoxFor(x => x.Title, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterTitle, @class = "b-ib__input" })
+          </div>
+
+          <div class="b-ib pb-cf__field pb-cf__field_name_text">
+            @Html.CustomValidationMessageFor(x => x.Text)
+            <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterMessageText</label>
+            
+            @(Html.TextAreaFor(x => x.Text, new Dictionary<string, object> { { "placeholder", MLMExchange.Properties.ResourcesA.EnterMessageText }, { @"class", "b-ib__input" } }))
+          </div>
+
+          <div class="pb-cf__footer-wrapper">
+            <div class="pb-cf__additional-info-wrapper">
+              <div class="pb-cf__item">
+                <i class="pb-cf__icon"></i>
+                <span class="pb-cf__text text">notes@my-crypt.com</span>
+              </div>
             </div>
-            <label>E-Mail: </label>
-            <div class="input-control text" data-role="input-control">
-              <input type="text" name="email" placeholder="type your e-mail" />
-            </div>
-            <textarea style="width: 100%; margin-bottom: 10px" rows="10" autofocus placeholder="text of message"></textarea>
-            <input class="b-button contacts-button" type="submit" value="Отправить" />
-          </fieldset>
-        }
-      </div>
-    </div>
-    <div class="b-sb__content__right">
-      <fieldset>
-        <legend>Contacts</legend>
-        <p class="b-sb__text" style="font-size: 11pt; text-align:right;">
-          You can contact me using the form
-          to your left, altematively you can use
-          of the links below:
-        </p>
-        <div style="font-size: 14px; text-align: right; margin-bottom: 5px; margin-top: 5px; ">Address: Corporation, Inc. 123 Aolsom Ave, CA 246012</div>
-        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">Phone: +7(123)456 56 12</div>
-        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">E-Mail: lolol@gmail.com</div>
-        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">Skype: lolol</div>
-        <div style="border: 1px solid black"><img src="http://www.oneexchangecorp.com/images/map.gif" alt="Alternate Text" /></div>
-      </fieldset>
-    </div>
+
+            <input class="b-button register-button b-button_hover-animate_opacity" type="submit" value=@MLMExchange.Properties.ResourcesA.SendButton />
+          </div>
+        </div>
+      </section><!--pb Contact form-->
+    }
   </div>
 </section>
+

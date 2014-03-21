@@ -1,0 +1,63 @@
+﻿@using MLMExchange.Lib
+@{
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.Contacts;
+  Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="b-sb b-sb__type__with-icon contacts-exchange">
+  <header class="b-sb__top-section">
+    <div class="b-sb__header">
+      <div class="b-sb__title">
+        <h1 class="b-sb__text">@MLMExchange.Properties.ResourcesA.Contacts</h1>
+      </div>
+
+      <div class="b-sb__header--content">
+
+        <h2 class="sub-title">Оставте сообщение администраторам</h2>
+
+      </div>
+    </div>
+
+    <aside class="b-sb__icon">
+      <i class="all-icon contacts-icon"></i>
+    </aside>
+    <div class="b-sb__border-top"></div>
+  </header>
+
+  <div class="b-sb__content">
+    <div class="b-sb__content__left">
+      <div class="contacts-form">
+        @using (Html.BeginForm("Send", "Contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+          <fieldset>
+            <label>Name: </label>
+            <div class="input-control text" data-role="input-control">
+              <input type="text" name="name" placeholder="type your name" />
+            </div>
+            <label>E-Mail: </label>
+            <div class="input-control text" data-role="input-control">
+              <input type="text" name="email" placeholder="type your e-mail" />
+            </div>
+            <textarea style="width: 100%; margin-bottom: 10px" rows="10" autofocus placeholder="text of message"></textarea>
+            <input class="b-button contacts-button" type="submit" value="Отправить" />
+          </fieldset>
+        }
+      </div>
+    </div>
+    <div class="b-sb__content__right">
+      <fieldset>
+        <legend>Contacts</legend>
+        <p class="b-sb__text" style="font-size: 11pt; text-align:right;">
+          You can contact me using the form
+          to your left, altematively you can use
+          of the links below:
+        </p>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px; margin-top: 5px; ">Address: Corporation, Inc. 123 Aolsom Ave, CA 246012</div>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">Phone: +7(123)456 56 12</div>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">E-Mail: lolol@gmail.com</div>
+        <div style="font-size: 14px; text-align: right; margin-bottom: 5px;">Skype: lolol</div>
+        <div style="border: 1px solid black"><img src="http://www.oneexchangecorp.com/images/map.gif" alt="Alternate Text" /></div>
+      </fieldset>
+    </div>
+  </div>
+</section>

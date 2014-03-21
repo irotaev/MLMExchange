@@ -1,0 +1,51 @@
+@import "../Framework";
+
+.faq-block
+{
+  @include span-columns(12 omega, 12);
+
+  .panel
+  {
+    margin-bottom: 20px;
+
+    &.closed
+    {
+      .panel-content
+      {
+        display: none;
+      }
+    }
+
+    .panel-header
+    {
+      color: white;
+      background-color: $blue_3;
+      font-size: $font-h;
+    }
+
+    .panel-header:after
+    {
+      color: white;
+      font-size: $font-b-b;
+      -webkit-font-smoothing: subpixel-antialiased
+    }
+  }
+
+  .video-block
+    {
+    @include span-columns(4 omega, 12);
+    border: 6px solid $orange;
+    background-color: #231F20;
+    float: right;
+    margin: 0 0 1em 1em;
+
+    h1
+      {
+      margin: 4px;
+      font-size: $font-h;
+      color: white;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@import "compass/reset";
+@import "framework";
+
+// Libs
+@import "lib/Shared";
+@import "lib/Form";
+@import "MetroUICss_Override";
+
+
+
+.b-sb
+{
+  @include b-sb();
+}
+
+html, body
+{
+  height: 100%;
+  width: 100%;
+}
+
+//#region Fonts
+body
+{
+  //font-family: Tahoma, Geneva, sans-serif;
+  background-color: #EEE;
+}
+//#endregion
+
+@import "MainHeader";
+@import "MainTopMenu";
+@import "Footer/_MainFooter";
+@import "MainChangableContent";
+
+.main-wrapper
+{
+  position: relative;
+  @include container;
+  background-color: white;
+  min-height: 100%;
+  padding-bottom: ($main-footer_Height + 40px);
+  //@include susy-grid-background;
+}
+
+

@@ -1,0 +1,67 @@
+@import "../framework";
+@import "compass/css3/transition";
+
+$b-videos__video-wrapper_Border-color: #E2ECFA;
+
+/*
+* Относится к видео
+*/
+
+@mixin b-videos
+{
+  @include span-columns(12 omega, 12);
+  padding: {left: 30px; right: 30px;};
+  margin-bottom: 30px;
+
+  @include with-grid-settings(2, 45%, 10%)
+  {
+    position: relative;
+
+    .b-videos__video-wrapper
+    {
+      @include span-columns(1);
+      @include nth-omega(2n);
+      @include box-sizing(border-box);
+
+      position: relative;
+      height: 250px;
+      border: 10px solid $b-videos__video-wrapper_Border-color;
+      @include transition(border 0.55s);
+      z-index: 100;
+
+      &:hover
+      {
+        border-color: transparent;
+        .b-videos__additional-info {@include opacity(1);}
+      }
+
+      .b-videos__video
+      {
+        background-color: white;
+        width: 100%;
+        height: 100%;
+      }
+
+      .b-videos__additional-info
+      {
+        position: absolute;
+        top: -30px; left: -30px; right: -30px; bottom: -65px;
+        background-color: $grey_3;
+        @include opacity(0);
+        @include transition(opacity 0.55s);
+        z-index: -10;
+
+        .b-videos__text
+        {
+          position: absolute;
+          padding: 5px;
+          bottom: 15px; left: 0; right: 0;
+          height: 40px; line-height: 30px;
+          color: $grey_2;
+          font-size: $font-b;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "susy";
+@import "compass/css3/opacity";
+@import "compass/css3/box-shadow";
+
+$sass_Dir: "/Content/sass";
+$I_D: "/Content/images/";
+
+//#region GridSettings
+$total-columns: 12;
+$column-width: 62px;
+$gutter-width: 20px;
+$grid-padding: 20px;
+@include border-box-sizing;
+
+$container-style: static;
+//#endregion
+
+//#region Font-sizes
+$font-s: 11px;
+$font-n: 13px;
+$font-nb: 14px;
+$font-b: 20px;
+$font-h: 20px;
+$font-b-b: 30px;
+//#endrergion
+
+//#region Colors
+$grey_1: #A7A9AC;
+$grey_2: #68696B;
+$grey_3: #f0f0f0;
+$red_1: #ED1C24;
+$red_2: rgba(237, 52, 47, 0.06);
+$blue_1: #45a2d0;
+$blue_2: #0076C0;
+$blue_3: #0055D4;
+$turquoise : #C8E5F6;
+$orange : #F15A29;
+//#endregion
+
+@mixin _with-grid-settings($columns)
+{
+
+  @include with-grid-settings($columns, (($column-width*$total-columns + $gutter-width*$total-columns - $gutter-width*$columns)/$columns), $gutter-width, $grid-padding)
+  {
+    @content;
+  }
+}

@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title</title>
+
+  <!--Инициализация HTML5 элементов для IE (версия ниже 9)-->
+  @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
+  {
+    <script src="~/Scripts/html5shiv.min.js"></script>
+    <script src="~/Scripts/html5shiv-printshiv.min.js"></script>
+    <script src="~/Scripts/jquery-1.11.0.min.js"></script>
+  }
+
+  @if (!Context.Request.Browser.Type.Contains("IE") && !Context.Request.Browser.Type.Contains("InternetExplorer"))
+  {
+    <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+  }
+
+  <!--MS unobstractive validation-->
+  <script src="~/Scripts/jquery.validate.min.js"></script>
+  <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+  <script src="~/Scripts/require.js"></script>
+  <!--Стоит отдельно от require.js, т.к. нужна синхронная загрузка-->
+  <script src="~/Scripts/Framework/RequireJs/config.js"></script>
+  <script src="~/Content/MetroUICSS/min/jquery.widjet.min.js"></script>
+  <script src="~/Content/MetroUICSS/min/metro.min.js"></script>
+
+  <link href="~/Content/MetroUICSS/min/metro-bootstrap.min.css" rel="stylesheet" />
+  <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
+  @(new MLMExchange.Lib.ViewStyle(ViewContext).RenderPrivatePageStyle())
+
+  @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
+  {
+    <link href="~/Content/stylesheets/IE_lt_9.css" rel="stylesheet" />
+  }
+</head>
+
+<!--class metro is require for metro ui-->
+<body class="metro">
+  <!--#region Дефолтные параметры для формы-->
+  <script type="text/javascript">
+    require(["jquery", "Lib/Form"], function ($, formModule) {
+      $(function () {
+        $.each($("form"), function (index, form) {
+          new formModule.Form($(form)).ApplyDefaults();
+        });
+      });
+    });
+  </script>
+  <!--#endregion-->
+
+  <div class="main-wrapper">
+
+    <section class="main-changable-content clearfix">
+      <header class="main-header">
+        <div class="main-header-top">
+          <nav class="buttons">
+            <a class="b-button b-button_color_light-blue b-button_hover-animate_border-bottom faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
+              <div class="text">FAQ</div>
+            </a>
+            <a class="b-button b-button_color_normal-blue b-button_hover-animate_border-bottom contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
+              <div class="text">@MLMExchange.Properties.ResourcesA.Contacts</div>
+            </a>
+          </nav>
+
+          <div class="main-registration-block">
+            <div class="b-button b-button_hover-animate_border-bottom enter-button">
+              <div class="text">@MLMExchange.Properties.ResourcesA.Enter</div>
+
+              @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
+            </div>
+
+            <div class="b-button b-button_hover-animate_border-bottom register-button">
+              <div class="text">@MLMExchange.Properties.ResourcesA.Registration</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <hr class="b-hr" />
+
+      @RenderBody()
+    </section>
+
+    <div class="main-footer">
+      <div class="sosial-buttons__outer-wrapper">
+        <div class="sosial-buttons__inner-wrapper">
+          <div class="b-button b-button_color_light-grey b-button_hover-animate_opacity sosial-button"><i class="icon twitter"></i></div>
+          <div class="b-button b-button_color_light-grey b-button_hover-animate_opacity sosial-button"><i class="icon facebook"></i></div>
+          <div class="b-button b-button_color_light-grey b-button_hover-animate_opacity sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
+        </div>
+      </div>
+
+      <hr class="b-hr" />
+      <nav class="buttons">
+        <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom">
+          <a href="/about">
+            <i class="b-icon home"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.AboutUs
+            </div>
+          </a>
+        </div>
+        <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom">
+          <a href="/mycrypt">
+            <i class="b-icon agreement"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.MyCryptPage
+            </div>
+          </a>
+        </div>
+        <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom">
+          <a href="/copyright">
+            <i class="b-icon copyright"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.CopyRight
+            </div>
+          </a>
+        </div>
+        <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom">
+          <a href="/faq">
+            <i class="b-icon agreement"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.FAQ
+            </div>
+          </a>
+        </div>
+        <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom ie8-last-child">
+          <a href="/contacts">
+            <i class="b-icon agreement"></i>
+            <div class="b-text">
+              @MLMExchange.Properties.ResourcesA.Contacts
+            </div>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>

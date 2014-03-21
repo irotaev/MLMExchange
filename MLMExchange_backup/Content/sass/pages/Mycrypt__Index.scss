@@ -1,0 +1,126 @@
+@import "../Framework";
+@import "lib/Shared";
+
+.youtube-block
+{
+  width: 300px;
+  height: 200px;
+  border: 6px solid $orange;
+  background-color: #231F20;
+  float: right;
+  margin: 0 0 1em 1em;
+
+  h1
+  {
+    font-size: $font-h;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 75px;
+  }
+}
+
+.mycrypt-exchange
+{
+  @include span-columns(12 omega, 12);
+}
+
+
+.b-sb__content
+{
+  position: relative;
+  @include clearfix;
+}
+
+//#region Блок скетча
+$pb-scetch__scetch-box_Width: 208px;
+$pb-scetch__scetch-box_Height: 195px;
+$pb-scetch__scetch-box_Bg-color: #32BFB2;
+
+.pb-scetch
+{
+  position: relative;
+  top: -70px; left: 90px;
+  float: left;
+  height: $pb-scetch__scetch-box_Height + 63px;
+  width: 745px;
+  height: $pb-scetch__scetch-box_Height + 63px;
+  margin-bottom: 90px;
+
+  &.pb-scetch_orientation_right
+  {
+    .pb-scetch__scetch-box
+    {
+      left: auto; right: 0;
+    }
+
+    .pb-scetch__additional-info
+    {
+      right: auto; left: 0;
+    }
+  }
+
+  .pb-scetch__scetch-box
+  {
+    width: $pb-scetch__scetch-box_Width;
+    height: $pb-scetch__scetch-box_Height + 63px;
+    position: absolute;
+    top: 0; left: 0;
+
+    .pb-scetch__image-box
+    {
+      position: absolute;
+      top: 0; left: 0;
+      width: $pb-scetch__scetch-box_Width;
+      height: $pb-scetch__scetch-box_Height;
+      background-color: $pb-scetch__scetch-box_Bg-color;
+
+      .pb-scetch__icon
+      {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .pb-scetch__text-block
+    {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: $pb-scetch__scetch-box_Width;
+      height: 63px;
+      @include box-sizing(border-box);
+      border: 1px solid $pb-scetch__scetch-box_Bg-color;
+      overflow: hidden;
+      padding: 10px;
+
+      .pb-scetch__text
+      {
+        display: block;
+        text-align: center;
+        font-size: $font-n;
+        font-family: cursive;
+        height: 43px; line-height: 43px;
+      }
+    }
+  }
+
+  .pb-scetch__additional-info
+  {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 412px;
+
+    .pb-scetch__text-block
+    {
+      display: block;
+      width: 100%;
+      height: 68px;
+      overflow: hidden;
+      text-align: center;
+      font-size: $font-b;
+      @include box-sizing(border-box);
+    }
+  }
+}
+//#endregion

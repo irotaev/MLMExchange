@@ -1,4 +1,5 @@
 ﻿using Logic;
+using MLMExchange.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,18 @@ namespace MLMExchange.Lib
     {
       base.OnActionExecuting(filterContext);
 
-      if (HttpContext.Current.Request.Cookies["_AUTHORIZE"] == null || Boolean.Parse(HttpContext.Current.Request.Cookies["_AUTHORIZE"].Value) != true
-        || filterContext.RequestContext.HttpContext.Session["Authorized"] == null || (bool)filterContext.RequestContext.HttpContext.Session["Authorized"] != true)
+      BaseController baseController = filterContext.Controller as BaseController;
+
+      if (baseController != null)
       {
-        filterContext.Result = new System.Web.Mvc.RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
-            new { controller = "Account", action = "Register" }
-          ));
+        //if (HttpContext.Current.Request.Cookies["_AUTHORIZE"] == null || Boolean.Parse(HttpContext.Current.Request.Cookies["_AUTHORIZE"].Value) != true
+        //  || filterContext.RequestContext.HttpContext.Session["Authorized"] == null || (bool)filterContext.RequestContext.HttpContext.Session["Authorized"] != true)
+        if (baseController.CurrentSession.CurrentUser == null)
+        {
+          filterContext.Result = new System.Web.Mvc.RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
+              new { controller = "Account", action = "Register" }
+            ));
+        }
       }
     }
   }

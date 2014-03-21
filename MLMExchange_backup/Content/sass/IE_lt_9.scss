@@ -1,0 +1,21 @@
+@import "Framework";
+
+// Формы
+.b-ib
+{
+  .b-ib__label {display: block; margin-bottom: 10px;}
+
+  &.b-ib_content_photo
+  {
+    .b-ib_choose-file
+    {
+      display: block;
+    }
+
+    .b-ib__file-preview, .b-ib_file-chooser {display: none;}
+  }
+}
+
+.gradient {
+  filter: none;
+}
