@@ -1,23 +1,69 @@
 @import "../Framework";
+@import "../lib/Form_lib";
+@import "compass/css3/transition";
 
-.contacts-exchange
+.pb-cf
 {
-  @include span-columns(12 omega, 12);
+  position: relative;
+  top: -80px;
+}
 
-  .contacts-form
+.pb-cf__form-fields-wrapper
+{
+  .pb-cf__field {margin-bottom: 30px;}
+
+  .pb-cf__field_name_name { width: 500px; }
+
+  .pb-cf__field_name_title, .pb-cf__field_name_text {width: 100%;}
+  .pb-cf__field_name_text .b-ib__input {height: 130px;}
+}
+
+.pb-cf__footer-wrapper
+{
+  @include  _with-grid-settings(10)
   {
-    .contacts-button
+    .pb-cf__additional-info-wrapper
+    {
+      @include span-columns(3, 10);
+
+      .pb-cf__item
       {
-      @include span-columns(3 omega, 12);
-      background-color: $blue_2;
-      color: white;
-      height: 40px;
-      font-size: $font-nb;
+        position: relative;
+
+        .pb-cf__icon
+        {
+          display: block;
+          position: absolute;
+          width: 46px; height: 31px;
+          top: 0; left: 0;
+          background: url("#{$I_D}ContactsIndex/email-icon.png") center no-repeat;
+        }
+
+        .pb-cf__text
+        {
+          display: block;
+          margin-left: 46px;
+          padding-left: 10px;
+          height: 31px;
+          line-height: 25px;
+          color: #DADADB;
+          @include transition(color 0.5s linear);
+          cursor: default;
+
+          &:hover
+          {
+            color: $blue_1;
+
+          }
+        }
+      }
     }
 
-    textarea
+    .b-button.register-button
     {
-      resize: none;
+      @include span-columns(3 omega, 10);
+      @include b-form-button;
     }
   }
 }
+

@@ -88,6 +88,7 @@
     background: $turquoise;
     border: 1px solid $grey_1;
     @include box-sizing(border-box);
+    text-align: center;
   }
 
   .home-block__news__date span

@@ -1,6 +1,7 @@
 @import "compass/css3/transition";
 
 $b-button_Active_Color: #B4CEF5;
+$b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
 
 // Разделительная линия
 @mixin b-hr($color: $grey_1, $with-margin: true)
@@ -94,7 +95,7 @@ $b-button_Active_Color: #B4CEF5;
 
 
   border: 1px solid $grey_1;
-  @include box-shadow(8px 8px 10px 0 $grey_2);
+  @include box-shadow($b-sb_Box-shadow);
 
   &.b-sb__type__with-icon
   {
@@ -113,7 +114,7 @@ $b-button_Active_Color: #B4CEF5;
         .b-sb__header
         {
           border: 1px solid $grey_1; border-bottom: none;
-          @include box-shadow(10px 10px 10px $grey_2);
+          @include box-shadow($b-sb_Box-shadow);
           z-index: -100;
           @include span-columns(6, 10);
 
@@ -172,7 +173,7 @@ $b-button_Active_Color: #B4CEF5;
       @include span-columns(12, 12);
       z-index: 10;
       border: 1px solid $grey_1; border-top: none;
-      @include box-shadow(10px 10px 10px $grey_2);
+      @include box-shadow($b-sb_Box-shadow);
       background-color: white;
     }
 

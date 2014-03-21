@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-/* line 4, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
+/* line 4, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .registration-block {
   width: 554px;
   float: left;
@@ -15,7 +15,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 14, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
+/* line 14, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .registration-block .registration-form {
   width: 472px;
   float: left;
@@ -23,7 +23,7 @@
   display: inline;
   padding-left: 82px;
 }
-/* line 19, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
+/* line 19, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .registration-block .registration-form .register-button {
   margin-top: 10px;
   background-color: #41C480;
@@ -37,7 +37,7 @@
   color: white;
 }
 
-/* line 31, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
+/* line 31, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .additional-info {
   padding-left: 82px;
   width: 390px;
@@ -46,14 +46,14 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 36, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
+/* line 36, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .additional-info .registration-icon {
   display: block;
   background-image: url("/Content/images/AccountRegister/register-icon.png");
   width: 257px;
   height: 83px;
 }
-/* line 44, e:/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
+/* line 44, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .additional-info .register-info {
   margin-top: 15px;
   position: relative;
