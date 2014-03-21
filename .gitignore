@@ -221,6 +221,7 @@ pip-log.txt
 
 MyCrypto/
 MLMExchange/bin/
+MLMExchange/Web.config
 MLMExchange/Content/.sass-cache/
 MLMExchange/Content/.sass-cache/
 .idea/
