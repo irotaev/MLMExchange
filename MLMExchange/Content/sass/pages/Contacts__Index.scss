@@ -5,16 +5,16 @@
 .pb-cf
 {
   position: relative;
-  top: -80px;
+  top: -110px;
 }
 
 .pb-cf__form-fields-wrapper
 {
   .pb-cf__field {margin-bottom: 30px;}
 
-  .pb-cf__field_name_name { width: 500px; }
+  .pb-cf__field_name_name, .pb-cf__field_name_title { width: 520px; }
 
-  .pb-cf__field_name_title, .pb-cf__field_name_text {width: 100%;}
+  .pb-cf__field_name_text {width: 100%;}
   .pb-cf__field_name_text .b-ib__input {height: 130px;}
 }
 

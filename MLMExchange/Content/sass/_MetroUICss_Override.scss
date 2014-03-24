@@ -30,6 +30,15 @@ $metro__button_Active_Color: $blue_3;
   {
     @include b-hr;
   }
+
+  //#region Иконки на полях ввода (input)
+  .input-control.text .btn-clear {bottom: 9px; top: auto; &:focus, &:active {display: block;}}
+
+  .input-control.text input
+  {
+    &:focus { ~ .btn-clear {display: block;}}
+  }
+  //#endregion
 }
 
 .metro .stepper

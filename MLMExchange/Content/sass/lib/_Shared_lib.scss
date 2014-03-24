@@ -94,7 +94,7 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
   }
 
 
-  border: 1px solid $grey_1;
+  border: 3px solid $title_bg;
   @include box-shadow($b-sb_Box-shadow);
 
   &.b-sb__type__with-icon
@@ -113,7 +113,7 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
       {
         .b-sb__header
         {
-          border: 1px solid $grey_1; border-bottom: none;
+          border: 3px solid $title_bg; border-bottom: none;
           @include box-shadow($b-sb_Box-shadow);
           z-index: -100;
           @include span-columns(6, 10);
@@ -161,7 +161,7 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
           @include span-columns(4 omega, 10);
           @include box-sizing(content-box);
           padding-left: $gutter-width;
-          border-top: 1px solid $grey_1;
+          border-top: 3px solid $title_bg;
           height: 0;
           bottom: 0; right: 0;
         }
@@ -172,7 +172,7 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
     {
       @include span-columns(12, 12);
       z-index: 10;
-      border: 1px solid $grey_1; border-top: none;
+      border: 3px solid $title_bg; border-top: none;
       @include box-shadow($b-sb_Box-shadow);
       background-color: white;
     }

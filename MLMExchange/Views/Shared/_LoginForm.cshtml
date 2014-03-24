@@ -7,10 +7,11 @@
   <div class="login-enter-area">
     @using (Html.BeginForm("Login", "Account"))
     {
-      <div class="b-ib input-group">
+      <div class="b-ib input-group input-control text">
         @Html.CustomValidationMessageFor(x => x.Login)
         <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterLogin</label>
         @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterLogin, @class = "b-ib__input" })
+        <button class="btn-clear"></button>
       </div>
 
       <div class="b-ib input-group">
@@ -23,4 +24,3 @@
     }
   </div>
 </div>
-

@@ -58,22 +58,22 @@
         <div class="main-header-top">
           <nav class="buttons">
             <a class="b-button b-button_color_light-blue b-button_hover-animate_border-bottom faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
-              <div class="text">FAQ</div>
+              <div class="pb-text">FAQ</div>
             </a>
             <a class="b-button b-button_color_normal-blue b-button_hover-animate_border-bottom contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
-              <div class="text">@MLMExchange.Properties.ResourcesA.Contacts</div>
+              <div class="pb-text">@MLMExchange.Properties.ResourcesA.Contacts</div>
             </a>
           </nav>
 
           <div class="main-registration-block">
             <div class="b-button b-button_hover-animate_border-bottom enter-button">
-              <div class="text">@MLMExchange.Properties.ResourcesA.Enter</div>
+              <div class="pb-text">@MLMExchange.Properties.ResourcesA.Enter</div>
 
               @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
             </div>
 
             <div class="b-button b-button_hover-animate_border-bottom register-button">
-              <div class="text">@MLMExchange.Properties.ResourcesA.Registration</div>
+              <div class="pb-text">@MLMExchange.Properties.ResourcesA.Registration</div>
             </div>
           </div>
         </div>

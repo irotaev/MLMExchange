@@ -16,7 +16,7 @@
 /*
 * Относится к видео
 */
-/* line 3, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video.scss */
+/* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video.scss */
 .b-videos {
   width: 964px;
   float: right;
@@ -28,7 +28,7 @@
   margin-bottom: 30px;
   position: relative;
 }
-/* line 21, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+/* line 21, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper {
   width: 45%;
   float: left;
@@ -51,22 +51,22 @@
   float: right;
   margin-right: 0;
 }
-/* line 33, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+/* line 33, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper:hover {
   border-color: transparent;
 }
-/* line 35, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper:hover .b-videos__additional-info {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 39, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper .b-videos__video {
   background-color: white;
   width: 100%;
   height: 100%;
 }
-/* line 46, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+/* line 46, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper .b-videos__additional-info {
   position: absolute;
   top: -30px;
@@ -82,7 +82,7 @@
   transition: opacity 0.55s;
   z-index: -10;
 }
-/* line 55, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
+/* line 55, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper .b-videos__additional-info .b-videos__text {
   position: absolute;
   padding: 5px;
@@ -92,11 +92,11 @@
   height: 40px;
   line-height: 30px;
   color: #68696b;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
 }
 
-/* line 5, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 5, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block {
   width: 964px;
   float: right;
@@ -106,7 +106,7 @@
   margin-bottom: 70px;
   padding-right: 1px;
 }
-/* line 11, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 11, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__rows {
   position: absolute;
   z-index: 1;
@@ -114,16 +114,16 @@
   width: 964px;
   margin: auto;
 }
-/* line 20, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 20, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__row {
   margin: 0;
 }
-/* line 25, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 25, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_max .slider-block__cell_min {
   display: table-cell !important;
   display: inline;
 }
-/* line 31, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 31, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_max {
   float: left;
   width: 28.5714286%;
@@ -131,13 +131,13 @@
   background-color: #eee;
   border: 3px solid #a7a9ac;
 }
-/* line 39, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_max h2 {
   text-align: center;
   vertical-align: middle;
   margin: 35px;
 }
-/* line 47, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 47, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_min {
   float: left;
   width: 14.2857143%;
@@ -145,7 +145,7 @@
   border: 3px solid #a7a9ac;
 }
 
-/* line 56, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 56, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block {
   width: 554px;
   float: left;
@@ -155,24 +155,24 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 61, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__text {
-  font-size: 20px;
+  font-size: 16px;
 }
-/* line 66, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 66, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news__text {
   margin: 10px;
   margin-top: 15px;
   text-align: left;
 }
-/* line 73, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 73, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news {
   position: relative;
   border: 1px solid #a7a9ac;
   margin-top: 10px;
   margin-bottom: 30px;
 }
-/* line 81, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 81, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news__date {
   position: absolute;
   right: 10px;
@@ -188,7 +188,7 @@
   box-sizing: border-box;
   text-align: center;
 }
-/* line 95, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 95, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__news__date span {
   display: block;
   height: 20px;
@@ -196,7 +196,7 @@
   font-size: 13px;
 }
 
-/* line 103, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 103, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info {
   padding-left: 82px;
   width: 390px;
@@ -205,23 +205,23 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 108, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 108, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info .home-icon {
   display: block;
   background-image: url("/Content/images/AboutIndex/about-icon.png");
   width: 257px;
   height: 87px;
 }
-/* line 116, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 116, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info .home-info {
   background: white;
   margin-top: 15px;
   position: relative;
-  font-size: 20px;
+  font-size: 16px;
   border: 1px solid black;
 }
 
-/* line 126, e:/irotaev/Projects/MCExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 126, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block {
   margin-top: 70px;
   margin-bottom: 70px;

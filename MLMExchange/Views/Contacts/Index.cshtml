@@ -28,22 +28,25 @@
     {
       <section class="pb-cf">
         <div class="pb-cf__form-fields-wrapper">
-          <div class="b-ib pb-cf__field pb-cf__field_name_name">
+          <div class="b-ib pb-cf__field pb-cf__field_name_name input-control text">
             @Html.CustomValidationMessageFor(x => x.UserName)
             <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterName</label>
+
             @Html.TextBoxFor(x => x.UserName, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterName, @class = "b-ib__input" })
+            <button class="btn-clear"></button>
           </div>
 
-          <div class="b-ib pb-cf__field pb-cf__field_name_title">
+          <div class="b-ib pb-cf__field pb-cf__field_name_title input-control text">
             @Html.CustomValidationMessageFor(x => x.Title)
             <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterTitle</label>
             @Html.TextBoxFor(x => x.Title, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterTitle, @class = "b-ib__input" })
+            <button class="btn-clear"></button>
           </div>
 
           <div class="b-ib pb-cf__field pb-cf__field_name_text">
             @Html.CustomValidationMessageFor(x => x.Text)
             <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterMessageText</label>
-            
+
             @(Html.TextAreaFor(x => x.Text, new Dictionary<string, object> { { "placeholder", MLMExchange.Properties.ResourcesA.EnterMessageText }, { @"class", "b-ib__input" } }))
           </div>
 
