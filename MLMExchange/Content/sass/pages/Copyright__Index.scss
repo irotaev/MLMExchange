@@ -17,7 +17,7 @@
   @include span-columns(5 omega, 12);
 
   .copyright-icon
-    {
+  {
     display: block;
     background-image: url("#{$I_D}CopyrightIndex/copyright-icon.png");
     background-repeat: no-repeat;
@@ -26,11 +26,10 @@
   }
 
   .copyright-info
-    {
+  {
     background: white;
     margin-top: 15px;
     position: relative;
     font-size: $font-h;
-    border: 1px solid #000000;
   }
 }

@@ -31,6 +31,24 @@ $metro__button_Active_Color: $blue_3;
     @include b-hr;
   }
 
+  .balloon {
+    border-color: #B3B3B3;
+  }
+
+  .tab-control .frames, .tab-control .tabs>li>a
+  {
+    border: 1px solid $blue_1;
+  }
+  .tab-control .tabs>li>a
+  {
+    padding: 10px 30px;
+    border-bottom: none;
+  }
+  .tab-control .tabs>li
+  {
+    margin-left: 10px;
+  }
+
   //#region Иконки на полях ввода (input)
   .input-control.text .btn-clear {bottom: 9px; top: auto; &:focus, &:active {display: block;}}
 

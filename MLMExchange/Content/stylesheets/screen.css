@@ -480,26 +480,43 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#68696b',GradientType=1 );
   /* IE6-8 */
 }
-/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 34, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+.metro .balloon {
+  border-color: #B3B3B3;
+}
+/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+.metro .tab-control .frames, .metro .tab-control .tabs > li > a {
+  border: 1px solid #45a2d0;
+}
+/* line 43, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+.metro .tab-control .tabs > li > a {
+  padding: 10px 30px;
+  border-bottom: none;
+}
+/* line 48, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+.metro .tab-control .tabs > li {
+  margin-left: 10px;
+}
+/* line 53, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .input-control.text .btn-clear {
   bottom: 9px;
   top: auto;
 }
-/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 53, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .input-control.text .btn-clear:focus, .metro .input-control.text .btn-clear:active {
   display: block;
 }
-/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 57, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .input-control.text input:focus ~ .btn-clear {
   display: block;
 }
 
-/* line 45, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 63, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .stepper {
   margin-top: 50px;
 }
 
-/* line 49, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 67, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
