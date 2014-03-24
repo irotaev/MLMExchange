@@ -34,7 +34,6 @@ namespace MLMExchange.Controllers
             var authCook = new HttpCookie("_AUTHORIZE", "true");
             authCook.Expires = DateTime.Now.AddYears(1);
             HttpContext.Response.Cookies.Add(authCook);
-            Session.Add("IsNeedUpdateCurrentInfo", true);
             Session.Add("Login", loginUser.Login);
             Session.Add("Authorized", true);
           }

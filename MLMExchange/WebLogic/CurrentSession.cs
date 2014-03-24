@@ -34,7 +34,7 @@ namespace MLMExchange.Lib
         if (_Session["Login"] == null)
           return null;
 
-        if (Boolean.Parse(_Session["IsNeedUpdateCurrentInfo"].ToString()) == true)
+        if (!String.IsNullOrEmpty(_Session["Login"].ToString()) && _CurrentUser == null)
         {
           using (var session = NHibernateConfiguration.Session.OpenSession())
           {

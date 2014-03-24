@@ -17,12 +17,7 @@ namespace MLMExchange.Controllers
     {
       base.Initialize(requestContext);
 
-      var authorized = requestContext.HttpContext.Request.Cookies["_AUTHORIZE"];
-
-      if (authorized != null && Boolean.Parse(authorized.Value) == true)
-      {
-        CurrentSession = new CurrentSession(Session);
-      }
+      CurrentSession = new CurrentSession(Session);
 
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
