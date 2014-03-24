@@ -72,20 +72,32 @@ $main-footer_Height: 280px;
           margin: 0 auto;
 
           &.home
-            {
+          {
             background-image: url(#{$sass_Dir}/Footer/button-home.png);
             background-repeat: no-repeat;
           }
 
-          &.agreement
-            {
-            background-image: url(#{$sass_Dir}/Footer/button-agreement.png);
+          &.mycrypt
+          {
+            background-image: url(#{$sass_Dir}/Footer/button-mycrypt.png);
             background-repeat: no-repeat;
           }
 
           &.copyright
-            {
+          {
             background-image: url(#{$sass_Dir}/Footer/button-copyright.png);
+            background-repeat: no-repeat;
+          }
+
+          &.faq
+          {
+            background-image: url(#{$sass_Dir}/Footer/button-faq.png);
+            background-repeat: no-repeat;
+          }
+
+          &.contacts
+            {
+            background-image: url(#{$sass_Dir}/Footer/button-contacts.png);
             background-repeat: no-repeat;
           }
         }

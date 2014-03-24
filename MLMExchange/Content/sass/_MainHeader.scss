@@ -15,6 +15,36 @@ $headerButton_Height: 64px;
     font-size: 24px;
    }
 
+  .login-on-block
+  {
+    @include span-columns(5 omega, 5);
+    .login-on-block__avatar
+    {
+      @include span-columns(1, 5);
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+      background-color: white;
+      height: 44px;
+    }
+    .login-on-block__nickname
+    {
+      @include span-columns(3, 5);
+      margin-top: 20px;
+      color: $blue_gray;
+      text-align: left;
+    }
+
+    .login-on-block__exit
+    {
+      @include span-columns(1 omega, 5);
+      margin-top: 8px;
+      background: url("#{$I_D}/Header/login-on.png") right no-repeat;
+      height: 50px;
+    }
+  }
+
   .main-header-top
   {
     .b-button

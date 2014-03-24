@@ -66,7 +66,7 @@
           </nav>
 
           <div class="main-registration-block">
-            <div class="b-button b-button_hover-animate_border-bottom enter-button">
+            @*<div class="b-button b-button_hover-animate_border-bottom enter-button">
               <div class="pb-text">@MLMExchange.Properties.ResourcesA.Enter</div>
 
               @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
@@ -74,6 +74,12 @@
 
             <div class="b-button b-button_hover-animate_border-bottom register-button">
               <div class="pb-text">@MLMExchange.Properties.ResourcesA.Registration</div>
+            </div>*@
+
+            <div class="login-on-block">
+              <div class="login-on-block__avatar"></div>
+              <div class="login-on-block__nickname">Михалев Денис</div>
+              <a href="#" ><div class="login-on-block__exit"></div></a>
             </div>
           </div>
         </div>
@@ -105,7 +111,7 @@
         </div>
         <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom">
           <a href="/mycrypt">
-            <i class="b-icon agreement"></i>
+            <i class="b-icon mycrypt"></i>
             <div class="b-text">
               @MLMExchange.Properties.ResourcesA.MyCryptPage
             </div>
@@ -121,7 +127,7 @@
         </div>
         <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom">
           <a href="/faq">
-            <i class="b-icon agreement"></i>
+            <i class="b-icon faq"></i>
             <div class="b-text">
               @MLMExchange.Properties.ResourcesA.FAQ
             </div>
@@ -129,7 +135,7 @@
         </div>
         <div class="b-button b-button_action_no-active b-button_hover-animate_border-bottom ie8-last-child">
           <a href="/contacts">
-            <i class="b-icon agreement"></i>
+            <i class="b-icon contacts"></i>
             <div class="b-text">
               @MLMExchange.Properties.ResourcesA.Contacts
             </div>
