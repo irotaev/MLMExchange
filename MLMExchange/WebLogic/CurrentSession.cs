@@ -5,15 +5,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Providers.Entities;
 using Logic;
+using System.Web.SessionState;
 
 namespace MLMExchange.Lib
 {
   /// <summary>
-  /// Текущая сессия
+  /// Текущая сессия. Потокобезопасна
   /// </summary>
-  public class CurrentSession
+  public sealed class CurrentSession
   {
-    public CurrentSession(HttpSessionStateBase session)
+    private CurrentSession(HttpSessionState session)
     {
       if (session == null)
         throw new ApplicationException("session is null");
@@ -21,9 +22,43 @@ namespace MLMExchange.Lib
       _Session = session;
     }
 
-    private readonly HttpSessionStateBase _Session;
-
+    /// <summary>
+    /// Объект для многопоточной блокировки объектов
+    /// </summary>
+    private static readonly object _LockerObject = new object();
+    private readonly HttpSessionState _Session;
     private L.User _CurrentUser;
+
+    /// <summary>
+    /// Хранилище сессий для каждого SessionId
+    /// </summary>
+    private readonly static Dictionary<string, CurrentSession> _SessionStorage = new Dictionary<string, CurrentSession>();
+
+    public static CurrentSession Default
+    {
+      get
+      {
+        if (String.IsNullOrEmpty(HttpContext.Current.Session.SessionID))
+          return null;
+
+        lock (_LockerObject)
+        {
+          return new CurrentSession(HttpContext.Current.Session);
+          //if (_SessionStorage.Keys.Contains(HttpContext.Current.Session.SessionID))
+          //{
+          //  return _SessionStorage[HttpContext.Current.Session.SessionID];
+          //}
+          //else
+          //{
+          //  CurrentSession currentSession = new CurrentSession(HttpContext.Current.Session);
+          //  _SessionStorage.Add(HttpContext.Current.Session.SessionID, currentSession);
+
+          //  return currentSession;               
+          //}
+        }
+      }
+    }
+
     public L.User CurrentUser
     {
       get

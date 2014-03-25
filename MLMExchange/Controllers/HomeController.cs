@@ -10,6 +10,8 @@ namespace MLMExchange.Controllers
   {
     public ActionResult Index()
     {
+      ModelState.Clear();
+
       return View();
     }
   }

@@ -66,21 +66,26 @@
           </nav>
 
           <div class="main-registration-block">
-            @*<div class="b-button b-button_hover-animate_border-bottom enter-button">
-              <div class="pb-text">@MLMExchange.Properties.ResourcesA.Enter</div>
+            @if (MLMExchange.Lib.CurrentSession.Default.CurrentUser == null)
+            {
+              <div class="b-button b-button_hover-animate_border-bottom enter-button">
+                <div class="pb-text">@MLMExchange.Properties.ResourcesA.Enter</div>
 
-              @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
-            </div>
+                @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
+              </div>
 
-            <div class="b-button b-button_hover-animate_border-bottom register-button">
-              <div class="pb-text">@MLMExchange.Properties.ResourcesA.Registration</div>
-            </div>*@
-
-            <div class="login-on-block">
-              <div class="login-on-block__avatar"></div>
-              <div class="login-on-block__nickname">Михалев Денис</div>
-              <a href="#" ><div class="login-on-block__exit"></div></a>
-            </div>
+              <div class="b-button b-button_hover-animate_border-bottom register-button">
+                <div class="pb-text">@MLMExchange.Properties.ResourcesA.Registration</div>
+              </div>
+            }
+            else
+            {
+              <div class="login-on-block">
+                <div class="login-on-block__avatar"></div>
+                <div class="login-on-block__nickname">Михалев Денис</div>
+                <a href="#"><div class="login-on-block__exit"></div></a>
+              </div>
+            }
           </div>
         </div>
       </header>
