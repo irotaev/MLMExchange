@@ -73,31 +73,31 @@ $main-footer_Height: 280px;
 
           &.home
           {
-            background-image: url(#{$sass_Dir}/Footer/button-home.png);
+            background-image: url("#{$I_D}/Footer/about-as-icon.png");
             background-repeat: no-repeat;
           }
 
           &.mycrypt
           {
-            background-image: url(#{$sass_Dir}/Footer/button-mycrypt.png);
+            background-image: url("#{$I_D}/Footer/exchange-icon.png");
             background-repeat: no-repeat;
           }
 
           &.copyright
           {
-            background-image: url(#{$sass_Dir}/Footer/button-copyright.png);
+            background-image: url("#{$I_D}/Footer/copyright-icon.png");
             background-repeat: no-repeat;
           }
 
           &.faq
           {
-            background-image: url(#{$sass_Dir}/Footer/button-faq.png);
+            background-image: url("#{$I_D}/Footer/faq-icon.png");
             background-repeat: no-repeat;
           }
 
           &.contacts
             {
-            background-image: url(#{$sass_Dir}/Footer/button-contacts.png);
+            background-image: url("#{$I_D}/Footer/contacts-icon.png");
             background-repeat: no-repeat;
           }
         }
