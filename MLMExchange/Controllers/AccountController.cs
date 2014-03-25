@@ -15,7 +15,7 @@ namespace MLMExchange.Controllers
   public class AccountController : BaseController
   {
     [HttpPost]
-    public ActionResult Login()
+    public ActionResult Login(string redirectUrl = null)
     {
       ModelState.Clear();
 
@@ -40,7 +40,13 @@ namespace MLMExchange.Controllers
         }
       }
 
-      return RedirectToAction("Register");
+      return Redirect(Request.UrlReferrer.ToString());
+    }
+
+    public ActionResult LogOut()
+    {
+      Session.Clear();
+      return Redirect(Request.UrlReferrer.ToString());
     }
 
     public ActionResult Register(UserModel userModel)
@@ -50,21 +56,21 @@ namespace MLMExchange.Controllers
       if (ControllerContext.HttpContext.Request.HttpMethod == "POST")
       {
         TryUpdateModel<UserModel>(userModel);
-        
+
         if (ModelState.IsValid)
         {
           using (var session = NHibernateConfiguration.Session.OpenSession())
           {
             using (var transaction = session.BeginTransaction())
             {
-              User user = new User 
-              { 
-                Login = userModel.Login, 
+              User user = new User
+              {
+                Login = userModel.Login,
                 PasswordHash = Md5Hasher.ConvertStringToHash(userModel.Password),
                 Email = userModel.Email,
-                 Name = userModel.Name,
-                 Surname = userModel.Surname,
-                 Patronymic = userModel.Patronymic,
+                Name = userModel.Name,
+                Surname = userModel.Surname,
+                Patronymic = userModel.Patronymic,
               };
 
               #region Сохраняю фото
@@ -74,7 +80,7 @@ namespace MLMExchange.Controllers
                 string filePath = System.IO.Path.Combine(Server.MapPath("~/Uploads"), fileName);
                 userModel.Photo.SaveAs(filePath);
 
-                user.PhotoPath = filePath;
+                user.PhotoRelativePath = System.IO.Path.GetFileName(filePath);
               }
               #endregion
 

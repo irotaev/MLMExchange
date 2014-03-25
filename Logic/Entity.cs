@@ -21,7 +21,7 @@ namespace Logic
     public virtual string Surname { get; set; }
     public virtual string Patronymic { get; set; }
     public virtual string Email { get; set; }
-    public virtual string PhotoPath { get; set; }
+    public virtual string PhotoRelativePath { get; set; }
   }
   #endregion
   
@@ -38,7 +38,7 @@ namespace Logic
       Map(x => x.Surname).Nullable().Length(100);
       Map(x => x.Patronymic).Nullable().Length(100);
       Map(x => x.Email).Nullable().Length(100);
-      Map(x => x.PhotoPath).Nullable().Length(200);
+      Map(x => x.PhotoRelativePath).Nullable().Length(200);
     }
   }
   #endregion

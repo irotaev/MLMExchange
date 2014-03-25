@@ -57,10 +57,10 @@
       <header class="main-header">
         <div class="main-header-top">
           <nav class="buttons">
-            <a class="b-button b-button_color_light-blue b-button_hover-animate_border-bottom faq" title="@MLMExchange.Properties.ResourcesA.FAQ">
-              <div class="pb-text">FAQ</div>
+            <a class="b-button b-button_color_light-blue b-button_hover-animate_border-bottom faq" href="/mycrypt" title="@MLMExchange.Properties.ResourcesA.MyCryptPage">
+              <div class="pb-text">@MLMExchange.Properties.ResourcesA.MyCryptPage</div>
             </a>
-            <a class="b-button b-button_color_normal-blue b-button_hover-animate_border-bottom contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
+            <a class="b-button b-button_color_normal-blue b-button_hover-animate_border-bottom contacts" href="/contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
               <div class="pb-text">@MLMExchange.Properties.ResourcesA.Contacts</div>
             </a>
           </nav>
@@ -74,16 +74,25 @@
                 @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
               </div>
 
-              <div class="b-button b-button_hover-animate_border-bottom register-button">
-                <div class="pb-text">@MLMExchange.Properties.ResourcesA.Registration</div>
-              </div>
+              <a href="/Account/Register">
+                <div class="b-button b-button_hover-animate_border-bottom register-button">
+                  <div class="pb-text">@MLMExchange.Properties.ResourcesA.Registration</div>
+                </div>
+              </a>
             }
             else
             {
               <div class="login-on-block">
-                <div class="login-on-block__avatar"></div>
-                <div class="login-on-block__nickname">Михалев Денис</div>
-                <a href="#"><div class="login-on-block__exit"></div></a>
+                @if (String.IsNullOrEmpty(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath))
+                {
+                  <img src="/Content/images/Form/anonymous-user.png" class="login-on-block__avatar" alt="Alternate Text" />
+                }
+                else
+                {
+                  <img src="/Uploads/@MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath" class="login-on-block__avatar" alt="Alternate Text" />
+                }
+                <div class="login-on-block__nickname">@MLMExchange.Lib.CurrentSession.Default.CurrentUser.Name @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Surname @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Patronymic</div>
+                <a href="/account/logout"><div class="login-on-block__exit"></div></a>
               </div>
             }
           </div>
