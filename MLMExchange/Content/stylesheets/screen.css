@@ -743,11 +743,19 @@ body {
   max-width: 100%;
 }
 
+<<<<<<< HEAD
 /* line 6, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header {
   height: 64px;
 }
 /* line 11, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 7, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header {
+  height: 64px;
+}
+/* line 12, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .pb-text {
   color: white;
   text-align: center;
@@ -755,7 +763,11 @@ body {
   font-size: 24px;
   overflow: hidden;
 }
+<<<<<<< HEAD
 /* line 20, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 20, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .login-on-block {
   width: 390px;
   float: right;
@@ -763,7 +775,11 @@ body {
   *margin-left: -20px;
   display: inline;
 }
+<<<<<<< HEAD
 /* line 24, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 24, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .login-on-block .login-on-block__avatar {
   float: left;
   width: 52px;
@@ -771,7 +787,11 @@ body {
   background-color: white;
   height: 44px;
 }
+<<<<<<< HEAD
 /* line 33, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 33, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .login-on-block .login-on-block__nickname {
   width: 226px;
   float: left;
@@ -785,7 +805,11 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
+<<<<<<< HEAD
 /* line 45, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 45, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .login-on-block .login-on-block__exit {
   width: 62px;
   float: right;
@@ -795,7 +819,19 @@ body {
   margin-top: 8px;
   background: url("/Content/images//Header/login-on.png") center no-repeat;
   height: 50px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+  -webkit-transition: opacity 0.25s linear;
+  -moz-transition: opacity 0.25s linear;
+  -o-transition: opacity 0.25s linear;
+  transition: opacity 0.25s linear;
 }
+/* line 53, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .login-on-block .login-on-block__exit:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+<<<<<<< HEAD
 /* line 56, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .b-button {
   height: 64px;
@@ -805,13 +841,28 @@ body {
   padding-left: 164px;
 }
 /* line 64, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 60, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .b-button {
+  height: 64px;
+}
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .buttons {
+  padding-left: 164px;
+}
+/* line 68, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .buttons .b-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
+<<<<<<< HEAD
 /* line 70, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 74, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block {
   position: relative;
   width: 390px;
@@ -821,29 +872,49 @@ body {
   display: inline;
   background-color: #2A7CA0;
 }
+<<<<<<< HEAD
 /* line 76, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button {
   background-color: #2A7CA0;
 }
 /* line 80, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 80, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button {
+  background-color: #2A7CA0;
+}
+/* line 84, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .b-button.enter-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
+<<<<<<< HEAD
 /* line 84, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 88, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   background-color: #45a2d0;
   cursor: default;
 }
+<<<<<<< HEAD
 /* line 86, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover .login-section {
   display: block;
 }
 /* line 91, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 90, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.enter-button:hover .login-section {
+  display: block;
+}
+/* line 95, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .b-button.register-button {
   width: 226px;
   float: right;
@@ -851,11 +922,19 @@ body {
   *margin-left: -20px;
   display: inline;
 }
+<<<<<<< HEAD
 /* line 95, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button:active {
   background-color: #0055d4;
 }
 /* line 102, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 99, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .b-button.register-button:active {
+  background-color: #0055d4;
+}
+/* line 106, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .login-section {
   position: absolute;
   top: 64px;
@@ -864,7 +943,11 @@ body {
   display: none;
   cursor: default;
 }
+<<<<<<< HEAD
 /* line 110, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 114, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .login-section .login-area-arrow {
   position: absolute;
   top: -17px;
@@ -874,7 +957,11 @@ body {
   background: url("/Content/images/Header/LoginArea/login-area-arrow.png") center no-repeat;
   z-index: 100;
 }
+<<<<<<< HEAD
 /* line 120, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 124, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area {
   position: absolute;
   top: 20px;
@@ -890,11 +977,19 @@ body {
   -moz-box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
   box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
 }
+<<<<<<< HEAD
 /* line 129, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .input-group {
   margin-bottom: 15px;
 }
 /* line 134, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+=======
+/* line 133, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .main-header-top .main-registration-block .login-section .login-enter-area .input-group {
+  margin-bottom: 15px;
+}
+/* line 138, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+>>>>>>> 31130add665058d175249966364e75f90fccb17d
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button {
   background-color: #41C480;
   height: 40px;
