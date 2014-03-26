@@ -1,11 +1,11 @@
-/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 4, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 4, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block {
   width: 964px;
   float: right;
@@ -13,27 +13,27 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 8, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 8, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block .panel {
   margin-bottom: 20px;
 }
-/* line 14, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 14, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block .panel.closed .panel-content {
   display: none;
 }
-/* line 20, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 20, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block .panel .panel-header {
   color: white;
   background-color: #0055d4;
   font-size: 20px;
 }
-/* line 27, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 27, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block .panel .panel-header:after {
   color: white;
   font-size: 30px;
   -webkit-font-smoothing: subpixel-antialiased;
 }
-/* line 35, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block .video-block {
   width: 308px;
   float: right;
@@ -45,7 +45,7 @@
   float: right;
   margin: 0 0 1em 1em;
 }
-/* line 43, E:/Projects/New/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
+/* line 43, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Faq__Index.scss */
 .faq-block .video-block h1 {
   margin: 4px;
   font-size: 20px;

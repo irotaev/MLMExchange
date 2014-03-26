@@ -167,6 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\images\AccountRegister\register-icon.png" />
+    <Content Include="Content\images\FaqIndex\arrow.png" />
     <Content Include="Content\images\Form\anonymous-user.png" />
     <Content Include="Content\images\Form\validation-arrow.png" />
     <Content Include="Content\images\Header\LoginArea\login-area-arrow.png" />

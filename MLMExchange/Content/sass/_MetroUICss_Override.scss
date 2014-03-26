@@ -1,5 +1,6 @@
 @import "framework";
 @import "lib/Shared_lib";
+@import "compass/css3/transform";
 
 $metro__button_Active_Color: $blue_3;
 
@@ -48,6 +49,40 @@ $metro__button_Active_Color: $blue_3;
   {
     margin-left: 10px;
   }
+
+  //#region Блок-слайдер (открывающийся/закрывающийся)
+  [data-role=panel]
+  {
+    .panel-header
+    {
+      position: relative;
+
+      &:after
+      {
+        content: "" !important;
+      }
+
+      .ab-panel__icon
+      {
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        width: 30px; height: 30px;
+        background: url("#{$I_D}/FaqIndex/down-arrow.png") center no-repeat;
+        @include transition(transform 0.05s linear);
+        @include transform(rotate(90deg));
+      }
+    }
+
+    &.collapsed
+    {
+      .ab-panel__icon
+      {
+        @include transform(rotate(0deg));
+      }
+    }
+  }
+  //#endregion
 
   //#region Иконки на полях ввода (input)
   .input-control.text .btn-clear {bottom: 9px; top: auto; &:focus, &:active {display: block;}}

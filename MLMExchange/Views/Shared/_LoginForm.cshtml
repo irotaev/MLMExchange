@@ -1,9 +1,11 @@
 ﻿@using MLMExchange.Lib
 @model MLMExchange.Models.Registration.LoginModel
 
+@{ViewData.ModelState.Clear();}
+
 <div class="login-section">
   <div class="login-area-arrow"></div>
-
+  
   <div class="login-enter-area">
     @using (Html.BeginForm("Login", "Account"))
     {
