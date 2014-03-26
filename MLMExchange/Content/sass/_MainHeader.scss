@@ -18,9 +18,11 @@ $headerButton_Height: 64px;
   .login-on-block
   {
     @include span-columns(5 omega, 5);
+
     .login-on-block__avatar
     {
-      @include span-columns(1, 5);
+      float: left;
+      width: 52px;
       margin: 10px;
       background-color: white;
       height: 44px;

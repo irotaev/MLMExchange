@@ -148,6 +148,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Lib\ApplicationException\ApplicationException.cs" />
+    <Compile Include="Lib\File.cs" />
+    <Compile Include="Lib\Image\Image.cs" />
     <Compile Include="Models\ContactMessageModel.cs" />
     <Compile Include="WebLogic\Authorization.cs" />
     <Compile Include="Lib\Ms5Hasher.cs" />
