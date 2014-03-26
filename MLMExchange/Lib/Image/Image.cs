@@ -76,7 +76,19 @@ namespace MLMExchange.Lib.Image
 
       private readonly string _ImageName;
 
-      public System.Drawing.Image Image { get { return System.Drawing.Image.FromFile(Path.Combine(BaseFile.ServerAbsolutePath, _ImageDir, _ImageName)); } }
+      /// <summary>
+      /// Абсолютный путь от корня сайта - true, относительный - false
+      /// </summary>
+      public bool IsAbsolutePath { get; set; }
+
+      public System.Drawing.Image Image 
+      { 
+        get 
+        { 
+          return System.Drawing.Image.FromFile(Path.Combine(BaseFile.ServerAbsolutePath, _ImageDir, _ImageName)); 
+        } 
+      }
+
       /// <summary>
       /// Полное имя изображения (+ расширение)
       /// </summary>
