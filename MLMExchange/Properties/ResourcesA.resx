@@ -162,6 +162,9 @@
   <data name="EnterTitle" xml:space="preserve">
     <value>Введите заголовок</value>
   </data>
+  <data name="Exchange" xml:space="preserve">
+    <value>Биржа</value>
+  </data>
   <data name="FAQ" xml:space="preserve">
     <value>Вопросы</value>
   </data>

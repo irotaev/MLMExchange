@@ -58,7 +58,7 @@
         <div class="main-header-top">
           <nav class="buttons">
             <a class="b-button b-button_color_light-blue b-button_hover-animate_border-bottom faq" href="/mycrypt" title="@MLMExchange.Properties.ResourcesA.MyCryptPage">
-              <div class="pb-text">@MLMExchange.Properties.ResourcesA.MyCryptPage</div>
+              <div class="pb-text">@MLMExchange.Properties.ResourcesA.Exchange</div>
             </a>
             <a class="b-button b-button_color_normal-blue b-button_hover-animate_border-bottom contacts" href="/contacts" title="@MLMExchange.Properties.ResourcesA.Contacts">
               <div class="pb-text">@MLMExchange.Properties.ResourcesA.Contacts</div>
@@ -89,7 +89,7 @@
                 }
                 else
                 {
-                  <img src="/Uploads/@(new MLMExchange.Lib.Image.Image(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath).Crop(62, 44).FullName)" class="login-on-block__avatar" alt="Alternate Text" />
+                  <img src="/Uploads/@(new MLMExchange.Lib.Image.Image(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath).Crop(52, 44).FullName)" class="login-on-block__avatar" alt="Alternate Text" />
                 }
                 <div class="login-on-block__nickname">@MLMExchange.Lib.CurrentSession.Default.CurrentUser.Name @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Surname @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Patronymic</div>
                 <a href="/account/logout"><div class="login-on-block__exit"></div></a>

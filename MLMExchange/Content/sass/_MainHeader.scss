@@ -12,7 +12,8 @@ $headerButton_Height: 64px;
      color: white;
      text-align: center;
      line-height: $headerButton_Height;
-    font-size: 24px;
+     font-size: 24px;
+     overflow: hidden;
    }
 
   .login-on-block
