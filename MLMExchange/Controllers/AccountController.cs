@@ -77,7 +77,7 @@ namespace MLMExchange.Controllers
               if (userModel.Photo != null)
               {
                 string fileName = String.Format("{0}_{1}", Guid.NewGuid().ToString(), System.IO.Path.GetExtension(userModel.Photo.FileName));
-                string filePath = System.IO.Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                string filePath = System.IO.Path.Combine(Server.MapPath("~/Uploads/Images"), fileName);
                 userModel.Photo.SaveAs(filePath);
 
                 user.PhotoRelativePath = System.IO.Path.GetFileName(filePath);

@@ -1,8 +1,85 @@
 @import "../Framework";
 @import "../lib/Video";
+@import "compass/css3/transition";
 
 .slider-block
 {
+  @mixin pb-sb
+  {
+    position: relative;
+    height: 100%;
+
+    &:hover
+    {
+      .pb-sb__info-wrapper {height: 100%;}
+      .pb-sb__value-wrapper {height: 0;}
+    }
+
+    .pb-sb__value-wrapper, .pb-sb__info-wrapper
+    {
+      background-color: $orange2;
+      overflow: hidden;
+    }
+
+    .pb-sb__value-wrapper
+    {
+      @include clearfix;
+      height: 100%;
+      @include transition(height 0.3s linear);
+
+      .pb-sb__icon-wrapper
+      {
+        float: left;
+        position: relative;
+        width: 112px;
+        height: 100%;
+
+        .pb-sb__icon
+        {
+          display: block;
+          position: absolute;
+          top: 50%; left: 50%;
+          width: 73px; height: 69px;
+          margin: {left: -36.5px; top: -34.5px;}
+          background: url("#{$I_D}/HomeIndex/rating-icon.png");
+        }
+      }
+
+      .pb-sb__value-wrapper
+      {
+        margin-left: 112px;
+        height: 100%;
+
+        .pb-sb__value
+        {
+          display: block;
+          height: 100%;
+          font-size: 56px;
+          line-height: 92px;
+          color: white;
+          text-align: center;
+          cursor: default;
+        }
+      }
+    }
+
+    .pb-sb__info-wrapper
+    {
+      height: 0;
+      @include transition(height 0.3s linear);
+
+      .pb-sb__additional-info
+      {
+        margin: 15px;
+        display: block;
+        font-size: $font-nb;
+        color: #ffffff;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
   @include span-columns(12 omega, 12);
   margin-bottom: 70px;
   padding-right: 1px;
@@ -35,11 +112,9 @@
     background-color: #eee;
     border: 4px solid #4B73A5;
 
-    h2
+    .pb-sb
     {
-      text-align: center;
-      vertical-align: middle;
-      margin: 35px;
+      @include pb-sb;
     }
   }
 
@@ -72,7 +147,7 @@
   .home-block__news
   {
     position: relative;
-    border: 1px solid $grey_1;
+    border: 1px solid $blue_2;
     margin-top: 10px;
     margin-bottom: 30px;
   }
@@ -85,8 +160,8 @@
     width: 100px;
     padding: 5px;
     overflow: hidden;
-    background: $turquoise;
-    border: 1px solid $grey_1;
+    background-color: $blue_2;
+    border: 1px solid $blue_2;
     @include box-sizing(border-box);
     text-align: center;
   }
@@ -96,6 +171,7 @@
     display: block;
     height: 20px; line-height: 20px;
     font-size: $font-n;
+    color: #ffffff;
   }
 }
 

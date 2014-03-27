@@ -169,11 +169,28 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\AboutIndex\about-icon.png" />
     <Content Include="Content\images\AccountRegister\register-icon.png" />
+    <Content Include="Content\images\ContactsIndex\contacts-icon.png" />
+    <Content Include="Content\images\ContactsIndex\email-icon.png" />
+    <Content Include="Content\images\CopyrightIndex\copyright-icon.png" />
     <Content Include="Content\images\FaqIndex\arrow.png" />
+    <Content Include="Content\images\Footer\about-as-icon.png" />
+    <Content Include="Content\images\Footer\contacts-icon.png" />
+    <Content Include="Content\images\Footer\copyright-icon.png" />
+    <Content Include="Content\images\Footer\exchange-icon.png" />
+    <Content Include="Content\images\Footer\faq-icon.png" />
+    <Content Include="Content\images\Form-s21f3809381.png" />
     <Content Include="Content\images\Form\anonymous-user.png" />
     <Content Include="Content\images\Form\validation-arrow.png" />
     <Content Include="Content\images\Header\LoginArea\login-area-arrow.png" />
+    <Content Include="Content\images\HomeIndex\home-icon.png" />
+    <Content Include="Content\images\HomeIndex\rating-icon.png" />
+    <Content Include="Content\images\images\Form-s454a2ec0f1.png" />
+    <Content Include="Content\images\MycryptIndex\get-money-scetch.png" />
+    <Content Include="Content\images\MycryptIndex\mycrypt-icon.png" />
+    <Content Include="Content\images\MycryptIndex\register-scetch.png" />
+    <Content Include="Content\images\MycryptIndex\trade-scetch.png" />
     <Content Include="Content\MetroUICSS\js\metro-accordion.js" />
     <Content Include="Content\MetroUICSS\js\metro-button-set.js" />
     <Content Include="Content\MetroUICSS\js\metro-calendar.js" />
@@ -216,11 +233,9 @@
     <Content Include="Content\MetroUICSS\min\metro-bootstrap-responsive.min.css" />
     <Content Include="Content\MetroUICSS\min\metro-bootstrap.min.css" />
     <Content Include="Content\MetroUICSS\min\metro.min.js" />
-    <Content Include="Content\sass\Footer\button-home.png" />
     <Content Include="Content\stylesheets\ie.css" />
     <Content Include="Content\stylesheets\IE_lt_9.css" />
     <Content Include="Content\stylesheets\pages\Account__Register.css" />
-    <Content Include="Content\stylesheets\pages\IE_lt_9.css" />
     <Content Include="Content\stylesheets\print.css" />
     <Content Include="Content\stylesheets\screen.css" />
     <Content Include="Global.asax" />
@@ -240,6 +255,7 @@
     <Content Include="Content\sass\_MainTopMenu.scss" />
     <Content Include="Content\MetroUICSS\js\README.md" />
     <Content Include="Content\sass\pages\About__Index.scss" />
+    <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
     <Content Include="Scripts\html5shiv-printshiv.min.js" />
@@ -287,7 +303,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\Private\" />
-    <Folder Include="Uploads\" />
+    <Folder Include="Uploads\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

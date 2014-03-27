@@ -13,17 +13,30 @@ namespace MLMExchange.Lib.Image
   /// </summary>
   public class Image
   {
-    public Image(string imageName)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="imageRelativePath">Путь к картинке относительно корня сайта</param>
+    /// <param name="imageName">Имя картинки</param>
+    public Image(string imageRelativePath, string imageName)
     {
       if (String.IsNullOrEmpty(imageName))
         throw new ApplicationException("imageName cant be null");
 
-      _CurrentImageInfo = new ImageInfo(imageName);
+      _CurrentImageInfo = new ImageInfo(imageRelativePath, imageName);
+      _ImageUploadDir = imageRelativePath;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="imageFromUploadFullName">Имя картинки из директории Upload</param>
+    public Image(string imageFromUploadFullName) : this("Uploads\\Images", imageFromUploadFullName) { }
+    
 
     private readonly ImageInfo _CurrentImageInfo;
 
-    public const string _ImageDir = "Uploads";
+    private readonly string _ImageUploadDir;
     public ImageInfo CurrentImage { get { return _CurrentImageInfo; } }
 
     /// <summary>
@@ -36,8 +49,8 @@ namespace MLMExchange.Lib.Image
     {
       string imageCropedName = _CurrentImageInfo.Name + String.Format("_{0}X{1}", width, height) + _CurrentImageInfo.Extension;
 
-      if (File.Exists(Path.Combine(BaseFile.ServerAbsolutePath, _ImageDir, imageCropedName)))
-        return new ImageInfo(imageCropedName);
+      if (File.Exists(Path.Combine(BaseFile.ServerAbsolutePath, _ImageUploadDir, imageCropedName)))
+        return new ImageInfo(_ImageUploadDir, imageCropedName);
 
       Rectangle rectangle = new Rectangle(0, 0, width, height);
       Bitmap imageBitmap = (Bitmap)_CurrentImageInfo.Image;
@@ -55,10 +68,10 @@ namespace MLMExchange.Lib.Image
         imageBitmap.Dispose();
       }
 
-      newImageBitmap.Save(Path.Combine(BaseFile.ServerAbsolutePath, _ImageDir, imageCropedName));
+      newImageBitmap.Save(Path.Combine(BaseFile.ServerAbsolutePath, _ImageUploadDir, imageCropedName));
       newImageBitmap.Dispose();
 
-      return new ImageInfo(imageCropedName);
+      return new ImageInfo(_ImageUploadDir, imageCropedName);
     }
 
     /// <summary>
@@ -66,27 +79,29 @@ namespace MLMExchange.Lib.Image
     /// </summary>
     public class ImageInfo
     {
-      public ImageInfo(string imageFullName)
+      public ImageInfo(string imageRelativePath, string imageFullName)
       {
         if (String.IsNullOrEmpty(imageFullName))
           throw new ArgumentNullException("imageName");
 
+        _ImageRelativePath = imageRelativePath;
         _ImageName = imageFullName;
       }
 
       private readonly string _ImageName;
+      private readonly string _ImageRelativePath;
 
       /// <summary>
       /// Абсолютный путь от корня сайта - true, относительный - false
       /// </summary>
       public bool IsAbsolutePath { get; set; }
 
-      public System.Drawing.Image Image 
-      { 
-        get 
-        { 
-          return System.Drawing.Image.FromFile(Path.Combine(BaseFile.ServerAbsolutePath, _ImageDir, _ImageName)); 
-        } 
+      public System.Drawing.Image Image
+      {
+        get
+        {
+          return System.Drawing.Image.FromFile(Path.Combine(BaseFile.ServerAbsolutePath, _ImageRelativePath, _ImageName));
+        }
       }
 
       /// <summary>
