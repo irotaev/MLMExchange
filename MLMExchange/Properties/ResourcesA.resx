@@ -168,11 +168,20 @@
   <data name="FAQ" xml:space="preserve">
     <value>Вопросы</value>
   </data>
+  <data name="FieldEmailInvalid" xml:space="preserve">
+    <value>Неправильно заполнено поле email</value>
+  </data>
   <data name="FieldFilledInvalid" xml:space="preserve">
     <value>Поле заполнено не верно</value>
   </data>
+  <data name="FieldMinCharCountNotRequired_8" xml:space="preserve">
+    <value>Минимальное количество символов 8</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>Главная страница</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>Логоти</value>
   </data>
   <data name="MyCryptPage" xml:space="preserve">
     <value>My-Crypt биржа</value>

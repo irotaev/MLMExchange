@@ -54,7 +54,7 @@ namespace MLMExchange.Lib.Image
 
       Rectangle rectangle = new Rectangle(0, 0, width, height);
       Bitmap imageBitmap = (Bitmap)_CurrentImageInfo.Image;
-      Bitmap newImageBitmap = new Bitmap(rectangle.Width, rectangle.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+      Bitmap newImageBitmap = new Bitmap(rectangle.Width, rectangle.Height);
       newImageBitmap.SetResolution(imageBitmap.HorizontalResolution, imageBitmap.VerticalResolution);
 
       using (Graphics graphic = Graphics.FromImage(newImageBitmap))

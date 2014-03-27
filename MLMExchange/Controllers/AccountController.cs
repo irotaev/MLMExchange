@@ -29,7 +29,7 @@ namespace MLMExchange.Controllers
         {
           User loginUser = session.QueryOver<User>().Where(x => x.Login == loginModel.Login).List().FirstOrDefault();
 
-          if (loginUser != null)
+          if (loginUser != null && loginUser.PasswordHash == Md5Hasher.ConvertStringToHash(loginModel.Password))
           {
             var authCook = new HttpCookie("_AUTHORIZE", "true");
             authCook.Expires = DateTime.Now.AddYears(1);

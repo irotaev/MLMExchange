@@ -27,7 +27,7 @@ $headerButton_Height: 64px;
       width: 52px;
       margin: 10px;
       background-color: white;
-      height: 44px;
+      height: 52px;
     }
 
     .login-on-block__nickname
@@ -64,10 +64,19 @@ $headerButton_Height: 64px;
 
      .buttons
      {
-       @include prefix(2);
        .b-button
        {
          @include span-columns(2,12);
+
+         &.logo
+         {
+           .pb-icon
+           {
+             display: block;
+             background: url("#{$I_D}Header/logo.png") center no-repeat;
+             width: 144px; height: 64px;
+           }
+         }
        }
      }
 
