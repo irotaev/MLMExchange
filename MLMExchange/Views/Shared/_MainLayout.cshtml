@@ -88,8 +88,8 @@
               <div class="login-on-block">
                 @if (String.IsNullOrEmpty(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath))
                 {
-                  @*<img src="Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "anonymous-user.png").Crop(52, 44).FullName)" class="login-on-block__avatar" alt="Alternate Text" />*@
-                  <img src="/Content/images/Form/anonymous-user_52X44.png" class="login-on-block__avatar" alt="Alternate Text" />
+                  <img src="Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "anonymous-user.png").Crop(52, 52).FullName)" class="login-on-block__avatar" alt="Alternate Text" />
+                  @*<img src="/Content/images/Form/anonymous-user_52X44.png" class="login-on-block__avatar" alt="Alternate Text" />*@
                 }
                 else
                 {
