@@ -32,7 +32,6 @@ namespace MLMExchange.Lib.Image
     /// </summary>
     /// <param name="imageFromUploadFullName">Имя картинки из директории Upload</param>
     public Image(string imageFromUploadFullName) : this("Uploads\\Images", imageFromUploadFullName) { }
-    
 
     private readonly ImageInfo _CurrentImageInfo;
 
