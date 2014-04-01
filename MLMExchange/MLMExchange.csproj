@@ -151,6 +151,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AgreementController.cs" />
@@ -297,6 +299,8 @@
     <Content Include="Content\MetroUICSS\js\README.md" />
     <Content Include="Content\sass\pages\About__Index.scss" />
     <Content Include="App_Readme\Ext.NET.MVC\Sample.Web.config" />
+    <Content Include="Areas\AdminPanel\Views\Web.config" />
+    <Content Include="Areas\AdminPanel\Views\User\Info.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -346,9 +350,12 @@
     <Content Include="Views\FAQ\Index.cshtml" />
     <Content Include="Views\Contacts\Index.cshtml" />
     <Content Include="Views\ExtNet\Index.cshtml" />
+    <Content Include="Views\UserAdmin\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminPanel\Models\" />
+    <Folder Include="Areas\AdminPanel\Views\Shared\" />
     <Folder Include="Scripts\Private\" />
     <Folder Include="Uploads\Images\" />
   </ItemGroup>
