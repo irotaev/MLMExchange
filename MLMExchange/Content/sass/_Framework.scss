@@ -5,6 +5,15 @@
 $sass_Dir: "/Content/sass";
 $I_D: "/Content/images/";
 
+//#region Шрифты
+@font-face {
+  font-family: Lato;
+  src: url("/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Fonts/Lato/Lato-Regular.woff");
+}
+//#endregion
+
 //#region GridSettings
 $total-columns: 12;
 $column-width: 62px;
