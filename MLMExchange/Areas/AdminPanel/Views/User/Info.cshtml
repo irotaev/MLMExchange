@@ -2,13 +2,17 @@
 @using Ext.Net.MVC
 
 @{
-    ViewBag.Title = "Info";
-    Layout = "~/Views/Shared/_MainLayout.cshtml";
+  ViewBag.Title = "Info";
+  Layout = "~/Views/Shared/_MainLayout.cshtml";
+  var X = Html.X();
 }
 
 @Html.X().ResourceManager()
 
-<section class="pb-admin-panel">
-  @Html.X().Button().Text("Hellow world!")
+<section class="pb-admin-panel" id="pb-admin-panel__ID">
+  @(X.Panel().Layout(LayoutType.Border).ManageHeight(true).Items(
+      X.Panel().Region(Region.West).Width(236).Collapsible(true).CollapseMode(CollapseMode.Default).Html("North"),
+      X.Panel().Region(Region.Center).Html("Center region")
+          ).RenderTo("pb-admin-panel__ID"))
 </section>
 
