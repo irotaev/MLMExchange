@@ -1,0 +1,78 @@
+/*
+* Админ панель
+*/
+
+$default-layout_Bg-color: $blue_4;
+
+.pb-admin-panel
+{
+  .x-border-layout-ct {background-color: $default-layout_Bg-color;}
+
+  &, .metro & div, .metro & span, .metro & p
+  {
+    position: relative;
+    font-family: Lato;
+  }
+
+  //#region Main menu
+  #MainLeft_Menu
+  {
+    .x-panel-header-default
+    {
+      background-color: $lime_1;
+
+      .x-tool-img {background-color: $lime_1;}
+      border: none;
+    }
+
+    #MainLeft_Menu-innerCt
+    {
+      border-right: 9px solid $lime_1;
+    }
+
+    #MainLeft_Menu_header_hd-textEl
+    {
+      display: block;
+      color: white;
+      font-size: 25px;
+      text-align: center;
+      height: 40px; line-height: 40px;
+      // Спроно!
+      color: #BEBECF;
+    }
+
+    .pb-mm
+    {
+      .pb-mm__menu-item-wrapper
+      {
+        padding: 15px 0;
+        border-bottom: 1px solid black;
+
+        .pb-mm__icon-wrapper
+        {
+          position: absolute;
+          top: 0; left: 0;
+          width: 60px;
+
+          .pb-mm__icon {}
+        }
+
+        .pb-mm__text-wrapper
+        {
+          margin-left: 60px;
+          text-align: center;
+          color: white;
+          text-size: $font-b;
+        }
+      }
+    }
+  }
+  #MainLeft_Menu-placeholder
+  {
+    background-color: $lime_1;
+    border: none;
+
+    .x-tool-img {background-color: $lime_1;}
+  }
+  //#endregion
+}

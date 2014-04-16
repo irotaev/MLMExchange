@@ -183,6 +183,9 @@
   <data name="Logo" xml:space="preserve">
     <value>Логоти</value>
   </data>
+  <data name="MainMenu__Header" xml:space="preserve">
+    <value>Меню</value>
+  </data>
   <data name="MyCryptPage" xml:space="preserve">
     <value>My-Crypt биржа</value>
   </data>
