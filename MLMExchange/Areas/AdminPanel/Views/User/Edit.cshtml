@@ -1,0 +1,27 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@model MLMExchange.Models.Registration.UserModel
+
+@{
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.EditUser;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+  var X = Html.X();
+}
+
+<section class="pb-eu">
+  <header class="pb-eu__title">
+    <h1 class="b-text">@MLMExchange.Properties.ResourcesA.EditUser</h1>
+  </header>
+
+  <div class="pb-eu__edit-zone">
+    @using (Html.BeginForm("Edit", "/User/", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
+    {
+      @Html.Partial("~/Views/Shared/Account/_EditUser.cshtml", Model, new ViewDataDictionary
+      {
+        new KeyValuePair<string, object>("Type", "blue")
+      })
+
+      <input class="b-button b-button_color_admin-blue register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />
+    }
+  </div>
+</section><!--PB: Edit user-->

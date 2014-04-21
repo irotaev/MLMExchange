@@ -2,17 +2,30 @@
 * Админ панель
 */
 
-$default-layout_Bg-color: $blue_4;
+@import "compass/css3/transition";
+
+$default-layout_Bg-color: $blue_a_4;
 
 .pb-admin-panel
 {
   .x-border-layout-ct {background-color: $default-layout_Bg-color;}
 
-  &, .metro & div, .metro & span, .metro & p
+  &, .metro &, .metro &, .metro &
   {
-    position: relative;
-    font-family: Lato;
+    div, span, p
+    {
+      position: relative;
+      font-family: Lato;
+    }
+
+    input[type="button"], input[type="submit"], input[type="reset"]
+    {
+      font-family: Lato; font-size: $font-bb; color: $blue_a_4_c;
+    }
+
+    h1, h2, h3, h4, h5, h6 {font-family: Lato; font-size: $font-h;}
   }
+
 
   //#region Main menu
   #MainLeft_Menu
@@ -37,32 +50,51 @@ $default-layout_Bg-color: $blue_4;
       font-size: 25px;
       text-align: center;
       height: 40px; line-height: 40px;
-      // Спроно!
-      color: #BEBECF;
     }
 
     .pb-mm
     {
       .pb-mm__menu-item-wrapper
       {
-        padding: 15px 0;
+        position: relative;
+        height: 50px;
         border-bottom: 1px solid black;
+        @include transition(background-color 0.15s linear);
+
+        &:hover
+        {
+          background-color: #4D5777;
+
+          .pb-mm__icon-wrapper .pb-mm__icon:before {color: #A0AABC;}
+        }
 
         .pb-mm__icon-wrapper
         {
           position: absolute;
-          top: 0; left: 0;
-          width: 60px;
+          top: 0; left: 10px;
+          line-height: 50px;
+          height: 50px;
+          width: 50px;
 
-          .pb-mm__icon {}
+          .pb-mm__icon
+          {
+            @include font-icon("\e037", $blue_a_4_c2, 25px);
+
+           &:before
+           {
+             line-height: inherit;
+             @include transition(color 0.15s linear);
+           }
+          }
         }
 
         .pb-mm__text-wrapper
         {
-          margin-left: 60px;
+          line-height: 50px;
+          margin-left: 50px;
           text-align: center;
-          color: white;
           text-size: $font-b;
+          color: #BEBECF;
         }
       }
     }

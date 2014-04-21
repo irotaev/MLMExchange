@@ -1,10 +1,4 @@
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
-}
-
+@charset "IBM866";
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -12,6 +6,26 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
 /* line 4, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Account__Register.scss */
 .registration-block {
   width: 554px;

@@ -28,6 +28,10 @@ namespace MLMExchange.Lib
     public MvcHtmlString RenderPrivatePageStyle()
     {
       string pageName = String.Format("{0}__{1}", _ViewContext.RouteData.Values["controller"], _ViewContext.RouteData.Values["action"]);
+
+      pageName = (_ViewContext.RouteData.DataTokens["area"] != null && !String.IsNullOrEmpty(_ViewContext.RouteData.DataTokens["area"].ToString())) 
+        ? _ViewContext.RouteData.DataTokens["area"].ToString() + "_" + pageName : pageName;
+
       string fullStylePath = HttpContext.Current.Server.MapPath(@"~/" + Path.Combine(_PrivateStyleDir, pageName + ".css"));
       string stylePath = "\\" + Path.Combine(_PrivateStyleDir, pageName + ".css");
 

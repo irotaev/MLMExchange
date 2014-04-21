@@ -2,9 +2,9 @@
 @using Ext.Net.MVC
 
 @{
-  ViewBag.Title = "Info";
-  Layout = "~/Views/Shared/_MainLayout.cshtml";
-  var X = Html.X();
+    ViewBag.Title = "_AdminPanel__Layout";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var X = Html.X();
 }
 
 @Html.X().ResourceManager()
@@ -12,13 +12,15 @@
 @helper MainMenu__InnerContent()
 {
   <div class="pb-mm">
-    @for(int i = 0; i <= 7; i++)
-    {       
-      <nav class="pb-mm__menu-item-wrapper">
-        <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon" ></i></div>
+    @for (int i = 0; i <= 7; i++)
+    {
+      <a href="">
+        <nav class="pb-mm__menu-item-wrapper">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-        <span class="pb-mm__text-wrapper">Пол. информация</span>
-      </nav>
+          <span class="pb-mm__text-wrapper">Пол. информация</span>
+        </nav>
+      </a>
     }
   </div>
 }
@@ -27,7 +29,6 @@
   @(X.Container().Layout(LayoutType.Border).Height(800).Items(
       X.Panel().ID("MainLeft_Menu").MinHeight(600).Region(Region.West).Width(236).Collapsible(true).CollapseMode(CollapseMode.Default)
         .HeaderConfig(X.PanelHeader().Height(74).Title(MLMExchange.Properties.ResourcesA.MainMenu__Header)).Content(x => MainMenu__InnerContent()),
-      X.Panel().Region(Region.Center).Html("Center region")
+      X.Panel().Region(Region.Center).Content(x => RenderBody())
           ).RenderTo("pb-admin-panel__ID"))
 </section>
-

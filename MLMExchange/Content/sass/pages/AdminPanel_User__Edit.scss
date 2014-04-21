@@ -1,0 +1,20 @@
+@import "../Framework";
+
+.metro .pb-eu
+{
+  h1, h2, h3 {color: $blue_a_4_c;}
+}
+.pb-eu
+{
+  @include clearfix;
+  width: 670px;
+  margin: 20px auto;
+
+  color: $blue_a_4_c;
+
+  .pb-eu__submit-btn
+  {
+    margin-top: 20px;
+    float: right;
+  }
+}

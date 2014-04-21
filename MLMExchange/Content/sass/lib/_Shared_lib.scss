@@ -251,9 +251,23 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
     background-color: $blue_2;
   }
 
+  &.b-button_color_admin-blue
+  {
+    background-color: $blue_a_5;
+  }
+
   &.b-button_color_light-grey
   {
     background-color: $grey_3;
+  }
+  //#endregion
+
+  //#region m: Размер кнопок
+  &.b-button_size-admin-default
+  {
+    font-size: 18px;
+    height: 40px;
+    width: 200px;
   }
   //#endregion
 }

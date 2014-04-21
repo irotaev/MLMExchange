@@ -64,13 +64,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
-}
-
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -78,6 +71,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
 /* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-hr {
   display: block;
@@ -211,8 +224,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: #0076c0;
 }
 /* line 255, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-button.b-button_color_admin-blue {
+  background-color: #007a9f;
+}
+/* line 260, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_light-grey {
   background-color: #f0f0f0;
+}
+/* line 267, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-button.b-button_size-admin-default {
+  font-size: 18px;
+  height: 40px;
+  width: 200px;
 }
 
 /* line 7, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
@@ -224,13 +247,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: inline;
 }
 
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
-}
-
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -238,6 +254,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
 /* line 50, Form/s_*.png */
 .Form-sprite, .Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon, .Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
   background: url('../images/Form-s21f3809381.png') no-repeat;
@@ -253,11 +289,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-position: 0 -34px;
 }
 
-/* line 166, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 194, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 171, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 199, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
@@ -268,7 +304,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: relative;
   margin-top: 20px;
 }
-/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 45, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input {
   position: relative;
   box-sizing: border-box;
@@ -283,39 +319,65 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: border-color 0.25s linear;
   transition: border-color 0.25s linear;
 }
-/* line 47, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 57, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input:focus {
   border-color: #45a2d0;
 }
-/* line 52, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 62, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error {
   border-color: #ed1c24;
 }
-/* line 55, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 65, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error:focus {
   border-color: #ed1c24;
 }
-/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 69, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.b-ib__input_type_blue {
+  border: 2px solid black;
+  background-color: #7b87af;
+  color: white;
+}
+/* line 12, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.b-ib__input_type_blue.placeholder {
+  color: white;
+}
+/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.b-ib__input_type_blue:-moz-placeholder {
+  color: white;
+}
+/* line 14, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.b-ib__input_type_blue::-moz-placeholder {
+  color: white;
+}
+/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.b-ib__input_type_blue:-ms-input-placeholder {
+  color: white;
+}
+/* line 16, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib .b-ib__input.b-ib__input_type_blue::-webkit-input-placeholder {
+  color: white;
+}
+/* line 78, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper {
   position: relative;
 }
-/* line 65, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 82, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper .b-ib__icon {
   position: absolute;
   right: 2px;
   top: 7px;
   z-index: 100;
 }
-/* line 75, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
   width: 29px;
   height: 34px;
 }
-/* line 88, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 105, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message {
   box-sizing: border-box;
 }
-/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 109, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-error {
   display: block;
   width: 100%;
@@ -328,15 +390,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: white;
   padding-left: 10px;
 }
-/* line 105, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 122, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-valid {
   display: none;
 }
-/* line 109, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 126, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message--arrow {
   display: none;
 }
-/* line 111, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 128, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .field-validation-error + .b-ib__validation-message--arrow {
   position: absolute;
   top: 0;
@@ -348,57 +410,62 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("/Content/images/Form/validation-arrow.png") left no-repeat;
   display: block;
 }
-/* line 122, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 139, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__label {
   display: none;
 }
-/* line 128, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 145, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo {
   position: relative;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 132, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 149, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: none;
 }
-/* line 135, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 152, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview {
   position: relative;
   display: block;
-  width: 60%;
+  width: 214px;
   height: 220px;
   border: 2px dotted #999999;
-  margin-right: 5%;
+  margin-right: 19px;
   padding: 2px;
   float: left;
 }
-/* line 146, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 163, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib__file-preview.b-ib__file-preview_type_blue {
+  border-color: #7b87af;
+}
+/* line 166, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib__file-preview.b-ib__file-preview_type_blue .b-ib__image {
+  background-color: #7b87af;
+}
+/* line 170, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview .b-ib__image {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 154, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 180, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser {
   background-color: #41C480;
   height: 40px;
   font-size: 14px;
   color: white;
-  width: 35%;
+  width: 129px;
   float: left;
 }
-/* line 22, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 32, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser .text {
   font-size: 14px;
   line-height: 40px;
 }
-
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
+/* line 185, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+.b-ib.b-ib_content_photo .b-ib_file-chooser.b-button_color_admin-blue {
+  background-color: #007a9f;
 }
 
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
@@ -408,6 +475,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
 /*
 * Перебитие css-правил из metro ui css
 ***/
@@ -594,29 +681,40 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Админ панель
 */
-/* line 9, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 11, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel .x-border-layout-ct {
   background-color: #394264;
 }
-/* line 12, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
-.pb-admin-panel, .metro .pb-admin-panel div, .metro .pb-admin-panel span, .metro .pb-admin-panel p {
+/* line 16, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel div, .pb-admin-panel span, .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span, .metro .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span, .metro .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span, .metro .pb-admin-panel p {
   position: relative;
   font-family: Lato;
 }
-/* line 21, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 22, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel input[type="button"], .pb-admin-panel input[type="submit"], .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"] {
+  font-family: Lato;
+  font-size: 18px;
+  color: #bebecf;
+}
+/* line 26, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel h1, .pb-admin-panel h2, .pb-admin-panel h3, .pb-admin-panel h4, .pb-admin-panel h5, .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6 {
+  font-family: Lato;
+  font-size: 20px;
+}
+/* line 34, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .x-panel-header-default {
   background-color: #58c4c6;
   border: none;
 }
-/* line 24, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 37, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .x-panel-header-default .x-tool-img {
   background-color: #58c4c6;
 }
-/* line 29, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 42, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu #MainLeft_Menu-innerCt {
   border-right: 9px solid #58c4c6;
 }
-/* line 34, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 47, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu #MainLeft_Menu_header_hd-textEl {
   display: block;
   color: white;
@@ -624,33 +722,73 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   height: 40px;
   line-height: 40px;
-  color: #BEBECF;
 }
-/* line 47, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 58, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper {
-  padding: 15px 0;
+  position: relative;
+  height: 50px;
   border-bottom: 1px solid black;
+  -webkit-transition: background-color 0.15s linear;
+  -moz-transition: background-color 0.15s linear;
+  -o-transition: background-color 0.15s linear;
+  transition: background-color 0.15s linear;
 }
-/* line 52, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 65, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover {
+  background-color: #4D5777;
+}
+/* line 68, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover .pb-mm__icon-wrapper .pb-mm__icon:before {
+  color: #A0AABC;
+}
+/* line 72, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 60px;
+  left: 10px;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
 }
-/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 76, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+.pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
+  font-family: "Dripicons";
+  content: "\e037";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 25px;
+  color: #7b87af;
+}
+/* line 84, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
+  line-height: inherit;
+  -webkit-transition: color 0.15s linear;
+  -moz-transition: color 0.15s linear;
+  -o-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+}
+/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__text-wrapper {
-  margin-left: 60px;
+  line-height: 50px;
+  margin-left: 50px;
   text-align: center;
-  color: white;
   text-size: 16px;
+  color: #BEBECF;
 }
-/* line 71, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 103, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder {
   background-color: #58c4c6;
   border: none;
 }
-/* line 75, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 107, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder .x-tool-img {
   background-color: #58c4c6;
 }
@@ -809,13 +947,6 @@ body {
   background-color: #4b73a5;
 }
 
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
-}
-
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -823,6 +954,26 @@ body {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
 /* line 50, Form/s_*.png */
 .Form-sprite, .Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon, .Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
   background: url('../images/Form-s21f3809381.png') no-repeat;
@@ -838,11 +989,11 @@ body {
   background-position: 0 -34px;
 }
 
-/* line 166, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 194, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 171, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 199, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
@@ -1020,7 +1171,7 @@ body {
   font-size: 14px;
   color: white;
 }
-/* line 22, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 32, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button .text {
   font-size: 14px;
   line-height: 40px;

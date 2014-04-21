@@ -26,7 +26,10 @@ export class Form
 
     $.each(photoFields, (index, field) =>
     {
-      $(field).find(".b-ib__file-preview .b-ib__image").attr("src", "/Content/images/Form/anonymous-user.png");
+      var imageField = $(field).find(".b-ib__file-preview .b-ib__image");
+      
+      if (!imageField.attr("src"))
+       imageField.attr("src", "/Content/images/Form/anonymous-user.png");
 
       $(field).find(".b-ib_file-chooser").bind("click", (event: Event) =>
       {

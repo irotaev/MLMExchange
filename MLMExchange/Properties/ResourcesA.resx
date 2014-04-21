@@ -129,6 +129,9 @@
   <data name="CopyRight" xml:space="preserve">
     <value>Копирайт</value>
   </data>
+  <data name="EditUser" xml:space="preserve">
+    <value>Редактирование пользователя</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Вход</value>
   </data>
@@ -197,6 +200,9 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="SendButton" xml:space="preserve">
     <value>Отправить</value>

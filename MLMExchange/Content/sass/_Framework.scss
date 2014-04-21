@@ -5,15 +5,6 @@
 $sass_Dir: "/Content/sass";
 $I_D: "/Content/images/";
 
-//#region Шрифты
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
-}
-//#endregion
-
 //#region GridSettings
 $total-columns: 12;
 $column-width: 62px;
@@ -29,6 +20,7 @@ $font-s: 11px;
 $font-n: 13px;
 $font-nb: 14px;
 $font-b: 16px;
+$font-bb: 18px;
 $font-h: 20px;
 $font-b-b: 30px;
 //#endrergion
@@ -42,13 +34,62 @@ $red_2: rgba(237, 52, 47, 0.06);
 $blue_1: #45a2d0;
 $blue_2: #0076C0;
 $blue_3: #0055D4;
-$blue_4: #394264;
 $turquoise : #C8E5F6;
 $orange : #F15A29;
 $orange2: #C74026;
 $lime_1: #58C4C6;
 
 $body_BgColor: #4B73A5;
+
+  //Admin colors
+  $blue_a_4: #394264;
+  $blue_a_4_c: #BEBECF;
+  $blue_a_4_c2: #7B87AF;
+
+  $blue_a_5: #007a9f;
+//#endregion
+
+//#region Шрифты
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
+@mixin font-icon($content, $color, $font-size: $font-n)
+{
+  &:before
+  {
+    font-family: "Dripicons";
+    content: $content;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none !important;
+    speak: none;
+    display: inline-block;
+    text-decoration: none;
+    width: 1em;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    font-size: $font-size;
+    color: $color;
+  }
+}
 //#endregion
 
 @mixin _with-grid-settings($columns)

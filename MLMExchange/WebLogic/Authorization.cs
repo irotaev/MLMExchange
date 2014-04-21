@@ -25,7 +25,7 @@ namespace MLMExchange.Lib
         if (CurrentSession.Default.CurrentUser == null)
         {
           filterContext.Result = new System.Web.Mvc.RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
-              new { controller = "Account", action = "Register" }
+              new { controller = "Account", action = "Register", area = "" }
             ));
         }
       }

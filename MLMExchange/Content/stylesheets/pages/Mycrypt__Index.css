@@ -1,10 +1,4 @@
-@font-face {
-  font-family: Lato;
-  src: url("/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Fonts/Lato/Lato-Regular.woff");
-}
-
+@charset "IBM866";
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -12,6 +6,26 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: Lato;
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
+  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
+  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+}
+
+@font-face {
+  font-family: Dripicons;
+  src: url("/Content/Fonts/Dripicons/dripicons.eot");
+  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
+  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+/*
+* Вставить иконку из шрифта
+* @param $content Задать ID конкретной иконки из шрифта
+* @param $color Цвет иконки
+* @param $font-size Размер иконки. Фактически это размер шрифта
+*/
 /* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-hr {
   display: block;
@@ -145,8 +159,18 @@
   background-color: #0076c0;
 }
 /* line 255, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-button.b-button_color_admin-blue {
+  background-color: #007a9f;
+}
+/* line 260, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_light-grey {
   background-color: #f0f0f0;
+}
+/* line 267, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.b-button.b-button_size-admin-default {
+  font-size: 18px;
+  height: 40px;
+  width: 200px;
 }
 
 /* line 7, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */

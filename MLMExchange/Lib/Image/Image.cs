@@ -31,11 +31,15 @@ namespace MLMExchange.Lib.Image
     /// 
     /// </summary>
     /// <param name="imageFromUploadFullName">Имя картинки из директории Upload</param>
-    public Image(string imageFromUploadFullName) : this("Uploads\\Images", imageFromUploadFullName) { }
+    public Image(string imageFromUploadFullName) : this(UploadRelativeDir, imageFromUploadFullName) { }
 
     private readonly ImageInfo _CurrentImageInfo;
-
     private readonly string _ImageUploadDir;
+
+    /// <summary>
+    /// Относительная директория картинок, помещающихся при загрузке
+    /// </summary>
+    public const string UploadRelativeDir = "Uploads\\Images";
     public ImageInfo CurrentImage { get { return _CurrentImageInfo; } }
 
     /// <summary>
@@ -71,6 +75,21 @@ namespace MLMExchange.Lib.Image
       newImageBitmap.Dispose();
 
       return new ImageInfo(_ImageUploadDir, imageCropedName);
+    }
+
+    /// <summary>
+    /// Сохранить картинку на сервер
+    /// </summary>
+    /// <param name="image">Картинка</param>
+    /// <param name="server">Сервер. Необходимо для сохранения</param>
+    /// <returns>Название картинки в относительном пути для сохранения</returns>
+    public static string SaveImage(HttpPostedFileBase image, HttpServerUtilityBase server)
+    {
+      string fileName = String.Format("{0}_{1}", Guid.NewGuid().ToString(), System.IO.Path.GetExtension(image.FileName));
+      string filePath = System.IO.Path.Combine(server.MapPath(String.Format("~/{0}", UploadRelativeDir)), fileName);
+      image.SaveAs(filePath);
+
+      return fileName;
     }
 
     /// <summary>

@@ -230,3 +230,4 @@ MLMExchange/Content/.idea
 MLMExchange/Uploads
 Content/stylesheets/
 Logic/bin/
+*.css

@@ -63,26 +63,16 @@ namespace MLMExchange.Controllers
           {
             using (var transaction = session.BeginTransaction())
             {
-              User user = new User
-              {
-                Login = userModel.Login,
-                PasswordHash = Md5Hasher.ConvertStringToHash(userModel.Password),
-                Email = userModel.Email,
-                Name = userModel.Name,
-                Surname = userModel.Surname,
-                Patronymic = userModel.Patronymic,
-              };
-
               #region Сохраняю фото
               if (userModel.Photo != null)
               {
-                string fileName = String.Format("{0}_{1}", Guid.NewGuid().ToString(), System.IO.Path.GetExtension(userModel.Photo.FileName));
-                string filePath = System.IO.Path.Combine(Server.MapPath("~/Uploads/Images"), fileName);
-                userModel.Photo.SaveAs(filePath);
+                string filePath = MLMExchange.Lib.Image.Image.SaveImage(userModel.Photo, Server);
 
-                user.PhotoRelativePath = System.IO.Path.GetFileName(filePath);
+                userModel.PhotoRelativePath = filePath;
               }
               #endregion
+
+              User user = UserModel.UnBind(userModel);
 
               session.Save(user);
               transaction.Commit();
