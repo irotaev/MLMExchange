@@ -47,6 +47,9 @@ $body_BgColor: #4B73A5;
   $blue_a_4_c2: #7B87AF;
 
   $blue_a_5: #007a9f;
+
+  $color_grean_sea: #16A085;
+  $color_green_sea_c: #1ABC9C;
 //#endregion
 
 //#region Шрифты
@@ -64,13 +67,22 @@ $body_BgColor: #4B73A5;
   src: url("/Content/Fonts/Dripicons/dripicons.woff");
 }
 
+@font-face {
+  font-family: FontAwesome;
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+}
+
 /*
 * Вставить иконку из шрифта
 * @param $content Задать ID конкретной иконки из шрифта
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
-@mixin font-icon($content, $color, $font-size: $font-n)
+@mixin font-icon($content, $color, $icon-pack: FontAwesome, $font-size: $font-n)
 {
   &:before
   {

@@ -19,23 +19,58 @@
   }
 
   <!--MS unobstractive validation-->
-  <script src="~/Scripts/jquery.validate.min.js"></script>
+  <!--#region JQuery.Validation-->
+  <script src="~/Scripts/jquery.validate.min.js"></script>  
   <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+  <script src="~/Scripts/Lib/JQuery.Validation/Boolean.Extension.ValidationAdapter.js"></script>
+  <!--#endregion-->
   <script src="~/Scripts/require.js"></script>
   <!--Стоит отдельно от require.js, т.к. нужна синхронная загрузка-->
   <script src="~/Scripts/Framework/RequireJs/config.js"></script>
   <script src="~/Content/MetroUICSS/min/jquery.widjet.min.js"></script>
   <script src="~/Content/MetroUICSS/min/metro.min.js"></script>
+  <script src="~/bower_components/Buttons/js/buttons.js"></script>
+  <!--#region ICheck. Jquery plugin for checkboxes, options and so on-->
+  <script src="~/bower_components/jquery-icheck/icheck.min.js"></script>
+  <script>
+    $(function () {
+      $("input[type='checkbox']").not("[data-icheck='true']").css({ "position": "absolute", "top": "0", "left": "0", "visibility": "hidden" });
+
+      $('input[data-icheck="true"]').iCheck({
+        labelHover: false,
+        cursor: true,
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'icheckbox_square-green',
+        increaseArea: '20%'
+      }).on("ifChanged", function (event) {
+        $(event.currentTarget).closest(".b-ib").find(".b-ib_checkbox").click();
+      });
+    });
+  </script>
+  <!--#endregion-->
+  <!--#region Open tool tip-->
+  <script src="~/bower_components/opentip/downloads/opentip-jquery.js"></script>
+  <script>
+    Opentip.styles.BlackStyle = {
+      extends: "dark",
+      fixed: true
+    };
+  </script>
+  <!--#endregion-->
 
   <link href="~/Content/MetroUICSS/min/metro-bootstrap.min.css" rel="stylesheet" />
+  <link href="~/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="~/bower_components/Buttons/css/buttons.css" rel="stylesheet" />  
   <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
+  <link href="~/bower_components/opentip/css/opentip.css" rel="stylesheet" />  
+  <link href="~/bower_components/jquery-icheck/skins/square/green.css" rel="stylesheet" />
   @(new MLMExchange.Lib.ViewStyle(ViewContext).RenderPrivatePageStyle())
 
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
   {
     <link href="~/Content/stylesheets/IE_lt_9.css" rel="stylesheet" />
   }
-</head>
+</head>  
 
 <!--class metro is require for metro ui-->
 <body class="metro">
@@ -88,7 +123,7 @@
               <div class="login-on-block">
                 @if (String.IsNullOrEmpty(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath))
                 {
-                  <img src="Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "anonymous-user.png").Crop(52, 52).FullName)" class="login-on-block__avatar" alt="Alternate Text" />
+                  <img src="/Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "anonymous-user.png").Crop(52, 52).FullName)" class="login-on-block__avatar" alt="Alternate Text" />
                   @*<img src="/Content/images/Form/anonymous-user_52X44.png" class="login-on-block__avatar" alt="Alternate Text" />*@
                 }
                 else

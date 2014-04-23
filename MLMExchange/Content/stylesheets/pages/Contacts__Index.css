@@ -20,6 +20,15 @@
   src: url("/Content/Fonts/Dripicons/dripicons.woff");
 }
 
+@font-face {
+  font-family: FontAwesome;
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+}
+
 /*
 * Вставить иконку из шрифта
 * @param $content Задать ID конкретной иконки из шрифта
@@ -47,6 +56,15 @@
   src: url("/Content/Fonts/Dripicons/dripicons.woff");
 }
 
+@font-face {
+  font-family: FontAwesome;
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+}
+
 /*
 * Вставить иконку из шрифта
 * @param $content Задать ID конкретной иконки из шрифта
@@ -68,11 +86,11 @@
   background-position: 0 -34px;
 }
 
-/* line 194, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 242, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 199, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 247, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;

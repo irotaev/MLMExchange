@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Ext.Net, Version=2.5.0.31219, Culture=neutral, PublicKeyToken=2e12ce3d0176cd87, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ext.NET.MVC4.2.5.1\lib\net45\Ext.Net.dll</HintPath>
@@ -147,6 +150,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
+    <Compile Include="Areas\AdminPanel\Models\User\AddMyCryptModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AgreementController.cs" />
@@ -161,6 +165,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Lib\ApplicationException\ApplicationException.cs" />
+    <Compile Include="Lib\DataValidation\BooleanAttribute.cs" />
     <Compile Include="Lib\File.cs" />
     <Compile Include="Lib\Image\Image.cs" />
     <Compile Include="Models\ContactMessageModel.cs" />
@@ -300,6 +305,7 @@
     <Content Include="Content\Fonts\Lato\Lato-Regular.woff" />
     <Content Include="App_Readme\Ext.NET.MVC\Sample.Web.config" />
     <Content Include="Areas\AdminPanel\Views\Shared\_AdminPanel__Layout.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\User\AddMyCrypt.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -324,6 +330,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\Lib\Form.js" />
+    <Content Include="Scripts\Lib\JQuery.Validation\Boolean.Extension.ValidationAdapter.js" />
     <Content Include="Scripts\Lib\Site.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\require.js" />
@@ -356,7 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminPanel\Models\" />
     <Folder Include="Scripts\Private\" />
     <Folder Include="Uploads\Images\" />
   </ItemGroup>

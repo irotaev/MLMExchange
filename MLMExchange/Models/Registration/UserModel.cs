@@ -8,11 +8,8 @@ using System.Web.Mvc;
 
 namespace MLMExchange.Models.Registration
 {
-  public class UserModel : BaseModel
-  {
-    [HiddenInput]
-    public long? Id { get; set; }
-
+  public class UserModel : AbstractDataModel, IDataBinding<User>
+  {    
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Login { get; set; }
 
@@ -42,46 +39,33 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
-    /// <summary>
-    /// Биндинг в web-модель. Прокси-биндинг
-    /// </summary>
-    /// <param name="user">Логическая модель</param>
-    /// <returns>Web-модель</returns>
-    public static UserModel Bind(Logic.User user)
+    public void Bind(Logic.User @object)
     {
-      if (user == null)
+      if (@object == null)
         throw new ArgumentNullException("user");
 
-      UserModel userModel = new UserModel
-      {
-        Id = user.Id,
-        Email = user.Email,
-        Login = user.Login,
-        Name = user.Name,
-        Patronymic = user.Patronymic,
-        PhotoRelativePath = user.PhotoRelativePath,
-        Surname = user.Surname
-      };
-
-      return userModel;
+      this.Id = @object.Id;
+      this.Email = @object.Email;
+      this.Login = @object.Login;
+      this.Name = @object.Name;
+      this.Patronymic = @object.Patronymic;
+      this.PhotoRelativePath = @object.PhotoRelativePath;
+      this.Surname = @object.Surname;
     }
 
     #region UnBind
-    private static User UnBindLogic(UserModel userModel, User user = null)
+    private User UnBindLogic(User user = null)
     {
-      if (userModel == null)
-        throw new ArgumentNullException("userModel");
-
       if (user == null)
         user = new User();
 
-      user.Login = userModel.Login;
-      user.PasswordHash = MLMExchange.Lib.Md5Hasher.ConvertStringToHash(userModel.Password);
-      user.Email = userModel.Email;
-      user.Name = userModel.Name;
-      user.Surname = userModel.Surname;
-      user.Patronymic = userModel.Patronymic;
-      user.PhotoRelativePath = userModel.PhotoRelativePath;
+      user.Login = this.Login;
+      user.PasswordHash = MLMExchange.Lib.Md5Hasher.ConvertStringToHash(this.Password);
+      user.Email = this.Email;
+      user.Name = this.Name;
+      user.Surname = this.Surname;
+      user.Patronymic = this.Patronymic;
+      user.PhotoRelativePath = this.PhotoRelativePath;
 
       return user;
     }
@@ -89,22 +73,20 @@ namespace MLMExchange.Models.Registration
     /// <summary>
     /// Анбиндинг в логический объект. Прокси-анбиндинг
     /// </summary>
-    /// <param name="userModel">Web-модель</param>
     /// <returns>Логический объект</returns>
-    public static User UnBind(UserModel userModel)
+    public User UnBind()
     {
-      return UnBindLogic(userModel);
+      return UnBindLogic();
     }
 
     /// <summary>
     /// Анбиндинг в логический объект. Прокси-анбиндинг
     /// </summary>
-    /// <param name="userModel">Web-модель</param>
-    /// <param name="user">Логический объект User. В него произойдет анбиндинг</param>
+    /// <param name="object">Логический объект User. В него произойдет анбиндинг</param>
     /// <returns>Логический объект</returns>
-    public static User UnBind(UserModel userModel, User user)
+    public User UnBind(User @object)
     {
-      return UnBindLogic(userModel, user);
+      return UnBindLogic(@object);
     }
     #endregion
   }

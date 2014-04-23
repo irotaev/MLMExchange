@@ -1,0 +1,104 @@
+﻿@using MLMExchange.Lib
+@model MLMExchange.Areas.AdminPanel.Models.User.AddMyCryptModel
+
+@{
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.AddMyCrypt;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="pb-amc">
+  <header class="pb-amc__title">
+    <h1 class="pb-amc__h1 b-h1">@MLMExchange.Properties.ResourcesA.AddMyCrypt</h1>
+  </header>
+
+  <div class="pb-amc__add-zone">
+    @using (Html.BeginForm("AddMyCrypt", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
+    {
+      <div class="b-ib input-control text">
+        @Html.CustomValidationMessageFor(x => x.MyCryptCount)
+
+        <div class="b-ib__content-wrapper">
+          <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterMyCryptCount" data-ot-style="BlackStyle">
+            <i class="b-ib__info-icon fa fa-question"></i>
+          </div>
+
+          <div class="b-ib__input-content">
+            <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterMyCryptCount</label>
+            @Html.TextBoxFor(x => x.MyCryptCount, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterMyCryptCount, @class = String.Format("b-ib__input b-ib__input_type_blue") })
+            <button class="btn-clear"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="b-ib input-control text">
+        @Html.CustomValidationMessageFor(x => x.Comment)
+
+        <div class="b-ib__content-wrapper">
+          <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterComment" data-ot-style="BlackStyle">
+            <i class="b-ib__info-icon fa fa-question"></i>
+          </div>
+
+          <div class="b-ib__input-content">
+            <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterComment</label>
+            @Html.TextAreaFor(x => x.Comment, new
+             {
+               type = "text",
+               placeholder = @MLMExchange.Properties.ResourcesA.EnterComment,
+               @class = String.Format("b-ib__input b-ib__input_type_blue"),
+               @rows = 7
+             })
+            <button class="btn-clear"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="b-ib b-ib_content_photo">
+        <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.AddPhoto</label>
+        @Html.TextBoxFor(x => x.Image, new { type = "file", placeholder = @MLMExchange.Properties.ResourcesA.AddPhoto, @class = "b-ib__input b-ib_choose-file b-ib__input_type_blue" })
+
+        <i class="b-ib__file-preview b-ib__file-preview_type_blue">
+          <img class="b-ib__image" src="@(!String.IsNullOrEmpty(Model.ImageRelativePath)
+            ? "/" + MLMExchange.Lib.Image.Image.UploadRelativeDir + "/" + (new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).Crop(206, 212).FullName) : String.Empty)" />
+        </i>
+
+        <input class="b-button b-button_color_green-sea b-button_hover-animate_opacity b-ib_file-chooser b-ib_file-chooser_type_blue"
+               type="button" title="@MLMExchange.Properties.ResourcesA.Upload" value="@MLMExchange.Properties.ResourcesA.Upload" />
+      </div>
+      
+      <div class="b-ib">
+        @Html.CustomValidationMessageFor(x => x.IsTermsAgreed)
+
+        <div class="b-ib__content-wrapper b-ib__content-wrapper_height_one-line-text">
+          <div class="b-ib__info-helper" data-ot="Sed sit
+               amet nisi mollis, placerat metus vel, lacinia nibh. Donec id scelerisque libero.
+               Aenean fringilla turpis id justo mollis,
+               tincidunt commodo nulla rutrum. Ut auctor lacus id euismod viverra" data-ot-style="BlackStyle">
+            <i class="b-ib__info-icon fa fa-question"></i>
+          </div>
+          <div class="b-ib__input-content">
+            @Html.CheckBoxFor(x => x.IsTermsAgreed, new { @class = "b-ib_checkbox" })
+
+            <label>
+              <input type="checkbox" data-icheck="true" />
+              @MLMExchange.Properties.ResourcesA.AgreeWithTerms
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <input style="position: absolute; visibility: hidden;" id="edit-user__submit-btn"
+             class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />
+
+      <div class="pb-amc__submit-btn-wrappper">
+        <a href="#" class="b-btn b-btn-flat-action pb-amc__submit-btn" onclick="javascript: $('#edit-user__submit-btn').click();">
+          <i class="fa fa-save fa-lg"></i>
+          @MLMExchange.Properties.ResourcesA.SendButton
+        </a>
+      </div>
+    }
+  </div>
+</section>
+
+
+
+

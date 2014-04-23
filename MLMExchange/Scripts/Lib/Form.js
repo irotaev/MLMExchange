@@ -60,6 +60,18 @@ define(["require", "exports", "jquery"], function(require, exports) {
                     });
                 });
             }
+
+            //#endregion
+            //#region инийиализирую кнопки отчиски поля
+            $.each($(".b-ib .btn-clear"), function (index, elem) {
+                $(elem).click(function (event) {
+                    $(event.currentTarget).closest(".b-ib").find(".b-ib__input").val("");
+
+                    event.preventDefault();
+
+                    return false;
+                });
+            });
             //#endregion
         };
         return Form;

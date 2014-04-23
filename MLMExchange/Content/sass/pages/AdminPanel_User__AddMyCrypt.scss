@@ -1,0 +1,18 @@
+@import "../framework";
+@import "../AdminFramework";
+
+.pb-amc
+{
+  @include admin-content-zone;
+
+  .pb-amc__submit-btn-wrappper
+  {
+    @include clearfix;
+
+    .pb-amc__submit-btn
+    {
+      margin-top: 20px;
+      float: right;
+    }
+  }
+}

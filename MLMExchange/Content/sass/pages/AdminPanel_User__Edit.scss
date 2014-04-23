@@ -1,4 +1,5 @@
 @import "../Framework";
+@import "../AdminFramework";
 
 .metro .pb-eu
 {
@@ -6,11 +7,7 @@
 }
 .pb-eu
 {
-  @include clearfix;
-  width: 670px;
-  margin: 20px auto;
-
-  color: $blue_a_4_c;
+  @include admin-content-zone;
 
   .pb-eu__submit-btn
   {

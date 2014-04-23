@@ -1,0 +1,10 @@
+@mixin admin-content-zone
+{
+  @include clearfix;
+  width: 670px;
+  margin: 20px auto;
+
+  color: $blue_a_4_c;
+
+  .b-h1 {color: $blue_a_4_c; height: 25px; line-height: 25px;}
+}

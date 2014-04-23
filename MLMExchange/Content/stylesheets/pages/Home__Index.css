@@ -20,6 +20,15 @@
   src: url("/Content/Fonts/Dripicons/dripicons.woff");
 }
 
+@font-face {
+  font-family: FontAwesome;
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+}
+
 /*
 * Вставить иконку из шрифта
 * @param $content Задать ID конкретной иконки из шрифта
@@ -45,6 +54,15 @@
   src: url("/Content/Fonts/Dripicons/dripicons.eot");
   src: url("/Content/Fonts/Dripicons/dripicons.ttf");
   src: url("/Content/Fonts/Dripicons/dripicons.woff");
+}
+
+@font-face {
+  font-family: FontAwesome;
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
 }
 
 /*

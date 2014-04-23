@@ -81,5 +81,19 @@ export class Form
       });
     }
     //#endregion
+
+    //#region инийиализирую кнопки отчиски поля
+    $.each($(".b-ib .btn-clear"), function (index, elem)
+    {
+      $(elem).click(function (event: Event)
+      {
+        $(event.currentTarget).closest(".b-ib").find(".b-ib__input").val("");
+
+        event.preventDefault();
+
+        return false;
+      });
+    });
+    //#endregion
   }
 }

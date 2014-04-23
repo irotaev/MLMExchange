@@ -9,49 +9,112 @@
 
 <div class="b-ib input-control text">
   @Html.CustomValidationMessageFor(x => x.Login)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterLogin</label>
-  @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterLogin, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
-  <button class="btn-clear"></button>
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterLogin" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterLogin</label>
+      @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterLogin, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+      <button class="btn-clear"></button>
+    </div>
+  </div>
 </div>
 
 <div class="b-ib">
   @Html.CustomValidationMessageFor(x => x.Password)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPassword</label>
-  @Html.PasswordFor(x => x.Password, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterPassword" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPassword</label>
+      @Html.PasswordFor(x => x.Password, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPassword, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+    </div>
+  </div>
 </div>
 
 <div class="b-ib">
   @Html.CustomValidationMessageFor(x => x.PasswordConfirmation)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation</label>
-  @Html.PasswordFor(x => x.PasswordConfirmation, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">      
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation</label>
+      @Html.PasswordFor(x => x.PasswordConfirmation, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+    </div>
+  </div>
 </div>
 
 <div class="b-ib input-control text">
   @Html.CustomValidationMessageFor(x => x.Name)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterName</label>
-  @Html.TextBoxFor(x => x.Name, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterName, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
-  <button class="btn-clear"></button>
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterName" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">      
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterName</label>
+      @Html.TextBoxFor(x => x.Name, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterName, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+      <button class="btn-clear"></button>
+    </div>
+  </div>
 </div>
 
 <div class="b-ib input-control text">
   @Html.CustomValidationMessageFor(x => x.Surname)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterSurname</label>
-  @Html.TextBoxFor(x => x.Surname, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterSurname, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
-  <button class="btn-clear"></button>
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterSurname" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">      
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterSurname</label>
+      @Html.TextBoxFor(x => x.Surname, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterSurname, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+      <button class="btn-clear"></button>
+    </div>
+  </div>
 </div>
 
 <div class="b-ib input-control text">
   @Html.CustomValidationMessageFor(x => x.Patronymic)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPatronymic</label>
-  @Html.TextBoxFor(x => x.Patronymic, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterPatronymic, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
-  <button class="btn-clear"></button>
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterPatronymic" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">      
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPatronymic</label>
+      @Html.TextBoxFor(x => x.Patronymic, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterPatronymic, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+      <button class="btn-clear"></button>
+    </div>
+  </div>
 </div>
 
 <div class="b-ib input-control text">
   @Html.CustomValidationMessageFor(x => x.Email)
-  <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterEmail</label>
-  @Html.TextBoxFor(x => x.Email, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterEmail, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
-  <button class="btn-clear"></button>
+
+  <div class="b-ib__content-wrapper">
+    <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterEmail" data-ot-style="BlackStyle">
+      <i class="b-ib__info-icon fa fa-question"></i>
+    </div>
+
+    <div class="b-ib__input-content">      
+      <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterEmail</label>
+      @Html.TextBoxFor(x => x.Email, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterEmail, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+      <button class="btn-clear"></button>
+    </div>
+  </div>
 </div>
 
 <div class="b-ib b-ib_content_photo">
@@ -59,22 +122,22 @@
   @Html.TextBoxFor(x => x.Photo, new { type = "file", placeholder = @MLMExchange.Properties.ResourcesA.AddPhoto, @class = String.Format("b-ib__input b-ib_choose-file b-ib__input_type_{0}", @type) })
 
   <i class="@String.Format("b-ib__file-preview b-ib__file-preview_type_{0}", type)">
-    <img class="b-ib__image" src="@(!String.IsNullOrEmpty(Model.PhotoRelativePath) 
+    <img class="b-ib__image" src="@(!String.IsNullOrEmpty(Model.PhotoRelativePath)
       ? "/" + MLMExchange.Lib.Image.Image.UploadRelativeDir + "/" + (new MLMExchange.Lib.Image.Image(Model.PhotoRelativePath).Crop(206, 212).FullName) : String.Empty)" />
   </i>
 
   @{
     string additionalClass = null;
 
-    switch(type)
+    switch (type)
     {
       case "blue":
-        additionalClass = "b-button_color_admin-blue";
+        additionalClass = "b-button_color_green-sea";
         break;
     }
   }
-  
-    <input class="@String.Format("b-button {0} b-button_hover-animate_opacity b-ib_file-chooser", additionalClass)"
-           type="button" title="@MLMExchange.Properties.ResourcesA.Upload" value="@MLMExchange.Properties.ResourcesA.Upload" />
+
+  <input class="@String.Format("b-button {0} b-button_hover-animate_opacity b-ib_file-chooser b-ib_file-chooser_type_{1}", additionalClass, type)"
+         type="button" title="@MLMExchange.Properties.ResourcesA.Upload" value="@MLMExchange.Properties.ResourcesA.Upload" />
 </div>
 

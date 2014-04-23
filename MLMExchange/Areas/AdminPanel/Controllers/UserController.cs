@@ -1,4 +1,5 @@
 ﻿using Logic;
+using MLMExchange.Areas.AdminPanel.Models.User;
 using MLMExchange.Controllers;
 using MLMExchange.Lib;
 using MLMExchange.Models.Registration;
@@ -24,7 +25,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (model.Id == null)
       {
-        model = UserModel.Bind(user);
+        model.Bind(user);
       }
       else if (ControllerContext.HttpContext.Request.HttpMethod == "POST")
       {
@@ -43,9 +44,44 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
               }
               #endregion
 
-              user = UserModel.UnBind(model, user);
+              user = model.UnBind(user);
 
               session.SaveOrUpdate(user);
+              transaction.Commit();
+            }
+          }
+        }
+      }
+
+      return View(model);
+    }
+
+    public ActionResult AddMyCrypt(AddMyCryptModel model)
+    {
+      if (ControllerContext.HttpContext.Request.HttpMethod == "GET")
+      {
+        ModelState.Clear();
+      }
+      else
+      {
+        if (ModelState.IsValid)
+        {
+          using (var session = NHibernateConfiguration.Session.OpenSession())
+          {
+            using (var transaction = session.BeginTransaction())
+            {
+              #region Сохраняю фото
+              if (model.Image != null)
+              {
+                string filePath = MLMExchange.Lib.Image.Image.SaveImage(model.Image, Server);
+
+                model.ImageRelativePath = filePath;
+              }
+              #endregion
+
+              AddMyCryptTransaction addMyCryptTransaction = model.UnBind();
+
+              session.Save(addMyCryptTransaction);
               transaction.Commit();
             }
           }

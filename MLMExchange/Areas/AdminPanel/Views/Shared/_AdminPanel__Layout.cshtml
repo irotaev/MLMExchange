@@ -12,16 +12,21 @@
 @helper MainMenu__InnerContent()
 {
   <div class="pb-mm">
-    @for (int i = 0; i <= 7; i++)
-    {
-      <a href="">
-        <nav class="pb-mm__menu-item-wrapper">
+      <a href="@Url.Action("Edit")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_user-info">
           <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-          <span class="pb-mm__text-wrapper">Пол. информация</span>
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.UserInfo_Short</span>
         </nav>
       </a>
-    }
+
+      <a href="@Url.Action("AddMyCrypt")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_user-info">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.AddMyCrypt</span>
+        </nav>
+      </a>
   </div>
 }
 

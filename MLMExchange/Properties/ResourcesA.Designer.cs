@@ -70,11 +70,29 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Пополнить My Crypt.
+        /// </summary>
+        public static string AddMyCrypt {
+            get {
+                return ResourceManager.GetString("AddMyCrypt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Добавьте фотографию.
         /// </summary>
         public static string AddPhoto {
             get {
                 return ResourceManager.GetString("AddPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to С условиями согласен.
+        /// </summary>
+        public static string AgreeWithTerms {
+            get {
+                return ResourceManager.GetString("AgreeWithTerms", resourceCulture);
             }
         }
         
@@ -124,6 +142,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Введите комментарий.
+        /// </summary>
+        public static string EnterComment {
+            get {
+                return ResourceManager.GetString("EnterComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введите email.
         /// </summary>
         public static string EnterEmail {
@@ -147,6 +174,15 @@ namespace MLMExchange.Properties {
         public static string EnterMessageText {
             get {
                 return ResourceManager.GetString("EnterMessageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите количество едениц my-crypt.
+        /// </summary>
+        public static string EnterMyCryptCount {
+            get {
+                return ResourceManager.GetString("EnterMyCryptCount", resourceCulture);
             }
         }
         
@@ -237,6 +273,24 @@ namespace MLMExchange.Properties {
         public static string FieldFilledInvalid {
             get {
                 return ResourceManager.GetString("FieldFilledInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы должны выбрать данный пункт.
+        /// </summary>
+        public static string FieldFilledInvalid_Boolean {
+            get {
+                return ResourceManager.GetString("FieldFilledInvalid_Boolean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы водлжны ввести число.
+        /// </summary>
+        public static string FieldFilledInvalid_IntegerOnly {
+            get {
+                return ResourceManager.GetString("FieldFilledInvalid_IntegerOnly", resourceCulture);
             }
         }
         
@@ -345,6 +399,15 @@ namespace MLMExchange.Properties {
         public static string UserAgreement {
             get {
                 return ResourceManager.GetString("UserAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пол. информация.
+        /// </summary>
+        public static string UserInfo_Short {
+            get {
+                return ResourceManager.GetString("UserInfo_Short", resourceCulture);
             }
         }
         

@@ -72,7 +72,7 @@ namespace MLMExchange.Controllers
               }
               #endregion
 
-              User user = UserModel.UnBind(userModel);
+              User user = userModel.UnBind();
 
               session.Save(user);
               transaction.Commit();

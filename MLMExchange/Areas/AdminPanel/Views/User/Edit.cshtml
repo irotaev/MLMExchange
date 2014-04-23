@@ -21,7 +21,13 @@
         new KeyValuePair<string, object>("Type", "blue")
       })
 
-      <input class="b-button b-button_color_admin-blue register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />
+      <input style="position: absolute; visibility: hidden;" id="edit-user__submit-btn"
+             class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />
+
+      <a href="#" class="b-btn b-btn-flat-action pb-eu__submit-btn" onclick="javascript: $('#edit-user__submit-btn').click();">
+        <i class="fa fa-save fa-lg"></i>
+        @MLMExchange.Properties.ResourcesA.SaveButton
+      </a>
     }
   </div>
 </section><!--PB: Edit user-->

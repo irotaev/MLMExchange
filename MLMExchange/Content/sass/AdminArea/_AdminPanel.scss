@@ -3,6 +3,7 @@
 */
 
 @import "compass/css3/transition";
+@import "../AdminFramework";
 
 $default-layout_Bg-color: $blue_a_4;
 
@@ -12,20 +13,21 @@ $default-layout_Bg-color: $blue_a_4;
 
   &, .metro &, .metro &, .metro &
   {
-    div, span, p
+    div, span:not([for]):not(.b-ib__validation-message) , p
     {
-      position: relative;
       font-family: Lato;
+      color: $blue_a_4_c;
     }
 
     input[type="button"], input[type="submit"], input[type="reset"]
     {
-      font-family: Lato; font-size: $font-bb; color: $blue_a_4_c;
+      font-family: Lato; font-size: $font-nb; color: white;
     }
 
     h1, h2, h3, h4, h5, h6 {font-family: Lato; font-size: $font-h;}
   }
 
+  .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {font-family: "Lato";}
 
   //#region Main menu
   #MainLeft_Menu
@@ -78,7 +80,7 @@ $default-layout_Bg-color: $blue_a_4;
 
           .pb-mm__icon
           {
-            @include font-icon("\e037", $blue_a_4_c2, 25px);
+            @include font-icon("\e037", $blue_a_4_c2, "Dripicons", 25px);
 
            &:before
            {
