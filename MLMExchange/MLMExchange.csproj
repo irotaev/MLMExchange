@@ -306,6 +306,7 @@
     <Content Include="App_Readme\Ext.NET.MVC\Sample.Web.config" />
     <Content Include="Areas\AdminPanel\Views\Shared\_AdminPanel__Layout.cshtml" />
     <Content Include="Areas\AdminPanel\Views\User\AddMyCrypt.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\User\_AddMyCrypt_Success.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

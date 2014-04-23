@@ -1,0 +1,12 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.User.AddMyCryptModel
+
+@{
+    ViewBag.Title = @MLMExchange.Properties.ResourcesA.OperationSuccess;
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="pb-os">
+  <span class="pb-os__result"><i class="pb-os__icon fa fa-check-circle"></i> @(String.Format(MLMExchange.Properties.ResourcesA.AddMyCryptSuccess, Model.MyCryptCount))</span>
+
+  <span class="pb-os__additional-info">После подтверждения администратором, вам на счет поступят my-crypt</span>
+</section><!--PB: Operation success-->

@@ -33,7 +33,7 @@ namespace MLMExchange.Models
   /// </summary>
   public interface IDataModel
   {
-    long Id { get; set; }
+    long? Id { get; set; }
   }
 
   public abstract class BaseModel

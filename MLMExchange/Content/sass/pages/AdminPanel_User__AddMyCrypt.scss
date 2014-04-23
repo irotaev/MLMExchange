@@ -16,3 +16,30 @@
     }
   }
 }
+
+.pb-os
+{
+  @include admin-content-zone;
+
+  .pb-os__result
+  {
+    display: block;
+    font-size: $font-h;
+    margin-bottom: 20px;
+
+    .pb-os__icon
+    {
+      position: relative; top: 2px;
+      font-size: 28px;
+      color: $color_grean_sea;
+    }
+  }
+
+  .pb-os__additional-info
+  {
+    display: block;
+
+    font-family: "Segoe UI";
+    font-style: italic;
+  }
+}

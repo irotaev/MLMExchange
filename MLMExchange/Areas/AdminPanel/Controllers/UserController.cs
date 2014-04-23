@@ -58,11 +58,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
     public ActionResult AddMyCrypt(AddMyCryptModel model)
     {
-      if (ControllerContext.HttpContext.Request.HttpMethod == "GET")
-      {
-        ModelState.Clear();
-      }
-      else
+      ModelState.Clear();
+
+      if (ControllerContext.HttpContext.Request.HttpMethod == "POST")
       {
         if (ModelState.IsValid)
         {
@@ -85,6 +83,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
               transaction.Commit();
             }
           }
+
+          return View("_AddMyCrypt_Success", model);
         }
       }
 

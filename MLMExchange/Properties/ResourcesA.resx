@@ -123,6 +123,9 @@
   <data name="AddMyCrypt" xml:space="preserve">
     <value>Пополнить My Crypt</value>
   </data>
+  <data name="AddMyCryptSuccess" xml:space="preserve">
+    <value>Запрос на добавление my crypt в размере {0} отправлен</value>
+  </data>
   <data name="AddPhoto" xml:space="preserve">
     <value>Добавьте фотографию</value>
   </data>
@@ -209,6 +212,9 @@
   </data>
   <data name="MyCryptPage" xml:space="preserve">
     <value>My-Crypt биржа</value>
+  </data>
+  <data name="OperationSuccess" xml:space="preserve">
+    <value>Операция успешно завершена</value>
   </data>
   <data name="PasswordDoesnotMatchWithPasswordConfirmation" xml:space="preserve">
     <value>Пароль и подтверждение пароля не совпадают</value>

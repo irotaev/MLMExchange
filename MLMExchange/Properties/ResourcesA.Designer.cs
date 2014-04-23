@@ -79,6 +79,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Запрос на добавление my crypt в размере {0} отправлен.
+        /// </summary>
+        public static string AddMyCryptSuccess {
+            get {
+                return ResourceManager.GetString("AddMyCryptSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Добавьте фотографию.
         /// </summary>
         public static string AddPhoto {
@@ -336,6 +345,15 @@ namespace MLMExchange.Properties {
         public static string MyCryptPage {
             get {
                 return ResourceManager.GetString("MyCryptPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Операция успешно завершена.
+        /// </summary>
+        public static string OperationSuccess {
+            get {
+                return ResourceManager.GetString("OperationSuccess", resourceCulture);
             }
         }
         
