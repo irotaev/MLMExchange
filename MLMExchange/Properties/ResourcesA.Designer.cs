@@ -106,11 +106,38 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Подать заявку на участвие в торгах.
+        /// </summary>
+        public static string ApplyBiddingParticipateApplication {
+            get {
+                return ResourceManager.GetString("ApplyBiddingParticipateApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Применить.
+        /// </summary>
+        public static string ApplyButton {
+            get {
+                return ResourceManager.GetString("ApplyButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Контакты.
         /// </summary>
         public static string Contacts {
             get {
                 return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Панель управления.
+        /// </summary>
+        public static string ControlPanel {
+            get {
+                return ResourceManager.GetString("ControlPanel", resourceCulture);
             }
         }
         
@@ -250,6 +277,24 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Аргумент {0} не задан.
+        /// </summary>
+        public static string Exception_ArgumentNull {
+            get {
+                return ResourceManager.GetString("Exception_ArgumentNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Модель заполнена не верно.
+        /// </summary>
+        public static string Exception_ModelInvalid {
+            get {
+                return ResourceManager.GetString("Exception_ModelInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Биржа.
         /// </summary>
         public static string Exchange {
@@ -340,6 +385,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Количество my-crypt.
+        /// </summary>
+        public static string MyCryptNumber {
+            get {
+                return ResourceManager.GetString("MyCryptNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My-Crypt биржа.
         /// </summary>
         public static string MyCryptPage {
@@ -381,6 +435,24 @@ namespace MLMExchange.Properties {
         public static string Registration {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to У вас осталось {0} заявок.
+        /// </summary>
+        public static string RemaningApplication {
+            get {
+                return ResourceManager.GetString("RemaningApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Продавцы.
+        /// </summary>
+        public static string SalesPeople {
+            get {
+                return ResourceManager.GetString("SalesPeople", resourceCulture);
             }
         }
         

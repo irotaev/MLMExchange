@@ -39,6 +39,12 @@ namespace Logic
     /// </summary>
     public virtual string ImageRelativePath { get; set; }
   }
+
+  public class BiddingParticipateApplication : BaseObject
+  {
+    public virtual User User { get; set; }
+    public virtual int MyCryptCount { get; set; }
+  }
   #endregion
 
   #region Map Entity
@@ -74,6 +80,15 @@ namespace Logic
       Map(x => x.Comment).Nullable().Length(5000);
       References(x => x.User).Column("UserId");
       Map(x => x.ImageRelativePath).Nullable().Length(1000);
+    }
+  }
+
+  public class BiddingParticipateApplication_Map : BaseObject_Map<BiddingParticipateApplication>
+  {
+    public BiddingParticipateApplication_Map()
+    {
+      References(x => x.User).Column("UserId");
+      Map(x => x.MyCryptCount).Not.Nullable();
     }
   }
   #endregion

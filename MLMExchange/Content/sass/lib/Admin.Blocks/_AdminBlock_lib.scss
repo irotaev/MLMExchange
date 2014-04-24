@@ -1,0 +1,34 @@
+@import "../../framework";
+@import "../../AdminFramework";
+
+@mixin b-ab
+{
+  position: relative;
+  width: 415px;
+
+  .b-ab__title
+  {
+    position: relative;
+    height: 36px;
+    background-color: $red_a_1_c;
+    color: white;
+    line-height: 36px;
+    text-align: center;
+    font-size: $font-h;
+
+    .b-ab__icon
+    {
+      display: block;
+      position: absolute;
+      top: 0; left: 10px;
+      height: 36px; line-height: 40px;
+    }
+  }
+
+  .b-ab__content
+  {
+    padding: 20px; padding-top: 0;
+    border: 2px solid $red_a_1_c;
+    background-color: $blue_a_4_c3;
+  }
+}

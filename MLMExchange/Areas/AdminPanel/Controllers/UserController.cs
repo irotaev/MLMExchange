@@ -2,6 +2,8 @@
 using MLMExchange.Areas.AdminPanel.Models.User;
 using MLMExchange.Controllers;
 using MLMExchange.Lib;
+using MLMExchange.Lib.Exception;
+using MLMExchange.Models;
 using MLMExchange.Models.Registration;
 using System;
 using System.Collections.Generic;
@@ -56,6 +58,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return View(model);
     }
 
+    /// <summary>
+    /// Добавить/пополнить my-crypt
+    /// </summary>
+    /// <param name="model">Модель добавления myc-rypt</param>
+    /// <returns></returns>
     public ActionResult AddMyCrypt(AddMyCryptModel model)
     {
       ModelState.Clear();
@@ -89,6 +96,64 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       }
 
       return View(model);
+    }
+
+    /// <summary>
+    /// Панель управления пользователя
+    /// </summary>
+    /// <returns></returns>
+    public ActionResult ControlPanel()
+    {
+      return View();
+    }
+
+    /// <summary>
+    /// Подать заявку на участие в торгах
+    /// </summary>
+    /// <param name="model">Модель подачи заявки</param>
+    /// <returns></returns>
+    [HttpPost]
+    public ActionResult BiddingParticipateApplicationApply(BiddingParticipateApplicationModel model)
+    {
+      ModelState.Clear();
+
+      UpdateModel<BiddingParticipateApplicationModel>(model);
+
+      if (ModelState.IsValid)
+      {
+        using (var session = NHibernateConfiguration.Session.OpenSession())
+        {
+          using (var transaction = session.BeginTransaction())
+          {
+            BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
+
+            session.Save(biddingApplication);
+            transaction.Commit();
+          }
+        }
+      }
+      else
+      {
+        throw new UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
+      }
+
+      return Redirect(Request.UrlReferrer.ToString());
+    }
+
+    /// <summary>
+    /// Продавцы
+    /// </summary>
+    /// <returns></returns>
+    public ActionResult SalesPeople()
+    {
+      IList<BiddingParticipateApplication> biddingApplications;
+
+      using (var session = NHibernateConfiguration.Session.OpenSession())
+      {
+        biddingApplications = session.QueryOver<BiddingParticipateApplication>().List();
+      }
+
+      return View(biddingApplications);
     }
   }
 }

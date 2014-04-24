@@ -1,6 +1,7 @@
 ﻿using DataAnnotationsExtensions;
 using Logic;
 using MLMExchange.Lib.DataValidation;
+using MLMExchange.Lib.Exception;
 using MLMExchange.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    public int MyCryptCount { get; set; }
+    public int? MyCryptCount { get; set; }
     /// <summary>
     /// Комментарии
     /// </summary>
@@ -45,7 +46,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       if (@object == null)
         throw new ArgumentNullException("object");
 
-      Id = @object.Id;
+      base.Bind(@object);
+      
       MyCryptCount = @object.MyCryptCount;
       Comment = @object.Comment;
       ImageRelativePath = @object.ImageRelativePath;
@@ -56,7 +58,12 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       if (@object == null)
         @object = new AddMyCryptTransaction();
 
-      @object.MyCryptCount = MyCryptCount;
+      base.UnBind(@object);
+
+      if (MyCryptCount == null)
+        throw new UserVisible__ArgumentNullException("MyCryptCount");
+
+      @object.MyCryptCount = MyCryptCount.Value;
       @object.Comment = Comment;
       @object.ImageRelativePath = ImageRelativePath;
 

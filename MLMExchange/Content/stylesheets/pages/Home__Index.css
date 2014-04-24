@@ -209,13 +209,20 @@
 }
 /* line 25, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_max .pb-sb .pb-sb__value-wrapper {
-  overflow: hidden;
-  *zoom: 1;
   height: 100%;
   -webkit-transition: height 0.3s linear;
   -moz-transition: height 0.3s linear;
   -o-transition: height 0.3s linear;
   transition: height 0.3s linear;
+}
+/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.slider-block .slider-block__cell_max .pb-sb .pb-sb__value-wrapper:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
 }
 /* line 31, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .slider-block .slider-block__cell_max .pb-sb .pb-sb__value-wrapper .pb-sb__icon-wrapper {

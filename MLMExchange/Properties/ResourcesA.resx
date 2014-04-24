@@ -132,8 +132,17 @@
   <data name="AgreeWithTerms" xml:space="preserve">
     <value>С условиями согласен</value>
   </data>
+  <data name="ApplyBiddingParticipateApplication" xml:space="preserve">
+    <value>Подать заявку на участвие в торгах</value>
+  </data>
+  <data name="ApplyButton" xml:space="preserve">
+    <value>Применить</value>
+  </data>
   <data name="Contacts" xml:space="preserve">
     <value>Контакты</value>
+  </data>
+  <data name="ControlPanel" xml:space="preserve">
+    <value>Панель управления</value>
   </data>
   <data name="CopyRight" xml:space="preserve">
     <value>Копирайт</value>
@@ -180,6 +189,12 @@
   <data name="EnterTitle" xml:space="preserve">
     <value>Введите заголовок</value>
   </data>
+  <data name="Exception_ArgumentNull" xml:space="preserve">
+    <value>Аргумент {0} не задан</value>
+  </data>
+  <data name="Exception_ModelInvalid" xml:space="preserve">
+    <value>Модель заполнена не верно</value>
+  </data>
   <data name="Exchange" xml:space="preserve">
     <value>Биржа</value>
   </data>
@@ -210,6 +225,9 @@
   <data name="MainMenu__Header" xml:space="preserve">
     <value>Меню</value>
   </data>
+  <data name="MyCryptNumber" xml:space="preserve">
+    <value>Количество my-crypt</value>
+  </data>
   <data name="MyCryptPage" xml:space="preserve">
     <value>My-Crypt биржа</value>
   </data>
@@ -224,6 +242,12 @@
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="RemaningApplication" xml:space="preserve">
+    <value>У вас осталось {0} заявок</value>
+  </data>
+  <data name="SalesPeople" xml:space="preserve">
+    <value>Продавцы</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Сохранить</value>

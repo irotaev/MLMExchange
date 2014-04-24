@@ -1,0 +1,21 @@
+@import "../../framework";
+
+@mixin pb-bpa
+{
+  .pb-bpa__submit-btn-wrappper
+  {
+    @include clearfix;
+    margin-top: 20px;
+
+    .pb-bpa__submit-btn {float: right;}
+  }
+
+  .pb-bpa__remaning-applications
+  {
+    margin-top: 10px;
+    color: white;
+    font-size: $font-nb;
+
+    .b-bpa__icon {margin-left: 10px;}
+  }
+}

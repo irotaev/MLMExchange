@@ -10,6 +10,23 @@ namespace MLMExchange.Lib.Exception
   /// </summary>
   public class ApplicationException : System.Exception
   {
+    public ApplicationException() : base() { }
     public ApplicationException(string message) : base(message) { }
+    public ApplicationException(string message, System.Exception ex) : base(message, ex) { }
+  }
+
+  public class UserVisibleException : ApplicationException
+  {
+    public UserVisibleException() : base() { }
+    public UserVisibleException(string message) : base(message) { }
+    public UserVisibleException(string message, System.Exception ex) : base(message, ex) { }
+  }
+
+  public class UserVisible__ArgumentNullException : UserVisibleException
+  {
+    public UserVisible__ArgumentNullException(string argumentName) : base() 
+    {
+      throw new UserVisibleException(String.Format(MLMExchange.Properties.ResourcesA.Exception_ArgumentNull, argumentName));
+    }
   }
 }

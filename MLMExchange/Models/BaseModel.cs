@@ -11,7 +11,7 @@ namespace MLMExchange.Models
   /// Интерфейс биндинга к данным
   /// <typeparam name="TObject">Объект данных</typeparam>
   /// </summary>
-  public interface IDataBinding<TObject> 
+  public interface IDataBinding<TObject>
     where TObject : BaseObject
   {
     /// <summary>
@@ -40,9 +40,31 @@ namespace MLMExchange.Models
   {
   }
 
-  public abstract class AbstractDataModel : BaseModel, IDataModel
+  public abstract class AbstractDataModel : BaseModel, IDataModel, IDataBinding<BaseObject>
   {
     [HiddenInput]
     public long? Id { get; set; }
+
+    public virtual void Bind(BaseObject @object)
+    {
+      Id = @object.Id;
+    }
+
+    public virtual BaseObject UnBind(BaseObject @object = null)
+    {
+      if (@object == null)
+        throw new ArgumentOutOfRangeException("object");
+
+      return @object;
+    }
   }
+
+  #region Exceptions
+  public class ModelInvalidException : ApplicationException
+  {
+    public ModelInvalidException() : base() { }
+    public ModelInvalidException(string message) : base(message) { }
+    public ModelInvalidException(string message, Exception innerException) : base(message, innerException) { }
+  }
+  #endregion
 }

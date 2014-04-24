@@ -45,11 +45,15 @@ $body_BgColor: #4B73A5;
   $blue_a_4: #394264;
   $blue_a_4_c: #BEBECF;
   $blue_a_4_c2: #7B87AF;
+  $blue_a_4_c3: #353F59;
 
   $blue_a_5: #007a9f;
 
   $color_grean_sea: #16A085;
   $color_green_sea_c: #1ABC9C;
+
+  $red_a_1: #E74C3C;
+  $red_a_1_c: #C0392B;
 //#endregion
 
 //#region Шрифты
@@ -112,3 +116,5 @@ $body_BgColor: #4B73A5;
     @content;
   }
 }
+
+@import "lib/Shared_lib";

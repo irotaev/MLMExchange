@@ -1,0 +1,33 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+
+@model System.Collections.IEnumerable
+
+@{
+    ViewBag.Title = MLMExchange.Properties.ResourcesA.SalesPeople;
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+    var X = Html.X();
+}
+
+<section class="pb-bidding-participate-applications" id="pb-bidding-participate-applications_ID">
+  @(X.GridPanel()
+    .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
+    .Layout(LayoutType.Fit)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(Model)
+      .Model(X.Model().Fields(
+          new ModelField("User"),
+          new ModelField("MyCryptCount")
+      )))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().Text("User").DataIndex("User").Flex(1),
+        X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1))
+         .RenderTo(ViewData["AdminPanel__CenterBlock"] as Panel.Builder))
+</section>
+
+
+

@@ -1,0 +1,14 @@
+@import "../framework";
+@import "../AdminFramework";
+@import "../lib/Admin.Blocks/BindingParticipateApplicationBlock";
+
+.pb-cp
+{
+  @include admin-content-zone;
+}
+
+.pb-bpa
+{
+  margin: 0 auto;
+  @include pb-bpa;
+}
