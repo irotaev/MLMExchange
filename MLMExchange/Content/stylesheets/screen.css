@@ -862,44 +862,58 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: #353f59;
 }
 
-/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 12, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-menu {
+  border-color: #e74c3c;
+}
+/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-menu .x-menu-item-text {
+  font-family: "Segoe UI" !important;
+  color: #bebecf !important;
+}
+/* line 17, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-menu .x-menu-item-active {
+  background-color: #2f374b;
+}
+
+/* line 22, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel .x-border-layout-ct {
   background-color: #394264;
 }
-/* line 18, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 27, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel div, .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .metro .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .metro .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .metro .pb-admin-panel p {
   font-family: Lato;
   color: #bebecf;
 }
-/* line 24, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 33, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel input[type="button"], .pb-admin-panel input[type="submit"], .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"] {
   font-family: Lato;
   font-size: 14px;
   color: white;
 }
-/* line 28, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 37, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel h1, .pb-admin-panel h2, .pb-admin-panel h3, .pb-admin-panel h4, .pb-admin-panel h5, .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6 {
   font-family: Lato;
   font-size: 20px;
 }
-/* line 31, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 40, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel .b-f input[type='text'], .pb-admin-panel .b-f input[type='password'], .pb-admin-panel .b-f textarea {
   font-family: "Lato";
 }
-/* line 37, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 46, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .x-panel-header-default {
   background-color: #58c4c6;
   border: none;
 }
-/* line 40, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 49, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .x-panel-header-default .x-tool-img {
   background-color: #58c4c6;
 }
-/* line 45, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 54, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu #MainLeft_Menu-innerCt {
   border-right: 9px solid #58c4c6;
 }
-/* line 50, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 59, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu #MainLeft_Menu_header_hd-textEl {
   display: block;
   color: white;
@@ -908,7 +922,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 40px;
   line-height: 40px;
 }
-/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 70, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper {
   position: relative;
   height: 50px;
@@ -918,15 +932,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: background-color 0.15s linear;
   transition: background-color 0.15s linear;
 }
-/* line 68, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 77, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover {
   background-color: #4D5777;
 }
-/* line 71, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 80, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover .pb-mm__icon-wrapper .pb-mm__icon:before {
   color: #A0AABC;
 }
-/* line 75, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 84, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper {
   position: absolute;
   top: 0;
@@ -935,7 +949,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 50px;
   width: 50px;
 }
-/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 93, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
   font-family: "Dripicons";
   content: "\e037";
@@ -952,7 +966,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 87, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 96, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
   line-height: inherit;
   -webkit-transition: color 0.15s linear;
@@ -960,7 +974,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: color 0.15s linear;
   transition: color 0.15s linear;
 }
-/* line 95, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 104, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__text-wrapper {
   line-height: 50px;
   margin-left: 50px;
@@ -968,12 +982,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-size: 16px;
   color: #BEBECF;
 }
-/* line 106, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 115, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder {
   background-color: #58c4c6;
   border: none;
 }
-/* line 110, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 119, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder .x-tool-img {
   background-color: #58c4c6;
 }

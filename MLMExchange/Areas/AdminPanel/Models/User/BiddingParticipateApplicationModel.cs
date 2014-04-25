@@ -2,6 +2,7 @@
 using Logic;
 using MLMExchange.Lib.Exception;
 using MLMExchange.Models;
+using MLMExchange.Models.Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,11 +24,18 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public int? MyCryptCount { get; set; }
 
+    public UserModel User { get; set; }
+
     public void Bind(BiddingParticipateApplication @object)
     {
       base.Bind(@object);
 
       MyCryptCount = @object.MyCryptCount;
+
+      UserModel userModel = new UserModel();
+      userModel.Bind(@object.User);
+
+      User = userModel;
     }
 
     public BiddingParticipateApplication UnBind(BiddingParticipateApplication @object = null)

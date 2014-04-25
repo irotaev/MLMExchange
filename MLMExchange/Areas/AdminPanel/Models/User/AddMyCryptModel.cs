@@ -23,6 +23,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public int? MyCryptCount { get; set; }
+
     /// <summary>
     /// Комментарии
     /// </summary>

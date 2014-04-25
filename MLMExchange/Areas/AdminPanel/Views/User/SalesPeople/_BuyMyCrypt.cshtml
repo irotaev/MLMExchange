@@ -1,0 +1,56 @@
+﻿@using MLMExchange.Lib
+
+@model MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyMyCryptModel
+
+<section class="pb-bmc">
+  @using (Html.BeginForm("AddMyCrypt", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
+  {
+    <div class="b-ib input-control text">
+      @Html.CustomValidationMessageFor(x => x.MyCryptCount)
+
+      <div class="b-ib__content-wrapper">
+        <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterMyCryptCount" data-ot-style="BlackStyle">
+          <i class="b-ib__info-icon fa fa-question"></i>
+        </div>
+
+        <div class="b-ib__input-content">
+          <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterMyCryptCount</label>
+          @Html.TextBoxFor(x => x.MyCryptCount, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterMyCryptCount, @class = String.Format("b-ib__input b-ib__input_type_blue") })
+          <button class="btn-clear"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-ib input-control text">
+      @Html.CustomValidationMessageFor(x => x.Comment)
+
+      <div class="b-ib__content-wrapper">
+        <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.EnterComment" data-ot-style="BlackStyle">
+          <i class="b-ib__info-icon fa fa-question"></i>
+        </div>
+
+        <div class="b-ib__input-content">
+          <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterComment</label>
+          @Html.TextAreaFor(x => x.Comment, new
+             {
+               type = "text",
+               placeholder = @MLMExchange.Properties.ResourcesA.EnterComment,
+               @class = String.Format("b-ib__input b-ib__input_type_blue"),
+               @rows = 7
+             })
+          <button class="btn-clear"></button>
+        </div>
+      </div>
+    </div>
+
+    <input style="position: absolute; visibility: hidden;" id="edit-user__submit-btn"
+           class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />
+
+    <div class="pb-amc__submit-btn-wrappper">
+      <a href="#" class="b-btn b-btn-flat-action pb-amc__submit-btn" onclick="javascript: $('#edit-user__submit-btn').click();">
+        <i class="fa fa-save fa-lg"></i>
+        @MLMExchange.Properties.ResourcesA.SendButton
+      </a>
+    </div>
+  }
+</section><!--PB: Buy my-crypt-->

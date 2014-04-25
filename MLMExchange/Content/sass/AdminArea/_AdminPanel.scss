@@ -8,6 +8,15 @@
 
 $default-layout_Bg-color: $blue_a_4;
 
+.x-menu
+{
+  border-color: $red_a_1;
+
+  .x-menu-item-text {font-family: "Segoe UI" !important; color: $blue_a_4_c !important;}
+
+  .x-menu-item-active {background-color: $blue_a_4_c3_c;}
+}
+
 .pb-admin-panel
 {
   .x-border-layout-ct {background-color: $default-layout_Bg-color;}

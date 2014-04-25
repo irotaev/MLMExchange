@@ -152,6 +152,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\AddMyCryptModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\BiddingParticipateApplicationModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\User\SalesPeople\BuyMyCryptModel.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AgreementController.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Areas\AdminPanel\Views\User\ControlPanel.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shared\ControlPanel\_BindingParticipateApplication.cshtml" />
     <Content Include="Areas\AdminPanel\Views\User\SalesPeople.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\User\SalesPeople\_BuyMyCrypt.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

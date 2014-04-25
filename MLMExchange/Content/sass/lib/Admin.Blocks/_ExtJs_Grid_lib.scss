@@ -1,0 +1,36 @@
+@import "../../framework";
+
+@mixin custom-extjs-grid($margin: 10px)
+{
+  margin: $margin;
+  border: 2px solid $red_a_1_c;
+
+  * {font-family: "Segoe UI" !important; color: $grey_2 !important;}
+
+  .x-panel-header-default
+  {
+    background-color: $red_a_1_c;
+
+    .x-header-text
+    {
+      color: white !important;
+      font-size: $font-h;
+      display: block;
+      text-align: center;
+      height: 20px; line-height: 10px;
+    }
+  }
+
+  .row-imagecommand {font-size: 12px;}
+
+  //.x-column-header {border-right-color: ;}
+
+//  .x-column-header-over, .x-column-header-open, .x-column-header-open .x-column-header-trigger {background-color: $blue_a_4_c3_c;}
+//
+//  .x-grid-header-ct {border-top: 0;}
+//
+//  .x-grid-header-ct, .x-column-header
+//  {
+//    background-color: $blue_a_4_c3;
+//  }
+}

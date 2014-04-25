@@ -146,14 +146,24 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult SalesPeople()
     {
-      IList<BiddingParticipateApplication> biddingApplications;
+      List<BiddingParticipateApplicationModel> biddingApplicationModels = new List<BiddingParticipateApplicationModel>();
 
       using (var session = NHibernateConfiguration.Session.OpenSession())
       {
+        IList<BiddingParticipateApplication> biddingApplications;
         biddingApplications = session.QueryOver<BiddingParticipateApplication>().List();
+
+        foreach(var biddingApplication in biddingApplications)
+        {
+          BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
+
+          biddingApplicationModel.Bind(biddingApplication);
+
+          biddingApplicationModels.Add(biddingApplicationModel);
+        }
       }
 
-      return View(biddingApplications);
+      return View(biddingApplicationModels);
     }
   }
 }
