@@ -3,3 +3,16 @@
 
 @import "../lib/Admin.Blocks/ExtJs_Grid";
 
+.pb-bmc
+{
+  width: 650px;
+  margin: 20px auto;
+
+  .pb-bmc__submit-btn-wrappper {@include clearfix; margin-top: 20px;}
+
+  .pb-bmc__submit-btn
+  {
+    float: right;
+  }
+}
+

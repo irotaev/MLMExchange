@@ -31,7 +31,7 @@
         )
         .Listeners(ls =>
         {
-          ls.Command.Handler = X.Window().Modal(true).Title("Hellow world!").Content(
+          ls.Command.Handler = X.Window().Modal(true).Width(700).Height(400).Title("Hellow world!").Content(
             x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
               new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyMyCryptModel())).ToScript();
         }));}

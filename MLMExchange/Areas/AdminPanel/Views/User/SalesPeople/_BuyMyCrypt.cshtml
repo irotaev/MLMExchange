@@ -2,8 +2,14 @@
 
 @model MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyMyCryptModel
 
+<!--#region Парсим форму валидатором еще раз, т.к. форма подгружается динамически-->
+<script>
+  window.$Sync.validator.unobtrusive.parse('#AddMyCrypt__Form');
+</script>
+<!--#endregion-->
+
 <section class="pb-bmc">
-  @using (Html.BeginForm("AddMyCrypt", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
+  @using (Html.BeginForm("AddMyCrypt", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f", @id="AddMyCrypt__Form" }))
   {
     <div class="b-ib input-control text">
       @Html.CustomValidationMessageFor(x => x.MyCryptCount)
@@ -46,8 +52,8 @@
     <input style="position: absolute; visibility: hidden;" id="edit-user__submit-btn"
            class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />
 
-    <div class="pb-amc__submit-btn-wrappper">
-      <a href="#" class="b-btn b-btn-flat-action pb-amc__submit-btn" onclick="javascript: $('#edit-user__submit-btn').click();">
+    <div class="pb-bmc__submit-btn-wrappper">
+      <a href="#" class="b-btn b-btn-flat-action pb-bmc__submit-btn" onclick="javascript: $('#edit-user__submit-btn').click();">
         <i class="fa fa-save fa-lg"></i>
         @MLMExchange.Properties.ResourcesA.SendButton
       </a>

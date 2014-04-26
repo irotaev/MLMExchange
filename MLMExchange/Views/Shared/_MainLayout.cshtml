@@ -15,13 +15,19 @@
 
   @if (!Context.Request.Browser.Type.Contains("IE") && !Context.Request.Browser.Type.Contains("InternetExplorer"))
   {
+    
     <script src="~/Scripts/jquery-2.0.3.min.js"></script>
+    
+    <!--Т.к. может затерется JQuery из requirejs-->
+    <script>
+      window.$Sync = $;
+    </script>
   }
 
   <!--MS unobstractive validation-->
   <!--#region JQuery.Validation-->
   <script src="~/Scripts/jquery.validate.min.js"></script>  
-  <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+  <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
   <script src="~/Scripts/Lib/JQuery.Validation/Boolean.Extension.ValidationAdapter.js"></script>
   <!--#endregion-->
   <script src="~/Scripts/require.js"></script>
