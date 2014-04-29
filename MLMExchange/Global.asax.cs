@@ -11,7 +11,6 @@ namespace MLMExchange
 {
   // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
   // visit http://go.microsoft.com/?LinkId=9394801
-
   public class MvcApplication : System.Web.HttpApplication
   {
     protected void Application_Start()
@@ -22,6 +21,15 @@ namespace MLMExchange
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles(BundleTable.Bundles);
+    }
+
+    protected void Application_Error(object sender, EventArgs e)
+    {
+      Exception exception = Server.GetLastError();
+
+      HttpContext.Current.ClearError(); 
+
+      Response.Redirect("/ExceptionHandler/ApplicationException");
     }
   }
 }

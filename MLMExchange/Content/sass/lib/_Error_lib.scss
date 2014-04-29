@@ -1,0 +1,41 @@
+@import "../framework";
+
+@mixin pb-ae
+{
+  font-family: "Segoe UI" !important;
+  @include clearfix;
+
+  width: 800px;
+  margin: 20px auto;
+
+  .pb-ae__header
+  {
+    position: relative;
+    margin-bottom: 20px;
+    @include clearfix;
+
+    .pb-ae__exception-icon
+    {
+      display: block;
+      float: left;
+      width: 128px;
+      height: 128px;
+      background: url("/Content/images/Error/base_error_icon.png") center no-repeat;
+      margin-right: 40px;
+    }
+
+    .pb-ae__exception-title
+    {
+      position: relative;
+      top: 70px;
+      display: block;
+      float: left;
+      font-size: 40px;
+    }
+  }
+
+  .pb-ae__more-info
+  {
+    width: 100%;
+  }
+}

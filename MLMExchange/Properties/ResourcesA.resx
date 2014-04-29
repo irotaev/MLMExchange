@@ -120,6 +120,9 @@
   <data name="AboutUs" xml:space="preserve">
     <value>О нас</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>Принять</value>
+  </data>
   <data name="AddMyCrypt" xml:space="preserve">
     <value>Пополнить My Crypt</value>
   </data>
@@ -132,11 +135,17 @@
   <data name="AgreeWithTerms" xml:space="preserve">
     <value>С условиями согласен</value>
   </data>
-  <data name="ApplyBiddingParticipateApplication" xml:space="preserve">
-    <value>Подать заявку на участвие в торгах</value>
+  <data name="ApplicationExceptionOccupied" xml:space="preserve">
+    <value>Произошла ошибка системы</value>
   </data>
   <data name="ApplyButton" xml:space="preserve">
     <value>Применить</value>
+  </data>
+  <data name="ConfirmActionMessage" xml:space="preserve">
+    <value>Вы уверены, что хотите продолжить действие {0} ?</value>
+  </data>
+  <data name="ConfirmActionTitle" xml:space="preserve">
+    <value>Подтвердите действие</value>
   </data>
   <data name="Contacts" xml:space="preserve">
     <value>Контакты</value>
@@ -146,6 +155,12 @@
   </data>
   <data name="CopyRight" xml:space="preserve">
     <value>Копирайт</value>
+  </data>
+  <data name="DataEmpty" xml:space="preserve">
+    <value>Нет данных</value>
+  </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Отклонить</value>
   </data>
   <data name="EditUser" xml:space="preserve">
     <value>Редактирование пользователя</value>
@@ -189,11 +204,20 @@
   <data name="EnterTitle" xml:space="preserve">
     <value>Введите заголовок</value>
   </data>
+  <data name="ErrorLog" xml:space="preserve">
+    <value>Лог ошибки</value>
+  </data>
+  <data name="Exception_ApplicationException" xml:space="preserve">
+    <value>Ошибка приложения</value>
+  </data>
   <data name="Exception_ArgumentNull" xml:space="preserve">
     <value>Аргумент {0} не задан</value>
   </data>
   <data name="Exception_ModelInvalid" xml:space="preserve">
     <value>Модель заполнена не верно</value>
+  </data>
+  <data name="Exception_WrongParameter" xml:space="preserve">
+    <value>Не правильно задан параметр {0}</value>
   </data>
   <data name="Exchange" xml:space="preserve">
     <value>Биржа</value>
@@ -246,14 +270,26 @@
   <data name="RemaningApplication" xml:space="preserve">
     <value>У вас осталось {0} заявок</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="SalesPeople" xml:space="preserve">
     <value>Продавцы</value>
   </data>
   <data name="SaveButton" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="SellerName" xml:space="preserve">
+    <value>Имя продавца</value>
+  </data>
+  <data name="SellerSurname" xml:space="preserve">
+    <value>Фамилия продавца</value>
+  </data>
   <data name="SendButton" xml:space="preserve">
     <value>Отправить</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Статус</value>
   </data>
   <data name="Upload" xml:space="preserve">
     <value>Загрузить</value>
@@ -266,5 +302,8 @@
   </data>
   <data name="UserRegistartion" xml:space="preserve">
     <value>Регистрация пользователя</value>
+  </data>
+  <data name="YouDontHaveAccessToThisAction" xml:space="preserve">
+    <value>На это действие у вас нету соответствующих прав</value>
   </data>
 </root>

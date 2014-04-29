@@ -29,4 +29,22 @@ namespace MLMExchange.Lib.Exception
       throw new UserVisibleException(String.Format(MLMExchange.Properties.ResourcesA.Exception_ArgumentNull, argumentName));
     }
   }
+
+  public class UserVisible__WrongParametrException : UserVisibleException
+  {
+    public UserVisible__WrongParametrException(string argumentName)
+      : base() 
+    {
+      throw new UserVisibleException(String.Format(MLMExchange.Properties.ResourcesA.Exception_WrongParameter, argumentName));
+    }
+  }
+
+  public class UserVisible__CurrentActionAccessDenied : UserVisibleException
+  {
+    public UserVisible__CurrentActionAccessDenied()
+      : base()
+    {
+      throw new UserVisibleException(MLMExchange.Properties.ResourcesA.YouDontHaveAccessToThisAction);
+    }
+  }
 }

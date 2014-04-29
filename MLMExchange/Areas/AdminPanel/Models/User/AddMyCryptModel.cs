@@ -15,14 +15,14 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   /// <summary>
   /// Модель пополнения my crypt
   /// </summary>
-  public class AddMyCryptModel : AbstractDataModel, IDataBinding<AddMyCryptTransaction>
+  public class AddMyCryptModel : AbstractDataModel, IDataBinding<AddMyCryptTransaction, AddMyCryptModel>
   {
     /// <summary>
     /// Количество пополняемых my crypt
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    public int? MyCryptCount { get; set; }
+    public long? MyCryptCount { get; set; }
 
     /// <summary>
     /// Комментарии
@@ -42,7 +42,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     [Boolean(ValidState = true, ErrorMessageResourceName = "FieldFilledInvalid_Boolean", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]    
     public bool IsTermsAgreed { get; set; }
 
-    public void Bind(AddMyCryptTransaction @object)
+    public AddMyCryptModel Bind(AddMyCryptTransaction @object)
     {
       if (@object == null)
         throw new ArgumentNullException("object");
@@ -52,6 +52,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       MyCryptCount = @object.MyCryptCount;
       Comment = @object.Comment;
       ImageRelativePath = @object.ImageRelativePath;
+
+      return this;
     }
 
     public AddMyCryptTransaction UnBind(AddMyCryptTransaction @object = null)

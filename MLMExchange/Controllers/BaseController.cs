@@ -8,6 +8,7 @@ using System.Text;
 using System.Web.Mvc;
 using Ext.Net;
 using Ext.Net.MVC;
+using Microsoft.Practices.Unity;
 
 namespace MLMExchange.Controllers
 {
@@ -24,6 +25,13 @@ namespace MLMExchange.Controllers
     {
       base.Initialize(requestContext);
 
+      #region Инициализирую сессию NHibernate
+      var session = Logic.NHibernateConfiguration.Session.OpenSession();
+      session.BeginTransaction();
+
+      MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(session));
+      #endregion
+
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
 
@@ -37,6 +45,36 @@ namespace MLMExchange.Controllers
 
       ViewData["AdminPanel__CenterBlock"] = _HtmlHelper.X().Panel().ID("AdminPanel__CenterBlock").Region(Region.Center);
       #endregion
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+      #region Останавливаю сессию NHibernate
+      var nhibernateManager = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<Logic.INHibernateManager>();
+
+      nhibernateManager.Session.Transaction.Commit();
+      nhibernateManager.Session.Transaction.Dispose();
+      nhibernateManager.Session.Dispose();
+      #endregion
+
+      base.Dispose(disposing);
+    }
+
+    protected override void OnException(ExceptionContext filterContext)
+    {
+      if (filterContext.ExceptionHandled)
+        return;
+
+      //filterContext.Result = new ViewResult
+      //{
+      //  ViewName = "~/Views/Shared/Error/Application__Error.cshtml",
+      //  ViewData = new ViewDataDictionary(filterContext.Controller.ViewData)
+      //  {
+      //    Model = new MLMExchange.Models.Error.ApplicationExceptionModel { ExceptionMessage = filterContext.Exception.Message }
+      //  }
+      //};
+
+      //filterContext.ExceptionHandled = true;
     }
   }
 }

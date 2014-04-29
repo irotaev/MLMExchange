@@ -1,0 +1,22 @@
+﻿@model MLMExchange.Models.Error.ApplicationExceptionModel
+
+@{
+    ViewBag.Title = MLMExchange.Properties.ResourcesA.ApplicationExceptionOccupied;
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="pb-ae">
+  <header class="pb-ae__header"><i class="pb-ae__exception-icon"></i> <p class="pb-ae__exception-title">@Model.ExceptionTitle</p></header>
+
+  <aside class="b-sb pb-ae__more-info">
+    <header class="b-sb__title">
+      <h1 class="b-sb__text">@MLMExchange.Properties.ResourcesA.ErrorLog</h1>
+    </header>
+
+    <div class="b-sb__content about-block__text">
+      <p>
+        @Model.ExceptionMessage
+      </p>
+    </div>
+  </aside>
+</section><!--PB: Application exception-->

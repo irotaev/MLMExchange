@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace MLMExchange.Models.Registration
 {
-  public class UserModel : AbstractDataModel, IDataBinding<User>
+  public class UserModel : AbstractDataModel, IDataBinding<User, UserModel>
   {    
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Login { get; set; }
@@ -39,7 +39,7 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
-    public void Bind(Logic.User @object)
+    public UserModel Bind(Logic.User @object)
     {
       if (@object == null)
         throw new ArgumentNullException("user");
@@ -51,6 +51,8 @@ namespace MLMExchange.Models.Registration
       this.Patronymic = @object.Patronymic;
       this.PhotoRelativePath = @object.PhotoRelativePath;
       this.Surname = @object.Surname;
+
+      return this;
     }
 
     #region UnBind

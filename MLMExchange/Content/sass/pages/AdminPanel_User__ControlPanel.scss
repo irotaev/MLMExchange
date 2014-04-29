@@ -2,6 +2,8 @@
 @import "../AdminFramework";
 @import "../lib/Admin.Blocks/BindingParticipateApplicationBlock";
 
+@import "../lib/Admin.Blocks/ExtJs_Grid_lib";
+
 .pb-cp
 {
   @include admin-content-zone;
@@ -11,4 +13,6 @@
 {
   margin: 0 auto;
   @include pb-bpa;
+
+  .pb-bpa__content { .x-grid {@include custom-extjs-grid(0);} }
 }

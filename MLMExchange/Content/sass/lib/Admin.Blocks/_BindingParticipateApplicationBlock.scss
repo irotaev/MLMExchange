@@ -18,4 +18,15 @@
 
     .b-bpa__icon {margin-left: 10px;}
   }
+
+  .pb-bpa__waiting-user-response
+  {
+    .pb-bpa__text
+    {
+      display: block;
+      font-size: $font-h;
+      text-align: center;
+      height: 135px; line-height: 135px;
+    }
+  }
 }

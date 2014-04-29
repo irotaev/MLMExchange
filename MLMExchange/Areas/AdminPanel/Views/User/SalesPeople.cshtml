@@ -1,7 +1,7 @@
 ﻿@using Ext.Net
 @using Ext.Net.MVC
 
-@model System.Collections.IEnumerable
+@model MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.SalesPeopleModel
 
 @{
   ViewBag.Title = MLMExchange.Properties.ResourcesA.SalesPeople;
@@ -9,35 +9,77 @@
   var X = Html.X();
 }
 
-@{var gridPanel = X.GridPanel()
+<!--#region Парсим форму валидатором еще раз, т.к. форма подгружается динамически-->
+<script>
+  function validator__Parse() {
+    window.$Sync.validator.unobtrusive.parse('#AddMyCrypt__Form');
+  }
+
+  function BuyMyCrypt__PopUpWindow__AfterRender(commandArguments) {
+    $(".pb-bmc #SellerId").val(commandArguments.SellerUser__Id);
+  }
+</script>
+<!--#endregion-->
+
+@{var selesPeopleGrid = X.GridPanel().ID("SalesPeople__Grid")
     .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
     .Layout(LayoutType.Fit)
     .Store(
       X.Store()
       .RemotePaging(true)
       .PageSize(10)
-      .DataSource(Model)
+      .DataSource(Model.ActiveSales)
       .Model(X.Model().Fields(
-          new ModelField { Name = "User", ServerMapping = "User.Name" },
-          new ModelField { Name = "MyCryptCount" }
+          new ModelField { Name = "Seller", ServerMapping = "Seller.Name" },
+          new ModelField { Name = "MyCryptCount" },
+          new ModelField { Name = "SellerUser__Id", ServerMapping = "Seller.Id" }
       )))
       .ColumnModel(
         X.RowNumbererColumn(),
-        X.Column().Text("User").DataIndex("User").Flex(1),
-  //X.TemplateColumn().TemplateString(@<div>Hellow {MyCryptCount}</div>),
+        X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Seller").Flex(1),
+    //X.TemplateColumn().TemplateString(@<div>Hellow {MyCryptCount}</div>),
         X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
         X.ImageCommandColumn().Commands(
           X.ImageCommand().CommandName("BuyMyCrypt").Icon(Icon.Accept).Text("Купить")
         )
         .Listeners(ls =>
         {
-          ls.Command.Handler = X.Window().Modal(true).Width(700).Height(400).Title("Hellow world!").Content(
-            x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
-              new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyMyCryptModel())).ToScript();
-        }));}
+          ls.Command.Handler = "var commandArguments = arguments; " + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title("Hellow world!")
+             .Content(x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
+                new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyingMyCryptRequestModel()))
+            .CloseAction(CloseAction.Destroy)
+            .Resizable(false)
+            .Listeners(w_ls =>
+            {
+              w_ls.AfterRender.Handler = "validator__Parse(); console.log(commandArguments); BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
+            }).ToScript();
+        }));
+
+  var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
+    .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
+    .Layout(LayoutType.Fit)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(Model.HistoryApplication)
+      .Model(X.Model().Fields(
+          new ModelField { Name = "SellerName", ServerMapping = "Seller.Name" },
+          new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
+          new ModelField { Name = "MyCryptCount" },
+          new ModelField { Name = "State" }
+      )))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("SellerName").Flex(1),
+        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerSurname).DataIndex("SellerSurname").Flex(1),        
+        X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
+        X.Column().Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Flex(1)
+        );  
+}
 
 @{
-  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(gridPanel);
+  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(selesPeopleGrid, buyingRequestHistoryGrid);
 }
 
 

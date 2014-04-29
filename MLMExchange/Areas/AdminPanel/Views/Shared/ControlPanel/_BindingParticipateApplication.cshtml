@@ -1,39 +1,140 @@
 ﻿@using MLMExchange.Lib
-@model MLMExchange.Areas.AdminPanel.Models.User.BiddingParticipateApplicationModel
+@using MLMExchange.Areas.AdminPanel.Models.User
+@using Ext.Net
+@using Ext.Net.MVC
 
-<section class="pb-bpa b-ab">
-  <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@MLMExchange.Properties.ResourcesA.ApplyBiddingParticipateApplication</header>
+@model object
 
-  <div class="b-ab__content">
-    @using (Html.BeginForm("BiddingParticipateApplicationApply", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
-    {
-      <div class="b-ib input-control text">
-        @Html.CustomValidationMessageFor(x => x.MyCryptCount)
+@helper NotFiledState(BiddingParticipateApplicationModel model)
+{
+  using (Html.BeginForm("BiddingParticipateApplicationApply", "BiddingParticipateApplication", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
+  {
+    <div class="b-ib input-control text">
+      @(Html.CustomValidationMessageFor(x => (x as BiddingParticipateApplicationModel).MyCryptCount))
 
-        <div class="b-ib__content-wrapper">
-          <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.MyCryptNumber" data-ot-style="BlackStyle">
-            <i class="b-ib__info-icon fa fa-question"></i>
-          </div>
+      <div class="b-ib__content-wrapper">
+        <div class="b-ib__info-helper" data-ot="@MLMExchange.Properties.ResourcesA.MyCryptNumber" data-ot-style="BlackStyle">
+          <i class="b-ib__info-icon fa fa-question"></i>
+        </div>
 
-          <div class="b-ib__input-content">
-            <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.MyCryptNumber</label>
-            @Html.TextBoxFor(x => x.MyCryptCount, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.MyCryptNumber, @class = "b-ib__input b-ib__input_type_blue" })
-            <button class="btn-clear"></button>
-          </div>
+        <div class="b-ib__input-content">
+          <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.MyCryptNumber</label>
+          @Html.TextBoxFor(x => (x as BiddingParticipateApplicationModel).MyCryptCount,
+              new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.MyCryptNumber, @class = "b-ib__input b-ib__input_type_blue" })
+          <button class="btn-clear"></button>
         </div>
       </div>
+    </div>
 
-      <input style="position: absolute; visibility: hidden;" id="pb-bpa__submit-btn"
-             class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.ApplyButton />
+    <input style="position: absolute; visibility: hidden;" id="pb-bpa__submit-btn"
+           class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.ApplyButton />
 
-      <div class="pb-bpa__submit-btn-wrappper">
-        <a href="#" class="b-btn b-btn-flat-action pb-bpa__submit-btn" onclick="javascript: $('#pb-bpa__submit-btn').click();">
-          <i class="fa fa-sign-out fa-lg"></i>
-          @MLMExchange.Properties.ResourcesA.ApplyButton
-        </a>
-      </div>
+    <div class="pb-bpa__submit-btn-wrappper">
+      <a href="#" class="b-btn b-btn-flat-action pb-bpa__submit-btn" onclick="javascript: $('#pb-bpa__submit-btn').click();">
+        <i class="fa fa-sign-out fa-lg"></i>
+        @MLMExchange.Properties.ResourcesA.ApplyButton
+      </a>
+    </div>
 
-      <div class="b-text pb-bpa__remaning-applications">@(String.Format(MLMExchange.Properties.ResourcesA.RemaningApplication, 1))<i class="b-bpa__icon fa fa-search"></i></div>
+    @*<div class="b-text pb-bpa__remaning-applications">@(String.Format(MLMExchange.Properties.ResourcesA.RemaningApplication, 1))<i class="b-bpa__icon fa fa-search"></i></div>*@
+  }
+}
+
+@helper BuyerFoundState(List<MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyingMyCryptRequestModel> model)
+{
+  var X = Html.X();
+
+  <script>
+    function commandClickHandler(command, record) {
+      var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
+
+      if (command == "Denied") {
+        var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Denied)";
+
+        Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+          if (btn == "yes")
+            window.location.href = "/BiddingParticipateApplication/Denied/?buyingMyCryptRequestId=" + record.data.Id;
+        });
+      }
+      else if (command == "Accept") {
+        var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Accept)";
+
+        Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+          if (btn == "yes")
+            window.location.href = "/BiddingParticipateApplication/Accept/?buyingMyCryptRequestId=" + record.data.Id;
+        });
+      }
     }
+  </script>
+
+  <div class="pb-bpa__buyer-found-wrapper" id="pb-bpa__buyer-found-wrapper_ID">
+    @(
+ X.GridPanel()
+    .Layout(LayoutType.Fit)
+    .Header(false)
+    .Border(false)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(model)
+      .Model(X.Model().Fields(
+          new ModelField { Name = "Id", ServerMapping = "Id" },
+          new ModelField { Name = "Buyer__Name", ServerMapping = "Buyer.Name" },
+          new ModelField { Name = "Buyer__Sername", ServerMapping = "Buyer.Surname" },
+          new ModelField { Name = "MyCryptCount", ServerMapping = "MyCryptCount" }
+      )))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Buyer__Name").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.Surname).DataIndex("Buyer__Sername").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
+        X.ImageCommandColumn().Commands(
+          X.ImageCommand().CommandName("Denied").Icon(Icon.Decline).Text(MLMExchange.Properties.ResourcesA.Denied),
+          X.ImageCommand().CommandName("Accept").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept)
+        )
+        .Listeners(ls =>
+        {
+          ls.Command.Handler = String.Format("commandClickHandler(command, record);");
+        }))
+      .RenderTo("pb-bpa__buyer-found-wrapper_ID"))
   </div>
-</section><!--B: Bindding participate application-->
+}
+
+@{
+  switch ((Model as IBaseBiddingParticipateApplicationModel).State)
+  {
+    case ApplicationState.NA:
+    case ApplicationState.NotFiled:
+  <section class="pb-bpa b-ab">
+    <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+    <div class="b-ab__content pb-bpa__content">
+      @NotFiledState((Model as IBiddingParticipateApplicationNotFiledModel).BiddingParticipateApplicationModel)
+    </div>
+  </section><!--B: Bindding participate application-->
+      break;
+
+    case ApplicationState.ExpectsBuyers:
+  <section class="pb-bpa b-ab">
+    <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+    <div class="b-ab__content pb-bpa__content">
+      <div class="pb-bpa__waiting-user-response">
+        <p class="pb-bpa__text b-text">@MLMExchange.Properties.PrivateResource.WaitingUserResponse</p>
+      </div>
+    </div>
+  </section><!--B: Bindding participate application-->
+      break;
+
+    case ApplicationState.BuyerFound:
+  <section class="pb-bpa b-ab b-ab_customise_full-custom">
+    <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+    <div class="b-ab__content pb-bpa__content">
+      @BuyerFoundState((Model as IBiddingParticipateApplicationBuyerFoundModel).BiddingParticipateApplicationBuyerFoundModel.BuyRequests)
+    </div>
+  </section><!--B: Bindding participate application-->
+      break;
+  }
+}

@@ -9,6 +9,7 @@ using MLMExchange.Models.Registration;
 using System.Security.Cryptography;
 using MLMExchange.Lib;
 using NHibernate.Linq;
+using Microsoft.Practices.Unity;
 
 namespace MLMExchange.Controllers
 {
@@ -25,18 +26,15 @@ namespace MLMExchange.Controllers
 
       if (ModelState.IsValid)
       {
-        using (var session = NHibernateConfiguration.Session.OpenSession())
-        {
-          User loginUser = session.QueryOver<User>().Where(x => x.Login == loginModel.Login).List().FirstOrDefault();
+        User loginUser = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.QueryOver<User>().Where(x => x.Login == loginModel.Login).List().FirstOrDefault();
 
-          if (loginUser != null && loginUser.PasswordHash == Md5Hasher.ConvertStringToHash(loginModel.Password))
-          {
-            var authCook = new HttpCookie("_AUTHORIZE", "true");
-            authCook.Expires = DateTime.Now.AddYears(1);
-            HttpContext.Response.Cookies.Add(authCook);
-            Session.Add("Login", loginUser.Login);
-            Session.Add("Authorized", true);
-          }
+        if (loginUser != null && loginUser.PasswordHash == Md5Hasher.ConvertStringToHash(loginModel.Password))
+        {
+          var authCook = new HttpCookie("_AUTHORIZE", "true");
+          authCook.Expires = DateTime.Now.AddYears(1);
+          HttpContext.Response.Cookies.Add(authCook);
+          Session.Add("Login", loginUser.Login);
+          Session.Add("Authorized", true);
         }
       }
 
@@ -59,25 +57,19 @@ namespace MLMExchange.Controllers
 
         if (ModelState.IsValid)
         {
-          using (var session = NHibernateConfiguration.Session.OpenSession())
+          #region Сохраняю фото
+          if (userModel.Photo != null)
           {
-            using (var transaction = session.BeginTransaction())
-            {
-              #region Сохраняю фото
-              if (userModel.Photo != null)
-              {
-                string filePath = MLMExchange.Lib.Image.Image.SaveImage(userModel.Photo, Server);
+            string filePath = MLMExchange.Lib.Image.Image.SaveImage(userModel.Photo, Server);
 
-                userModel.PhotoRelativePath = filePath;
-              }
-              #endregion
-
-              User user = userModel.UnBind();
-
-              session.Save(user);
-              transaction.Commit();
-            }
+            userModel.PhotoRelativePath = filePath;
           }
+          #endregion
+
+          User user = userModel.UnBind();
+
+          MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(user);
+          //transaction.Commit();
         }
       }
 

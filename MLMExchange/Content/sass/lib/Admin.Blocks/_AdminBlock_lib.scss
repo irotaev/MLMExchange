@@ -6,6 +6,13 @@
   position: relative;
   width: 415px;
 
+  &.b-ab_customise_full-custom
+  {
+    width: auto;
+
+    .b-ab__content {padding: 0;}
+  }
+
   .b-ab__title
   {
     position: relative;

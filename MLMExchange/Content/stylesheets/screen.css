@@ -836,6 +836,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 415px;
 }
 /* line 10, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab.b-ab_customise_full-custom {
+  width: auto;
+}
+/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab.b-ab_customise_full-custom .b-ab__content {
+  padding: 0;
+}
+/* line 17, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__title {
   position: relative;
   height: 36px;
@@ -845,7 +853,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   font-size: 20px;
 }
-/* line 20, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 27, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__title .b-ab__icon {
   display: block;
   position: absolute;
@@ -854,7 +862,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 36px;
   line-height: 40px;
 }
-/* line 29, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 36, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__content {
   padding: 20px;
   padding-top: 0;

@@ -11,15 +11,16 @@ namespace MLMExchange.Models
   /// Интерфейс биндинга к данным
   /// <typeparam name="TObject">Объект данных</typeparam>
   /// </summary>
-  public interface IDataBinding<TObject>
+  public interface IDataBinding<TObject, out TModel>
     where TObject : BaseObject
+    where TModel : BaseModel
   {
     /// <summary>
     /// Биндинг в web-модель. Прокси-биндинг
     /// </summary>
     /// <param name="object">Объект данных</param>
     /// <returns>Web-модель</returns>
-    void Bind(TObject @object);
+    TModel Bind(TObject @object);
     /// <summary>
     /// Аниндинг в объект данных. Прокси-биндинг
     /// </summary>
@@ -40,14 +41,16 @@ namespace MLMExchange.Models
   {
   }
 
-  public abstract class AbstractDataModel : BaseModel, IDataModel, IDataBinding<BaseObject>
+  public abstract class AbstractDataModel : BaseModel, IDataModel, IDataBinding<BaseObject, AbstractDataModel>
   {
     [HiddenInput]
     public long? Id { get; set; }
 
-    public virtual void Bind(BaseObject @object)
+    public virtual AbstractDataModel Bind(BaseObject @object)
     {
       Id = @object.Id;
+
+      return this;
     }
 
     public virtual BaseObject UnBind(BaseObject @object = null)
@@ -56,6 +59,26 @@ namespace MLMExchange.Models
         throw new ArgumentOutOfRangeException("object");
 
       return @object;
+    }
+  }
+
+  public abstract class AbstractDataModel<TObject, TModel> : AbstractDataModel, IDataBinding<TObject, TModel>
+    where TObject : BaseObject, new()
+    where TModel : BaseModel
+  {
+    public virtual TModel Bind(TObject @object)
+    {
+      base.Bind(@object);
+
+      return this as TModel;
+    }
+
+    public virtual TObject UnBind(TObject @object = null)
+    {
+      if (@object == null)
+        @object = new TObject();
+
+      return (TObject)base.UnBind(@object);
     }
   }
 

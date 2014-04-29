@@ -21,16 +21,10 @@
     }
   }
 
-  .row-imagecommand {font-size: 12px;}
+  .row-imagecommands
+  {
+    margin-left: 10px;
 
-  //.x-column-header {border-right-color: ;}
-
-//  .x-column-header-over, .x-column-header-open, .x-column-header-open .x-column-header-trigger {background-color: $blue_a_4_c3_c;}
-//
-//  .x-grid-header-ct {border-top: 0;}
-//
-//  .x-grid-header-ct, .x-column-header
-//  {
-//    background-color: $blue_a_4_c3;
-//  }
+    .row-imagecommand {font-size: 12px; margin-bottom: 5px !important;}
+  }
 }
