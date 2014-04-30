@@ -18,12 +18,50 @@
   function BuyMyCrypt__PopUpWindow__AfterRender(commandArguments) {
     $(".pb-bmc #SellerId").val(commandArguments.SellerUser__Id);
   }
+
+  function BuyingRequest__History__State__Renderer(value, metaData, record, row, col, store, gridView) {
+    var stateTag = "<div class='pb-br__state pb-br__state_value_" + value.toLowerCase() + "' >" + record.data.LocalisedStateDisplayName + "</div>";
+
+    if (value.toLowerCase() === "accepted") {
+
+      if (Boolean(record.data.IsCheckPaymentApproved) === false) {
+        var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
+        resultTag += stateTag;
+
+        var messageTag = "<div class='pb-br__message'>@(String.Format(MLMExchange.Properties.PrivateResource.NeedCheckPayment, "5%"))</div>";
+        resultTag += messageTag;
+
+
+        var imageLinkTag = $("<a></a>").addClass("pb-br__image-link").attr("href", "#").click(function () {
+          console.log("OK!");
+        })
+          .html("<i class='pb-br__icon fa fa-money'></i>@MLMExchange.Properties.ResourcesA.Pay");
+
+        console.log(col);
+
+        //resultTag += imageLinkTag[0].outerHTML;
+
+        resultTag += "</div>";
+
+        return resultTag;
+      }
+      else 
+      {
+        return "Yololo!!!!";
+      }
+    }
+    else 
+    {
+      return stateTag;
+    }
+  }
 </script>
 <!--#endregion-->
 
 @{var selesPeopleGrid = X.GridPanel().ID("SalesPeople__Grid")
     .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
     .Layout(LayoutType.Fit)
+    .Height(375)
     .Store(
       X.Store()
       .RemotePaging(true)
@@ -51,13 +89,14 @@
             .Resizable(false)
             .Listeners(w_ls =>
             {
-              w_ls.AfterRender.Handler = "validator__Parse(); console.log(commandArguments); BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
+              w_ls.AfterRender.Handler = "validator__Parse(); BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
             }).ToScript();
         }));
 
   var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
-    .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
+    .Title(MLMExchange.Properties.PrivateResource.BuyingMyCryptRequestHistory)
     .Layout(LayoutType.Fit)
+    .Height(375)    
     .Store(
       X.Store()
       .RemotePaging(true)
@@ -67,6 +106,8 @@
           new ModelField { Name = "SellerName", ServerMapping = "Seller.Name" },
           new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
           new ModelField { Name = "MyCryptCount" },
+          new ModelField { Name = "LocalisedStateDisplayName" },
+          new ModelField { Name = "IsCheckPaymentApproved" },
           new ModelField { Name = "State" }
       )))
       .ColumnModel(
@@ -74,7 +115,7 @@
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("SellerName").Flex(1),
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerSurname).DataIndex("SellerSurname").Flex(1),        
         X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
-        X.Column().Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Flex(1)
+        X.Column().Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Renderer("BuyingRequest__History__State__Renderer").Flex(1)
         );  
 }
 

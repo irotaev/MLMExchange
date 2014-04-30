@@ -117,14 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accepted" xml:space="preserve">
+    <value>Принят</value>
+  </data>
+  <data name="AwaitingConfirm" xml:space="preserve">
+    <value>Ожидает подтверждения</value>
+  </data>
   <data name="BiddingParticipateApplication" xml:space="preserve">
     <value>Заявка на участие в торгах</value>
   </data>
   <data name="BiddingParticipateApplications" xml:space="preserve">
     <value>Заявки на участие в торгах</value>
   </data>
+  <data name="Denied" xml:space="preserve">
+    <value>Отклонен</value>
+  </data>
   <data name="MyCryptCount" xml:space="preserve">
     <value>Количество my-crypt</value>
+  </data>
+  <data name="NA" xml:space="preserve">
+    <value>Не определен</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>

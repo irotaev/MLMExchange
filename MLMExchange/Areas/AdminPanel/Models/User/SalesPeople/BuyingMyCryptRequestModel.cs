@@ -46,6 +46,16 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     /// </summary>
     public BuyingMyCryptRequestState State { get; set; }
 
+    /// <summary>
+    /// Был ли совершен проверочный платеж
+    /// </summary>
+    public bool IsCheckPaymentApproved { get; set; }
+
+    /// <summary>
+    /// Локализированное имя состояния заявки
+    /// </summary>
+    public string LocalisedStateDisplayName { get { return State.ToLocal(); } }
+
     public override BuyingMyCryptRequestModel Bind(BuyingMyCryptRequest @object)
     {
       base.Bind(@object);
@@ -54,8 +64,13 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       SellerId = @object.SellerUser.Id;
       Seller = new UserModel().Bind(@object.SellerUser);
       Comment = @object.Comment;
-      Buyer = new UserModel().Bind(MLMExchange.Lib.CurrentSession.Default.CurrentUser);
+      Buyer = new UserModel().Bind(@object.Buyer);
       State = @object.State;
+
+      if (@object.CheckPayment != null)
+      {
+        IsCheckPaymentApproved = @object.CheckPayment.State == BuyingMyCryptCheckPaymentState.Approved;
+      }
 
       return this;
     }

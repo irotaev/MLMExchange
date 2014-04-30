@@ -21,3 +21,25 @@
   margin-top: 30px;
 }
 
+.x-grid
+{
+  .pb-br__state_value_denied {color: $red_a_1_c !important;}
+  .pb-br__state_value_accepted {color: $color_grean_sea !important;}
+  .pb-br__state_value_awaitingconfirm {color: #D8886F !important;}
+  .pb-br__state_value_na {color: $grey_1 !important;}
+
+  .pb-br__message
+  {
+    margin: 10px 0;
+    font-size: $font-n;
+  }
+
+  .pb-br__image-link
+  {
+    color: $color_grean_sea !important;
+    .pb-br__icon {margin-right: 7px;}
+
+    &:hover {text-decoration: underline;}
+  }
+}
+

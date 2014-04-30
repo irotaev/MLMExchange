@@ -24,7 +24,53 @@ namespace Logic
     public virtual string Patronymic { get; set; }
     public virtual string Email { get; set; }
     public virtual string PhotoRelativePath { get; set; }
+    public virtual IList<Payment> Payments { get; set; }
   }
+
+  #region Платеж
+  public class Payment : BaseObject
+  {
+    /// <summary>
+    /// Пользователь, который совершил платеж
+    /// </summary>
+    public virtual User User { get; set; }
+    /// <summary>
+    /// Количество реальных денег по платежу
+    /// </summary>
+    public virtual decimal? RealMoneyAmount { get; set; }
+  }
+
+  /// <summary>
+  /// Проверочный платеж системе
+  /// </summary>
+  public class BuyingMyCryptCheckPayment : Payment
+  {
+    /// <summary>
+    /// Заявка на покупку my-crypt, к которой привязан платеж
+    /// </summary>
+    public virtual BuyingMyCryptRequest BuyingMyCryptRequest { get; set; }
+    /// <summary>
+    /// Состояние платежа
+    /// </summary>
+    public virtual BuyingMyCryptCheckPaymentState State { get; set; }
+  }
+
+  /// <summary>
+  /// Состояние платежа
+  /// </summary>
+  public enum BuyingMyCryptCheckPaymentState : int
+  {
+    NA = 0,
+    /// <summary>
+    /// Подтвержден
+    /// </summary>
+    Approved = 1,
+    /// <summary>
+    /// Не подтвержден
+    /// </summary>
+    NotApproved
+  }
+  #endregion
 
   public class AddMyCryptTransaction : BaseObject
   {
@@ -79,9 +125,9 @@ namespace Logic
     /// </summary>
     Filed = 1,
     /// <summary>
-    /// Отказано покупателю
+    /// Отменена заявка
     /// </summary>
-    Denied = 2,
+    Cancelled = 2,
     /// <summary>
     /// Принят запрос от покупателя
     /// </summary>
@@ -119,6 +165,10 @@ namespace Logic
     /// Состояние запроса
     /// </summary>
     public virtual BuyingMyCryptRequestState State { get; set; }
+    /// <summary>
+    /// Проверочный платеж по данной заявке
+    /// </summary>
+    public virtual BuyingMyCryptCheckPayment CheckPayment { get; set; }
   }
 
   public enum BuyingMyCryptRequestState : int
@@ -139,6 +189,25 @@ namespace Logic
     /// Принят
     /// </summary>
     Accepted = 3
+  }
+
+  public static class BuyingMyCryptRequestStateExtension
+  {
+    public static string ToLocal(this BuyingMyCryptRequestState state)
+    {
+      switch(state)
+      {        
+        case BuyingMyCryptRequestState.Denied:
+          return Logic.Properties.GeneralResources.Denied;
+        case BuyingMyCryptRequestState.AwaitingConfirm:
+          return Logic.Properties.GeneralResources.AwaitingConfirm;
+        case BuyingMyCryptRequestState.Accepted:
+          return Logic.Properties.GeneralResources.Accepted;
+        case BuyingMyCryptRequestState.NA:
+        default:
+          return Logic.Properties.GeneralResources.NA;
+      }      
+    }
   }
   #endregion
   #endregion
@@ -165,8 +234,37 @@ namespace Logic
       Map(x => x.Patronymic).Nullable().Length(100);
       Map(x => x.Email).Nullable().Length(100);
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
+      HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
     }
   }
+
+  #region Платеж
+  public abstract class AbstractPayment_Map<TPayment> : BaseObject_Map<TPayment>
+    where TPayment : Payment
+  {
+    public AbstractPayment_Map()
+    {
+      References(x => x.User).Column("UserId").Not.Nullable().Cascade.SaveUpdate();
+      Map(x => x.RealMoneyAmount).Nullable();
+    }
+  }
+
+  public class Payment_Map : AbstractPayment_Map<Payment>
+  {
+    public Payment_Map()
+    {
+    }
+  }
+
+  public class BuyingMyCryptCheckPayment_Map : AbstractPayment_Map<BuyingMyCryptCheckPayment>
+  {
+    public BuyingMyCryptCheckPayment_Map() : base()
+    {
+      References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable();
+      Map(x => x.State).CustomType<BuyingMyCryptCheckPaymentState>();
+    }
+  }
+  #endregion
 
   public class AddMyCryptTransaction_Map : BaseObject_Map<AddMyCryptTransaction>
   {
@@ -200,6 +298,7 @@ namespace Logic
       Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.Comment).Nullable().Length(3000);
       Map(x => x.State).CustomType<BuyingMyCryptRequestState>();
+      HasOne(x => x.CheckPayment).Cascade.All();
     }
   }
   #endregion

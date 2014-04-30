@@ -64,7 +64,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
 
       buyingMyCryptRequest.State = BuyingMyCryptRequestState.Denied;
-      buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Denied;
 
       MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
 
@@ -90,6 +89,18 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (buyingMyCryptRequest.State != BuyingMyCryptRequestState.AwaitingConfirm)
         throw new UserVisible__CurrentActionAccessDenied();
+
+      #region Проверочный платеж
+      BuyingMyCryptCheckPayment buyingPayment = new BuyingMyCryptCheckPayment
+      {
+        User = CurrentSession.Default.CurrentUser,
+        RealMoneyAmount = 120,
+        BuyingMyCryptRequest = buyingMyCryptRequest,
+        State = BuyingMyCryptCheckPaymentState.NotApproved
+      };
+
+      MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(buyingPayment);
+      #endregion
 
       buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;
       buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;

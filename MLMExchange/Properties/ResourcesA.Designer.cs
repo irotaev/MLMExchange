@@ -133,6 +133,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ожидает подтверждения.
+        /// </summary>
+        public static string AwaitingConfirm {
+            get {
+                return ResourceManager.GetString("AwaitingConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вы уверены, что хотите продолжить действие {0} ?.
         /// </summary>
         public static string ConfirmActionMessage {
@@ -475,6 +484,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не определен.
+        /// </summary>
+        public static string NA {
+            get {
+                return ResourceManager.GetString("NA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Операция успешно завершена.
         /// </summary>
         public static string OperationSuccess {
@@ -489,6 +507,15 @@ namespace MLMExchange.Properties {
         public static string PasswordDoesnotMatchWithPasswordConfirmation {
             get {
                 return ResourceManager.GetString("PasswordDoesnotMatchWithPasswordConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оплатить.
+        /// </summary>
+        public static string Pay {
+            get {
+                return ResourceManager.GetString("Pay", resourceCulture);
             }
         }
         

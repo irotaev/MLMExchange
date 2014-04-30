@@ -5,7 +5,7 @@
   margin: $margin;
   border: 2px solid $red_a_1_c;
 
-  * {font-family: "Segoe UI" !important; color: $grey_2 !important;}
+  *:not(.fa) {font-family: "Segoe UI" !important; color: $grey_2 !important;}
 
   .x-panel-header-default
   {
@@ -21,10 +21,29 @@
     }
   }
 
+  .x-panel-body-default {background-color: white;}
+
+  .x-grid-cell-inner
+  {
+    white-space: normal;
+    line-height: 22px;
+  }
+
+  .row-imagecommands
+  {
+    @include clearfix;
+  }
   .row-imagecommands
   {
     margin-left: 10px;
 
-    .row-imagecommand {font-size: 12px; margin-bottom: 5px !important;}
+    .row-imagecommand
+    {
+      font-size: 12px;
+      margin-bottom: 5px !important;
+      margin-top: 5px !important;
+
+      & > span {display: block;}
+    }
   }
 }

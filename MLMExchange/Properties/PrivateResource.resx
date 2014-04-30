@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BuyingMyCryptRequestHistory" xml:space="preserve">
+    <value>История запросов покупки my-crypt</value>
+  </data>
+  <data name="NeedCheckPayment" xml:space="preserve">
+    <value>Необходимо внести проверочный платеж в размере {0}</value>
+  </data>
   <data name="WaitingUserResponse" xml:space="preserve">
     <value>Ожидание отклика пользователей</value>
   </data>

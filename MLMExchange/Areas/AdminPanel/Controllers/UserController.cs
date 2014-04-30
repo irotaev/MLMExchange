@@ -12,6 +12,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using NHibernate.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
@@ -150,10 +151,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       model.ActiveSales = new List<BiddingParticipateApplicationModel>();
 
       IList<BiddingParticipateApplication> biddingApplications = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BiddingParticipateApplication>()
-        .Where(x1 => x1.State == BiddingParticipateApplicationState.Filed)
-        .WhereRestrictionOn(x2 => x2.BuyingMyCryptRequests.Select(r => r.Buyer.Id)).Not.IsIn(new long[] { CurrentSession.Default.CurrentUser.Id }).List();
-      AAAAAAAAAAAAAAAAAAAAAA
+        .Query<BiddingParticipateApplication>()
+        .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();        
+      
       foreach (var biddingApplication in biddingApplications)
       {
         BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();

@@ -168,6 +168,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\AdminPanel\AdminPanelAreaRegistration.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BiddingParticipateApplicationController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\BuyingMyCryptRequestController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\AddMyCryptModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\BiddingParticipateApplicationModel.cs" />

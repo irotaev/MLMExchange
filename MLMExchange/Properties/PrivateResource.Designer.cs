@@ -61,6 +61,24 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to История запросов покупки my-crypt.
+        /// </summary>
+        public static string BuyingMyCryptRequestHistory {
+            get {
+                return ResourceManager.GetString("BuyingMyCryptRequestHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо внести проверочный платеж в размере {0}.
+        /// </summary>
+        public static string NeedCheckPayment {
+            get {
+                return ResourceManager.GetString("NeedCheckPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ожидание отклика пользователей.
         /// </summary>
         public static string WaitingUserResponse {

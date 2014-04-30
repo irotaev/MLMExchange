@@ -141,6 +141,9 @@
   <data name="ApplyButton" xml:space="preserve">
     <value>Применить</value>
   </data>
+  <data name="AwaitingConfirm" xml:space="preserve">
+    <value>Ожидает подтверждения</value>
+  </data>
   <data name="ConfirmActionMessage" xml:space="preserve">
     <value>Вы уверены, что хотите продолжить действие {0} ?</value>
   </data>
@@ -255,11 +258,17 @@
   <data name="MyCryptPage" xml:space="preserve">
     <value>My-Crypt биржа</value>
   </data>
+  <data name="NA" xml:space="preserve">
+    <value>Не определен</value>
+  </data>
   <data name="OperationSuccess" xml:space="preserve">
     <value>Операция успешно завершена</value>
   </data>
   <data name="PasswordDoesnotMatchWithPasswordConfirmation" xml:space="preserve">
     <value>Пароль и подтверждение пароля не совпадают</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Оплатить</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>
