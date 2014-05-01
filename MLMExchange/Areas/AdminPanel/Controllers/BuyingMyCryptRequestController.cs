@@ -20,7 +20,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// </summary>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult CheckPayment(long buyingMyCryptRequestId)
+    public void CheckPayment(long buyingMyCryptRequestId)
     {
       BuyingMyCryptRequest buyingRequest = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<BuyingMyCryptRequest>()
@@ -29,16 +29,24 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (buyingRequest == null)
         throw new UserVisible__WrongParametrException("buyingMyCryptRequestId");
 
-      if (buyingRequest.CheckPayment == null)
-        throw new MLMExchange.Lib.Exception.ApplicationException(String.Format("Check payment for request {0} is not set", buyingRequest));
+      if (buyingRequest.CheckBill == null || buyingRequest.CheckBill.User.Id != CurrentSession.Default.CurrentUser.Id)
+        throw new MLMExchange.Lib.Exception.ApplicationException(String.Format("Check bill for request {0} is not set or belong to anouther user", buyingRequest));
 
-      if (buyingRequest.CheckPayment.State == BuyingMyCryptCheckPaymentState.Approved)
+      if (buyingRequest.CheckBill.PaymentState == BillPaymentState.Paid)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      //TODO:Rtv Прикрепить платежную систему
-      buyingRequest.CheckPayment.State = BuyingMyCryptCheckPaymentState.Approved;
+      Payment checkPayment = new Payment
+      {
+        RealMoneyAmount = 120,
+        User = CurrentSession.Default.CurrentUser
+      };
 
-      return Redirect(Request.UrlReferrer.ToString());
+      buyingRequest.CheckBill.Payments.Add(checkPayment);
+
+      //TODO:Rtv Прикрепить платежную систему
+      buyingRequest.CheckBill.PaymentState = BillPaymentState.Paid;
+
+      MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingRequest);
     }
   }
 }

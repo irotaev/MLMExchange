@@ -27,6 +27,8 @@ namespace Logic
     public virtual IList<Payment> Payments { get; set; }
   }
 
+  #region Платежи
+
   #region Платеж
   public class Payment : BaseObject
   {
@@ -39,37 +41,43 @@ namespace Logic
     /// </summary>
     public virtual decimal? RealMoneyAmount { get; set; }
   }
+  #endregion
 
-  /// <summary>
-  /// Проверочный платеж системе
-  /// </summary>
-  public class BuyingMyCryptCheckPayment : Payment
+  #region Счет
+  public class Bill : BaseObject
   {
     /// <summary>
-    /// Заявка на покупку my-crypt, к которой привязан платеж
+    /// Кому выставлен счет
     /// </summary>
-    public virtual BuyingMyCryptRequest BuyingMyCryptRequest { get; set; }
+    public virtual User User { get; set; }
     /// <summary>
-    /// Состояние платежа
+    /// Количество денег по счету
     /// </summary>
-    public virtual BuyingMyCryptCheckPaymentState State { get; set; }
+    public virtual decimal? MoneyAmount { get; set; }
+    /// <summary>
+    /// Платежы по счету
+    /// </summary>
+    public virtual IList<Payment> Payments { get; set; }
+    /// <summary>
+    /// Состояние оплаты
+    /// </summary>
+    public virtual BillPaymentState PaymentState { get; set; }
   }
 
-  /// <summary>
-  /// Состояние платежа
-  /// </summary>
-  public enum BuyingMyCryptCheckPaymentState : int
+  public enum BillPaymentState : int
   {
     NA = 0,
     /// <summary>
-    /// Подтвержден
+    /// Оплачен
     /// </summary>
-    Approved = 1,
+    Paid = 1,
     /// <summary>
-    /// Не подтвержден
+    /// Не оплачен
     /// </summary>
-    NotApproved
+    NotPaid = 2
   }
+  #endregion
+
   #endregion
 
   public class AddMyCryptTransaction : BaseObject
@@ -166,9 +174,9 @@ namespace Logic
     /// </summary>
     public virtual BuyingMyCryptRequestState State { get; set; }
     /// <summary>
-    /// Проверочный платеж по данной заявке
+    /// Счет на проверочный платеж
     /// </summary>
-    public virtual BuyingMyCryptCheckPayment CheckPayment { get; set; }
+    public virtual Bill CheckBill { get; set; }
   }
 
   public enum BuyingMyCryptRequestState : int
@@ -238,32 +246,32 @@ namespace Logic
     }
   }
 
+  #region Платежи
+
   #region Платеж
-  public abstract class AbstractPayment_Map<TPayment> : BaseObject_Map<TPayment>
-    where TPayment : Payment
+  public class Payment_Map : BaseObject_Map<Payment>
   {
-    public AbstractPayment_Map()
+    public Payment_Map()
     {
       References(x => x.User).Column("UserId").Not.Nullable().Cascade.SaveUpdate();
       Map(x => x.RealMoneyAmount).Nullable();
     }
   }
+  #endregion
 
-  public class Payment_Map : AbstractPayment_Map<Payment>
+  #region Счет
+  public class Bill_Map : BaseObject_Map<Bill>
   {
-    public Payment_Map()
+    public Bill_Map()
     {
+      References(x => x.User).Column("UserId");
+      Map(x => x.MoneyAmount).Nullable();
+      Map(x => x.PaymentState).CustomType<BillPaymentState>();
+      HasMany<Payment>(x => x.Payments).Inverse().Cascade.All();
     }
   }
+  #endregion
 
-  public class BuyingMyCryptCheckPayment_Map : AbstractPayment_Map<BuyingMyCryptCheckPayment>
-  {
-    public BuyingMyCryptCheckPayment_Map() : base()
-    {
-      References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable();
-      Map(x => x.State).CustomType<BuyingMyCryptCheckPaymentState>();
-    }
-  }
   #endregion
 
   public class AddMyCryptTransaction_Map : BaseObject_Map<AddMyCryptTransaction>
@@ -298,7 +306,7 @@ namespace Logic
       Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.Comment).Nullable().Length(3000);
       Map(x => x.State).CustomType<BuyingMyCryptRequestState>();
-      HasOne(x => x.CheckPayment).Cascade.All();
+      References(x => x.CheckBill).Column("CheckBillId").Cascade.SaveUpdate();
     }
   }
   #endregion

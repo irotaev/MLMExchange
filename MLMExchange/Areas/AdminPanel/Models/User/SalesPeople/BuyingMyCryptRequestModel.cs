@@ -47,9 +47,9 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     public BuyingMyCryptRequestState State { get; set; }
 
     /// <summary>
-    /// Был ли совершен проверочный платеж
+    /// Оплачен ли счет по проверочному платежу
     /// </summary>
-    public bool IsCheckPaymentApproved { get; set; }
+    public bool IsCheckBillPaid { get; set; }
 
     /// <summary>
     /// Локализированное имя состояния заявки
@@ -67,9 +67,9 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       Buyer = new UserModel().Bind(@object.Buyer);
       State = @object.State;
 
-      if (@object.CheckPayment != null)
+      if (@object.CheckBill != null)
       {
-        IsCheckPaymentApproved = @object.CheckPayment.State == BuyingMyCryptCheckPaymentState.Approved;
+        IsCheckBillPaid = @object.CheckBill.PaymentState == BillPaymentState.Paid;
       }
 
       return this;

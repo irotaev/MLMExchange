@@ -9,11 +9,13 @@
   var X = Html.X();
 }
 
-<!--#region Парсим форму валидатором еще раз, т.к. форма подгружается динамически-->
+
 <script>
+  //#region Парсим форму валидатором еще раз, т.к. форма подгружается динамически
   function validator__Parse() {
     window.$Sync.validator.unobtrusive.parse('#AddMyCrypt__Form');
   }
+  //#endregion
 
   function BuyMyCrypt__PopUpWindow__AfterRender(commandArguments) {
     $(".pb-bmc #SellerId").val(commandArguments.SellerUser__Id);
@@ -21,32 +23,25 @@
 
   function BuyingRequest__History__State__Renderer(value, metaData, record, row, col, store, gridView) {
     var stateTag = "<div class='pb-br__state pb-br__state_value_" + value.toLowerCase() + "' >" + record.data.LocalisedStateDisplayName + "</div>";
-
     if (value.toLowerCase() === "accepted") {
 
-      if (Boolean(record.data.IsCheckPaymentApproved) === false) {
+      if (Boolean(record.data.IsCheckBillPaid) === false) {
         var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
         resultTag += stateTag;
 
         var messageTag = "<div class='pb-br__message'>@(String.Format(MLMExchange.Properties.PrivateResource.NeedCheckPayment, "5%"))</div>";
         resultTag += messageTag;
 
-
-        var imageLinkTag = $("<a></a>").addClass("pb-br__image-link").attr("href", "#").click(function () {
-          console.log("OK!");
-        })
+        var imageLinkTag = $("<a></a>").addClass("pb-br__image-link").attr("href", "#").attr("data-request-id", record.data.Id)
           .html("<i class='pb-br__icon fa fa-money'></i>@MLMExchange.Properties.ResourcesA.Pay");
 
-        console.log(col);
-
-        //resultTag += imageLinkTag[0].outerHTML;
+        resultTag += imageLinkTag[0].outerHTML;
 
         resultTag += "</div>";
 
         return resultTag;
       }
-      else 
-      {
+      else {
         return "Yololo!!!!";
       }
     }
@@ -55,8 +50,26 @@
       return stateTag;
     }
   }
+
+  function BuyingRequest__History_AfterRender() {
+    var view = this.getView();
+
+    view.on('refresh', function () {
+      //#region Обработчик события нажатия кнопки Оплатить проверочный платеж
+      $(".pb-br__image-link").on("click", function () {
+
+        $.ajax({
+          url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
+          async: false,
+          type: "POST"
+        });
+        window.location.href = "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id");
+      })
+        .done(function () { location.reload();});
+      //#endregion  
+    }, this);
+  };
 </script>
-<!--#endregion-->
 
 @{var selesPeopleGrid = X.GridPanel().ID("SalesPeople__Grid")
     .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
@@ -96,7 +109,7 @@
   var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
     .Title(MLMExchange.Properties.PrivateResource.BuyingMyCryptRequestHistory)
     .Layout(LayoutType.Fit)
-    .Height(375)    
+    .Height(375)
     .Store(
       X.Store()
       .RemotePaging(true)
@@ -107,20 +120,22 @@
           new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
           new ModelField { Name = "MyCryptCount" },
           new ModelField { Name = "LocalisedStateDisplayName" },
-          new ModelField { Name = "IsCheckPaymentApproved" },
-          new ModelField { Name = "State" }
+          new ModelField { Name = "IsCheckBillPaid" },
+          new ModelField { Name = "State" },
+          new ModelField { Name = "Id" }
       )))
       .ColumnModel(
         X.RowNumbererColumn(),
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("SellerName").Flex(1),
-        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerSurname).DataIndex("SellerSurname").Flex(1),        
+        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerSurname).DataIndex("SellerSurname").Flex(1),
         X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
-        X.Column().Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Renderer("BuyingRequest__History__State__Renderer").Flex(1)
-        );  
+        X.Column().Width(170).Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Renderer("BuyingRequest__History__State__Renderer")
+        )
+      .Listeners(ls => ls.AfterRender.Fn = "BuyingRequest__History_AfterRender");
 }
 
 @{
-  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(selesPeopleGrid, buyingRequestHistoryGrid);
+(ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(selesPeopleGrid, buyingRequestHistoryGrid);
 }
 
 
