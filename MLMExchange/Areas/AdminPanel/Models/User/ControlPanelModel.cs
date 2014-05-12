@@ -12,5 +12,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// Состояние заявки на продажу my-crypt
     /// </summary>
     public BiddingParticipateApplicationStateModel BiddingParticipateApplicationStateModel { get; set; }
+
+    /// <summary>
+    /// Модель торговой сессии
+    /// </summary>
+    public TradingSessionModel TradingSessionModel { get; set; }
   }
 }

@@ -1,9 +1,9 @@
 @import "../../framework";
 
-@mixin custom-extjs-grid($margin: 10px)
+@mixin custom-extjs-grid($margin: 10px, $border: 2px solid $red_a_1_c)
 {
   margin: $margin;
-  border: 2px solid $red_a_1_c;
+  border: $border;
 
   *:not(.fa) {font-family: "Segoe UI" !important; color: $grey_2 !important;}
 

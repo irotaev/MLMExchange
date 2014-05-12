@@ -34,7 +34,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
 
-        MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(biddingApplication);
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(biddingApplication);
       }
       else
       {
@@ -51,7 +51,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult Denied(long buyingMyCryptRequestId)
     {
-      BuyingMyCryptRequest buyingMyCryptRequest = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      BuyingMyCryptRequest buyingMyCryptRequest = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<BuyingMyCryptRequest>().Where(x => x.Id == buyingMyCryptRequestId).List().FirstOrDefault();
 
       if (buyingMyCryptRequest == null)
@@ -65,7 +65,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       buyingMyCryptRequest.State = BuyingMyCryptRequestState.Denied;
 
-      MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
 
       return Redirect(Request.UrlReferrer.ToString());
     }
@@ -78,7 +78,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult Accept(long buyingMyCryptRequestId)
     {
-      BuyingMyCryptRequest buyingMyCryptRequest = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      BuyingMyCryptRequest buyingMyCryptRequest = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<BuyingMyCryptRequest>().Where(x => x.Id == buyingMyCryptRequestId).List().FirstOrDefault();
 
       if (buyingMyCryptRequest == null)
@@ -90,25 +90,101 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (buyingMyCryptRequest.State != BuyingMyCryptRequestState.AwaitingConfirm)
         throw new UserVisible__CurrentActionAccessDenied();
 
+      D_TradingSession tradingSession = new D_TradingSession
+      {
+        BuyingMyCryptRequest = buyingMyCryptRequest,
+        BiddingParticipateApplication = buyingMyCryptRequest.BiddingParticipateApplication,
+        State = TradingSessionStatus.Open
+      };
+
       #region Счет проверочного платежа
       Bill checkBill = new Bill
       {
         MoneyAmount = 120,
-        PaymentState = BillPaymentState.NotPaid,
-        User = CurrentSession.Default.CurrentUser
+        PaymentState = BillPaymentState.WaitingPayment,
+        Payer = CurrentSession.Default.CurrentUser
       };
 
-      buyingMyCryptRequest.CheckBill = checkBill;
+      tradingSession.CheckBill = checkBill;
 
-      MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+      //Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(checkBill);
+      #endregion
+
+      #region Счет комиссионного сбора продавцу
+      Bill sallerInterestRateBill = new Bill
+      {
+        MoneyAmount = 156,
+        Payer = CurrentSession.Default.CurrentUser,
+        PaymentState = BillPaymentState.WaitingPayment
+      };
+
+      tradingSession.SallerInterestRateBill = sallerInterestRateBill;
+
+      //Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(sallerInterestRateBill);
       #endregion
 
       buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;
       buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;
 
-      MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
 
       return Redirect(Request.UrlReferrer.ToString());
+    }
+
+    /// <summary>
+    /// Принять комиссионный платеж продавцу
+    /// </summary>
+    /// <param name="tradeSessionId">Id торговой сессии</param>
+    /// <returns></returns>
+    [HttpPost]
+    public ActionResult SellerInterestRatePayment_Accepted(long tradeSessionId)
+    {
+      D_TradingSession tradingSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<D_TradingSession>().Where(x => x.Id == tradeSessionId).List().FirstOrDefault();
+
+      if (tradingSession == null)
+        throw new UserVisible__WrongParametrException("tradeSessionId");
+
+      if (tradingSession.BiddingParticipateApplication.Seller.Id != CurrentSession.Default.CurrentUser.Id)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      tradingSession.SallerInterestRateBill.PaymentState = BillPaymentState.Paid;
+      tradingSession.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Closed;
+
+      new TradingSession(tradingSession).EnsureProfibilityOfTradingSession();
+
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
+
+      if (!Request.IsAjaxRequest())
+        return Redirect(Request.UrlReferrer.ToString());
+      else
+        return null;
+    }
+
+    /// <summary>
+    /// Отклонить комиссионный платеж продавцу
+    /// </summary>
+    /// <param name="tradeSessionId">Id торговой сессии</param>
+    /// <returns></returns>
+    [HttpPost]
+    public ActionResult SellerInterestRatePayment_Denied(long tradeSessionId)
+    {
+      D_TradingSession tradingSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<D_TradingSession>().Where(x => x.Id == tradeSessionId).List().FirstOrDefault();
+
+      if (tradingSession == null)
+        throw new UserVisible__WrongParametrException("tradeSessionId");
+
+      if (tradingSession.BiddingParticipateApplication.Seller.Id != CurrentSession.Default.CurrentUser.Id)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      tradingSession.SallerInterestRateBill.PaymentState = BillPaymentState.NotPaid;
+      tradingSession.State = TradingSessionStatus.Baned;
+
+      if (!Request.IsAjaxRequest())
+        return Redirect(Request.UrlReferrer.ToString());
+      else
+        return null;
     }
   }
 }

@@ -27,6 +27,11 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
 
     public UserModel Seller { get; set; }
 
+    /// <summary>
+    /// Состояние заявки
+    /// </summary>
+    public BiddingParticipateApplicationState State { get; set; }
+
     public BiddingParticipateApplicationModel Bind(BiddingParticipateApplication @object)
     {
       base.Bind(@object);
@@ -35,6 +40,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
 
       UserModel userModel = new UserModel();
       userModel.Bind(@object.Seller);
+
+      State = @object.State;
 
       Seller = userModel;
 
@@ -70,6 +77,25 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     public List<BuyingMyCryptRequestModel> BuyRequests { get; set; }
   }
 
+  /// <summary>
+  /// Модель заявки на продажу в состоянии покупатель принят
+  /// </summary>
+  public class BiddingParticipateApplicationAcceptedModel : BaseModel
+  {
+    /// <summary>
+    /// Покупатель
+    /// </summary>
+    public UserModel Buyer { get; set; }
+    /// <summary>
+    /// Необходимо ли довнесение денег покупателем по комиссионному счету торговой сессии, выставленному продавцом
+    /// </summary>
+    public bool IsSellerInterestRate_NeedSubstantialMoney { get; set; }
+    /// <summary>
+    /// Id текущей торговой сессии
+    /// </summary>
+    public long TradingSessionId { get; set; }
+  }
+
   #region Состояние заявки на участие в торгах
   public interface IBaseBiddingParticipateApplicationModel
   {
@@ -96,6 +122,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
 
   public interface IBiddingParticipateApplicationAcceptedModel : IBaseBiddingParticipateApplicationModel
   {
+    BiddingParticipateApplicationAcceptedModel BiddingParticipateApplicationAcceptedModel { get; }
   }
 
   /// <summary>
@@ -113,6 +140,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     public BiddingParticipateApplicationBuyerFoundModel BiddingParticipateApplicationBuyerFoundModel { get; set; }
 
     public ApplicationState State { get; set; }
+
+    public BiddingParticipateApplicationAcceptedModel BiddingParticipateApplicationAcceptedModel { get; set; }
   }
 
   public enum ApplicationState : int

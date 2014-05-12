@@ -13,7 +13,18 @@ using Microsoft.Practices.Unity;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 {
-  public class BuyingMyCryptRequestModel : AbstractDataModel<BuyingMyCryptRequest, BuyingMyCryptRequestModel>
+  /// <summary>
+  /// Оплата процентной ставки продавцу
+  /// </summary>
+  public interface IBuyingMyCryptRequest_SallerInterestRateModel
+  {
+    /// <summary>
+    /// Значение процентной ставки продавцу
+    /// </summary>
+    decimal? SallerInterestRateValue { get; }
+  }
+
+  public class BuyingMyCryptRequestModel : AbstractDataModel<BuyingMyCryptRequest, BuyingMyCryptRequestModel>, IBuyingMyCryptRequest_SallerInterestRateModel
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
@@ -47,9 +58,31 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     public BuyingMyCryptRequestState State { get; set; }
 
     /// <summary>
+    /// Id торговой сессии
+    /// </summary>
+    public long? TradeSessionId { get; set; }
+
+    /// <summary>
     /// Оплачен ли счет по проверочному платежу
     /// </summary>
+    [HiddenInput(DisplayValue = false)]
     public bool IsCheckBillPaid { get; set; }
+
+    /// <summary>
+    /// Необходимо ли довнести деньги по счету
+    /// </summary>
+    public bool IsSellerInterestRatePaid_NeedSubstantialMoney { get; private set; }
+
+    /// <summary>
+    /// Оплачен ли счет по комиссионному платежу пиродавца
+    /// </summary>
+    [HiddenInput(DisplayValue = false)]
+    public bool IsSellerInterestRatePaid { get; private set; }
+
+    /// <summary>
+    /// Значение процентной ставки продавцу
+    /// </summary>
+    public decimal? SallerInterestRateValue { get; private set; }
 
     /// <summary>
     /// Локализированное имя состояния заявки
@@ -67,10 +100,17 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       Buyer = new UserModel().Bind(@object.Buyer);
       State = @object.State;
 
-      if (@object.CheckBill != null)
+      if (@object.TradingSession != null)
       {
-        IsCheckBillPaid = @object.CheckBill.PaymentState == BillPaymentState.Paid;
+        IsCheckBillPaid = @object.TradingSession.CheckBill.PaymentState == BillPaymentState.Paid;
+
+        IsSellerInterestRatePaid = @object.TradingSession.SallerInterestRateBill.PaymentState == BillPaymentState.Paid;
+        IsSellerInterestRatePaid_NeedSubstantialMoney = @object.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney;
+
+        TradeSessionId = @object.TradingSession.Id;
       }
+
+      SallerInterestRateValue = 145;
 
       return this;
     }
@@ -87,8 +127,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 
       @object.MyCryptCount = MyCryptCount.Value;
 
-      Logic.User sellerUser = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>()
-        .Session.QueryOver<Logic.User>().Where(x => x.Id == SellerId).List().FirstOrDefault();
+      Logic.D_User sellerUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>()
+        .Session.QueryOver<Logic.D_User>().Where(x => x.Id == SellerId).List().FirstOrDefault();
 
       if (sellerUser == null)
         throw new UserVisible__WrongParametrException("SellerId");
@@ -98,7 +138,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       @object.Buyer = MLMExchange.Lib.CurrentSession.Default.CurrentUser;
       @object.State = BuyingMyCryptRequestState.AwaitingConfirm;
 
-      BiddingParticipateApplication biddingApplication = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>()
+      BiddingParticipateApplication biddingApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>()
         .Session.QueryOver<Logic.BiddingParticipateApplication>().Where(x => x.Seller.Id == SellerId && x.State == BiddingParticipateApplicationState.Filed).List().FirstOrDefault();
 
       if (biddingApplication == null)
@@ -108,5 +148,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 
       return @object;
     }
+
   }
 }

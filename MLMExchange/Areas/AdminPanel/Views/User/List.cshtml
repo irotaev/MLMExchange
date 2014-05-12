@@ -1,0 +1,44 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@model List<MLMExchange.Models.Registration.UserModel>
+
+@{
+  ViewBag.Title = MLMExchange.Properties.PrivateResource.UserManagment;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+
+  var X = Html.X();
+}
+
+@{
+  var userGrid = X.GridPanel()
+    .Layout(LayoutType.Fit)
+    .Header(false)
+    .Border(false)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(Model)
+      .Model(X.Model().Fields(
+          new ModelField { Name = "Id", ServerMapping = "Id" },
+          new ModelField { Name = "Buyer__Login", ServerMapping = "Buyer.Login" },
+          new ModelField { Name = "Buyer__Name", ServerMapping = "Buyer.Name" },
+          new ModelField { Name = "Buyer__Sername", ServerMapping = "Buyer.Surname" }          
+      )))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Buyer__Name").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.Surname).DataIndex("Buyer__Sername").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("Buyer__Login").Flex(1),
+        X.ImageCommandColumn().Commands(
+          X.ImageCommand().CommandName("Delete").Icon(Icon.Delete).Text(MLMExchange.Properties.ResourcesA.Delete)
+        )
+        .Listeners(ls =>
+        {
+          ls.Command.Handler = String.Format("commandClickHandler(command, record);");
+        }));
+  }
+
+@{
+  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(userGrid);
+}

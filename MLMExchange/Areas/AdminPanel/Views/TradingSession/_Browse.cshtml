@@ -1,0 +1,91 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+
+@model MLMExchange.Areas.AdminPanel.Models.TradingSessionModel
+
+@{
+  var X = Html.X();
+
+  bool isNeedDisplay_PayYieldTradingSession_Grid = Model.State == Logic.TradingSessionStatus.Open 
+    && !Model.IsYieldSessionBillsPaid 
+    && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
+    && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
+}
+
+<section class="b-ts b-ab @(isNeedDisplay_PayYieldTradingSession_Grid ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
+  <header class="b-ab__title"><i class="b-ab__icon fa fa-usd"></i> @Logic.Properties.GeneralResources.TradingSession</header>
+
+  <div class="b-ab__content b-ts__content">
+    @if (Model.State == Logic.TradingSessionStatus.NA)
+    {
+      <div class="b-text b-ts__text b-ts__session-not-opened-text">
+        @MLMExchange.Properties.PrivateResource.TradingSessionNotOpened
+      </div>
+    }
+    else if (Model.State == Logic.TradingSessionStatus.Open)
+    {
+      <div class="b-ts__message-wrapper">
+        @if (Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
+        {
+        <div class="b-text b-ts__text b-ts__waiting-seller-interest-rate-payment">
+          @MLMExchange.Properties.PrivateResource.WaitingSellerInterestRatePayment
+        </div>
+        }
+
+        @if (Model.CheckBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
+        {
+        <div class="b-text b-ts__text b-ts__waiting-check-payment">
+          @MLMExchange.Properties.PrivateResource.WaitingCheckPayment
+        </div>
+        }
+      </div>
+
+        if (isNeedDisplay_PayYieldTradingSession_Grid)
+        {
+        <div class="b-ts__pay-yield-trading-session">
+          <div class="b-ts__header-text">
+            @MLMExchange.Properties.PrivateResource.PayYieldTradingSession
+            <i class="b-ts__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.PayYieldTradingSession" data-ot-style="BlackStyle"></i>
+          </div>
+
+          <div class="b-ts__users-to-pay" id="b-ts__users-to-pay_ID">
+            @(X.GridPanel().ID("TradingSession__PayYieldTradingSession_Grid")
+                .Height(375)
+                .Border(false)
+                .Header(false)
+                .Store(
+                  X.Store()
+                  .RemotePaging(true)
+                  .PageSize(10)
+                  .DataSource(Model.YieldSessionPaymentAcceptors)
+                  .Model(X.Model().Fields(
+                      new ModelField { Name = "UserId" },
+                      new ModelField { Name = "UserLogin" },
+                      new ModelField { Name = "MoneyAmount" },
+                      new ModelField { Name = "DefaultPaymentSystem" }
+                  )))
+                  .ColumnModel(
+                    X.RowNumbererColumn(),
+                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Flex(1),
+                    X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Flex(1),
+                    X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Flex(1),
+                    X.ImageCommandColumn().Commands(
+                      X.ImageCommand().CommandName("SellerInterestRate__Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)
+                    )
+                      .Listeners(ls =>
+                      {
+                        ls.Command.Handler = "console.log('OK!');";
+                      }))
+                 .RenderTo("b-ts__users-to-pay_ID"))
+          </div>
+        </div>
+        }
+    }
+    else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
+    {
+      <div class="b-text b-ts__text b-ts__session-in-progress">
+        @MLMExchange.Properties.PrivateResource.WaitingTradingSessionProgress
+      </div>
+    }
+  </div>
+</section><!--B: Trading session-->

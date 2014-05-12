@@ -1,0 +1,132 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+@import "compass/css3/transition";
+
+@import "BankPaymentSystem_Browse";
+
+.b-psg
+{
+  position: relative;
+  margin: 20px;
+
+  .b-psg__header
+  {
+    @include clearfix;
+
+    .b-psg__text
+    {
+      display: block;
+      font-size: $font-h;
+      float: left;
+    }
+
+    .x-btn
+    {
+      float: right;
+    }
+  }
+
+  .b-psg__notice
+  {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .b-psg__text
+    {
+      color: $red_a_1_c !important;
+      font-size: $font-n;
+    }
+  }
+
+  .b-psg__content
+  {
+    position: relative;
+
+    .b-psg__payment-system-item
+    {
+      position: relative;
+      border: 3px dashed $blue_a_4_c3_c;
+      min-height: 150px;
+      margin: 20px 0;
+      @include transition(border 0.25s linear);
+
+      &:hover
+      {
+        border-color: $color_green_sea_c;
+        .b-psg__crud-operaions {display: block;}
+      }
+
+      &.b-psg__default-system
+      {
+        .b-psg__default-system-icon-wrapper .b-psg__icon
+        {
+          color: $color_green_sea_c;
+        }
+      }
+
+      .b-psg__payment-system-browse-view
+      {
+        padding: 10px;
+        margin-right: 80px;
+      }
+
+      .b-psg__default-system-icon-wrapper
+      {
+        position: absolute;
+        top: 50%; right: 10px;
+        width: 50px;
+        height: 50px;
+
+        margin-top: -25px;
+
+        .b-psg__icon
+        {
+          color: $blue_a_4_c3_c;
+          font-size: 50px;
+        }
+      }
+
+      .b-psg__crud-operaions
+      {
+        display: none;
+        position: absolute;
+        bottom: 15px; right: 15px;
+        @include clearfix;
+
+        .b-psg__operation
+        {
+          float: left;
+          margin-left: 10px;
+          font-size: 12px;
+          cursor: pointer;
+          padding-bottom: 2px;
+          border-bottom: 1px solid transparent;
+          @include transition(border 0.15s linear);
+
+          &:first-child {-margin-left: 0;}
+
+          &.b-psg__operation_type_make-default
+          {
+            .b-psg__operation-name {color: $color_green_sea_c !important;}
+
+            &:hover {border-bottom-color: $color_green_sea_c;}
+          }
+
+          &.b-psg__operation_type_delete
+          {
+            .b-psg__operation-name {color: $red_a_1_c !important;}
+
+            &:hover {border-bottom-color: $red_a_1_c;}
+          }
+
+          &.b-psg__operation_type_pay-seller-interest-rate-payment
+          {
+            .b-psg__operation-name {color: $color_green_sea_c !important;}
+
+            &:hover {border-bottom-color: $color_green_sea_c;}
+          }
+        }
+      }
+    }
+  }
+}

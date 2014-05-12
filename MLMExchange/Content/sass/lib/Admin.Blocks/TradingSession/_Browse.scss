@@ -1,0 +1,20 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+.b-ts
+{
+  position: relative;
+  margin: 0 auto;
+
+  .b-ts__content
+  {
+    position: relative;
+
+    .b-ts__session-not-opened-text, .b-ts__waiting-seller-interest-rate-payment, .b-ts__waiting-check-payment
+    {
+      font-size: $font-b;
+      height: 25px;
+      margin-top: 20px;
+    }
+  }
+}

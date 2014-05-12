@@ -123,14 +123,44 @@
   <data name="AwaitingConfirm" xml:space="preserve">
     <value>Ожидает подтверждения</value>
   </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Банк</value>
+  </data>
+  <data name="BankName" xml:space="preserve">
+    <value>Наименование банка</value>
+  </data>
+  <data name="BankPaymentSystem" xml:space="preserve">
+    <value>Платежная система: Банк</value>
+  </data>
+  <data name="BankPaymentSystems" xml:space="preserve">
+    <value>Платежные системы: Банк</value>
+  </data>
+  <data name="Banks" xml:space="preserve">
+    <value>Банки</value>
+  </data>
   <data name="BiddingParticipateApplication" xml:space="preserve">
     <value>Заявка на участие в торгах</value>
   </data>
   <data name="BiddingParticipateApplications" xml:space="preserve">
     <value>Заявки на участие в торгах</value>
   </data>
+  <data name="BIK" xml:space="preserve">
+    <value>БИК</value>
+  </data>
+  <data name="CorrespondentAccount" xml:space="preserve">
+    <value>Корреспондентский счет</value>
+  </data>
+  <data name="CurrentAccount" xml:space="preserve">
+    <value>Текущий счет</value>
+  </data>
   <data name="Denied" xml:space="preserve">
     <value>Отклонен</value>
+  </data>
+  <data name="INN" xml:space="preserve">
+    <value>ИНН</value>
+  </data>
+  <data name="KPP" xml:space="preserve">
+    <value>КПП</value>
   </data>
   <data name="MyCryptCount" xml:space="preserve">
     <value>Количество my-crypt</value>
@@ -141,7 +171,64 @@
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="PaymentSystem" xml:space="preserve">
+    <value>Платежная система</value>
+  </data>
+  <data name="PaymentSystemGroup" xml:space="preserve">
+    <value>Группа платежных систем</value>
+  </data>
+  <data name="PaymentSystemGroups" xml:space="preserve">
+    <value>Группы платежных систем</value>
+  </data>
+  <data name="PaymentSystems" xml:space="preserve">
+    <value>Платежные системы</value>
+  </data>
   <data name="Surname" xml:space="preserve">
     <value>Фамилия</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="UserPatronymic" xml:space="preserve">
+    <value>Отчество пользователя</value>
+  </data>
+  <data name="UserSurname" xml:space="preserve">
+    <value>Фамилия пользователя</value>
+  </data>
+  <data name="Buyer" xml:space="preserve">
+    <value>Покупатель</value>
+  </data>
+  <data name="Saller" xml:space="preserve">
+    <value>Продавец</value>
+  </data>
+  <data name="DefaultPaymentSystem" xml:space="preserve">
+    <value>Дефолтная платежная система</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="MoneyAmount" xml:space="preserve">
+    <value>Деньги</value>
+  </data>
+  <data name="TradingSession" xml:space="preserve">
+    <value>Торговая сессия</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Пользователь</value>
+  </data>
+  <data name="AddMyCryptTransaction" xml:space="preserve">
+    <value>Запрос на добавление my-crypt</value>
+  </data>
+  <data name="CreationDateTime" xml:space="preserve">
+    <value>Дата создания</value>
+  </data>
+  <data name="CheckPaymentPercent" xml:space="preserve">
+    <value>Процент проверочного платежа</value>
+  </data>
+  <data name="Quote" xml:space="preserve">
+    <value>Котировка</value>
+  </data>
+  <data name="SystemSettings" xml:space="preserve">
+    <value>Настройки системы</value>
   </data>
 </root>

@@ -1,0 +1,70 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.PaymentSystem.BankPaymentSystemModel
+
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+    ViewBag.Title = Logic.Properties.GeneralResources.BankPaymentSystem;
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="b-bps">
+  <header class="b-bps__header">
+    <p class="b-bps__text">
+      @(Logic.Properties.GeneralResources.PaymentSystem): @Logic.Properties.GeneralResources.Bank
+
+      @if (Model.IsDefault)
+      {
+        <span class="b-bps__default-system">( @MLMExchange.Properties.ResourcesA.DefaultSystem )</span>
+      }
+    </p>
+  </header>
+
+  <div class="b-bps__content">
+    <table class="b-bps__system-info">
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.UserName</td>
+        <td class="b-bps__column">@Model.UserName</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.UserSurname</td>
+        <td class="b-bps__column">@Model.UserSurname</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.UserPatronymic</td>
+        <td class="b-bps__column">@Model.UserPatronymic</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.BankName</td>
+        <td class="b-bps__column">@Model.BankName</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.INN</td>
+        <td class="b-bps__column">@Model.INN</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.KPP</td>
+        <td class="b-bps__column">@Model.KPP</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.CurrentAccount</td>
+        <td class="b-bps__column">@Model.CurrentAccount</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.BIK</td>
+        <td class="b-bps__column">@Model.BIK</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.CorrespondentAccount</td>
+        <td class="b-bps__column">@Model.CorrespondentAccount</td>
+      </tr>
+    </table>
+  </div>
+</section><!--B: Bank payment system-->

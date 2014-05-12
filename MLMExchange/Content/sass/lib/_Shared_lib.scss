@@ -1,10 +1,11 @@
 @import "compass/css3/transition";
+@import "compass/css3/border-radius";
 
 $b-button_Active_Color: #B4CEF5;
 $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
 
 // Разделительная линия
-@mixin b-hr($color: $grey_1, $with-margin: true)
+@mixin b-hr($color: $grey_1, $with-margin: true, $backgroundColor: white)
 {
   display: block;
   border: none;
@@ -19,13 +20,13 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
   background: $color; /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlNTc5OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZTVlNWU1IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
-  background: -moz-linear-gradient(left,  $color 0%, #ffffff 0%, $color 50%, #ffffff 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$color), color-stop(0%,#ffffff), color-stop(50%,$color), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  $color 0%,#ffffff 0%,$color 50%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  $color 0%,#ffffff 0%,$color 50%,#ffffff 100%); /* Opera 11.10+ */
-  $colorbackground: -ms-linear-gradient(left,  $color 0%,#ffffff 0%,#e5e5e5 50%,#ffffff 100%); /* IE10+ */
-  background: linear-gradient(to right,  $color 0%,#ffffff 0%,$color 50%,#ffffff 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#ffffff',GradientType=1 ); /* IE6-8 */
+  background: -moz-linear-gradient(left,  $color 0%, $backgroundColor 0%, $color 50%, $backgroundColor 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,$color), color-stop(0%,$backgroundColor), color-stop(50%,$color), color-stop(100%,$backgroundColor)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  $color 0%,$backgroundColor 0%,$color 50%,$backgroundColor 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  $color 0%,$backgroundColor 0%,$color 50%,$backgroundColor 100%); /* Opera 11.10+ */
+  $colorbackground: -ms-linear-gradient(left,  $color 0%,$backgroundColor 0%,#e5e5e5 50%,$backgroundColor 100%); /* IE10+ */
+  background: linear-gradient(to right,  $color 0%,$backgroundColor 0%,$color 50%,$backgroundColor 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color}', endColorstr='#{$backgroundColor}',GradientType=1 ); /* IE6-8 */
 
   &.b-hr_orientation_left
   {
@@ -206,7 +207,7 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
   }
 }
 
-// Кнопки
+//#region Кнопки
 @mixin b-button
 {
   border: none;
@@ -277,8 +278,26 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
   //#endregion
 }
 
+@mixin x-btn($color: $color_grean_sea)
+{
+  background-image: none;
+  background-color: $color;
+  border: 0;
+  @include border-radius(0);
+
+  .x-btn-inner {color: white !important;}
+}
+//#endregion
+
 // Зачистка span-column. Т.е. добавляю блок span-column 100% ширины
 @mixin b-scc
 {
   @include span-columns(12 omega, 12);
+}
+
+// Блок картинки
+@mixin b-image($color: $blue_a_4_c2)
+{
+  border: 3px dashed $color;
+  padding: 5px;
 }

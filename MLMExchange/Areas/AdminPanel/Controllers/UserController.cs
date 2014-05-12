@@ -13,20 +13,45 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
+using MLMExchange.Areas.AdminPanel.Models;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  [Auth]
-  public class UserController : BaseController
+  [Auth(typeof(D_AdministratorRole), typeof(D_UserRole))]
+  public class UserController : BaseController, IDataObjectCustomizableController<UserModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
   {
+    public ActionResult Browse(BaseBrowseActionSettings actionSettings)
+    {
+      if (actionSettings.objectId == null)
+        throw new UserVisible__ArgumentNullException("objerctId");
+
+      D_User user = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_User>().Where(x => x.Id == actionSettings.objectId).FirstOrDefault();
+
+      if (user == null)
+        throw new UserVisible__WrongParametrException("objectId");
+
+      return View(new UserModel().Bind(user));
+    }
+
+    public ActionResult List(BaseListActionSetings actionSettings)
+    {
+      List<UserModel> model = new List<UserModel>();
+
+      model.AddRange(Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_User>().Select(u => new UserModel().Bind(u)).Cast<UserModel>());
+
+      return View(model);
+    }
+
     /// <summary>
     /// Редактирование информации о пользователе
     /// </summary>
     /// <param name="model">Модель пользователя</param>
     /// <returns></returns>
-    public ActionResult Edit(UserModel model)
+    public ActionResult Edit(UserModel model, BaseEditActionSettings actionSettings)
     {
-      Logic.User user = CurrentSession.Default.CurrentUser;
+      Logic.D_User user = CurrentSession.Default.CurrentUser;
 
       if (model.Id == null)
       {
@@ -47,8 +72,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
           user = model.UnBind(user);
 
-          MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
-          //transaction.Commit();
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
         }
       }
 
@@ -77,9 +101,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           }
           #endregion
 
-          AddMyCryptTransaction addMyCryptTransaction = model.UnBind();
+          D_AddMyCryptTransaction addMyCryptTransaction = model.UnBind();
+          addMyCryptTransaction.User = CurrentSession.Default.CurrentUser;
 
-          MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(addMyCryptTransaction);
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(addMyCryptTransaction);
           //transaction.Commit();
 
           return View("_AddMyCrypt_Success", model);
@@ -95,43 +120,73 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult ControlPanel()
     {
+      NHibernate.ISession session = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+
       ControlPanelModel model = new ControlPanelModel();
 
       #region Заявка на продажу my-crypt
       model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
 
-      BiddingParticipateApplication biddingParticipateApplication = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id && x.State == BiddingParticipateApplicationState.Filed).List().FirstOrDefault();
+      BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id 
+                                                            && x.State != BiddingParticipateApplicationState.NA
+                                                            && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
 
-      if (biddingParticipateApplication == null || biddingParticipateApplication.State != BiddingParticipateApplicationState.Filed)
+      if (biddingParticipateApplication == null)
       {
         model.BiddingParticipateApplicationStateModel.State = ApplicationState.NotFiled;
         model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel();
       }
       else
       {
-        IList<BuyingMyCryptRequest> buyingMyCryptRequests = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .QueryOver<BuyingMyCryptRequest>().Where(x => x.SellerUser.Id == CurrentSession.Default.CurrentUser.Id && x.State == BuyingMyCryptRequestState.AwaitingConfirm).List();
+        BuyingMyCryptRequest acceptedBuyinMyCryptRequest = biddingParticipateApplication.BuyingMyCryptRequests.Where(x => x.State == BuyingMyCryptRequestState.Accepted).FirstOrDefault();
 
-        if (buyingMyCryptRequests == null || buyingMyCryptRequests.Count == 0)
+        if (acceptedBuyinMyCryptRequest != null)
         {
-          model.BiddingParticipateApplicationStateModel.State = ApplicationState.ExpectsBuyers;
+          model.BiddingParticipateApplicationStateModel.State = ApplicationState.Accepted;
+          model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationAcceptedModel = new BiddingParticipateApplicationAcceptedModel
+          {
+            Buyer = new UserModel().Bind(acceptedBuyinMyCryptRequest.Buyer),
+            IsSellerInterestRate_NeedSubstantialMoney = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney,
+            TradingSessionId = acceptedBuyinMyCryptRequest.TradingSession.Id
+          };
         }
         else
         {
-          model.BiddingParticipateApplicationStateModel.State = ApplicationState.BuyerFound;
-          model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel = new BiddingParticipateApplicationBuyerFoundModel
-          {
-            BuyRequests = new List<BuyingMyCryptRequestModel>()
-          };
+          IList<BuyingMyCryptRequest> buyingMyCryptRequests = biddingParticipateApplication.BuyingMyCryptRequests;
 
-          foreach (var request in buyingMyCryptRequests)
+          if (buyingMyCryptRequests == null || buyingMyCryptRequests.Count == 0)
           {
-            BuyingMyCryptRequestModel buyRequest = new BuyingMyCryptRequestModel().Bind(request);
+            model.BiddingParticipateApplicationStateModel.State = ApplicationState.ExpectsBuyers;
+          }
+          else
+          {
+            model.BiddingParticipateApplicationStateModel.State = ApplicationState.BuyerFound;
+            model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel = new BiddingParticipateApplicationBuyerFoundModel
+            {
+              BuyRequests = new List<BuyingMyCryptRequestModel>()
+            };
 
-            model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel.BuyRequests.Add(buyRequest);
+            foreach (var request in buyingMyCryptRequests)
+            {
+              BuyingMyCryptRequestModel buyRequest = new BuyingMyCryptRequestModel().Bind(request);
+
+              model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel.BuyRequests.Add(buyRequest);
+            }
           }
         }
+      }
+      #endregion
+
+      #region TradingSession
+      {
+        model.TradingSessionModel = new Models.TradingSessionModel();
+
+        D_TradingSession tradingSession = session.Query<D_TradingSession>()
+          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id && x.State == TradingSessionStatus.Open).FirstOrDefault();
+
+        if (tradingSession != null)
+          model.TradingSessionModel.Bind(tradingSession);
       }
       #endregion
 
@@ -150,7 +205,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Заполняю активных продавцов
       model.ActiveSales = new List<BiddingParticipateApplicationModel>();
 
-      IList<BiddingParticipateApplication> biddingApplications = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      IList<BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<BiddingParticipateApplication>()
         .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();        
       
@@ -167,7 +222,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Заполняю историю заявок, на которые откликнулс данный пользователь
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
 
-      IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
 
       foreach (var request in buyingMyCryptRequestsHistory)
@@ -199,7 +254,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         BuyingMyCryptRequest buyingMyCryptRequest = model.UnBind(((BuyingMyCryptRequest)null));
 
-        MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(buyingMyCryptRequest);
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(buyingMyCryptRequest);
       }
       else
       {
@@ -207,6 +262,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       }
 
       return Redirect(Request.UrlReferrer.ToString());
-    }
+    }    
   }
 }

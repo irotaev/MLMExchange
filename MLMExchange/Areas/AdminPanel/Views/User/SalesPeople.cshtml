@@ -32,8 +32,28 @@
         var messageTag = "<div class='pb-br__message'>@(String.Format(MLMExchange.Properties.PrivateResource.NeedCheckPayment, "5%"))</div>";
         resultTag += messageTag;
 
-        var imageLinkTag = $("<a></a>").addClass("pb-br__image-link").attr("href", "#").attr("data-request-id", record.data.Id)
+        var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_check-payment").attr("href", "#").attr("data-request-id", record.data.Id)
           .html("<i class='pb-br__icon fa fa-money'></i>@MLMExchange.Properties.ResourcesA.Pay");
+
+        resultTag += imageLinkTag[0].outerHTML;
+        
+        resultTag += "</div>";
+
+        return resultTag;
+      }
+      else if (Boolean(record.data.IsSellerInterestRatePaid_NeedSubstantialMoney) === true) {
+        var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
+        resultTag += stateTag;
+
+        var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.RequirePayInterestRateToSaller, 
+            "\" + record.data.SallerInterestRateValue + \"")))</div>";
+          resultTag += messageTag;
+
+          var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_pay-saller-interest-rate").attr("href", "#")
+              .attr("data-request-id", record.data.Id)
+              .attr("data-seller-id", record.data.SellerId)
+              .attr("data-trade-session-id", record.data.TradeSessionId)
+              .html("<i class='pb-br__icon fa fa-money'></i> @MLMExchange.Properties.ResourcesA.Pay");
 
         resultTag += imageLinkTag[0].outerHTML;
 
@@ -41,8 +61,23 @@
 
         return resultTag;
       }
-      else {
-        return "Yololo!!!!";
+      else if (Boolean(record.data.IsSellerInterestRatePaid) === false) {
+        var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
+
+        var messageTag = "<div class='pb-br__message'>@MLMExchange.Properties.PrivateResource.WaitingSellerInterestRatePayment_Accept</div>";
+        resultTag += messageTag;
+
+        resultTag += "</div>";
+
+        return resultTag;
+      }
+      else if (Boolean(record.data.IsSellerInterestRatePaid) === true) {
+          var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
+          resultTag += stateTag;
+
+          resultTag += "</div>";
+
+          return resultTag;
       }
     }
     else 
@@ -56,17 +91,44 @@
 
     view.on('refresh', function () {
       //#region Обработчик события нажатия кнопки Оплатить проверочный платеж
-      $(".pb-br__image-link").on("click", function () {
+        $(".pb-br__image-link_action_check-payment").on("click", function () {
 
         $.ajax({
           url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
           async: false,
           type: "POST"
-        });
-        window.location.href = "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id");
-      })
-        .done(function () { location.reload();});
-      //#endregion  
+        })
+        .done(function () { window.location.reload(); });
+      });
+      //#endregion
+
+      //#region Обработчик события нажатия кнопки Оплатить процентную ставку продавцу
+        $(".pb-br__image-link_action_pay-saller-interest-rate").on("click", function () {
+            var sellerId = $(this).data("seller-id");
+            var tradeSessionId = $(this).data("trade-session-id");
+
+            new Ext.Window({
+                id: "PaySellerInterestRate__Window",
+                width: 800,
+                height: 800,
+                modal: true,
+                title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
+                autoLoad: {
+                    url: "/AdminPanel//PaymentSystemGroup/Browse",
+                    params: { ForUserId: sellerId, IsRequireSallerInterestRatePayment: true, TradeSessionId: tradeSessionId },
+                    nocache: true,
+                    text: "@MLMExchange.Properties.ResourcesA.Loading",
+                    callback: function () {
+                        $.each($("#PaySellerInterestRate__Window").find("script[data-app-script='true']"), function (index, element) {
+                            var scriptTag = $(document.createElement('script')).text($(element).text());
+
+                            $(scriptTag).appendTo($("body"));
+                        });
+                    }
+                }
+            }).show();
+      });
+      //#endregion
     }, this);
   };
 </script>
@@ -116,11 +178,16 @@
       .PageSize(10)
       .DataSource(Model.HistoryApplication)
       .Model(X.Model().Fields(
+          new ModelField { Name = "SellerId", ServerMapping = "Seller.Id" },
           new ModelField { Name = "SellerName", ServerMapping = "Seller.Name" },
           new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
           new ModelField { Name = "MyCryptCount" },
           new ModelField { Name = "LocalisedStateDisplayName" },
+          new ModelField { Name = "SallerInterestRateValue" },
           new ModelField { Name = "IsCheckBillPaid" },
+          new ModelField { Name = "IsSellerInterestRatePaid" },
+          new ModelField { Name = "IsSellerInterestRatePaid_NeedSubstantialMoney" },
+          new ModelField { Name = "TradeSessionId" },
           new ModelField { Name = "State" },
           new ModelField { Name = "Id" }
       )))

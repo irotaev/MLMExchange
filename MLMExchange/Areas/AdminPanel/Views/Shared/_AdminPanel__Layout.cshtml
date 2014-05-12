@@ -1,8 +1,7 @@
 ﻿@using Ext.Net
 @using Ext.Net.MVC
 
-@{
-  ViewBag.Title = "_AdminPanel__Layout";
+@{  
   Layout = "~/Views/Shared/_MainLayout.cshtml";
   var X = Html.X();
 }
@@ -12,37 +11,66 @@
 @helper MainMenu__InnerContent()
 {
   <div class="pb-mm">
-    <a href="@Url.Action("Edit")">
-      <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_user-info">
-        <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+    @if (((Logic.User)MLMExchange.Lib.CurrentSession.Default.CurrentUser).IsAdministratorRoleExsists())
+    {
+      <a href="@Url.Action("UnApprovedTransactionList", "AddMyCryptTransaction", new { area = "AdminPanel" })">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_add-my-crypt-transaction">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-        <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.UserInfo_Short</span>
-      </nav>
-    </a>
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.AddMyCrypt</span>
+        </nav>
+      </a>
+      
+      <a href="@Url.Action("Edit", "SystemSettings", new { area = "AdminPanel" })">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_system-settings-edit">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-    <a href="@Url.Action("AddMyCrypt")">
-      <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_add-my-crypt">
-        <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.SystemSettings</span>
+        </nav>
+      </a>
+    }
+    else
+    { 
+      <a href="@Url.Action("Edit", "User")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_user-info">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-        <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.AddMyCrypt</span>
-      </nav>
-    </a>
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.UserInfo_Short</span>
+        </nav>
+      </a>
 
-    <a href="@Url.Action("ControlPanel")">
-      <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_control-panel">
-        <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+      <a href="@Url.Action("Browse", "PaymentSystemGroup")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_payment-system-select">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-        <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.ControlPanel</span>
-      </nav>
-    </a>
+          <span class="pb-mm__text-wrapper">@Logic.Properties.GeneralResources.PaymentSystems</span>
+        </nav>
+      </a>
 
-    <a href="@Url.Action("SalesPeople")">
-      <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_sales-people">
-        <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+      <a href="@Url.Action("AddMyCrypt", "User")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_add-my-crypt">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
 
-        <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.SalesPeople</span>
-      </nav>
-    </a>
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.AddMyCrypt</span>
+        </nav>
+      </a>
+
+      <a href="@Url.Action("ControlPanel", "User")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_control-panel">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.ControlPanel</span>
+        </nav>
+      </a>
+
+      <a href="@Url.Action("SalesPeople", "User")">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_sales-people">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon"></i></div>
+
+          <span class="pb-mm__text-wrapper">@MLMExchange.Properties.ResourcesA.SalesPeople</span>
+        </nav>
+      </a>
+    }
   </div>
 }
 

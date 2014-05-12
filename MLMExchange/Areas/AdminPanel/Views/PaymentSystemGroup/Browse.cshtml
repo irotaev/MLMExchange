@@ -1,0 +1,175 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@using MLMExchange.Areas.AdminPanel.Models.PaymentSystem
+@using MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
+
+@model PaymentSystemGroupModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = @Logic.Properties.GeneralResources.PaymentSystems;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+else
+{
+  @Html.X().ResourceManager().RenderStyles(ResourceLocationType.None).RenderScripts(ResourceLocationType.None)
+}
+
+@{
+  var X = Html.X();
+
+  PaymentSystemGroup_Browse__ViewSetting viewSetting = (ViewData["PaymentSystemGroup_Browse__ViewSetting"] as PaymentSystemGroup_Browse__ViewSetting) ?? new PaymentSystemGroup_Browse__ViewSetting();
+}
+
+@if (viewSetting.IsRequireSallerInterestRatePayment)
+{
+  <script data-app-script="true">
+      function paySellerInterestRate_Click(obj) {
+          $.ajax({
+              url: "/BuyingMyCryptRequest/PaySallerInterestRate/?tradeSessionId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
+              async: false,
+              type: "POST"
+          })
+          .done(function () { window.location.reload(); });
+      }
+  </script>
+}
+
+<script>
+    function BtnSave_PaymentBank_Click() {
+        $("#pb-bpse_ID").find("input[type='submit']").click();
+    }
+
+  function Window__AddPaymentSystem_Bank_AfterRender() {
+    //#region Дефолтные параметры для формы
+    require(["jquery", "Lib/Form"], function ($, formModule) {
+      new formModule.Form($("#pb-bpse_edit-form_ID")).ReBindAll();
+    });
+    //#endregion
+  }
+</script>
+
+<section class="b-psg">
+  @if (viewSetting.IsHeaderEnable)
+  { 
+    <header class="b-psg__header" id="b-psg__header_ID">
+    <span class="b-psg__text b-text">@Logic.Properties.GeneralResources.PaymentSystems</span>
+
+    @if (viewSetting.IsEnableAddPaymentSystem)
+    {
+      @(X.Button()
+        .Text(MLMExchange.Properties.ResourcesA.Add)
+        .Scale(ButtonScale.Medium)
+        .Menu(X.Menu()
+                .Items(
+                    X.MenuItem().ID("BtnAdd_BankSystem")
+                    .Text(Logic.Properties.GeneralResources.Bank)
+                    .Icon(Icon.Add)
+                    .Listeners(ls => ls.Click.Handler = X.Window().ID("Window__AddPaymentSystem_Bank")
+                                                            .Width(800)
+                                                            .Modal(true)
+                                                            .AutoScroll(true)
+                                                            .SetTitle(String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.BankPaymentSystem))
+                                                            .Content(x => Html.Partial("~/Areas/AdminPanel/Views/BankPaymentSystem/Edit.cshtml",
+                                                                        new BankPaymentSystemModel(),
+                                                                        new ViewDataDictionary { { "AsPartial", "True" }, 
+                                                                                                { "SaveController", "PaymentSystemGroup" },
+                                                                                                { "SaveAction", "AddBank"} }))
+                                                            .Buttons(X.Button()
+                                                                    .ID("BtnSave_PaymentBank")
+                                                                    .Text(MLMExchange.Properties.ResourcesA.SaveButton)
+                                                                    .Icon(Icon.DatabaseSave)
+                                                                    .Listeners(btnLs => btnLs.Click.Fn = "BtnSave_PaymentBank_Click"))
+                                                            .ToScript() + " Window__AddPaymentSystem_Bank_AfterRender();"),
+                    X.MenuItem().ID("BtnAdd_ElectronicPayment")
+                    .Text(Logic.Properties.GeneralResources.Bank)
+                    .Icon(Icon.Add)
+        )).RenderTo("b-psg__header_ID"))
+    }
+    </header>
+  }
+
+  @if (!Model.IsHasDefaultPaymentSystem)
+  { 
+    <aside class="b-psg__notice">
+        <p class="b-psg__text">@MLMExchange.Properties.PrivateResource.DefaultPaymentSystemNotSet <i class="b-psg__icon fa fa-question-circle"></i></p>
+    </aside>
+  }
+  
+  <div class="b-psg__content">
+    @if (viewSetting.IsPaymentSystemOperationRootOperationEnable)
+    {
+      <script>
+          function removeBankOperationSystem(obj) {
+              var bankSystemId = $(obj).data("bank-system-id");
+
+            Ext.Msg.confirm("@MLMExchange.Properties.ResourcesA.ConfirmActionTitle",
+                "@(String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Delete))",
+                function (id, value) {
+                    if (id === "yes") {
+                        $.ajax({
+                            url: "/BankPaymentSystem/Remove?id=" + bankSystemId,
+                            type: "POST",
+                            async: false
+                        }).done(function () {
+                            window.location.reload();
+                        });
+                    }
+            });
+          }
+
+          function setAsDefaultBankOperationSystem(obj) {
+              var bankSystemId = $(obj).data("bank-system-id");
+
+              $.ajax({
+                  url: "/BankPaymentSystem/SetDefault?id=" + bankSystemId,
+                  type: "POST",
+                  async: false
+              }).done(function () {
+                  window.location.reload();
+              });
+          }
+      </script>
+    }
+
+    @foreach(var bankSystem in Model.BankPaymentSystemModels)
+    {
+      <div class="b-psg__payment-system-item @(bankSystem.IsDefault ? "b-psg__default-system" : null)">
+        <div class="b-psg__payment-system-browse-view">
+          @Html.Partial("~/Areas/AdminPanel/Views/BankPaymentSystem/Browse.cshtml", bankSystem, new ViewDataDictionary { { "AsPartial", "True" } })
+        </div>
+
+        <div class="b-psg__default-system-icon-wrapper">
+          <i class="b-psg__icon fa fa-check"></i>
+        </div>
+
+        @if (viewSetting.IsPaymentSystemOperationRootOperationEnable)
+        { 
+          <aside class="b-psg__crud-operaions">
+            @if (viewSetting.IsRootUser)
+            { 
+              if (!bankSystem.IsDefault)
+              { 
+                  <div class="b-psg__operation b-psg__operation_type_make-default" data-bank-system-id="@bankSystem.Id" onclick="javascript: setAsDefaultBankOperationSystem(this);">
+                    <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-check-circle"></i> @MLMExchange.Properties.ResourcesA.MakeObjectDefault</span>
+                  </div>
+              }
+              
+              <div class="b-psg__operation b-psg__operation_type_delete" data-bank-system-id="@bankSystem.Id" onclick="javascript: removeBankOperationSystem(this);">
+                <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-trash-o"></i> @MLMExchange.Properties.ResourcesA.Delete</span>
+              </div>
+            }
+            
+            @if (viewSetting.IsRequireSallerInterestRatePayment)
+            {                            
+              <div class="b-psg__operation b-psg__operation_type_pay-seller-interest-rate-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
+                   data-saller-trade-session-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: paySellerInterestRate_Click(this);">
+                <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PaySellerInterestRatePayment</span>
+              </div>
+            }
+          </aside>
+        }
+      </div>
+    }
+  </div>
+</section><!--B: Payment systems group-->

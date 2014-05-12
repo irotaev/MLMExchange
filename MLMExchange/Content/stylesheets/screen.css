@@ -100,7 +100,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
-/* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 3, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-hr {
   display: block;
   border: none;
@@ -125,10 +125,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   /* IE10+ */
   background: linear-gradient(to right, #a7a9ac 0%, #ffffff 0%, #a7a9ac 50%, #ffffff 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color', endColorstr='#ffffff',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7a9ac', endColorstr='white',GradientType=1 );
   /* IE6-8 */
 }
-/* line 31, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 32, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-hr.b-hr_orientation_left {
   background: #68696b;
   /* Old browsers */
@@ -149,7 +149,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#68696b', endColorstr='#ffffff',GradientType=1 );
   /* IE6-8 */
 }
-/* line 46, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 47, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-hr.b-hr_orientation_right {
   background: #ffffff;
   /* Old browsers */
@@ -171,7 +171,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   /* IE6-8 */
 }
 
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .clearfix:after {
   content: ".";
   display: block;
@@ -181,12 +181,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 0;
 }
 
-/* line 5, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 5, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-ai {
   display: block;
   border: 1px solid #32BFB2;
 }
-/* line 200, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 201, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-ai .b-ai_text {
   margin: 20px;
   overflow: hidden;
@@ -195,7 +195,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
 }
 
-/* line 6, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 6, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-button {
   border: none;
   display: block;
@@ -203,7 +203,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 220, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 221, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_hover-animate_border-bottom:hover {
   border-bottom: 3px solid #ed1c24;
   -webkit-transition: border-bottom 0.2s linear;
@@ -211,7 +211,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: border-bottom 0.2s linear;
   transition: border-bottom 0.2s linear;
 }
-/* line 229, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 230, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_hover-animate_opacity:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
@@ -220,44 +220,66 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: opacity 0.15s linear;
   transition: opacity 0.15s linear;
 }
-/* line 238, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 239, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button:not(.b-button_action_no-active):active {
   background-color: #b4cef5;
 }
-/* line 245, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 246, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_light-blue {
   background-color: #45a2d0;
 }
-/* line 250, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 251, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_normal-blue {
   background-color: #0076c0;
 }
-/* line 255, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 256, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_admin-blue {
   background-color: #007a9f;
 }
-/* line 260, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 261, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_light-grey {
   background-color: #f0f0f0;
 }
-/* line 265, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 266, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_color_green-sea {
   background-color: #16a085;
 }
-/* line 272, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 273, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-button.b-button_size-admin-default {
   font-size: 18px;
   height: 40px;
   width: 200px;
 }
 
-/* line 7, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+/* line 7, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+.x-btn-default-small, .x-btn-default-medium, .x-btn-default-big {
+  background-image: none;
+  background-color: #16a085;
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 288, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+.x-btn-default-small .x-btn-inner, .x-btn-default-medium .x-btn-inner, .x-btn-default-big .x-btn-inner {
+  color: white !important;
+}
+
+/* line 8, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-scc {
   width: 964px;
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
+}
+
+/* line 9, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
+.b-image {
+  border: 3px dashed #7b87af;
+  padding: 5px;
 }
 
 /* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
@@ -311,23 +333,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-position: 0 -34px;
 }
 
-/* line 242, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 243, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 247, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 248, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
 }
 
-/* line 4, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form.scss */
+/* line 4, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form.scss */
 .b-ib {
   position: relative;
   margin-top: 20px;
   position: relative;
 }
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-ib:after {
   content: ".";
   display: block;
@@ -336,7 +358,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 0;
   height: 0;
 }
-/* line 47, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 48, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__info-helper {
   position: absolute;
   top: 0;
@@ -345,7 +367,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 45px;
   background-color: #16a085;
 }
-/* line 54, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 55, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__info-helper .b-ib__info-icon {
   width: 30px;
   height: 30px;
@@ -354,24 +376,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 30px;
   color: #B5E5DC;
 }
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__content-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 45px;
 }
-/* line 70, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 71, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__content-wrapper.b-ib__content-wrapper_height_one-line-text {
   height: 45px;
 }
-/* line 74, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 75, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__content-wrapper.b-ib__content-wrapper_height_one-line-text .b-ib__input-content {
   height: 45px;
   padding-top: 12.5px;
   padding-bottom: 12.5px;
 }
-/* line 82, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 83, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-content {
   position: relative;
   margin-left: 60px;
@@ -379,7 +401,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 89, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 90, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input {
   position: relative;
   box-sizing: border-box;
@@ -394,65 +416,65 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: border-color 0.25s linear;
   transition: border-color 0.25s linear;
 }
-/* line 101, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 102, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input:focus {
   border-color: #45a2d0;
 }
-/* line 106, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 107, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error {
   border-color: #ed1c24;
 }
-/* line 109, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 110, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error:focus {
   border-color: #ed1c24;
 }
-/* line 113, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 114, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue {
   border: 2px solid black;
   background-color: #7b87af;
   color: white;
 }
-/* line 12, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 12, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue.placeholder {
   color: white;
 }
-/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 13, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue:-moz-placeholder {
   color: white;
 }
-/* line 14, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 14, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue::-moz-placeholder {
   color: white;
 }
-/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 15, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue:-ms-input-placeholder {
   color: white;
 }
-/* line 16, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 16, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue::-webkit-input-placeholder {
   color: white;
 }
-/* line 122, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 123, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper {
   position: relative;
 }
-/* line 126, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 127, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper .b-ib__icon {
   position: absolute;
   right: 2px;
   top: 7px;
   z-index: 100;
 }
-/* line 136, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 137, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
   width: 29px;
   height: 34px;
 }
-/* line 149, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 150, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message {
   box-sizing: border-box;
 }
-/* line 153, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 154, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-error {
   display: block;
   width: 100%;
@@ -465,15 +487,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: white;
   padding-left: 10px;
 }
-/* line 166, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 167, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-valid {
   display: none;
 }
-/* line 170, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 171, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message--arrow {
   display: none;
 }
-/* line 172, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 173, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .field-validation-error + .b-ib__validation-message--arrow {
   position: absolute;
   top: 0;
@@ -485,15 +507,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("/Content/images/Form/validation-arrow.png") left no-repeat;
   display: block;
 }
-/* line 183, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 184, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib .b-ib__label {
   display: none;
 }
-/* line 189, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 190, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo {
   position: relative;
 }
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-ib.b-ib_content_photo:after {
   content: ".";
   display: block;
@@ -502,11 +524,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 0;
   height: 0;
 }
-/* line 193, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 194, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: none;
 }
-/* line 196, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 197, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview {
   position: relative;
   display: block;
@@ -517,21 +539,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 2px;
   float: left;
 }
-/* line 207, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 208, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview.b-ib__file-preview_type_blue {
   border-color: #7b87af;
 }
-/* line 210, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 211, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview.b-ib__file-preview_type_blue .b-ib__image {
   background-color: #7b87af;
 }
-/* line 214, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 215, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview .b-ib__image {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 224, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 225, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser {
   background-color: #41C480;
   height: 40px;
@@ -540,20 +562,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 129px;
   float: left;
 }
-/* line 32, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 32, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser .text {
   font-size: 14px;
   line-height: 40px;
 }
-/* line 229, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 230, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser.b-button_color_admin-blue {
   background-color: #007a9f;
 }
-/* line 231, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 232, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser.b-ib_file-chooser_type_blue {
   background-color: #16a085;
 }
-/* line 235, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 236, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-ib textarea {
   resize: vertical;
   padding-top: 10px;
@@ -598,35 +620,35 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Перебитие css-правил из metro ui css
 ***/
-/* line 12, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 12, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro h1, .metro h2, .metro h3, .metro h4, .metro h5, .metro h6 {
   margin: 0;
   font-size: 16px;
   line-height: 16px;
 }
-/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 15, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro div, .metro p {
   font-size: 16px;
   color: #68696b;
 }
-/* line 20, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 20, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro label {
   margin: 0;
 }
-/* line 22, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 22, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .ot-content {
   color: white;
 }
-/* line 25, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 25, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .button {
   padding: 0;
   margin: 0;
 }
-/* line 29, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 29, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .button:active {
   background-color: #0055d4;
 }
-/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 35, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro hr {
   display: block;
   border: none;
@@ -651,10 +673,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   /* IE10+ */
   background: linear-gradient(to right, #a7a9ac 0%, #ffffff 0%, #a7a9ac 50%, #ffffff 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color', endColorstr='#ffffff',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7a9ac', endColorstr='white',GradientType=1 );
   /* IE6-8 */
 }
-/* line 31, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 32, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .metro hr.b-hr_orientation_left {
   background: #68696b;
   /* Old browsers */
@@ -675,7 +697,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#68696b', endColorstr='#ffffff',GradientType=1 );
   /* IE6-8 */
 }
-/* line 46, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 47, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .metro hr.b-hr_orientation_right {
   background: #ffffff;
   /* Old browsers */
@@ -696,32 +718,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#68696b',GradientType=1 );
   /* IE6-8 */
 }
-/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 39, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .balloon {
   border-color: #B3B3B3;
 }
-/* line 44, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 44, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .tab-control .frames, .metro .tab-control .tabs > li > a {
   border: 1px solid #45a2d0;
 }
-/* line 48, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 48, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .tab-control .tabs > li > a {
   padding: 10px 30px;
   border-bottom: none;
 }
-/* line 53, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 53, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .tab-control .tabs > li {
   margin-left: 10px;
 }
-/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 61, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro [data-role=panel] .panel-header {
   position: relative;
 }
-/* line 65, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro [data-role=panel] .panel-header:after {
   content: "" !important;
 }
-/* line 70, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 70, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro [data-role=panel] .panel-header .ab-panel__icon {
   position: absolute;
   top: 12px;
@@ -739,7 +761,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transform: rotate(90deg);
   transform: rotate(90deg);
 }
-/* line 84, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 84, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro [data-role=panel].collapsed .ab-panel__icon {
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
@@ -747,26 +769,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transform: rotate(0deg);
   transform: rotate(0deg);
 }
-/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 92, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .input-control.text .btn-clear {
   bottom: 9px;
   top: auto;
 }
-/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 92, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .input-control.text .btn-clear:focus, .metro .input-control.text .btn-clear:active {
   display: block;
 }
-/* line 96, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 96, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .input-control.text input:focus ~ .btn-clear {
   display: block;
 }
 
-/* line 102, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 102, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 .metro .stepper {
   margin-top: 50px;
 }
 
-/* line 106, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
+/* line 106, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
 * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -776,19 +798,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Override Ext.NET styles
 */
-/* line 6, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_ExtNET_Override.scss */
+/* line 6, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_ExtNET_Override.scss */
 .x-body {
   background-color: #4b73a5;
 }
 
-/* line 11, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_ExtNET_Override.scss */
+/* line 11, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_ExtNET_Override.scss */
 .x-panel-body-default {
   background-color: #394264;
 }
 
-/* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_Buttons_Override.scss */
+/* line 3, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_Buttons_Override.scss */
 .b-btn i {
   margin-right: 10px;
+}
+
+/* line 2, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_OpenTip_Override.scss */
+.opentip-container {
+  z-index: 100010 !important;
 }
 
 /*
@@ -830,20 +857,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
-/* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock.scss */
+/* line 3, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock.scss */
 .b-ab {
   position: relative;
   width: 415px;
+  margin-bottom: 50px;
 }
-/* line 10, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 11, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab.b-ab_customise_full-custom {
   width: auto;
 }
-/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 14, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab.b-ab_customise_full-custom .b-ab__content {
   padding: 0;
 }
-/* line 17, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 18, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__title {
   position: relative;
   height: 36px;
@@ -853,7 +881,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   font-size: 20px;
 }
-/* line 27, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 28, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__title .b-ab__icon {
   display: block;
   position: absolute;
@@ -862,7 +890,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 36px;
   line-height: 40px;
 }
-/* line 36, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 37, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__content {
   padding: 20px;
   padding-top: 0;
@@ -870,82 +898,103 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: #353f59;
 }
 
-/* line 14, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 14, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-window-header-default {
   background-color: #2f374b;
   border-color: #2f374b;
 }
-/* line 18, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 18, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-window-header-default .x-tool-img {
   background-color: transparent;
 }
-/* line 20, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 20, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-window-header-default .x-window-header-text-default {
   color: white !important;
 }
 
-/* line 24, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 24, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-window-default {
   border-color: #2f374b;
 }
+/* line 30, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-window-default div, .x-window-default span:not([for]):not(.b-ib__validation-message), .x-window-default p, .metro .x-window-default div, .metro .x-window-default span:not([for]):not(.b-ib__validation-message), .metro .x-window-default p, .metro .x-window-default div, .metro .x-window-default span:not([for]):not(.b-ib__validation-message), .metro .x-window-default p, .metro .x-window-default div, .metro .x-window-default span:not([for]):not(.b-ib__validation-message), .metro .x-window-default p {
+  font-family: Segoe UI;
+  color: #7b87af;
+}
+/* line 36, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-window-default input[type="button"], .x-window-default input[type="submit"], .x-window-default input[type="reset"], .metro .x-window-default input[type="button"], .metro .x-window-default input[type="submit"], .metro .x-window-default input[type="reset"], .metro .x-window-default input[type="button"], .metro .x-window-default input[type="submit"], .metro .x-window-default input[type="reset"], .metro .x-window-default input[type="button"], .metro .x-window-default input[type="submit"], .metro .x-window-default input[type="reset"] {
+  font-family: Segoe UI;
+  font-size: 14px;
+  color: white;
+}
+/* line 40, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-window-default h1, .x-window-default h2, .x-window-default h3, .x-window-default h4, .x-window-default h5, .x-window-default h6, .metro .x-window-default h1, .metro .x-window-default h2, .metro .x-window-default h3, .metro .x-window-default h4, .metro .x-window-default h5, .metro .x-window-default h6, .metro .x-window-default h1, .metro .x-window-default h2, .metro .x-window-default h3, .metro .x-window-default h4, .metro .x-window-default h5, .metro .x-window-default h6, .metro .x-window-default h1, .metro .x-window-default h2, .metro .x-window-default h3, .metro .x-window-default h4, .metro .x-window-default h5, .metro .x-window-default h6 {
+  font-family: Segoe UI;
+  font-size: 20px;
+}
 
-/* line 29, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 45, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-window-body-default {
   background-color: #394264;
 }
 
-/* line 37, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 50, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+.x-toolbar-footer {
+  background-color: #2f374b;
+}
+
+/* line 58, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-menu {
   border-color: #e74c3c;
 }
-/* line 40, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 61, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-menu .x-menu-item-text {
   font-family: "Segoe UI" !important;
-  color: #bebecf !important;
+  color: #7b87af !important;
 }
-/* line 42, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 63, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .x-menu .x-menu-item-active {
   background-color: #2f374b;
 }
 
-/* line 47, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 68, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel .x-border-layout-ct {
   background-color: #394264;
 }
-/* line 52, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 73, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel div, .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .metro .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .metro .pb-admin-panel p, .metro .pb-admin-panel div, .metro .pb-admin-panel span:not([for]):not(.b-ib__validation-message), .metro .pb-admin-panel p {
-  font-family: Lato;
-  color: #bebecf;
+  font-family: Segoe UI;
+  color: #7b87af;
 }
-/* line 58, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 79, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel input[type="button"], .pb-admin-panel input[type="submit"], .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"], .metro .pb-admin-panel input[type="button"], .metro .pb-admin-panel input[type="submit"], .metro .pb-admin-panel input[type="reset"] {
-  font-family: Lato;
+  font-family: Segoe UI;
   font-size: 14px;
   color: white;
 }
-/* line 62, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 83, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel h1, .pb-admin-panel h2, .pb-admin-panel h3, .pb-admin-panel h4, .pb-admin-panel h5, .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6, .metro .pb-admin-panel h1, .metro .pb-admin-panel h2, .metro .pb-admin-panel h3, .metro .pb-admin-panel h4, .metro .pb-admin-panel h5, .metro .pb-admin-panel h6 {
-  font-family: Lato;
+  font-family: Segoe UI;
   font-size: 20px;
 }
-/* line 65, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 86, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel .b-f input[type='text'], .pb-admin-panel .b-f input[type='password'], .pb-admin-panel .b-f textarea {
-  font-family: "Lato";
+  font-family: "Segoe UI";
 }
-/* line 71, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 92, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .x-panel-header-default {
   background-color: #58c4c6;
   border: none;
 }
-/* line 74, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 95, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .x-panel-header-default .x-tool-img {
   background-color: #58c4c6;
 }
-/* line 79, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 100, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu #MainLeft_Menu-innerCt {
   border-right: 9px solid #58c4c6;
 }
-/* line 84, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 105, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu #MainLeft_Menu_header_hd-textEl {
   display: block;
   color: white;
@@ -953,8 +1002,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   height: 40px;
   line-height: 40px;
+  font-family: Lato !important;
 }
-/* line 95, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 117, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper {
   position: relative;
   height: 50px;
@@ -964,15 +1014,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: background-color 0.15s linear;
   transition: background-color 0.15s linear;
 }
-/* line 102, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 124, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover {
   background-color: #4D5777;
 }
-/* line 105, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 127, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover .pb-mm__icon-wrapper .pb-mm__icon:before {
   color: #A0AABC;
 }
-/* line 109, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 131, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper {
   position: absolute;
   top: 0;
@@ -981,7 +1031,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 50px;
   width: 50px;
 }
-/* line 95, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 95, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
   font-family: "Dripicons";
   content: "\e037";
@@ -998,7 +1048,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 121, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 143, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
   line-height: inherit;
   -webkit-transition: color 0.15s linear;
@@ -1006,48 +1056,49 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: color 0.15s linear;
   transition: color 0.15s linear;
 }
-/* line 129, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 151, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__text-wrapper {
   line-height: 50px;
   margin-left: 50px;
   text-align: center;
   text-size: 16px;
   color: #BEBECF;
+  font-family: Lato !important;
 }
-/* line 140, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 163, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder {
   background-color: #58c4c6;
   border: none;
 }
-/* line 144, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
+/* line 167, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder .x-tool-img {
   background-color: #58c4c6;
 }
 
-/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 16, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .b-sb {
   border: 3px solid #3077b7;
   -webkit-box-shadow: 2px 2px 3px 0 #a7a9ac;
   -moz-box-shadow: 2px 2px 3px 0 #a7a9ac;
   box-shadow: 2px 2px 3px 0 #a7a9ac;
 }
-/* line 78, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 79, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title {
   height: 46px;
   background-color: #3077b7;
 }
-/* line 83, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 84, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__title .b-sb__text {
   color: white;
   text-align: center;
   font-size: 24px;
   line-height: 46px;
 }
-/* line 92, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 93, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb .b-sb__content {
   padding: 20px;
 }
-/* line 101, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 102, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon {
   position: relative;
   z-index: 10;
@@ -1056,12 +1107,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-shadow: none;
   box-shadow: none;
 }
-/* line 107, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 108, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section {
   position: relative;
   z-index: -10;
 }
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section:after {
   content: ".";
   display: block;
@@ -1070,7 +1121,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 0;
   height: 0;
 }
-/* line 115, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 116, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__header {
   border: 3px solid #3077b7;
   border-bottom: none;
@@ -1083,18 +1134,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: 20px;
   display: inline;
 }
-/* line 122, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 123, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__header .b-sb__header--content {
   height: 100px;
 }
-/* line 126, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 127, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__header .b-sb__header--content h2 {
   font-size: 20px;
   color: gray;
   margin: 2px;
   text-align: center;
 }
-/* line 136, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 137, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon {
   width: 275.2px;
   float: right;
@@ -1103,23 +1154,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: inline;
   height: 87px;
 }
-/* line 140, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 141, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon .all-icon {
   display: block;
   width: 257px;
   height: 87px;
 }
-/* line 145, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 146, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon .all-icon.mycrypt-icon {
   background-image: url("/Content/images/MycryptIndex/mycrypt-icon.png");
   background-repeat: no-repeat;
 }
-/* line 151, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 152, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__icon .all-icon.contacts-icon {
   background-image: url("/Content/images/ContactsIndex/contacts-icon.png");
   background-repeat: no-repeat;
 }
-/* line 159, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 160, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__top-section .b-sb__border-top {
   position: absolute;
   width: 373.6px;
@@ -1136,7 +1187,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   bottom: 0;
   right: 0;
 }
-/* line 172, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 173, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__content {
   width: 964px;
   float: left;
@@ -1150,14 +1201,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: 2px 2px 3px 0 #a7a9ac;
   background-color: white;
 }
-/* line 181, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 182, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__content__left {
   width: 554px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 186, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 187, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .b-sb.b-sb__type__with-icon .b-sb__content__right {
   text-align: right;
   width: 308px;
@@ -1167,13 +1218,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: inline;
 }
 
-/* line 20, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 21, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 html, body {
   height: 100%;
   width: 100%;
 }
 
-/* line 27, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 28, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 body {
   background-color: #4b73a5;
 }
@@ -1229,21 +1280,21 @@ body {
   background-position: 0 -34px;
 }
 
-/* line 242, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 243, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 247, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 248, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
 }
 
-/* line 7, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 7, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header {
   height: 64px;
 }
-/* line 12, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 12, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .pb-text {
   color: white;
   text-align: center;
@@ -1251,7 +1302,7 @@ body {
   font-size: 24px;
   overflow: hidden;
 }
-/* line 21, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 21, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block {
   width: 390px;
   float: right;
@@ -1259,7 +1310,7 @@ body {
   *margin-left: -20px;
   display: inline;
 }
-/* line 25, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 25, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block .login-on-block__avatar {
   float: left;
   width: 52px;
@@ -1267,7 +1318,7 @@ body {
   background-color: white;
   height: 52px;
 }
-/* line 34, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 34, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block .login-on-block__nickname {
   width: 226px;
   float: left;
@@ -1281,7 +1332,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 46, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 46, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block .login-on-block__exit {
   width: 62px;
   float: right;
@@ -1298,30 +1349,30 @@ body {
   -o-transition: opacity 0.25s linear;
   transition: opacity 0.25s linear;
 }
-/* line 54, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 54, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block .login-on-block__exit:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 61, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .b-button {
   height: 64px;
 }
-/* line 68, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 68, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .buttons .b-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 74, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 74, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .buttons .b-button.logo .pb-icon {
   display: block;
   background: url("/Content/images/Header/logo.png") center no-repeat;
   width: 144px;
   height: 64px;
 }
-/* line 84, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 84, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block {
   position: relative;
   width: 390px;
@@ -1331,29 +1382,29 @@ body {
   display: inline;
   background-color: #2A7CA0;
 }
-/* line 90, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 90, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button {
   background-color: #2A7CA0;
 }
-/* line 94, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 94, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 98, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 98, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   background-color: #45a2d0;
   cursor: default;
 }
-/* line 100, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 100, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover .login-section {
   display: block;
 }
-/* line 105, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 105, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button {
   width: 226px;
   float: right;
@@ -1361,11 +1412,11 @@ body {
   *margin-left: -20px;
   display: inline;
 }
-/* line 109, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 109, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button:active {
   background-color: #0055d4;
 }
-/* line 116, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 116, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section {
   position: absolute;
   top: 64px;
@@ -1374,7 +1425,7 @@ body {
   display: none;
   cursor: default;
 }
-/* line 124, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 124, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-area-arrow {
   position: absolute;
   top: -17px;
@@ -1384,7 +1435,7 @@ body {
   background: url("/Content/images/Header/LoginArea/login-area-arrow.png") center no-repeat;
   z-index: 100;
 }
-/* line 134, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 134, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area {
   position: absolute;
   top: 20px;
@@ -1400,28 +1451,28 @@ body {
   -moz-box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
   box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
 }
-/* line 143, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 143, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .input-group {
   margin-bottom: 15px;
 }
-/* line 148, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 148, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button {
   background-color: #41C480;
   height: 40px;
   font-size: 14px;
   color: white;
 }
-/* line 32, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 32, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button .text {
   font-size: 14px;
   line-height: 40px;
 }
 
-/* line 5, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 5, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu {
   height: 70px;
 }
-/* line 7, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 7, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu .b-button {
   width: 226px;
   float: left;
@@ -1430,14 +1481,14 @@ body {
   height: 60px;
   background-color: #32BFB2;
 }
-/* line 9, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 9, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu .b-button:last-child {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-/* line 16, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
+/* line 16, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainTopMenu.scss */
 .main-top-menu .text {
   line-height: 60px;
   font-size: 16px;
@@ -1445,7 +1496,7 @@ body {
   color: #68696b;
 }
 
-/* line 4, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 4, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer {
   position: absolute;
   bottom: 0;
@@ -1453,11 +1504,11 @@ body {
   right: 0;
   height: 280px;
 }
-/* line 11, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 11, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__outer-wrapper {
   margin-right: 20px;
 }
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .main-footer .sosial-buttons__outer-wrapper:after {
   content: ".";
   display: block;
@@ -1466,14 +1517,14 @@ body {
   line-height: 0;
   height: 0;
 }
-/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 13, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper {
   position: relative;
   margin-bottom: 10px;
   width: 255px;
   float: right;
 }
-/* line 64, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared_lib.scss */
 .main-footer .sosial-buttons__inner-wrapper:after {
   content: ".";
   display: block;
@@ -1482,14 +1533,14 @@ body {
   line-height: 0;
   height: 0;
 }
-/* line 21, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 21, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button {
   width: 75px;
   height: 75px;
   margin-right: 15px;
   float: left;
 }
-/* line 26, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 26, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon {
   width: 48px;
   height: 48px;
@@ -1498,27 +1549,27 @@ body {
   margin-right: auto;
   display: block;
 }
-/* line 31, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 31, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon.twitter {
   background: url("/Content/sass/Footer/twitter.png") center no-repeat;
 }
-/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 35, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon.facebook {
   background: url("/Content/sass/Footer/facebook.png") center no-repeat;
 }
-/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 39, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .icon.vkontakte {
   background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
 }
-/* line 45, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 45, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button:last-child {
   margin-right: 0;
 }
-/* line 50, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 50, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .sosial-buttons__inner-wrapper .sosial-button .sosial-button_location_last {
   margin-right: 0;
 }
-/* line 57, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 57, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons {
   *zoom: 1;
   width: 1004px;
@@ -1533,7 +1584,7 @@ body {
   display: table;
   clear: both;
 }
-/* line 61, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 61, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button {
   position: relative;
   height: 130px;
@@ -1547,46 +1598,46 @@ body {
   float: right;
   margin-right: 0;
 }
-/* line 65, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 65, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button.ie8-last-child {
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
 }
-/* line 68, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 68, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon {
   display: block;
   height: 107px;
   width: 107px;
   margin: 0 auto;
 }
-/* line 75, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 75, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.home {
   background-image: url("/Content/images//Footer/about-as-icon.png");
   background-repeat: no-repeat;
 }
-/* line 81, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 81, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.mycrypt {
   background-image: url("/Content/images//Footer/exchange-icon.png");
   background-repeat: no-repeat;
 }
-/* line 87, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 87, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.copyright {
   background-image: url("/Content/images//Footer/copyright-icon.png");
   background-repeat: no-repeat;
 }
-/* line 93, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 93, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.faq {
   background-image: url("/Content/images//Footer/faq-icon.png");
   background-repeat: no-repeat;
 }
-/* line 99, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 99, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-icon.contacts {
   background-image: url("/Content/images//Footer/contacts-icon.png");
   background-repeat: no-repeat;
 }
-/* line 106, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
+/* line 106, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/Footer/_MainFooter.scss */
 .main-footer .buttons .b-button .b-text {
   margin-top: 5px;
   overflow: hidden;
@@ -1595,7 +1646,7 @@ body {
   font-size: 13px;
 }
 
-/* line 2, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainChangableContent.scss */
+/* line 2, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_MainChangableContent.scss */
 .main-changable-content {
   position: relative;
   box-sizing: border-box;
@@ -1603,7 +1654,7 @@ body {
   min-height: 100%;
 }
 
-/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 40, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .main-wrapper {
   position: relative;
   *zoom: 1;

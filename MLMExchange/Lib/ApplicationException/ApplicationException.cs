@@ -46,5 +46,15 @@ namespace MLMExchange.Lib.Exception
     {
       throw new UserVisibleException(MLMExchange.Properties.ResourcesA.YouDontHaveAccessToThisAction);
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="actionDescription">Описание действия</param>
+    public UserVisible__CurrentActionAccessDenied(string actionDescription)
+      : base()
+    {
+      throw new UserVisibleException(String.Format(MLMExchange.Properties.ResourcesA.YouDontHaveAccessToThisAction_WithActionDescription, actionDescription));
+    }
   }
 }

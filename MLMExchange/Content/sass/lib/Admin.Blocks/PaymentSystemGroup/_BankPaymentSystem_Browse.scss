@@ -1,0 +1,30 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+.b-bps
+{
+  .b-bps__header
+  {
+    .b-bps__text
+    {
+      font-size: $font-bb;
+
+      .b-bps__default-system
+      {
+        margin-left: 10px;
+        font-size: 16px;
+        color: #4B5F8C !important;
+      }
+    }
+  }
+
+  .b-bps__system-info
+  {
+    width: 100%;
+    background-color: transparent !important;
+
+    td {width: 50%;}
+
+    tr {height: 30px; line-height: 30px;}
+  }
+}

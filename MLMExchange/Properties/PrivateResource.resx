@@ -120,10 +120,64 @@
   <data name="BuyingMyCryptRequestHistory" xml:space="preserve">
     <value>История запросов покупки my-crypt</value>
   </data>
+  <data name="DefaultPaymentSystemNotSet" xml:space="preserve">
+    <value>Не выбрана платежная система по умолчанию</value>
+  </data>
+  <data name="Exception_SystemAlreadyDefault" xml:space="preserve">
+    <value>Система уже выбрана как дефолтная</value>
+  </data>
   <data name="NeedCheckPayment" xml:space="preserve">
     <value>Необходимо внести проверочный платеж в размере {0}</value>
   </data>
+  <data name="PaymentApproved" xml:space="preserve">
+    <value>Платеж подтвержден</value>
+  </data>
+  <data name="PaymentNotApproved" xml:space="preserve">
+    <value>Платеж не подтвержден</value>
+  </data>
+  <data name="PaySellerInterestRatePayment" xml:space="preserve">
+    <value>Оплатить комиссионный сбор продавца</value>
+  </data>
+  <data name="RequirePayInterestRateToSaller" xml:space="preserve">
+    <value>Необходимо оплатит процентную ставку продавцу, в размере {0}</value>
+  </data>
+  <data name="WaitingSellerInterestRatePayment" xml:space="preserve">
+    <value>Ожидание оплаты комисионного сбора продавцу</value>
+  </data>
+  <data name="WaitingSellerInterestRatePayment_Accept" xml:space="preserve">
+    <value>Ожидание подтверждения комиссионного сбора продавцом</value>
+  </data>
   <data name="WaitingUserResponse" xml:space="preserve">
     <value>Ожидание отклика пользователей</value>
+  </data>
+  <data name="PayYieldTradingSession" xml:space="preserve">
+    <value>Оплата доходности торговой сессии</value>
+  </data>
+  <data name="TradingSessionNotOpened" xml:space="preserve">
+    <value>Торговая сессия не открыта</value>
+  </data>
+  <data name="WaitingCheckPayment" xml:space="preserve">
+    <value>Ожидание проверочного платежа системе</value>
+  </data>
+  <data name="WaitingTradingSessionProgress" xml:space="preserve">
+    <value>Ожидание торговой сессии</value>
+  </data>
+  <data name="UserManagment" xml:space="preserve">
+    <value>Управление пользователями</value>
+  </data>
+  <data name="AddMyCryptConfirmAmpount" xml:space="preserve">
+    <value>Количество запрашиваемых my-crypt</value>
+  </data>
+  <data name="AddMyCryptConfirmationImage" xml:space="preserve">
+    <value>картинка подтверждающая добавление my-crypt</value>
+  </data>
+  <data name="AddMyCryptInitiatorPhoto" xml:space="preserve">
+    <value>Инициатор запроса на добавление my-crypt</value>
+  </data>
+  <data name="UnApprovedTransactionList" xml:space="preserve">
+    <value>Неподтвержденные заявки на пополнение my-crypt</value>
+  </data>
+  <data name="RequestUser" xml:space="preserve">
+    <value>Инициатор запроса</value>
   </data>
 </root>

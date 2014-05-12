@@ -26,7 +26,7 @@ namespace MLMExchange.Controllers
 
       if (ModelState.IsValid)
       {
-        User loginUser = MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.QueryOver<User>().Where(x => x.Login == loginModel.Login).List().FirstOrDefault();
+        D_User loginUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.QueryOver<D_User>().Where(x => x.Login == loginModel.Login).List().FirstOrDefault();
 
         if (loginUser != null && loginUser.PasswordHash == Md5Hasher.ConvertStringToHash(loginModel.Password))
         {
@@ -66,10 +66,11 @@ namespace MLMExchange.Controllers
           }
           #endregion
 
-          User user = userModel.UnBind();
+          D_User user = userModel.UnBind();
 
-          MLMExchange.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(user);
-          //transaction.Commit();
+          user.Roles.Add(new D_UserRole { User = user });
+
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(user);
         }
       }
 

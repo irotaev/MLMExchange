@@ -8,8 +8,8 @@ using System.Web.Mvc;
 
 namespace MLMExchange.Models.Registration
 {
-  public class UserModel : AbstractDataModel, IDataBinding<User, UserModel>
-  {    
+  public class UserModel : AbstractDataModel, IDataBinding<D_User, UserModel>
+  {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Login { get; set; }
 
@@ -39,7 +39,7 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
-    public UserModel Bind(Logic.User @object)
+    public UserModel Bind(Logic.D_User @object)
     {
       if (@object == null)
         throw new ArgumentNullException("user");
@@ -56,10 +56,10 @@ namespace MLMExchange.Models.Registration
     }
 
     #region UnBind
-    private User UnBindLogic(User user = null)
+    private D_User UnBindLogic(D_User user = null)
     {
       if (user == null)
-        user = new User();
+        user = new D_User();
 
       user.Login = this.Login;
       user.PasswordHash = MLMExchange.Lib.Md5Hasher.ConvertStringToHash(this.Password);
@@ -69,6 +69,9 @@ namespace MLMExchange.Models.Registration
       user.Patronymic = this.Patronymic;
       user.PhotoRelativePath = this.PhotoRelativePath;
 
+      if (user.PaymentSystemGroup == null)
+        user.PaymentSystemGroup = new PaymentSystemGroup();
+
       return user;
     }
 
@@ -76,7 +79,7 @@ namespace MLMExchange.Models.Registration
     /// Анбиндинг в логический объект. Прокси-анбиндинг
     /// </summary>
     /// <returns>Логический объект</returns>
-    public User UnBind()
+    public D_User UnBind()
     {
       return UnBindLogic();
     }
@@ -86,7 +89,7 @@ namespace MLMExchange.Models.Registration
     /// </summary>
     /// <param name="object">Логический объект User. В него произойдет анбиндинг</param>
     /// <returns>Логический объект</returns>
-    public User UnBind(User @object)
+    public D_User UnBind(D_User @object)
     {
       return UnBindLogic(@object);
     }

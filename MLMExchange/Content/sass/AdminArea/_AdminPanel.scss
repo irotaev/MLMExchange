@@ -23,11 +23,32 @@ $default-layout_Bg-color: $blue_a_4;
   .x-window-default
   {
     border-color: $blue_a_4_c3_c;
+
+    &, .metro &, .metro &, .metro &
+    {
+      div, span:not([for]):not(.b-ib__validation-message) , p
+      {
+        font-family: Segoe UI;
+        color: $blue_a_4_c2;
+      }
+
+      input[type="button"], input[type="submit"], input[type="reset"]
+      {
+        font-family: Segoe UI; font-size: $font-nb; color: white;
+      }
+
+      h1, h2, h3, h4, h5, h6 {font-family: Segoe UI; font-size: $font-h;}
+    }
   }
 
   .x-window-body-default
   {
     background-color: $blue_a_4;
+  }
+
+  .x-toolbar-footer
+  {
+    background-color: $blue_a_4_c3_c;
   }
 }
 
@@ -37,7 +58,7 @@ $default-layout_Bg-color: $blue_a_4;
 {
   border-color: $red_a_1;
 
-  .x-menu-item-text {font-family: "Segoe UI" !important; color: $blue_a_4_c !important;}
+  .x-menu-item-text {font-family: "Segoe UI" !important; color: $blue_a_4_c2 !important;}
 
   .x-menu-item-active {background-color: $blue_a_4_c3_c;}
 }
@@ -50,19 +71,19 @@ $default-layout_Bg-color: $blue_a_4;
   {
     div, span:not([for]):not(.b-ib__validation-message) , p
     {
-      font-family: Lato;
-      color: $blue_a_4_c;
+      font-family: Segoe UI;
+      color: $blue_a_4_c2;
     }
 
     input[type="button"], input[type="submit"], input[type="reset"]
     {
-      font-family: Lato; font-size: $font-nb; color: white;
+      font-family: Segoe UI; font-size: $font-nb; color: white;
     }
 
-    h1, h2, h3, h4, h5, h6 {font-family: Lato; font-size: $font-h;}
+    h1, h2, h3, h4, h5, h6 {font-family: Segoe UI; font-size: $font-h;}
   }
 
-  .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {font-family: "Lato";}
+  .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {font-family: "Segoe UI";}
 
   //#region Main menu
   #MainLeft_Menu
@@ -87,6 +108,7 @@ $default-layout_Bg-color: $blue_a_4;
       font-size: 25px;
       text-align: center;
       height: 40px; line-height: 40px;
+      font-family: Lato !important;
     }
 
     .pb-mm
@@ -132,6 +154,7 @@ $default-layout_Bg-color: $blue_a_4;
           text-align: center;
           text-size: $font-b;
           color: #BEBECF;
+          font-family: Lato !important;
         }
       }
     }

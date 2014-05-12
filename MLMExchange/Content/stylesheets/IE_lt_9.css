@@ -35,21 +35,21 @@
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
-/* line 6, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 6, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib .b-ib__label {
   display: block;
   margin-bottom: 10px;
 }
-/* line 11, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 11, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: block;
 }
-/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 15, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview, .b-ib.b-ib_content_photo .b-ib_file-chooser {
   display: none;
 }
 
-/* line 19, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
+/* line 19, e:/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/IE_lt_9.scss */
 .gradient {
   filter: none;
 }

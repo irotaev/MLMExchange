@@ -21,6 +21,8 @@ namespace MLMExchange
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+      ModelBinders.Binders.Add(typeof(decimal?), new MLMExchange.Lib.ASP.NET.CustomBinders.DecimalModelBinder());
     }
 
     protected void Application_Error(object sender, EventArgs e)

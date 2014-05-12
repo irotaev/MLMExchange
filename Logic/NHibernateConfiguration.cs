@@ -11,19 +11,37 @@ namespace Logic
 {
   public class NHibernateConfiguration
   {
-    static NHibernateConfiguration()
+    public NHibernateConfiguration()
     {
-      Session = Fluently.Configure()
-        .Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("MsSQL2008")).ShowSql())
-        .Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateConfiguration>())
-        .ExposeConfiguration(cfg =>
-        {
-          cfg.EventListeners.PreInsertEventListeners = new NHibernate.Event.IPreInsertEventListener[] { new PreInsertEvent() };
-          new NHibernate.Tool.hbm2ddl.SchemaUpdate(cfg).Execute(true, true);
-        })
-        .BuildSessionFactory();
+      if (Session == null)
+      {
+        var msSqlConfigurator = MsSqlConfiguration.MsSql2008.ShowSql();
+
+        if (String.IsNullOrEmpty(ConnectionString))
+          msSqlConfigurator.ConnectionString(c => c.FromConnectionStringWithKey("MsSQL2008"));
+        else
+          msSqlConfigurator.ConnectionString(ConnectionString);
+
+        Session = Fluently.Configure()
+          .Database(msSqlConfigurator)
+          .Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateConfiguration>())
+          .ExposeConfiguration(cfg =>
+          {
+            cfg.EventListeners.PreInsertEventListeners = new NHibernate.Event.IPreInsertEventListener[] { new PreInsertEvent() };
+            new NHibernate.Tool.hbm2ddl.SchemaUpdate(cfg).Execute(true, true);
+          })
+          .BuildSessionFactory();
+      }
     }
 
+    /// <summary>
+    /// Строка соединения с базой данных.
+    /// Если пуста, то берется из web.config
+    /// </summary>
+    public static string ConnectionString { get; set; }
+    /// <summary>
+    /// Текущая сессия
+    /// </summary>
     public static ISessionFactory Session { get; private set; }
   }
 

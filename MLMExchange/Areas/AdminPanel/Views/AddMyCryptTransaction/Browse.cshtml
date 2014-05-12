@@ -1,0 +1,48 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.User.AddMyCryptModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True") {
+    ViewBag.Title = Logic.Properties.GeneralResources.AddMyCryptTransaction;
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="b-amt">
+  <div class="b-amt__transaction-info-wrapper">
+    <div class="b-amt__mycrypt-confirmation-photo-wrapper b-image">
+      <img class="b-amt__mycrypt-confirmation-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptConfirmationImage"
+           src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).Crop(330, 290).FullName)" />
+    </div>
+
+    <aside class="b-amt__comment-wrapper">
+      <header class="b-amt__header">@MLMExchange.Properties.ResourcesA.Comment</header>
+
+      <div class="b-amt__content">
+        @(!String.IsNullOrEmpty(Model.Comment) ? Model.Comment : MLMExchange.Properties.ResourcesA.Comment_Empty)
+      </div>
+    </aside>
+  </div>
+
+  <div class="b-amt__my-cypt-confirm-amount">
+    <span class="b-amt__text">@MLMExchange.Properties.PrivateResource.AddMyCryptConfirmAmpount</span>
+    <span class="b-amt__amount">@Model.MyCryptCount</span>
+  </div>
+
+  <hr class="b-amt__br" />
+
+  <aside class="b-amt__request-initiator-wrapper">
+    <header class="b-amt__header">
+      @MLMExchange.Properties.PrivateResource.RequestUser
+    </header>
+
+    <div class="b-amt__additional-info">
+      <div class="b-amt__photo-wrapper b-image">
+        <img class="b-amt__mycrypt-request-initiator-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptInitiatorPhoto"
+             src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.Initiator.PhotoRelativePath).Crop(115, 100).FullName)" />
+      </div>
+
+      <div class="b-amt__user-info-wrapper">
+        <div class="b-amt__fio">@(String.Format("{0} {1} {2}", Model.Initiator.Surname, Model.Initiator.Name, Model.Initiator.Patronymic))</div>
+        <div class="b-amt__login"><a href="#">@Model.Initiator.Login</a></div>
+      </div>
+    </div>
+  </aside>
+</section><!--B: Add my-crypt transaction-->

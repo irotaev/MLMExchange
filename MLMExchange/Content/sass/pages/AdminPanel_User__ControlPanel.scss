@@ -1,8 +1,23 @@
 @import "../framework";
 @import "../AdminFramework";
+
 @import "../lib/Admin.Blocks/BindingParticipateApplicationBlock";
+@import "../lib/Admin.Blocks/TradingSession/Browse";
 
 @import "../lib/Admin.Blocks/ExtJs_Grid_lib";
+
+.b-ts
+{
+  .b-ts__pay-yield-trading-session
+  {
+    .b-ts__header-text
+    {
+      margin: 10px;
+    }
+  }
+
+  .x-grid {@include custom-extjs-grid(0, none)};
+}
 
 .pb-cp
 {
@@ -11,8 +26,70 @@
 
 .pb-bpa
 {
-  margin: 0 auto;
+  margin: {left: auto; right: auto};
   @include pb-bpa;
 
+  &.pb-bpa_state_accepted
+  {
+    width: 550px;
+  }
+
   .pb-bpa__content { .x-grid {@include custom-extjs-grid(0);} }
+
+  .pb-bpa__buyer-accepted-wrapper
+  {
+    margin: 20px;
+
+    .pb-bpa__buyer-short-info
+    {
+      margin-bottom: 10px;
+
+      .pb-bpa__text
+      {
+        font-size: $font-n; color: white !important; font-family: "Segoe UI" !important;
+        text-decoration: underline;
+
+        &:hover {text-decoration: none;}
+      }
+
+      .pb-bpa__buyer {font-size: $font-n !important; font-family: "Segoe UI" !important}
+    }
+
+    .pb-bpa__buyer-additional-info
+    {
+      @include clearfix;
+
+      .pb-bpa__buyer-photo
+      {
+        float: left;
+        margin-right: 20px;
+      }
+
+      .pb-bpa__user-info
+      {
+        float: left;
+      }
+    }
+
+    .pb-bpa__action-buttons
+    {
+      margin-top: 20px;
+      @include clearfix;
+
+      .pb-bpa__action-button
+      {
+        display: block;
+        float: left;
+        margin-left: 15px;
+
+        &:first-child {margin-left: 0;}
+      }
+    }
+
+    .pb-bpa__waiting-saller-interest-rate-payment
+    {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
 }

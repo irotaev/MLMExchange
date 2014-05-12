@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Logic;
 using System.Web.SessionState;
+using Microsoft.Practices.Unity;
 
 namespace MLMExchange.Lib
 {
@@ -26,7 +27,7 @@ namespace MLMExchange.Lib
     /// </summary>
     private static readonly object _LockerObject = new object();
     private readonly HttpSessionState _Session;
-    private L.User _CurrentUser;
+    private L.D_User _CurrentUser;
 
     /// <summary>
     /// Хранилище сессий для каждого SessionId
@@ -58,7 +59,7 @@ namespace MLMExchange.Lib
       }
     }
 
-    public L.User CurrentUser
+    public L.D_User CurrentUser
     {
       get
       {
@@ -70,16 +71,11 @@ namespace MLMExchange.Lib
 
         if (!String.IsNullOrEmpty(_Session["Login"].ToString()) && _CurrentUser == null)
         {
-          using (var session = NHibernateConfiguration.Session.OpenSession())
-          {
-            using (var transaction = session.BeginTransaction())
-            {
-              L.User findUser = session.QueryOver<L.User>().List().FirstOrDefault(u => u.Login == (string)_Session["Login"]);
+          L.D_User findUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+            .QueryOver<L.D_User>().List().FirstOrDefault(u => u.Login == (string)_Session["Login"]);
 
-              if (findUser != null)
-                _CurrentUser = findUser;
-            }
-          }
+          if (findUser != null)
+            _CurrentUser = findUser;
 
           _Session["IsNeedUpdateCurrentInfo"] = false;
         }
@@ -87,5 +83,5 @@ namespace MLMExchange.Lib
         return _CurrentUser;
       }
     }
-  } 
+  }
 }

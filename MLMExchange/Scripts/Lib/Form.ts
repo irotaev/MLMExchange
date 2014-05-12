@@ -3,6 +3,7 @@
 /// <amd-dependency path="jquery" />
 
 $ = require("jquery");
+declare var Opentip: any;
 
 /**
  * Операции с формой
@@ -19,7 +20,7 @@ export class Form
   /**
    * Применить параметры по умолчанию
    */
-  public ApplyDefaults(): void
+  public ApplyDefaults(): Form
   {
     //#region Поле загрузки фотографии
     var photoFields = this._$Form.find(".b-ib_content_photo");
@@ -95,5 +96,69 @@ export class Form
       });
     });
     //#endregion
+
+    return this;
+  }
+
+  /**
+  * Привязать валидацию
+  */
+  public BindValidation(): Form
+  {
+    (<any>window).$Sync.validator.unobtrusive.parse(this._$Form);
+
+    return this;
+  }
+
+  /**
+  * Привязать плагин iCheck к форме
+  */
+  public BindICheck(): Form
+  {
+    var $ = (<any>window).$Sync;
+
+    $(this._$Form).find("input[type='checkbox']").not("[data-icheck='true']").css({ "position": "absolute", "top": "0", "left": "0", "visibility": "hidden" });
+
+    $(this._$Form).find('input[data-icheck="true"]').iCheck({
+      labelHover: false,
+      cursor: true,
+      checkboxClass: 'icheckbox_square-green',
+      radioClass: 'icheckbox_square-green',
+      increaseArea: '20%'
+    }).on("ifChanged", function (event) {
+        $(event.currentTarget).closest(".b-ib").find(".b-ib_checkbox").click();
+    });
+
+    return this;
+  }
+
+  /**
+  * Привязать Tooltip (OpenTip) к форме
+  */
+  public BindTooltip(): Form
+  {
+    var $ = (<any>window).$Sync;
+
+    $.each(this._$Form.find("[data-ot]"), function (index, element)
+    {
+      var $element = $(element);
+
+      $element.opentip($element.data("ot"), { style: $element.data("ot-style") });
+    });
+
+    return this;
+  }
+
+  /**
+  * Обновит все скрипты, относящиеся к данной форме
+  */
+  public ReBindAll(): Form
+  {
+    this.ApplyDefaults();
+    this.BindValidation();
+    this.BindICheck();
+    this.BindTooltip();
+
+    return this;
   }
 }

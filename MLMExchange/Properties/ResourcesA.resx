@@ -123,6 +123,12 @@
   <data name="Accept" xml:space="preserve">
     <value>Принять</value>
   </data>
+  <data name="Action_AccessToController" xml:space="preserve">
+    <value>Доступ к контроллеру (страница, объект и  т.д.)</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
   <data name="AddMyCrypt" xml:space="preserve">
     <value>Пополнить My Crypt</value>
   </data>
@@ -144,6 +150,12 @@
   <data name="AwaitingConfirm" xml:space="preserve">
     <value>Ожидает подтверждения</value>
   </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="Comment_Empty" xml:space="preserve">
+    <value>Комментариев нет</value>
+  </data>
   <data name="ConfirmActionMessage" xml:space="preserve">
     <value>Вы уверены, что хотите продолжить действие {0} ?</value>
   </data>
@@ -162,8 +174,17 @@
   <data name="DataEmpty" xml:space="preserve">
     <value>Нет данных</value>
   </data>
+  <data name="DefaultSystem" xml:space="preserve">
+    <value>Дефолтная система</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="Denied" xml:space="preserve">
     <value>Отклонить</value>
+  </data>
+  <data name="EditObject" xml:space="preserve">
+    <value>Редактирование объекта</value>
   </data>
   <data name="EditUser" xml:space="preserve">
     <value>Редактирование пользователя</value>
@@ -246,11 +267,20 @@
   <data name="HomePage" xml:space="preserve">
     <value>Главная страница</value>
   </data>
+  <data name="Information" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
   <data name="Logo" xml:space="preserve">
     <value>Логоти</value>
   </data>
   <data name="MainMenu__Header" xml:space="preserve">
     <value>Меню</value>
+  </data>
+  <data name="MakeObjectDefault" xml:space="preserve">
+    <value>Сделать объект по-умолчанию</value>
   </data>
   <data name="MyCryptNumber" xml:space="preserve">
     <value>Количество my-crypt</value>
@@ -300,6 +330,9 @@
   <data name="State" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="SystemSettings" xml:space="preserve">
+    <value>Настройки системы</value>
+  </data>
   <data name="Upload" xml:space="preserve">
     <value>Загрузить</value>
   </data>
@@ -309,10 +342,16 @@
   <data name="UserInfo_Short" xml:space="preserve">
     <value>Пол. информация</value>
   </data>
+  <data name="UserPhoto" xml:space="preserve">
+    <value>Фотография пользователя</value>
+  </data>
   <data name="UserRegistartion" xml:space="preserve">
     <value>Регистрация пользователя</value>
   </data>
   <data name="YouDontHaveAccessToThisAction" xml:space="preserve">
     <value>На это действие у вас нету соответствующих прав</value>
+  </data>
+  <data name="YouDontHaveAccessToThisAction_WithActionDescription" xml:space="preserve">
+    <value>На {0} у вас нету соответствующих прав</value>
   </data>
 </root>

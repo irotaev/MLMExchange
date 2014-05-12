@@ -1,0 +1,41 @@
+﻿@using MLMExchange.Lib
+@using MLMExchange.Lib.Form
+@model MLMExchange.Areas.AdminPanel.Models.PaymentSystem.BankPaymentSystemModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = @(String.Format("{0} {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.BankPaymentSystem));
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+@{
+  string saveAction = ViewData["SaveAction"] != null ? ViewData["SaveAction"].ToString() : ViewContext.RouteData.Values["action"].ToString();
+  string saveController = ViewData["SaveController"] != null ? ViewData["SaveController"].ToString() : ViewContext.RouteData.Values["controller"].ToString();
+  FormMethod saveFormMethod = ViewData["SaveFormMethod"] != null ? ((FormMethod)ViewData["SaveFormMethod"]) : FormMethod.Post;
+  object routValues = ViewData["RoutValues"] != null ? ViewData["RoutValues"] : new { };
+}
+
+<section class="pb-bpse" id="pb-bpse_ID">
+  @using (Html.BeginForm(saveAction, saveController, routValues, saveFormMethod, new { @id = "pb-bpse_edit-form_ID", @class = "b-f" }))
+  {
+    @Html.ApplicationTextBoxFor(x => x.UserName, Logic.Properties.GeneralResources.UserName)
+    
+    @Html.ApplicationTextBoxFor(x => x.UserSurname, Logic.Properties.GeneralResources.UserSurname)
+    
+    @Html.ApplicationTextBoxFor(x => x.UserPatronymic, Logic.Properties.GeneralResources.UserPatronymic)
+    
+    @Html.ApplicationTextBoxFor(x => x.BankName, Logic.Properties.GeneralResources.BankName)
+    
+    @Html.ApplicationTextBoxFor(x => x.INN, Logic.Properties.GeneralResources.INN)
+    
+    @Html.ApplicationTextBoxFor(x => x.KPP, Logic.Properties.GeneralResources.KPP)  
+    
+    @Html.ApplicationTextBoxFor(x => x.CurrentAccount, Logic.Properties.GeneralResources.CurrentAccount)
+    
+    @Html.ApplicationTextBoxFor(x => x.BIK, Logic.Properties.GeneralResources.BIK)
+    
+    @Html.ApplicationTextBoxFor(x => x.CorrespondentAccount, Logic.Properties.GeneralResources.CorrespondentAccount)
+    
+    <input type="submit" value="submit" style="position: absolute; top: 0; visibility: hidden;" />
+  }
+</section><!--PB: Bank payment system edit-->
