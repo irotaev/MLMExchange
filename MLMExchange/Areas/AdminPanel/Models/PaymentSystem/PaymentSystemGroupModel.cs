@@ -22,7 +22,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
   /// </summary>
   public interface IPayYieldTradingSessionBillModel
   {
-    long? IPayYieldTradingSessionBillModel__
+    //long? IPayYieldTradingSessionBillModel__
   }
 
   /// <summary>

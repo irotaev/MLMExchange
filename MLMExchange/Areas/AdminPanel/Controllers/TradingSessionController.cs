@@ -54,11 +54,14 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
       }
 
-      Payment payment = new Payment
-      {
-        Payer = CurrentSession.Default.CurrentUser,
+      return null;
+
+      //TODO:Rtv доделать
+      //Payment payment = new Payment
+      //{
+      //  Payer = CurrentSession.Default.CurrentUser,
         
-      }
+      //}
     }
   }
 }
