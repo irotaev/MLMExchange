@@ -24,6 +24,30 @@
     }
     else if (Model.State == Logic.TradingSessionStatus.Open)
     {
+      <script>
+        function YieldTradingSession__Listener() {
+          new Ext.Window({
+            id: "PayYieldTradingSession__Window",
+            width: 800,
+            modal: true,
+            title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
+            autoLoad: {
+              url: "/AdminPanel/PaymentSystemGroup/Browse",
+              params: { ForUserId: sellerId, IsRequireSallerInterestRatePayment: true, TradeSessionId: tradeSessionId },
+              nocache: true,
+              text: "@MLMExchange.Properties.ResourcesA.Loading",
+              callback: function () {
+                $.each($("#PaySellerInterestRate__Window").find("script[data-app-script='true']"), function (index, element) {
+                  var scriptTag = $(document.createElement('script')).text($(element).text());
+
+                  $(scriptTag).appendTo($("body"));
+                });
+              }
+            }
+          }).show();
+        }
+      </script>
+      
       <div class="b-ts__message-wrapper">
         @if (Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
         {
@@ -70,11 +94,11 @@
                     X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Flex(1),
                     X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Flex(1),
                     X.ImageCommandColumn().Commands(
-                      X.ImageCommand().CommandName("SellerInterestRate__Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)
+                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)
                     )
                       .Listeners(ls =>
                       {
-                        ls.Command.Handler = "console.log('OK!');";
+                        ls.Command.Fn = "YieldTradingSessionBill__Listener";
                       }))
                  .RenderTo("b-ts__users-to-pay_ID"))
           </div>

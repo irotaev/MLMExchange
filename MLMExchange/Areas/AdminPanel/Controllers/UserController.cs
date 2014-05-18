@@ -186,7 +186,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id && x.State == TradingSessionStatus.Open).FirstOrDefault();
 
         if (tradingSession != null)
-          model.TradingSessionModel.Bind(tradingSession);
+          model.TradingSessionModel.Bind((TradingSession)tradingSession);
       }
       #endregion
 

@@ -498,6 +498,10 @@ namespace Logic
     /// Счета на оплату доходности торговой сессии
     /// </summary>
     public virtual IList<D_YieldSessionBill> YieldSessionBills { get; set; }
+    /// <summary>
+    /// Системные настройки, привязанные к данной торговой сессии
+    /// </summary>
+    public virtual D_SystemSettings SystemSettings { get; set; }
   }
 
   public enum TradingSessionStatus : int
@@ -627,7 +631,7 @@ namespace Logic
     {
       DiscriminatorValue(BillType.YieldSessionBill);
 
-      References(x => x.TradingSession).Column("TradingSessionId").Not.Nullable();
+      References(x => x.TradingSession).Column("TradingSessionId").Nullable();
     }
   }
   #endregion
@@ -719,6 +723,7 @@ namespace Logic
       References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable().Cascade.All();
       References(x => x.CheckBill).Column("CheckBillId").Not.Nullable().Cascade.All();
       References(x => x.SallerInterestRateBill).Column("SallerInterestRateBillId").Not.Nullable().Cascade.All();
+      References(x => x.SystemSettings).Not.Nullable(); 
       Map(x => x.State).CustomType<TradingSessionStatus>();
       HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).Inverse().KeyColumn("TradingSessionId").Cascade.All();
     }

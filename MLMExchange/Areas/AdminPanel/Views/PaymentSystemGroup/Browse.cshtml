@@ -35,6 +35,20 @@ else
   </script>
 }
 
+@if (viewSetting.IsRequiredYieldTradingSessionPayment)
+{
+  <script data-app-script="true">
+    function payYieldTradingSession_Click(obj) {
+      $.ajax({
+        url: "/BuyingMyCryptRequest/PaySallerInterestRate/?yieldSessionBillId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
+        async: false,
+        type: "POST"
+      })
+      .done(function () { window.location.reload(); });
+    }
+  </script>
+}
+
 <script>
     function BtnSave_PaymentBank_Click() {
         $("#pb-bpse_ID").find("input[type='submit']").click();
@@ -143,32 +157,40 @@ else
           <i class="b-psg__icon fa fa-check"></i>
         </div>
 
-        @if (viewSetting.IsPaymentSystemOperationRootOperationEnable)
-        { 
-          <aside class="b-psg__crud-operaions">
-            @if (viewSetting.IsRootUser)
-            { 
+        <aside class="b-psg__crud-operaions">
+          @if (viewSetting.IsPaymentSystemOperationRootOperationEnable)
+          {
+            if (viewSetting.IsRootUser)
+            {
               if (!bankSystem.IsDefault)
-              { 
-                  <div class="b-psg__operation b-psg__operation_type_make-default" data-bank-system-id="@bankSystem.Id" onclick="javascript: setAsDefaultBankOperationSystem(this);">
-                    <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-check-circle"></i> @MLMExchange.Properties.ResourcesA.MakeObjectDefault</span>
-                  </div>
+              {
+                <div class="b-psg__operation b-psg__operation_type_make-default" data-bank-system-id="@bankSystem.Id" onclick="javascript: setAsDefaultBankOperationSystem(this);">
+                  <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-check-circle"></i> @MLMExchange.Properties.ResourcesA.MakeObjectDefault</span>
+                </div>
               }
-              
+
               <div class="b-psg__operation b-psg__operation_type_delete" data-bank-system-id="@bankSystem.Id" onclick="javascript: removeBankOperationSystem(this);">
                 <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-trash-o"></i> @MLMExchange.Properties.ResourcesA.Delete</span>
               </div>
             }
-            
-            @if (viewSetting.IsRequireSallerInterestRatePayment)
-            {                            
-              <div class="b-psg__operation b-psg__operation_type_pay-seller-interest-rate-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
-                   data-saller-trade-session-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: paySellerInterestRate_Click(this);">
-                <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PaySellerInterestRatePayment</span>
-              </div>
-            }
-          </aside>
-        }
+          }
+          
+          @if (viewSetting.IsRequireSallerInterestRatePayment)
+          {
+            <div class="b-psg__operation b-psg__operation_type_pay-seller-interest-rate-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
+                 data-saller-trade-session-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: paySellerInterestRate_Click(this);">
+              <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PaySellerInterestRatePayment</span>
+            </div>
+          }
+          
+          @if (viewSetting.IsRequiredYieldTradingSessionPayment)
+          {
+            <div class="b-psg__operation b-psg__operation_type_pay-yield-trading-session-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
+                 data-yield-trading-session-bill-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: payYieldTradingSession_Click(this);">
+              <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PayYieldTradingSession</span>
+            </div>
+          }
+        </aside>
       </div>
     }
   </div>

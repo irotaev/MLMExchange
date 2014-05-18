@@ -4,7 +4,7 @@
 
 @if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
 {
-  ViewBag.Title = @(String.Format("{0} {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.BankPaymentSystem));
+  ViewBag.Title = String.Format("{0} {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.BankPaymentSystem);
   Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
 }
 

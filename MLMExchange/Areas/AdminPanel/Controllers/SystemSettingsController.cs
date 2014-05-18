@@ -31,20 +31,16 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         if (ModelState.IsValid)
         {
           D_SystemSettings d_systemSettings = model.UnBind();
-
+          
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(d_systemSettings);
         }
       }
       else
       {
-        DateTime maxCreatedDate = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_SystemSettings>().Max(x => x.CreationDateTime);
-
-        D_SystemSettings d_systemSettings = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_SystemSettings>().Where(x => x.CreationDateTime == maxCreatedDate).FirstOrDefault();
-
-        if (d_systemSettings != null)
-          model.Bind(d_systemSettings);
+        SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
+        
+        if (systemSettings != null)
+          model.Bind(systemSettings.LogicObject);
       }
 
       return View(model);

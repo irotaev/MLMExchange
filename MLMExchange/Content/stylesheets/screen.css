@@ -875,7 +875,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .b-ab .b-ab__title {
   position: relative;
   height: 36px;
-  background-color: #c0392b;
+  background-color: #973f36;
   color: white;
   line-height: 36px;
   text-align: center;
@@ -894,7 +894,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .b-ab .b-ab__content {
   padding: 20px;
   padding-top: 0;
-  border: 2px solid #c0392b;
+  border: 10px solid #973f36;
   background-color: #353f59;
 }
 

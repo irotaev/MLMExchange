@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using MLMExchange.Lib.Exception;
+using NHibernate.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
@@ -90,37 +91,36 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (buyingMyCryptRequest.State != BuyingMyCryptRequestState.AwaitingConfirm)
         throw new UserVisible__CurrentActionAccessDenied();
 
+      #region Создание торговой сессии
       D_TradingSession tradingSession = new D_TradingSession
       {
         BuyingMyCryptRequest = buyingMyCryptRequest,
         BiddingParticipateApplication = buyingMyCryptRequest.BiddingParticipateApplication,
-        State = TradingSessionStatus.Open
+        State = TradingSessionStatus.Open,
+        SystemSettings = SystemSettings.GetCurrentSestemSettings().LogicObject
       };
+      #endregion
 
       #region Счет проверочного платежа
       Bill checkBill = new Bill
       {
-        MoneyAmount = 120,
+        MoneyAmount = (tradingSession.SystemSettings.CheckPaymentPercent / 100) * buyingMyCryptRequest.MyCryptCount,
         PaymentState = BillPaymentState.WaitingPayment,
         Payer = CurrentSession.Default.CurrentUser
       };
 
       tradingSession.CheckBill = checkBill;
-
-      //Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(checkBill);
       #endregion
 
-      #region Счет комиссионного сбора продавцу
+      #region Счет сбора продавцу
       Bill sallerInterestRateBill = new Bill
       {
-        MoneyAmount = 156,
+        MoneyAmount = ((decimal)1 / tradingSession.SystemSettings.Quote) * buyingMyCryptRequest.MyCryptCount,
         Payer = CurrentSession.Default.CurrentUser,
         PaymentState = BillPaymentState.WaitingPayment
       };
 
       tradingSession.SallerInterestRateBill = sallerInterestRateBill;
-
-      //Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(sallerInterestRateBill);
       #endregion
 
       buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;

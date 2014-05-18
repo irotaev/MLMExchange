@@ -10,21 +10,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using MLMExchange.Areas.AdminPanel.Models.PaymentSystem;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 {
-  /// <summary>
-  /// Оплата процентной ставки продавцу
-  /// </summary>
-  public interface IBuyingMyCryptRequest_SallerInterestRateModel
-  {
-    /// <summary>
-    /// Значение процентной ставки продавцу
-    /// </summary>
-    decimal? SallerInterestRateValue { get; }
-  }
-
-  public class BuyingMyCryptRequestModel : AbstractDataModel<BuyingMyCryptRequest, BuyingMyCryptRequestModel>, IBuyingMyCryptRequest_SallerInterestRateModel
+  public class BuyingMyCryptRequestModel : AbstractDataModel<BuyingMyCryptRequest, BuyingMyCryptRequestModel>
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
@@ -72,17 +62,22 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     /// Необходимо ли довнести деньги по счету
     /// </summary>
     public bool IsSellerInterestRatePaid_NeedSubstantialMoney { get; private set; }
+    
+    /// <summary>
+    /// Счет проверочного платежа
+    /// </summary>
+    public BillModel CheckBill { get; set; }
+
+    /// <summary>
+    /// Счет сбора продавцу
+    /// </summary>
+    public BillModel SallerInterestRateBill { get; set; }
 
     /// <summary>
     /// Оплачен ли счет по комиссионному платежу пиродавца
     /// </summary>
     [HiddenInput(DisplayValue = false)]
     public bool IsSellerInterestRatePaid { get; private set; }
-
-    /// <summary>
-    /// Значение процентной ставки продавцу
-    /// </summary>
-    public decimal? SallerInterestRateValue { get; private set; }
 
     /// <summary>
     /// Локализированное имя состояния заявки
@@ -108,9 +103,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
         IsSellerInterestRatePaid_NeedSubstantialMoney = @object.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney;
 
         TradeSessionId = @object.TradingSession.Id;
-      }
 
-      SallerInterestRateValue = 145;
+        CheckBill = new BillModel().Bind(@object.TradingSession.CheckBill);
+        SallerInterestRateBill = new BillModel().Bind(@object.TradingSession.SallerInterestRateBill);
+      }
 
       return this;
     }

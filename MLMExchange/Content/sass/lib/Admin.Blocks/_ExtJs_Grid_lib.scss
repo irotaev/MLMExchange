@@ -1,6 +1,6 @@
 @import "../../framework";
 
-@mixin custom-extjs-grid($margin: 10px, $border: 2px solid $red_a_1_c)
+@mixin custom-extjs-grid($margin: 10px, $border: 10px solid $red_a_1_c)
 {
   margin: $margin;
   border: $border;

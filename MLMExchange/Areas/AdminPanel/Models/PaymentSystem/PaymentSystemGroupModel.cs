@@ -18,6 +18,14 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
   }
 
   /// <summary>
+  /// Модель оплаты доходности торговой сесиии
+  /// </summary>
+  public interface IPayYieldTradingSessionBillModel
+  {
+    long? IPayYieldTradingSessionBillModel__
+  }
+
+  /// <summary>
   /// Модель группы платежных систем
   /// </summary>
   public class PaymentSystemGroupModel : AbstractDataModel<PaymentSystemGroup, PaymentSystemGroupModel>, IPaySellerInterestRateModel

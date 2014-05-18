@@ -23,7 +23,7 @@ namespace LogicTest.DataObject
       D_User administratorUser = new D_User
         {
           Login = login,
-          PasswordHash = "21232f297a57a5a743894a0e4a801fc3", // Пароль: admin
+          PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678
           Name = "TestUser",
           PaymentSystemGroup = new PaymentSystemGroup()
         };

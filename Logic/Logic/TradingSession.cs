@@ -11,6 +11,11 @@ namespace Logic
   {
     public TradingSession(D_TradingSession tradingSession) : base(tradingSession) { }
 
+    public static explicit operator TradingSession(D_TradingSession dataTradingSession)
+    {
+      return new TradingSession(dataTradingSession);
+    }
+
     /// <summary>
     /// Обеспечить доходность торговой сессии.
     /// Выставить счета

@@ -21,7 +21,10 @@ namespace MLMExchange.Lib.Image
     public Image(string imageRelativePath, string imageName)
     {
       if (String.IsNullOrEmpty(imageName))
-        throw new ApplicationException("imageName cant be null");
+      {
+        imageRelativePath = "Content\\images\\Form";
+        imageName = "anonymous-user.png";
+      }
 
       _CurrentImageInfo = new ImageInfo(imageRelativePath, imageName);
       _ImageUploadDir = imageRelativePath;
@@ -122,6 +125,10 @@ namespace MLMExchange.Lib.Image
         }
       }
 
+      /// <summary>
+      /// Полное имя и путь до изображения
+      /// </summary>
+      public string FullNameAndPath { get { return Path.Combine("\\", _ImageRelativePath, _ImageName); } }
       /// <summary>
       /// Полное имя изображения (+ расширение)
       /// </summary>

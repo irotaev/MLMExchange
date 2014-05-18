@@ -112,7 +112,7 @@
 
     <div class="pb-bpa__buyer-additional-info">
       <div class="pb-bpa__buyer-photo">
-        <img src="/@MLMExchange.Lib.Image.Image.UploadRelativeDir/@(new MLMExchange.Lib.Image.Image(buyer.PhotoRelativePath).Crop(68, 68).FullName)"
+        <img src="@(new MLMExchange.Lib.Image.Image(buyer.PhotoRelativePath).Crop(68, 68).FullNameAndPath)"
              class="pb-bpa__image" alt="@MLMExchange.Properties.ResourcesA.UserPhoto" >
       </div>
 

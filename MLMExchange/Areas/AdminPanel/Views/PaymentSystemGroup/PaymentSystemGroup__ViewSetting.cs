@@ -28,8 +28,12 @@ namespace MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
     /// </summary>
     public bool IsPaymentSystemOperationRootOperationEnable { get; set; }
     /// <summary>
-    /// Позволить ли оплатить комиссионный сбор для продавца
+    /// Позволить ли оплатить коммиссионный сбор для продавца
     /// </summary>
     public bool IsRequireSallerInterestRatePayment { get; set; }
+    /// <summary>
+    /// Позволить ли оплатить платеж доходности торговой сессии
+    /// </summary>
+    public bool IsRequiredYieldTradingSessionPayment { get; set; }
   }
 }

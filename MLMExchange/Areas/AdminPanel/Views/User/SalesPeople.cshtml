@@ -29,7 +29,8 @@
         var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
         resultTag += stateTag;
 
-        var messageTag = "<div class='pb-br__message'>@(String.Format(MLMExchange.Properties.PrivateResource.NeedCheckPayment, "5%"))</div>";
+        var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.NeedCheckPayment,
+          "\" + record.data.CheckBill__MoneyAmount + \"")))</div>";
         resultTag += messageTag;
 
         var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_check-payment").attr("href", "#").attr("data-request-id", record.data.Id)
@@ -45,8 +46,8 @@
         var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
         resultTag += stateTag;
 
-        var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.RequirePayInterestRateToSaller, 
-            "\" + record.data.SallerInterestRateValue + \"")))</div>";
+        var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.RequirePayInterestRateToSaller,
+          "\" + record.data.SallerInterestRateBill__MoneyAmount + \"")))</div>";
           resultTag += messageTag;
 
           var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_pay-saller-interest-rate").attr("href", "#")
@@ -182,14 +183,15 @@
           new ModelField { Name = "SellerName", ServerMapping = "Seller.Name" },
           new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
           new ModelField { Name = "MyCryptCount" },
-          new ModelField { Name = "LocalisedStateDisplayName" },
-          new ModelField { Name = "SallerInterestRateValue" },
+          new ModelField { Name = "LocalisedStateDisplayName" },          
           new ModelField { Name = "IsCheckBillPaid" },
           new ModelField { Name = "IsSellerInterestRatePaid" },
           new ModelField { Name = "IsSellerInterestRatePaid_NeedSubstantialMoney" },
           new ModelField { Name = "TradeSessionId" },
           new ModelField { Name = "State" },
-          new ModelField { Name = "Id" }
+          new ModelField { Name = "Id" },
+          new ModelField { Name = "CheckBill__MoneyAmount", ServerMapping = "CheckBill.MoneyAmount" },
+          new ModelField { Name = "SallerInterestRateBill__MoneyAmount", ServerMapping = "SallerInterestRateBill.MoneyAmount" }
       )))
       .ColumnModel(
         X.RowNumbererColumn(),
