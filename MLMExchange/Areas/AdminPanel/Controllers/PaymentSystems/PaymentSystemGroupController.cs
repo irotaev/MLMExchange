@@ -70,6 +70,17 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         viewSettings.IsRequireSallerInterestRatePayment = actionSettings.IsRequireSallerInterestRatePayment.Value;
       }
 
+      if (actionSettings.IsRequiredYieldSessionBillPayment != null && actionSettings.IsRequiredYieldSessionBillPayment.Value)
+      {
+        if (actionSettings.IsRequiredYieldSessionBillPayment.Value == true)
+        {
+          if (actionSettings.YieldTradingSessionBillId == null)
+            throw new UserVisible__WrongParametrException("YieldTradingSessionBillId");
+        }
+
+        viewSettings.IsRequiredYieldTradingSessionPayment = actionSettings.IsRequiredYieldSessionBillPayment.Value;
+      }
+
       var system = paymentSystemGroup.BankPaymentSystems.FirstOrDefault();
 
       ViewData["PaymentSystemGroup_Browse__ViewSetting"] = viewSettings;
@@ -145,6 +156,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
     /// Id торговой сессии, для которой необходимо оплатить комиссионный сбор продавца
     /// </summary>
     public long? TradeSessionId { get; set; }
+    #endregion
+
+    #region Позволить оплатить платеж доходности торговой сессии
+    public bool? IsRequiredYieldSessionBillPayment { get; set; }
+    public long? YieldTradingSessionBillId { get; set; }
     #endregion
   }
 }

@@ -26,6 +26,8 @@
     {
       <script>
         function YieldTradingSession__Listener() {
+          console.log(arguments);
+
           new Ext.Window({
             id: "PayYieldTradingSession__Window",
             width: 800,
@@ -33,7 +35,7 @@
             title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
             autoLoad: {
               url: "/AdminPanel/PaymentSystemGroup/Browse",
-              params: { ForUserId: sellerId, IsRequireSallerInterestRatePayment: true, TradeSessionId: tradeSessionId },
+              params: { ForUserId: sellerId, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: tradeSessionId },
               nocache: true,
               text: "@MLMExchange.Properties.ResourcesA.Loading",
               callback: function () {
@@ -98,7 +100,7 @@
                     )
                       .Listeners(ls =>
                       {
-                        ls.Command.Fn = "YieldTradingSessionBill__Listener";
+                        ls.Command.Fn = "YieldTradingSession__Listener";
                       }))
                  .RenderTo("b-ts__users-to-pay_ID"))
           </div>
