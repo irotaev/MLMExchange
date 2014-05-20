@@ -125,6 +125,13 @@
 
             &:hover {border-bottom-color: $color_green_sea_c;}
           }
+
+          &.b-psg__operation_type_pay-yield-trading-session-payment
+          {
+            .b-psg__operation-name {color: $color_green_sea_c !important;}
+
+            &:hover {border-bottom-color: $color_green_sea_c;}
+          }
         }
       }
     }

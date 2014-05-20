@@ -3,6 +3,7 @@
 
 @import "../lib/Admin.Blocks/BindingParticipateApplicationBlock";
 @import "../lib/Admin.Blocks/TradingSession/Browse";
+@import "../lib/Admin.Blocks/PaymentSystemGroup/PaymentSystemGroup_Browse";
 
 @import "../lib/Admin.Blocks/ExtJs_Grid_lib";
 
@@ -16,7 +17,7 @@
     }
   }
 
-  .x-grid {@include custom-extjs-grid(0, none)};
+  .x-grid {@include custom-extjs-grid(0, none);};
 }
 
 .pb-cp

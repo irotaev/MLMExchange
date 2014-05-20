@@ -25,28 +25,29 @@
     else if (Model.State == Logic.TradingSessionStatus.Open)
     {
       <script>
-        function YieldTradingSession__Listener() {
-          console.log(arguments);
+        function YieldTradingSession__Listener(view, commandName, record) {
 
-          new Ext.Window({
-            id: "PayYieldTradingSession__Window",
-            width: 800,
-            modal: true,
-            title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
-            autoLoad: {
-              url: "/AdminPanel/PaymentSystemGroup/Browse",
-              params: { ForUserId: sellerId, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: tradeSessionId },
-              nocache: true,
-              text: "@MLMExchange.Properties.ResourcesA.Loading",
-              callback: function () {
-                $.each($("#PaySellerInterestRate__Window").find("script[data-app-script='true']"), function (index, element) {
-                  var scriptTag = $(document.createElement('script')).text($(element).text());
+          if (commandName === "YieldTradingSessionBill_Pay") {
+            new Ext.Window({
+              id: "PayYieldTradingSession__Window",
+              width: 800,
+              modal: true,
+              title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
+              autoLoad: {
+                url: "/AdminPanel/PaymentSystemGroup/Browse",
+                params: { ForUserId: record.data.UserId, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: record.data.YieldTradingSessionBillId },
+                nocache: true,
+                text: "@MLMExchange.Properties.ResourcesA.Loading",
+                callback: function () {
+                  $.each($("#PayYieldTradingSession__Window").find("script[data-app-script='true']"), function (index, element) {
+                    var scriptTag = $(document.createElement('script')).text($(element).text());
 
-                  $(scriptTag).appendTo($("body"));
-                });
+                    $(scriptTag).appendTo($("body"));
+                  });
+                }
               }
-            }
-          }).show();
+            }).show();
+          }
         }
       </script>
       
@@ -88,7 +89,8 @@
                       new ModelField { Name = "UserId" },
                       new ModelField { Name = "UserLogin" },
                       new ModelField { Name = "MoneyAmount" },
-                      new ModelField { Name = "DefaultPaymentSystem" }
+                      new ModelField { Name = "DefaultPaymentSystem" },
+                      new ModelField { Name = "YieldTradingSessionBillId" }
                   )))
                   .ColumnModel(
                     X.RowNumbererColumn(),

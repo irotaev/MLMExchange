@@ -31,9 +31,16 @@ namespace MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
     /// Позволить ли оплатить коммиссионный сбор для продавца
     /// </summary>
     public bool IsRequireSallerInterestRatePayment { get; set; }
+
+    #region Разрешить ли оплату доходности торговой сесии
     /// <summary>
     /// Позволить ли оплатить платеж доходности торговой сессии
     /// </summary>
     public bool IsRequiredYieldTradingSessionPayment { get; set; }
+    /// <summary>
+    /// Id счета на оплату доходности торговой сессии
+    /// </summary>
+    public long? YieldTradingSessionBillId { get; set; }
+    #endregion
   }
 }

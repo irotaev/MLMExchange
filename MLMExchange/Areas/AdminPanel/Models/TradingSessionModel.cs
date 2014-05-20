@@ -74,7 +74,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
           DefaultPaymentSystem = bill.PaymentAcceptor.PaymentSystemGroup.BankPaymentSystems.Where(bs => bs.IsDefault == true).FirstOrDefault().BankName,
           MoneyAmount = bill.MoneyAmount.Value,
           UserId = bill.PaymentAcceptor.Id,
-          UserLogin = bill.PaymentAcceptor.Login
+          UserLogin = bill.PaymentAcceptor.Login,
+          YieldTradingSessionBillId = bill.Id
         };
 
         _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
@@ -106,5 +107,6 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Дефолтная платежная система
     /// </summary>
     public string DefaultPaymentSystem { get; set; }
+    public long YieldTradingSessionBillId { get; set; }
   }
 }

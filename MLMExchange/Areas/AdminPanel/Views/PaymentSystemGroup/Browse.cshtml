@@ -9,6 +9,8 @@
 {
   ViewBag.Title = @Logic.Properties.GeneralResources.PaymentSystems;
   Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+  
+  
 }
 else
 {
@@ -20,6 +22,8 @@ else
 
   PaymentSystemGroup_Browse__ViewSetting viewSetting = (ViewData["PaymentSystemGroup_Browse__ViewSetting"] as PaymentSystemGroup_Browse__ViewSetting) ?? new PaymentSystemGroup_Browse__ViewSetting();
 }
+
+
 
 @if (viewSetting.IsRequireSallerInterestRatePayment)
 {
@@ -39,12 +43,26 @@ else
 {
   <script data-app-script="true">
     function payYieldTradingSession_Click(obj) {
-      $.ajax({
-        url: "/BuyingMyCryptRequest/PaySallerInterestRate/?yieldSessionBillId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
-        async: false,
-        type: "POST"
-      })
-      .done(function () { window.location.reload(); });
+
+      Ext.Msg.confirm("@MLMExchange.Properties.ResourcesA.ConfirmActionTitle",
+                "@(String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, "'" + MLMExchange.Properties.ResourcesA.Pay + "'"))",
+                function (id, value) {
+                    if (id === "yes") {
+                      $.ajax({
+                        url: "/BuyingMyCryptRequest/PaySallerInterestRate/?yieldSessionBillId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
+                        async: false,
+                        type: "POST"
+                      })
+                    .done(function () { window.location.reload(); });
+                    }
+                });
+
+      //$.ajax({
+      //  url: "/BuyingMyCryptRequest/PaySallerInterestRate/?yieldSessionBillId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
+      //  async: false,
+      //  type: "POST"
+      //})
+      //.done(function () { window.location.reload(); });
     }
   </script>
 }
@@ -115,7 +133,7 @@ else
     {
       <script>
           function removeBankOperationSystem(obj) {
-              var bankSystemId = $(obj).data("bank-system-id");
+            var bankSystemId = $(obj).data("bank-system-id");
 
             Ext.Msg.confirm("@MLMExchange.Properties.ResourcesA.ConfirmActionTitle",
                 "@(String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Delete))",
@@ -186,7 +204,7 @@ else
           @if (viewSetting.IsRequiredYieldTradingSessionPayment)
           {
             <div class="b-psg__operation b-psg__operation_type_pay-yield-trading-session-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
-                 data-yield-trading-session-bill-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: payYieldTradingSession_Click(this);">
+                 data-yield-trading-session-bill-id="@viewSetting.YieldTradingSessionBillId" onclick="javascript: payYieldTradingSession_Click(this);">
               <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PayYieldTradingSession</span>
             </div>
           }

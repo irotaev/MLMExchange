@@ -44,7 +44,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
       }
 
       PaymentSystemGroupModel model = new PaymentSystemGroupModel().Bind(paymentSystemGroup);
-      
+
       if (paymentSystemGroup == null)
         throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
 
@@ -72,11 +72,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
 
       if (actionSettings.IsRequiredYieldSessionBillPayment != null && actionSettings.IsRequiredYieldSessionBillPayment.Value)
       {
-        if (actionSettings.IsRequiredYieldSessionBillPayment.Value == true)
-        {
-          if (actionSettings.YieldTradingSessionBillId == null)
-            throw new UserVisible__WrongParametrException("YieldTradingSessionBillId");
-        }
+        if (actionSettings.YieldTradingSessionBillId == null)
+          throw new UserVisible__WrongParametrException("YieldTradingSessionBillId");
+
+        viewSettings.YieldTradingSessionBillId = actionSettings.YieldTradingSessionBillId;
 
         viewSettings.IsRequiredYieldTradingSessionPayment = actionSettings.IsRequiredYieldSessionBillPayment.Value;
       }
