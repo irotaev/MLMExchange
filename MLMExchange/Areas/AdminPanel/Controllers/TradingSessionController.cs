@@ -19,12 +19,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     {
       throw new NotImplementedException();
     }
-
+    
     public System.Web.Mvc.ActionResult Edit(TradingSessionModel model, BaseEditActionSettings actionSettings)
     {
       throw new NotImplementedException();
     }
-
 
     public System.Web.Mvc.ActionResult List(BaseListActionSetings actionSettings)
     {
@@ -34,9 +33,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <summary>
     /// Оплатить счет на доходность торговой сессии
     /// </summary>
+    /// <param name="paymentSystemId">Id платежной системы</param>
+    /// <param name="yieldSessionBillId">Id счета на обеспечение доходности торговой сессии</param>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult PayYieldTradingSessionBill(long yieldSessionBillId)
+    public ActionResult PayYieldTradingSessionBill(long yieldSessionBillId, long paymentSystemId)
     {
       var session = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
 
@@ -54,14 +55,28 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
       }
 
-      return null;
+      PaymentSystem d_paymentSystem = session.Query<PaymentSystem>()
+        .Where(x => x.Id == paymentSystemId).FirstOrDefault();
 
-      //TODO:Rtv доделать
-      //Payment payment = new Payment
-      //{
-      //  Payer = CurrentSession.Default.CurrentUser,
-        
-      //}
+      if (d_paymentSystem == null)
+        throw new UserVisible__WrongParametrException("paymentSystemId");
+
+      Payment payment = new Payment
+      {
+        Payer = CurrentSession.Default.CurrentUser,
+        PaymentSystem = d_paymentSystem,
+        RealMoneyAmount = d_yieldSessionBill.MoneyAmount
+      };
+
+      d_yieldSessionBill.Payments.Add(payment);
+      d_yieldSessionBill.PaymentState = BillPaymentState.Paid;
+
+      session.SaveOrUpdate(d_yieldSessionBill);
+
+      if (!Request.IsAjaxRequest())
+        return Redirect(Request.UrlReferrer.ToString());
+      else
+        return null;
     }
   }
 }

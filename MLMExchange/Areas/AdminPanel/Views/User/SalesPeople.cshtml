@@ -93,7 +93,7 @@
     view.on('refresh', function () {
       //#region Обработчик события нажатия кнопки Оплатить проверочный платеж
         $(".pb-br__image-link_action_check-payment").on("click", function () {
-
+        
         $.ajax({
           url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
           async: false,

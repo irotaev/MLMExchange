@@ -62,13 +62,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// Оплатить комиссионый сбор пордавцу
     /// </summary>
     /// <param name="tradeSessionId">Id торговой сессии, по которой необходимо оплатить комиссионный взнос</param>
-    /// <param name="paymentSystemGuid">Guid платежной системы, по которой осуществлялся платеж</param>
+    /// <param name="paymentSystemId">Id платежной системы, по которой осуществлялся платеж</param>
     /// <returns></returns>
-    public ActionResult PaySallerInterestRate(long tradeSessionId, string paymentSystemGuid)
+    public ActionResult PaySallerInterestRate(long tradeSessionId, long paymentSystemId)
     {
-      if (String.IsNullOrEmpty(paymentSystemGuid))
-        throw new UserVisible__WrongParametrException("paymentSystemGuid");
-
       D_TradingSession tradingSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_TradingSession>()
         .Where(x => x.State == TradingSessionStatus.Open && x.Id == tradeSessionId).FirstOrDefault();
@@ -87,7 +84,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (sallerInterestRateBill.PaymentState == BillPaymentState.Paid)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      PaymentSystem paymentSystem = Logic__PaymentSystem.GetPaymentSystemByGuid(paymentSystemGuid);
+      PaymentSystem paymentSystem = Logic__PaymentSystem.GetPaymentSystemByGuid(paymentSystemId);
 
       if (paymentSystem == null)
         throw new UserVisible__WrongParametrException("paymentSystemGuid");

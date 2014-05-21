@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
 using NHibernate.Event;
 using NHibernate.Linq;
+using FluentNHibernate.Mapping;
 
 namespace Logic
 {
@@ -222,19 +223,10 @@ namespace Logic
   #region Платежные системы
   public class PaymentSystem : D_BaseObject
   {
-    public PaymentSystem()
-    {
-      Guid = Guid.NewGuid();
-    }
-
     /// <summary>
     /// Дефолтная система - true, нет - false
     /// </summary>
     public virtual bool IsDefault { get; set; }
-    /// <summary>
-    /// GUID
-    /// </summary>
-    public virtual Guid Guid { get; set; }
     /// <summary>
     /// Группа платежных систем
     /// </summary>
@@ -645,7 +637,6 @@ namespace Logic
     {
       References<PaymentSystemGroup>(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Cascade.SaveUpdate();
       Map(x => x.IsDefault);
-      Map(x => x.Guid);
 
       UseUnionSubclassForInheritanceMapping();
     }

@@ -49,12 +49,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     public long? CorrespondentAccount { get; set; }
 
     /// <summary>
-    /// Guid
-    /// </summary>
-    [HiddenInput(DisplayValue = false)]
-    public Guid Guid { get; private set; }
-
-    /// <summary>
     /// Является ли данная система дефолтной
     /// </summary>
     [HiddenInput(DisplayValue = false)]
@@ -66,8 +60,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
         throw new ArgumentNullException("object");
 
       base.Bind(@object);
-
-      Guid = @object.Guid;
 
       UserName = @object.UserName;
       UserSurname = @object.UserSurname;

@@ -30,7 +30,7 @@ else
   <script data-app-script="true">
       function paySellerInterestRate_Click(obj) {
           $.ajax({
-              url: "/BuyingMyCryptRequest/PaySallerInterestRate/?tradeSessionId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
+              url: "/BuyingMyCryptRequest/PaySallerInterestRate/?tradeSessionId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemId=" + $(obj).data("payment-system-id"),
               async: false,
               type: "POST"
           })
@@ -43,26 +43,18 @@ else
 {
   <script data-app-script="true">
     function payYieldTradingSession_Click(obj) {
-
       Ext.Msg.confirm("@MLMExchange.Properties.ResourcesA.ConfirmActionTitle",
-                "@(String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, "'" + MLMExchange.Properties.ResourcesA.Pay + "'"))",
-                function (id, value) {
-                    if (id === "yes") {
-                      $.ajax({
-                        url: "/BuyingMyCryptRequest/PaySallerInterestRate/?yieldSessionBillId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
-                        async: false,
-                        type: "POST"
-                      })
-                    .done(function () { window.location.reload(); });
-                    }
-                });
-
-      //$.ajax({
-      //  url: "/BuyingMyCryptRequest/PaySallerInterestRate/?yieldSessionBillId=" + $(obj).data("saller-trade-session-id") + "&paymentSystemGuid=" + $(obj).data("payment-system-guid"),
-      //  async: false,
-      //  type: "POST"
-      //})
-      //.done(function () { window.location.reload(); });
+       "@(String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, "'" + MLMExchange.Properties.ResourcesA.Pay + "'"))",
+        function (id, value) {
+            if (id === "yes") {
+              $.ajax({
+                url: "/TradingSession/PayYieldTradingSessionBill/?yieldSessionBillId=" + $(obj).data("yield-trading-session-bill-id") + "&paymentSystemId=" + $(obj).data("payment-system-id"),
+                async: false,
+                type: "POST"
+              })
+            .done(function () { window.location.reload(); });
+            }
+        });
     }
   </script>
 }
@@ -195,7 +187,7 @@ else
           
           @if (viewSetting.IsRequireSallerInterestRatePayment)
           {
-            <div class="b-psg__operation b-psg__operation_type_pay-seller-interest-rate-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
+            <div class="b-psg__operation b-psg__operation_type_pay-seller-interest-rate-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-id="@bankSystem.Id.ToString()"
                  data-saller-trade-session-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: paySellerInterestRate_Click(this);">
               <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PaySellerInterestRatePayment</span>
             </div>
@@ -203,7 +195,7 @@ else
           
           @if (viewSetting.IsRequiredYieldTradingSessionPayment)
           {
-            <div class="b-psg__operation b-psg__operation_type_pay-yield-trading-session-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-guid="@bankSystem.Guid.ToString()"
+            <div class="b-psg__operation b-psg__operation_type_pay-yield-trading-session-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-id="@bankSystem.Id.ToString()"
                  data-yield-trading-session-bill-id="@viewSetting.YieldTradingSessionBillId" onclick="javascript: payYieldTradingSession_Click(this);">
               <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PayYieldTradingSession</span>
             </div>

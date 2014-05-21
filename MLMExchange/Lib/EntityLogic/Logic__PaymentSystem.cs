@@ -13,31 +13,18 @@ namespace MLMExchange.Lib.EntityLogic
   public class Logic__PaymentSystem : AbstractEntityLogic
   {
     /// <summary>
-    /// Получить платежную систему по Guid
+    /// Получить платежную систему по Id
     /// </summary>
-    /// <param name="guid">Guid платежной системы</param>
+    /// <param name="id">Id платежной системы</param>
     /// <returns>Найденная платежная система</returns>
-    public static PaymentSystem GetPaymentSystemByGuid(string guid)
+    public static PaymentSystem GetPaymentSystemByGuid(long id)
     {
-      if (String.IsNullOrEmpty(guid))
-        throw new ArgumentNullException("guid");
-
       PaymentSystem findPaymentSystem;
 
       findPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BankPaymentSystem>().Where(x => x.Guid.ToString() == guid).FirstOrDefault();
+        .Query<BankPaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
 
       return findPaymentSystem;
-    }
-
-    /// <summary>
-    /// Получить платежную систему по Guid
-    /// </summary>
-    /// <param name="guid">Guid платежной системы</param>
-    /// <returns>Найденная платежная система</returns>
-    public static PaymentSystem GetPaymentSystemByGuid(Guid guid)
-    {
-      return GetPaymentSystemByGuid(guid.ToString());
     }
   }
 }
