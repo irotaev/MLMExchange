@@ -17,6 +17,21 @@ namespace Logic
     public virtual DateTime CreationDateTime { get; set; }
   }
 
+  #region System
+  /// <summary>
+  /// Объект системы
+  /// </summary>
+  public class D_Application : D_BaseObject
+  {
+    internal D_Application() { }
+
+    /// <summary>
+    /// Денежный резерв.
+    /// Сколько денег перечислили в резерв фонда
+    /// </summary>
+    public virtual decimal MoneyReserv { get; set; }
+  }
+
   /// <summary>
   /// Настройки системы
   /// </summary>
@@ -31,6 +46,7 @@ namespace Logic
     /// </summary>
     public virtual int Quote { get; set; }
   }
+  #endregion
 
   public class D_User : D_BaseObject
   {
@@ -504,10 +520,18 @@ namespace Logic
     /// </summary>
     Open = 1,
     /// <summary>
+    /// Необходимо обеспечить доходность
+    /// </summary>
+    NeedEnsureProfibility = 5,
+    /// <summary>
     /// Сессия исполняется. 
     /// Ожидание периода между оплатой доходности сессии и получения прибыли
     /// </summary>
     SessionInProgress = 2,
+    /// <summary>
+    /// Торговая сессия ждет прибыли
+    /// </summary>
+    NeedProfit = 6,
     /// <summary>
     /// Закрыта
     /// </summary>
@@ -529,6 +553,14 @@ namespace Logic
       Id(x => x.Id).Column("Id").GeneratedBy.Increment();
 
       Map(x => x.CreationDateTime).Not.Nullable();
+    }
+  }
+
+  public class D_Application_Map : D_BaseObject_Map<D_Application>
+  {
+    public D_Application_Map()
+    {
+      Map(x => x.MoneyReserv);
     }
   }
 

@@ -6,16 +6,53 @@ using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 
-namespace Logic.Lib
+namespace Logic
 {
   /// <summary>
-  /// Приложение
+  /// Прокси-объект приложения.
+  /// Настройка всего приложения в целом. Один объект на всю систему. Создается один раз при запуске биржи.
+  /// Синглтон
   /// </summary>
-  public sealed class Application
+  public sealed class Application : AbstractLogicObject<D_Application>
   {
     static Application()
     {
+      #region Создие объекта приложения
+      D_Application d_application = new D_Application();
+
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Save(d_application);
+      #endregion
+
       AddAdministratorRoleUsers();
+    }
+
+    private Application(D_Application d_application) : base(d_application) { }
+
+    /// <summary>
+    /// Получить экземпляр объекта. Реализация паттерна Синглтон
+    /// </summary>
+    public static Application Instance
+    {
+      get
+      {
+        D_Application d_application = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_Application>().FirstOrDefault();
+
+        return new Application(d_application);
+      }
+    }
+
+    /// <summary>
+    /// Получить текущие настройки для системы.
+    /// Аналогично их можно получить из SystemSettings
+    /// </summary>
+    public SystemSettings CurrentSystemSettings
+    {
+      get
+      {
+        return SystemSettings.GetCurrentSestemSettings();
+      }
     }
 
     /// <summary>
