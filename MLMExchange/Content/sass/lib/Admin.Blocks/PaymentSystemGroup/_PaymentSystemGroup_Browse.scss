@@ -41,6 +41,9 @@
   .b-psg__content
   {
     position: relative;
+    overflow-y: scroll;
+    padding-right: 10px;
+    max-height: 730px;
 
     .b-psg__payment-system-item
     {
