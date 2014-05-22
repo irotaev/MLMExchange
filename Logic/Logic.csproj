@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity.cs" />
-    <Compile Include="Lib\Application.cs" />
+    <Compile Include="Logic\Application.cs" />
     <Compile Include="Lib\ApplicationUnityContainer.cs" />
     <Compile Include="Logic\AbstractLogic.cs" />
     <Compile Include="Logic\SystemSettings.cs" />

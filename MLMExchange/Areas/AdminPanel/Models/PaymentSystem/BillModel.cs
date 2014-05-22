@@ -25,9 +25,9 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     /// Состояние счета
     /// </summary>
     public BillPaymentState BillPaymentState { get; set; }
-
+    
     public override BillModel Bind(Bill @object)
-    {
+    { 
       if (@object == null)
         throw new ArgumentNullException("object");
 

@@ -104,7 +104,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Счет проверочного платежа
       Bill checkBill = new Bill
       {
-        MoneyAmount = (tradingSession.SystemSettings.CheckPaymentPercent / 100) * buyingMyCryptRequest.MyCryptCount,
+        MoneyAmount = ((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount(),
         PaymentState = BillPaymentState.WaitingPayment,
         Payer = CurrentSession.Default.CurrentUser
       };
@@ -115,7 +115,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Счет сбора продавцу
       Bill sallerInterestRateBill = new Bill
       {
-        MoneyAmount = ((decimal)1 / tradingSession.SystemSettings.Quote) * buyingMyCryptRequest.MyCryptCount,
+        MoneyAmount = ((TradingSession)tradingSession).CalculateSallerInterestRateMoneyAmount(),
         Payer = CurrentSession.Default.CurrentUser,
         PaymentState = BillPaymentState.WaitingPayment
       };
@@ -151,7 +151,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       tradingSession.SallerInterestRateBill.PaymentState = BillPaymentState.Paid;
       tradingSession.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Closed;
 
-      new TradingSession(tradingSession).EnsureProfibilityOfTradingSession();
+      tradingSession.State = TradingSessionStatus.NeedEnsureProfibility;
 
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
 
