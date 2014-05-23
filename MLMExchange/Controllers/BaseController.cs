@@ -137,7 +137,7 @@ namespace MLMExchange.Controllers
       #endregion
 
       //TODO:Rtv Переработать это место
-      new Logic.Lib.Application();
+      Logic.Application.Instance.Initiliaze();
     }
 
     protected override void Dispose(bool disposing)

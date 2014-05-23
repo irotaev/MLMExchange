@@ -160,6 +160,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Открыть.
+        /// </summary>
+        public static string Button_Open {
+            get {
+                return ResourceManager.GetString("Button_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Комментарий.
         /// </summary>
         public static string Comment {

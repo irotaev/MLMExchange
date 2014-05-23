@@ -72,7 +72,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
         YieldSessionPaymentAcceptor paymentAcceptor = new YieldSessionPaymentAcceptor
         {
           DefaultPaymentSystem = bill.PaymentAcceptor.PaymentSystemGroup.BankPaymentSystems.Where(bs => bs.IsDefault == true).FirstOrDefault().BankName,
-          MoneyAmount = bill.MoneyAmount.Value,
+          MoneyAmount = bill.MoneyAmount,
           UserId = bill.PaymentAcceptor.Id,
           UserLogin = bill.PaymentAcceptor.Login,
           YieldTradingSessionBillId = bill.Id

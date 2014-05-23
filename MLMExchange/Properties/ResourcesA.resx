@@ -150,6 +150,9 @@
   <data name="AwaitingConfirm" xml:space="preserve">
     <value>Ожидает подтверждения</value>
   </data>
+  <data name="Button_Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
   <data name="Comment" xml:space="preserve">
     <value>Комментарий</value>
   </data>

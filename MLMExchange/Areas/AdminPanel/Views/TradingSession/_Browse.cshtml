@@ -10,6 +10,11 @@
     && !Model.IsYieldSessionBillsPaid 
     && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
     && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
+
+  bool isCanOpenTradingSession = Model.State == Logic.TradingSessionStatus.Open
+    && Model.IsYieldSessionBillsPaid
+    && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
+    && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
 }
 
 <section class="b-ts b-ab @(isNeedDisplay_PayYieldTradingSession_Grid ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
@@ -107,6 +112,21 @@
                  .RenderTo("b-ts__users-to-pay_ID"))
           </div>
         </div>
+        }
+        else if (isCanOpenTradingSession)
+        {
+          <div class="b-ts__open-trading-session">
+            <div class="b-ts__message">@MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen 
+              <i class="b-ts__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen" data-ot-style="BlackStyle"></i>
+            </div>
+
+            <div class="b-ts_button-wrapper">
+              <a href="#" class="b-btn b-btn-flat-action b-ts__button_action_open-session">
+                <i class="fa  fa-arrow-circle-right"></i>
+                @MLMExchange.Properties.ResourcesA.Button_Open
+              </a>
+            </div>
+          </div>
         }
     }
     else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)

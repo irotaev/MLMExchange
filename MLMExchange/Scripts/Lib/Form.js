@@ -42,6 +42,8 @@ define(["require", "exports", "jquery"], function(require, exports) {
                 });
             });
 
+            //#endregion
+            //#region Замок для поля с паролем
             if (navigator.userAgent.indexOf("MSIE 9") < 0 && navigator.userAgent.indexOf("MSIE 8") < 0 && navigator.userAgent.indexOf("MSIE 7") < 0) {
                 var passwordFields = this._$Form.find(".b-ib__input[type='password']");
 
@@ -81,7 +83,7 @@ define(["require", "exports", "jquery"], function(require, exports) {
         * Привязать валидацию
         */
         Form.prototype.BindValidation = function () {
-            (window).$Sync.validator.unobtrusive.parse(this._$Form);
+            window.$Sync.validator.unobtrusive.parse(this._$Form);
 
             return this;
         };
@@ -90,7 +92,7 @@ define(["require", "exports", "jquery"], function(require, exports) {
         * Привязать плагин iCheck к форме
         */
         Form.prototype.BindICheck = function () {
-            var $ = (window).$Sync;
+            var $ = window.$Sync;
 
             $(this._$Form).find("input[type='checkbox']").not("[data-icheck='true']").css({ "position": "absolute", "top": "0", "left": "0", "visibility": "hidden" });
 
@@ -111,7 +113,7 @@ define(["require", "exports", "jquery"], function(require, exports) {
         * Привязать Tooltip (OpenTip) к форме
         */
         Form.prototype.BindTooltip = function () {
-            var $ = (window).$Sync;
+            var $ = window.$Sync;
 
             $.each(this._$Form.find("[data-ot]"), function (index, element) {
                 var $element = $(element);

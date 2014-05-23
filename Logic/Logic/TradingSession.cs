@@ -18,15 +18,27 @@ namespace Logic
     }
 
     /// <summary>
+    /// Платежи, по обеспечению прибыли покупателя
+    /// </summary>
+    public IList<Payment> BuyerProfitPayments
+    {
+      get
+      {
+        return Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id && !x.IsNeedSubstantialMoney).SelectMany(x => x.Payments).ToList();
+      }
+    }
+
+    /// <summary>
     /// Оплачены ли счета доходности торговой сессии
     /// </summary>
-    public bool IsYieldSessionBillsPaid 
+    public bool IsYieldSessionBillsPaid
     {
       get
       {
         bool billsPaid = true;
 
-        foreach(var bill in _LogicObject.YieldSessionBills)
+        foreach (var bill in _LogicObject.YieldSessionBills)
         {
           billsPaid = bill.PaymentState == BillPaymentState.Paid;
         }
@@ -42,7 +54,6 @@ namespace Logic
     public decimal CalculateCheckPaymentMoneyAmount()
     {
       return (LogicObject.SystemSettings.CheckPaymentPercent / 100) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
-
     }
 
     /// <summary>
@@ -51,31 +62,105 @@ namespace Logic
     /// <returns>Количество денег</returns>
     public decimal CalculateSallerInterestRateMoneyAmount()
     {
-      return ((decimal)1 / LogicObject.SystemSettings.Quote) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
+      return (1m / LogicObject.SystemSettings.Quote) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
+    }
+
+    /// <summary>
+    /// Рассчитать прибыль покупателя my-crypt
+    /// </summary>
+    /// <returns></returns>
+    public decimal CalculateBuyerProfit()
+    {
+      return LogicObject.BuyingMyCryptRequest.MyCryptCount * (1m / LogicObject.SystemSettings.Quote);
     }
 
 
     #region Обеспечение доходности торговой сессии
     /// <summary>
     /// Узнать оставшееся количество денег для оплаты доходности торговой сессии.
-    /// Считает только из платежей, занесенных в базу, на момент обращения к методу
+    /// Считает только из счетов, занесенных в базу, на момент обращения к методу
     /// </summary>
     /// <returns>Количество денег</returns>
     private decimal YieldSessionBillsNecessaryMoney()
     {
+      decimal necessaryMoney = LogicObject.BuyingMyCryptRequest.MyCryptCount - CalculateCheckPaymentMoneyAmount() - CalculateSallerInterestRateMoneyAmount();
 
+      foreach (var yieldBill in LogicObject.YieldSessionBills)
+      {
+        necessaryMoney -= yieldBill.MoneyAmount;
+      }
+
+      return necessaryMoney;
+    }
+
+    /// <summary>
+    /// Узнать оставшееся количество денег для выплаты прибыли покупателю.
+    /// Считает только из платежей, занесенных в базу, на момент обращения к методу.
+    /// Рассчитывается, лучше вызывать минимальное число раз
+    /// </summary>
+    /// <returns>Количество денег</returns>
+    private decimal BuyerProfitNecessaryMoney()
+    {
+      decimal necessaryMoney = CalculateBuyerProfit();
+
+      foreach(var payment in BuyerProfitPayments)
+      {
+        necessaryMoney -= payment.RealMoneyAmount;
+      }
+
+      return necessaryMoney;
     }
 
     /// <summary>
     /// Обеспечить доходность торговой сессии.
-    /// выставить счет
+    /// Выставить счет
     /// </summary>
     internal void EnsureProfibility()
     {
       if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility)
-        return;
+        return;      
 
+      List<D_TradingSession> d_profitTradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).ToList();
 
+      foreach(var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
+      {
+        // Важен пересчет оставшейся суммы для обеспечения доходности сессии, т.к. 
+        // может добавится счет в счета на обеспечение доходности текущей сессии
+        decimal yieldSessionBullNecessaryMoney = YieldSessionBillsNecessaryMoney();
+        decimal buyerProfitNecasseryMoney = profitSession.BuyerProfitNecessaryMoney();        
+
+        if (yieldSessionBullNecessaryMoney <= buyerProfitNecasseryMoney)
+        {
+          D_YieldSessionBill ensureBill = new D_YieldSessionBill
+          {
+            MoneyAmount = yieldSessionBullNecessaryMoney,
+            Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
+            PaymentAcceptor = profitSession.LogicObject.BiddingParticipateApplication.Seller,
+            TradingSession = _LogicObject
+          };
+
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
+
+          _LogicObject.YieldSessionBills.Add(ensureBill);
+
+          break;
+        }
+        else
+        {
+          D_YieldSessionBill ensureBill = new D_YieldSessionBill
+          {
+            MoneyAmount = buyerProfitNecasseryMoney,
+            Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
+            PaymentAcceptor = profitSession.LogicObject.BiddingParticipateApplication.Seller,
+            TradingSession = _LogicObject
+          };
+
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
+
+          _LogicObject.YieldSessionBills.Add(ensureBill);
+        }
+      }
     }
     #endregion
   }
@@ -94,35 +179,9 @@ namespace Logic
       List<D_TradingSession> d_tradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedEnsureProfibility).ToList();
 
-
-    }
-
-    /// <summary>
-    /// Обеспечить доходность торговой сессии.
-    /// Выставить счета
-    /// </summary>
-    private void EnsureProfibilityOfTradingSession(D_TradingSession d_tradingSession)
-    {
-      if (_LogicObject.State != TradingSessionStatus.Open || _LogicObject.CheckBill.PaymentState != BillPaymentState.Paid || _LogicObject.SallerInterestRateBill.PaymentState != BillPaymentState.Paid)
-        throw new ApplicationException("This session is not ready to ensure profibillity");
-
-      if (_LogicObject.YieldSessionBills.Count > 0)
-        return;
-
-      //TODO:Rtv переделать
-      for (int index = 0; index < 5; index++)
+      foreach(var tradingSession in d_tradingSessions.Select(x => (TradingSession)x))
       {
-        D_YieldSessionBill ensureBill = new D_YieldSessionBill
-        {
-          MoneyAmount = 135,
-          Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
-          PaymentAcceptor = _LogicObject.BuyingMyCryptRequest.Buyer, //TODO:Rtv переделать
-          TradingSession = _LogicObject
-        };
-
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
-
-        _LogicObject.YieldSessionBills.Add(ensureBill);
+        tradingSession.EnsureProfibility();
       }
     }
   }

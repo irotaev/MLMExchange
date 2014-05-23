@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
+using System.Threading;
 
 namespace Logic
 {
@@ -23,11 +24,11 @@ namespace Logic
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Save(d_application);
       #endregion
-
-      AddAdministratorRoleUsers();
     }
 
     private Application(D_Application d_application) : base(d_application) { }
+
+    private static bool IsInitialized;
 
     /// <summary>
     /// Получить экземпляр объекта. Реализация паттерна Синглтон
@@ -56,9 +57,27 @@ namespace Logic
     }
 
     /// <summary>
+    /// Инициализировать приложение.
+    /// Приложение можно инициализировать только один раз
+    /// </summary>
+    public void Initiliaze()
+    {
+      if (IsInitialized)
+        return;      
+
+      #region Запустить процесс обеспечения доходности торговым сессиям
+      StartTradingSessionsEnsureProfitabilityProcess();
+      #endregion
+
+      AddAdministratorRoleUsers();
+
+      IsInitialized = true;
+    }
+
+    /// <summary>
     /// Добавить пользователей с ролью администратора в проект
     /// </summary>
-    private static void AddAdministratorRoleUsers()
+    private void AddAdministratorRoleUsers()
     {
       #region Создаю администраторов
       D_User adminUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
@@ -128,6 +147,25 @@ namespace Logic
       }
       #endregion
 #endif
+    }
+
+    /// <summary>
+    /// Запустить процесс обеспечения доходности торговым сессиям.
+    /// Процесс запускается в отдельном БЕСКОНЕЧНОМ потоке
+    /// </summary>
+    private void StartTradingSessionsEnsureProfitabilityProcess()
+    {
+      while(false)
+      {        
+        Thread thread = new Thread(() => 
+        {
+          new TradingSessionList().EnsureProfibilityOfTradingSessions();
+        });
+
+        thread.Start();
+
+        System.Threading.Thread.Sleep(2000);
+      }
     }
   }
 }

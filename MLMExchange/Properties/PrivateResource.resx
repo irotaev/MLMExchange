@@ -180,4 +180,7 @@
   <data name="RequestUser" xml:space="preserve">
     <value>Инициатор запроса</value>
   </data>
+  <data name="IsTradingSessionShouldBeOpen" xml:space="preserve">
+    <value>Открыть торговую сессию?</value>
+  </data>
 </root>

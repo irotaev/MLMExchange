@@ -24,12 +24,20 @@ namespace MLMExchange.Areas.AdminPanel.Models
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public int? Quote { get; set; }
 
+    /// <summary>
+    /// Длительность торговой сессии.
+    /// Измеряется в часах
+    /// </summary>
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public decimal? TradingSessionDuration { get; set; }
+
     public override SystemSettingsModel Bind(D_SystemSettings @object)
     {
       base.Bind(@object);
 
       CheckPaymentPercent = @object.CheckPaymentPercent;
       Quote = @object.Quote;
+      TradingSessionDuration = @object.TradingSessionDuration;
 
       return this;
     }
@@ -46,7 +54,10 @@ namespace MLMExchange.Areas.AdminPanel.Models
       if (Quote == null)
         throw new ArgumentNullException("Quote");
 
-      d_systemSettings.Quote = Quote.Value;
+      if (TradingSessionDuration == null)
+        throw new ArgumentNullException("TradingSessionDuration");
+
+      d_systemSettings.TradingSessionDuration = TradingSessionDuration.Value;
 
       return d_systemSettings;
     }

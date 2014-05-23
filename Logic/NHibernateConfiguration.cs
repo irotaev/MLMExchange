@@ -39,6 +39,7 @@ namespace Logic
     /// Если пуста, то берется из web.config
     /// </summary>
     public static string ConnectionString { get; set; }
+
     /// <summary>
     /// Текущая сессия
     /// </summary>

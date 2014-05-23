@@ -45,6 +45,11 @@ namespace Logic
     /// Котировка
     /// </summary>
     public virtual int Quote { get; set; }
+    /// <summary>
+    /// Длительность торговой сессии.
+    /// Измеряется в часах
+    /// </summary>
+    public virtual decimal TradingSessionDuration { get; set; }
   }
   #endregion
 
@@ -136,7 +141,7 @@ namespace Logic
     /// <summary>
     /// Количество реальных денег по платежу
     /// </summary>
-    public virtual decimal? RealMoneyAmount { get; set; }
+    public virtual decimal RealMoneyAmount { get; set; }
     /// <summary>
     /// Платежная система, по которой осу-ществлялся платеж
     /// </summary>
@@ -160,7 +165,7 @@ namespace Logic
     /// <summary>
     /// Количество денег по счету
     /// </summary>
-    public virtual decimal? MoneyAmount { get; set; }
+    public virtual decimal MoneyAmount { get; set; }
     /// <summary>
     /// Платежы по счету
     /// </summary>
@@ -182,7 +187,7 @@ namespace Logic
         Payments.ForEach(p =>
           {
             if (p.RealMoneyAmount != null)
-              totalPaymetsMoney += p.RealMoneyAmount.Value;
+              totalPaymetsMoney += p.RealMoneyAmount;
           });
 
         return totalPaymetsMoney < MoneyAmount;
@@ -570,6 +575,7 @@ namespace Logic
     {
       Map(x => x.CheckPaymentPercent).Not.Nullable();
       Map(x => x.Quote).Not.Nullable();
+      Map(x => x.TradingSessionDuration).Not.Nullable();
     }
   }
 
@@ -628,7 +634,7 @@ namespace Logic
     public Payment_Map()
     {
       References(x => x.Payer).Column("UserId").Not.Nullable();
-      Map(x => x.RealMoneyAmount).Nullable();
+      Map(x => x.RealMoneyAmount).Not.Nullable();
       References(x => x.PaymentSystem).Column("PaymentSystemId").Nullable();
     }
   }

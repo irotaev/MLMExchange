@@ -115,6 +115,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Открыть торговую сессию?.
+        /// </summary>
+        public static string IsTradingSessionShouldBeOpen {
+            get {
+                return ResourceManager.GetString("IsTradingSessionShouldBeOpen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Необходимо внести проверочный платеж в размере {0}.
         /// </summary>
         public static string NeedCheckPayment {

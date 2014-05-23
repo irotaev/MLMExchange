@@ -16,5 +16,23 @@
       height: 25px;
       margin-top: 20px;
     }
+
+    .b-ts__open-trading-session
+    {
+      padding: 15px;
+
+      .b-ts__message
+      {
+        font-size: $font-h;
+      }
+
+      .b-ts_button-wrapper
+      {
+        @include clearfix;
+        margin-top: 20px;
+
+        .b-ts__button_action_open-session {float: right;}
+      }
+    }
   }
 }
