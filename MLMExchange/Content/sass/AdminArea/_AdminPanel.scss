@@ -137,7 +137,30 @@ $default-layout_Bg-color: $blue_a_4;
 
           .pb-mm__icon
           {
-            @include font-icon("\e037", $blue_a_4_c2, "Dripicons", 25px);
+            &.pb-mm__icon__userinfo
+            {
+              @include font-icon("\e043", $blue_a_4_c2, "Dripicons", 25px);
+            }
+
+            &.pb-mm__icon__browse
+            {
+              @include font-icon("\e055", $blue_a_4_c2, "Dripicons", 25px);
+            }
+
+            &.pb-mm__icon__addmycrypt
+            {
+              @include font-icon("\e036", $blue_a_4_c2, "Dripicons", 25px);
+            }
+
+            &.pb-mm__icon__controlpanel
+            {
+              @include font-icon("\e027", $blue_a_4_c2, "Dripicons", 25px);
+            }
+
+            &.pb-mm__icon__salespeople
+            {
+              @include font-icon("\e026", $blue_a_4_c2, "Dripicons", 25px);
+            }
 
            &:before
            {

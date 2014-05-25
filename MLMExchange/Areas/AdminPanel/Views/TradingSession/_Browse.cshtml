@@ -36,6 +36,7 @@
             new Ext.Window({
               id: "PayYieldTradingSession__Window",
               width: 800,
+              resizable: false,
               modal: true,
               title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
               autoLoad: {
@@ -96,7 +97,12 @@
                       new ModelField { Name = "MoneyAmount" },
                       new ModelField { Name = "DefaultPaymentSystem" },
                       new ModelField { Name = "YieldTradingSessionBillId" }
-                  )))
+                  ))
+                    .ServerProxy(
+                      Html.X().AjaxProxy()
+                          .Url(Url.Action("GetData"))
+                      )
+                  )
                   .ColumnModel(
                     X.RowNumbererColumn(),
                     X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Flex(1),
@@ -109,7 +115,20 @@
                       {
                         ls.Command.Fn = "YieldTradingSession__Listener";
                       }))
-                 .RenderTo("b-ts__users-to-pay_ID"))
+                  .BottomBar(
+                        X.PagingToolbar()
+                          .Items(
+                              Html.X().Label("Size:"),
+                              Html.X().ToolbarSpacer(10),
+                              Html.X().ComboBox()
+                              .Width(50)
+                              .Items("1", "2", "10", "20")
+                              .SelectedItems("10")
+                              )
+                                .Plugins(X.ProgressBarPager())
+                  )
+                 .RenderTo("b-ts__users-to-pay_ID")
+                 )
           </div>
         </div>
         }
