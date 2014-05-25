@@ -115,11 +115,8 @@ namespace MLMExchange.Controllers
 
       #region Инициализирую сессию NHibernate
       //TODO:Rtv переделать NHibernateConfiguration на static
-      new Logic.NHibernateConfiguration();
-      var session = Logic.NHibernateConfiguration.Session.OpenSession();
-      session.BeginTransaction();
-
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(session));
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(SessionStorageType.ASPNET));
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
       #endregion
 
       #region Модель для логина

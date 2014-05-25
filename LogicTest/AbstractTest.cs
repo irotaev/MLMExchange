@@ -20,14 +20,10 @@ namespace LogicTest
       Logic.NHibernateConfiguration.ConnectionString = "Data Source=IROTAEV-PC;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
       //TODO:Rtv переделать NHibernateConfiguration на static
-      new Logic.NHibernateConfiguration();
-      var session = NHibernateConfiguration.Session.OpenSession();
-      session.BeginTransaction();
-
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(session));
-      #endregion
-
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(SessionStorageType.ThreadStatic));
       _Session = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+      _Session.BeginTransaction();
+      #endregion
     }
 
     protected readonly ISession _Session;
