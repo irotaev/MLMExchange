@@ -151,21 +151,35 @@ namespace Logic
 
     /// <summary>
     /// Запустить процесс обеспечения доходности торговым сессиям.
-    /// Процесс запускается в отдельном БЕСКОНЕЧНОМ потоке
+    /// Процесс запускается в отдельном потоке.
+    /// Поток пораждает бесконечное количество новых потоков обеспечения торговых сессий
     /// </summary>
     private void StartTradingSessionsEnsureProfitabilityProcess()
     {
-      while(false)
-      {        
-        Thread thread = new Thread(() => 
+      Thread tradingSessionEnsureThread = new Thread(() =>
         {
-          new TradingSessionList().EnsureProfibilityOfTradingSessions();
+          while (true)
+          {
+            Thread thread = new Thread(() =>
+            {
+              Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(SessionStorageType.ThreadStatic));
+              Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
+
+              new TradingSessionList().EnsureProfibilityOfTradingSessions();
+
+              var nhibernateManager = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<Logic.INHibernateManager>();
+              nhibernateManager.Session.Transaction.Commit();
+              nhibernateManager.Session.Transaction.Dispose();
+              nhibernateManager.Session.Dispose();
+            });
+
+            thread.Start();
+
+            System.Threading.Thread.Sleep(5000);
+          }
         });
 
-        thread.Start();
-
-        System.Threading.Thread.Sleep(2000);
-      }
+      tradingSessionEnsureThread.Start();
     }
   }
 }

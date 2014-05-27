@@ -183,7 +183,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         model.TradingSessionModel = new Models.TradingSessionModel();
 
         D_TradingSession tradingSession = session.Query<D_TradingSession>()
-          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id && x.State == TradingSessionStatus.Open).FirstOrDefault();
+          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id 
+                      && x.State != TradingSessionStatus.NA
+                      && x.State != TradingSessionStatus.Closed)
+          .FirstOrDefault();
 
         if (tradingSession != null)
           model.TradingSessionModel.Bind((TradingSession)tradingSession);

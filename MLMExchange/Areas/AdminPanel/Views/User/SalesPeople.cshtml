@@ -140,6 +140,7 @@
     .Height(375)
     .Store(
       X.Store()
+      .ID("SalesPeople__Store")
       .RemotePaging(true)
       .PageSize(10)
       .DataSource(Model.ActiveSales)
@@ -167,7 +168,11 @@
             {
               w_ls.AfterRender.Handler = "validator__Parse(); BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
             }).ToScript();
-        }));
+        }))
+        .BottomBar(
+          X.PagingToolbar()
+            .Plugins(X.ProgressBarPager())
+        );
 
   var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
     .Title(MLMExchange.Properties.PrivateResource.BuyingMyCryptRequestHistory)
@@ -175,6 +180,7 @@
     .Height(375)
     .Store(
       X.Store()
+      .ID("BuyingRequest__Store")
       .RemotePaging(true)
       .PageSize(10)
       .DataSource(Model.HistoryApplication)
@@ -200,7 +206,11 @@
         X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
         X.Column().Width(170).Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Renderer("BuyingRequest__History__State__Renderer")
         )
-      .Listeners(ls => ls.AfterRender.Fn = "BuyingRequest__History_AfterRender");
+      .Listeners(ls => ls.AfterRender.Fn = "BuyingRequest__History_AfterRender")
+      .BottomBar(
+          X.PagingToolbar()
+            .Plugins(X.ProgressBarPager())
+        );
 }
 
 @{

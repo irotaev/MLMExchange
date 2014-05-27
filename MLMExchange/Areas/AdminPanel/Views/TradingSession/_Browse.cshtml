@@ -6,10 +6,10 @@
 @{
   var X = Html.X();
 
-  bool isNeedDisplay_PayYieldTradingSession_Grid = Model.State == Logic.TradingSessionStatus.Open 
-    && !Model.IsYieldSessionBillsPaid 
-    && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
-    && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
+  //bool isNeedDisplay_PayYieldTradingSession_Grid = Model.State == Logic.TradingSessionStatus.Open 
+  //  && !Model.IsYieldSessionBillsPaid 
+  //  && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
+  //  && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
 
   bool isCanOpenTradingSession = Model.State == Logic.TradingSessionStatus.Open
     && Model.IsYieldSessionBillsPaid
@@ -17,7 +17,7 @@
     && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
 }
 
-<section class="b-ts b-ab @(isNeedDisplay_PayYieldTradingSession_Grid ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
+<section class="b-ts b-ab @(Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
   <header class="b-ab__title"><i class="b-ab__icon fa fa-usd"></i> @Logic.Properties.GeneralResources.TradingSession</header>
 
   <div class="b-ab__content b-ts__content">
@@ -27,7 +27,7 @@
         @MLMExchange.Properties.PrivateResource.TradingSessionNotOpened
       </div>
     }
-    else if (Model.State == Logic.TradingSessionStatus.Open)
+    else
     {
       <script>
         function YieldTradingSession__Listener(view, commandName, record) {
@@ -73,7 +73,7 @@
         }
       </div>
 
-        if (isNeedDisplay_PayYieldTradingSession_Grid)
+        if (Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility)
         {
         <div class="b-ts__pay-yield-trading-session">
           <div class="b-ts__header-text">
@@ -88,6 +88,7 @@
                 .Header(false)
                 .Store(
                   X.Store()
+                  .ID("TradingSession__PayYieldTradingSession_Store")
                   .RemotePaging(true)
                   .PageSize(10)
                   .DataSource(Model.YieldSessionPaymentAcceptors)
@@ -116,16 +117,8 @@
                         ls.Command.Fn = "YieldTradingSession__Listener";
                       }))
                   .BottomBar(
-                        X.PagingToolbar()
-                          .Items(
-                              Html.X().Label("Size:"),
-                              Html.X().ToolbarSpacer(10),
-                              Html.X().ComboBox()
-                              .Width(50)
-                              .Items("1", "2", "10", "20")
-                              .SelectedItems("10")
-                              )
-                                .Plugins(X.ProgressBarPager())
+                    X.PagingToolbar()                    
+                      .Plugins(X.ProgressBarPager())
                   )
                  .RenderTo("b-ts__users-to-pay_ID")
                  )
@@ -148,7 +141,8 @@
           </div>
         }
     }
-    else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
+    
+    @if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
     {
       <div class="b-text b-ts__text b-ts__session-in-progress">
         @MLMExchange.Properties.PrivateResource.WaitingTradingSessionProgress

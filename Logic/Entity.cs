@@ -515,6 +515,11 @@ namespace Logic
     /// Системные настройки, привязанные к данной торговой сессии
     /// </summary>
     public virtual D_SystemSettings SystemSettings { get; set; }
+    /// <summary>
+    /// Дата последнего захода робота-поисковика, который ищет пользователей 
+    /// для удовлетворения доходности текущей торговой сессии
+    /// </summary>
+    public virtual DateTime? DateLastYieldTradingSessionUnsureSearchRobotLoop { get; set; }
   }
 
   public enum TradingSessionStatus : int
@@ -555,7 +560,7 @@ namespace Logic
   {
     public D_BaseObject_Map()
     {
-      Id(x => x.Id).Column("Id").GeneratedBy.Increment();
+      Id(x => x.Id).GeneratedBy.HiLo("10").CustomType<Int64>();
 
       Map(x => x.CreationDateTime).Not.Nullable();
     }
@@ -772,7 +777,7 @@ namespace Logic
       #region Задаю время создания
       int createdDateTimeIndex = Array.IndexOf(@event.Persister.PropertyNames, "CreationDateTime");
 
-      DateTime creationDate = DateTime.Now.ToUniversalTime();
+      DateTime creationDate = DateTime.UtcNow;
       @event.State[createdDateTimeIndex] = creationDate;
       baseObject.CreationDateTime = creationDate; 
       #endregion

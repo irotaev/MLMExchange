@@ -161,6 +161,9 @@ namespace Logic
           _LogicObject.YieldSessionBills.Add(ensureBill);
         }
       }
+
+      LogicObject.DateLastYieldTradingSessionUnsureSearchRobotLoop = DateTime.UtcNow;
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(LogicObject);
     }
     #endregion
   }
