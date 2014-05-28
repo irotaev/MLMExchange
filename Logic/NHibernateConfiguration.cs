@@ -77,7 +77,21 @@ namespace Logic
     /// ThreadStatic (Уникальная для каждого потока)
     /// </summary>
     public static ISession CurrentSession_ThreadStatic { get { return _CurrentSession_ThreadStatic; } }
-    public static ISession CurrentSession_ASPNET { get { return (ISession)System.Web.HttpContext.Current.Items[_HttpContextSessionKey]; } }
+    public static ISession CurrentSession_ASPNET
+    {
+      get
+      {
+
+        if (System.Web.HttpContext.Current != null)
+        {
+          return (ISession)System.Web.HttpContext.Current.Items[_HttpContextSessionKey];
+        }
+        else
+        {
+          return null;
+        }
+      }
+    }
 
     /// <summary>
     /// Открыть сессию NHibernate
@@ -140,34 +154,34 @@ namespace Logic
     ISession Session { get; }
   }
 
+  /// <summary>
+  /// Менеджер сессий NHibernate
+  /// </summary>
   public class NHibernateManager : INHibernateManager
   {
     public NHibernateManager(SessionStorageType storageType)
     {
-      _SessionStorageType = storageType;
-
       NHibernateConfiguration.Instance.TryOpenSession(storageType);
     }
 
-    private readonly SessionStorageType _SessionStorageType;
-
+    /// <summary>
+    /// Текущая сессия для конкретного экземпляра класса. 
+    /// Например, уникальная для потока или для ASP.NET сессии
+    /// </summary>
     public ISession Session
     {
       get
       {
-        ISession result = null;
-
-        switch (_SessionStorageType)
+        if (NHibernateConfiguration.CurrentSession_ASPNET != null)
         {
-          case SessionStorageType.ThreadStatic:
-            result = NHibernateConfiguration.CurrentSession_ThreadStatic;
-            break;
-          case SessionStorageType.ASPNET:
-            result = NHibernateConfiguration.CurrentSession_ASPNET;
-            break;
+          return NHibernateConfiguration.CurrentSession_ASPNET;
+        }
+        else if (NHibernateConfiguration.CurrentSession_ThreadStatic != null)
+        {
+          return NHibernateConfiguration.CurrentSession_ThreadStatic;
         }
 
-        return result;
+        return null;
       }
     }
   }

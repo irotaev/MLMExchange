@@ -41,8 +41,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       Payment checkPayment = new Payment
       {
-        RealMoneyAmount = 120,
-        Payer = CurrentSession.Default.CurrentUser
+        RealMoneyAmount = checkBill.MoneyAmount,
+        Payer = CurrentSession.Default.CurrentUser,
+        Bill = checkBill
       };
 
       checkBill.Payments.Add(checkPayment);
@@ -50,7 +51,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       //TODO:Rtv Прикрепить платежную систему
       checkBill.PaymentState = BillPaymentState.Paid;
 
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingRequest);
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(checkBill);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());
@@ -92,9 +93,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       //TODO:Rtv Прикрепить платежную систему
       Payment sallerInterestRatePayment = new Payment
       {
-        RealMoneyAmount = 156,
+        RealMoneyAmount = sallerInterestRateBill.MoneyAmount,
         Payer = CurrentSession.Default.CurrentUser,
-        PaymentSystem = paymentSystem
+        PaymentSystem = paymentSystem,
+        Bill = sallerInterestRateBill
       };
 
       sallerInterestRateBill.Payments.Add(sallerInterestRatePayment);

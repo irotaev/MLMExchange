@@ -103,7 +103,7 @@ namespace Logic
     {
       decimal necessaryMoney = CalculateBuyerProfit();
 
-      foreach(var payment in BuyerProfitPayments)
+      foreach (var payment in BuyerProfitPayments)
       {
         necessaryMoney -= payment.RealMoneyAmount;
       }
@@ -118,17 +118,20 @@ namespace Logic
     internal void EnsureProfibility()
     {
       if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility)
-        return;      
+        return;
+
+      // Добавлен ли счет на оплату доходности торговой сессии
+      bool isBillAdded = false;
 
       List<D_TradingSession> d_profitTradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).ToList();
 
-      foreach(var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
+      foreach (var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
       {
         // Важен пересчет оставшейся суммы для обеспечения доходности сессии, т.к. 
         // может добавится счет в счета на обеспечение доходности текущей сессии
         decimal yieldSessionBullNecessaryMoney = YieldSessionBillsNecessaryMoney();
-        decimal buyerProfitNecasseryMoney = profitSession.BuyerProfitNecessaryMoney();        
+        decimal buyerProfitNecasseryMoney = profitSession.BuyerProfitNecessaryMoney();
 
         if (yieldSessionBullNecessaryMoney <= buyerProfitNecasseryMoney)
         {
@@ -143,6 +146,7 @@ namespace Logic
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
 
           _LogicObject.YieldSessionBills.Add(ensureBill);
+          isBillAdded = true;
 
           break;
         }
@@ -159,10 +163,32 @@ namespace Logic
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
 
           _LogicObject.YieldSessionBills.Add(ensureBill);
+          isBillAdded = true;
         }
       }
 
-      LogicObject.DateLastYieldTradingSessionUnsureSearchRobotLoop = DateTime.UtcNow;
+      #region Добавляю счета на оплату ДТС на имя системы (если поисковик долго не может найти реальных пользователей)
+      if (!isBillAdded 
+          && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null
+          && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
+      {
+        D_YieldSessionBill ensureBill = new D_YieldSessionBill
+        {
+          MoneyAmount = YieldSessionBillsNecessaryMoney(),
+          Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
+          PaymentAcceptor = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_System_User>().FirstOrDefault(),
+          TradingSession = _LogicObject
+        };
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
+        _LogicObject.YieldSessionBills.Add(ensureBill);
+        isBillAdded = true;
+      }
+      #endregion
+
+      if (!isBillAdded)
+        LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill = DateTime.UtcNow;
+
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(LogicObject);
     }
     #endregion
@@ -182,7 +208,7 @@ namespace Logic
       List<D_TradingSession> d_tradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedEnsureProfibility).ToList();
 
-      foreach(var tradingSession in d_tradingSessions.Select(x => (TradingSession)x))
+      foreach (var tradingSession in d_tradingSessions.Select(x => (TradingSession)x))
       {
         tradingSession.EnsureProfibility();
       }

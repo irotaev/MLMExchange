@@ -53,6 +53,7 @@ namespace Logic
   }
   #endregion
 
+  #region Пользователи
   public class D_User : D_BaseObject
   {
     public D_User()
@@ -79,7 +80,32 @@ namespace Logic
     /// Роли пользователя в системе
     /// </summary>
     public virtual IList<D_AbstractRole> Roles { get; set; }
+    /// <summary>
+    /// Тип пользователя
+    /// </summary>
+    public virtual D_UserType UserType { get; set; }
   }
+
+  /// <summary>
+  /// Система-пользователь. 
+  /// Пользователь, являющийся системой
+  /// </summary>
+  public class D_System_User : D_User
+  {
+  }
+
+  public enum D_UserType : int
+  {
+    /// <summary>
+    /// Базовый пользователь системы
+    /// </summary>
+    BaseUser = 0,
+    /// <summary>
+    /// Система-пользователь. Пользователь-робот системы
+    /// </summary>
+    SystemUser = 1
+  }
+  #endregion
 
   #region Roles
   /// <summary>
@@ -146,6 +172,10 @@ namespace Logic
     /// Платежная система, по которой осу-ществлялся платеж
     /// </summary>
     public virtual PaymentSystem PaymentSystem { get; set; }
+    /// <summary>
+    /// Счет, к которому превязан платеж
+    /// </summary>
+    public virtual Bill Bill { get; set; }
   }
   #endregion
 
@@ -516,10 +546,10 @@ namespace Logic
     /// </summary>
     public virtual D_SystemSettings SystemSettings { get; set; }
     /// <summary>
-    /// Дата последнего захода робота-поисковика, который ищет пользователей 
-    /// для удовлетворения доходности текущей торговой сессии
+    /// Дата последнего добавления счета роботом-поисковиком, который ищет пользователей 
+    /// для удовлетворения доходности текущей торговой сессии.
     /// </summary>
-    public virtual DateTime? DateLastYieldTradingSessionUnsureSearchRobotLoop { get; set; }
+    public virtual DateTime? DateLastYieldTradingSessionUnsureSearchRobotAddBill { get; set; }
   }
 
   public enum TradingSessionStatus : int
@@ -598,6 +628,16 @@ namespace Logic
       HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
+
+      DiscriminateSubClassesOnColumn<D_UserType>("UserType", D_UserType.BaseUser);
+    }
+  }
+
+  public class D_System_User_Map : SubclassMap<D_User>
+  {
+    public D_System_User_Map()
+    {
+      DiscriminatorValue(D_UserType.SystemUser);
     }
   }
 
@@ -624,7 +664,7 @@ namespace Logic
 
   public class D_AdministratorRole_Map : SubclassMap<D_AdministratorRole>
   {
-    public D_AdministratorRole_Map() 
+    public D_AdministratorRole_Map()
     {
       DiscriminatorValue(RoleType.Administrator);
     }
@@ -641,6 +681,7 @@ namespace Logic
       References(x => x.Payer).Column("UserId").Not.Nullable();
       Map(x => x.RealMoneyAmount).Not.Nullable();
       References(x => x.PaymentSystem).Column("PaymentSystemId").Nullable();
+      References(x => x.Bill).Column("BillId").Nullable().Cascade.SaveUpdate();
     }
   }
   #endregion
@@ -654,7 +695,7 @@ namespace Logic
       References(x => x.Payer).Column("PayerId");
       Map(x => x.MoneyAmount).Nullable();
       Map(x => x.PaymentState).CustomType<BillPaymentState>();
-      HasMany<Payment>(x => x.Payments).KeyColumn("Id").Inverse().Cascade.SaveUpdate();
+      HasMany<Payment>(x => x.Payments).KeyColumn("BillId").Cascade.SaveUpdate();
 
       DiscriminateSubClassesOnColumn<BillType>("BillType", BillType.BaseBill);
     }
@@ -706,7 +747,7 @@ namespace Logic
     public PaymentSystemGroup_Map()
     {
       HasMany<BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Inverse().Cascade.All();
-      HasOne(x => x.User).ForeignKey("PaymentSystemGroupId").Cascade.All();
+      HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate(); /*ForeignKey("PaymentSystemGroupId").Cascade.All();*/
     }
   }
   #endregion
@@ -731,7 +772,7 @@ namespace Logic
       Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.State).CustomType<BiddingParticipateApplicationState>();
       HasMany<BuyingMyCryptRequest>(x => x.BuyingMyCryptRequests).KeyColumn("BiddingParticipateApplicationId").Inverse().Cascade.All();
-      HasOne(x => x.TradingSession).ForeignKey("BiddingParticipateApplicationId").Cascade.All();
+      HasOne(x => x.TradingSession).PropertyRef(x => x.BiddingParticipateApplication).Cascade.SaveUpdate();
     }
   }
 
@@ -745,7 +786,7 @@ namespace Logic
       Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.Comment).Nullable().Length(3000);
       Map(x => x.State).CustomType<BuyingMyCryptRequestState>();
-      HasOne(x => x.TradingSession).ForeignKey("BuyingMyCryptRequestId").Cascade.All();
+      HasOne(x => x.TradingSession).PropertyRef(x => x.BuyingMyCryptRequest).Cascade.SaveUpdate();
     }
   }
 
@@ -753,13 +794,16 @@ namespace Logic
   {
     public D_TradingSession_Map()
     {
-      References(x => x.BiddingParticipateApplication).Column("BiddingParticipateApplicationId").Not.Nullable().Cascade.All();
-      References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable().Cascade.All();
+      References(x => x.BiddingParticipateApplication).Column("BiddingParticipateApplicationId").Not.Nullable().Unique().Cascade.All();
+      References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable().Unique().Cascade.All();
+      //HasOne(x => x.BiddingParticipateApplication).ForeignKey("TradingSessionId").Cascade.All();
+      //HasOne(x => x.BuyingMyCryptRequest).ForeignKey("TradingSessionId").Cascade.All();
       References(x => x.CheckBill).Column("CheckBillId").Not.Nullable().Cascade.All();
       References(x => x.SallerInterestRateBill).Column("SallerInterestRateBillId").Not.Nullable().Cascade.All();
-      References(x => x.SystemSettings).Not.Nullable(); 
+      References(x => x.SystemSettings).Not.Nullable();
       Map(x => x.State).CustomType<TradingSessionStatus>();
       HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).Inverse().KeyColumn("TradingSessionId").Cascade.All();
+      Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).Nullable();
     }
   }
   #endregion
@@ -776,10 +820,10 @@ namespace Logic
 
       #region Задаю время создания
       int createdDateTimeIndex = Array.IndexOf(@event.Persister.PropertyNames, "CreationDateTime");
-
+      
       DateTime creationDate = DateTime.UtcNow;
       @event.State[createdDateTimeIndex] = creationDate;
-      baseObject.CreationDateTime = creationDate; 
+      baseObject.CreationDateTime = creationDate;
       #endregion
 
       return false;

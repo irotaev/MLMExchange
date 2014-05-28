@@ -63,7 +63,7 @@ namespace Logic
     public void Initiliaze()
     {
       if (IsInitialized)
-        return;      
+        return;
 
       #region Запустить процесс обеспечения доходности торговым сессиям
       StartTradingSessionsEnsureProfitabilityProcess();
@@ -93,6 +93,40 @@ namespace Logic
         };
 
         adminUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = adminUser } };
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(adminUser);
+      }
+      #endregion
+
+      #region Создаю пользователя-систему
+      D_System_User d_systemUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_System_User>().FirstOrDefault();
+
+      if (d_systemUser == null)
+      {
+        PaymentSystemGroup paymentSystemGroup = new PaymentSystemGroup();
+        paymentSystemGroup.BankPaymentSystems.Add(new BankPaymentSystem
+              {
+                BankName = "Fake",
+                BIK = 123,
+                CorrespondentAccount = 123,
+                CurrentAccount = 123,
+                INN = 123,
+                IsDefault = true,
+                KPP = 123,
+                UserName = "System",
+                UserPatronymic = "System",
+                UserSurname = "System"
+              });
+
+        d_systemUser = new D_System_User
+        {
+          Login = "system_user",
+          PasswordHash = "25d55ad283aa400af464c76d713c07ad",
+          PaymentSystemGroup = paymentSystemGroup
+        };
+
+        d_systemUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = d_systemUser } };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(adminUser);
       }
