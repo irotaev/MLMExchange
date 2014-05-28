@@ -186,7 +186,7 @@ namespace Logic
       }
       #endregion
 
-      if (!isBillAdded)
+      if (isBillAdded)
         LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill = DateTime.UtcNow;
 
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(LogicObject);

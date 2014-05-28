@@ -50,7 +50,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (d_yieldSessionBill.PaymentState != BillPaymentState.NA 
         || d_yieldSessionBill.Payer.Id != CurrentSession.Default.CurrentUser.Id 
-        || tradingSession.LogicObject.State != TradingSessionStatus.Open)
+        || tradingSession.LogicObject.State != TradingSessionStatus.NeedEnsureProfibility)
       {
         throw new UserVisible__CurrentActionAccessDenied();
       }

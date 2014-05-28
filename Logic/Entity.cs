@@ -633,7 +633,7 @@ namespace Logic
     }
   }
 
-  public class D_System_User_Map : SubclassMap<D_User>
+  public class D_System_User_Map : SubclassMap<D_System_User>
   {
     public D_System_User_Map()
     {
@@ -746,8 +746,8 @@ namespace Logic
   {
     public PaymentSystemGroup_Map()
     {
-      HasMany<BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Inverse().Cascade.All();
-      HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate(); /*ForeignKey("PaymentSystemGroupId").Cascade.All();*/
+      HasMany<BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
+      HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate();
     }
   }
   #endregion
