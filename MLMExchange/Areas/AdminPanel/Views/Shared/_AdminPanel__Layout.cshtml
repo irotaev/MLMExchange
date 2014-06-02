@@ -8,6 +8,21 @@
 
 @Html.X().ResourceManager()
 
+<script>
+  $(function () {
+
+    var url = window.location.href;
+
+    $(".pb-mm a").each(function () {
+
+      if (url == (this.href)) {
+        $(this).find("nav").addClass("pb-mm__menu-item-wrapper-active");
+      }
+    });
+
+  });
+</script>
+
 @helper MainMenu__InnerContent()
 {
   <div class="pb-mm">

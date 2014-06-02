@@ -111,14 +111,21 @@ $default-layout_Bg-color: $blue_a_4;
       font-family: Lato !important;
     }
 
+
     .pb-mm
     {
+
       .pb-mm__menu-item-wrapper
       {
         position: relative;
         height: 50px;
         border-bottom: 1px solid black;
         @include transition(background-color 0.15s linear);
+
+        &.pb-mm__menu-item-wrapper-active
+        {
+          background-color: #4d5777;
+        }
 
         &:hover
         {
@@ -131,7 +138,7 @@ $default-layout_Bg-color: $blue_a_4;
         {
           position: absolute;
           top: 0; left: 10px;
-          line-height: 50px;
+          line-height: 60px;
           height: 50px;
           width: 50px;
 
