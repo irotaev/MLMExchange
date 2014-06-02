@@ -10,16 +10,11 @@
 
 <script>
   $(function () {
+    requirejs(["Lib/Menu/AdminMainMenu"], function (adminMainMenu) {
+      var adminMainMenu = new adminMainMenu.AdminMainMenu($(".pb-mm"));
 
-    var url = window.location.href;
-
-    $(".pb-mm a").each(function () {
-
-      if (url == (this.href)) {
-        $(this).find("nav").addClass("pb-mm__menu-item-wrapper-active");
-      }
+      adminMainMenu.SelectMenuItem();
     });
-
   });
 </script>
 
