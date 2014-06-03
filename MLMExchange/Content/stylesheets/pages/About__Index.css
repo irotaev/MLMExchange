@@ -1,5 +1,5 @@
-@charset "UTF-8";
-/* line 14, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-1.0.9/sass/susy/_grid.scss */
+@charset "IBM866";
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -35,7 +35,7 @@
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
-/* line 14, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -74,7 +74,7 @@
 /*
 * Относится к видео
 */
-/* line 3, ../../sass/lib/_Video.scss */
+/* line 3, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video.scss */
 .b-videos {
   width: 964px;
   float: right;
@@ -86,7 +86,7 @@
   margin-bottom: 30px;
   position: relative;
 }
-/* line 21, ../../sass/lib/_Video_lib.scss */
+/* line 21, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper {
   width: 45%;
   float: left;
@@ -104,27 +104,27 @@
   transition: border 0.55s;
   z-index: 100;
 }
-/* line 184, ../../../../../../../../../var/lib/gems/1.9.1/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 184, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 .b-videos .b-videos__video-wrapper:nth-child(2n) {
   float: right;
   margin-right: 0;
 }
-/* line 33, ../../sass/lib/_Video_lib.scss */
+/* line 33, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper:hover {
   border-color: transparent;
 }
-/* line 35, ../../sass/lib/_Video_lib.scss */
+/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper:hover .b-videos__additional-info {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 39, ../../sass/lib/_Video_lib.scss */
+/* line 39, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper .b-videos__video {
   background-color: white;
   width: 100%;
   height: 100%;
 }
-/* line 46, ../../sass/lib/_Video_lib.scss */
+/* line 46, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper .b-videos__additional-info {
   position: absolute;
   top: -30px;
@@ -140,7 +140,7 @@
   transition: opacity 0.55s;
   z-index: -10;
 }
-/* line 55, ../../sass/lib/_Video_lib.scss */
+/* line 55, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Video_lib.scss */
 .b-videos .b-videos__video-wrapper .b-videos__additional-info .b-videos__text {
   position: absolute;
   padding: 5px;
@@ -154,7 +154,7 @@
   text-align: center;
 }
 
-/* line 5, ../../sass/pages/About__Index.scss */
+/* line 5, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .about-block {
   width: 554px;
   float: left;
@@ -164,12 +164,12 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 10, ../../sass/pages/About__Index.scss */
+/* line 10, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .about-block .about-block__text {
   font-size: 16px;
 }
 
-/* line 16, ../../sass/pages/About__Index.scss */
+/* line 16, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .additional-info {
   padding-left: 82px;
   width: 390px;
@@ -178,14 +178,14 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 21, ../../sass/pages/About__Index.scss */
+/* line 21, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .additional-info .about-icon {
   display: block;
   background-image: url("/Content/images/AboutIndex/about-icon.png");
   width: 257px;
   height: 87px;
 }
-/* line 29, ../../sass/pages/About__Index.scss */
+/* line 29, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/About__Index.scss */
 .additional-info .about-info {
   background: white;
   margin-top: 15px;

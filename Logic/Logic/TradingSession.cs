@@ -27,25 +27,7 @@ namespace Logic
         return Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
           .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id && !x.IsNeedSubstantialMoney).SelectMany(x => x.Payments).ToList();
       }
-    }
-
-    /// <summary>
-    /// Оплачены ли счета доходности торговой сессии
-    /// </summary>
-    public bool IsYieldSessionBillsPaid
-    {
-      get
-      {
-        bool billsPaid = true;
-
-        foreach (var bill in _LogicObject.YieldSessionBills)
-        {
-          billsPaid = bill.PaymentState == BillPaymentState.Paid;
-        }
-
-        return billsPaid;
-      }
-    }
+    }    
 
     /// <summary>
     /// Рассчитать количество денег, необходимое для проверочного платежа по данной сессии
@@ -74,8 +56,25 @@ namespace Logic
       return LogicObject.BuyingMyCryptRequest.MyCryptCount * (1m / LogicObject.SystemSettings.Quote);
     }
 
-
     #region Обеспечение доходности торговой сессии
+    /// <summary>
+    /// Оплачены ли счета доходности торговой сессии
+    /// </summary>
+    public bool IsYieldSessionBillsPaid
+    {
+      get
+      {
+        bool billsPaid = true;
+
+        foreach (var bill in _LogicObject.YieldSessionBills)
+        {
+          billsPaid = bill.PaymentState == BillPaymentState.Paid;
+        }
+
+        return billsPaid;
+      }
+    }
+
     /// <summary>
     /// Узнать оставшееся количество денег для оплаты доходности торговой сессии.
     /// Считает только из счетов, занесенных в базу, на момент обращения к методу
@@ -117,7 +116,7 @@ namespace Logic
     /// </summary>
     internal void EnsureProfibility()
     {
-      if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility)
+      if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility || YieldSessionBillsNecessaryMoney() == 0)
         return;
 
       // Добавлен ли счет на оплату доходности торговой сессии
@@ -169,8 +168,9 @@ namespace Logic
 
       #region Добавляю счета на оплату ДТС на имя системы (если поисковик долго не может найти реальных пользователей)
       if (!isBillAdded 
-          && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null
-          && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
+          && 
+          ((LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
+          || (LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill == null && LogicObject.CreationDateTime < DateTime.UtcNow.AddSeconds(-30))))
       {
         D_YieldSessionBill ensureBill = new D_YieldSessionBill
         {
@@ -192,6 +192,21 @@ namespace Logic
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(LogicObject);
     }
     #endregion
+
+    public override void OnPreUpdate(NHibernate.Event.PreUpdateEvent @event)
+    {
+      base.OnPreUpdate(@event);
+
+      #region Изменение статусов торговой сессии
+      switch (_LogicObject.State)
+      {
+        case TradingSessionStatus.NeedEnsureProfibility:
+          if (IsYieldSessionBillsPaid)
+            _LogicObject.State = TradingSessionStatus.WaitForProgressStart;
+          break;
+      }
+      #endregion
+    }
   }
 
   /// <summary>

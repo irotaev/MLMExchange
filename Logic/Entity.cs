@@ -7,6 +7,7 @@ using FluentNHibernate.Mapping;
 using NHibernate.Event;
 using NHibernate.Linq;
 using FluentNHibernate.Mapping;
+using Logic.Lib;
 
 namespace Logic
 {
@@ -232,6 +233,7 @@ namespace Logic
   /// <summary>
   /// Счет на оплату торговых обязательств
   /// </summary>
+  [DataConfig(LogicProxyType = typeof(YieldSessionBill))]
   public class D_YieldSessionBill : Bill
   {
     public D_YieldSessionBill()
@@ -564,6 +566,10 @@ namespace Logic
     /// </summary>
     NeedEnsureProfibility = 5,
     /// <summary>
+    /// Ожидание начатия торговой сессии 
+    /// </summary>
+    WaitForProgressStart = 7,
+    /// <summary>
     /// Сессия исполняется. 
     /// Ожидание периода между оплатой доходности сессии и получения прибыли
     /// </summary>
@@ -707,7 +713,7 @@ namespace Logic
     {
       DiscriminatorValue(BillType.YieldSessionBill);
 
-      References(x => x.TradingSession).Column("TradingSessionId").Nullable();
+      References(x => x.TradingSession).Column("TradingSessionId").Nullable().Cascade.SaveUpdate();
     }
   }
   #endregion
@@ -802,7 +808,7 @@ namespace Logic
       References(x => x.SallerInterestRateBill).Column("SallerInterestRateBillId").Not.Nullable().Cascade.All();
       References(x => x.SystemSettings).Not.Nullable();
       Map(x => x.State).CustomType<TradingSessionStatus>();
-      HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).Inverse().KeyColumn("TradingSessionId").Cascade.All();
+      HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).KeyColumn("TradingSessionId").Cascade.All();
       Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).Nullable();
     }
   }
@@ -815,16 +821,51 @@ namespace Logic
     {
       D_BaseObject baseObject = (@event.Entity as D_BaseObject);
 
+      DataConfigAttribute dataConfigAttribute = baseObject.GetType().GetCustomAttributes(typeof(DataConfigAttribute), true).Cast<DataConfigAttribute>().FirstOrDefault();
+
       if (baseObject == null)
         return false;
 
       #region Задаю время создания
       int createdDateTimeIndex = Array.IndexOf(@event.Persister.PropertyNames, "CreationDateTime");
-      
+
       DateTime creationDate = DateTime.UtcNow;
       @event.State[createdDateTimeIndex] = creationDate;
       baseObject.CreationDateTime = creationDate;
       #endregion
+
+      if (dataConfigAttribute != null)
+      {
+        if (dataConfigAttribute.LogicProxyType != null)
+        {
+          INhibernateEvent nhibernateEvent = Activator.CreateInstance(dataConfigAttribute.LogicProxyType, new object[] { baseObject }) as INhibernateEvent;
+          nhibernateEvent.OnPreInsert(@event);
+        }
+      }
+
+      return false;
+    }
+  }
+
+  public class PreUpdateEvent : IPreUpdateEventListener
+  {
+    public bool OnPreUpdate(NHibernate.Event.PreUpdateEvent @event)
+    {
+      D_BaseObject baseObject = (@event.Entity as D_BaseObject);
+
+      DataConfigAttribute dataConfigAttribute = baseObject.GetType().GetCustomAttributes(typeof(DataConfigAttribute), true).Cast<DataConfigAttribute>().FirstOrDefault();
+
+      if (baseObject == null)
+        return false;
+      
+      if (dataConfigAttribute != null)
+      {
+        if (dataConfigAttribute.LogicProxyType != null)
+        {
+          INhibernateEvent nhibernateEvent = Activator.CreateInstance(dataConfigAttribute.LogicProxyType, new object[] { baseObject }) as INhibernateEvent;
+          nhibernateEvent.OnPreUpdate(@event);
+        }
+      }
 
       return false;
     }

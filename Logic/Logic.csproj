@@ -60,12 +60,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity.cs" />
+    <Compile Include="Lib\DataAttribute.cs" />
     <Compile Include="Logic\Application.cs" />
     <Compile Include="Lib\ApplicationUnityContainer.cs" />
     <Compile Include="Logic\AbstractLogic.cs" />
+    <Compile Include="Logic\BaseObject.cs" />
     <Compile Include="Logic\SystemSettings.cs" />
     <Compile Include="Logic\TradingSession.cs" />
     <Compile Include="Logic\User.cs" />
+    <Compile Include="Logic\YieldSessionBill.cs" />
     <Compile Include="Properties\GeneralResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

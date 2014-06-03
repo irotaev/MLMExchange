@@ -5,16 +5,6 @@
 
 @{
   var X = Html.X();
-
-  //bool isNeedDisplay_PayYieldTradingSession_Grid = Model.State == Logic.TradingSessionStatus.Open 
-  //  && !Model.IsYieldSessionBillsPaid 
-  //  && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
-  //  && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
-
-  bool isCanOpenTradingSession = Model.State == Logic.TradingSessionStatus.Open
-    && Model.IsYieldSessionBillsPaid
-    && Model.CheckBill.BillPaymentState == Logic.BillPaymentState.Paid
-    && Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.Paid;
 }
 
 <section class="b-ts b-ab @(Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
@@ -125,7 +115,7 @@
           </div>
         </div>
         }
-        else if (isCanOpenTradingSession)
+        else if (Model.State == Logic.TradingSessionStatus.WaitForProgressStart)
         {
           <div class="b-ts__open-trading-session">
             <div class="b-ts__message">@MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen 

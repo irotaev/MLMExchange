@@ -30,6 +30,7 @@ namespace Logic
         .ExposeConfiguration(cfg =>
         {
           cfg.EventListeners.PreInsertEventListeners = new NHibernate.Event.IPreInsertEventListener[] { new PreInsertEvent() };
+          cfg.EventListeners.PreUpdateEventListeners = new NHibernate.Event.IPreUpdateEventListener[] { new PreUpdateEvent() };
           new NHibernate.Tool.hbm2ddl.SchemaUpdate(cfg).Execute(true, true);
         })
         .BuildSessionFactory();
