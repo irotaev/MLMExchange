@@ -27,7 +27,7 @@ namespace Logic
         return Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
           .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id && !x.IsNeedSubstantialMoney).SelectMany(x => x.Payments).ToList();
       }
-    }    
+    }
 
     /// <summary>
     /// Рассчитать количество денег, необходимое для проверочного платежа по данной сессии
@@ -167,8 +167,8 @@ namespace Logic
       }
 
       #region Добавляю счета на оплату ДТС на имя системы (если поисковик долго не может найти реальных пользователей)
-      if (!isBillAdded 
-          && 
+      if (!isBillAdded
+          &&
           ((LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
           || (LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill == null && LogicObject.CreationDateTime < DateTime.UtcNow.AddSeconds(-30))))
       {
@@ -193,19 +193,25 @@ namespace Logic
     }
     #endregion
 
-    public override void OnPreUpdate(NHibernate.Event.PreUpdateEvent @event)
+    /// <summary>
+    /// Попробовать изменить статус торговой сессии
+    /// </summary>
+    /// <param name="state">На какой статус надо изменить</param>
+    /// <returns>Успех операции</returns>
+    internal bool TryChangeStatus(TradingSessionStatus state)
     {
-      base.OnPreUpdate(@event);
-
-      #region Изменение статусов торговой сессии
-      switch (_LogicObject.State)
+      switch (state)
       {
-        case TradingSessionStatus.NeedEnsureProfibility:
-          if (IsYieldSessionBillsPaid)
+        case TradingSessionStatus.WaitForProgressStart:
+          if (_LogicObject.State == TradingSessionStatus.NeedEnsureProfibility && IsYieldSessionBillsPaid)
+          {
             _LogicObject.State = TradingSessionStatus.WaitForProgressStart;
+            return true;
+          }
           break;
       }
-      #endregion
+
+      return false;
     }
   }
 

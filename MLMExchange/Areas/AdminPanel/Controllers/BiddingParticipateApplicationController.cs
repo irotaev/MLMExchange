@@ -102,7 +102,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #endregion
 
       #region Счет проверочного платежа
-      Bill checkBill = new Bill
+      D_Bill checkBill = new D_Bill
       {
         MoneyAmount = ((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount(),
         PaymentState = BillPaymentState.WaitingPayment,
@@ -113,7 +113,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #endregion
 
       #region Счет сбора продавцу
-      Bill sallerInterestRateBill = new Bill
+      D_Bill sallerInterestRateBill = new D_Bill
       {
         MoneyAmount = ((TradingSession)tradingSession).CalculateSallerInterestRateMoneyAmount(),
         Payer = CurrentSession.Default.CurrentUser,

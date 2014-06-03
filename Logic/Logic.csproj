@@ -65,6 +65,7 @@
     <Compile Include="Lib\ApplicationUnityContainer.cs" />
     <Compile Include="Logic\AbstractLogic.cs" />
     <Compile Include="Logic\BaseObject.cs" />
+    <Compile Include="Logic\Bill.cs" />
     <Compile Include="Logic\SystemSettings.cs" />
     <Compile Include="Logic\TradingSession.cs" />
     <Compile Include="Logic\User.cs" />

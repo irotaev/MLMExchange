@@ -11,7 +11,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
   /// <summary>
   /// Модель счета
   /// </summary>
-  public class BillModel : AbstractDataModel<Bill, BillModel>
+  public class BillModel : AbstractDataModel<D_Bill, BillModel>
   {
     /// <summary>
     /// Кто выставил счет
@@ -26,7 +26,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     /// </summary>
     public BillPaymentState BillPaymentState { get; set; }
     
-    public override BillModel Bind(Bill @object)
+    public override BillModel Bind(D_Bill @object)
     { 
       if (@object == null)
         throw new ArgumentNullException("object");
@@ -40,7 +40,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       return this;
     }
 
-    public override Bill UnBind(Bill @object = null)
+    public override D_Bill UnBind(D_Bill @object = null)
     {
       throw new NotImplementedException();
     }

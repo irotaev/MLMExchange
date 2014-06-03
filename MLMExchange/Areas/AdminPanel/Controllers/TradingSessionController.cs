@@ -68,9 +68,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         PaymentSystem = d_paymentSystem,
         RealMoneyAmount = d_yieldSessionBill.MoneyAmount
       };
-
-      d_yieldSessionBill.Payments.Add(payment);
+      
       d_yieldSessionBill.PaymentState = BillPaymentState.Paid;
+      ((YieldSessionBill)d_yieldSessionBill).AddPayment(payment);
 
       session.SaveOrUpdate(d_yieldSessionBill);
 

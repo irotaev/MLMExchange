@@ -31,7 +31,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (buyingRequest == null)
         throw new UserVisible__WrongParametrException("buyingMyCryptRequestId");
 
-      Bill checkBill = buyingRequest.TradingSession.CheckBill;
+      D_Bill checkBill = buyingRequest.TradingSession.CheckBill;
 
       if (checkBill == null || checkBill.Payer.Id != CurrentSession.Default.CurrentUser.Id)
         throw new MLMExchange.Lib.Exception.ApplicationException(String.Format("Check bill for request {0} is not set or belong to anouther user", buyingRequest));
@@ -46,7 +46,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         Bill = checkBill
       };
 
-      checkBill.Payments.Add(checkPayment);
+      ((Bill)checkBill).AddPayment(checkPayment);
 
       //TODO:Rtv Прикрепить платежную систему
       checkBill.PaymentState = BillPaymentState.Paid;
@@ -77,7 +77,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (tradingSession.BuyingMyCryptRequest.Buyer.Id != CurrentSession.Default.CurrentUser.Id)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      Bill sallerInterestRateBill = tradingSession.SallerInterestRateBill;
+      D_Bill sallerInterestRateBill = tradingSession.SallerInterestRateBill;
 
       if (sallerInterestRateBill == null || sallerInterestRateBill.Payer.Id != CurrentSession.Default.CurrentUser.Id)
         throw new MLMExchange.Lib.Exception.ApplicationException(String.Format("Saller interest pay bill for request {0} is not set or belong to anouther user", tradingSession));
@@ -99,7 +99,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         Bill = sallerInterestRateBill
       };
 
-      sallerInterestRateBill.Payments.Add(sallerInterestRatePayment);
+      ((Bill)sallerInterestRateBill).AddPayment(sallerInterestRatePayment);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());

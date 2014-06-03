@@ -11,7 +11,7 @@ namespace Logic
   /// <summary>
   /// Proxy-объект логики YieldSessionBill
   /// </summary>
-  public class YieldSessionBill : AbstractLogicObject<D_YieldSessionBill>
+  public class YieldSessionBill : Bill<D_YieldSessionBill>
   {
     public YieldSessionBill(D_YieldSessionBill d_baseObject) : base(d_baseObject) { }
 
@@ -20,9 +20,11 @@ namespace Logic
       return new YieldSessionBill(dataBaseObject);
     }
 
-    public override void OnPreUpdate(NHibernate.Event.PreUpdateEvent @event)
+    public override void AddPayment(Payment payment)
     {
-      base.OnPreUpdate(@event);
+      base.AddPayment(payment);
+
+      ((TradingSession)_LogicObject.TradingSession).TryChangeStatus(TradingSessionStatus.WaitForProgressStart);
     }
   }
 }

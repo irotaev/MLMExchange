@@ -176,13 +176,15 @@ namespace Logic
     /// <summary>
     /// Счет, к которому превязан платеж
     /// </summary>
-    public virtual Bill Bill { get; set; }
+    public virtual D_Bill Bill { get; set; }
   }
   #endregion
 
   #region Счет
-  public class Bill : D_BaseObject
+  public class D_Bill : D_BaseObject
   {
+    private IList<Payment> _Payments = new List<Payment>();
+
     /// <summary>
     /// Пользователь, которому оплачивают счет.
     /// Тот, кто принемает платеж. Необязательный параметр
@@ -198,9 +200,10 @@ namespace Logic
     /// </summary>
     public virtual decimal MoneyAmount { get; set; }
     /// <summary>
-    /// Платежы по счету
+    /// Платежы по счету.
+    /// Добавление платежей идет строго через прокси-объект
     /// </summary>
-    public virtual IList<Payment> Payments { get; set; }
+    public virtual IEnumerable<Payment> Payments { get { return _Payments.ToList(); } set { _Payments = value.ToList(); } }
     /// <summary>
     /// Состояние оплаты
     /// </summary>
@@ -228,13 +231,22 @@ namespace Logic
     /// Тип счета
     /// </summary>
     public virtual BillType BillType { get; set; }
+
+    /// <summary>
+    /// Получить список платежей
+    /// </summary>
+    /// <returns></returns>
+    public virtual IList<Payment> GetPaymentList()
+    {
+      return _Payments;
+    }
   }
 
   /// <summary>
   /// Счет на оплату торговых обязательств
   /// </summary>
   [DataConfig(LogicProxyType = typeof(YieldSessionBill))]
-  public class D_YieldSessionBill : Bill
+  public class D_YieldSessionBill : D_Bill
   {
     public D_YieldSessionBill()
     {
@@ -530,11 +542,11 @@ namespace Logic
     /// <summary>
     /// Счет на прогверочный платеж
     /// </summary>
-    public virtual Bill CheckBill { get; set; }
+    public virtual D_Bill CheckBill { get; set; }
     /// <summary>
     /// Счет на комисионный сбор продавца
     /// </summary>
-    public virtual Bill SallerInterestRateBill { get; set; }
+    public virtual D_Bill SallerInterestRateBill { get; set; }
     /// <summary>
     /// Статус торговой сессии
     /// </summary>
@@ -693,9 +705,9 @@ namespace Logic
   #endregion
 
   #region Счет
-  public class Bill_Map : D_BaseObject_Map<Bill>
+  public class D_Bill_Map : D_BaseObject_Map<D_Bill>
   {
-    public Bill_Map()
+    public D_Bill_Map()
     {
       References(x => x.PaymentAcceptor).Column("PaymentAcceptorId");
       References(x => x.Payer).Column("PayerId");
