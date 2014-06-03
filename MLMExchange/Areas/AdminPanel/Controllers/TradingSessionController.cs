@@ -13,7 +13,8 @@ using MLMExchange.Lib;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  public class TradingSessionController : BaseController, IDataObjectCustomizableController<TradingSessionModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
+  public class 
+    TradingSessionController : BaseController, IDataObjectCustomizableController<TradingSessionModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
   {
     public System.Web.Mvc.ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
