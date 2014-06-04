@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.Practices.Unity;
 
 namespace MLMExchange
 {
@@ -21,6 +22,8 @@ namespace MLMExchange
       FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
       RouteConfig.RegisterRoutes(RouteTable.Routes);
       BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>();
 
       ModelBinders.Binders.Add(typeof(decimal?), new MLMExchange.Lib.ASP.NET.CustomBinders.DecimalModelBinder());
     }

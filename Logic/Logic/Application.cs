@@ -17,7 +17,7 @@ namespace Logic
   public sealed class Application : AbstractLogicObject<D_Application>
   {
     static Application()
-    {
+    {      
       #region Создие объекта приложения
       D_Application d_application = new D_Application();
 
@@ -196,7 +196,7 @@ namespace Logic
           {
             Thread thread = new Thread(() =>
             {
-              Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(SessionStorageType.ThreadStatic));
+              Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ThreadStatic);
               Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
 
               new TradingSessionList().EnsureProfibilityOfTradingSessions();

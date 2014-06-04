@@ -153,6 +153,13 @@ namespace Logic
   public interface INHibernateManager
   {
     ISession Session { get; }
+
+    /// <summary>
+    /// Открыть сессию NHibernate
+    /// </summary>
+    /// <param name="storageType">Тип хранилища для сессии</param>
+    /// <returns>Открыта ли новая сессия - true, или сессия уже существует</returns>
+    bool TryOpenSession(SessionStorageType storageType);
   }
 
   /// <summary>
@@ -160,9 +167,11 @@ namespace Logic
   /// </summary>
   public class NHibernateManager : INHibernateManager
   {
-    public NHibernateManager(SessionStorageType storageType)
+    public NHibernateManager() { }
+    
+    public bool TryOpenSession(SessionStorageType storageType)
     {
-      NHibernateConfiguration.Instance.TryOpenSession(storageType);
+      return NHibernateConfiguration.Instance.TryOpenSession(storageType);
     }
 
     /// <summary>
