@@ -198,7 +198,7 @@ namespace Logic
     /// </summary>
     /// <param name="state">На какой статус надо изменить</param>
     /// <returns>Успех операции</returns>
-    internal bool TryChangeStatus(TradingSessionStatus state)
+    public bool TryChangeStatus(TradingSessionStatus state)
     {
       switch (state)
       {
@@ -206,6 +206,15 @@ namespace Logic
           if (_LogicObject.State == TradingSessionStatus.NeedEnsureProfibility && IsYieldSessionBillsPaid)
           {
             _LogicObject.State = TradingSessionStatus.WaitForProgressStart;
+            return true;
+          }
+          break;
+
+        case TradingSessionStatus.SessionInProgress:
+          if (_LogicObject.State == TradingSessionStatus.WaitForProgressStart)
+          {
+            _LogicObject.State = TradingSessionStatus.SessionInProgress;
+            _LogicObject.ClosingSessionDateTime = DateTime.UtcNow.AddHours((double)_LogicObject.SystemSettings.TradingSessionDuration);
             return true;
           }
           break;

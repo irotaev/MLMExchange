@@ -556,6 +556,10 @@ namespace Logic
     /// </summary>
     public virtual IList<D_YieldSessionBill> YieldSessionBills { get; set; }
     /// <summary>
+    /// Дата и время когда можно будет закрыть сессию
+    /// </summary>
+    public virtual DateTime? ClosingSessionDateTime { get; set; }
+    /// <summary>
     /// Системные настройки, привязанные к данной торговой сессии
     /// </summary>
     public virtual D_SystemSettings SystemSettings { get; set; }
@@ -814,14 +818,13 @@ namespace Logic
     {
       References(x => x.BiddingParticipateApplication).Column("BiddingParticipateApplicationId").Not.Nullable().Unique().Cascade.All();
       References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable().Unique().Cascade.All();
-      //HasOne(x => x.BiddingParticipateApplication).ForeignKey("TradingSessionId").Cascade.All();
-      //HasOne(x => x.BuyingMyCryptRequest).ForeignKey("TradingSessionId").Cascade.All();
       References(x => x.CheckBill).Column("CheckBillId").Not.Nullable().Cascade.All();
       References(x => x.SallerInterestRateBill).Column("SallerInterestRateBillId").Not.Nullable().Cascade.All();
       References(x => x.SystemSettings).Not.Nullable();
       Map(x => x.State).CustomType<TradingSessionStatus>();
       HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).KeyColumn("TradingSessionId").Cascade.All();
       Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).Nullable();
+      Map(x => x.ClosingSessionDateTime).Nullable();
     }
   }
   #endregion

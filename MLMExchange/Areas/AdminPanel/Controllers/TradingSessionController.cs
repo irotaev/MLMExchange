@@ -79,5 +79,34 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       else
         return null;
     }
+
+    /// <summary>
+    /// Перевести сессию в состояние "исполняется"
+    /// </summary>
+    /// <param name="tradingSessionId"></param>
+    /// <returns></returns>
+    [HttpPost]
+    public ActionResult SetSessionInProgress(long tradingSessionId)
+    {
+      //TODO:Rtv переделать
+      if (!Request.IsAjaxRequest())
+        return null;
+
+      var session = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+
+      D_TradingSession tradingSession = session.Query<D_TradingSession>().Where(s => s.Id == tradingSessionId).FirstOrDefault();
+
+      if (tradingSessionId == null)
+        throw new UserVisible__ArgumentNullException("tradingSessionId");
+
+      if (tradingSession.BiddingParticipateApplication.Seller.Id != CurrentSession.Default.CurrentUser.Id || tradingSession.State != TradingSessionStatus.WaitForProgressStart)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      ((TradingSession)tradingSession).TryChangeStatus(TradingSessionStatus.SessionInProgress);
+
+      session.SaveOrUpdate(tradingSession);
+
+      throw new NotImplementedException();
+    }
   }
 }
