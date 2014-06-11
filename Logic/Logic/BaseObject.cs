@@ -14,7 +14,7 @@ namespace Logic
     public BaseObject(D_BaseObject d_baseObject) : base(d_baseObject) { }
 
     public static explicit operator BaseObject(D_BaseObject dataBaseObject)
-    {
+    {  
       return new BaseObject(dataBaseObject);
     }
   }

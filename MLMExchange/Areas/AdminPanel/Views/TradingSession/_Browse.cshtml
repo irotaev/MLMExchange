@@ -117,13 +117,25 @@
         }
         else if (Model.State == Logic.TradingSessionStatus.WaitForProgressStart)
         {
+          <script>
+            function setSessionInProgress(_this) {
+              $.ajax({
+                url: "/TradingSession/SetSessionInProgress",
+                data: { 'tradingSessionId': $(_this).data("trade-session-id") },
+                type: "POST"
+              }).done(function () {
+                window.location.reload();
+              });
+            }
+          </script>
+          
           <div class="b-ts__open-trading-session">
             <div class="b-ts__message">@MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen 
               <i class="b-ts__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen" data-ot-style="BlackStyle"></i>
             </div>
 
             <div class="b-ts_button-wrapper">
-              <a href="#" class="b-btn b-btn-flat-action b-ts__button_action_open-session">
+              <a href="#" class="b-btn b-btn-flat-action b-ts__button_action_open-progress-session" data-trade-session-id="@Model.Id" onclick="javascript: setSessionInProgress(this);">
                 <i class="fa  fa-arrow-circle-right"></i>
                 @MLMExchange.Properties.ResourcesA.Button_Open
               </a>

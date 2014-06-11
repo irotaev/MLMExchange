@@ -13,8 +13,7 @@ using MLMExchange.Lib;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  public class 
-    TradingSessionController : BaseController, IDataObjectCustomizableController<TradingSessionModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
+  public class TradingSessionController : BaseController, IDataObjectCustomizableController<TradingSessionModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
   {
     public System.Web.Mvc.ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
@@ -83,12 +82,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <summary>
     /// Перевести сессию в состояние "исполняется"
     /// </summary>
-    /// <param name="tradingSessionId"></param>
+    /// <param name="tradingSessionId">Id торговой сессии</param>
     /// <returns></returns>
     [HttpPost]
     public ActionResult SetSessionInProgress(long tradingSessionId)
     {
-      //TODO:Rtv переделать
       if (!Request.IsAjaxRequest())
         return null;
 
@@ -106,7 +104,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       session.SaveOrUpdate(tradingSession);
 
-      throw new NotImplementedException();
+      return null;
     }
   }
 }

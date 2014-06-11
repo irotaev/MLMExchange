@@ -34,5 +34,20 @@
         .b-ts__button_action_open-session {float: right;}
       }
     }
+
+    .b-ts__session-in-progress
+    {
+      margin-top: 20px;
+      font-size: $font-b;
+
+      .flip-clock-wrapper
+      {
+        margin: 10px auto;
+
+        ul {
+          width: 40px;
+        }
+      }
+    }
   }
 }
