@@ -159,7 +159,7 @@
         )
         .Listeners(ls =>
         {
-          ls.Command.Handler = "var commandArguments = arguments; " + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title("Hellow world!")
+          ls.Command.Handler = "var commandArguments = arguments; " + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title(@MLMExchange.Properties.ResourcesA.BuyMyCrypt)
              .Content(x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
                 new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyingMyCryptRequestModel()))
             .CloseAction(CloseAction.Destroy)

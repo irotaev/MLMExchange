@@ -4,6 +4,7 @@
 @import "../lib/Admin.Blocks/BindingParticipateApplicationBlock";
 @import "../lib/Admin.Blocks/TradingSession/Browse";
 @import "../lib/Admin.Blocks/PaymentSystemGroup/PaymentSystemGroup_Browse";
+@import "../lib/Admin.Blocks/BankPayment/BankPayment_Browse";
 
 @import "../lib/Admin.Blocks/ExtJs_Grid_lib";
 
@@ -69,6 +70,18 @@
       .pb-bpa__user-info
       {
         float: left;
+      }
+
+      .pb-bpa__payment
+      {
+        float: right;
+
+        .pb-bpa__payment-showPayment
+        {
+          color: $color_green_sea_c;
+          cursor: pointer;
+          font-size: 12px;
+        }
       }
     }
 

@@ -164,11 +164,13 @@
     <Compile Include="Areas\AdminPanel\Controllers\AddMyCryptTransactionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BiddingParticipateApplicationController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\BuyingMyCryptRequestController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\PaymentController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\BankPaymentSystemController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\PaymentSystemGroupController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\SystemSettingsController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TradingSessionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
+    <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BankPaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemGroupModel.cs" />
@@ -2417,6 +2419,7 @@
     <Content Include="bower_components\opentip\test\src\200-adapters.coffee" />
     <Content Include="bower_components\opentip\test\src\210-adapter-native.coffee" />
     <Content Include="bower_components\opentip\test\src\220-adapter-ender.coffee" />
+    <Content Include="Areas\AdminPanel\Views\BankPayment\Browse.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

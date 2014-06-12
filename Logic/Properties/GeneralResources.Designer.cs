@@ -178,15 +178,6 @@ namespace Logic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string ConfirmBoxTitle {
-            get {
-                return ResourceManager.GetString("ConfirmBoxTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Корреспондентский счет.
         /// </summary>
         public static string CorrespondentAccount {
@@ -291,6 +282,15 @@ namespace Logic.Properties {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Платеж.
+        /// </summary>
+        public static string Payment {
+            get {
+                return ResourceManager.GetString("Payment", resourceCulture);
             }
         }
         

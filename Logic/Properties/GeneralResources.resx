@@ -231,4 +231,7 @@
   <data name="SystemSettings" xml:space="preserve">
     <value>Настройки системы</value>
   </data>
+  <data name="Payment" xml:space="preserve">
+    <value>Платеж</value>
+  </data>
 </root>

@@ -103,6 +103,10 @@ namespace MLMExchange.Controllers
   public abstract class BaseController : Controller
   {
     protected HtmlHelper _HtmlHelper;
+    /// <summary>
+    /// Сессия NHibernate для текущего запроса
+    /// </summary>
+    protected NHibernate.ISession _NHibernateSession;
 
     public BaseController()
     {
@@ -117,8 +121,10 @@ namespace MLMExchange.Controllers
       //TODO:Rtv переделать NHibernateConfiguration на static      
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ASPNET);
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
-      #endregion
 
+      _NHibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+      #endregion
+      
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
 

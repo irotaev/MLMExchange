@@ -150,8 +150,14 @@
   <data name="AwaitingConfirm" xml:space="preserve">
     <value>Ожидает подтверждения</value>
   </data>
+  <data name="BankPayment" xml:space="preserve">
+    <value>Платеж банка</value>
+  </data>
   <data name="Button_Open" xml:space="preserve">
     <value>Открыть</value>
+  </data>
+  <data name="BuyMyCrypt" xml:space="preserve">
+    <value>Покупка My Crypt</value>
   </data>
   <data name="Comment" xml:space="preserve">
     <value>Комментарий</value>
@@ -329,6 +335,9 @@
   </data>
   <data name="SendButton" xml:space="preserve">
     <value>Отправить</value>
+  </data>
+  <data name="ShowPayment" xml:space="preserve">
+    <value>Посмотреть чек</value>
   </data>
   <data name="State" xml:space="preserve">
     <value>Статус</value>

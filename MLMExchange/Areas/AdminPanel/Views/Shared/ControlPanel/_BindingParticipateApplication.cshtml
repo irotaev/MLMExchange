@@ -120,13 +120,53 @@
         <div class="pb-bpa__text pb-bpa__user-surname">@buyer.Surname</div>
         <div class="pb-bpa__text pb-bpa__user-name">@buyer.Name</div>
         <div class="pb-bpa__text pb-bpa__user-patronymic">@buyer.Patronymic</div>
-      </div>      
+      </div> 
+      <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-system-id="@(model.BankPaymentModel.Id)">
+        <span class="pb-bpa__payment-showPayment">@MLMExchange.Properties.ResourcesA.ShowPayment</span>
+      </div>    
     </div>
 
     @if (!model.IsSellerInterestRate_NeedSubstantialMoney)
     { 
       <script>
         var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
+
+        function loadingMask__show(isLoading)
+        {
+          var loadingMask = new Ext.LoadMask(Ext.getBody(), { msg: "Please wait..." });
+          if (isLoading)
+            loadingMask.show();
+          else
+            loadingMask.hide();
+        }
+
+        function showPaymentCheck(obj)
+        {
+          var paymentId = $(obj).data("payment-system-id");
+          console.log(paymentId);
+
+          //var loadingMask = new Ext.LoadMask(Ext.getBody(), { msg: "Please wait..." }).show();
+          //loadingMask.hide();
+
+          loadingMask__show(true);
+          
+          new Ext.Window({
+            id: "PaymentCheck__Window",
+            width: 400,
+            height: 400,
+            modal: true,
+            title: "@MLMExchange.Properties.ResourcesA.ShowPayment",
+            autoLoad: {
+              url: "/AdminPanel/BankPayment/Browse",
+              params: { objectId: paymentId},
+              nocache: true,
+              text: "@MLMExchange.Properties.ResourcesA.Loading",
+              callback: function () {
+                loadingMask__show(false);
+              }
+            }
+          }).show();
+        }
 
         function acceptedState__InterestRatePaymentApproved(obj) {
             var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.PrivateResource.PaymentApproved)";

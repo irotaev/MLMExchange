@@ -1,0 +1,41 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.BankPaymentModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.BankPayment;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="b-psg">
+  <div class="b-psg__content">
+    <div class="b-psg__payment-system-item b-psg__default-system">
+      <div class="b-bp">
+        <header class="b-bp__header">
+          <p class="b-bp__text">@MLMExchange.Properties.ResourcesA.ShowPayment</p>
+        </header>
+        <table class="b-bp__payment-info">
+          <tr class="b-bp__payment-info__row">
+            <td>Transaction Number:</td>
+            <td>@Model.Id</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>Money:</td>
+            <td>@Model.RealMoneyAmount</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>FirstName:</td>
+            <td>@Model.Payer.Name</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>LastName:</td>
+            <td>@Model.Payer.Surname</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>DateTime:</td>
+            <td>@Model.CreationDateTime</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section><!--B: Bank payment-->

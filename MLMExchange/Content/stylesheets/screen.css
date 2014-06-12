@@ -196,7 +196,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* line 6, ../sass/lib/_Shared.scss */
-.b-button {
+.fb-button {
   border: none;
   display: block;
   cursor: pointer;

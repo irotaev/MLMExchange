@@ -1,0 +1,32 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+
+.b-bp
+{
+  margin: 10px;
+  .b-bp__header
+  {
+    .b-bp__text
+    {
+      font-size: $font-bb !important;
+
+      .b-bp__default-system
+        {
+        margin-left: 10px;
+        font-size: 16px;
+        color: #4B5F8C !important;
+      }
+    }
+  }
+
+  .b-bp__payment-info
+  {
+    width: 100%;
+    background-color: transparent !important;
+
+    td {width: 50%;}
+
+    tr {height: 30px; line-height: 30px;}
+  }
+}

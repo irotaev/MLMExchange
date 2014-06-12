@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.Practices.Unity;
-using Logic;
 using NHibernate.Linq;
 using MLMExchange.Lib.Exception;
 
