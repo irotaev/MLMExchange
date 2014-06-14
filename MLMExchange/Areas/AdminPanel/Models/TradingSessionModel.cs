@@ -46,6 +46,10 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Статус торговой сессии
     /// </summary>
     public TradingSessionStatus State { get; set; }
+    /// <summary>
+    /// Дата и время когда можно будет закрыть сессию
+    /// </summary>
+    public DateTime? ClosingSessionDateTime { get; set; }
 
     /// <summary>
     /// Оплачены ли счета доходности торговой сессии
@@ -65,6 +69,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       SallerInterestRateBill = new BillModel().Bind(@object.LogicObject.SallerInterestRateBill);
       State = @object.LogicObject.State;
       IsYieldSessionBillsPaid = @object.IsYieldSessionBillsPaid;
+      ClosingSessionDateTime = @object.LogicObject.ClosingSessionDateTime;
 
       //TODO:Rtv переделать
       foreach (var bill in @object.LogicObject.YieldSessionBills)

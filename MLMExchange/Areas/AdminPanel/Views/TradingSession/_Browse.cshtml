@@ -148,6 +148,24 @@
     {
       <div class="b-text b-ts__text b-ts__session-in-progress">
         @MLMExchange.Properties.PrivateResource.WaitingTradingSessionProgress
+
+        <div class="b-ts__process-clock-wrapper"></div>
+
+        <!--TODO: Не ноделано-->
+        <script src="~/bower_components/countdown/jquery.countdown.js"></script>
+        <script>
+          $(function () {
+            $('.b-ts__process-clock-wrapper').countdown({
+              date: new Date(@((Model.ClosingSessionDateTime.Value - new DateTime(1970, 1, 1)).TotalMilliseconds)),
+              render: function (data) {
+                $(this.el).html("<div>" + this.leadingZeros(data.days, 3)
+                  + " <span>Дней</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>Часов</span></div><div>"
+                  + this.leadingZeros(data.min, 2) + " <span>Минут</span></div><div>" + this.leadingZeros(data.sec, 2)
+                  + " <span>Секунд</span></div>");
+              }
+            });
+          });
+        </script>
       </div>
     }
   </div>
