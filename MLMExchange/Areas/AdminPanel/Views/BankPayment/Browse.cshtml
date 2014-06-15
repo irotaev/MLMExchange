@@ -23,16 +23,20 @@
             <td>@Model.RealMoneyAmount</td>
           </tr>
           <tr class="b-bp__payment-info__row">
-            <td>FirstName:</td>
+            <td>@Logic.Properties.GeneralResources.Name</td>
             <td>@Model.Payer.Name</td>
           </tr>
           <tr class="b-bp__payment-info__row">
-            <td>LastName:</td>
+            <td>@Logic.Properties.GeneralResources.Surname</td>
             <td>@Model.Payer.Surname</td>
           </tr>
           <tr class="b-bp__payment-info__row">
             <td>DateTime:</td>
-            <td>@Model.CreationDateTime</td>
+            <td>@Model.CreationDateTime.ToLocalTime()</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.BIK</td>
+            <td>@Model.BankPaymentSystemModel.BIK</td>
           </tr>
         </table>
       </div>

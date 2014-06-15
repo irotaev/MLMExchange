@@ -121,9 +121,13 @@
         <div class="pb-bpa__text pb-bpa__user-name">@buyer.Name</div>
         <div class="pb-bpa__text pb-bpa__user-patronymic">@buyer.Patronymic</div>
       </div> 
-      <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-system-id="@(model.BankPaymentModel.Id)">
-        <span class="pb-bpa__payment-showPayment">@MLMExchange.Properties.ResourcesA.ShowPayment</span>
-      </div>    
+
+      @if (model.BankPaymentModel != null)
+      {
+        <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-system-id="@(model.BankPaymentModel.Id)">
+          <span class="pb-bpa__payment-showPayment">@MLMExchange.Properties.ResourcesA.ShowPayment</span>
+        </div>    
+      }
     </div>
 
     @if (!model.IsSellerInterestRate_NeedSubstantialMoney)

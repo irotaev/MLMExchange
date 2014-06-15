@@ -87,8 +87,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -305,8 +305,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -333,11 +333,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-position: 0 -34px;
 }
 
-/* line 243, ../sass/lib/_Form_lib.scss */
+/* line 241, ../sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 248, ../sass/lib/_Form_lib.scss */
+/* line 246, ../sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
@@ -358,7 +358,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 0;
   height: 0;
 }
-/* line 48, ../sass/lib/_Form_lib.scss */
+/* line 46, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__info-helper {
   position: absolute;
   top: 0;
@@ -367,7 +367,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 45px;
   background-color: #16a085;
 }
-/* line 55, ../sass/lib/_Form_lib.scss */
+/* line 53, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__info-helper .b-ib__info-icon {
   width: 30px;
   height: 30px;
@@ -376,24 +376,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 30px;
   color: #B5E5DC;
 }
-/* line 65, ../sass/lib/_Form_lib.scss */
+/* line 63, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__content-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: 45px;
 }
-/* line 71, ../sass/lib/_Form_lib.scss */
+/* line 69, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__content-wrapper.b-ib__content-wrapper_height_one-line-text {
   height: 45px;
 }
-/* line 75, ../sass/lib/_Form_lib.scss */
+/* line 73, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__content-wrapper.b-ib__content-wrapper_height_one-line-text .b-ib__input-content {
   height: 45px;
   padding-top: 12.5px;
   padding-bottom: 12.5px;
 }
-/* line 83, ../sass/lib/_Form_lib.scss */
+/* line 81, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-content {
   position: relative;
   margin-left: 60px;
@@ -401,7 +401,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 90, ../sass/lib/_Form_lib.scss */
+/* line 88, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input {
   position: relative;
   box-sizing: border-box;
@@ -416,65 +416,65 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: border-color 0.25s linear;
   transition: border-color 0.25s linear;
 }
-/* line 102, ../sass/lib/_Form_lib.scss */
+/* line 100, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input:focus {
   border-color: #45a2d0;
 }
-/* line 107, ../sass/lib/_Form_lib.scss */
+/* line 105, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error {
   border-color: #ed1c24;
 }
-/* line 110, ../sass/lib/_Form_lib.scss */
+/* line 108, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.input-validation-error:focus {
   border-color: #ed1c24;
 }
-/* line 114, ../sass/lib/_Form_lib.scss */
+/* line 112, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue {
   border: 2px solid black;
   background-color: #7b87af;
   color: white;
 }
-/* line 12, ../sass/lib/_Form_lib.scss */
+/* line 10, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue.placeholder {
   color: white;
 }
-/* line 13, ../sass/lib/_Form_lib.scss */
+/* line 11, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue:-moz-placeholder {
   color: white;
 }
-/* line 14, ../sass/lib/_Form_lib.scss */
+/* line 12, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue::-moz-placeholder {
   color: white;
 }
-/* line 15, ../sass/lib/_Form_lib.scss */
+/* line 13, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue:-ms-input-placeholder {
   color: white;
 }
-/* line 16, ../sass/lib/_Form_lib.scss */
+/* line 14, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input.b-ib__input_type_blue::-webkit-input-placeholder {
   color: white;
 }
-/* line 123, ../sass/lib/_Form_lib.scss */
+/* line 121, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper {
   position: relative;
 }
-/* line 127, ../sass/lib/_Form_lib.scss */
+/* line 125, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper .b-ib__icon {
   position: absolute;
   right: 2px;
   top: 7px;
   z-index: 100;
 }
-/* line 137, ../sass/lib/_Form_lib.scss */
+/* line 135, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon {
   width: 29px;
   height: 34px;
 }
-/* line 150, ../sass/lib/_Form_lib.scss */
+/* line 148, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message {
   box-sizing: border-box;
 }
-/* line 154, ../sass/lib/_Form_lib.scss */
+/* line 152, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-error {
   display: block;
   width: 100%;
@@ -487,15 +487,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-color: white;
   padding-left: 10px;
 }
-/* line 167, ../sass/lib/_Form_lib.scss */
+/* line 165, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message.field-validation-valid {
   display: none;
 }
-/* line 171, ../sass/lib/_Form_lib.scss */
+/* line 169, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__validation-message--arrow {
   display: none;
 }
-/* line 173, ../sass/lib/_Form_lib.scss */
+/* line 171, ../sass/lib/_Form_lib.scss */
 .b-ib .field-validation-error + .b-ib__validation-message--arrow {
   position: absolute;
   top: 0;
@@ -507,11 +507,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background: url("/Content/images/Form/validation-arrow.png") left no-repeat;
   display: block;
 }
-/* line 184, ../sass/lib/_Form_lib.scss */
+/* line 182, ../sass/lib/_Form_lib.scss */
 .b-ib .b-ib__label {
   display: none;
 }
-/* line 190, ../sass/lib/_Form_lib.scss */
+/* line 188, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo {
   position: relative;
 }
@@ -524,11 +524,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 0;
   height: 0;
 }
-/* line 194, ../sass/lib/_Form_lib.scss */
+/* line 192, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_choose-file {
   display: none;
 }
-/* line 197, ../sass/lib/_Form_lib.scss */
+/* line 195, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview {
   position: relative;
   display: block;
@@ -539,21 +539,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 2px;
   float: left;
 }
-/* line 208, ../sass/lib/_Form_lib.scss */
+/* line 206, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview.b-ib__file-preview_type_blue {
   border-color: #7b87af;
 }
-/* line 211, ../sass/lib/_Form_lib.scss */
+/* line 209, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview.b-ib__file-preview_type_blue .b-ib__image {
   background-color: #7b87af;
 }
-/* line 215, ../sass/lib/_Form_lib.scss */
+/* line 213, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib__file-preview .b-ib__image {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 225, ../sass/lib/_Form_lib.scss */
+/* line 223, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser {
   background-color: #41C480;
   height: 40px;
@@ -562,20 +562,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 129px;
   float: left;
 }
-/* line 32, ../sass/lib/_Form_lib.scss */
+/* line 30, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser .text {
   font-size: 14px;
   line-height: 40px;
 }
-/* line 230, ../sass/lib/_Form_lib.scss */
+/* line 228, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser.b-button_color_admin-blue {
   background-color: #007a9f;
 }
-/* line 232, ../sass/lib/_Form_lib.scss */
+/* line 230, ../sass/lib/_Form_lib.scss */
 .b-ib.b-ib_content_photo .b-ib_file-chooser.b-ib_file-chooser_type_blue {
   background-color: #16a085;
 }
-/* line 236, ../sass/lib/_Form_lib.scss */
+/* line 234, ../sass/lib/_Form_lib.scss */
 .b-ib textarea {
   resize: vertical;
   padding-top: 10px;
@@ -604,8 +604,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -844,8 +844,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -1004,7 +1004,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   line-height: 40px;
   font-family: Lato !important;
 }
-/* line 117, ../sass/AdminArea/_AdminPanel.scss */
+/* line 118, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper {
   position: relative;
   height: 50px;
@@ -1014,20 +1014,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: background-color 0.15s linear;
   transition: background-color 0.15s linear;
 }
-/* line 124, ../sass/AdminArea/_AdminPanel.scss */
+/* line 125, ../sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper.pb-mm__menu-item-wrapper-active {
+  background-color: #4d5777;
+}
+/* line 130, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover {
   background-color: #4D5777;
 }
-/* line 127, ../sass/AdminArea/_AdminPanel.scss */
+/* line 133, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper:hover .pb-mm__icon-wrapper .pb-mm__icon:before {
   color: #A0AABC;
 }
-/* line 131, ../sass/AdminArea/_AdminPanel.scss */
+/* line 137, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper {
   position: absolute;
   top: 0;
   left: 10px;
-  line-height: 50px;
+  line-height: 60px;
   height: 50px;
   width: 50px;
 }
@@ -1116,7 +1120,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 166, ../sass/AdminArea/_AdminPanel.scss */
+/* line 172, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon:before {
   line-height: inherit;
   -webkit-transition: color 0.15s linear;
@@ -1124,7 +1128,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   -o-transition: color 0.15s linear;
   transition: color 0.15s linear;
 }
-/* line 174, ../sass/AdminArea/_AdminPanel.scss */
+/* line 180, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__text-wrapper {
   line-height: 50px;
   margin-left: 50px;
@@ -1133,12 +1137,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   color: #BEBECF;
   font-family: Lato !important;
 }
-/* line 186, ../sass/AdminArea/_AdminPanel.scss */
+/* line 192, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder {
   background-color: #58c4c6;
   border: none;
 }
-/* line 190, ../sass/AdminArea/_AdminPanel.scss */
+/* line 196, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder .x-tool-img {
   background-color: #58c4c6;
 }
@@ -1320,8 +1324,8 @@ body {
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -1348,11 +1352,11 @@ body {
   background-position: 0 -34px;
 }
 
-/* line 243, ../sass/lib/_Form_lib.scss */
+/* line 241, ../sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 248, ../sass/lib/_Form_lib.scss */
+/* line 246, ../sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
@@ -1530,7 +1534,7 @@ body {
   font-size: 14px;
   color: white;
 }
-/* line 32, ../sass/lib/_Form_lib.scss */
+/* line 30, ../sass/lib/_Form_lib.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button .text {
   font-size: 14px;
   line-height: 40px;

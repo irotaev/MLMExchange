@@ -23,7 +23,6 @@ namespace MLMExchange.Areas.AdminPanel.Models
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public int? Quote { get; set; }
-
     /// <summary>
     /// Длительность торговой сессии.
     /// Измеряется в часах
@@ -53,6 +52,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
       if (Quote == null)
         throw new ArgumentNullException("Quote");
+
+      d_systemSettings.Quote = Quote.Value;
 
       if (TradingSessionDuration == null)
         throw new ArgumentNullException("TradingSessionDuration");

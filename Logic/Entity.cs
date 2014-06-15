@@ -48,7 +48,7 @@ namespace Logic
     public virtual int Quote { get; set; }
     /// <summary>
     /// Длительность торговой сессии.
-    /// Измеряется в часах
+    /// Измеряется в минутах
     /// </summary>
     public virtual decimal TradingSessionDuration { get; set; }
   }

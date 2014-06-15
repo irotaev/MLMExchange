@@ -234,4 +234,7 @@
   <data name="Payment" xml:space="preserve">
     <value>Платеж</value>
   </data>
+  <data name="TradingSessionDuration" xml:space="preserve">
+    <value>Продолжительность торговой сессии</value>
+  </data>
 </root>

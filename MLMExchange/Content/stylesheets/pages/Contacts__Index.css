@@ -22,8 +22,8 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -58,8 +58,8 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
   src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
@@ -86,11 +86,11 @@
   background-position: 0 -34px;
 }
 
-/* line 243, ../../sass/lib/_Form_lib.scss */
+/* line 241, ../../sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 248, ../../sass/lib/_Form_lib.scss */
+/* line 246, ../../sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
@@ -170,7 +170,7 @@
   font-size: 14px;
   color: white;
 }
-/* line 32, ../../sass/lib/_Form_lib.scss */
+/* line 30, ../../sass/lib/_Form_lib.scss */
 .pb-cf__footer-wrapper .b-button.register-button .text {
   font-size: 14px;
   line-height: 40px;

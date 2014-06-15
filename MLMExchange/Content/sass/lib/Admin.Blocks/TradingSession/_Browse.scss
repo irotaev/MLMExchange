@@ -69,6 +69,20 @@
           font-size: 14px;
         }
       }
+
+      .b-ts__can-close-message
+      {
+        .b-ts_button-wrapper
+        {
+          margin-top: 15px;
+          @include clearfix;
+
+          .b-ts__button_action_close-trading-session
+          {
+            float: right;
+          }
+        }
+      }
     }
   }
 }

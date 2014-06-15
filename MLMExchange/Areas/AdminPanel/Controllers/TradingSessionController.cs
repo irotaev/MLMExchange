@@ -94,15 +94,37 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       D_TradingSession tradingSession = session.Query<D_TradingSession>().Where(s => s.Id == tradingSessionId).FirstOrDefault();
 
-      if (tradingSessionId == null)
+      if (tradingSession == null)
         throw new UserVisible__ArgumentNullException("tradingSessionId");
 
-      if (tradingSession.BiddingParticipateApplication.Seller.Id != CurrentSession.Default.CurrentUser.Id || tradingSession.State != TradingSessionStatus.WaitForProgressStart)
+      if (tradingSession.BuyingMyCryptRequest.Buyer.Id != CurrentSession.Default.CurrentUser.Id || tradingSession.State != TradingSessionStatus.WaitForProgressStart)
         throw new UserVisible__CurrentActionAccessDenied();
 
       ((TradingSession)tradingSession).TryChangeStatus(TradingSessionStatus.SessionInProgress);
 
       session.SaveOrUpdate(tradingSession);
+
+      return null;
+    }
+
+    /// <summary>
+    /// Закрыть торговую сессию
+    /// </summary>
+    /// <param name="tradingSessionId">Id торговой сессии</param>
+    /// <returns></returns>
+    [HttpPost]
+    public ActionResult CloseTradingSession(long tradingSessionId)
+    {
+      if (!Request.IsAjaxRequest())
+        throw new UserVisible__ActionAjaxOnlyException();
+
+      D_TradingSession d_tradingSession = _NHibernateSession.Query<D_TradingSession>().Where(x => x.Id == tradingSessionId).FirstOrDefault();
+
+      if (d_tradingSession == null)
+        throw new UserVisible__WrongParametrException("tradingSessionId");
+
+      if (!((TradingSession)d_tradingSession).TryChangeStatus(TradingSessionStatus.NeedProfit))
+        throw new UserVisibleException(MLMExchange.Properties.PrivateResource.TradingSession_Close__CantClose);
 
       return null;
     }

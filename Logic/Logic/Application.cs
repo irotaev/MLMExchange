@@ -174,7 +174,8 @@ namespace Logic
         D_SystemSettings firstSystemSettings = new D_SystemSettings
         {
           CheckPaymentPercent = 5,
-          Quote = 10
+          Quote = 10,
+          TradingSessionDuration = 2
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);

@@ -376,6 +376,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Продолжительность торговой сессии.
+        /// </summary>
+        public static string TradingSessionDuration {
+            get {
+                return ResourceManager.GetString("TradingSessionDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пользователь.
         /// </summary>
         public static string User {

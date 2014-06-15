@@ -183,4 +183,10 @@
   <data name="IsTradingSessionShouldBeOpen" xml:space="preserve">
     <value>Открыть торговую сессию?</value>
   </data>
+  <data name="TradingSession_Close__CantClose" xml:space="preserve">
+    <value>Невозможно закрыть сессию, скорее всего время ожидания торговой сессии не истекло</value>
+  </data>
+  <data name="TradingSession__CanCloseTradingSession" xml:space="preserve">
+    <value>Вы можете закрыть торговую сессию</value>
+  </data>
 </root>

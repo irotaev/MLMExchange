@@ -24,8 +24,12 @@ namespace Logic
     {
       get
       {
-        return Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id && !x.IsNeedSubstantialMoney).SelectMany(x => x.Payments).ToList();
+        IEnumerable<D_YieldSessionBill> d_tradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id && x.TradingSession.State == TradingSessionStatus.NeedProfit).ToList();
+
+        d_tradingSessions = d_tradingSessions.ToList().Where(x => x.IsNeedSubstantialMoney);
+
+        return d_tradingSessions.SelectMany(x => x.Payments).ToList();
       }
     }
 
@@ -214,7 +218,16 @@ namespace Logic
           if (_LogicObject.State == TradingSessionStatus.WaitForProgressStart)
           {
             _LogicObject.State = TradingSessionStatus.SessionInProgress;
-            _LogicObject.ClosingSessionDateTime = DateTime.UtcNow.AddHours((double)_LogicObject.SystemSettings.TradingSessionDuration);
+            _LogicObject.ClosingSessionDateTime = DateTime.UtcNow.AddMinutes((double)_LogicObject.SystemSettings.TradingSessionDuration);
+            return true;
+          }
+          break;
+
+        case TradingSessionStatus.NeedProfit:
+          if (LogicObject.State == TradingSessionStatus.SessionInProgress)
+          {
+            if (DateTime.UtcNow >= LogicObject.ClosingSessionDateTime.Value)
+              LogicObject.State = TradingSessionStatus.NeedProfit;
             return true;
           }
           break;

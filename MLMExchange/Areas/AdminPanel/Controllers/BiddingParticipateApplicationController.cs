@@ -106,7 +106,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         MoneyAmount = ((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount(),
         PaymentState = BillPaymentState.WaitingPayment,
-        Payer = CurrentSession.Default.CurrentUser
+        Payer = tradingSession.BuyingMyCryptRequest.Buyer
       };
 
       tradingSession.CheckBill = checkBill;
@@ -116,7 +116,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       D_Bill sallerInterestRateBill = new D_Bill
       {
         MoneyAmount = ((TradingSession)tradingSession).CalculateSallerInterestRateMoneyAmount(),
-        Payer = CurrentSession.Default.CurrentUser,
+        Payer = tradingSession.BuyingMyCryptRequest.Buyer,
         PaymentState = BillPaymentState.WaitingPayment
       };
 

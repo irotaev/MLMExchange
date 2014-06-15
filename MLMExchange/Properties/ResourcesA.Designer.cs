@@ -169,6 +169,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Закрыть.
+        /// </summary>
+        public static string Button_Close {
+            get {
+                return ResourceManager.GetString("Button_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Открыть.
         /// </summary>
         public static string Button_Open {
@@ -426,6 +435,15 @@ namespace MLMExchange.Properties {
         public static string ErrorLog {
             get {
                 return ResourceManager.GetString("ErrorLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Данный url поддерживает только укороченные запросы (Ajax).
+        /// </summary>
+        public static string Exception_ActionAjaxOnly {
+            get {
+                return ResourceManager.GetString("Exception_ActionAjaxOnly", resourceCulture);
             }
         }
         

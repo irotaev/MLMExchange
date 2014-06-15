@@ -22,6 +22,18 @@ namespace MLMExchange.Lib.Exception
     public UserVisibleException(string message, System.Exception ex) : base(message, ex) { }
   }
 
+  /// <summary>
+  /// Данное действие контролера может быть вызвано только посредством Ajax-запросов (коротких запросов)
+  /// </summary>
+  public class UserVisible__ActionAjaxOnlyException : UserVisibleException
+  {
+    public UserVisible__ActionAjaxOnlyException()
+      : base()
+    {
+      throw new UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ActionAjaxOnly);
+    }
+  }
+
   public class UserVisible__ArgumentNullException : UserVisibleException
   {
     public UserVisible__ArgumentNullException(string argumentName) : base() 

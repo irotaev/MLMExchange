@@ -153,6 +153,9 @@
   <data name="BankPayment" xml:space="preserve">
     <value>Платеж банка</value>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
   <data name="Button_Open" xml:space="preserve">
     <value>Открыть</value>
   </data>
@@ -239,6 +242,9 @@
   </data>
   <data name="ErrorLog" xml:space="preserve">
     <value>Лог ошибки</value>
+  </data>
+  <data name="Exception_ActionAjaxOnly" xml:space="preserve">
+    <value>Данный url поддерживает только укороченные запросы (Ajax)</value>
   </data>
   <data name="Exception_ApplicationException" xml:space="preserve">
     <value>Ошибка приложения</value>
