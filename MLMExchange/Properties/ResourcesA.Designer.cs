@@ -808,6 +808,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Просмотр пользователя.
+        /// </summary>
+        public static string UserView {
+            get {
+                return ResourceManager.GetString("UserView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to На это действие у вас нету соответствующих прав.
         /// </summary>
         public static string YouDontHaveAccessToThisAction {

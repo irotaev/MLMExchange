@@ -14,6 +14,8 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 using MLMExchange.Areas.AdminPanel.Models;
+using System.Collections;
+using Ext.Net.MVC;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
@@ -128,7 +130,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
 
       BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id 
+        .QueryOver<BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
                                                             && x.State != BiddingParticipateApplicationState.NA
                                                             && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
 
@@ -185,7 +187,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         model.TradingSessionModel = new Models.TradingSessionModel();
 
         D_TradingSession tradingSession = session.Query<D_TradingSession>()
-          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id 
+          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
                       && x.State != TradingSessionStatus.NA
                       && x.State != TradingSessionStatus.Closed)
           .FirstOrDefault();
@@ -198,6 +200,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return View(model);
     }
 
+    #region SalesPeople
     /// <summary>
     /// Продавцы
     /// </summary>
@@ -212,8 +215,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       IList<BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<BiddingParticipateApplication>()
-        .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();        
-      
+        .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
+
       foreach (var biddingApplication in biddingApplications)
       {
         BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
@@ -244,6 +247,21 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     }
 
     /// <summary>
+    /// Получить историю заявок, на которые откликнулся пользователь.
+    /// Используется Ext.NET
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    public ActionResult GetApplicationsHistory()
+    {
+      IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
+
+      return this.Store(buyingMyCryptRequestsHistory);
+    }
+    #endregion
+
+    /// <summary>
     /// Запрос на покупку my-crypt у продовца
     /// </summary>
     /// <param name="model">Модель</param>
@@ -259,6 +277,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         BuyingMyCryptRequest buyingMyCryptRequest = model.UnBind(((BuyingMyCryptRequest)null));
 
+        if (!(model.MyCryptCount <= buyingMyCryptRequest.BiddingParticipateApplication.MyCryptCount))
+          throw new UserVisible__WrongParametrException("model");
+
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(buyingMyCryptRequest);
       }
       else
@@ -267,6 +288,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       }
 
       return Redirect(Request.UrlReferrer.ToString());
-    }    
+    }
   }
 }

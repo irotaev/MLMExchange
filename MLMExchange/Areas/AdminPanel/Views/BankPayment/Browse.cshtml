@@ -15,7 +15,7 @@
         </header>
         <table class="b-bp__payment-info">
           <tr class="b-bp__payment-info__row">
-            <td>Transaction Number:</td>
+            <td>@Logic.Properties.GeneralResources.TransactionNumber:</td>
             <td>@Model.Id</td>
           </tr>
           <tr class="b-bp__payment-info__row">
@@ -31,7 +31,7 @@
             <td>@Model.Payer.Surname</td>
           </tr>
           <tr class="b-bp__payment-info__row">
-            <td>DateTime:</td>
+            <td>@Logic.Properties.GeneralResources.CreationDateTime:</td>
             <td>@Model.CreationDateTime.ToLocalTime()</td>
           </tr>
           <tr class="b-bp__payment-info__row">

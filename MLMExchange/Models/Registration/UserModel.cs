@@ -44,7 +44,8 @@ namespace MLMExchange.Models.Registration
       if (@object == null)
         throw new ArgumentNullException("user");
 
-      this.Id = @object.Id;
+      base.Bind(@object);
+
       this.Email = @object.Email;
       this.Login = @object.Login;
       this.Name = @object.Name;

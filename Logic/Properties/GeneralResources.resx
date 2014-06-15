@@ -237,4 +237,7 @@
   <data name="TradingSessionDuration" xml:space="preserve">
     <value>Продолжительность торговой сессии</value>
   </data>
+  <data name="TransactionNumber" xml:space="preserve">
+    <value>Номер транзакции</value>
+  </data>
 </root>

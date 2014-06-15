@@ -8,8 +8,6 @@
   Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
   var X = Html.X();
 }
-
-
 <script>
   //#region Парсим форму валидатором еще раз, т.к. форма подгружается динамически
   function validator__Parse() {
@@ -198,7 +196,11 @@
           new ModelField { Name = "Id" },
           new ModelField { Name = "CheckBill__MoneyAmount", ServerMapping = "CheckBill.MoneyAmount" },
           new ModelField { Name = "SallerInterestRateBill__MoneyAmount", ServerMapping = "SallerInterestRateBill.MoneyAmount" }
-      )))
+      ))
+      .ServerProxy(
+                    Html.X().AjaxProxy()
+                        .Url(Url.Action("GetApplicationsHistory"))
+                ))
       .ColumnModel(
         X.RowNumbererColumn(),
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("SellerName").Flex(1),

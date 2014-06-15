@@ -1,0 +1,80 @@
+@import "../Framework";
+@import "../AdminFramework";
+
+.b-ui
+{
+  margin: 20px;
+  .b-ui__header
+  {
+    .b-ui__text
+    {
+      font-size: $font-bb !important;
+    }
+  }
+
+  .b-ui__details
+  {
+    .b-ui__details__rightBlock
+    {
+      float: right;
+
+      .b-ui__details__rightBlock__image
+      {
+        width: 150px;
+        height: 150px;
+        @include single-box-shadow;
+        margin-bottom: 10px;
+      }
+
+      .b-ui__details__rightBlock__likeSystem
+      {
+        .b-ui__details__rightBlock__likeSystem__counter
+        {
+          float: left;
+          padding: 10px;
+          margin-left: 20px;
+          .b-ui__details__rightBlock__likeSystem__counter-text
+          {
+            font-size: 22px;
+          }
+        }
+
+        .b-ui__details__rightBlock__likeSystem-wrapper
+        {
+          line-height: 60px;
+          height: 50px;
+
+          .b-ui__details__rightBlock__likeSystem-wrapper__icon
+          {
+            &.b-ui__details__rightBlock__likeSystem-wrapper__icon__thumbs-up
+            {
+              @include font-icon("\e085", $blue_a_4_c2, "Dripicons", 25px);
+            }
+            &.b-ui__details__rightBlock__likeSystem-wrapper__icon__thumbs-down
+              {
+              @include font-icon("\e086", $blue_a_4_c2, "Dripicons", 25px);
+            }
+          }
+        }
+      }
+    }
+    .b-ui__details-row
+    {
+      float: left;
+      width: 520px;
+      margin-bottom: 10px;
+      padding: 5px;
+      border-bottom: 1px solid;
+      @include clearfix;
+    }
+    .b-ui__details-rtext
+    {
+      float: right;
+    }
+
+    .b-ui__details-ltext
+    {
+      float: left;
+    }
+  }
+}

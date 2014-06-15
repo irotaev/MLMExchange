@@ -1,8 +1,63 @@
-﻿@{
+﻿@model MLMExchange.Models.Registration.UserModel
+@{
     ViewBag.Title = Logic.Properties.GeneralResources.User;
     Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
 }
 
 <section class="b-ui">
+  <header class="b-ui__header">
+    <p class="b-ui__text">@MLMExchange.Properties.ResourcesA.UserView ( @Model.Login )</p>
+  </header>
+  <div class="b-ui__details">
 
+    <div class="b-ui__details__rightBlock">
+      <div class="b-ui__details__rightBlock__image">
+        @if (String.IsNullOrEmpty(Model.PhotoRelativePath))
+        {
+          <img src="/Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "anonymous-user.png").Crop(150, 150).FullName)" class="login-on-block__avatar" alt="Alternate Text" />
+        }
+        else
+        {
+          <img src="/@MLMExchange.Lib.Image.Image.UploadRelativeDir/@(new MLMExchange.Lib.Image.Image(Model.PhotoRelativePath).Crop(150, 150).FullName)"
+               class="login-on-block__avatar" alt="Alternate Text" />
+        }
+      </div>
+      <div class="b-ui__details__rightBlock__likeSystem">
+        <div class="b-ui__details__rightBlock__likeSystem-wrapper b-ui__details-ltext">
+          <i class="b-ui__details__rightBlock__likeSystem-wrapper__icon b-ui__details__rightBlock__likeSystem-wrapper__icon__thumbs-up"></i>
+        </div>
+        <div class="b-ui__details__rightBlock__likeSystem__counter">
+          <span class="b-ui__details__rightBlock__likeSystem__counter-text">500</span>
+        </div>
+        <div class="b-ui__details__rightBlock__likeSystem-wrapper b-ui__details-rtext">
+          <i class="b-ui__details__rightBlock__likeSystem-wrapper__icon b-ui__details__rightBlock__likeSystem-wrapper__icon__thumbs-down"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="b-ui__details-row__name b-ui__details-row">
+      <span class="b-ui__details-ltext">@Logic.Properties.GeneralResources.UserName</span>
+      <span class="b-ui__details-rtext">@Model.Name</span>
+    </div>
+
+    <div class="b-ui__details-row__name b-ui__details-row">
+      <span class="b-ui__details-ltext">@Logic.Properties.GeneralResources.UserSurname</span>
+      <span class="b-ui__details-rtext">@Model.Surname</span>
+    </div>
+
+    <div class="b-ui__details-row__name b-ui__details-row">
+      <span class="b-ui__details-ltext">@Logic.Properties.GeneralResources.UserPatronymic</span>
+      <span class="b-ui__details-rtext">@Model.Patronymic</span>
+    </div>
+
+    <div class="b-ui__details-row__name b-ui__details-row">
+      <span class="b-ui__details-ltext">@Logic.Properties.GeneralResources.CreationDateTime</span>
+      <span class="b-ui__details-rtext">@Model.CreationDateTime.ToLocalTime()</span>
+    </div>
+
+    <div class="b-ui__details-row__name b-ui__details-row">
+      <span class="b-ui__details-ltext">Чьё-то</span>
+      <span class="b-ui__details-rtext">Что-то</span>
+    </div>
+  </div>
 </section><!--B: User info-->

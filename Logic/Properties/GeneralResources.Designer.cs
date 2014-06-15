@@ -385,6 +385,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Номер транзакции.
+        /// </summary>
+        public static string TransactionNumber {
+            get {
+                return ResourceManager.GetString("TransactionNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пользователь.
         /// </summary>
         public static string User {
