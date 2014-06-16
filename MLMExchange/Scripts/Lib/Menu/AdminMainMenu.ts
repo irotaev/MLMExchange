@@ -24,7 +24,7 @@ export class AdminMainMenu
    */
   public SelectMenuItem(num: (num: number, name: string) => boolean): void
   {
-    var url = window.location.href;
+    var url = window.location.protocol + "//" + window.location.hostname + window.location.pathname;
 
     this._$Menu.find("a").each(function ()
     {
