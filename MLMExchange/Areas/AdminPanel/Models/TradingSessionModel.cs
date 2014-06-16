@@ -25,6 +25,12 @@ namespace MLMExchange.Areas.AdminPanel.Models
   public class TradingSessionModel : AbstractDataModel<TradingSession, D_TradingSession, TradingSessionModel>, IPayYieldTradingSessionModel
   {
     private readonly List<YieldSessionPaymentAcceptor> _YieldSessionPaymentAcceptors = new List<YieldSessionPaymentAcceptor>();
+    private readonly List<TradingSessionCurrentUserType> _CurrentUserTypes = new List<TradingSessionCurrentUserType>();
+
+    /// <summary>
+    /// Список типов текущего пользователя, по отношению к торговой сессии
+    /// </summary>
+    public IEnumerable<TradingSessionCurrentUserType> CurrentUserTypes { get { return _CurrentUserTypes.ToList(); } }
 
     /// <summary>
     /// Заявка на продажу my-crypt
@@ -86,6 +92,14 @@ namespace MLMExchange.Areas.AdminPanel.Models
         _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
       }
 
+      #region Задание типа текущего пользователя, по отношению к торговой сессии
+      if (@object.LogicObject.BuyingMyCryptRequest != null && @object.LogicObject.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)
+        _CurrentUserTypes.Add(TradingSessionCurrentUserType.Buyer);
+
+      if (@object.LogicObject.BuyingMyCryptRequest != null && @object.LogicObject.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)
+        _CurrentUserTypes.Add(TradingSessionCurrentUserType.Seller);
+      #endregion
+
       return this;
     }
 
@@ -94,11 +108,14 @@ namespace MLMExchange.Areas.AdminPanel.Models
       throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Список пользователей, принимающих комиссионный платеж
+    /// </summary>
     public IList<YieldSessionPaymentAcceptor> YieldSessionPaymentAcceptors { get { return _YieldSessionPaymentAcceptors; } }
   }
 
   /// <summary>
-  /// Пользователь, принемающий комиссионный платеж
+  /// Пользователь, принимающий комиссионный платеж
   /// </summary>
   public class YieldSessionPaymentAcceptor
   {
@@ -113,5 +130,20 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// </summary>
     public string DefaultPaymentSystem { get; set; }
     public long YieldTradingSessionBillId { get; set; }
+  }
+
+  /// <summary>
+  /// Тип текущего пользователя, по отношению к торговой сессии
+  /// </summary>
+  public enum TradingSessionCurrentUserType
+  {
+    /// <summary>
+    /// Покупатель (тот, кто подал заявку на покупку my-crypt)
+    /// </summary>
+    Buyer = 1,
+    /// <summary>
+    /// Продавец (тот, кто подал заявку на продажу my-crypt)
+    /// </summary>
+    Seller = 2
   }
 }
