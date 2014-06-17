@@ -18,8 +18,8 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void AddNeedProfitBillTest()
     {
-      D_User d_Buyer = _Session.Query<D_User>().Where(x => x.Login == "irotaev").FirstOrDefault();
-      D_User d_Payer = _Session.Query<D_User>().Where(x => x.Login == "newbik").FirstOrDefault();
+      D_User d_Buyer = _Session.Query<D_User>().Where(x => x.Login == "newbik").FirstOrDefault();
+      D_User d_Payer = _Session.Query<D_User>().Where(x => x.Login == "irotaev").FirstOrDefault();
 
       if (d_Buyer == null || d_Payer == null)
         Assert.Fail();

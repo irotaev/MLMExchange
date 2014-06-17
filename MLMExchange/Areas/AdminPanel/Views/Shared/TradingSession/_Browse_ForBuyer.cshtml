@@ -180,7 +180,7 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit)
           {
             $.ajax({
               url: "/TradingSession/ConfirmNeedProfitBill",
-              data: { 'tradingSessionId': record.data.Id },
+              data: { 'billId': record.data.Id },
               type: 'POST'
             }).always(function () {
               window.location.reload();

@@ -145,7 +145,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (d_bill == null)
         throw new UserVisible__WrongParametrException("billId");
 
-      if (d_bill.PaymentState != BillPaymentState.NA || d_bill.PaymentAcceptor.Id != CurrentSession.Default.CurrentUser.Id)
+      if (d_bill.PaymentState != BillPaymentState.WaitingPayment || d_bill.PaymentAcceptor.Id != CurrentSession.Default.CurrentUser.Id)
         throw new UserVisible__CurrentActionAccessDenied();
 
       d_bill.PaymentState = BillPaymentState.Paid;
