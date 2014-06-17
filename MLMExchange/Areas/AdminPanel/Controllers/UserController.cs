@@ -157,7 +157,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         }
         else
         {
-          IList<BuyingMyCryptRequest> buyingMyCryptRequests = biddingParticipateApplication.BuyingMyCryptRequests;
+          IList<BuyingMyCryptRequest> buyingMyCryptRequests = biddingParticipateApplication.BuyingMyCryptRequests.Where(x => x.State == BuyingMyCryptRequestState.AwaitingConfirm).ToList();
 
           if (buyingMyCryptRequests == null || buyingMyCryptRequests.Count == 0)
           {
