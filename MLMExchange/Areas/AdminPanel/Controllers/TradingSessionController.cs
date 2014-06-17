@@ -135,12 +135,12 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <param name="billId">Id счета</param>
     /// <returns></returns>
     [HttpPost]
-    public ActionResult NeedProfitBillConfirm(long billId)
+    public ActionResult ConfirmNeedProfitBill(long billId)
     {
       if (!Request.IsAjaxRequest())
         throw new UserVisible__ActionAjaxOnlyException();
 
-      D_Bill d_bill = _NHibernateSession.Query<D_Bill>().Where(x => x.Id == billId).FirstOrDefault();
+      D_YieldSessionBill d_bill = _NHibernateSession.Query<D_YieldSessionBill>().Where(x => x.Id == billId).FirstOrDefault();
 
       if (d_bill == null)
         throw new UserVisible__WrongParametrException("billId");
@@ -149,6 +149,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
 
       d_bill.PaymentState = BillPaymentState.Paid;
+      ((TradingSession)d_bill.AcceptorTradingSession).TryChangeStatus(TradingSessionStatus.Closed);
 
       _NHibernateSession.SaveOrUpdate(d_bill);
 

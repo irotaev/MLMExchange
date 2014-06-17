@@ -24,11 +24,9 @@ export class AdminMainMenu
    */
   public SelectMenuItem(num: (num: number, name: string) => boolean): void
   {
-    var url = window.location.protocol + "//" + window.location.hostname + window.location.pathname;
-
     this._$Menu.find("a").each(function ()
     {
-      if (url == (this.href))
+      if (window.location.href == this.href)
       {
         $(this).find("nav").addClass("pb-mm__menu-item-wrapper-active");
       }

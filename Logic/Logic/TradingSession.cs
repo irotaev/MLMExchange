@@ -25,7 +25,7 @@ namespace Logic
     {
       IList<D_YieldSessionBill> bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_YieldSessionBill>().Where(x => x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
-      
+
       return bills.Select(x => (Bill)x);
     }
 
@@ -150,7 +150,7 @@ namespace Logic
 
           _LogicObject.YieldSessionBills.Add(ensureBill);
           isBillAdded = true;
-          
+
           break;
         }
         else
@@ -231,6 +231,17 @@ namespace Logic
             if (DateTime.UtcNow >= LogicObject.ClosingSessionDateTime.Value)
               LogicObject.State = TradingSessionStatus.NeedProfit;
             return true;
+          }
+          break;
+
+        case TradingSessionStatus.Closed:
+          if (LogicObject.State == TradingSessionStatus.NeedProfit)
+          {
+            if (GetNeedPaymentBills().All(x => x.LogicObject.PaymentState == BillPaymentState.Paid))
+            {
+              LogicObject.State = TradingSessionStatus.Closed;
+              return true;
+            }
           }
           break;
       }
