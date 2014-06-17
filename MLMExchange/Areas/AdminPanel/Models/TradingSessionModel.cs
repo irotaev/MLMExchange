@@ -20,9 +20,20 @@ namespace MLMExchange.Areas.AdminPanel.Models
   }
 
   /// <summary>
+  /// Модель торговой сессии, отображающая состояние "NeedProfit"
+  /// </summary>
+  public interface INeedPaymentProfitModel
+  {
+    /// <summary>
+    /// Счета, для обеспечения прибыли торговой сессии
+    /// </summary>
+    IEnumerable<BillModel> NeedProfitBills { get; }
+  }
+
+  /// <summary>
   /// Модель торговой сессии
   /// </summary>
-  public class TradingSessionModel : AbstractDataModel<TradingSession, D_TradingSession, TradingSessionModel>, IPayYieldTradingSessionModel
+  public class TradingSessionModel : AbstractDataModel<TradingSession, D_TradingSession, TradingSessionModel>, IPayYieldTradingSessionModel, INeedPaymentProfitModel
   {
     private readonly List<YieldSessionPaymentAcceptor> _YieldSessionPaymentAcceptors = new List<YieldSessionPaymentAcceptor>();
     private readonly List<TradingSessionCurrentUserType> _CurrentUserTypes = new List<TradingSessionCurrentUserType>();
@@ -71,8 +82,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
       BiddingParticipateApplication = new BiddingParticipateApplicationModel().Bind(@object.LogicObject.BiddingParticipateApplication);
       BuyingMyCryptRequest = new BuyingMyCryptRequestModel().Bind(@object.LogicObject.BuyingMyCryptRequest);
-      CheckBill = new BillModel().Bind(@object.LogicObject.CheckBill);
-      SallerInterestRateBill = new BillModel().Bind(@object.LogicObject.SallerInterestRateBill);
+      CheckBill = new BillModel().Bind(((Bill)@object.LogicObject.CheckBill));
+      SallerInterestRateBill = new BillModel().Bind(((Bill)@object.LogicObject.SallerInterestRateBill));
       State = @object.LogicObject.State;
       IsYieldSessionBillsPaid = @object.IsYieldSessionBillsPaid;
       ClosingSessionDateTime = @object.LogicObject.ClosingSessionDateTime;
@@ -90,6 +101,12 @@ namespace MLMExchange.Areas.AdminPanel.Models
         };
 
         _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
+      }
+
+      
+      if (@object.LogicObject.State == TradingSessionStatus.NeedProfit)
+      {
+        NeedProfitBills = @object.GetNeedPaymentBills().Select(x => new BillModel().Bind((Bill)x));
       }
 
       #region Задание типа текущего пользователя, по отношению к торговой сессии
@@ -112,6 +129,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Список пользователей, принимающих комиссионный платеж
     /// </summary>
     public IList<YieldSessionPaymentAcceptor> YieldSessionPaymentAcceptors { get { return _YieldSessionPaymentAcceptors; } }
+
+    public IEnumerable<BillModel> NeedProfitBills { get; private set; }
   }
 
   /// <summary>

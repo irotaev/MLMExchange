@@ -46,7 +46,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (d_yieldSessionBill == null)
         throw new UserVisible__WrongParametrException("yieldSessionBillId");
 
-      TradingSession tradingSession = (TradingSession)d_yieldSessionBill.TradingSession;
+      TradingSession tradingSession = (TradingSession)d_yieldSessionBill.PayerTradingSession;
 
       if (d_yieldSessionBill.PaymentState != BillPaymentState.NA 
         || d_yieldSessionBill.Payer.Id != CurrentSession.Default.CurrentUser.Id 
@@ -125,6 +125,32 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (!((TradingSession)d_tradingSession).TryChangeStatus(TradingSessionStatus.NeedProfit))
         throw new UserVisibleException(MLMExchange.Properties.PrivateResource.TradingSession_Close__CantClose);
+
+      return null;
+    }
+
+    /// <summary>
+    /// Подтвердить оплату по счету прибыли торговой сессии
+    /// </summary>
+    /// <param name="billId">Id счета</param>
+    /// <returns></returns>
+    [HttpPost]
+    public ActionResult NeedProfitBillConfirm(long billId)
+    {
+      if (!Request.IsAjaxRequest())
+        throw new UserVisible__ActionAjaxOnlyException();
+
+      D_Bill d_bill = _NHibernateSession.Query<D_Bill>().Where(x => x.Id == billId).FirstOrDefault();
+
+      if (d_bill == null)
+        throw new UserVisible__WrongParametrException("billId");
+
+      if (d_bill.PaymentState != BillPaymentState.NA || d_bill.PaymentAcceptor.Id != CurrentSession.Default.CurrentUser.Id)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      d_bill.PaymentState = BillPaymentState.Paid;
+
+      _NHibernateSession.SaveOrUpdate(d_bill);
 
       return null;
     }

@@ -7,68 +7,44 @@
   var X = Html.X();
 }
 
-@if (Model.State == Logic.TradingSessionStatus.NA)
-{
-  <div class="b-text b-ts__text b-ts__session-not-opened-text">
-    @MLMExchange.Properties.PrivateResource.TradingSessionNotOpened
-  </div>
-}
-else
+@if (Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility)
 {
   <script>
-        function YieldTradingSession__Listener(view, commandName, record) {
+    function YieldTradingSession__Listener(view, commandName, record) {
 
-          if (commandName === "YieldTradingSessionBill_Pay") {
-            new Ext.Window({
-              id: "PayYieldTradingSession__Window",
-              width: 800,
-              resizable: false,
-              modal: true,
-              title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
-              autoLoad: {
-                url: "/AdminPanel/PaymentSystemGroup/Browse",
-                params: { ForUserId: record.data.UserId, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: record.data.YieldTradingSessionBillId },
-                nocache: true,
-                text: "@MLMExchange.Properties.ResourcesA.Loading",
-                callback: function () {
-                  $.each($("#PayYieldTradingSession__Window").find("script[data-app-script='true']"), function (index, element) {
-                    var scriptTag = $(document.createElement('script')).text($(element).text());
+      if (commandName === "YieldTradingSessionBill_Pay") {
+        new Ext.Window({
+          id: "PayYieldTradingSession__Window",
+          width: 800,
+          resizable: false,
+          modal: true,
+          title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
+          autoLoad: {
+            url: "/AdminPanel/PaymentSystemGroup/Browse",
+            params: { ForUserId: record.data.UserId, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: record.data.YieldTradingSessionBillId },
+            nocache: true,
+            text: "@MLMExchange.Properties.ResourcesA.Loading",
+            callback: function () {
+              $.each($("#PayYieldTradingSession__Window").find("script[data-app-script='true']"), function (index, element) {
+                var scriptTag = $(document.createElement('script')).text($(element).text());
 
-                    $(scriptTag).appendTo($("body"));
-                  });
-                }
-              }
-            }).show();
+                $(scriptTag).appendTo($("body"));
+              });
+            }
           }
-        }
+        }).show();
+      }
+    }
   </script>
 
-  <div class="b-ts__message-wrapper">
-    @if (Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
-    {
-      <div class="b-text b-ts__text b-ts__waiting-seller-interest-rate-payment">
-        @MLMExchange.Properties.PrivateResource.WaitingSellerInterestRatePayment
-      </div>
-    }
+  <div class="b-ts__pay-yield-trading-session">
+    <div class="b-ts__header-text">
+      @MLMExchange.Properties.PrivateResource.PayYieldTradingSession
+      <i class="b-ts__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.PayYieldTradingSession" data-ot-style="BlackStyle"></i>
+    </div>
 
-    @if (Model.CheckBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
-    {
-      <div class="b-text b-ts__text b-ts__waiting-check-payment">
-        @MLMExchange.Properties.PrivateResource.WaitingCheckPayment
-      </div>
-    }
-  </div>
-
-  if (Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility)
-  {
-    <div class="b-ts__pay-yield-trading-session">
-      <div class="b-ts__header-text">
-        @MLMExchange.Properties.PrivateResource.PayYieldTradingSession
-        <i class="b-ts__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.PayYieldTradingSession" data-ot-style="BlackStyle"></i>
-      </div>
-
-      <div class="b-ts__users-to-pay" id="b-ts__users-to-pay_ID">
-        @(X.GridPanel().ID("TradingSession__PayYieldTradingSession_Grid")
+    <div class="b-ts__users-to-pay" id="b-ts__users-to-pay_ID">
+      @(X.GridPanel().ID("TradingSession__PayYieldTradingSession_Grid")
                 .Height(375)
                 .Border(false)
                 .Header(false)
@@ -106,28 +82,27 @@ else
                     X.PagingToolbar()
                       .Plugins(X.ProgressBarPager())
                   )
-                 .RenderTo("b-ts__users-to-pay_ID")
-        )
-      </div>
+                 .RenderTo("b-ts__users-to-pay_ID"))
     </div>
-  }
-  else if (Model.State == Logic.TradingSessionStatus.WaitForProgressStart)
-  {
-    <script>
-      function setSessionInProgress(_this) {
-        $.ajax({
-          url: "/TradingSession/SetSessionInProgress",
-          data: { 'tradingSessionId': $(_this).data("trade-session-id") },
-          type: "POST"
-        }).done(function () {
-          window.location.reload();
-        });
-      }
-    </script>
-
-    <div class="b-ts__open-trading-session">
-      <div class="b-ts__message">
-        @MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen
+  </div>
+}
+else if (Model.State == Logic.TradingSessionStatus.WaitForProgressStart)
+{
+  <script>
+    function setSessionInProgress(_this) {
+      $.ajax({
+        url: "/TradingSession/SetSessionInProgress",
+        data: { 'tradingSessionId': $(_this).data("trade-session-id") },
+        type: "POST"
+      }).done(function () {
+        window.location.reload();
+      });
+    }
+  </script>
+  
+  <div class="b-ts__open-trading-session">
+    <div class="b-ts__message">
+      @MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen
       <i class="b-ts__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen" data-ot-style="BlackStyle"></i>
     </div>
 
@@ -138,63 +113,122 @@ else
       </a>
     </div>
   </div>
-  }
-  else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
-  {
-    <div class="b-text b-ts__text b-ts__session-in-progress">
-      @if (DateTime.UtcNow < Model.ClosingSessionDateTime)
-      {
-        @MLMExchange.Properties.PrivateResource.WaitingTradingSessionProgress
+}
+else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
+{
+  <div class="b-text b-ts__text b-ts__session-in-progress">
+    @if (DateTime.UtcNow < Model.ClosingSessionDateTime)
+    {
+      @MLMExchange.Properties.PrivateResource.WaitingTradingSessionProgress
 
-        <div class="b-ts__process-clock-wrapper"></div>
+      <div class="b-ts__process-clock-wrapper"></div>
 
               <!--TODO: Недоделано-->
-        <script src="~/bower_components/countdown/jquery.countdown.js"></script>
-        <script>
-                $(function () {
-                  $('.b-ts__process-clock-wrapper').countdown({
-                    date: new Date(@((Model.ClosingSessionDateTime.Value - new DateTime(1970, 1, 1)).TotalMilliseconds)),
-                    render: function (data) {
-                      $(this.el).html("<div>" + this.leadingZeros(data.days, 3)
-                        + " <span>Дней</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>Часов</span></div><div>"
-                        + this.leadingZeros(data.min, 2) + " <span>Минут</span></div><div>" + this.leadingZeros(data.sec, 2)
-                        + " <span>Секунд</span></div>");
-                    }
-                  });
-                });
-        </script>
-      }
-      else
-      {
-        <script>
-                function closeTradingSession(_this) {
-                  $.ajax({
-                    url: "/TradingSession/CloseTradingSession",
-                    data: { tradingSessionId: "@Model.Id" },
-                    type: "POST"
-                  }).done(function () {
-                    window.location.reload();
-                  });
-                }
-        </script>
+      <script src="~/bower_components/countdown/jquery.countdown.js"></script>
+      <script>
+        $(function () {
+          $('.b-ts__process-clock-wrapper').countdown({
+            date: new Date(@((Model.ClosingSessionDateTime.Value - new DateTime(1970, 1, 1)).TotalMilliseconds)),
+            render: function (data) {
+              $(this.el).html("<div>" + this.leadingZeros(data.days, 3)
+                + " <span>Дней</span></div><div>" + this.leadingZeros(data.hours, 2) + " <span>Часов</span></div><div>"
+                + this.leadingZeros(data.min, 2) + " <span>Минут</span></div><div>" + this.leadingZeros(data.sec, 2)
+                + " <span>Секунд</span></div>");
+            }
+          });
+        });
+      </script>
+    }
+    else
+    {
+      <script>
+        function closeTradingSession(_this) {
+          $.ajax({
+            url: "/TradingSession/CloseTradingSession",
+            data: { tradingSessionId: "@Model.Id" },
+            type: "POST"
+          }).done(function () {
+            window.location.reload();
+          });
+        }
+      </script>
 
-        <div class="b-ts__can-close-message">
-          @MLMExchange.Properties.PrivateResource.TradingSession__CanCloseTradingSession
+      <div class="b-ts__can-close-message">
+        @MLMExchange.Properties.PrivateResource.TradingSession__CanCloseTradingSession
 
-          <div class="b-ts_button-wrapper">
-            <a href="#" class="b-btn b-btn-flat-action b-ts__button_action_close-trading-session" data-trade-session-id="@Model.Id" onclick="javascript: closeTradingSession(this);">
-              <i class="fa  fa-times-circle "></i>
-              @MLMExchange.Properties.ResourcesA.Button_Close
-            </a>
-          </div>
+        <div class="b-ts_button-wrapper">
+          <a href="#" class="b-btn b-btn-flat-action b-ts__button_action_close-trading-session" data-trade-session-id="@Model.Id" onclick="javascript: closeTradingSession(this);">
+            <i class="fa  fa-times-circle "></i>
+            @MLMExchange.Properties.ResourcesA.Button_Close
+          </a>
         </div>
+      </div>
+    }
+  </div>
+}
+else if (Model.State == Logic.TradingSessionStatus.NeedProfit)
+{
+  <script>
+    function needProfitBill__Confirm(view, commandName, record) {
+
+      if (commandName === "NeedProfitBill__Confirm") {
+        var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
+        var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Accept)";
+
+        Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+          if (btn == "yes")
+          {
+            $.ajax({
+              url: "/TradingSession/NeedProfitBillConfirm",
+              data: { 'tradingSessionId': record.data.Id },
+              type: 'POST'
+            }).always(function () {
+              window.location.reload();
+            });
+          }
+        });
       }
-    </div>
-  }
-  else if (Model.State == Logic.TradingSessionStatus.NeedProfit)
-  {
-    <div class="b-text b-ts__text b-ts__session-need-profit">
-      Session need profit!
-    </div>
-  }
+    }
+  </script>
+
+  <div class="b-text b-ts__text b-ts__session-need-profit" id="b-ts__session-need-profit_ID">
+    @(X.GridPanel().ID("TradingSession__TradingSessionProfitPayment_Grid")
+        .Height(375)
+        .Border(false)
+        .Header(false)
+        .Store(
+          X.Store()
+            .ID("TradingSession__TradingSessionProfitPayment_Store")
+          .RemotePaging(true)
+          .PageSize(10)
+            .DataSource((Model as MLMExchange.Areas.AdminPanel.Models.INeedPaymentProfitModel).NeedProfitBills)
+          .Model(X.Model().Fields(
+              new ModelField { Name = "Id" },
+              new ModelField { Name = "CreationDateTime" },
+              new ModelField { Name = "User__Login", ServerMapping = "User.Login" },
+              new ModelField { Name = "MoneyAmount" }
+          ))
+            .ServerProxy(
+              Html.X().AjaxProxy()
+                  .Url(Url.Action("GetData"))
+              )
+          )
+          .ColumnModel(
+            X.RowNumbererColumn(),
+            X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Width(100).Flex(1),
+            X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(100).Flex(1),
+            X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(100).Flex(1),
+            X.ImageCommandColumn().Commands(
+              X.ImageCommand().CommandName("NeedProfitBill__Confirm").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept)
+            )
+              .Listeners(ls =>
+              {
+                ls.Command.Fn = "needProfitBill__Confirm";
+              }))
+          .BottomBar(
+            X.PagingToolbar()
+              .Plugins(X.ProgressBarPager())
+          )
+          .RenderTo("b-ts__session-need-profit_ID"))
+  </div>
 }

@@ -18,19 +18,15 @@ namespace Logic
     }
 
     /// <summary>
-    /// Платежи, по обеспечению прибыли покупателя
+    /// Получить счета прибыли текущей торговой сессии
     /// </summary>
-    public IList<Payment> BuyerProfitPayments
+    /// <returns></returns>
+    public IEnumerable<Bill> GetNeedPaymentBills()
     {
-      get
-      {
-        IEnumerable<D_YieldSessionBill> d_tradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id && x.TradingSession.State == TradingSessionStatus.NeedProfit).ToList();
-
-        d_tradingSessions = d_tradingSessions.ToList().Where(x => x.IsNeedSubstantialMoney);
-
-        return d_tradingSessions.SelectMany(x => x.Payments).ToList();
-      }
+      IList<D_YieldSessionBill> bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_YieldSessionBill>().Where(x => x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
+      
+      return bills.Select(x => (Bill)x);
     }
 
     /// <summary>
@@ -106,9 +102,12 @@ namespace Logic
     {
       decimal necessaryMoney = CalculateBuyerProfit();
 
-      foreach (var payment in BuyerProfitPayments)
+      IEnumerable<D_YieldSessionBill> d_bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_YieldSessionBill>().Where(x => x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
+
+      foreach (var bill in d_bills)
       {
-        necessaryMoney -= payment.RealMoneyAmount;
+        necessaryMoney -= bill.MoneyAmount;
       }
 
       return necessaryMoney;
@@ -143,14 +142,15 @@ namespace Logic
             MoneyAmount = yieldSessionBullNecessaryMoney,
             Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
             PaymentAcceptor = profitSession.LogicObject.BiddingParticipateApplication.Seller,
-            TradingSession = _LogicObject
+            PayerTradingSession = _LogicObject,
+            AcceptorTradingSession = profitSession.LogicObject
           };
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
 
           _LogicObject.YieldSessionBills.Add(ensureBill);
           isBillAdded = true;
-
+          
           break;
         }
         else
@@ -160,7 +160,8 @@ namespace Logic
             MoneyAmount = buyerProfitNecasseryMoney,
             Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
             PaymentAcceptor = profitSession.LogicObject.BiddingParticipateApplication.Seller,
-            TradingSession = _LogicObject
+            PayerTradingSession = _LogicObject,
+            AcceptorTradingSession = profitSession.LogicObject
           };
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
@@ -176,12 +177,13 @@ namespace Logic
           ((LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
           || (LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill == null && LogicObject.CreationDateTime < DateTime.UtcNow.AddSeconds(-30))))
       {
+        //TODO:Rtv Добавить AcceptorTradingSession. Или подумать как решить данный вопрос
         D_YieldSessionBill ensureBill = new D_YieldSessionBill
         {
           MoneyAmount = YieldSessionBillsNecessaryMoney(),
           Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
           PaymentAcceptor = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_System_User>().FirstOrDefault(),
-          TradingSession = _LogicObject
+          PayerTradingSession = _LogicObject
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);

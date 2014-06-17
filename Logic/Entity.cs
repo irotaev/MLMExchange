@@ -253,7 +253,15 @@ namespace Logic
       BillType = Logic.BillType.YieldSessionBill;
     }
 
-    public virtual D_TradingSession TradingSession { get; set; }
+    /// <summary>
+    /// Торговая сессия того, кто оплачивает счет
+    /// </summary>
+    public virtual D_TradingSession PayerTradingSession { get; set; }
+
+    /// <summary>
+    /// Торговая сессия того, кто принемает платеж
+    /// </summary>
+    public virtual D_TradingSession AcceptorTradingSession { get; set; }
   }
 
   public enum BillPaymentState : int
@@ -729,7 +737,8 @@ namespace Logic
     {
       DiscriminatorValue(BillType.YieldSessionBill);
 
-      References(x => x.TradingSession).Column("TradingSessionId").Nullable().Cascade.SaveUpdate();
+      References(x => x.PayerTradingSession).Column("PayerTradingSessionId").Nullable().Cascade.SaveUpdate();
+      References(x => x.AcceptorTradingSession).Column("AcceptorTradingSessionId").Nullable().Cascade.SaveUpdate();
     }
   }
   #endregion

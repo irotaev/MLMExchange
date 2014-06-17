@@ -24,7 +24,7 @@ namespace Logic
     {
       base.AddPayment(payment);
 
-      ((TradingSession)_LogicObject.TradingSession).TryChangeStatus(TradingSessionStatus.WaitForProgressStart);
+      ((TradingSession)_LogicObject.PayerTradingSession).TryChangeStatus(TradingSessionStatus.WaitForProgressStart);
     }
   }
 }

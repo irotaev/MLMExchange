@@ -6,21 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using NHibernate;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicTest
 {
   /// <summary>
   /// Базовый тест
   /// </summary>
+  [TestClass]
   public abstract class AbstractTest
   {
+    static AbstractTest()
+    {
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>();
+    }
+
     public AbstractTest()
     {
       #region Инициализирую сессию NHibernate
-      Logic.NHibernateConfiguration.ConnectionString = "Data Source=IROTAEV-PC;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      Logic.NHibernateConfiguration.ConnectionString = @"Data Source=192.168.1.8\SQLEXPRESS;Initial Catalog=mlm_exchange;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=masterkey;MultipleActiveResultSets=True";
 
       //TODO:Rtv переделать NHibernateConfiguration на static
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>(new InjectionConstructor(SessionStorageType.ThreadStatic));
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ThreadStatic);
       _Session = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
       _Session.BeginTransaction();
       #endregion
@@ -45,5 +52,19 @@ namespace LogicTest
       nhibernateManager.Session.Dispose();
       #endregion
     }
+  }
+
+  /// <summary>
+  /// Базовый тест настройки данных. 
+  /// Используется, когда необходимо настроить данные приложения, 
+  /// произвести какие-либо манипуляции и т.д.
+  /// 
+  /// Например, создание дополнительных пользователей, либо внесение платежей, 
+  /// там где логика внесения платежей не может быть задействована
+  /// 
+  /// Использовать с осторожностью, т.к. данные тесты не повторяют логику приложения
+  /// </summary>
+  public abstract class AbstractPreformDataTest : AbstractTest
+  {
   }
 }

@@ -104,8 +104,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 
         TradeSessionId = @object.TradingSession.Id;
 
-        CheckBill = new BillModel().Bind(@object.TradingSession.CheckBill);
-        SallerInterestRateBill = new BillModel().Bind(@object.TradingSession.SallerInterestRateBill);
+        CheckBill = new BillModel().Bind(((Bill)@object.TradingSession.CheckBill));
+        SallerInterestRateBill = new BillModel().Bind(((Bill)@object.TradingSession.SallerInterestRateBill));
       }
 
       return this;

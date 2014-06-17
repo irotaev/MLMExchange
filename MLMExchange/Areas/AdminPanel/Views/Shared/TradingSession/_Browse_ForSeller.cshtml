@@ -1,1 +1,15 @@
-﻿Not implemented!
+﻿@using Ext.Net
+@using Ext.Net.MVC
+
+@model MLMExchange.Areas.AdminPanel.Models.TradingSessionModel
+
+@{
+  var X = Html.X();
+}
+
+@if (Model.State == Logic.TradingSessionStatus.NA)
+{
+  <div class="b-text b-ts__text b-ts__session-not-opened-text">
+    @MLMExchange.Properties.PrivateResource.TradingSessionNotOpened
+  </div>
+}

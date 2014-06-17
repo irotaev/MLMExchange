@@ -12,21 +12,38 @@ using NHibernate.Linq;
 namespace MLMExchange.Areas.AdminPanel.Models
 {
   /// <summary>
+  /// Базовый интерфейс платежной системы
+  /// </summary>
+  public interface IBasePaymentModel
+  {
+    long? Id { get; }
+    DateTime CreationDateTime { get; }
+    /// <summary>
+    /// Пользователь, который совершил платёж
+    /// </summary>
+    UserModel Payer { get; }
+    /// <summary>
+    /// Количество денег по счету
+    /// </summary>
+    decimal RealMoneyAmount { get; }
+  }
+
+  /// <summary>
   /// Модель платежа.
   /// Базовая модель, без учета платежной системы
   /// <typeparam name="TPaymentModel">Тип модели платежа</typeparam>
   /// </summary>
-  public abstract class AbstractPaymentModel<TPaymentModel> : AbstractDataModel<Payment, TPaymentModel>
+  public abstract class AbstractPaymentModel<TPaymentModel> : AbstractDataModel<Payment, TPaymentModel>, IBasePaymentModel
     where TPaymentModel : AbstractPaymentModel<TPaymentModel>
   {
     /// <summary>
     /// Пользователь, который совершил платёж
     /// </summary>
-    public UserModel Payer { get; set; }
+    public UserModel Payer { get; private set; }
     /// <summary>
     /// Количество денег по счету
     /// </summary>
-    public decimal RealMoneyAmount { get; set; }
+    public decimal RealMoneyAmount { get; private set; }
 
     public override TPaymentModel Bind(Payment @object)
     {
@@ -43,6 +60,12 @@ namespace MLMExchange.Areas.AdminPanel.Models
       throw new NotImplementedException();
     }
   }
+
+  /// <summary>
+  /// Модель базавого платежа.
+  /// Базовая модель, без учета платежной системы
+  /// </summary>
+  public class BasePaymentModel : AbstractPaymentModel<BasePaymentModel> { }
 
   /// <summary>
   /// Модель банковского платежа
