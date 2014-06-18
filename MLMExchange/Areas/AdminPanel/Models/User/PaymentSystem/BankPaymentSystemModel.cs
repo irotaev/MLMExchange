@@ -88,30 +88,30 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       @object.UserPatronymic = UserPatronymic;
       @object.BankName = BankName;
 
-      if (INN == null)
+      if (String.IsNullOrWhiteSpace(INN))
         throw new UserVisible__ArgumentNullException("INN");
 
-      @object.INN = INN.Value;
+      @object.INN = INN;
 
-      if (KPP == null)
+      if (String.IsNullOrWhiteSpace(KPP))
         throw new UserVisible__ArgumentNullException("KPP");
 
-      @object.KPP = KPP.Value;
+      @object.KPP = KPP;
 
-      if (CurrentAccount == null)
+      if (String.IsNullOrWhiteSpace(CurrentAccount))
         throw new UserVisible__ArgumentNullException("CurrentAccount");
 
-      @object.CurrentAccount = CurrentAccount.Value;
+      @object.CurrentAccount = CurrentAccount;
 
-      if (BIK == null)
+      if (String.IsNullOrWhiteSpace(BIK))
         throw new UserVisible__ArgumentNullException("BIK");
 
-      @object.BIK = BIK.Value;
+      @object.BIK = BIK;
 
-      if (CorrespondentAccount == null)
+      if (String.IsNullOrWhiteSpace(CorrespondentAccount))
         throw new UserVisible__ArgumentNullException("CorrespondentAccount");
 
-      @object.CorrespondentAccount = CorrespondentAccount.Value;
+      @object.CorrespondentAccount = CorrespondentAccount;
 
       return @object;
     }

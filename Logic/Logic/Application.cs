@@ -108,12 +108,12 @@ namespace Logic
         paymentSystemGroup.BankPaymentSystems.Add(new BankPaymentSystem
               {
                 BankName = "Fake",
-                BIK = 123,
-                CorrespondentAccount = 123,
-                CurrentAccount = 123,
-                INN = 123,
+                BIK = "123",
+                CorrespondentAccount = "123",
+                CurrentAccount = "123",
+                INN = "123",
                 IsDefault = true,
-                KPP = 123,
+                KPP = "123",
                 UserName = "System",
                 UserPatronymic = "System",
                 UserSurname = "System"
