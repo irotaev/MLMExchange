@@ -9,13 +9,13 @@
   var X = Html.X();
 }
 <script>
-  //#region Парсим форму валидатором еще раз, т.к. форма подгружается динамически
-  function validator__Parse() {
-    window.$Sync.validator.unobtrusive.parse('#AddMyCrypt__Form');
-  }
-  //#endregion
-
   function BuyMyCrypt__PopUpWindow__AfterRender(commandArguments) {
+    //#region Дефолтные параметры для формы
+    require(["jquery", "Lib/Form"], function ($, formModule) {
+      new formModule.Form($("#AddMyCrypt__Form")).ReBindAll();
+    });
+    //#endregion
+
     $(".pb-bmc #SellerId").val(commandArguments.SellerUser__Id);
   }
 
@@ -164,7 +164,7 @@
             .Resizable(false)
             .Listeners(w_ls =>
             {
-              w_ls.AfterRender.Handler = "validator__Parse(); BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
+              w_ls.AfterRender.Handler = "BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
             }).ToScript();
         }))
         .BottomBar(
