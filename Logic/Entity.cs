@@ -318,23 +318,23 @@ namespace Logic
     /// <summary>
     /// Инн
     /// </summary>
-    public virtual long INN { get; set; }
+    public virtual string INN { get; set; }
     /// <summary>
     /// КПП
     /// </summary>
-    public virtual long KPP { get; set; }
+    public virtual string KPP { get; set; }
     /// <summary>
     /// Расчетный счет
     /// </summary>
-    public virtual long CurrentAccount { get; set; }
+    public virtual string CurrentAccount { get; set; }
     /// <summary>
     /// БИК банка
     /// </summary>
-    public virtual long BIK { get; set; }
+    public virtual string BIK { get; set; }
     /// <summary>
     /// Корреспондентский счет
     /// </summary>
-    public virtual long CorrespondentAccount { get; set; }
+    public virtual string CorrespondentAccount { get; set; }
   }
 
   /// <summary>

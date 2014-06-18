@@ -104,10 +104,10 @@ else
                                                                     .Text(MLMExchange.Properties.ResourcesA.SaveButton)
                                                                     .Icon(Icon.DatabaseSave)
                                                                     .Listeners(btnLs => btnLs.Click.Fn = "BtnSave_PaymentBank_Click"))
-                                                            .ToScript() + " Window__AddPaymentSystem_Bank_AfterRender();"),
-                    X.MenuItem().ID("BtnAdd_ElectronicPayment")
-                    .Text(Logic.Properties.GeneralResources.Bank)
-                    .Icon(Icon.Add)
+                                                                .ToScript() + " Window__AddPaymentSystem_Bank_AfterRender();")
+                    //X.MenuItem().ID("BtnAdd_ElectronicPayment")
+                    //.Text(Logic.Properties.GeneralResources.Bank)
+                    //.Icon(Icon.Add)
         )).RenderTo("b-psg__header_ID"))
     }
     </header>
