@@ -89,7 +89,7 @@ namespace Logic
         {
           Login = "administrator_irotaev",
           PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678,
-          PaymentSystemGroup = new PaymentSystemGroup()
+          PaymentSystemGroup = new D_PaymentSystemGroup()
         };
 
         adminUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = adminUser } };
@@ -104,8 +104,8 @@ namespace Logic
 
       if (d_systemUser == null)
       {
-        PaymentSystemGroup paymentSystemGroup = new PaymentSystemGroup();
-        paymentSystemGroup.BankPaymentSystems.Add(new BankPaymentSystem
+        D_PaymentSystemGroup paymentSystemGroup = new D_PaymentSystemGroup();
+        paymentSystemGroup.BankPaymentSystems.Add(new D_BankPaymentSystem
               {
                 BankName = "Fake",
                 BIK = "123",
@@ -140,11 +140,12 @@ namespace Logic
         {
           Login = "irotaev",
           PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678,
-          PaymentSystemGroup = new PaymentSystemGroup(),
+          PaymentSystemGroup = new D_PaymentSystemGroup(),
           Name = "Андрей",
           Surname = "Ротаев",
           Patronymic = "Валерьевич",
-          Email = "irotaev@gmail.com"
+          Email = "irotaev@gmail.com",
+          MyCryptCount = 10000
         };
 
         irotaevUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = irotaevUser } };
@@ -155,11 +156,12 @@ namespace Logic
         {
           Login = "newbik",
           PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678,
-          PaymentSystemGroup = new PaymentSystemGroup(),
+          PaymentSystemGroup = new D_PaymentSystemGroup(),
           Name = "Ньюбик",
           Surname = "Петрович",
           Patronymic = "Семенов",
-          Email = "newbik@gmail.com"
+          Email = "newbik@gmail.com",
+          MyCryptCount = 10000
         };
 
         newbikUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = newbikUser } };
@@ -175,7 +177,8 @@ namespace Logic
         {
           CheckPaymentPercent = 5,
           Quote = 10,
-          TradingSessionDuration = 2
+          TradingSessionDuration = 2,
+          MaxMyCryptCount = 10000
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);

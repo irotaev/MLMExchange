@@ -42,6 +42,18 @@ $headerButton_Height: 64px;
       overflow: hidden;
     }
 
+    .login-on-block__mycrypto
+    {
+      @include span-columns(3, 5);
+      margin-right: 20px;
+      padding-left: 10px;
+      color: #E8ECED;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
     .login-on-block__exit
     {
       @include span-columns(1 omega, 5);

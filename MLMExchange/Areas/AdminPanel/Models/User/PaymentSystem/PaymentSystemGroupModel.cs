@@ -28,13 +28,25 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
   /// <summary>
   /// Модель группы платежных систем
   /// </summary>
-  public class PaymentSystemGroupModel : AbstractDataModel<PaymentSystemGroup, PaymentSystemGroupModel>, IPaySellerInterestRateModel
+  public class PaymentSystemGroupModel : AbstractDataModel<PaymentSystemGroup, D_PaymentSystemGroup, PaymentSystemGroupModel>, IPaySellerInterestRateModel
   {
     /// <summary>
     /// Модели платежных систем типа банк
     /// </summary>
     public List<BankPaymentSystemModel> BankPaymentSystemModels { get; set; }
-    public bool IsHasDefaultPaymentSystem { get; set; }
+
+    #region Default PaymentSystem
+    /// <summary>
+    /// Дефолтная платежная система
+    /// </summary>
+    public BasePaymentSystemModel DefaultPaymentSystem { get; private set; }
+
+    private string _DefaultPaymentSystemDisplayName = Logic.Properties.GeneralResources.EmptyPropertie;
+    /// <summary>
+    /// Имя отображения дефолтной платежной системы
+    /// </summary>
+    public string DefaultPaymentSystemDisplayName { get { return _DefaultPaymentSystemDisplayName; } }
+    #endregion
 
     public override PaymentSystemGroupModel Bind(PaymentSystemGroup @object)
     {
@@ -43,14 +55,19 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
 
       base.Bind(@object);
 
-      Logic.PaymentSystem defaultPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<Logic.PaymentSystem>().Where(x => x.PaymentSystemGroup.Id == @object.Id && x.IsDefault == true).FirstOrDefault();
+      #region PaymentSystem
+      Logic.PaymentSystem paymentSystem = @object.GetDefaultPaymentSystem();
 
-      IsHasDefaultPaymentSystem = defaultPaymentSystem != null;
+      if (paymentSystem != null)
+      {
+        DefaultPaymentSystem = new BasePaymentSystemModel().Bind(paymentSystem);
+        _DefaultPaymentSystemDisplayName = Logic.PaymentSystem.GetDisplayName(paymentSystem);
+      }
+      #endregion
 
       BankPaymentSystemModels = new List<BankPaymentSystemModel>();
 
-      foreach(var bankSystem in @object.BankPaymentSystems)
+      foreach (var bankSystem in @object.LogicObject.BankPaymentSystems)
       {
         BankPaymentSystemModel bankModel = new BankPaymentSystemModel().Bind(bankSystem);
 
@@ -60,7 +77,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       return this;
     }
 
-    public override D_BaseObject UnBind(D_BaseObject @object = null)
+    public override PaymentSystemGroup UnBind(PaymentSystemGroup @object = null)
     {
       throw new NotImplementedException();
     }

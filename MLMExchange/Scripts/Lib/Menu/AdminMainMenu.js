@@ -16,7 +16,8 @@ define(["require", "exports", "jquery"], function(require, exports) {
         */
         AdminMainMenu.prototype.SelectMenuItem = function (num) {
             this._$Menu.find("a").each(function () {
-                if (window.location.href == this.href) {
+                var originalUrl = location.protocol + '//' + location.host + location.pathname;
+                if (originalUrl == this.href) {
                     $(this).find("nav").addClass("pb-mm__menu-item-wrapper-active");
                 }
             });

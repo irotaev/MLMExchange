@@ -240,4 +240,10 @@
   <data name="TransactionNumber" xml:space="preserve">
     <value>Номер транзакции</value>
   </data>
+  <data name="MaxMyCryptCount" xml:space="preserve">
+    <value>Максимальное колличество mycrypto</value>
+  </data>
+  <data name="EmptyPropertie" xml:space="preserve">
+    <value>Не задано</value>
+  </data>
 </root>

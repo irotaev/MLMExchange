@@ -80,8 +80,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
       if (@object.PaymentSystem == null)
         throw new ApplicationException("Payment has no payment system");
 
-      BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BankPaymentSystem>().Where(x => x.Id == @object.PaymentSystem.Id).FirstOrDefault();
+      D_BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_BankPaymentSystem>().Where(x => x.Id == @object.PaymentSystem.Id).FirstOrDefault();
 
       if (bankPaymentSystem == null)
         throw new ApplicationException("PaymentSystem in payment is not BankPaymentSystem type");

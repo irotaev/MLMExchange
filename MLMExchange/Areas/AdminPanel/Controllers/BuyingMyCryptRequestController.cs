@@ -85,7 +85,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (sallerInterestRateBill.PaymentState == BillPaymentState.Paid)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      PaymentSystem paymentSystem = Logic__PaymentSystem.GetPaymentSystemByGuid(paymentSystemId);
+      D_PaymentSystem paymentSystem = Logic__PaymentSystem.GetPaymentSystemByGuid(paymentSystemId);
 
       if (paymentSystem == null)
         throw new UserVisible__WrongParametrException("paymentSystemGuid");

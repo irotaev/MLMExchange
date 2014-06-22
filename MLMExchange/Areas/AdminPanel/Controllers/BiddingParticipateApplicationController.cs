@@ -27,6 +27,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     [HttpPost]
     public ActionResult BiddingParticipateApplicationApply(BiddingParticipateApplicationModel model)
     {
+      if (model.MyCryptCount == null)
+        throw new UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
+
       ModelState.Clear();
 
       UpdateModel<BiddingParticipateApplicationModel>(model);
@@ -35,7 +38,13 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
 
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(biddingApplication);
+        if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.MyCryptCount))
+          throw new UserVisible__WrongParametrException("model");
+
+        if (!(model.MyCryptCount <= model.SystemSettingModel.MaxMyCryptCount))
+          throw new UserVisible__WrongParametrException("model");
+
+        _NHibernateSession.SaveOrUpdate(biddingApplication);
       }
       else
       {

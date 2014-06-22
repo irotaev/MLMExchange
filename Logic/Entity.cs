@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using FluentNHibernate.Mapping;
 using NHibernate.Event;
 using NHibernate.Linq;
-using FluentNHibernate.Mapping;
 using Logic.Lib;
 
 namespace Logic
@@ -51,6 +50,10 @@ namespace Logic
     /// Измеряется в минутах
     /// </summary>
     public virtual decimal TradingSessionDuration { get; set; }
+    /// <summary>
+    /// Максимальное колличество mycrypto при заказе
+    /// </summary>
+    public virtual long MaxMyCryptCount { get; set; }
   }
   #endregion
 
@@ -69,6 +72,10 @@ namespace Logic
     public virtual string Patronymic { get; set; }
     public virtual string Email { get; set; }
     /// <summary>
+    /// Колличество MyCrypto
+    /// </summary>
+    public virtual long MyCryptCount { get; set; }
+    /// <summary>
     /// Относительный путь к фото пользователя
     /// </summary>
     public virtual string PhotoRelativePath { get; set; }
@@ -76,7 +83,7 @@ namespace Logic
     /// <summary>
     /// Группа платежных систем
     /// </summary>
-    public virtual PaymentSystemGroup PaymentSystemGroup { get; set; }
+    public virtual D_PaymentSystemGroup PaymentSystemGroup { get; set; }
     /// <summary>
     /// Роли пользователя в системе
     /// </summary>
@@ -172,7 +179,7 @@ namespace Logic
     /// <summary>
     /// Платежная система, по которой осу-ществлялся платеж
     /// </summary>
-    public virtual PaymentSystem PaymentSystem { get; set; }
+    public virtual D_PaymentSystem PaymentSystem { get; set; }
     /// <summary>
     /// Счет, к которому превязан платеж
     /// </summary>
@@ -294,7 +301,7 @@ namespace Logic
   #endregion
 
   #region Платежные системы
-  public class PaymentSystem : D_BaseObject
+  public class D_PaymentSystem : D_BaseObject
   {
     /// <summary>
     /// Дефолтная система - true, нет - false
@@ -303,10 +310,13 @@ namespace Logic
     /// <summary>
     /// Группа платежных систем
     /// </summary>
-    public virtual PaymentSystemGroup PaymentSystemGroup { get; set; }
+    public virtual D_PaymentSystemGroup PaymentSystemGroup { get; set; }
   }
 
-  public class BankPaymentSystem : PaymentSystem
+  /// <summary>
+  /// Банковская платежная система
+  /// </summary>
+  public class D_BankPaymentSystem : D_PaymentSystem
   {
     public virtual string UserName { get; set; }
     public virtual string UserSurname { get; set; }
@@ -340,17 +350,17 @@ namespace Logic
   /// <summary>
   /// Группа платежных систем
   /// </summary>
-  public class PaymentSystemGroup : D_BaseObject
+  public class D_PaymentSystemGroup : D_BaseObject
   {
-    public PaymentSystemGroup()
+    public D_PaymentSystemGroup()
     {
-      BankPaymentSystems = new List<BankPaymentSystem>();
+      BankPaymentSystems = new List<D_BankPaymentSystem>();
     }
 
     /// <summary>
     /// Платежные системы типа банк
     /// </summary>
-    public virtual IList<BankPaymentSystem> BankPaymentSystems { get; set; }
+    public virtual IList<D_BankPaymentSystem> BankPaymentSystems { get; set; }
     /// <summary>
     /// Кому пренадлежит группа платежных систем
     /// </summary>
@@ -641,6 +651,7 @@ namespace Logic
       Map(x => x.CheckPaymentPercent).Not.Nullable();
       Map(x => x.Quote).Not.Nullable();
       Map(x => x.TradingSessionDuration).Not.Nullable();
+      Map(x => x.MaxMyCryptCount).Not.Nullable();
     }
   }
 
@@ -654,6 +665,7 @@ namespace Logic
       Map(x => x.Surname).Nullable().Length(100);
       Map(x => x.Patronymic).Nullable().Length(100);
       Map(x => x.Email).Nullable().Length(100);
+      Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
       HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
@@ -746,18 +758,18 @@ namespace Logic
   #endregion
 
   #region Платежные системы
-  public class PaymentSystem_Map : D_BaseObject_Map<PaymentSystem>
+  public class PaymentSystem_Map : D_BaseObject_Map<D_PaymentSystem>
   {
     public PaymentSystem_Map()
     {
-      References<PaymentSystemGroup>(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Cascade.SaveUpdate();
+      References<D_PaymentSystemGroup>(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Cascade.SaveUpdate();
       Map(x => x.IsDefault);
 
       UseUnionSubclassForInheritanceMapping();
     }
   }
 
-  public class BankPaymentSystem_Map : SubclassMap<BankPaymentSystem>
+  public class BankPaymentSystem_Map : SubclassMap<D_BankPaymentSystem>
   {
     public BankPaymentSystem_Map()
     {
@@ -773,11 +785,11 @@ namespace Logic
     }
   }
 
-  public class PaymentSystemGroup_Map : D_BaseObject_Map<PaymentSystemGroup>
+  public class PaymentSystemGroup_Map : D_BaseObject_Map<D_PaymentSystemGroup>
   {
     public PaymentSystemGroup_Map()
-    {
-      HasMany<BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
+    { 
+      HasMany<D_BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
       HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate();
     }
   }

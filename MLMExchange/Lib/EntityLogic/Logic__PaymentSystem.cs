@@ -16,12 +16,12 @@ namespace MLMExchange.Lib.EntityLogic
     /// </summary>
     /// <param name="id">Id платежной системы</param>
     /// <returns>Найденная платежная система</returns>
-    public static PaymentSystem GetPaymentSystemByGuid(long id)
+    public static D_PaymentSystem GetPaymentSystemByGuid(long id)
     {
-      PaymentSystem findPaymentSystem;
+      D_PaymentSystem findPaymentSystem;
 
       findPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BankPaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
+        .Query<D_BankPaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
 
       return findPaymentSystem;
     }

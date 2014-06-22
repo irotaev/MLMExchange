@@ -38,8 +38,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
     [HttpPost]
     public ActionResult Remove(long id)
     {
-      BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
+      D_BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
 
       if (bankPaymentSystem == null)
         throw new UserVisible__WrongParametrException("id");
@@ -59,8 +59,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
     /// <returns></returns>
     public ActionResult SetDefault(long id)
     {
-      BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
+      D_BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
 
       if (bankPaymentSystem == null)
         throw new UserVisible__WrongParametrException("id");
@@ -68,8 +68,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
       if (bankPaymentSystem.IsDefault)
         throw new UserVisibleException(MLMExchange.Properties.PrivateResource.Exception_SystemAlreadyDefault);
 
-      BankPaymentSystem bankDefaultPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.IsDefault == true).FirstOrDefault();
+      D_BankPaymentSystem bankDefaultPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.IsDefault == true).FirstOrDefault();
 
       if (bankDefaultPaymentSystem != null)
       {

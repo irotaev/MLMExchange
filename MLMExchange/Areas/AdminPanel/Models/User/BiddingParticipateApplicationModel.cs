@@ -1,15 +1,14 @@
 ﻿using DataAnnotationsExtensions;
 using Logic;
-using MLMExchange.Areas.AdminPanel.Models.User.SalesPeople;
+using MLMExchange.Areas.AdminPanel.Models.PaymentSystem;
 using MLMExchange.Lib.Exception;
 using MLMExchange.Models;
 using MLMExchange.Models.Registration;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.Practices.Unity;
+using NHibernate.Linq;
+using MLMExchange.Areas.AdminPanel.Models.User.SalesPeople;
+using System.Collections.Generic;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User
 {
@@ -31,19 +30,18 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// Состояние заявки
     /// </summary>
     public BiddingParticipateApplicationState State { get; set; }
+    public SystemSettingsModel SystemSettingModel { get; set; }
+    public PaymentSystemGroupModel PaymentSystemGroupModel { get; set; }
 
     public BiddingParticipateApplicationModel Bind(BiddingParticipateApplication @object)
     {
       base.Bind(@object);
-
       MyCryptCount = @object.MyCryptCount;
-
-      UserModel userModel = new UserModel();
-      userModel.Bind(@object.Seller);
 
       State = @object.State;
 
-      Seller = userModel;
+      Seller = new UserModel().Bind(@object.Seller);
+      PaymentSystemGroupModel = new PaymentSystemGroupModel().Bind((PaymentSystemGroup)@object.Seller.PaymentSystemGroup); 
 
       return this;
     }
@@ -61,6 +59,14 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       @object.MyCryptCount = MyCryptCount.Value;
       @object.Seller = MLMExchange.Lib.CurrentSession.Default.CurrentUser;
       @object.State = BiddingParticipateApplicationState.Filed;
+
+      SystemSettingsModel SystemSettingsModel = new SystemSettingsModel(); 
+      SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
+      SystemSettingsModel.Bind(systemSettings.LogicObject);
+      SystemSettingModel = SystemSettingsModel;
+
+      PaymentSystemGroupModel PaymentSystemModel = new PaymentSystemGroupModel();
+      PaymentSystemGroupModel = PaymentSystemModel;
 
       return @object;
     }

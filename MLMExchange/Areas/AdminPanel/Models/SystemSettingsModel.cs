@@ -29,6 +29,12 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public decimal? TradingSessionDuration { get; set; }
+    /// <summary>
+    /// Максимальное колличество mycrypto при заказе
+    /// </summary>
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public long? MaxMyCryptCount { get; set; }
 
     public override SystemSettingsModel Bind(D_SystemSettings @object)
     {
@@ -37,6 +43,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       CheckPaymentPercent = @object.CheckPaymentPercent;
       Quote = @object.Quote;
       TradingSessionDuration = @object.TradingSessionDuration;
+      MaxMyCryptCount = @object.MaxMyCryptCount;
 
       return this;
     }
@@ -60,7 +67,17 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
       d_systemSettings.TradingSessionDuration = TradingSessionDuration.Value;
 
+      if(MaxMyCryptCount == null)
+        throw new ArgumentNullException("TradingSessionDuration");
+
+      d_systemSettings.MaxMyCryptCount = MaxMyCryptCount.Value;
+
       return d_systemSettings;
+    }
+
+    internal SystemSettingsModel Bind(MLMExchange.Models.Registration.UserModel userModel)
+    {
+      throw new NotImplementedException();
     }
   }
 }

@@ -55,7 +55,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
       }
 
-      PaymentSystem d_paymentSystem = session.Query<PaymentSystem>()
+      D_PaymentSystem d_paymentSystem = session.Query<D_PaymentSystem>()
         .Where(x => x.Id == paymentSystemId).FirstOrDefault();
 
       if (d_paymentSystem == null)

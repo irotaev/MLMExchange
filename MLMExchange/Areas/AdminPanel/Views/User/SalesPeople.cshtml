@@ -145,14 +145,16 @@
       .Model(X.Model().Fields(
           new ModelField { Name = "Seller", ServerMapping = "Seller.Name" },
           new ModelField { Name = "MyCryptCount" },
-          new ModelField { Name = "SellerUser__Id", ServerMapping = "Seller.Id" }
+          new ModelField { Name = "SellerUser__Id", ServerMapping = "Seller.Id" },
+          new ModelField { Name = "BasePaymentSystenName", ServerMapping = "PaymentSystemGroupModel.DefaultPaymentSystemDisplayName" }
       )))
       .ColumnModel(
         X.RowNumbererColumn(),
         X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Seller").Flex(1),
-    //X.TemplateColumn().TemplateString(@<div>Hellow {MyCryptCount}</div>),
-        X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.PaymentSystem).DataIndex("BasePaymentSystenName").Flex(1),
         X.ImageCommandColumn().Commands(
+
           X.ImageCommand().CommandName("BuyMyCrypt").Icon(Icon.Accept).Text("Купить")
         )
         .Listeners(ls =>

@@ -95,6 +95,9 @@ namespace MLMExchange.Models
     #region For logic objects
     public virtual AbstractDataModel Bind(IAbstractBaseLogicObject @object)
     {
+      if (@object == null)
+        throw new ArgumentNullException("@object");
+
       Id = @object.BaseLogicObject.Id;
       CreationDateTime = @object.BaseLogicObject.CreationDateTime;
 
@@ -150,6 +153,9 @@ namespace MLMExchange.Models
   {
     public virtual TModel Bind(TLogicObject @object)
     {
+      if (@object == null)
+        throw new ArgumentNullException("@object");
+
       base.Bind(@object);
 
       return this as TModel;

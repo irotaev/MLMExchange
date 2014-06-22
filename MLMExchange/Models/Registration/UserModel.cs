@@ -34,6 +34,7 @@ namespace MLMExchange.Models.Registration
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceName = "FieldEmailInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Email { get; set; }
+    public long MyCryptCount { get; set; }
 
     public HttpPostedFileBase Photo { get; set; }
     [HiddenInput(DisplayValue = false)]
@@ -46,6 +47,7 @@ namespace MLMExchange.Models.Registration
 
       base.Bind(@object);
 
+      this.MyCryptCount = @object.MyCryptCount;
       this.Email = @object.Email;
       this.Login = @object.Login;
       this.Name = @object.Name;
@@ -71,7 +73,7 @@ namespace MLMExchange.Models.Registration
       user.PhotoRelativePath = this.PhotoRelativePath;
 
       if (user.PaymentSystemGroup == null)
-        user.PaymentSystemGroup = new PaymentSystemGroup();
+        user.PaymentSystemGroup = new D_PaymentSystemGroup();
 
       return user;
     }

@@ -113,7 +113,7 @@ else
     </header>
   }
 
-  @if (!Model.IsHasDefaultPaymentSystem)
+  @if (Model.DefaultPaymentSystem != null)
   { 
     <aside class="b-psg__notice">
         <p class="b-psg__text">@MLMExchange.Properties.PrivateResource.DefaultPaymentSystemNotSet <i class="b-psg__icon fa fa-question-circle"></i></p>

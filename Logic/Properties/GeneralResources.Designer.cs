@@ -223,6 +223,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не задано.
+        /// </summary>
+        public static string EmptyPropertie {
+            get {
+                return ResourceManager.GetString("EmptyPropertie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ИНН.
         /// </summary>
         public static string INN {
@@ -246,6 +255,15 @@ namespace Logic.Properties {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Максимальное колличество mycrypto.
+        /// </summary>
+        public static string MaxMyCryptCount {
+            get {
+                return ResourceManager.GetString("MaxMyCryptCount", resourceCulture);
             }
         }
         

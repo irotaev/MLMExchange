@@ -297,6 +297,9 @@
   <data name="MakeObjectDefault" xml:space="preserve">
     <value>Сделать объект по-умолчанию</value>
   </data>
+  <data name="MyCryptCount" xml:space="preserve">
+    <value>Колличество MyCrypt</value>
+  </data>
   <data name="MyCryptNumber" xml:space="preserve">
     <value>Количество my-crypt</value>
   </data>

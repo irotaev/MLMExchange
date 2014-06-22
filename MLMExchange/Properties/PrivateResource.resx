@@ -142,10 +142,10 @@
     <value>Необходимо оплатит процентную ставку продавцу, в размере {0}</value>
   </data>
   <data name="WaitingSellerInterestRatePayment" xml:space="preserve">
-    <value>Ожидание оплаты комисионного сбора продавцу</value>
+    <value>Ожидание оплаты продавцу</value>
   </data>
   <data name="WaitingSellerInterestRatePayment_Accept" xml:space="preserve">
-    <value>Ожидание подтверждения комиссионного сбора продавцом</value>
+    <value>Ожидание подтверждения оплаты продавцом</value>
   </data>
   <data name="WaitingUserResponse" xml:space="preserve">
     <value>Ожидание отклика пользователей</value>
@@ -160,7 +160,7 @@
     <value>Ожидание проверочного платежа системе</value>
   </data>
   <data name="WaitingTradingSessionProgress" xml:space="preserve">
-    <value>Ожидание торговой сессии</value>
+    <value>Ожидание закрытия торговой сессии</value>
   </data>
   <data name="UserManagment" xml:space="preserve">
     <value>Управление пользователями</value>

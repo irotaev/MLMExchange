@@ -241,7 +241,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ожидание оплаты комисионного сбора продавцу.
+        ///   Looks up a localized string similar to Ожидание оплаты продавцу.
         /// </summary>
         public static string WaitingSellerInterestRatePayment {
             get {
@@ -250,7 +250,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ожидание подтверждения комиссионного сбора продавцом.
+        ///   Looks up a localized string similar to Ожидание подтверждения оплаты продавцом.
         /// </summary>
         public static string WaitingSellerInterestRatePayment_Accept {
             get {
@@ -259,7 +259,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ожидание торговой сессии.
+        ///   Looks up a localized string similar to Ожидание закрытия торговой сессии.
         /// </summary>
         public static string WaitingTradingSessionProgress {
             get {

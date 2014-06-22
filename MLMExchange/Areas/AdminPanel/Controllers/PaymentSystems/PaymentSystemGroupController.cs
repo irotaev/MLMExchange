@@ -28,7 +28,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         IsPaymentSystemOperationRootOperationEnable = true,
       };
 
-      PaymentSystemGroup paymentSystemGroup;
+      D_PaymentSystemGroup paymentSystemGroup;
 
       if (actionSettings.ForUserId == null)
       {
@@ -38,12 +38,12 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
       }
       else
       {
-        paymentSystemGroup = session.Query<PaymentSystemGroup>().Where(x => x.User.Id == actionSettings.ForUserId).FirstOrDefault();
+        paymentSystemGroup = session.Query<D_PaymentSystemGroup>().Where(x => x.User.Id == actionSettings.ForUserId).FirstOrDefault();
 
         viewSettings.IsRootUser = false;
       }
 
-      PaymentSystemGroupModel model = new PaymentSystemGroupModel().Bind(paymentSystemGroup);
+      PaymentSystemGroupModel model = new PaymentSystemGroupModel().Bind((PaymentSystemGroup)paymentSystemGroup);
 
       if (paymentSystemGroup == null)
         throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
@@ -108,13 +108,13 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
 
       if (ModelState.IsValid)
       {
-        PaymentSystemGroup paymentSystemGroup = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        D_PaymentSystemGroup paymentSystemGroup = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_User>().Where(x => x.Id == CurrentSession.Default.CurrentUser.Id).Select(x => x.PaymentSystemGroup).FirstOrDefault();
 
         if (paymentSystemGroup == null)
           throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
 
-        BankPaymentSystem bankPaymentSystem = model.UnBind();
+        D_BankPaymentSystem bankPaymentSystem = model.UnBind();
         bankPaymentSystem.PaymentSystemGroup = paymentSystemGroup;
 
         paymentSystemGroup.BankPaymentSystems.Add(bankPaymentSystem);

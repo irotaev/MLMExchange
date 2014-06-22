@@ -12,9 +12,40 @@ using System.Web.Mvc;
 namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
 {
   /// <summary>
+  /// Базовый класс для всех платежных систем
+  /// </summary>
+  /// <typeparam name="TDataObject">Объект данных соответствующей платежной системы</typeparam>
+  /// <typeparam name="TModel">Модель платежной системы</typeparam>
+  public abstract class AbstractPaymentSystemModel<TDataObject, TModel> : AbstractDataModel<TDataObject, TModel>
+    where TDataObject : D_PaymentSystem, new()
+    where TModel : BaseModel
+  {
+  }
+
+  /// <summary>
+  /// Базовый класс для всех платежных систем
+  /// </summary>
+  /// <typeparam name="TDataObject">Объект данных соответствующей платежной системы</typeparam>
+  /// <typeparam name="TLogicObject">Объект логики (прокси-объект) соответствующей платежной системы</typeparam>
+  /// <typeparam name="TModel">Модель платежной системы</typeparam>
+  public abstract class AbstractPaymentSystemModel<TLogicObject, TDataObject, TModel> : AbstractDataModel<TLogicObject, TDataObject, TModel>
+    where TLogicObject : AbstractLogicObject<TDataObject>
+    where TDataObject : D_PaymentSystem, new()
+    where TModel : BaseModel
+  {
+  }
+
+  /// <summary>
+  /// Базовый объект платежной системы
+  /// </summary>
+  public class BasePaymentSystemModel : AbstractPaymentSystemModel<Logic.PaymentSystem, D_PaymentSystem, BasePaymentSystemModel>
+  {
+  }
+
+  /// <summary>
   /// Модель платежной системы банк
   /// </summary>
-  public class BankPaymentSystemModel : AbstractDataModel<BankPaymentSystem, BankPaymentSystemModel>
+  public class BankPaymentSystemModel : AbstractPaymentSystemModel<D_BankPaymentSystem, BankPaymentSystemModel>
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string UserName { get; set; }
@@ -54,7 +85,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     [HiddenInput(DisplayValue = false)]
     public bool IsDefault { get; set; }
 
-    public override BankPaymentSystemModel Bind(BankPaymentSystem @object)
+    public override BankPaymentSystemModel Bind(D_BankPaymentSystem @object)
     {
       if (@object == null)
         throw new ArgumentNullException("object");
@@ -76,10 +107,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       return this;
     }
 
-    public override BankPaymentSystem UnBind(BankPaymentSystem @object = null)
+    public override D_BankPaymentSystem UnBind(D_BankPaymentSystem @object = null)
     {
       if (@object == null)
-        @object = new BankPaymentSystem();
+        @object = new D_BankPaymentSystem();
 
       base.UnBind(@object);
 

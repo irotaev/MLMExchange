@@ -1405,6 +1405,20 @@ body {
   overflow: hidden;
 }
 /* line 46, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+.main-header .login-on-block .login-on-block__mycrypto {
+  width: 226px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+  margin-right: 20px;
+  padding-left: 10px;
+  color: #E8ECED;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+/* line 58, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block .login-on-block__exit {
   width: 62px;
   float: right;
@@ -1421,30 +1435,30 @@ body {
   -o-transition: opacity 0.25s linear;
   transition: opacity 0.25s linear;
 }
-/* line 54, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 66, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .login-on-block .login-on-block__exit:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
 }
-/* line 61, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 73, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .b-button {
   height: 64px;
 }
-/* line 68, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 80, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .buttons .b-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 74, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 86, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .buttons .b-button.logo .pb-icon {
   display: block;
   background: url("/Content/images/Header/logo.png") center no-repeat;
   width: 144px;
   height: 64px;
 }
-/* line 84, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block {
   position: relative;
   width: 390px;
@@ -1454,29 +1468,29 @@ body {
   display: inline;
   background-color: #2A7CA0;
 }
-/* line 90, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 102, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button {
   background-color: #2A7CA0;
 }
-/* line 94, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 106, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button {
   width: 144px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 98, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 110, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
   background-color: #45a2d0;
   cursor: default;
 }
-/* line 100, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 112, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.enter-button:hover .login-section {
   display: block;
 }
-/* line 105, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 117, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button {
   width: 226px;
   float: right;
@@ -1484,11 +1498,11 @@ body {
   *margin-left: -20px;
   display: inline;
 }
-/* line 109, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 121, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .b-button.register-button:active {
   background-color: #0055d4;
 }
-/* line 116, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 128, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section {
   position: absolute;
   top: 64px;
@@ -1497,7 +1511,7 @@ body {
   display: none;
   cursor: default;
 }
-/* line 124, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 136, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-area-arrow {
   position: absolute;
   top: -17px;
@@ -1507,7 +1521,7 @@ body {
   background: url("/Content/images/Header/LoginArea/login-area-arrow.png") center no-repeat;
   z-index: 100;
 }
-/* line 134, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 146, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area {
   position: absolute;
   top: 20px;
@@ -1523,11 +1537,11 @@ body {
   -moz-box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
   box-shadow: 0 0 10px 0 rgba(91, 91, 91, 0.85);
 }
-/* line 143, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 155, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .input-group {
   margin-bottom: 15px;
 }
-/* line 148, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
+/* line 160, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MainHeader.scss */
 .main-header .main-header-top .main-registration-block .login-section .login-enter-area .register-button {
   background-color: #41C480;
   height: 40px;

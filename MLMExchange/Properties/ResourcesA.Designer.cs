@@ -601,6 +601,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Колличество MyCrypt.
+        /// </summary>
+        public static string MyCryptCount {
+            get {
+                return ResourceManager.GetString("MyCryptCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Количество my-crypt.
         /// </summary>
         public static string MyCryptNumber {
