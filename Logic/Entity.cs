@@ -79,7 +79,7 @@ namespace Logic
     /// Относительный путь к фото пользователя
     /// </summary>
     public virtual string PhotoRelativePath { get; set; }
-    public virtual IList<Payment> Payments { get; set; }
+    //public virtual IList<Payment> Payments { get; set; }
     /// <summary>
     /// Группа платежных систем
     /// </summary>
@@ -626,7 +626,7 @@ namespace Logic
   #endregion
 
   #region Map Entity
-  abstract public class D_BaseObject_Map<TObject> : ClassMap<TObject> where TObject : D_BaseObject
+  public abstract class D_BaseObject_Map<TObject> : ClassMap<TObject> where TObject : D_BaseObject
   {
     public D_BaseObject_Map()
     {
@@ -667,7 +667,7 @@ namespace Logic
       Map(x => x.Email).Nullable().Length(100);
       Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
-      HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
+      //HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
 
@@ -758,9 +758,9 @@ namespace Logic
   #endregion
 
   #region Платежные системы
-  public class PaymentSystem_Map : D_BaseObject_Map<D_PaymentSystem>
+  public class D_PaymentSystem_Map : D_BaseObject_Map<D_PaymentSystem>
   {
-    public PaymentSystem_Map()
+    public D_PaymentSystem_Map()
     {
       References<D_PaymentSystemGroup>(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Cascade.SaveUpdate();
       Map(x => x.IsDefault);

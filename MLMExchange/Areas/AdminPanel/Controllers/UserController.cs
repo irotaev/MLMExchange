@@ -257,7 +257,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
 
-      return this.Store(buyingMyCryptRequestsHistory);
+      return Json(new { data = "data" });
+      //return this.Store(buyingMyCryptRequestsHistory);
     }
     #endregion
 
