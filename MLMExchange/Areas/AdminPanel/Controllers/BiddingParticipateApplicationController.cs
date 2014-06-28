@@ -36,13 +36,13 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (ModelState.IsValid)
       {
-        BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
-
         if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.MyCryptCount))
           throw new UserVisible__WrongParametrException("model");
 
         if (!(model.MyCryptCount <= model.SystemSettingModel.MaxMyCryptCount))
           throw new UserVisible__WrongParametrException("model");
+
+        BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
 
         _NHibernateSession.SaveOrUpdate(biddingApplication);
       }
@@ -136,6 +136,17 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;
 
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
+
+      #region Перевожу все остальные заявки на покупку для данной заявки на продажу в стату отменено
+      List<BuyingMyCryptRequest> buyingMyCryptRequests = _NHibernateSession.Query<BuyingMyCryptRequest>()
+        .Where(x => x.Id != buyingMyCryptRequest.Id && x.BiddingParticipateApplication.Id == buyingMyCryptRequest.BiddingParticipateApplication.Id).ToList();
+
+      foreach (var request in buyingMyCryptRequests)
+      {
+        request.State = BuyingMyCryptRequestState.Denied;
+        _NHibernateSession.SaveOrUpdate(buyingMyCryptRequest);
+      }
+      #endregion
 
       return Redirect(Request.UrlReferrer.ToString());
     }
