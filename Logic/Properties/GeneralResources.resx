@@ -246,4 +246,7 @@
   <data name="EmptyPropertie" xml:space="preserve">
     <value>Не задано</value>
   </data>
+  <data name="ElectronicPaymentSystem" xml:space="preserve">
+    <value>Платежная система: Электронная платёжная система</value>
+  </data>
 </root>

@@ -107,7 +107,7 @@
   
   <div class="pb-bpa__buyer-accepted-wrapper">
     <div class="pb-bpa__buyer-short-info">
-      <a href="#"><span class="pb-bpa__text">@buyer.Login</span></a> <span class="pb-bpa__buyer">( @Logic.Properties.GeneralResources.Buyer )</span>
+      <a href="/AdminPanel/User/Browse?objectId=@buyer.Id"><span class="pb-bpa__text">@buyer.Login</span></a> <span class="pb-bpa__buyer">( @Logic.Properties.GeneralResources.Buyer )</span>
     </div>
 
     <div class="pb-bpa__buyer-additional-info">
@@ -156,8 +156,9 @@
           
           new Ext.Window({
             id: "PaymentCheck__Window",
-            width: 400,
+            width: 500,
             height: 400,
+            resizable: false,
             modal: true,
             title: "@MLMExchange.Properties.ResourcesA.ShowPayment",
             autoLoad: {

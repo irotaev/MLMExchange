@@ -138,6 +138,9 @@
   <data name="AddPhoto" xml:space="preserve">
     <value>Добавьте фотографию</value>
   </data>
+  <data name="AdministartorMode" xml:space="preserve">
+    <value>Режим администратора</value>
+  </data>
   <data name="AgreeWithTerms" xml:space="preserve">
     <value>С условиями согласен</value>
   </data>

@@ -1,5 +1,6 @@
 ﻿using DataAnnotationsExtensions;
 using Logic;
+using MLMExchange.Areas.AdminPanel.Models.PaymentSystem;
 using MLMExchange.Lib.Exception;
 using MLMExchange.Models;
 using System;

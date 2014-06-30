@@ -144,11 +144,10 @@ namespace Logic
           Name = "Андрей",
           Surname = "Ротаев",
           Patronymic = "Валерьевич",
-          Email = "irotaev@gmail.com",
-          MyCryptCount = 10000
+          Email = "irotaev@gmail.com"
         };
 
-        irotaevUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = irotaevUser } };
+        irotaevUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = irotaevUser, MyCryptCount = 10000 } };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(irotaevUser);
 
@@ -160,11 +159,10 @@ namespace Logic
           Name = "Ньюбик",
           Surname = "Петрович",
           Patronymic = "Семенов",
-          Email = "newbik@gmail.com",
-          MyCryptCount = 10000
+          Email = "newbik@gmail.com"
         };
 
-        newbikUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = newbikUser } };
+        newbikUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = newbikUser, MyCryptCount = 5000 } };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(newbikUser);
       }

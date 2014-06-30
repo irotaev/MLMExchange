@@ -138,7 +138,16 @@
                 }
                 <div class="login-on-block__nickname">@MLMExchange.Lib.CurrentSession.Default.CurrentUser.Name @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Surname @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Patronymic</div>
                 <a href="/account/logout"><div class="login-on-block__exit"></div></a>
-                <div class="login-on-block__mycrypto">@MLMExchange.Properties.ResourcesA.MyCryptCount: @MLMExchange.Lib.CurrentSession.Default.CurrentUser.MyCryptCount</div>
+                @if (((Logic.User)MLMExchange.Lib.CurrentSession.Default.CurrentUser).IsAdministratorRoleExsists())
+                { 
+                 <div class="login-on-block__adminMode">@MLMExchange.Properties.ResourcesA.AdministartorMode</div>
+                }
+                else
+                {
+                <div class="login-on-block__mycrypto">
+                @MLMExchange.Properties.ResourcesA.MyCryptCount: @MLMExchange.Lib.CurrentSession.Default.CurrentUser.UserRole.FirstOrDefault().MyCryptCount
+                </div>
+                }
               </div>
             }
           </div>

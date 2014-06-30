@@ -124,6 +124,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Режим администратора.
+        /// </summary>
+        public static string AdministartorMode {
+            get {
+                return ResourceManager.GetString("AdministartorMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to С условиями согласен.
         /// </summary>
         public static string AgreeWithTerms {

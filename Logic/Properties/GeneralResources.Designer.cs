@@ -223,6 +223,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Платежная система: Электронная платёжная система.
+        /// </summary>
+        public static string ElectronicPaymentSystem {
+            get {
+                return ResourceManager.GetString("ElectronicPaymentSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не задано.
         /// </summary>
         public static string EmptyPropertie {

@@ -11,15 +11,15 @@
     <div class="b-psg__payment-system-item b-psg__default-system">
       <div class="b-bp">
         <header class="b-bp__header">
-          <p class="b-bp__text">@MLMExchange.Properties.ResourcesA.ShowPayment</p>
+          <p class="b-bp__text">@MLMExchange.Properties.ResourcesA.ShowPayment (@MLMExchange.Properties.ResourcesA.BankPayment)</p>
         </header>
         <table class="b-bp__payment-info">
           <tr class="b-bp__payment-info__row">
-            <td>@Logic.Properties.GeneralResources.TransactionNumber:</td>
+            <td>@Logic.Properties.GeneralResources.TransactionNumber</td>
             <td>@Model.Id</td>
           </tr>
           <tr class="b-bp__payment-info__row">
-            <td>Money:</td>
+            <td>@Logic.Properties.GeneralResources.MoneyAmount</td>
             <td>@Model.RealMoneyAmount</td>
           </tr>
           <tr class="b-bp__payment-info__row">
@@ -31,12 +31,20 @@
             <td>@Model.Payer.Surname</td>
           </tr>
           <tr class="b-bp__payment-info__row">
-            <td>@Logic.Properties.GeneralResources.CreationDateTime:</td>
+            <td>@Logic.Properties.GeneralResources.CreationDateTime</td>
             <td>@Model.CreationDateTime.ToLocalTime()</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.BankName</td>
+            <td>@Model.BankPaymentSystemModel.BankName</td>
           </tr>
           <tr class="b-bp__payment-info__row">
             <td>@Logic.Properties.GeneralResources.BIK</td>
             <td>@Model.BankPaymentSystemModel.BIK</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.CorrespondentAccount</td>
+            <td>@Model.BankPaymentSystemModel.CorrespondentAccount</td>
           </tr>
         </table>
       </div>

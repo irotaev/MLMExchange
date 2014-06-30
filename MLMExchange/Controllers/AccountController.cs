@@ -38,7 +38,7 @@ namespace MLMExchange.Controllers
         }
       }
 
-      return Redirect(Request.UrlReferrer.ToString());
+      return Redirect("/AdminPanel/User/ControlPanel");
     }
 
     public ActionResult LogOut()

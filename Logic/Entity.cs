@@ -63,6 +63,7 @@ namespace Logic
     public D_User()
     {
       Roles = new List<D_AbstractRole>();
+      UserRole = new List<D_UserRole>();
     }
 
     public virtual string Login { get; set; }
@@ -71,10 +72,6 @@ namespace Logic
     public virtual string Surname { get; set; }
     public virtual string Patronymic { get; set; }
     public virtual string Email { get; set; }
-    /// <summary>
-    /// Колличество MyCrypto
-    /// </summary>
-    public virtual long MyCryptCount { get; set; }
     /// <summary>
     /// Относительный путь к фото пользователя
     /// </summary>
@@ -92,6 +89,7 @@ namespace Logic
     /// Тип пользователя
     /// </summary>
     public virtual D_UserType UserType { get; set; }
+    public virtual IList<D_UserRole> UserRole { get; set; }
   }
 
   /// <summary>
@@ -148,7 +146,7 @@ namespace Logic
     /// <summary>
     /// Количество my-crypt
     /// </summary>
-    public virtual long? MyCryptCount { get; set; }
+    public virtual long MyCryptCount { get; set; }
   }
 
   /// <summary>
@@ -226,10 +224,10 @@ namespace Logic
         decimal totalPaymetsMoney = 0;
 
         Payments.ForEach(p =>
-          {
-            if (p.RealMoneyAmount != null)
-              totalPaymetsMoney += p.RealMoneyAmount;
-          });
+        {
+          if (p.RealMoneyAmount != null)
+            totalPaymetsMoney += p.RealMoneyAmount;
+        });
 
         return totalPaymetsMoney < MoneyAmount;
       }
@@ -665,13 +663,13 @@ namespace Logic
       Map(x => x.Surname).Nullable().Length(100);
       Map(x => x.Patronymic).Nullable().Length(100);
       Map(x => x.Email).Nullable().Length(100);
-      Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
       //HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
 
       DiscriminateSubClassesOnColumn<D_UserType>("UserType", D_UserType.BaseUser);
+      HasMany(x => x.UserRole).KeyColumn("UserId").Cascade.All();
     }
   }
 
@@ -700,7 +698,7 @@ namespace Logic
     {
       DiscriminatorValue(RoleType.User);
 
-      Map(x => x.MyCryptCount).Nullable();
+      Map(x => x.MyCryptCount).Default("0").Not.Nullable();
     }
   }
 
@@ -788,7 +786,7 @@ namespace Logic
   public class PaymentSystemGroup_Map : D_BaseObject_Map<D_PaymentSystemGroup>
   {
     public PaymentSystemGroup_Map()
-    { 
+    {
       HasMany<D_BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
       HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate();
     }
@@ -893,7 +891,7 @@ namespace Logic
 
       if (baseObject == null)
         return false;
-      
+
       if (dataConfigAttribute != null)
       {
         if (dataConfigAttribute.LogicProxyType != null)

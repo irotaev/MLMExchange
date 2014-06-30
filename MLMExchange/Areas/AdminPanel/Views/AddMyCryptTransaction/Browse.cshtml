@@ -8,8 +8,16 @@
 <section class="b-amt">
   <div class="b-amt__transaction-info-wrapper">
     <div class="b-amt__mycrypt-confirmation-photo-wrapper b-image">
-      <img class="b-amt__mycrypt-confirmation-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptConfirmationImage"
+      @if(!(String.IsNullOrEmpty(Model.ImageRelativePath)))
+      {
+        <img class="b-amt__mycrypt-confirmation-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptConfirmationImage"
            src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).Crop(330, 290).FullName)" />
+      }
+      else
+      {
+        <img class="b-amt__mycrypt-confirmation-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptConfirmationImage"
+             src="/Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "NoPhoto.png").Crop(330, 290).FullName)" />
+      }
     </div>
 
     <aside class="b-amt__comment-wrapper">
@@ -35,13 +43,22 @@
 
     <div class="b-amt__additional-info">
       <div class="b-amt__photo-wrapper b-image">
+        @if(String.IsNullOrEmpty(Model.Initiator.PhotoRelativePath))
+        {
         <img class="b-amt__mycrypt-request-initiator-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptInitiatorPhoto"
-             src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.Initiator.PhotoRelativePath).Crop(115, 100).FullName)" />
+             src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(MLMExchange.Lib.Image.Image.UploadRelativeDir, "anonymous-user.png").Crop(115, 100).FullName)" />
+        }
+        else
+        { 
+          <img class="b-amt__mycrypt-confirmation-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptInitiatorPhoto"
+               src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.Initiator.PhotoRelativePath).Crop(115, 100).FullName)" />
+        }
       </div>
 
       <div class="b-amt__user-info-wrapper">
         <div class="b-amt__fio">@(String.Format("{0} {1} {2}", Model.Initiator.Surname, Model.Initiator.Name, Model.Initiator.Patronymic))</div>
-        <div class="b-amt__login"><a href="#">@Model.Initiator.Login</a></div>
+        <div class="b-amt__login"><a href="/AdminPanel/User/Browse?objectId=@Model.Initiator.Id">@Model.Initiator.Login</a></div>
+        <div class="b-amt__mycryptCount">@MLMExchange.Properties.ResourcesA.MyCryptCount: </div>
       </div>
     </div>
   </aside>
