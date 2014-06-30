@@ -36,10 +36,12 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (ModelState.IsValid)
       {
+        SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
+
         if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.UserRole.FirstOrDefault().MyCryptCount))
             throw new UserVisible__WrongParametrException("model");
   
-          if (!(model.MyCryptCount <= model.SystemSettingModel.MaxMyCryptCount))
+          if (!(model.MyCryptCount <= systemSettings.LogicObject.MaxMyCryptCount))
             throw new UserVisible__WrongParametrException("model");
   
           BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);

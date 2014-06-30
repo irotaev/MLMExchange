@@ -58,7 +58,7 @@
       <div class="b-amt__user-info-wrapper">
         <div class="b-amt__fio">@(String.Format("{0} {1} {2}", Model.Initiator.Surname, Model.Initiator.Name, Model.Initiator.Patronymic))</div>
         <div class="b-amt__login"><a href="/AdminPanel/User/Browse?objectId=@Model.Initiator.Id">@Model.Initiator.Login</a></div>
-        <div class="b-amt__mycryptCount">@MLMExchange.Properties.ResourcesA.MyCryptCount: </div>
+        <div class="b-amt__mycryptCount">@MLMExchange.Properties.ResourcesA.MyCryptCount: @Model.Initiator.UserRole.MyCryptCount</div>
       </div>
     </div>
   </aside>

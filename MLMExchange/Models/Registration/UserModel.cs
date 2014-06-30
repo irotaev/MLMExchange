@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Logic;
+using Microsoft.Practices.Unity;
+using NHibernate.Linq;
 
 namespace MLMExchange.Models.Registration
 {
@@ -39,6 +42,8 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
+    public D_UserRole UserRole { get; set; }
+
     public UserModel Bind(Logic.D_User @object)
     {
       if (@object == null)
@@ -52,6 +57,11 @@ namespace MLMExchange.Models.Registration
       this.Patronymic = @object.Patronymic;
       this.PhotoRelativePath = @object.PhotoRelativePath;
       this.Surname = @object.Surname;
+
+      D_UserRole d_userRole = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_UserRole>().Where(x => x.User.Id == Id).FirstOrDefault();
+
+      UserRole = d_userRole;
 
       return this;
     }

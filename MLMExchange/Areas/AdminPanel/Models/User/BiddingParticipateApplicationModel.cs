@@ -30,7 +30,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// Состояние заявки
     /// </summary>
     public BiddingParticipateApplicationState State { get; set; }
-    public SystemSettingsModel SystemSettingModel { get; set; }
     public PaymentSystemGroupModel PaymentSystemGroupModel { get; set; }
 
     public BiddingParticipateApplicationModel Bind(BiddingParticipateApplication @object)
@@ -59,11 +58,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       @object.MyCryptCount = MyCryptCount.Value;
       @object.Seller = MLMExchange.Lib.CurrentSession.Default.CurrentUser;
       @object.State = BiddingParticipateApplicationState.Filed;
-
-      SystemSettingsModel SystemSettingsModel = new SystemSettingsModel(); 
-      SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
-      SystemSettingsModel.Bind(systemSettings.LogicObject);
-      SystemSettingModel = SystemSettingsModel;
 
       PaymentSystemGroupModel PaymentSystemModel = new PaymentSystemGroupModel();
       PaymentSystemGroupModel = PaymentSystemModel;
