@@ -34,6 +34,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     /// Модели платежных систем типа банк
     /// </summary>
     public List<BankPaymentSystemModel> BankPaymentSystemModels { get; set; }
+    /// <summary>
+    /// Модель платёжных систем типа электронные
+    /// </summary>
+    public List<ElectronicPaymentSystemModel> ElectronicPaymentSystemModels { get; set; }
 
     #region Default PaymentSystem
     /// <summary>
@@ -72,6 +76,15 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
         BankPaymentSystemModel bankModel = new BankPaymentSystemModel().Bind(bankSystem);
 
         BankPaymentSystemModels.Add(bankModel);
+      }
+
+      ElectronicPaymentSystemModels = new List<ElectronicPaymentSystemModel>();
+
+      foreach (var electronicSystem in @object.LogicObject.ElectronicPaymentSystems)
+      {
+        ElectronicPaymentSystemModel electronicModel = new ElectronicPaymentSystemModel().Bind(electronicSystem);
+
+        ElectronicPaymentSystemModels.Add(electronicModel);
       }
 
       return this;

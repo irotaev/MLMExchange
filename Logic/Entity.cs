@@ -229,8 +229,7 @@ namespace Logic
 
         Payments.ForEach(p =>
         {
-          if (p.RealMoneyAmount != null)
-            totalPaymetsMoney += p.RealMoneyAmount;
+          totalPaymetsMoney += p.RealMoneyAmount;
         });
 
         return totalPaymetsMoney < MoneyAmount;
@@ -350,6 +349,21 @@ namespace Logic
   }
 
   /// <summary>
+  /// Электронная платёжная система
+  /// </summary>
+  public class D_ElectronicPaymentSystem : D_PaymentSystem
+  {
+    /// <summary>
+    /// Название электронной платёжной системы
+    /// </summary>
+    public virtual string ElectronicName { get; set; }
+    /// <summary>
+    /// Номер кошелька
+    /// </summary>
+    public virtual string PurseNumber { get; set; }
+  }
+
+  /// <summary>
   /// Группа платежных систем
   /// </summary>
   public class D_PaymentSystemGroup : D_BaseObject
@@ -357,12 +371,17 @@ namespace Logic
     public D_PaymentSystemGroup()
     {
       BankPaymentSystems = new List<D_BankPaymentSystem>();
+      ElectronicPaymentSystems = new List<D_ElectronicPaymentSystem>();
     }
 
     /// <summary>
     /// Платежные системы типа банк
     /// </summary>
     public virtual IList<D_BankPaymentSystem> BankPaymentSystems { get; set; }
+    /// <summary>
+    /// Платёжные системы типа электронные
+    /// </summary>
+    public virtual IList<D_ElectronicPaymentSystem> ElectronicPaymentSystems { get; set; }
     /// <summary>
     /// Кому пренадлежит группа платежных систем
     /// </summary>
@@ -788,11 +807,21 @@ namespace Logic
     }
   }
 
+  public class ElectronicPaymentSystem_Map : SubclassMap<D_ElectronicPaymentSystem>
+  {
+    public ElectronicPaymentSystem_Map()
+    {
+      Map(x => x.ElectronicName).Not.Nullable();
+      Map(x => x.PurseNumber).Not.Nullable();
+    }
+  }
+
   public class PaymentSystemGroup_Map : D_BaseObject_Map<D_PaymentSystemGroup>
   {
     public PaymentSystemGroup_Map()
     {
       HasMany<D_BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
+      HasMany<D_ElectronicPaymentSystem>(x => x.ElectronicPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
       HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate();
     }
   }

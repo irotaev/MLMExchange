@@ -64,12 +64,24 @@ else
         $("#pb-bpse_ID").find("input[type='submit']").click();
     }
 
+    function BtnSave_PaymentElectronic_Click() {
+
+      $("#pb-epse_ID").find("input[type='submit']").click();
+    }
+
   function Window__AddPaymentSystem_Bank_AfterRender() {
     //#region Дефолтные параметры для формы
     require(["jquery", "Lib/Form"], function ($, formModule) {
       new formModule.Form($("#pb-bpse_edit-form_ID")).ReBindAll();
     });
     //#endregion
+  }
+
+  function Window__AddPaymentSystem_Electronic_After() {
+
+    require(["jquery", "Lib/Form"], function ($, formModule) {
+      new formModule.Form($("#pb-epse_edit-form_ID")).ReBindAll();
+    });
   }
 </script>
 
@@ -104,10 +116,26 @@ else
                                                                     .Text(MLMExchange.Properties.ResourcesA.SaveButton)
                                                                     .Icon(Icon.DatabaseSave)
                                                                     .Listeners(btnLs => btnLs.Click.Fn = "BtnSave_PaymentBank_Click"))
-                                                                .ToScript() + " Window__AddPaymentSystem_Bank_AfterRender();")
-                    //X.MenuItem().ID("BtnAdd_ElectronicPayment")
-                    //.Text(Logic.Properties.GeneralResources.Bank)
-                    //.Icon(Icon.Add)
+                                                                .ToScript() + " Window__AddPaymentSystem_Bank_AfterRender();"),
+                    X.MenuItem().ID("BtnAdd_ElectronicPayment")
+                    .Text(Logic.Properties.GeneralResources.Electronic)
+                    .Icon(Icon.Add)
+                    .Listeners(ls => ls.Click.Handler = X.Window().ID("Window__AddPaymentSystem_Electronic")
+                                                        .Width(800)
+                                                        .Modal(true)
+                                                        .AutoScroll(true)
+                                                        .SetTitle(String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.ElectronicPaymentSystem))
+                                                        .Content(x => Html.Partial("~/Areas/AdminPanel/Views/ElectronicPaymentSystem/Edit.cshtml",
+                                                                        new ElectronicPaymentSystemModel(),
+                                                                        new ViewDataDictionary { { "AsPartial", "True" },
+                                                                                                 { "SaveController", "PaymentSystemGroup" },
+                                                                                                 { "SaveAction", "AddElectronic" } }))
+                                                        .Buttons(X.Button()
+                                                                    .ID("BtnSave_PaymentElectronic")
+                                                                    .Text(MLMExchange.Properties.ResourcesA.SaveButton)
+                                                                    .Icon(Icon.DatabaseSave)
+                                                                    .Listeners(btnLs => btnLs.Click.Fn = "BtnSave_PaymentElectronic_Click"))
+                                                                .ToScript() + " Window__AddPaymentSystem_Electronic_AfterRender();")
         )).RenderTo("b-psg__header_ID"))
     }
     </header>
@@ -153,6 +181,36 @@ else
                   window.location.reload();
               });
           }
+
+          function removeElectronicOperationSystem(obj) {
+            var electronicSystemId = $(obj).data("electronic-system-id");
+
+            Ext.Msg.confirm("@MLMExchange.Properties.ResourcesA.ConfirmActionTitle",
+                "@(String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Delete))",
+                function (id, value) {
+                  if (id === "yes") {
+                    $.ajax({
+                      url: "/ElectronicPaymentSystem/Remove?id=" + electronicSystemId,
+                      type: "POST",
+                      async: false
+                    }).done(function () {
+                      window.location.reload();
+                    });
+                  }
+                });
+          }
+
+          function setAsDefaultElectronicOperationSystem(obj) {
+            var electronicSystemId = $(obj).data("electronic-system-id");
+
+            $.ajax({
+              url: "/ElectronicPaymentSystem/SetDefault?id=" + electronicSystemId,
+              type: "POST",
+              async: false
+            }).done(function () {
+              window.location.reload();
+            });
+          }
       </script>
     }
 
@@ -196,6 +254,54 @@ else
           @if (viewSetting.IsRequiredYieldTradingSessionPayment)
           {
             <div class="b-psg__operation b-psg__operation_type_pay-yield-trading-session-payment" data-bank-system-id="@bankSystem.Id" data-payment-system-id="@bankSystem.Id.ToString()"
+                 data-yield-trading-session-bill-id="@viewSetting.YieldTradingSessionBillId" onclick="javascript: payYieldTradingSession_Click(this);">
+              <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PayYieldTradingSession</span>
+            </div>
+          }
+        </aside>
+      </div>
+    }
+
+    @foreach (var electronicSystem in Model.ElectronicPaymentSystemModels)
+    {
+      <div class="b-psg__payment-system-item @(electronicSystem.IsDefault ? "b-psg__default-system" : null)">
+        <div class="b-psg__payment-system-browse-view">
+          @Html.Partial("~/Areas/AdminPanel/Views/ElectronicPaymentSystem/Browse.cshtml", electronicSystem, new ViewDataDictionary { { "AsPartial", "True" } })
+        </div>
+
+        <div class="b-psg__default-system-icon-wrapper">
+          <i class="b-psg__icon fa fa-check"></i>
+        </div>
+
+        <aside class="b-psg__crud-operaions">
+          @if (viewSetting.IsPaymentSystemOperationRootOperationEnable)
+          {
+            if (viewSetting.IsRootUser)
+            {
+              if (!electronicSystem.IsDefault)
+              {
+                <div class="b-psg__operation b-psg__operation_type_make-default" data-electronic-system-id="@electronicSystem.Id" onclick="javascript: setAsDefaultElectronicOperationSystem(this);">
+                  <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-check-circle"></i> @MLMExchange.Properties.ResourcesA.MakeObjectDefault</span>
+                </div>
+              }
+
+              <div class="b-psg__operation b-psg__operation_type_delete" data-electronic-system-id="@electronicSystem.Id" onclick="javascript: removeElectronicOperationSystem(this);">
+                <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-trash-o"></i> @MLMExchange.Properties.ResourcesA.Delete</span>
+              </div>
+            }
+          }
+
+          @if (viewSetting.IsRequireSallerInterestRatePayment)
+          {
+            <div class="b-psg__operation b-psg__operation_type_pay-seller-interest-rate-payment" data-electronic-system-id="@electronicSystem.Id" data-payment-system-id="@electronicSystem.Id.ToString()"
+                 data-saller-trade-session-id="@Model.PaySellerInterestRateModel__TradeSessionId" onclick="javascript: paySellerInterestRate_Click(this);">
+              <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PaySellerInterestRatePayment</span>
+            </div>
+          }
+
+          @if (viewSetting.IsRequiredYieldTradingSessionPayment)
+          {
+            <div class="b-psg__operation b-psg__operation_type_pay-yield-trading-session-payment" data-electronic-system-id="@electronicSystem.Id" data-payment-system-id="@electronicSystem.Id.ToString()"
                  data-yield-trading-session-bill-id="@viewSetting.YieldTradingSessionBillId" onclick="javascript: payYieldTradingSession_Click(this);">
               <span class="b-psg__operation-name"><i class="b-psg__icon fa fa-money"></i> @MLMExchange.Properties.PrivateResource.PayYieldTradingSession</span>
             </div>

@@ -166,12 +166,13 @@
     <Compile Include="Areas\AdminPanel\Controllers\BuyingMyCryptRequestController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\BankPaymentSystemController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\ElectronicPaymentSystemController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\PaymentSystemGroupController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\SystemSettingsController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TradingSessionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
-    <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BankPaymentSystemModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemGroupModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\SystemSettingsModel.cs" />
@@ -1599,6 +1600,10 @@
     <Content Include="bower_components\countdown\Readme.md" />
     <Content Include="Areas\AdminPanel\Views\Shared\TradingSession\_Browse_ForBuyer.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shared\TradingSession\_Browse_ForSeller.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\ElectronicPayment\Browse.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\ElectronicPaymentSystem\Browse.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\ElectronicPaymentSystem\Edit.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\BasePayment\List.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

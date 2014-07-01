@@ -204,6 +204,9 @@
   <data name="EditUser" xml:space="preserve">
     <value>Редактирование пользователя</value>
   </data>
+  <data name="ElectronicPayment" xml:space="preserve">
+    <value>Электронный платёж</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Вход</value>
   </data>

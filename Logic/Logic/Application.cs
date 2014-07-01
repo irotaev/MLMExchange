@@ -119,6 +119,13 @@ namespace Logic
                 UserSurname = "System"
               });
 
+        paymentSystemGroup.ElectronicPaymentSystems.Add(new D_ElectronicPaymentSystem
+              {
+                ElectronicName = "FakeElectronicPaymentSystem",
+                PurseNumber = "123",
+                IsDefault = true
+              });
+
         d_systemUser = new D_System_User
         {
           Login = "system_user",

@@ -322,6 +322,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Электронный платёж.
+        /// </summary>
+        public static string ElectronicPayment {
+            get {
+                return ResourceManager.GetString("ElectronicPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вход.
         /// </summary>
         public static string Enter {

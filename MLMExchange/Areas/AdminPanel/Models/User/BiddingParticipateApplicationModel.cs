@@ -99,6 +99,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// 
     /// </summary>
     public BankPaymentModel BankPaymentModel { get; set; }
+    /// <summary>
+    /// Электронный платёж
+    /// </summary>
+    public ElectronicPaymentModel ElectronicPaymentModel { get; set; }
   }
 
   #region Состояние заявки на участие в торгах

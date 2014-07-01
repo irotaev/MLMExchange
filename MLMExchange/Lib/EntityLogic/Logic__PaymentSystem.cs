@@ -21,7 +21,7 @@ namespace MLMExchange.Lib.EntityLogic
       D_PaymentSystem findPaymentSystem;
 
       findPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_BankPaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
+        .Query<D_PaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
 
       return findPaymentSystem;
     }

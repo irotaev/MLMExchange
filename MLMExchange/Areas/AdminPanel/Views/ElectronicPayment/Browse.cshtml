@@ -1,0 +1,49 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.ElectronicPaymentModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.ElectronicPayment;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="b-psg">
+  <div class="b-psg__content">
+    <div class="b-psg__payment-system-item b-psg__default-system">
+      <div class="b-bp">
+        <header class="b-bp__header">
+          <p class="b-bp__text">@MLMExchange.Properties.ResourcesA.ShowPayment (@MLMExchange.Properties.ResourcesA.ElectronicPayment)</p>
+        </header>
+        <table class="b-bp__payment-info">
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.TransactionNumber</td>
+            <td>@Model.Id</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.MoneyAmount</td>
+            <td>@Model.RealMoneyAmount</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.Name</td>
+            <td>@Model.Payer.Name</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.Surname</td>
+            <td>@Model.Payer.Surname</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.CreationDateTime</td>
+            <td>@Model.CreationDateTime.ToLocalTime()</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.ElectronicName</td>
+            <td>@Model.ElectronicPaymentSystemModel.ElectronicName</td>
+          </tr>
+          <tr class="b-bp__payment-info__row">
+            <td>@Logic.Properties.GeneralResources.PurseNumber</td>
+            <td>@Model.ElectronicPaymentSystemModel.PurseNumber</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section><!--B: Bank payment-->

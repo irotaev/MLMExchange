@@ -14,37 +14,35 @@ using Logic;
 namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
 {
   /// <summary>
-  /// Контроллер платежной системы типа банк. 
-  /// Операции с системой данного вида
+  /// Контроллер платёжной системы типа электронная платёжная система
   /// </summary>
-  [Auth]
-  public class BankPaymentSystemController : BaseController, IDataObjectController<BankPaymentSystemModel>
+  public class ElectronicPaymentSystemController : BaseController, IDataObjectController<ElectronicPaymentSystemModel>
   {
     public System.Web.Mvc.ActionResult Browse()
     {
       throw new NotImplementedException();
     }
 
-    public System.Web.Mvc.ActionResult Edit(BankPaymentSystemModel model)
+    public System.Web.Mvc.ActionResult Edit(ElectronicPaymentSystemModel model)
     {
       throw new NotImplementedException();
     }
 
     /// <summary>
-    /// Удалить платежную систему типа банк
+    /// Удалить платёжную сисетму типа электронная платёжная система
     /// </summary>
-    /// <param name="id">Id платежной системы</param>
+    /// <param name="id"></param>
     /// <returns></returns>
     [HttpPost]
     public ActionResult Remove(long id)
     {
-      D_BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
+      D_ElectronicPaymentSystem electronicPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_ElectronicPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
 
-      if (bankPaymentSystem == null)
+      if (electronicPaymentSystem == null)
         throw new UserVisible__WrongParametrException("id");
 
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Delete(bankPaymentSystem);
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Delete(electronicPaymentSystem);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());
@@ -52,20 +50,15 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         return null;
     }
 
-    /// <summary>
-    /// Сделать систему по-умолчанию
-    /// </summary>
-    /// <param name="id">Id системы</param>
-    /// <returns></returns>
     public ActionResult SetDefault(long id)
     {
-      D_BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
+      D_ElectronicPaymentSystem electronicPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_ElectronicPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.Id == id).FirstOrDefault();
 
-      if (bankPaymentSystem == null)
+      if (electronicPaymentSystem == null)
         throw new UserVisible__WrongParametrException("id");
 
-      if (bankPaymentSystem.IsDefault)
+      if (electronicPaymentSystem.IsDefault)
         throw new UserVisibleException(MLMExchange.Properties.PrivateResource.Exception_SystemAlreadyDefault);
 
       #region D_ElectronicPaymentSystem
@@ -78,19 +71,19 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         .Query<D_BankPaymentSystem>().Where(x => x.PaymentSystemGroup.User.Id == CurrentSession.Default.CurrentUser.Id && x.IsDefault == true).FirstOrDefault();
       #endregion
 
-      if (bankDefaultPaymentSystem != null)
-      {
-        bankDefaultPaymentSystem.IsDefault = false;
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(bankDefaultPaymentSystem);
-      }
       if (electronicDefaultPaymentSystem != null)
       {
         electronicDefaultPaymentSystem.IsDefault = false;
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(electronicDefaultPaymentSystem);
       }
+      if (bankDefaultPaymentSystem != null)
+      {
+        bankDefaultPaymentSystem.IsDefault = false;
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(bankDefaultPaymentSystem);
+      }
 
-      bankPaymentSystem.IsDefault = true;
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(bankPaymentSystem);
+      electronicPaymentSystem.IsDefault = true;
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(electronicPaymentSystem);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());
@@ -98,4 +91,5 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         return null;
     }
   }
+  
 }

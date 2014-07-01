@@ -32,6 +32,10 @@ namespace Logic
       {
         return Logic.Properties.GeneralResources.BankPaymentSystem;
       }
+      else if (paymentSystem.LogicObject is D_ElectronicPaymentSystem)
+      {
+        return Logic.Properties.GeneralResources.ElectronicPaymentSystem;
+      }
       else
       {
         return Logic.Properties.GeneralResources.PaymentSystem;

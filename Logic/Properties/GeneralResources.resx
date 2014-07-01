@@ -252,4 +252,16 @@
   <data name="ProfitPercent" xml:space="preserve">
     <value>Процент доходности</value>
   </data>
+  <data name="ElectronicName" xml:space="preserve">
+    <value>Навание электронной системы</value>
+  </data>
+  <data name="PurseNumber" xml:space="preserve">
+    <value>Номер кошелька</value>
+  </data>
+  <data name="Electronic" xml:space="preserve">
+    <value>Электронная</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>Платежи</value>
+  </data>
 </root>

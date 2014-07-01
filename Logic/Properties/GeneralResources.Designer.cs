@@ -223,6 +223,24 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Электронная.
+        /// </summary>
+        public static string Electronic {
+            get {
+                return ResourceManager.GetString("Electronic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Навание электронной системы.
+        /// </summary>
+        public static string ElectronicName {
+            get {
+                return ResourceManager.GetString("ElectronicName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Платежная система: Электронная платёжная система.
         /// </summary>
         public static string ElectronicPaymentSystem {
@@ -322,6 +340,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Платежи.
+        /// </summary>
+        public static string Payments {
+            get {
+                return ResourceManager.GetString("Payments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Платежная система.
         /// </summary>
         public static string PaymentSystem {
@@ -363,6 +390,15 @@ namespace Logic.Properties {
         public static string ProfitPercent {
             get {
                 return ResourceManager.GetString("ProfitPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Номер кошелька.
+        /// </summary>
+        public static string PurseNumber {
+            get {
+                return ResourceManager.GetString("PurseNumber", resourceCulture);
             }
         }
         

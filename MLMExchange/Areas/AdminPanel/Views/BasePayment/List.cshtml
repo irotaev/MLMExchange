@@ -1,0 +1,20 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@using MLMExchange.Areas.AdminPanel.Models.PaymentSystem
+@using MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
+
+@model IEnumerable<long>
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = @Logic.Properties.GeneralResources.Payments;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+else
+{
+  @Html.X().ResourceManager().RenderStyles(ResourceLocationType.None).RenderScripts(ResourceLocationType.None)
+}
+
+@{
+  var X = Html.X();
+}

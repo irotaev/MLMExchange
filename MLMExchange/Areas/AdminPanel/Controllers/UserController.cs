@@ -145,15 +145,15 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
         if (acceptedBuyinMyCryptRequest != null)
         {
-          model.BiddingParticipateApplicationStateModel.State = ApplicationState.Accepted;
-          model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationAcceptedModel = new BiddingParticipateApplicationAcceptedModel
-          {
-            Buyer = new UserModel().Bind(acceptedBuyinMyCryptRequest.Buyer),
-            IsSellerInterestRate_NeedSubstantialMoney = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney,
-            TradingSessionId = acceptedBuyinMyCryptRequest.TradingSession.Id,
-            BankPaymentModel = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.FirstOrDefault() != null ? new BankPaymentModel()
-            .Bind(acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.FirstOrDefault()) : null
-          };
+            model.BiddingParticipateApplicationStateModel.State = ApplicationState.Accepted;
+            model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationAcceptedModel = new BiddingParticipateApplicationAcceptedModel
+            {
+              Buyer = new UserModel().Bind(acceptedBuyinMyCryptRequest.Buyer),
+              IsSellerInterestRate_NeedSubstantialMoney = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney,
+              TradingSessionId = acceptedBuyinMyCryptRequest.TradingSession.Id,
+              ElectronicPaymentModel = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.FirstOrDefault() != null ? new ElectronicPaymentModel()
+              .Bind(acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.FirstOrDefault()) : null
+            };
         }
         else
         {

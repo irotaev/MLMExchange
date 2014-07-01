@@ -148,4 +148,50 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       return @object;
     }
   }
+  public class ElectronicPaymentSystemModel : AbstractPaymentSystemModel<D_ElectronicPaymentSystem, ElectronicPaymentSystemModel>
+  {
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string ElectronicName { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string PurseNumber { get; set; }
+
+    /// <summary>
+    /// Является ли данная система дефолтной
+    /// </summary>
+    [HiddenInput(DisplayValue = false)]
+    public bool IsDefault { get; set; }
+
+    public override ElectronicPaymentSystemModel Bind(D_ElectronicPaymentSystem @object)
+    {
+      if (@object == null)
+        throw new ArgumentNullException("@object");
+
+      base.Bind(@object);
+
+      ElectronicName = @object.ElectronicName;
+      PurseNumber = @object.PurseNumber;
+
+      IsDefault = @object.IsDefault;
+
+      return this;
+    }
+
+    public override D_ElectronicPaymentSystem UnBind(D_ElectronicPaymentSystem @object = null)
+    {
+      if (@object == null)
+        @object = new D_ElectronicPaymentSystem();
+
+      base.UnBind(@object);
+
+      @object.ElectronicName = ElectronicName;
+
+      if (String.IsNullOrWhiteSpace(PurseNumber))
+        throw new UserVisible__ArgumentNullException("PurseNumber");
+
+      @object.PurseNumber = PurseNumber;
+
+      return @object;
+    }
+  }
 }

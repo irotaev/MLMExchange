@@ -1,0 +1,36 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.PaymentSystem.ElectronicPaymentSystemModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = Logic.Properties.GeneralResources.ElectronicPaymentSystem;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="b-bps">
+  <header class="b-bps__header">
+    <p class="b-bps__text">
+      @(Logic.Properties.GeneralResources.PaymentSystem): @Logic.Properties.GeneralResources.Electronic
+
+      @if (Model.IsDefault)
+      {
+        <span class="b-bps__default-system">( @MLMExchange.Properties.ResourcesA.DefaultSystem )</span>
+      }
+    </p>
+  </header>
+
+  <div class="b-bps__content">
+    <table class="b-bps__system-info">
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.ElectronicName</td>
+        <td class="b-bps__column">@Model.ElectronicName</td>
+      </tr>
+
+      <tr class="b-bps__row">
+        <td class="b-bps__column">@Logic.Properties.GeneralResources.PurseNumber</td>
+        <td class="b-bps__column">@Model.PurseNumber</td>
+      </tr>
+
+    </table>
+  </div>
+</section><!--B: Electronic payment system-->

@@ -124,9 +124,15 @@
 
       @if (model.BankPaymentModel != null)
       {
-        <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-system-id="@(model.BankPaymentModel.Id)">
+        <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-type="@(model.BankPaymentModel)" data-payment-system-id="@(model.BankPaymentModel.Id)">
           <span class="pb-bpa__payment-showPayment">@MLMExchange.Properties.ResourcesA.ShowPayment</span>
         </div>    
+      }
+      else if (model.ElectronicPaymentModel != null)
+      { 
+        <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-type="@(model.ElectronicPaymentModel)" data-payment-system-id="@(model.ElectronicPaymentModel.Id)">
+          <span class="pb-bpa__payment-showPayment">@MLMExchange.Properties.ResourcesA.ShowPayment</span>
+        </div> 
       }
     </div>
 
@@ -153,7 +159,7 @@
           //loadingMask.hide();
 
           loadingMask__show(true);
-          
+         
           new Ext.Window({
             id: "PaymentCheck__Window",
             width: 500,
@@ -162,8 +168,8 @@
             modal: true,
             title: "@MLMExchange.Properties.ResourcesA.ShowPayment",
             autoLoad: {
-              url: "/AdminPanel/BankPayment/Browse",
-              params: { objectId: paymentId},
+              url: "/AdminPanel/BasePayment/List",
+              params: { PaymentSystemIds: [paymentId] },
               nocache: true,
               text: "@MLMExchange.Properties.ResourcesA.Loading",
               callback: function () {

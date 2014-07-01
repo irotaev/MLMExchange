@@ -12,9 +12,7 @@ using NHibernate.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  public class BasePaymentController : 
-    BaseController, 
-    IDataObjectCustomizableController<BasePaymentModel, BaseBrowseActionSettings, BaseEditActionSettings, MLMExchange.Areas.AdminPanel.Controllers.BasePaymentController.CustomListActionSettings>
+  public class BasePaymentController : BaseController, IDataObjectCustomizableController<BasePaymentModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
   {
 
     public class CustomListActionSettings : BaseListActionSetings 
@@ -23,30 +21,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       /// Id платежных систем
       /// </summary>
       public IEnumerable<long> PaymentSystemIds { get; set; }
-    }
-
-    public ActionResult Browse(BaseBrowseActionSettings actionSettings)
-    {
-      throw new NotImplementedException();
-    }
-
-    public ActionResult Edit(BasePaymentModel model, BaseEditActionSettings actionSettings)
-    {
-      throw new NotImplementedException();
-    }
-
-    [HttpGet]
-    public ActionResult List(BasePaymentController.CustomListActionSettings actionSettings)
-    {
-      foreach(var id in actionSettings.PaymentSystemIds)
-      {
-        D_PaymentSystem d_paymentSystem = _NHibernateSession.Query<D_PaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
-
-        if (d_paymentSystem == null)
-          throw new UserVisible__WrongParametrException("Payment id");
-      }
-
-      return View(actionSettings.PaymentSystemIds);
     }
   }
 

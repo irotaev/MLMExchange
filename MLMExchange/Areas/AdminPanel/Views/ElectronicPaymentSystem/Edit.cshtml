@@ -1,0 +1,27 @@
+﻿@using MLMExchange.Lib
+@using MLMExchange.Lib.Form
+@model MLMExchange.Areas.AdminPanel.Models.PaymentSystem.ElectronicPaymentSystemModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = String.Format("{0} {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.ElectronicPaymentSystem);
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+@{
+  string saveAction = ViewData["SaveAction"] != null ? ViewData["SaveAction"].ToString() : ViewContext.RouteData.Values["action"].ToString();
+  string saveController = ViewData["SaveController"] != null ? ViewData["SaveController"].ToString() : ViewContext.RouteData.Values["controller"].ToString();
+  FormMethod saveFormMethod = ViewData["SaveFormMethod"] != null ? ((FormMethod)ViewData["SaveFormMethod"]) : FormMethod.Post;
+  object routValues = ViewData["RoutValues"] != null ? ViewData["RoutValues"] : new { };
+}
+
+<section class="pb-bpse" id="pb-epse_ID">
+  @using (Html.BeginForm(saveAction, saveController, routValues, saveFormMethod, new { @id = "pb-epse_edit-form_ID", @class = "b-f" }))
+  {
+    @Html.ApplicationTextBoxFor(x => x.ElectronicName, Logic.Properties.GeneralResources.ElectronicName)
+
+    @Html.ApplicationTextBoxFor(x => x.PurseNumber, Logic.Properties.GeneralResources.PurseNumber)
+
+    <input type="submit" value="submit" style="position: absolute; top: 0; visibility: hidden;" />
+  }
+</section><!--PB: Bank payment system edit-->

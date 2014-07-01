@@ -99,4 +99,35 @@ namespace MLMExchange.Areas.AdminPanel.Models
       throw new NotImplementedException();
     }
   }
+
+  /// <summary>
+  /// Модель электронного платежа
+  /// </summary>
+  public class ElectronicPaymentModel : AbstractPaymentModel<ElectronicPaymentModel>
+  {
+    public ElectronicPaymentSystemModel ElectronicPaymentSystemModel { get; set; }
+
+    public override ElectronicPaymentModel Bind(Payment @object)
+    {
+      if(@object.PaymentSystem == null)
+        throw new ApplicationException("Payment has no payment system");
+
+      D_ElectronicPaymentSystem electronicPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_ElectronicPaymentSystem>().Where(x => x.Id == @object.PaymentSystem.Id).FirstOrDefault();
+
+      if (electronicPaymentSystem == null)
+        throw new ApplicationException("PaymentSystem in payment is not ElectronicPaymentSystem type");
+
+      ElectronicPaymentSystemModel = new ElectronicPaymentSystemModel().Bind(electronicPaymentSystem);
+
+      base.Bind(@object);
+
+      return this;
+    }
+
+    public override Payment UnBind(Payment @object = null)
+    {
+      throw new NotImplementedException();
+    }
+  }
 }

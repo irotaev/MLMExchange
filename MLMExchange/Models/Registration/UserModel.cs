@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Logic;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 

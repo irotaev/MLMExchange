@@ -132,6 +132,37 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         return null;
     }
 
+    public ActionResult AddElectronic(ElectronicPaymentSystemModel model)
+    {
+      ModelState.Clear();
+
+      TryUpdateModel<ElectronicPaymentSystemModel>(model);
+
+      if (ModelState.IsValid)
+      {
+        D_PaymentSystemGroup paymentSystemGroup = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_User>().Where(x => x.Id == CurrentSession.Default.CurrentUser.Id).Select(x => x.PaymentSystemGroup).FirstOrDefault();
+
+        if (paymentSystemGroup == null)
+          throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
+
+        D_ElectronicPaymentSystem electronicPaymentSystem = model.UnBind();
+        electronicPaymentSystem.PaymentSystemGroup = paymentSystemGroup;
+
+        paymentSystemGroup.ElectronicPaymentSystems.Add(electronicPaymentSystem);
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(paymentSystemGroup);
+      }
+      else
+      {
+        throw new UserVisible__ArgumentNullException("model");
+      }
+
+      if (!Request.IsAjaxRequest())
+        return Redirect(Request.UrlReferrer.ToString());
+      else
+        return null;
+    }
+
 
     public ActionResult List(BaseListActionSetings actionSettings)
     {
