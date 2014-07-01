@@ -39,14 +39,14 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
 
         if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.UserRole.FirstOrDefault().MyCryptCount))
-            throw new UserVisible__WrongParametrException("model");
-  
-          if (!(model.MyCryptCount <= systemSettings.LogicObject.MaxMyCryptCount))
-            throw new UserVisible__WrongParametrException("model");
-  
-          BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
+          throw new UserVisible__WrongParametrException("model");
 
-          _NHibernateSession.SaveOrUpdate(biddingApplication);
+        if (!(model.MyCryptCount <= systemSettings.LogicObject.MaxMyCryptCount))
+          throw new UserVisible__WrongParametrException("model");
+
+        BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
+
+        _NHibernateSession.SaveOrUpdate(biddingApplication);
       }
       else
       {

@@ -14,18 +14,43 @@ namespace MLMExchange.Lib
   public class Md5Hasher
   {
     /// <summary>
-    /// Конвертировать строку в хэш
+    /// Конвертировать строку в хэш. Используется петтерн "динамической соли". 
+    /// 
+    /// Если строка имеет больше 4 символов, то динамическая соль будет генерироваться на основе них,
+    /// если не имеет, то динамическая соль генерируется по первому символу
     /// </summary>
     /// <param name="str">Конвертируемая строка</param>
     /// <returns>Хэш</returns>
     public static string ConvertStringToHash(string str)
     {
-      if (String.IsNullOrEmpty(str))
+      if (String.IsNullOrWhiteSpace(str))
         return null;
 
       MD5 md5Hasher = MD5.Create();
 
-      byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(str));
+      #region Salt
+      string salt = String.Empty;
+      {
+        byte[] saltAsByte = null;
+
+        if (str.Length >= 6)
+        {
+          saltAsByte = md5Hasher.ComputeHash(Encoding.Default.GetBytes(str.Substring(1, 5)));
+        }
+        else if (str.Length >= 4)
+        {
+          saltAsByte = md5Hasher.ComputeHash(Encoding.Default.GetBytes(str.Substring(0, 3)));
+        }
+        else
+        {
+          saltAsByte = md5Hasher.ComputeHash(Encoding.Default.GetBytes(str.Substring(0, 0)));
+        }
+
+        salt = System.Text.Encoding.UTF8.GetString(saltAsByte);
+      }
+      #endregion
+
+      byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(str + salt));
 
       StringBuilder sBuilder = new StringBuilder();
 

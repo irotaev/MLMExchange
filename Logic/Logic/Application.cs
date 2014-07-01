@@ -88,7 +88,7 @@ namespace Logic
         adminUser = new D_User
         {
           Login = "administrator_irotaev",
-          PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678,
+          PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = new D_PaymentSystemGroup()
         };
 
@@ -122,7 +122,7 @@ namespace Logic
         d_systemUser = new D_System_User
         {
           Login = "system_user",
-          PasswordHash = "25d55ad283aa400af464c76d713c07ad",
+          PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = paymentSystemGroup
         };
 
@@ -139,7 +139,7 @@ namespace Logic
         D_User irotaevUser = new D_User
         {
           Login = "irotaev",
-          PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678,
+          PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = new D_PaymentSystemGroup(),
           Name = "Андрей",
           Surname = "Ротаев",
@@ -154,7 +154,7 @@ namespace Logic
         D_User newbikUser = new D_User
         {
           Login = "newbik",
-          PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678,
+          PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = new D_PaymentSystemGroup(),
           Name = "Ньюбик",
           Surname = "Петрович",
