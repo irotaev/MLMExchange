@@ -249,4 +249,7 @@
   <data name="ElectronicPaymentSystem" xml:space="preserve">
     <value>Платежная система: Электронная платёжная система</value>
   </data>
+  <data name="ProfitPercent" xml:space="preserve">
+    <value>Процент доходности</value>
+  </data>
 </root>

@@ -9,6 +9,9 @@ using System.Web;
 
 namespace MLMExchange.Areas.AdminPanel.Models
 {
+  /// <summary>
+  /// Модель системных настроек
+  /// </summary>
   public class SystemSettingsModel : AbstractDataModel<D_SystemSettings, SystemSettingsModel>
   {
     /// <summary>
@@ -17,18 +20,28 @@ namespace MLMExchange.Areas.AdminPanel.Models
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Range(typeof(Decimal), "0", "100", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public decimal? CheckPaymentPercent { get; set; }
+
     /// <summary>
     /// Котировка
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public int? Quote { get; set; }
+
     /// <summary>
     /// Длительность торговой сессии.
     /// Измеряется в часах
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public decimal? TradingSessionDuration { get; set; }
+
+    /// <summary>
+    /// Процент доходности для продавца. Измеряется в процентах
+    /// </summary>
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public decimal? ProfitPercent { get; set; }
+
     /// <summary>
     /// Максимальное колличество mycrypto при заказе
     /// </summary>
@@ -44,6 +57,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       Quote = @object.Quote;
       TradingSessionDuration = @object.TradingSessionDuration;
       MaxMyCryptCount = @object.MaxMyCryptCount;
+      ProfitPercent = @object.ProfitPercent;
 
       return this;
     }
@@ -68,16 +82,16 @@ namespace MLMExchange.Areas.AdminPanel.Models
       d_systemSettings.TradingSessionDuration = TradingSessionDuration.Value;
 
       if(MaxMyCryptCount == null)
-        throw new ArgumentNullException("TradingSessionDuration");
+        throw new ArgumentNullException("MaxMyCryptCount");
 
       d_systemSettings.MaxMyCryptCount = MaxMyCryptCount.Value;
 
-      return d_systemSettings;
-    }
+      if (ProfitPercent == null)
+        throw new ArgumentNullException("ProfitPercent");
 
-    internal SystemSettingsModel Bind(MLMExchange.Models.Registration.UserModel userModel)
-    {
-      throw new NotImplementedException();
+      d_systemSettings.ProfitPercent = ProfitPercent.Value;
+
+      return d_systemSettings;
     }
   }
 }

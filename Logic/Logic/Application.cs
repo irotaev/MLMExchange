@@ -175,6 +175,7 @@ namespace Logic
         {
           CheckPaymentPercent = 5,
           Quote = 10,
+          ProfitPercent = 20,
           TradingSessionDuration = 2,
           MaxMyCryptCount = 10000
         };

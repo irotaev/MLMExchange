@@ -358,6 +358,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Процент доходности.
+        /// </summary>
+        public static string ProfitPercent {
+            get {
+                return ResourceManager.GetString("ProfitPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Котировка.
         /// </summary>
         public static string Quote {

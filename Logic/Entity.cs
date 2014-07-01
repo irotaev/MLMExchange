@@ -51,6 +51,10 @@ namespace Logic
     /// </summary>
     public virtual decimal TradingSessionDuration { get; set; }
     /// <summary>
+    /// Процент доходности для продавца. Измеряется в процентах
+    /// </summary>
+    public virtual decimal ProfitPercent { get; set; }
+    /// <summary>
     /// Максимальное колличество mycrypto при заказе
     /// </summary>
     public virtual long MaxMyCryptCount { get; set; }
@@ -648,6 +652,7 @@ namespace Logic
     {
       Map(x => x.CheckPaymentPercent).Not.Nullable();
       Map(x => x.Quote).Not.Nullable();
+      Map(x => x.ProfitPercent).Not.Nullable();
       Map(x => x.TradingSessionDuration).Not.Nullable();
       Map(x => x.MaxMyCryptCount).Not.Nullable();
     }

@@ -53,7 +53,7 @@ namespace Logic
     /// <returns></returns>
     public decimal CalculateBuyerProfit()
     {
-      return LogicObject.BuyingMyCryptRequest.MyCryptCount * (1m / LogicObject.SystemSettings.Quote);
+      return LogicObject.BuyingMyCryptRequest.MyCryptCount * (LogicObject.SystemSettings.ProfitPercent / 100);
     }
 
     #region Обеспечение доходности торговой сессии
