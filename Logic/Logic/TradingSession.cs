@@ -141,7 +141,7 @@ namespace Logic
           {
             MoneyAmount = yieldSessionBullNecessaryMoney,
             Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
-            PaymentAcceptor = profitSession.LogicObject.BiddingParticipateApplication.Seller,
+            PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
             PayerTradingSession = _LogicObject,
             AcceptorTradingSession = profitSession.LogicObject
           };
@@ -159,7 +159,7 @@ namespace Logic
           {
             MoneyAmount = buyerProfitNecasseryMoney,
             Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
-            PaymentAcceptor = profitSession.LogicObject.BiddingParticipateApplication.Seller,
+            PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
             PayerTradingSession = _LogicObject,
             AcceptorTradingSession = profitSession.LogicObject
           };

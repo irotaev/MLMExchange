@@ -91,9 +91,11 @@ namespace MLMExchange.Areas.AdminPanel.Models
       //TODO:Rtv переделать
       foreach (var bill in @object.LogicObject.YieldSessionBills)
       {
+        Logic.PaymentSystem defaultPaymentSystem = ((PaymentSystemGroup)bill.PaymentAcceptor.PaymentSystemGroup).GetDefaultPaymentSystem();
+        
         YieldSessionPaymentAcceptor paymentAcceptor = new YieldSessionPaymentAcceptor
         {
-          DefaultPaymentSystem = bill.PaymentAcceptor.PaymentSystemGroup.BankPaymentSystems.Where(bs => bs.IsDefault == true).FirstOrDefault().BankName,
+          DefaultPaymentSystem = defaultPaymentSystem != null ? defaultPaymentSystem.GetType().Name : "TODO: доработать",
           MoneyAmount = bill.MoneyAmount,
           UserId = bill.PaymentAcceptor.Id,
           UserLogin = bill.PaymentAcceptor.Login,

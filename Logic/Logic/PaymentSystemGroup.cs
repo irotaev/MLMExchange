@@ -26,8 +26,13 @@ namespace Logic
     /// <returns>Дефолтная платежная система</returns>
     public PaymentSystem GetDefaultPaymentSystem()
     {
-      D_PaymentSystem d_paymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_PaymentSystem>().Where(x => x.PaymentSystemGroup.Id == LogicObject.Id && x.IsDefault == true).FirstOrDefault();
+      //D_PaymentSystem d_paymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      //  .Query<D_PaymentSystem>().Where(x => x.PaymentSystemGroup.Id == LogicObject.Id && x.IsDefault == true).FirstOrDefault();
+
+      D_PaymentSystem d_paymentSystem = _LogicObject.BankPaymentSystems.FirstOrDefault(x => x.IsDefault == true);
+
+      if (d_paymentSystem == null)
+        d_paymentSystem = _LogicObject.ElectronicPaymentSystems.FirstOrDefault(x => x.IsDefault == true);
 
       if (d_paymentSystem == null)
         return null;
