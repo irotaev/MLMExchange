@@ -643,7 +643,6 @@ namespace Logic
     Baned = 4
   }
   #endregion
-
   #endregion
 
   #region Map Entity
