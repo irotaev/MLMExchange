@@ -73,10 +73,19 @@ namespace MLMExchange.Controllers
     ActionResult List([FromUri] TListActionSettings actionSettings);
   }
 
+  #region Базовые сущности для параметров акшенов
+  /// <summary>
+  /// Интерфейс частичного представления для вьюшки
+  /// </summary>
+  public interface IPartialView
+  {
+    bool? AsPartial { get; set; }
+  }
+
   /// <summary>
   /// Базовые настройки Action Browse
   /// </summary>
-  public class BaseBrowseActionSettings 
+  public class BaseBrowseActionSettings : IPartialView
   {
     /// <summary>
     /// Id объекта для отображения.
@@ -92,12 +101,36 @@ namespace MLMExchange.Controllers
   /// <summary>
   /// Базовые настройки Action Browse
   /// </summary>
-  public class BaseEditActionSettings { }
+  public class BaseEditActionSettings : IPartialView
+  {
+    /// <summary>
+    /// Id объекта для отображения.
+    /// Id уровня данных
+    /// </summary>
+    public long? objectId { get; set; }
+    /// <summary>
+    /// Отобразить ли как частичное представление
+    /// </summary>
+    public bool? AsPartial { get; set; }
+  }
 
   /// <summary>
   /// Базовые настройки Action List
   /// </summary>
-  public class BaseListActionSetings {}
+  public class BaseListActionSetings : IPartialView
+  {
+    /// <summary>
+    /// Список Id для отображения.
+    /// Id уровня данных
+    /// </summary>
+    public IEnumerable<long> ObjectIds { get; set; }
+    /// <summary>
+    /// Отобразить ли как частичное представление
+    /// </summary>
+    public bool? AsPartial { get; set; }
+  }
+  #endregion
+
   #endregion
 
   public abstract class BaseController : Controller
@@ -124,7 +157,7 @@ namespace MLMExchange.Controllers
 
       _NHibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
       #endregion
-      
+
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
 

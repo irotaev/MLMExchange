@@ -151,8 +151,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
               Buyer = new UserModel().Bind(acceptedBuyinMyCryptRequest.Buyer),
               IsSellerInterestRate_NeedSubstantialMoney = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney,
               TradingSessionId = acceptedBuyinMyCryptRequest.TradingSession.Id,
-              ElectronicPaymentModel = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.FirstOrDefault() != null ? new ElectronicPaymentModel()
-              .Bind(acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.FirstOrDefault()) : null
+              PaymentIds = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.Select(x => x.Id)
             };
         }
         else

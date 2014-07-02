@@ -12,9 +12,8 @@ using NHibernate.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  public class BasePaymentController : 
-    BaseController, 
-    IDataObjectCustomizableController<BasePaymentModel, BaseBrowseActionSettings, BaseEditActionSettings, MLMExchange.Areas.AdminPanel.Controllers.BasePaymentController.CustomListActionSettings>
+  public class BasePaymentController : BaseController, 
+    IDataObjectCustomizableController<BasePaymentModel, BaseBrowseActionSettings, BaseEditActionSettings,      MLMExchange.Areas.AdminPanel.Controllers.BasePaymentController.CustomListActionSettings>
   {
 
     public class CustomListActionSettings : BaseListActionSetings 
@@ -38,15 +37,34 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     [HttpGet]
     public ActionResult List(BasePaymentController.CustomListActionSettings actionSettings)
     {
+      if (actionSettings.AsPartial != null)
+        ViewData["AsPartial"] = actionSettings.AsPartial.Value ? "True" : "False";
+
+      List<IBasePaymentModel> model = new List<IBasePaymentModel>();
+
       foreach(var id in actionSettings.PaymentSystemIds)
       {
-        D_PaymentSystem d_paymentSystem = _NHibernateSession.Query<D_PaymentSystem>().Where(x => x.Id == id).FirstOrDefault();
+        Payment d_payment = _NHibernateSession.Query<Payment>().Where(x => x.Id == id).FirstOrDefault();
 
-        if (d_paymentSystem == null)
+        if (d_payment == null)
           throw new UserVisible__WrongParametrException("Payment id");
+
+        if (d_payment.PaymentSystem == null)
+          continue;
+
+        PaymentSystem paymentSystem = ((PaymentSystem)d_payment.PaymentSystem).Load();
+
+        if (paymentSystem.LogicObject is D_BankPaymentSystem)
+        {
+          model.Add(new BankPaymentModel().Bind(d_payment));
+        }
+        else if (paymentSystem.LogicObject is D_ElectronicPaymentSystem)
+        {
+          model.Add(new ElectronicPaymentModel().Bind(d_payment));
+        }
       }
 
-      return View(actionSettings.PaymentSystemIds);
+      return View(model);
     }
   }
 

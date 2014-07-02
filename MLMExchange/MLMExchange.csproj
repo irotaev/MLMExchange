@@ -1663,7 +1663,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\AdminPanel\Views\Payment\" />
     <Folder Include="bower_components\Buttons\.sass-cache\05da203e02ac5ddd5d547702e6452bf620b308e7\" />
     <Folder Include="bower_components\Buttons\.sass-cache\1fdcdf7186a3a61f9571d3e3097d2f350bb5f0ee\" />
     <Folder Include="bower_components\Buttons\.sass-cache\28f826557d1de57812b51d2e12189afba2f08860\" />

@@ -3,7 +3,7 @@
 @using MLMExchange.Areas.AdminPanel.Models.PaymentSystem
 @using MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
 
-@model IEnumerable<long>
+@model IEnumerable<MLMExchange.Areas.AdminPanel.Models.IBasePaymentModel>
 
 @if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
 {
@@ -18,3 +18,5 @@ else
 @{
   var X = Html.X();
 }
+
+<h1>Hellow @(Model.First().Type)</h1>

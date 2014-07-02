@@ -26,6 +26,25 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Количество денег по счету
     /// </summary>
     decimal RealMoneyAmount { get; }
+    /// <summary>
+    /// Тип платежа
+    /// </summary>
+    PaymentType Type { get; }
+  }
+
+  /// <summary>
+  /// Тип платежа
+  /// </summary>
+  public enum PaymentType : int
+  {
+    /// <summary>
+    /// Банк
+    /// </summary>
+    Bank,
+    /// <summary>
+    /// Электронный платеж
+    /// </summary>
+    Electronic
   }
 
   /// <summary>
@@ -44,6 +63,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Количество денег по счету
     /// </summary>
     public decimal RealMoneyAmount { get; private set; }
+
+    public PaymentType Type { get; protected set; }
 
     public override TPaymentModel Bind(Payment @object)
     {
@@ -80,13 +101,22 @@ namespace MLMExchange.Areas.AdminPanel.Models
       if (@object.PaymentSystem == null)
         throw new ApplicationException("Payment has no payment system");
 
-      D_BankPaymentSystem bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_BankPaymentSystem>().Where(x => x.Id == @object.PaymentSystem.Id).FirstOrDefault();
+      D_BankPaymentSystem bankPaymentSystem;
 
-      if (bankPaymentSystem == null)
-        throw new ApplicationException("PaymentSystem in payment is not BankPaymentSystem type");
+      if (@object.PaymentSystem is D_BankPaymentSystem)
+      {
+        BankPaymentSystemModel = new BankPaymentSystemModel().Bind((D_BankPaymentSystem)@object.PaymentSystem);
+      }
+      else
+      {
+        bankPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_BankPaymentSystem>().Where(x => x.Id == @object.PaymentSystem.Id).FirstOrDefault();
 
-      BankPaymentSystemModel = new BankPaymentSystemModel().Bind(bankPaymentSystem);
+        if (bankPaymentSystem == null)
+          throw new ApplicationException("PaymentSystem in payment is not BankPaymentSystem type");
+
+        BankPaymentSystemModel = new BankPaymentSystemModel().Bind(bankPaymentSystem);
+      }
       #endregion
 
       base.Bind(@object);

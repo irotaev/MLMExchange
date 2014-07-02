@@ -95,14 +95,9 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// </summary>
     public long TradingSessionId { get; set; }
     /// <summary>
-    /// Банковский платёж.
-    /// 
+    /// Id платежей продавцу MC
     /// </summary>
-    public BankPaymentModel BankPaymentModel { get; set; }
-    /// <summary>
-    /// Электронный платёж
-    /// </summary>
-    public ElectronicPaymentModel ElectronicPaymentModel { get; set; }
+    public IEnumerable<long> PaymentIds { get; set; }
   }
 
   #region Состояние заявки на участие в торгах
