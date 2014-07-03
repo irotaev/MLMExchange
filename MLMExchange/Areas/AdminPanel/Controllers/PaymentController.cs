@@ -52,13 +52,13 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         if (d_payment.PaymentSystem == null)
           continue;
 
-        PaymentSystem paymentSystem = ((PaymentSystem)d_payment.PaymentSystem).Load();
+        d_payment.PaymentSystem = ((PaymentSystem)d_payment.PaymentSystem).Load().LogicObject ?? d_payment.PaymentSystem;
 
-        if (paymentSystem.LogicObject is D_BankPaymentSystem)
+        if (d_payment.PaymentSystem is D_BankPaymentSystem)
         {
           model.Add(new BankPaymentModel().Bind(d_payment));
         }
-        else if (paymentSystem.LogicObject is D_ElectronicPaymentSystem)
+        else if (d_payment.PaymentSystem is D_ElectronicPaymentSystem)
         {
           model.Add(new ElectronicPaymentModel().Bind(d_payment));
         }

@@ -122,7 +122,7 @@
         <div class="pb-bpa__text pb-bpa__user-patronymic">@buyer.Patronymic</div>
       </div> 
 
-      @if (model.PaymentIds != null)
+      @if (model.PaymentIds.Count() != 0)
       {
         <div class="pb-bpa__payment" onclick="javascript: showPaymentCheck(this);" data-payment-system-ids="[@(String.Join(",", model.PaymentIds))]">
           <span class="pb-bpa__payment-showPayment">@MLMExchange.Properties.ResourcesA.ShowPayment</span>
@@ -147,9 +147,6 @@
         function showPaymentCheck(obj)
         {
           var paymentIds = $(obj).data("payment-system-ids");
-
-          //var loadingMask = new Ext.LoadMask(Ext.getBody(), { msg: "Please wait..." }).show();
-          //loadingMask.hide();
 
           loadingMask__show(true);
          

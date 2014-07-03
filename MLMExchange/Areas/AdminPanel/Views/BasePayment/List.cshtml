@@ -2,6 +2,7 @@
 @using Ext.Net.MVC
 @using MLMExchange.Areas.AdminPanel.Models.PaymentSystem
 @using MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
+@using MLMExchange.Areas.AdminPanel.Models
 
 @model IEnumerable<MLMExchange.Areas.AdminPanel.Models.IBasePaymentModel>
 
@@ -19,4 +20,20 @@ else
   var X = Html.X();
 }
 
-<h1>Hellow @(Model.First().Type)</h1>
+<section class="b-pl">
+  @foreach (var paymentModel in Model)
+  {
+    if (paymentModel is BankPaymentModel)
+    {
+      <div class="b-pl__payment-info b-pl__payment-info_type_">
+        @Html.Partial("~/Areas/AdminPanel/Views/BankPayment/Browse.cshtml", paymentModel, ViewData)
+      </div>
+    }
+    else if (paymentModel is ElectronicPaymentModel)
+    {
+      <div class="b-pl__payment-info b-pl__payment-info_type_">
+        @Html.Partial("~/Areas/AdminPanel/Views/ElectronicPayment/Browse.cshtml", paymentModel, ViewData)
+      </div>
+    }
+  }
+</section><!--B: Payment list-->

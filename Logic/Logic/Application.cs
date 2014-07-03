@@ -17,7 +17,7 @@ namespace Logic
   public sealed class Application : AbstractLogicObject<D_Application>
   {
     static Application()
-    {      
+    {
       #region Создие объекта приложения
       D_Application d_application = new D_Application();
 
@@ -147,7 +147,34 @@ namespace Logic
         {
           Login = "irotaev",
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
-          PaymentSystemGroup = new D_PaymentSystemGroup(),
+          PaymentSystemGroup = new D_PaymentSystemGroup
+          {
+            BankPaymentSystems = new List<D_BankPaymentSystem>
+            {
+              new D_BankPaymentSystem
+              {
+                BankName = "Test bank name",
+                BIK = "123",
+                CorrespondentAccount = "123",
+                CurrentAccount = "123",
+                INN = "123",
+                IsDefault = true,
+                KPP = "123",
+                UserName = "irotaev",
+                UserPatronymic = "Val",
+                UserSurname = "Rtv"
+              }
+            },
+            ElectronicPaymentSystems = new List<D_ElectronicPaymentSystem>
+            {
+              new D_ElectronicPaymentSystem
+              {
+                ElectronicName = "Test electronic for irotaev",
+                IsDefault = false,
+                PurseNumber = "123"
+              }
+            }
+          },
           Name = "Андрей",
           Surname = "Ротаев",
           Patronymic = "Валерьевич",
@@ -162,7 +189,34 @@ namespace Logic
         {
           Login = "newbik",
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
-          PaymentSystemGroup = new D_PaymentSystemGroup(),
+          PaymentSystemGroup = new D_PaymentSystemGroup
+          {
+            BankPaymentSystems = new List<D_BankPaymentSystem>
+            {
+              new D_BankPaymentSystem
+              {
+                BankName = "Test bank name",
+                BIK = "123",
+                CorrespondentAccount = "123",
+                CurrentAccount = "123",
+                INN = "123",
+                IsDefault = true,
+                KPP = "123",
+                UserName = "newbik",
+                UserPatronymic = "Val",
+                UserSurname = "Rtv"
+              }
+            },
+            ElectronicPaymentSystems = new List<D_ElectronicPaymentSystem>
+            {
+              new D_ElectronicPaymentSystem
+              {
+                ElectronicName = "Test electronic for newbik",
+                IsDefault = false,
+                PurseNumber = "123"
+              }
+            }
+          },
           Name = "Ньюбик",
           Surname = "Петрович",
           Patronymic = "Семенов",

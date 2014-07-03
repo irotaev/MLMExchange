@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
+using Marshal = System.Runtime.InteropServices.Marshal;
 
 namespace Logic
 {
@@ -13,7 +14,8 @@ namespace Logic
   /// </summary>
   public class PaymentSystem : AbstractLogicObject<D_PaymentSystem>
   {
-    public PaymentSystem(D_PaymentSystem d_object) : base(d_object) 
+    public PaymentSystem(D_PaymentSystem d_object)
+      : base(d_object)
     {
       _LogicObject = base._LogicObject;
     }
@@ -61,7 +63,7 @@ namespace Logic
     /// <returns></returns>
     public PaymentSystem Load()
     {
-      switch(_LogicObject.ToString())
+      switch (_LogicObject.ToString())
       {
         case "Logic.D_BankPaymentSystem":
           _LogicObject = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_BankPaymentSystem>()
