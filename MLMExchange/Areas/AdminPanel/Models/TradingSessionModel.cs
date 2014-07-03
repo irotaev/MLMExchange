@@ -92,7 +92,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       foreach (var bill in @object.LogicObject.YieldSessionBills)
       {
         Logic.PaymentSystem defaultPaymentSystem = ((PaymentSystemGroup)bill.PaymentAcceptor.PaymentSystemGroup).GetDefaultPaymentSystem();
-        
+
         YieldSessionPaymentAcceptor paymentAcceptor = new YieldSessionPaymentAcceptor
         {
           DefaultPaymentSystem = defaultPaymentSystem != null ? defaultPaymentSystem.GetType().Name : "TODO: доработать",
@@ -103,12 +103,6 @@ namespace MLMExchange.Areas.AdminPanel.Models
         };
 
         _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
-      }
-
-      
-      if (@object.LogicObject.State == TradingSessionStatus.NeedProfit)
-      {
-        NeedProfitBills = @object.GetNeedPaymentBills().Select(x => new BillModel().Bind((Bill)x));
       }
 
       #region Задание типа текущего пользователя, по отношению к торговой сессии
@@ -132,7 +126,26 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// </summary>
     public IList<YieldSessionPaymentAcceptor> YieldSessionPaymentAcceptors { get { return _YieldSessionPaymentAcceptors; } }
 
-    public IEnumerable<BillModel> NeedProfitBills { get; private set; }
+    private IEnumerable<BillModel> _NeedProfitBills;
+    public IEnumerable<BillModel> NeedProfitBills
+    {
+      get
+      {
+        if (_Object.LogicObject.State == TradingSessionStatus.NeedProfit)
+        {
+          if (_NeedProfitBills == null)
+          {
+            _NeedProfitBills = _Object.GetNeedPaymentBills().Select(x => new BillModel().Bind((Bill)x));
+          }
+
+          return _NeedProfitBills;
+        }
+        else
+        {
+          return null;
+        }
+      }
+    }
   }
 
   /// <summary>

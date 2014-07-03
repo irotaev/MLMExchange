@@ -8,6 +8,22 @@ using System.Web.Mvc;
 namespace MLMExchange.Models
 {
   /// <summary>
+  /// Модель, позволяющая использовать "лейзи-лоадинг".
+  /// Лайзи-лоадинг позволяет загружать свойства в момент досптупа к ним, 
+  /// тем самым выигрывается производительность там, где при обращении к свойству происходит 
+  /// ресурсоемкая операция, например, загрузка большого количества объектов из базы и их 
+  /// преобразования.
+  /// </summary>
+  public interface ILazyLoadModel
+  {
+    /// <summary>
+    /// Выключить ли лайзи-лоадинг для данной модели.
+    /// По-умолчанию лайзи-лоадинг включен.
+    /// </summary>
+    bool IsLazyLoadingDisable { get; set; }
+  }
+
+  /// <summary>
   /// Интерфейс биндинга к данным
   /// <typeparam name="TObject">Объект данных</typeparam>
   /// </summary>
@@ -59,12 +75,22 @@ namespace MLMExchange.Models
     long? Id { get; set; }
   }
 
-  public abstract class BaseModel
+  /// <summary>
+  /// Базовая модель.
+  /// </summary>
+  public abstract class BaseModel : ILazyLoadModel
   {
+    public bool IsLazyLoadingDisable { get; set; }
   }
 
+  /// <summary>
+  /// Базовая модель. 
+  /// Используется для биндинга сущностей с уровня данных.
+  /// </summary>
   public abstract class AbstractDataModel : BaseModel, IDataModel, IDataBinding<D_BaseObject, AbstractDataModel>
   {
+    protected IAbstractBaseLogicObject _Object;
+
     [HiddenInput(DisplayValue = false)]
     public long? Id { get; set; }
     /// <summary>
@@ -72,7 +98,6 @@ namespace MLMExchange.Models
     /// </summary>
     [HiddenInput(DisplayValue = false)]
     public DateTime CreationDateTime { get; set; }
-
 
     #region For data objects
     public virtual AbstractDataModel Bind(D_BaseObject @object)
@@ -97,6 +122,8 @@ namespace MLMExchange.Models
     {
       if (@object == null)
         throw new ArgumentNullException("@object");
+
+      _Object = @object;
 
       Id = @object.BaseLogicObject.Id;
       CreationDateTime = @object.BaseLogicObject.CreationDateTime;
@@ -139,7 +166,6 @@ namespace MLMExchange.Models
     }
   }
 
-  #region AbstractDataModel with operator casting
   /// <summary>
   /// Базовая модель данных. Для логических объектов
   /// </summary>
@@ -151,10 +177,14 @@ namespace MLMExchange.Models
     where TDataObject : D_BaseObject, new()
     where TModel : BaseModel
   {
+    new protected TLogicObject _Object;
+
     public virtual TModel Bind(TLogicObject @object)
     {
       if (@object == null)
         throw new ArgumentNullException("@object");
+
+      _Object = @object;
 
       base.Bind(@object);
 
@@ -166,7 +196,6 @@ namespace MLMExchange.Models
       throw new NotImplementedException();
     }
   }
-  #endregion
 
   #region Exceptions
   public class ModelInvalidException : ApplicationException
