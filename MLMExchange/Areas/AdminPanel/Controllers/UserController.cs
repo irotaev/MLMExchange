@@ -277,10 +277,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         BuyingMyCryptRequest buyingMyCryptRequest = model.UnBind(((BuyingMyCryptRequest)null));
 
-        if (!(model.MyCryptCount <= buyingMyCryptRequest.BiddingParticipateApplication.MyCryptCount))
-          throw new UserVisible__WrongParametrException("model");
-
-        if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.UserRole.FirstOrDefault().MyCryptCount))
+        if (model.MyCryptCount > buyingMyCryptRequest.BiddingParticipateApplication.MyCryptCount)
           throw new UserVisible__WrongParametrException("model");
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(buyingMyCryptRequest);
