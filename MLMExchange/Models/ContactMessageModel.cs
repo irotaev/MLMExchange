@@ -13,7 +13,12 @@ namespace MLMExchange.Models
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string UserName { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string EMail { get; set; }
+
     public string Title { get; set; }
+
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Text { get; set; }
   }

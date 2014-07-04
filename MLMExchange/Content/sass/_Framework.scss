@@ -29,6 +29,7 @@ $font-b-b: 30px;
 $grey_1: #A7A9AC;
 $grey_2: #68696B;
 $grey_3: #f0f0f0;
+$grey_4: #DADADB;
 $red_1: #ED1C24;
 $red_2: rgba(237, 52, 47, 0.06);
 $blue_1: #45a2d0;
@@ -93,7 +94,7 @@ $body_BgColor: #4B73A5;
 {
   &:before
   {
-    font-family: "Dripicons";
+    font-family: $icon-pack;
     content: $content;
     font-style: normal;
     font-weight: normal;

@@ -12,7 +12,7 @@
 {
   .pb-cf__field {margin-bottom: 30px;}
 
-  .pb-cf__field_name_name, .pb-cf__field_name_title { width: 520px; }
+  .pb-cf__field_name_name, .pb-cf__field_name_title, .pb-cf__field_name_email { width: 520px; }
 
   .pb-cf__field_name_text {width: 100%;}
   .pb-cf__field_name_text .b-ib__input {height: 130px;}
@@ -29,6 +29,7 @@
       .pb-cf__item
       {
         position: relative;
+        margin-bottom: 10px;
 
         .pb-cf__icon
         {
@@ -36,19 +37,38 @@
           position: absolute;
           width: 46px; height: 31px;
           top: 0; left: 0;
-          background: url("#{$I_D}ContactsIndex/email-icon.png") center no-repeat;
+
+          &.pb-cf__icon__email
+          {
+            @include font-icon("\e048", $grey_4, Dripicons, 40px);
+          }
+
+          &.pb-cf__icon__phone
+          {
+            @include font-icon("\e066", $grey_4, Dripicons, 40px);
+          }
+
+          &.pb-cf__icon__skype
+          {
+            @include font-icon("\f17e", $grey_4, FontAwesome, 40px);
+          }
         }
 
         .pb-cf__text
         {
           display: block;
-          margin-left: 46px;
+          margin-left: 40px;
           padding-left: 10px;
           height: 31px;
           line-height: 25px;
-          color: #DADADB;
+          color: $grey_4;
           @include transition(color 0.5s linear);
           cursor: default;
+
+          &.pb-cf__text__clickable
+          {
+            cursor: pointer !important;
+          }
 
           &:hover
           {
@@ -57,6 +77,11 @@
           }
         }
       }
+    }
+
+    .pb-cf__additional-info-vk
+    {
+      @include span-columns(3 omega, 10);
     }
 
     .b-button.register-button

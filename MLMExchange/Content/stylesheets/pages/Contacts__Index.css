@@ -107,7 +107,7 @@
   margin-bottom: 30px;
 }
 /* line 15, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
-.pb-cf__form-fields-wrapper .pb-cf__field_name_name, .pb-cf__form-fields-wrapper .pb-cf__field_name_title {
+.pb-cf__form-fields-wrapper .pb-cf__field_name_name, .pb-cf__form-fields-wrapper .pb-cf__field_name_title, .pb-cf__form-fields-wrapper .pb-cf__field_name_email {
   width: 520px;
 }
 /* line 17, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
@@ -129,8 +129,9 @@
 /* line 30, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item {
   position: relative;
+  margin-bottom: 10px;
 }
-/* line 34, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 35, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon {
   display: block;
   position: absolute;
@@ -138,27 +139,90 @@
   height: 31px;
   top: 0;
   left: 0;
-  background: url("/Content/images/ContactsIndex/email-icon.png") center no-repeat;
 }
-/* line 43, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+.pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon.pb-cf__icon__email:before {
+  font-family: Dripicons;
+  content: "\e048";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  color: #dadadb;
+}
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+.pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon.pb-cf__icon__phone:before {
+  font-family: Dripicons;
+  content: "\e066";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  color: #dadadb;
+}
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+.pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon.pb-cf__icon__skype:before {
+  font-family: FontAwesome;
+  content: "\f17e";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 40px;
+  color: #dadadb;
+}
+/* line 58, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__text {
   display: block;
-  margin-left: 46px;
+  margin-left: 40px;
   padding-left: 10px;
   height: 31px;
   line-height: 25px;
-  color: #DADADB;
+  color: #dadadb;
   -webkit-transition: color 0.5s linear;
   -moz-transition: color 0.5s linear;
   -o-transition: color 0.5s linear;
   transition: color 0.5s linear;
   cursor: default;
 }
-/* line 54, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 69, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+.pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__text.pb-cf__text__clickable {
+  cursor: pointer !important;
+}
+/* line 74, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__text:hover {
   color: #45a2d0;
 }
-/* line 63, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 83, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+.pb-cf__footer-wrapper .pb-cf__additional-info-vk {
+  width: 275.2px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  float: left;
+}
+/* line 89, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .b-button.register-button {
   width: 275.2px;
   float: right;

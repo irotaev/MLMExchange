@@ -172,6 +172,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\SystemSettingsController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TradingSessionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
+    <Compile Include="Areas\AdminPanel\Models\IProxyTargetAccessor.cs" />
     <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
@@ -206,6 +207,7 @@
     <Compile Include="Lib\File.cs" />
     <Compile Include="Lib\Form\InputExtension.cs" />
     <Compile Include="Lib\Image\Image.cs" />
+    <Compile Include="Lib\MailSender.cs" />
     <Compile Include="Models\ContactMessageModel.cs" />
     <Compile Include="Models\Error\ApplicationExceptionModel.cs" />
     <Compile Include="Models\ExtNetModel.cs" />
