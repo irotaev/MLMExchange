@@ -23,11 +23,18 @@ html, body
   width: 100%;
 }
 
+.b-a
+{
+  background-image: url("#{$I_D}images/background.jpg");
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center;
+}
+
 //#region Fonts
 body
 {
   //font-family: Tahoma, Geneva, sans-serif;
-  background-color: $body_BgColor;
 }
 //#endregion
 
@@ -43,6 +50,7 @@ body
   background-color: white;
   min-height: 100%;
   padding-bottom: ($main-footer_Height + 40px);
+  @include box-shadow(#878787 0px 0px 10px);
   //@include susy-grid-background;
 }
 

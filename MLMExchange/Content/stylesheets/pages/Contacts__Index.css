@@ -220,9 +220,8 @@
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
-  float: left;
 }
-/* line 89, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 88, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .b-button.register-button {
   width: 275.2px;
   float: right;

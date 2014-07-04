@@ -172,7 +172,6 @@
     <Compile Include="Areas\AdminPanel\Controllers\SystemSettingsController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TradingSessionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
-    <Compile Include="Areas\AdminPanel\Models\IProxyTargetAccessor.cs" />
     <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />

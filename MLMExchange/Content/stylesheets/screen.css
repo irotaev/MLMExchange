@@ -1330,9 +1330,12 @@ html, body {
   width: 100%;
 }
 
-/* line 28, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
-body {
-  background-color: #4b73a5;
+/* line 27, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+.b-a {
+  background-image: url("/Content/images/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 /* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
@@ -1788,7 +1791,7 @@ body {
   min-height: 100%;
 }
 
-/* line 40, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
+/* line 47, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/screen.scss */
 .main-wrapper {
   position: relative;
   *zoom: 1;
@@ -1800,6 +1803,9 @@ body {
   background-color: white;
   min-height: 100%;
   padding-bottom: 320px;
+  -webkit-box-shadow: #878787 0px 0px 10px;
+  -moz-box-shadow: #878787 0px 0px 10px;
+  box-shadow: #878787 0px 0px 10px;
 }
 /* line 38, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 .main-wrapper:after {
