@@ -2,6 +2,7 @@
   ViewBag.Title = @MLMExchange.Properties.ResourcesA.HomePage;
   Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+@{Logic.SystemSettings systemSettings = Logic.SystemSettings.GetCurrentSestemSettings();}
 
 <script>
   $(function () {
@@ -23,11 +24,11 @@
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
             <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">1 к 8</span></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
-            <span class="pb-sb__additional-info text">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar condimentum condimentum</span>
+            <span class="pb-sb__additional-info text">Дата: @System.DateTime.Now</span>
           </div>
         </section>
       </div>
@@ -37,11 +38,15 @@
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
             <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">1 к 8</span></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
-            <span class="pb-sb__additional-info text">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar condimentum condimentum</span>
+            <span class="pb-sb__additional-info text">
+              Котировка - отношение рубля к MY-CRYPT. 
+              Пример: 1 : 3 - за один рубль покупатель получит 3 MY-CRYPT; 
+              1:10 – за один рубль покупатель получит 10 MY-CRYPT.
+            </span>
           </div>
         </section>
       </div>
@@ -55,11 +60,13 @@
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
             <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">1 к 8</span></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
-            <span class="pb-sb__additional-info text">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar condimentum condimentum</span>
+            <span class="pb-sb__additional-info text">
+              Процент доходности - процент прибыли от сделки по окончании торговой сессии.
+            </span>
           </div>
         </section>
       </div>
@@ -74,11 +81,13 @@
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
             <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">1 к 8</span></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
-            <span class="pb-sb__additional-info text">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar condimentum condimentum</span>
+            <span class="pb-sb__additional-info text">
+            Длительность торговой сессии – время ожидания закрытия сделки.
+            </span>
           </div>
         </section>
       </div>
@@ -88,11 +97,13 @@
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
             <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">1 к 8</span></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
-            <span class="pb-sb__additional-info text">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque pulvinar condimentum condimentum</span>
+            <span class="pb-sb__additional-info text">
+              Сумма сделки – Максимальное количество MY-CRYPT на одну торговую сессию.
+            </span>
           </div>
         </section>
       </div>
@@ -115,27 +126,35 @@
 
 <section class="b-sb home-block">
   <header class="b-sb__title">
-    <h1 class="b-sb__text">Новости</h1>
+    <h1 class="b-sb__text">О бирже</h1>
   </header>
   <div class="b-sb__content home-block__text">
-    <div class="home-block__news">
-      <div class="home-block__news__date"><span>22.04.2014</span></div>
-      <div class="home-block__news__text">Lorem ipsum dolor sit amet ...</div>
+    <p><span style="font-size: 18px;">Биржа</span> — коммерческое предприятие, которое предоставляет посреднические услуги, 
+    где совершаются сделки купли-продажи, со своим Учредительным договором, Правилами.
+    </p>
+    <div class="home-block__left">
+      <i class="home-block__iconWrapper__left home-block__iconWrapper__left_1"></i>
+      <p>
+        Работая над созданием данного проекта, мы преследовали цель обличить 
+        иллюзорность недоступности такого финансового инструмента, как биржа, широкому кругу обывателей
+        источник дохода за счет все время растущих долговых.
+      </p>
     </div>
-
-    <div class="home-block__news">
-      <div class="home-block__news__date"><span>22.04.2014</span></div>
-      <div class="home-block__news__text">Lorem ipsum dolor sit amet ...</div>
+    <div class="home-block__right">
+      <i class="home-block__iconWrapper__right home-block__iconWrapper__right_2"></i>
+      <p>
+        Дать понимание того, что следуя определенному алгоритму поведения, 
+        любой совершеннолетний гражданин мира в состоянии компенсировать 
+        свои расходы и обеспечить себе и своим близким непрерывный 
+      </p>
     </div>
-
-    <div class="home-block__news">
-      <div class="home-block__news__date"><span>22.04.2014</span></div>
-      <div class="home-block__news__text">Lorem ipsum dolor sit amet ...</div>
-    </div>
-
-    <div class="home-block__news">
-      <div class="home-block__news__date"><span>22.04.2014</span></div>
-      <div class="home-block__news__text">Lorem ipsum dolor sit amet ...</div>
+    <div class="home-block__left">
+      <i class="home-block__iconWrapper__left home-block__iconWrapper__left_3"></i>
+      <p>
+        Биржа МС должна стать современным инфраструктурным институтом
+        национального рынка финансовых инструментов, отвечающим новым стандартам
+        организации торгов, эффективной торговой площадкой для
+      </p>
     </div>
   </div>
 </section>
@@ -162,10 +181,12 @@
         <p>
           <dl class="frame_page_1__content">
             <dt>
-              Работая над созданием данного проекта, его разработчики поставили для себя цель развеять иллюзию недоступности бирж для широкого круга участников.
+              <span class="frame_page_1__content__text">
+                Работая над созданием данного проекта, его разработчики поставили для себя цель развеять иллюзию недоступности бирж для широкого круга участников.
               Дать понимание того, что следуя определенному алгоритму поведения, любой дееспособный гражданин имеет возможность компенсировать свои убытки и обеспечить себе непрерывный источник дохода.
               На примере показать, что биржевая торговля, вопреки навязанным стереотипам, может приносить участнику только прибыль.
               Целью также стало создание народной биржи безубыточной торговли, где пассивы всех ее участников превратятся в их активы.
+              </span>
             </dt>
           </dl>
         </p>
@@ -174,17 +195,13 @@
         <p>
           <dl class="frame_page_2__content">
 
-            <dt>Предоставить любому человеку, не обладающему специальными знаниями и опытом, возможность регулярного пополнения своего кошелька через совершение несложных операций на Бирже МС</dt>
-            <dd></dd>
+            <dt><span>Предоставить любому человеку, не обладающему специальными знаниями и опытом, возможность регулярного пополнения своего кошелька через совершение несложных операций на Бирже МС</span></dt>
 
-            <dt>Помочь всем желающим избавиться от дефицита денежных средств, повысив тем самым качество  жизни</dt>
-            <dd></dd>
+            <dt><span>Помочь всем желающим избавиться от дефицита денежных средств, повысив тем самым качество  жизни</span></dt>
 
-            <dt>Быть  стабильной,  успешной  и  динамично  развивающейся организацией, удовлетворяющей интересы и потребности своих клиентов</dt>
-            <dd></dd>
+            <dt><span>Быть  стабильной,  успешной  и  динамично  развивающейся организацией, удовлетворяющей интересы и потребности своих клиентов</span></dt>
 
-            <dt>Сделать сложный финансовый мир проще и доступнее</dt>
-            <dd></dd>
+            <dt><span>Сделать сложный финансовый мир проще и доступнее</span></dt>
 
           </dl>
         </p>

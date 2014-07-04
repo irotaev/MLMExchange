@@ -292,50 +292,110 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  /*  .home-block__news__text
+    {
+      margin: 10px;
+      margin-top: 15px;
+      text-align: left;
+    }
+  
+    .home-block__news
+    {
+      position: relative;
+      border: 1px solid $blue_2;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+  
+    .home-block__news__date
+    {
+      position: absolute;
+      right: 10px; top: -16px;
+      height: 30px;
+      width: 100px;
+      padding: 5px;
+      overflow: hidden;
+      background-color: $blue_2;
+      border: 1px solid $blue_2;
+      @include box-sizing(border-box);
+      text-align: center;
+    }
+  
+    .home-block__news__date span
+    {
+      display: block;
+      height: 20px; line-height: 20px;
+      font-size: $font-n;
+      color: #ffffff;
+    }*/
 }
 /* line 136, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .home-block .home-block__text {
   font-size: 16px;
 }
-/* line 141, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
-.home-block .home-block__news__text {
-  margin: 10px;
-  margin-top: 15px;
-  text-align: left;
+/* line 180, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.home-block .home-block__left .home-block__iconWrapper__left {
+  float: left;
+  margin: 5px 20px 10px 5px;
 }
-/* line 148, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
-.home-block .home-block__news {
-  position: relative;
-  border: 1px solid #0076c0;
-  margin-top: 10px;
-  margin-bottom: 30px;
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+.home-block .home-block__left .home-block__iconWrapper__left.home-block__iconWrapper__left_1:before {
+  font-family: FontAwesome;
+  content: "\f080";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 70px;
+  color: #7b87af;
 }
-/* line 156, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
-.home-block .home-block__news__date {
-  position: absolute;
-  right: 10px;
-  top: -16px;
-  height: 30px;
-  width: 100px;
-  padding: 5px;
-  overflow: hidden;
-  background-color: #0076c0;
-  border: 1px solid #0076c0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  text-align: center;
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+.home-block .home-block__left .home-block__iconWrapper__left.home-block__iconWrapper__left_3:before {
+  font-family: FontAwesome;
+  content: "\f024";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 70px;
+  color: #7b87af;
 }
-/* line 170, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
-.home-block .home-block__news__date span {
-  display: block;
-  height: 20px;
-  line-height: 20px;
-  font-size: 13px;
-  color: #ffffff;
+/* line 199, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.home-block .home-block__right .home-block__iconWrapper__right {
+  float: right;
+  margin: 5px 5px 5px 5px;
+}
+/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+.home-block .home-block__right .home-block__iconWrapper__right.home-block__iconWrapper__right_2:before {
+  font-family: FontAwesome;
+  content: "\f06b";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none !important;
+  speak: none;
+  display: inline-block;
+  text-decoration: none;
+  width: 1em;
+  line-height: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-size: 70px;
+  color: #7b87af;
 }
 
-/* line 179, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 212, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info {
   padding-left: 82px;
   width: 390px;
@@ -344,14 +404,14 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 184, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 217, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info .home-icon {
   display: block;
   background-image: url("/Content/images/AboutIndex/about-icon.png");
   width: 257px;
   height: 87px;
 }
-/* line 192, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 225, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .additional-info .home-info {
   background: white;
   margin-top: 15px;
@@ -359,7 +419,7 @@
   font-size: 16px;
 }
 
-/* line 201, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 234, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block {
   margin-top: 70px;
   margin-bottom: 70px;
@@ -369,15 +429,11 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 206, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
-.tab-block .frame {
-  counter-reset: targetsCounter;
-}
-/* line 208, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 241, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block .frame .frame_page_1__content dt {
   padding-left: 50px !important;
 }
-/* line 213, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 246, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block .frame .frame_page_1__content dt {
   position: relative;
   /* font: bold 14px Georgia; */
@@ -385,7 +441,7 @@
   padding: 4px 0 10px 0;
   margin-bottom: 5px;
 }
-/* line 222, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 255, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block .frame .frame_page_1__content dt:before {
   content: "!";
   position: absolute;
@@ -393,11 +449,11 @@
   top: 0;
   font: bold 50px/1 Sans-Serif;
 }
-/* line 233, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 264, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block .frame .frame_page_2__content dt, .tab-block .frame .frame_page_2__content dd {
   padding-left: 50px !important;
 }
-/* line 238, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 269, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block .frame .frame_page_2__content dt {
   position: relative;
   /* font: bold 14px Georgia; */
@@ -407,12 +463,33 @@
   height: 50px;
   border-bottom: 1px dotted;
 }
-/* line 249, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+/* line 279, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.tab-block .frame .frame_page_2__content dt span {
+  margin-left: 5px;
+}
+/* line 285, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
 .tab-block .frame .frame_page_2__content dt:before {
-  content: counter(targetsCounter);
-  counter-increment: targetsCounter;
   position: absolute;
-  left: 0;
+  left: 10px;
   top: 0;
-  font: bold 50px/1 Sans-Serif;
+  font-family: FontAwesome;
+  font-size: 32px;
+  padding-top: 10px;
+  content: "";
+}
+/* line 296, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.tab-block .frame dl.frame_page_2__content > dt:nth-child(1):before {
+  content: "\f084" !important;
+}
+/* line 300, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.tab-block .frame dl.frame_page_2__content > dt:nth-child(2):before {
+  content: "\f109" !important;
+}
+/* line 304, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.tab-block .frame dl.frame_page_2__content > dt:nth-child(3):before {
+  content: "\f080" !important;
+}
+/* line 308, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Home__Index.scss */
+.tab-block .frame dl.frame_page_2__content > dt:nth-child(4):before {
+  content: "\f085" !important;
 }

@@ -137,7 +137,7 @@
     font-size: $font-b;
   }
 
-  .home-block__news__text
+/*  .home-block__news__text
   {
     margin: 10px;
     margin-top: 15px;
@@ -172,6 +172,39 @@
     height: 20px; line-height: 20px;
     font-size: $font-n;
     color: #ffffff;
+  }*/
+
+  .home-block__left
+  {
+    .home-block__iconWrapper__left
+    {
+      float: left;
+      margin: 5px 20px 10px 5px;
+
+      &.home-block__iconWrapper__left_1
+      {
+        @include font-icon("\f080", $blue_a_4_c2, FontAwesome, 70px);
+      }
+
+      &.home-block__iconWrapper__left_3
+      {
+        @include font-icon("\f024", $blue_a_4_c2, FontAwesome, 70px);
+      }
+    }
+  }
+
+  .home-block__right
+  {
+    .home-block__iconWrapper__right
+    {
+      float: right;
+      margin: 5px 5px 5px 5px;
+
+      &.home-block__iconWrapper__right_2
+        {
+        @include font-icon("\f06b", $blue_a_4_c2, FontAwesome, 70px);
+      }
+    }
   }
 }
 
@@ -227,8 +260,6 @@
       font: bold 50px/1 Sans-Serif;
     }
 
-    counter-reset: targetsCounter;
-
     .frame_page_2__content dt, .frame_page_2__content dd
     {
       padding-left: 50px !important;
@@ -243,16 +274,39 @@
       margin-bottom: 5px;
       height: 50px;
       border-bottom: 1px dotted;
+
+      span
+      {
+        margin-left: 5px;
+      }
     }
 
     .frame_page_2__content dt:before
     {
-      content: counter(targetsCounter);
-      counter-increment: targetsCounter;
       position: absolute;
-      left: 0;
+      left: 10px;
       top: 0;
-      font: bold 50px/1 Sans-Serif;
+      font-family: FontAwesome;
+      font-size: 32px;
+      padding-top: 10px;
+      content: "";
+    }
+
+    dl.frame_page_2__content > dt:nth-child(1):before
+    {
+      content: "\f084" !important;
+    }
+    dl.frame_page_2__content > dt:nth-child(2):before
+    {
+      content: "\f109" !important;
+    }
+    dl.frame_page_2__content > dt:nth-child(3):before
+    {
+      content: "\f080" !important;
+    }
+    dl.frame_page_2__content > dt:nth-child(4):before
+    {
+      content: "\f085" !important;
     }
   }
 }
