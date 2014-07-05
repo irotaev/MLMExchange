@@ -178,6 +178,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Возможность подачи заявки на участие в торгах временно ограничена.
+        /// </summary>
+        public static string BiddingParticipateApplication_IsBanned {
+            get {
+                return ResourceManager.GetString("BiddingParticipateApplication_IsBanned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Закрыть.
         /// </summary>
         public static string Button_Close {

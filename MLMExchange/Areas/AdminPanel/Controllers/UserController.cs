@@ -133,11 +133,14 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         .QueryOver<BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
                                                             && x.State != BiddingParticipateApplicationState.NA
                                                             && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
-
       if (biddingParticipateApplication == null)
       {
         model.BiddingParticipateApplicationStateModel.State = ApplicationState.NotFiled;
         model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel();
+      }
+      else if (biddingParticipateApplication.TradingSession != null && biddingParticipateApplication.TradingSession.State == TradingSessionStatus.Baned)
+      {
+        model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel().Bind(biddingParticipateApplication);
       }
       else
       {

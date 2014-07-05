@@ -15,7 +15,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   /// <summary>
   /// Модель заявки на участие в торгах
   /// </summary>
-  public class BiddingParticipateApplicationModel : AbstractDataModel, IDataBinding<BiddingParticipateApplication, BiddingParticipateApplicationModel>
+  public class BiddingParticipateApplicationModel : AbstractDataModel<BiddingParticipateApplication, BiddingParticipateApplicationModel>, 
+    IDataBinding<BiddingParticipateApplication, BiddingParticipateApplicationModel>
   {
     /// <summary>
     /// Количество my-crypt для подачи в заявку
@@ -24,7 +25,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public long? MyCryptCount { get; set; }
 
-    public UserModel Seller { get; set; }
+    public UserModel Seller { get; set; }    
 
     /// <summary>
     /// Состояние заявки
@@ -32,7 +33,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     public BiddingParticipateApplicationState State { get; set; }
     public PaymentSystemGroupModel PaymentSystemGroupModel { get; set; }
 
-    public BiddingParticipateApplicationModel Bind(BiddingParticipateApplication @object)
+    public override BiddingParticipateApplicationModel Bind(BiddingParticipateApplication @object)
     {
       base.Bind(@object);
       MyCryptCount = @object.MyCryptCount;
@@ -40,12 +41,12 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       State = @object.State;
 
       Seller = new UserModel().Bind(@object.Seller);
-      PaymentSystemGroupModel = new PaymentSystemGroupModel().Bind((PaymentSystemGroup)@object.Seller.PaymentSystemGroup); 
+      PaymentSystemGroupModel = new PaymentSystemGroupModel().Bind((PaymentSystemGroup)@object.Seller.PaymentSystemGroup);
 
       return this;
     }
 
-    public BiddingParticipateApplication UnBind(BiddingParticipateApplication @object = null)
+    public override BiddingParticipateApplication UnBind(BiddingParticipateApplication @object = null)
     {
       if (@object == null)
         @object = new BiddingParticipateApplication();
@@ -64,6 +65,11 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
 
       return @object;
     }
+
+    /// <summary>
+    /// Объект заявки на участие в торгах
+    /// </summary>
+    internal BiddingParticipateApplication Object { get { return _Object; } }
   }
 
   /// <summary>
@@ -139,6 +145,29 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     IBiddingParticipateApplicationDeniedModel,
     IBiddingParticipateApplicationAcceptedModel
   {
+    /// <summary>
+    /// Забанена ли подача заявки на участие в торгах
+    /// </summary>
+    public bool IsBanned
+    {
+      get
+      {
+        if (BiddingParticipateApplicationModel == null || BiddingParticipateApplicationModel.Object == null)
+          return false;
+
+        BiddingParticipateApplication @object = BiddingParticipateApplicationModel.Object; 
+
+        bool isBan = false;
+
+        if (@object.TradingSession != null)
+        {
+          isBan = @object.TradingSession.State == TradingSessionStatus.Baned;
+        }
+
+        return isBan;
+      }
+    }
+
     public BiddingParticipateApplicationModel BiddingParticipateApplicationModel { get; set; }
 
     public BiddingParticipateApplicationBuyerFoundModel BiddingParticipateApplicationBuyerFoundModel { get; set; }

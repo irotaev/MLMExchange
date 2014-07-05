@@ -156,6 +156,9 @@
   <data name="BankPayment" xml:space="preserve">
     <value>Платеж банка</value>
   </data>
+  <data name="BiddingParticipateApplication_IsBanned" xml:space="preserve">
+    <value>Возможность подачи заявки на участие в торгах временно ограничена</value>
+  </data>
   <data name="Button_Close" xml:space="preserve">
     <value>Закрыть</value>
   </data>

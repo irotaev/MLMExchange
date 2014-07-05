@@ -5,6 +5,10 @@
 
 @model object
 
+@{
+  BiddingParticipateApplicationStateModel castedModel = Model as BiddingParticipateApplicationStateModel;
+}
+
 @helper NotFiledState(BiddingParticipateApplicationModel model)
 {
   using (Html.BeginForm("BiddingParticipateApplicationApply", "BiddingParticipateApplication", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
@@ -25,7 +29,7 @@
         </div>
       </div>
     </div>
-  
+
     <input style="position: absolute; visibility: hidden;" id="pb-bpa__submit-btn"
            class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.ApplyButton />
 
@@ -45,26 +49,26 @@
   var X = Html.X();
 
   <script>
-      function commandClickHandler(command, record) {
-          var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
+    function commandClickHandler(command, record) {
+      var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
 
-          if (command == "Denied") {
-              var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Denied)";
+      if (command == "Denied") {
+        var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Denied)";
 
-              Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
-                  if (btn == "yes")
-                      window.location.href = "/BiddingParticipateApplication/Denied/?buyingMyCryptRequestId=" + record.data.Id;
-              });
-          }
-          else if (command == "Accept") {
-              var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Accept)";
-
-              Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
-                  if (btn == "yes")
-                      window.location.href = "/BiddingParticipateApplication/Accept/?buyingMyCryptRequestId=" + record.data.Id;
-              });
-          }
+        Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+          if (btn == "yes")
+            window.location.href = "/BiddingParticipateApplication/Denied/?buyingMyCryptRequestId=" + record.data.Id;
+        });
       }
+      else if (command == "Accept") {
+        var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Accept)";
+
+        Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+          if (btn == "yes")
+            window.location.href = "/BiddingParticipateApplication/Accept/?buyingMyCryptRequestId=" + record.data.Id;
+        });
+      }
+    }
   </script>
 
   <div class="pb-bpa__buyer-found-wrapper" id="pb-bpa__buyer-found-wrapper_ID">
@@ -103,8 +107,8 @@
 
 @helper AcceptedState(BiddingParticipateApplicationAcceptedModel model)
 {
-  var buyer = model.Buyer;  
-  
+  var buyer = model.Buyer;
+
   <div class="pb-bpa__buyer-accepted-wrapper">
     <div class="pb-bpa__buyer-short-info">
       <a href="/AdminPanel/User/Browse?objectId=@buyer.Id"><span class="pb-bpa__text">@buyer.Login</span></a> <span class="pb-bpa__buyer">( @Logic.Properties.GeneralResources.Buyer )</span>
@@ -113,14 +117,14 @@
     <div class="pb-bpa__buyer-additional-info">
       <div class="pb-bpa__buyer-photo">
         <img src="@(new MLMExchange.Lib.Image.Image(buyer.PhotoRelativePath).Crop(68, 68).FullNameAndPath)"
-             class="pb-bpa__image" alt="@MLMExchange.Properties.ResourcesA.UserPhoto" >
+             class="pb-bpa__image" alt="@MLMExchange.Properties.ResourcesA.UserPhoto">
       </div>
 
       <div class="pb-bpa__user-info">
         <div class="pb-bpa__text pb-bpa__user-surname">@buyer.Surname</div>
         <div class="pb-bpa__text pb-bpa__user-name">@buyer.Name</div>
         <div class="pb-bpa__text pb-bpa__user-patronymic">@buyer.Patronymic</div>
-      </div> 
+      </div>
 
       @if (model.PaymentIds.Count() != 0)
       {
@@ -131,12 +135,11 @@
     </div>
 
     @if (!model.IsSellerInterestRate_NeedSubstantialMoney)
-    { 
+    {
       <script>
         var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
 
-        function loadingMask__show(isLoading)
-        {
+        function loadingMask__show(isLoading) {
           var loadingMask = new Ext.LoadMask(Ext.getBody(), { msg: "Please wait..." });
           if (isLoading)
             loadingMask.show();
@@ -144,12 +147,11 @@
             loadingMask.hide();
         }
 
-        function showPaymentCheck(obj)
-        {
+        function showPaymentCheck(obj) {
           var paymentIds = $(obj).data("payment-system-ids");
 
           loadingMask__show(true);
-         
+
           new Ext.Window({
             id: "PaymentCheck__Window",
             width: 500,
@@ -171,38 +173,36 @@
         }
 
         function acceptedState__InterestRatePaymentApproved(obj) {
-            var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.PrivateResource.PaymentApproved)";
+          var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.PrivateResource.PaymentApproved)";
 
-            var confirmWindow = Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
-                if (btn == "yes")
-                {
-                    $.ajax({
-                        url: "/BiddingParticipateApplication/SellerInterestRatePayment_Accepted/?tradeSessionId=@(model.TradingSessionId)",
-                        type: "POST"
-                    }).done(function () {
-                        window.location.reload();
-                    });
-                }
-            });
+          var confirmWindow = Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+            if (btn == "yes") {
+              $.ajax({
+                url: "/BiddingParticipateApplication/SellerInterestRatePayment_Accepted/?tradeSessionId=@(model.TradingSessionId)",
+                type: "POST"
+              }).done(function () {
+                window.location.reload();
+              });
+            }
+          });
         }
 
         function acceptedState__InterestRatePaymentNotApproved(obj) {
-            var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.PrivateResource.PaymentApproved)";
+          var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.PrivateResource.PaymentApproved)";
 
-            var confirmWindow = Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
-                if (btn == "yes")
-                {
-                    $.ajax({
-                        url: "/BiddingParticipateApplication/SellerInterestRatePayment_Denied/?tradeSessionId=@(model.TradingSessionId)",
-                        type: "POST"
-                    }).done(function () {
-                        window.location.reload();
-                    });
-                }
-            });
+          var confirmWindow = Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+            if (btn == "yes") {
+              $.ajax({
+                url: "/BiddingParticipateApplication/SellerInterestRatePayment_Denied/?tradeSessionId=@(model.TradingSessionId)",
+                type: "POST"
+              }).done(function () {
+                window.location.reload();
+              });
+            }
+          });
         }
       </script>
-      
+
       <div class="pb-bpa__action-buttons">
         <a href="#" class="b-btn b-btn-flat-caution pb-bpa__action-button pb-bpa__action-button_action_not-approved" onclick="javascript: acceptedState__InterestRatePaymentNotApproved(this);">
           <i class="fa fa-ban fa-lg"></i>
@@ -225,48 +225,61 @@
 }
 
 @{
-  switch ((Model as IBaseBiddingParticipateApplicationModel).State)
+  if (!castedModel.IsBanned)
   {
-    case ApplicationState.NA:
-    case ApplicationState.NotFiled:
+    switch ((Model as IBaseBiddingParticipateApplicationModel).State)
+    {
+      case ApplicationState.NA:
+      case ApplicationState.NotFiled:
+        <section class="pb-bpa b-ab">
+          <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+          <div class="b-ab__content pb-bpa__content">
+            @NotFiledState((Model as IBiddingParticipateApplicationNotFiledModel).BiddingParticipateApplicationModel)
+          </div>
+        </section><!--B: Bindding participate application-->
+        break;
+
+      case ApplicationState.ExpectsBuyers:
       <section class="pb-bpa b-ab">
         <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
 
         <div class="b-ab__content pb-bpa__content">
-          @NotFiledState((Model as IBiddingParticipateApplicationNotFiledModel).BiddingParticipateApplicationModel)
+          <div class="pb-bpa__waiting-user-response">
+            <p class="pb-bpa__text b-text">@MLMExchange.Properties.PrivateResource.WaitingUserResponse</p>
+          </div>
         </div>
       </section><!--B: Bindding participate application-->
-      break;
+        break;
 
-    case ApplicationState.ExpectsBuyers:
+      case ApplicationState.BuyerFound:
+      <section class="pb-bpa b-ab b-ab_customise_full-custom">
+        <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+        <div class="b-ab__content pb-bpa__content">
+          @BuyerFoundState((Model as IBiddingParticipateApplicationBuyerFoundModel).BiddingParticipateApplicationBuyerFoundModel.BuyRequests)
+        </div>
+      </section><!--B: Bindding participate application-->
+        break;
+      case ApplicationState.Accepted:
+      <section class="pb-bpa b-ab b-ab_customise_full-custom pb-bpa_state_accepted">
+        <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+        <div class="b-ab__content pb-bpa__content">
+          @AcceptedState((Model as IBiddingParticipateApplicationAcceptedModel).BiddingParticipateApplicationAcceptedModel)
+        </div>
+      </section><!--B: Bindding participate application-->
+        break;
+    }
+  }
+  else
+  {
     <section class="pb-bpa b-ab">
       <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
 
-      <div class="b-ab__content pb-bpa__content">
-        <div class="pb-bpa__waiting-user-response">
-          <p class="pb-bpa__text b-text">@MLMExchange.Properties.PrivateResource.WaitingUserResponse</p>
-        </div>
+      <div class="b-ab__content pb-bpa__content pb-bpa__content_content-type_banned-content">
+        <p class="b-bpa__text b-bpa__text_message_is-banned">@MLMExchange.Properties.ResourcesA.BiddingParticipateApplication_IsBanned</p>
       </div>
     </section><!--B: Bindding participate application-->
-      break;
-
-    case ApplicationState.BuyerFound:
-    <section class="pb-bpa b-ab b-ab_customise_full-custom">
-      <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
-
-      <div class="b-ab__content pb-bpa__content">
-        @BuyerFoundState((Model as IBiddingParticipateApplicationBuyerFoundModel).BiddingParticipateApplicationBuyerFoundModel.BuyRequests)
-      </div>
-    </section><!--B: Bindding participate application-->
-      break;
-    case ApplicationState.Accepted:
-    <section class="pb-bpa b-ab b-ab_customise_full-custom pb-bpa_state_accepted">
-      <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
-
-      <div class="b-ab__content pb-bpa__content">
-        @AcceptedState((Model as IBiddingParticipateApplicationAcceptedModel).BiddingParticipateApplicationAcceptedModel)
-      </div>
-    </section><!--B: Bindding participate application-->
-      break;
   }
 }

@@ -150,9 +150,13 @@ namespace MLMExchange.Models
     where TObject : D_BaseObject, new()
     where TModel : BaseModel
   {
+    new protected TObject _Object;
+
     public virtual TModel Bind(TObject @object)
     {
       base.Bind(@object);
+
+      _Object = @object;
 
       return this as TModel;
     }
