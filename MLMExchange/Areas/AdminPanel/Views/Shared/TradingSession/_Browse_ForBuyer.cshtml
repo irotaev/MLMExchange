@@ -166,7 +166,7 @@ else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
     }
   </div>
 }
-else if (Model.State == Logic.TradingSessionStatus.NeedProfit)
+else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == Logic.TradingSessionStatus.ProfitConfirmation)
 {
   <script>
     function needProfitBill__Confirm(view, commandName, record) {

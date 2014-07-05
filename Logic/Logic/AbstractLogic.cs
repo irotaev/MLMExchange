@@ -1,11 +1,16 @@
-﻿using System;
+﻿using NHibernate;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Practices.Unity;
+using NHibernate.Linq;
 
 namespace Logic
 {
+  
+
   /// <summary>
   /// Интерфейс базового логического proxy-объекта данных
   /// </summary>
@@ -48,8 +53,10 @@ namespace Logic
         throw new ArgumentNullException("logicObject");
 
       _LogicObject = dataObject;
+      _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
     }
 
+    protected readonly ISession _NhibernateSession;
     protected readonly TDataObject _LogicObject;
 
     public TDataObject LogicObject { get { return _LogicObject; } }

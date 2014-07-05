@@ -131,11 +131,11 @@ namespace MLMExchange.Areas.AdminPanel.Models
     {
       get
       {
-        if (_Object.LogicObject.State == TradingSessionStatus.NeedProfit)
+        if (_Object.LogicObject.State == TradingSessionStatus.NeedProfit || _Object.LogicObject.State == TradingSessionStatus.ProfitConfirmation)
         {
           if (_NeedProfitBills == null)
           {
-            _NeedProfitBills = _Object.GetNeedPaymentBills().Select(x => new BillModel().Bind((Bill)x));
+            _NeedProfitBills = _Object.GetNeedPaymentBills().Where(x => x.LogicObject.PaymentState == BillPaymentState.WaitingPayment).Select(x => new BillModel().Bind((Bill)x));
           }
 
           return _NeedProfitBills;

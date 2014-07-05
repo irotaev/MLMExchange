@@ -5,8 +5,9 @@
 
 @{
   var X = Html.X();
-  
-  bool isABBlockFullCustom = Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility || Model.State == Logic.TradingSessionStatus.NeedProfit; 
+
+  bool isABBlockFullCustom = Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility 
+    || Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == Logic.TradingSessionStatus.ProfitConfirmation; 
 }
 
 <section class="b-ts b-ab @(isABBlockFullCustom ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">

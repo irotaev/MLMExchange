@@ -53,7 +53,7 @@ namespace Logic
     /// <returns></returns>
     public decimal CalculateBuyerProfit()
     {
-      return LogicObject.BuyingMyCryptRequest.MyCryptCount * (LogicObject.SystemSettings.ProfitPercent / 100);
+      return LogicObject.BuyingMyCryptRequest.MyCryptCount + (LogicObject.BuyingMyCryptRequest.MyCryptCount * (LogicObject.SystemSettings.ProfitPercent / 100));
     }
 
     #region Обеспечение доходности торговой сессии
@@ -165,8 +165,17 @@ namespace Logic
           };
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
-
           _LogicObject.YieldSessionBills.Add(ensureBill);
+
+          if (profitSession.TryChangeStatus(TradingSessionStatus.ProfitConfirmation))
+          {
+            _NhibernateSession.SaveOrUpdate(profitSession.LogicObject);
+          }
+          else
+          {
+            _NhibernateSession.Delete(ensureBill);
+          }
+
           isBillAdded = true;
         }
       }
@@ -234,8 +243,20 @@ namespace Logic
           }
           break;
 
-        case TradingSessionStatus.Closed:
+        case TradingSessionStatus.ProfitConfirmation:
           if (LogicObject.State == TradingSessionStatus.NeedProfit)
+          {
+            //TODO:Rtv получается двойное обращение к базе (BuyerProfitNecessaryMoney тут и, скорее всего, до вызова изменения состояния)
+            if (BuyerProfitNecessaryMoney() == 0)
+            {
+              _LogicObject.State = TradingSessionStatus.ProfitConfirmation;
+              return true;
+            }
+          }
+          break;
+
+        case TradingSessionStatus.Closed:
+          if (LogicObject.State == TradingSessionStatus.ProfitConfirmation)
           {
             if (GetNeedPaymentBills().All(x => x.LogicObject.PaymentState == BillPaymentState.Paid))
             {

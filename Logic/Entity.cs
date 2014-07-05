@@ -634,6 +634,10 @@ namespace Logic
     /// </summary>
     NeedProfit = 6,
     /// <summary>
+    /// Подтверждение прибыли пользователем
+    /// </summary>
+    ProfitConfirmation = 8,
+    /// <summary>
     /// Закрыта
     /// </summary>
     Closed = 3,
