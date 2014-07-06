@@ -22,11 +22,12 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -58,11 +59,12 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -338,7 +340,7 @@
   float: left;
   margin: 5px 20px 10px 5px;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .home-block .home-block__left .home-block__iconWrapper__left.home-block__iconWrapper__left_1:before {
   font-family: FontAwesome;
   content: "\f080";
@@ -355,7 +357,7 @@
   font-size: 70px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .home-block .home-block__left .home-block__iconWrapper__left.home-block__iconWrapper__left_3:before {
   font-family: FontAwesome;
   content: "\f024";
@@ -377,7 +379,7 @@
   float: right;
   margin: 5px 5px 5px 5px;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .home-block .home-block__right .home-block__iconWrapper__right.home-block__iconWrapper__right_2:before {
   font-family: FontAwesome;
   content: "\f06b";

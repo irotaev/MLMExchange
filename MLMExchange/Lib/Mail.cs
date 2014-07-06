@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MLMExchange.Lib
 {
-  public class MailSender
+  public class Mail
   {
     /// <summary>
     /// Конструктор MailSender'а
@@ -14,7 +14,7 @@ namespace MLMExchange.Lib
     /// <param name="from">Куда слать</param>
     /// <param name="subject">Тема</param>
     /// <param name="message">Текст письма</param>
-    public MailSender(string from, string header, string subject, string message)
+    public Mail(string from, string header, string subject, string message)
     {
       _header = header;
       _fromEmail = from;
@@ -58,6 +58,10 @@ namespace MLMExchange.Lib
     /// </summary>
     private readonly string _message;
 
+    /// <summary>
+    /// Отправить сообщение
+    /// использую SMTP протокол
+    /// </summary>
     public void SendMailMessage()
     {
       SmtpClient smtpClient = new SmtpClient();
@@ -68,6 +72,10 @@ namespace MLMExchange.Lib
       smtpClient.Send(getMessage());
     }
 
+    /// <summary>
+    /// Преобразую в сообщение
+    /// </summary>
+    /// <returns>собранное сообщение, готовое для отправки</returns>
     private MailMessage getMessage()
     {
       MailMessage mailMessage = new MailMessage();

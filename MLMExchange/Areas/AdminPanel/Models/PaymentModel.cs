@@ -40,11 +40,11 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// <summary>
     /// Банк
     /// </summary>
-    Bank,
+    Bank = 0,
     /// <summary>
     /// Электронный платеж
     /// </summary>
-    Electronic
+    Electronic = 1
   }
 
   /// <summary>

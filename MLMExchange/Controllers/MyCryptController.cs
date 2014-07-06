@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace MLMExchange.Controllers
 {
-  [Auth]
   public class MyCryptController : BaseController
   {
     public ActionResult Index()

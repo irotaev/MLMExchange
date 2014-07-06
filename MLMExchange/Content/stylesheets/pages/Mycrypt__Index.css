@@ -22,11 +22,12 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -258,7 +259,172 @@
   height: 0;
 }
 
-/* line 41, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 36, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content {
+  width: 882px;
+  float: left;
+  margin-right: 20px;
+  display: inline;
+}
+/* line 40, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__header {
+  border-bottom: 1px dashed;
+  padding: 10px;
+}
+/* line 45, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__header .b-tb__header__text {
+  font-size: 20px;
+}
+/* line 53, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content dt {
+  padding-left: 70px !important;
+  position: relative;
+  padding: 0px 0 10px 0;
+  margin-bottom: 5px;
+  height: 75px;
+  margin-top: 10px;
+}
+/* line 63, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content dt:before {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  font-family: FontAwesome;
+  font-size: 50px;
+  padding-top: 15px;
+  content: "";
+  color: #7b87af;
+}
+/* line 75, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(1):before {
+  content: "\f07a";
+}
+/* line 79, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(2):before {
+  content: "\f136";
+}
+/* line 83, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(3):before {
+  content: "\f0cc";
+}
+/* line 87, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(4):before {
+  content: "\f007";
+}
+/* line 91, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(5):before {
+  content: "\f007";
+}
+/* line 95, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(6):before {
+  content: "\f007";
+}
+/* line 99, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(7):before {
+  content: "\f021";
+}
+/* line 103, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(8):before {
+  content: "\f0d6";
+}
+/* line 107, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(9):before {
+  content: "\f0d6";
+}
+/* line 111, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(10):before {
+  content: "\f15b";
+}
+/* line 115, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(11):before {
+  content: "\f0f2";
+}
+/* line 119, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(12):before {
+  content: "\f158";
+}
+/* line 123, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(13):before {
+  content: "\f080";
+}
+/* line 127, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(14):before {
+  content: "\f017";
+}
+/* line 131, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(15):before {
+  content: "\f080";
+}
+/* line 135, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(16):before {
+  content: "\f045";
+}
+/* line 139, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(17):before {
+  content: "\f090";
+}
+/* line 143, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(18):before {
+  content: "\f0c0";
+}
+/* line 147, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(19):before {
+  content: "\f0f0";
+}
+/* line 151, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(20):before {
+  content: "\f0f0";
+}
+/* line 155, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(21):before {
+  content: "\f0f0";
+}
+/* line 159, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(22):before {
+  content: "\f0c0";
+}
+/* line 163, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(23):before {
+  content: "\f036";
+}
+/* line 167, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(24):before {
+  content: "\f038";
+}
+/* line 171, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(25):before {
+  content: "\f0e8";
+}
+/* line 175, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(26):before {
+  content: "\f03c";
+}
+/* line 179, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(27):before {
+  content: "\f022";
+}
+/* line 183, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(28):before {
+  content: "\f00b";
+}
+/* line 187, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(29):before {
+  content: "\f17a";
+}
+/* line 191, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(30):before {
+  content: "\f0f6";
+}
+/* line 195, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(31):before {
+  content: "\f187";
+}
+/* line 199, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+.b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(32):before {
+  content: "\f029";
+}
+
+/* line 211, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch {
   position: relative;
   top: -70px;
@@ -269,17 +435,17 @@
   height: 258px;
   margin-bottom: 90px;
 }
-/* line 53, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 223, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch.pb-scetch_orientation_right .pb-scetch__scetch-box {
   left: auto;
   right: 0;
 }
-/* line 58, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 228, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch.pb-scetch_orientation_right .pb-scetch__additional-info {
   right: auto;
   left: 0;
 }
-/* line 64, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 234, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__scetch-box {
   width: 208px;
   height: 258px;
@@ -287,7 +453,7 @@
   top: 0;
   left: 0;
 }
-/* line 71, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 241, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__scetch-box .pb-scetch__image-box {
   position: absolute;
   top: 0;
@@ -296,13 +462,13 @@
   height: 195px;
   background-color: #32bfb2;
 }
-/* line 79, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 249, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__scetch-box .pb-scetch__image-box .pb-scetch__icon {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 87, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 257, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__scetch-box .pb-scetch__text-block {
   position: absolute;
   bottom: 0;
@@ -316,7 +482,7 @@
   overflow: hidden;
   padding: 10px;
 }
-/* line 98, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 268, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__scetch-box .pb-scetch__text-block .pb-scetch__text {
   display: block;
   text-align: center;
@@ -325,14 +491,14 @@
   height: 43px;
   line-height: 43px;
 }
-/* line 109, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 279, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__additional-info {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 412px;
 }
-/* line 115, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
+/* line 285, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Mycrypt__Index.scss */
 .pb-scetch .pb-scetch__additional-info .pb-scetch__text-block {
   display: block;
   width: 100%;

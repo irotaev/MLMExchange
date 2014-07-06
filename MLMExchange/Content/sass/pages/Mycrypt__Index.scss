@@ -32,6 +32,176 @@
   @include clearfix;
 }
 
+.b-tb__content
+{
+  @include span-columns(11, 12);
+
+  .b-tb__header
+  {
+    border-bottom: 1px dashed;
+    padding: 10px;
+
+    .b-tb__header__text
+    {
+      font-size: $font-h;
+    }
+  }
+
+  .b-tb__listWrapper
+  {
+    .b-tb__listWrapper__content dt
+    {
+      padding-left: 70px !important;
+      position: relative;
+      padding: 0px 0 10px 0;
+      margin-bottom: 5px;
+      height: 75px;
+      margin-top: 10px;
+    }
+
+    .b-tb__listWrapper__content dt:before
+    {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      font-family: FontAwesome;
+      font-size: 50px;
+      padding-top: 15px;
+      content: "";
+      color: $blue_a_4_c2;
+    }
+
+    .b-tb__listWrapper__content > dt:nth-child(1):before
+    {
+      content: "\f07a";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(2):before
+    {
+      content: "\f136";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(3):before
+    {
+      content: "\f0cc";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(4):before
+    {
+      content: "\f007";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(5):before
+    {
+      content: "\f007";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(6):before
+    {
+      content: "\f007";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(7):before
+    {
+      content: "\f021";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(8):before
+    {
+      content: "\f0d6";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(9):before
+    {
+      content: "\f0d6";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(10):before
+    {
+      content: "\f15b";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(11):before
+    {
+      content: "\f0f2";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(12):before
+    {
+      content: "\f158";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(13):before
+    {
+      content: "\f080";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(14):before
+    {
+      content: "\f017";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(15):before
+    {
+      content: "\f080";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(16):before
+    {
+      content: "\f045";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(17):before
+    {
+      content: "\f090";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(18):before
+    {
+      content: "\f0c0";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(19):before
+    {
+      content: "\f0f0";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(20):before
+    {
+      content: "\f0f0";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(21):before
+    {
+      content: "\f0f0";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(22):before
+    {
+      content: "\f0c0";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(23):before
+    {
+      content: "\f036";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(24):before
+    {
+      content: "\f038";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(25):before
+    {
+      content: "\f0e8";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(26):before
+    {
+      content: "\f03c";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(27):before
+    {
+      content: "\f022";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(28):before
+    {
+      content: "\f00b";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(29):before
+    {
+      content: "\f17a";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(30):before
+    {
+      content: "\f0f6";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(31):before
+    {
+      content: "\f187";
+    }
+    .b-tb__listWrapper__content > dt:nth-child(32):before
+    {
+      content: "\f029";
+    }
+  }
+}
+
 //#region Блок скетча
 $pb-scetch__scetch-box_Width: 208px;
 $pb-scetch__scetch-box_Height: 195px;

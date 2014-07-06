@@ -23,7 +23,7 @@ namespace MLMExchange.Controllers
     [HttpPost]
     public ActionResult SendMail(ContactMessageModel contactModel)
     {
-      MailSender mail = new MailSender(contactModel.EMail, contactModel.UserName, contactModel.Title, contactModel.Text);
+      Mail mail = new Mail(contactModel.EMail, contactModel.UserName, contactModel.Title, contactModel.Text);
       mail.SendMailMessage();
       return null;
     }

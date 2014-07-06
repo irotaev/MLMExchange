@@ -22,11 +22,12 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -58,11 +59,12 @@
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*

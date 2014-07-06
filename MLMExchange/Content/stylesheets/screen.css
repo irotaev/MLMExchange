@@ -87,11 +87,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -305,11 +306,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -604,11 +606,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -844,11 +847,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
@@ -1035,7 +1039,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 50px;
   width: 50px;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__userinfo:before {
   font-family: "Dripicons";
   content: "\e043";
@@ -1052,7 +1056,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__browse:before {
   font-family: "Dripicons";
   content: "\e055";
@@ -1069,7 +1073,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__addmycrypt:before {
   font-family: "Dripicons";
   content: "\e036";
@@ -1086,7 +1090,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__controlpanel:before {
   font-family: "Dripicons";
   content: "\e027";
@@ -1103,7 +1107,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__salespeople:before {
   font-family: "Dripicons";
   content: "\e026";
@@ -1120,7 +1124,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__mycryptTransaction:before {
   font-family: "Dripicons";
   content: "\e035";
@@ -1137,7 +1141,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 25px;
   color: #7b87af;
 }
-/* line 96, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
+/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_framework.scss */
 .pb-admin-panel #MainLeft_Menu .pb-mm .pb-mm__menu-item-wrapper .pb-mm__icon-wrapper .pb-mm__icon.pb-mm__icon__systemSettings:before {
   font-family: "Dripicons";
   content: "\e027";
@@ -1361,11 +1365,12 @@ html, body {
 
 @font-face {
   font-family: FontAwesome;
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot");
-  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff");
-  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0");
+  src: url("/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0") format("opentype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0") format("truetype");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0") format("woff");
+  src: url("/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0");
+  src: local("FontAwesome");
 }
 
 /*
