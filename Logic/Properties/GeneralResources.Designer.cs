@@ -169,6 +169,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Номер карты.
+        /// </summary>
+        public static string CardNumber {
+            get {
+                return ResourceManager.GetString("CardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Процент проверочного платежа.
         /// </summary>
         public static string CheckPaymentPercent {

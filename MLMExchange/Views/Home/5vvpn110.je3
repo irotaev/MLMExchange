@@ -233,11 +233,11 @@
 
     <div class="carousel" id="carousel-video">
       <div class="slide">
-        <iframe class="b-videos__video" src="http://www.youtube.com/embed/HTvYuGWeKbE"></iframe>
+        <iframe class="b-videos__video" src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
       </div>
 
       <div class="slide">
-        <iframe class="b-videos__video" src="http://www.youtube.com/embed/jsqjnV6Nit8"></iframe>
+        <iframe class="b-videos__video" src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
       </div>
 
       <a class="controls left b-videos__video__controls-left"><i class="icon-arrow-left"></i></a>

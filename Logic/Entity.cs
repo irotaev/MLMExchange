@@ -389,9 +389,9 @@ namespace Logic
     /// </summary>
     public virtual string BIK { get; set; }
     /// <summary>
-    /// Корреспондентский счет
+    /// Номер карты
     /// </summary>
-    public virtual string CorrespondentAccount { get; set; }
+    public virtual string CardNumber { get; set; }
   }
 
   /// <summary>
@@ -875,7 +875,7 @@ namespace Logic
       Map(x => x.KPP).Not.Nullable();
       Map(x => x.CurrentAccount).Not.Nullable();
       Map(x => x.BIK).Not.Nullable();
-      Map(x => x.CorrespondentAccount).Not.Nullable();
+      Map(x => x.CardNumber).Not.Nullable();
     }
   }
 

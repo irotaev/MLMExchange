@@ -264,4 +264,7 @@
   <data name="Payments" xml:space="preserve">
     <value>Платежи</value>
   </data>
+  <data name="CardNumber" xml:space="preserve">
+    <value>Номер карты</value>
+  </data>
 </root>
