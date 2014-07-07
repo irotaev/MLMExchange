@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MLMExchange.Models.Registration
 {
-  public class LoginModel : BaseModel
+  public class LoginModel : AbstractModel
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Login { get; set; }

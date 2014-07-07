@@ -143,9 +143,9 @@ namespace Logic
       #region Создаю тестовых пользователей системы
       if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_User>().Where(x => x.Login == "irotaev" || x.Login == "newbik").Count() == 0)
       {
-        D_User irotaevUser = new D_User
+        D_User leaderUser = new D_User
         {
-          Login = "irotaev",
+          Login = "leader",
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = new D_PaymentSystemGroup
           {
@@ -160,7 +160,7 @@ namespace Logic
                 INN = "123",
                 IsDefault = true,
                 KPP = "123",
-                UserName = "irotaev",
+                UserName = "leader",
                 UserPatronymic = "Val",
                 UserSurname = "Rtv"
               }
@@ -178,16 +178,16 @@ namespace Logic
           Name = "Андрей",
           Surname = "Ротаев",
           Patronymic = "Валерьевич",
-          Email = "irotaev@gmail.com"
+          Email = "irotaev@gmail.com",
         };
 
-        irotaevUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = irotaevUser, MyCryptCount = 10000 } };
+        leaderUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = leaderUser, MyCryptCount = 10000 }, new D_LeaderRole { User = leaderUser } };
 
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(irotaevUser);
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(leaderUser);
 
-        D_User newbikUser = new D_User
+        D_User testerUser = new D_User
         {
-          Login = "newbik",
+          Login = "tester",
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = new D_PaymentSystemGroup
           {
@@ -202,7 +202,7 @@ namespace Logic
                 INN = "123",
                 IsDefault = true,
                 KPP = "123",
-                UserName = "newbik",
+                UserName = "tester",
                 UserPatronymic = "Val",
                 UserSurname = "Rtv"
               }
@@ -223,9 +223,51 @@ namespace Logic
           Email = "newbik@gmail.com"
         };
 
-        newbikUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = newbikUser, MyCryptCount = 5000 } };
+        testerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = testerUser, MyCryptCount = 5000 }, new D_TesterRole { User = testerUser } };
 
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(newbikUser);
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(testerUser);
+
+        D_User brokerUser = new D_User
+        {
+          Login = "broker",
+          PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
+          PaymentSystemGroup = new D_PaymentSystemGroup
+          {
+            BankPaymentSystems = new List<D_BankPaymentSystem>
+            {
+              new D_BankPaymentSystem
+              {
+                BankName = "Test bank name",
+                BIK = "123",
+                CorrespondentAccount = "123",
+                CurrentAccount = "123",
+                INN = "123",
+                IsDefault = true,
+                KPP = "123",
+                UserName = "broker",
+                UserPatronymic = "Val",
+                UserSurname = "Rtv"
+              }
+            },
+            ElectronicPaymentSystems = new List<D_ElectronicPaymentSystem>
+            {
+              new D_ElectronicPaymentSystem
+              {
+                ElectronicName = "Test electronic for newbik",
+                IsDefault = false,
+                PurseNumber = "123"
+              }
+            }
+          },
+          Name = "Брокерович",
+          Surname = "Алексей",
+          Patronymic = "Михайлович",
+          Email = "broker@gmail.com"
+        };
+
+        brokerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = brokerUser, MyCryptCount = 7000 }, new D_BrokerRole { User = brokerUser } };
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(brokerUser);
       }
       #endregion
 

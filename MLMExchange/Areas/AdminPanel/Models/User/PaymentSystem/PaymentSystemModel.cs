@@ -19,7 +19,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
   /// <typeparam name="TModel">Модель платежной системы</typeparam>
   public abstract class AbstractPaymentSystemModel<TDataObject, TModel> : AbstractDataModel<TDataObject, TModel>
     where TDataObject : D_PaymentSystem, new()
-    where TModel : BaseModel
+    where TModel : AbstractModel
   {
   }
 
@@ -32,7 +32,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
   public abstract class AbstractPaymentSystemModel<TLogicObject, TDataObject, TModel> : AbstractDataModel<TLogicObject, TDataObject, TModel>
     where TLogicObject : AbstractLogicObject<TDataObject>
     where TDataObject : D_PaymentSystem, new()
-    where TModel : BaseModel
+    where TModel : AbstractModel
   {
   }
 

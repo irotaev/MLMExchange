@@ -85,6 +85,13 @@ $default-layout_Bg-color: $blue_a_4;
 
   .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {font-family: "Segoe UI";}
 
+  a
+  {
+    text-decoration: underline;
+
+    &:hover {text-decoration: none;}
+  }
+
   //#region Main menu
   #MainLeft_Menu
   {

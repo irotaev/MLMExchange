@@ -9,7 +9,11 @@ using NHibernate.Linq;
 
 namespace Logic
 {
-  
+  /// <summary>
+  /// Показывает, что это объект данных.
+  /// Введен для архитектурной связи уровня данных и уровня прокси-логики.
+  /// </summary>
+  public interface IEntityObject { }
 
   /// <summary>
   /// Интерфейс базового логического proxy-объекта данных
@@ -44,7 +48,7 @@ namespace Logic
   /// Базовый класс для логического объекта. Proxy-объекта
   /// </summary>
   /// <typeparam name="TDataObject">Тип объекта данных, соответствующего логическому proxy-объекту</typeparam>
-  public abstract class AbstractLogicObject<TDataObject> : IAbstractBaseLogicObject, INhibernateEvent
+  public abstract class AbstractLogicObject<TDataObject> : IAbstractBaseLogicObject, INhibernateEvent, IEntityObject
     where TDataObject : D_BaseObject
   {
     public AbstractLogicObject(TDataObject dataObject)

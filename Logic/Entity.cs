@@ -11,7 +11,7 @@ using Logic.Lib;
 namespace Logic
 {
   #region Entity
-  public abstract class D_BaseObject
+  public abstract class D_BaseObject : IEntityObject
   {
     public virtual long Id { get; set; }
     public virtual DateTime CreationDateTime { get; set; }
@@ -138,19 +138,58 @@ namespace Logic
   /// </summary>
   public enum RoleType : int
   {
+    /// <summary>
+    /// Пользователь системы. Администратор.
+    /// </summary>
+    Administrator = 1,
+    /// <summary>
+    /// Пользователь системы. Участник.
+    /// </summary>
     User = 0,
-    Administrator = 1
+    /// <summary>
+    /// Пользователь системы. Лидер.
+    /// </summary>
+    Leader = 2,
+    /// <summary>
+    /// Пользователь системы. Тестер.
+    /// </summary>
+    Tester = 3,
+    /// <summary>
+    /// Пользователь системы. Брокер.
+    /// </summary>
+    Broker = 4
   }
 
   /// <summary>
-  /// Роль пользователя системы
+  /// Роль пользователя системы. Участник.
   /// </summary>
   public class D_UserRole : D_AbstractRole
   {
     /// <summary>
-    /// Количество my-crypt
+    /// Количество my-crypt.
     /// </summary>
     public virtual long MyCryptCount { get; set; }
+  }
+
+  /// <summary>
+  /// Роль участника системы. Лидер.
+  /// </summary>
+  public class D_LeaderRole : D_AbstractRole
+  {
+  }
+
+  /// <summary>
+  /// Роль участника системы. Тестер.
+  /// </summary>
+  public class D_TesterRole : D_AbstractRole
+  {
+  }
+
+  /// <summary>
+  /// Роль участника системы. Брокер.
+  /// </summary>
+  public class D_BrokerRole : D_AbstractRole
+  {
   }
 
   /// <summary>
@@ -691,7 +730,6 @@ namespace Logic
       Map(x => x.Patronymic).Nullable().Length(100);
       Map(x => x.Email).Nullable().Length(100);
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
-      //HasMany<Payment>(x => x.Payments).KeyColumn("UserId").Inverse().Cascade.All();
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
 
@@ -726,6 +764,30 @@ namespace Logic
       DiscriminatorValue(RoleType.User);
 
       Map(x => x.MyCryptCount).Default("0").Not.Nullable();
+    }
+  }
+
+  public class D_LeaderRole_Map : SubclassMap<D_LeaderRole>
+  {
+    public D_LeaderRole_Map()
+    {
+      DiscriminatorValue(RoleType.Leader);
+    }
+  }
+
+  public class D_TesterRole_Map : SubclassMap<D_TesterRole>
+  {
+    public D_TesterRole_Map()
+    {
+      DiscriminatorValue(RoleType.Tester);
+    }
+  }
+
+  public class D_BrokerRole_Map : SubclassMap<D_BrokerRole>
+  {
+    public D_BrokerRole_Map()
+    {
+      DiscriminatorValue(RoleType.Broker);
     }
   }
 

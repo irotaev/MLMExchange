@@ -1,0 +1,40 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+
+@model MLMExchange.Areas.AdminPanel.Models.UserControlBlockModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = MLMExchange.Properties.ResourcesA.BankPayment;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+else if (ViewData["Ajax"] != null && ViewData["Ajax"] == "True")
+{
+  @Html.X().ResourceManager().RenderStyles(ResourceLocationType.None).RenderScripts(ResourceLocationType.None)
+}
+
+<section class="b-ucp b-ab">
+  <header class="b-ab__title"><i class="b-ab__icon fa fa-random"></i> @MLMExchange.Properties.ResourcesA.UserControlBlock</header>
+
+  <div class="b-ucp__content b-ab__content">
+    <div class="b-ucp__mc-info">
+      <div class="b-ucp-wrapper">
+        <a class="b-ucp__update-mc" href="/AdminPanel/User/AddMyCrypt">@MLMExchange.Properties.ResourcesA.Button_UpdateMyCrypt</a>
+        <span class="b-ucp__mc-count">@((Model.CurrentUser.UserRoles.First(x => (x as Logic.D_UserRole) != null) as Logic.D_UserRole).MyCryptCount)</span>
+        <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
+      </div>
+    </div>
+
+    <aside class="b-ucp__referal-profit">
+      <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
+
+      <div class="b-ucp__profit-info">
+        <span class="b-ucp__profit-text">@MLMExchange.Properties.ResourcesA.ReferalProfit: <span class="b-ucp__profit-count">1125 <i class="b-ucp__cur-icon fa fa-rub"></i></span></span>
+      </div>
+
+      <div class="b-ucp__profit-actions-wrapper">
+        <button class="b-ucp__button b-button b-button_color_green-sea b-button_hover-animate_opacity pb-button_size-admin-default">@MLMExchange.Properties.ResourcesA.Button_GetProfit</button>
+      </div>
+    </aside>
+  </div>
+</section><!--B: User control panel-->

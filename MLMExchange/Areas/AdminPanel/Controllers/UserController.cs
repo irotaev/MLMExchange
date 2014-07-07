@@ -199,6 +199,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       }
       #endregion
 
+      #region UserControlBlockModel
+      model.UserControlBlockModel = new UserControlBlockModel().Bind((User)CurrentSession.Default.CurrentUser);
+      #endregion
+
       return View(model);
     }
 

@@ -1,5 +1,5 @@
 @charset "IBM866";
-/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -36,7 +36,7 @@
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
-/* line 14, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
+/* line 14, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -78,62 +78,62 @@
   background: url('../../images/Form-s21f3809381.png') no-repeat;
 }
 
-/* line 60, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .Form-s_password-fiel-lock_black {
   background-position: 0 0;
 }
 
-/* line 60, C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, C:/Program Files/Ruby200-x64/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .Form-s_password-fiel-lock_blue {
   background-position: 0 -34px;
 }
 
-/* line 241, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 241, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f input[type='text'], .b-f input[type='password'], .b-f textarea {
   font-family: 'Segoe UI Light_','Open Sans Light',Verdana,Arial,Helvetica,sans-serif;
 }
-/* line 246, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 246, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .b-f textarea {
   resize: vertical;
   max-width: 100%;
 }
 
-/* line 6, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 6, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf {
   position: relative;
   top: -110px;
 }
 
-/* line 13, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 13, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__form-fields-wrapper .pb-cf__field {
   margin-bottom: 30px;
 }
-/* line 15, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 15, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__form-fields-wrapper .pb-cf__field_name_name, .pb-cf__form-fields-wrapper .pb-cf__field_name_title, .pb-cf__form-fields-wrapper .pb-cf__field_name_email {
   width: 520px;
 }
-/* line 17, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 17, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__form-fields-wrapper .pb-cf__field_name_text {
   width: 100%;
 }
-/* line 18, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 18, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__form-fields-wrapper .pb-cf__field_name_text .b-ib__input {
   height: 130px;
 }
 
-/* line 26, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 26, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper {
   width: 275.2px;
   float: left;
   margin-right: 20px;
   display: inline;
 }
-/* line 30, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 30, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item {
   position: relative;
   margin-bottom: 10px;
 }
-/* line 35, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 35, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon {
   display: block;
   position: absolute;
@@ -142,7 +142,7 @@
   top: 0;
   left: 0;
 }
-/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+/* line 98, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon.pb-cf__icon__email:before {
   font-family: Dripicons;
   content: "\e048";
@@ -159,7 +159,7 @@
   font-size: 40px;
   color: #dadadb;
 }
-/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+/* line 98, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon.pb-cf__icon__phone:before {
   font-family: Dripicons;
   content: "\e066";
@@ -176,7 +176,7 @@
   font-size: 40px;
   color: #dadadb;
 }
-/* line 97, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
+/* line 98, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/_Framework.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__icon.pb-cf__icon__skype:before {
   font-family: FontAwesome;
   content: "\f17e";
@@ -193,7 +193,7 @@
   font-size: 40px;
   color: #dadadb;
 }
-/* line 58, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 58, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__text {
   display: block;
   margin-left: 40px;
@@ -207,15 +207,15 @@
   transition: color 0.5s linear;
   cursor: default;
 }
-/* line 69, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 69, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__text.pb-cf__text__clickable {
   cursor: pointer !important;
 }
-/* line 74, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 74, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-wrapper .pb-cf__item .pb-cf__text:hover {
   color: #45a2d0;
 }
-/* line 83, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 83, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .pb-cf__additional-info-vk {
   width: 275.2px;
   float: right;
@@ -223,7 +223,7 @@
   *margin-left: -20px;
   display: inline;
 }
-/* line 88, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
+/* line 88, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .b-button.register-button {
   width: 275.2px;
   float: right;
@@ -235,7 +235,7 @@
   font-size: 14px;
   color: white;
 }
-/* line 30, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
+/* line 30, e:/irotaev/Projects/MyCryptExchange/MLMExchange/MLMExchange/Content/sass/lib/_Form_lib.scss */
 .pb-cf__footer-wrapper .b-button.register-button .text {
   font-size: 14px;
   line-height: 40px;

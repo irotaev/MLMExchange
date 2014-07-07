@@ -189,4 +189,7 @@
   <data name="TradingSession__CanCloseTradingSession" xml:space="preserve">
     <value>Вы можете закрыть торговую сессию</value>
   </data>
+  <data name="YourCurrentMyCryptBalance" xml:space="preserve">
+    <value>Ваш текущий балас my-crypt</value>
+  </data>
 </root>

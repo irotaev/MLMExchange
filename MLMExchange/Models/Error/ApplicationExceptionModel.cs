@@ -8,7 +8,7 @@ namespace MLMExchange.Models.Error
   /// <summary>
   /// Ошибка системы
   /// </summary>
-  public class ApplicationExceptionModel : BaseModel
+  public class ApplicationExceptionModel : AbstractModel
   {
     public ApplicationExceptionModel(string title = null)
     {

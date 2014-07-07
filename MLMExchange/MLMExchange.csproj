@@ -173,6 +173,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\TradingSessionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\UserControlBlockModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemGroupModel.cs" />
@@ -1606,6 +1607,7 @@
     <Content Include="Areas\AdminPanel\Views\ElectronicPaymentSystem\Browse.cshtml" />
     <Content Include="Areas\AdminPanel\Views\ElectronicPaymentSystem\Edit.cshtml" />
     <Content Include="Areas\AdminPanel\Views\BasePayment\List.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\UserControlBlock\_Browse.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

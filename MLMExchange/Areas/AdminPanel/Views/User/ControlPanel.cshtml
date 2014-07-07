@@ -1,12 +1,14 @@
 ﻿@model MLMExchange.Areas.AdminPanel.Models.User.ControlPanelModel
 
 @{
-    ViewBag.Title = @MLMExchange.Properties.ResourcesA.ControlPanel;
-    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+  ViewBag.Title = @MLMExchange.Properties.ResourcesA.ControlPanel;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
 }
 
 <section class="pb-cp">
   @Html.Partial("~/Areas/AdminPanel/Views/Shared/ControlPanel/_BindingParticipateApplication.cshtml", Model.BiddingParticipateApplicationStateModel)
 
   @Html.Partial("~/Areas/AdminPanel/Views/TradingSession/_Browse.cshtml", Model.TradingSessionModel)
+
+  @Html.Partial("~/Areas/AdminPanel/Views/UserControlBlock/_Browse.cshtml", Model.UserControlBlockModel, new ViewDataDictionary { { "AsPartial", "True" } })
 </section><!--PB: Control panel-->

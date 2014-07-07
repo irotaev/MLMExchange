@@ -275,5 +275,14 @@ namespace MLMExchange.Properties {
                 return ResourceManager.GetString("WaitingUserResponse", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш текущий балас my-crypt.
+        /// </summary>
+        public static string YourCurrentMyCryptBalance {
+            get {
+                return ResourceManager.GetString("YourCurrentMyCryptBalance", resourceCulture);
+            }
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   /// <summary>
   /// Модель заявки в состоянии покупатель нашелся
   /// </summary>
-  public class BiddingParticipateApplicationBuyerFoundModel : BaseModel
+  public class BiddingParticipateApplicationBuyerFoundModel : AbstractModel
   {
     /// <summary>
     /// Заявки на покупку
@@ -86,7 +86,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   /// <summary>
   /// Модель заявки на продажу в состоянии покупатель принят
   /// </summary>
-  public class BiddingParticipateApplicationAcceptedModel : BaseModel
+  public class BiddingParticipateApplicationAcceptedModel : AbstractModel
   {
     /// <summary>
     /// Покупатель

@@ -1,0 +1,89 @@
+@import "../../../framework";
+
+.b-ucp
+{
+  margin: 50px auto 0 auto;
+
+  .b-ucp__content
+  {
+    position: relative;
+
+    padding-bottom: 100px;
+  }
+
+  .b-ucp__mc-info
+  {
+    @include clearfix;
+
+    .b-ucp-wrapper
+    {
+      float: right;
+      position: relative;
+      padding-top: 15px;
+
+      .b-ucp__update-mc
+      {
+        font-size: $font-ns;
+        color: $green-dark !important;
+        margin-right: 5px;
+      }
+
+      .b-ucp__mc-count
+      {
+        font-size: $font-h;
+
+        .b-ucp__cur-icon {font-size: $font-b;}
+      }
+
+      .b-ucp__info
+      {
+        font-size: $font-ns;
+        position: relative;
+        bottom: 6px;
+      }
+    }
+  }
+
+  .b-ucp__referal-profit
+  {
+    position: absolute;
+    right: 20px; bottom: 20px;
+    background-color: #527293;
+
+    .b-ucp__info
+    {
+      position: absolute;
+      top: 2px; right: 2px;
+    }
+
+    .b-ucp__profit-info
+    {
+      * {color: #7CB2C4 !important;}
+      margin-right: 15px;
+
+      .b-ucp__info {font-size: $font-ns;}
+
+      .b-ucp__profit-text
+      {
+        font-size: $font-n;
+
+        .b-ucp__profit-count
+        {
+          font-size: $font-h;
+
+          .b-ucp__cur-icon {font-size: $font-h - 2px;}
+        }
+      }
+    }
+
+    .b-ucp__profit-actions-wrapper
+    {
+      margin-top: 10px;
+
+      .b-ucp__button
+      {
+        width: 100%;
+      }
+    }
+  }
+}

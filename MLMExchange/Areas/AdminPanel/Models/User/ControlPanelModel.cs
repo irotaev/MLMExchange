@@ -6,7 +6,10 @@ using System.Web;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User
 {
-  public class ControlPanelModel : BaseModel
+  /// <summary>
+  /// Модель контрольной панели
+  /// </summary>
+  public class ControlPanelModel : AbstractModel
   {
     /// <summary>
     /// Состояние заявки на продажу my-crypt
@@ -17,5 +20,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// Модель торговой сессии
     /// </summary>
     public TradingSessionModel TradingSessionModel { get; set; }
+
+    /// <summary>
+    /// Модель контрольной панели пользователя
+    /// </summary>
+    public UserControlBlockModel UserControlBlockModel { get; set; }
   }
 }

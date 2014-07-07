@@ -196,11 +196,29 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Получить прибыль.
+        /// </summary>
+        public static string Button_GetProfit {
+            get {
+                return ResourceManager.GetString("Button_GetProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Открыть.
         /// </summary>
         public static string Button_Open {
             get {
                 return ResourceManager.GetString("Button_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пополнить.
+        /// </summary>
+        public static string Button_UpdateMyCrypt {
+            get {
+                return ResourceManager.GetString("Button_UpdateMyCrypt", resourceCulture);
             }
         }
         
@@ -628,6 +646,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Не вызван метод биндинга для конкретного типа объекта данных: {0}. Тем самым невозможно использовать свойства модели,связанные со свойствами конкретного объекта данных..
+        /// </summary>
+        public static string Model__Exception_BindNotCall {
+            get {
+                return ResourceManager.GetString("Model__Exception_BindNotCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Колличество MyCrypt.
         /// </summary>
         public static string MyCryptCount {
@@ -687,6 +714,15 @@ namespace MLMExchange.Properties {
         public static string Pay {
             get {
                 return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Прибыль от рефералов.
+        /// </summary>
+        public static string ReferalProfit {
+            get {
+                return ResourceManager.GetString("ReferalProfit", resourceCulture);
             }
         }
         
@@ -813,6 +849,15 @@ namespace MLMExchange.Properties {
         public static string UserAgreement {
             get {
                 return ResourceManager.GetString("UserAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Контрольная панель.
+        /// </summary>
+        public static string UserControlBlock {
+            get {
+                return ResourceManager.GetString("UserControlBlock", resourceCulture);
             }
         }
         

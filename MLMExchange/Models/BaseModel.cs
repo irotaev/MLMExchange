@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MLMExchange.Models
 {
+  #region Интерфейсы
   /// <summary>
   /// Модель, позволяющая использовать "лейзи-лоадинг".
   /// Лайзи-лоадинг позволяет загружать свойства в момент досптупа к ним, 
@@ -24,12 +25,43 @@ namespace MLMExchange.Models
   }
 
   /// <summary>
-  /// Интерфейс биндинга к данным
+  /// Интерфейс биндинга к данным. 
+  /// Однонаправленый, только получение данных из объекта.
+  /// Используется для получения данных из объекта в модель.
+  /// </summary>
+  /// <typeparam name="TObject">Тип объекта биндинга</typeparam>
+  /// <typeparam name="TModel">Тип модели данных</typeparam>
+  public interface IDataGetter<TObject, out TModel>
+    where TObject : D_BaseObject
+    where TModel : AbstractModel
+  {
+    TModel Bind(TObject @object);
+  }
+
+  /// <summary>
+  /// Интерфейс биндинга к данным. 
+  /// Однонаправленый, только получение данных из объекта.
+  /// Используется для получения данных из объекта в модель.
+  /// </summary>
+  /// <typeparam name="TLogicObject">Тип объекта биндинга. Объект прокси-логики</typeparam>
+  /// <typeparam name="TModel">Тип модели данных</typeparam>
+  public interface ILogicDataGetter<TLogicObject, out TModel>
+    where TLogicObject : class, IAbstractBaseLogicObject
+    where TModel : AbstractModel
+  {
+    TModel Bind(TLogicObject @object);
+  }
+
+  /// <summary>
+  /// Интерфейс биндинга к данным. 
+  /// Двуноправленный, т.е. получение данных из объекта, и сохранение данных в объект.
+  /// Используется для биндинга объекта данных в модель.
   /// <typeparam name="TObject">Объект данных</typeparam>
+  /// <typeparam name="TModel">Тип модели данных</typeparam>
   /// </summary>
   public interface IDataBinding<TObject, out TModel>
     where TObject : D_BaseObject
-    where TModel : BaseModel
+    where TModel : AbstractModel
   {
     /// <summary>
     /// Биндинг в web-модель. Прокси-биндинг
@@ -47,11 +79,14 @@ namespace MLMExchange.Models
 
   /// <summary>
   /// Интерфейс биндинга к данным
+  /// Двуноправленный, т.е. получение данных из объекта, и сохранение данных в объект.
+  /// Используется для биндинга объекта данных в модель.
   /// <typeparam name="TLogicObject">Тип объекта логики данных</typeparam>
+  /// <typeparam name="TModel">Тип модели данных</typeparam>
   /// </summary>
   public interface ILogicDataBinding<TLogicObject, out TModel>
     where TLogicObject : class, IAbstractBaseLogicObject
-    where TModel : BaseModel
+    where TModel : AbstractModel
   {
     /// <summary>
     /// Биндинг в web-модель. Прокси-биндинг
@@ -74,11 +109,12 @@ namespace MLMExchange.Models
   {
     long? Id { get; set; }
   }
+  #endregion
 
   /// <summary>
   /// Базовая модель.
   /// </summary>
-  public abstract class BaseModel : ILazyLoadModel
+  public abstract class AbstractModel : ILazyLoadModel
   {
     public bool IsLazyLoadingDisable { get; set; }
   }
@@ -87,7 +123,7 @@ namespace MLMExchange.Models
   /// Базовая модель. 
   /// Используется для биндинга сущностей с уровня данных.
   /// </summary>
-  public abstract class AbstractDataModel : BaseModel, IDataModel, IDataBinding<D_BaseObject, AbstractDataModel>
+  public abstract class AbstractDataModel : AbstractModel, IDataModel, IDataBinding<D_BaseObject, AbstractDataModel>
   {
     protected IAbstractBaseLogicObject _Object;
 
@@ -148,7 +184,7 @@ namespace MLMExchange.Models
   /// <typeparam name="TModel">Тип модели</typeparam>
   public abstract class AbstractDataModel<TObject, TModel> : AbstractDataModel, IDataBinding<TObject, TModel>
     where TObject : D_BaseObject, new()
-    where TModel : BaseModel
+    where TModel : AbstractModel
   {
     new protected TObject _Object;
 
@@ -179,7 +215,7 @@ namespace MLMExchange.Models
   public abstract class AbstractDataModel<TLogicObject, TDataObject, TModel> : AbstractDataModel, ILogicDataBinding<TLogicObject, TModel>
     where TLogicObject : AbstractLogicObject<TDataObject>
     where TDataObject : D_BaseObject, new()
-    where TModel : BaseModel
+    where TModel : AbstractModel
   {
     new protected TLogicObject _Object;
 
@@ -202,11 +238,46 @@ namespace MLMExchange.Models
   }
 
   #region Exceptions
-  public class ModelInvalidException : ApplicationException
+  /// <summary>
+  /// Базовая ошибка модели
+  /// </summary>
+  public abstract class ModelException : ApplicationException 
+  {
+    public ModelException() : base() { }
+    public ModelException(string message) : base(message) { }
+    public ModelException(string message, Exception innerException) : base(message, innerException) { }
+  }
+
+  public class ModelInvalidException : ModelException
   {
     public ModelInvalidException() : base() { }
     public ModelInvalidException(string message) : base(message) { }
     public ModelInvalidException(string message, Exception innerException) : base(message, innerException) { }
   }
+
+  /// <summary>
+  /// Не вызван прямой биндинг для конкретного объекта данных. 
+  /// В этом случаи нельзя получить свойства, относящиеся к свойствам конкретного объекта данных
+  /// <typeparam name="TDataObject">Тип объекта данных</typeparam>
+  /// </summary>
+  public class BindNotCallException<TDataObject> : ModelException
+    where TDataObject : IEntityObject
+  {
+    public BindNotCallException() : base() 
+    {
+      _Message = String.Format(MLMExchange.Properties.ResourcesA.Model__Exception_BindNotCall, typeof(TDataObject).Name);
+    }
+
+    private readonly string _Message;
+
+    public override string Message
+    {
+      get
+      {
+        return _Message;
+      }
+    }
+  }
+
   #endregion
 }

@@ -10,7 +10,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
   /// <summary>
   /// Модель для отображения продавцов
   /// </summary>
-  public class SalesPeopleModel : BaseModel
+  public class SalesPeopleModel : AbstractModel
   {
     /// <summary>
     /// Продавцы, у которых можно купить my-crypt

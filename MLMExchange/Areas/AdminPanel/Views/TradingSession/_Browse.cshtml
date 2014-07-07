@@ -10,7 +10,7 @@
     || Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == Logic.TradingSessionStatus.ProfitConfirmation; 
 }
 
-<section class="b-ts b-ab @(isABBlockFullCustom ? "b-ab b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
+<section class="b-ts b-ab @(isABBlockFullCustom ? "b-ab_customise_full-custom pb-bpa_state_accepted" : null)">
   <header class="b-ab__title"><i class="b-ab__icon fa fa-usd"></i> @Logic.Properties.GeneralResources.TradingSession</header>
 
   <div class="b-ab__content b-ts__content">

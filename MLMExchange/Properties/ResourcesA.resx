@@ -162,8 +162,14 @@
   <data name="Button_Close" xml:space="preserve">
     <value>Закрыть</value>
   </data>
+  <data name="Button_GetProfit" xml:space="preserve">
+    <value>Получить прибыль</value>
+  </data>
   <data name="Button_Open" xml:space="preserve">
     <value>Открыть</value>
+  </data>
+  <data name="Button_UpdateMyCrypt" xml:space="preserve">
+    <value>Пополнить</value>
   </data>
   <data name="BuyMyCrypt" xml:space="preserve">
     <value>Покупка My Crypt</value>
@@ -306,6 +312,9 @@
   <data name="MakeObjectDefault" xml:space="preserve">
     <value>Сделать объект по-умолчанию</value>
   </data>
+  <data name="Model__Exception_BindNotCall" xml:space="preserve">
+    <value>Не вызван метод биндинга для конкретного типа объекта данных: {0}. Тем самым невозможно использовать свойства модели,связанные со свойствами конкретного объекта данных.</value>
+  </data>
   <data name="MyCryptCount" xml:space="preserve">
     <value>Колличество MyCrypt</value>
   </data>
@@ -326,6 +335,9 @@
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Оплатить</value>
+  </data>
+  <data name="ReferalProfit" xml:space="preserve">
+    <value>Прибыль от рефералов</value>
   </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>
@@ -368,6 +380,9 @@
   </data>
   <data name="UserAgreement" xml:space="preserve">
     <value>Пользовательское соглашение</value>
+  </data>
+  <data name="UserControlBlock" xml:space="preserve">
+    <value>Контрольная панель</value>
   </data>
   <data name="UserInfo_Short" xml:space="preserve">
     <value>Пол. информация</value>

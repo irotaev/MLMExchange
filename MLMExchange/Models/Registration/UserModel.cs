@@ -41,7 +41,7 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
-    public D_UserRole UserRole { get; set; }
+    public IEnumerable<D_UserRole> UserRoles { get; set; }
 
     public UserModel Bind(Logic.D_User @object)
     {
@@ -57,10 +57,10 @@ namespace MLMExchange.Models.Registration
       this.PhotoRelativePath = @object.PhotoRelativePath;
       this.Surname = @object.Surname;
 
-      D_UserRole d_userRole = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_UserRole>().Where(x => x.User.Id == Id).FirstOrDefault();
+      IEnumerable<D_UserRole> d_userRoles = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_UserRole>().Where(x => x.User.Id == Id);
 
-      UserRole = d_userRole;
+      UserRoles = d_userRoles;
 
       return this;
     }
