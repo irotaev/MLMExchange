@@ -32,7 +32,7 @@ namespace LogicTest.DataObject
 
       D_YieldSessionBill d_bill = new D_YieldSessionBill
       {
-        PaymentState = BillPaymentState.WaitingPayment,
+        PaymentState = BillPaymentState.EnoughMoney,
         Payer = d_Payer,
         PaymentAcceptor = d_Buyer,
         MoneyAmount = ((TradingSession)d_acceptorTradingSession).CalculateBuyerProfit(),

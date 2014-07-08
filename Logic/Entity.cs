@@ -311,17 +311,24 @@ namespace Logic
     public virtual D_TradingSession AcceptorTradingSession { get; set; }
   }
 
+  /// <summary>
+  /// Состояние счета
+  /// </summary>
   public enum BillPaymentState : int
   {
-    NA = 0,
+    NA = 0,    
+    /// <summary>
+    /// Ожидание платежа
+    /// </summary>
+    WaitingPayment = 4,
     /// <summary>
     /// Оплачен
     /// </summary>
     Paid = 1,
     /// <summary>
-    /// Ожидание платежа
+    /// Внесено достаточно денег по счету
     /// </summary>
-    WaitingPayment = 2,
+    EnoughMoney = 2,
     /// <summary>
     /// Не оплачен
     /// </summary>
