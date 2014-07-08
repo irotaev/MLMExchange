@@ -191,7 +191,7 @@ namespace Logic
         //TODO:Rtv Добавить AcceptorTradingSession. Или подумать как решить данный вопрос
         D_YieldSessionBill ensureBill = new D_YieldSessionBill
         {
-          MoneyAmount = YieldSessionBillsNecessaryMoney() > 100 ? YieldSessionBillsNecessaryMoney() / 2 : YieldSessionBillsNecessaryMoney(),
+          MoneyAmount = YieldSessionBillsNecessaryMoney(),
           Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
           PaymentAcceptor = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_System_User>().FirstOrDefault(),
           PayerTradingSession = _LogicObject,
