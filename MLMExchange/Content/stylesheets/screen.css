@@ -101,6 +101,44 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
+*/
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
+*/
 /* line 3, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/lib/_Shared.scss */
 .b-hr {
   display: block;
@@ -191,8 +229,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 .b-ai .b-ai_text {
   margin: 20px;
   overflow: hidden;
-  font-size: 30px;
-  color: #a7a9ac;
+  font-size: 18px;
+  color: #7b87af;
   text-align: center;
 }
 
@@ -319,6 +357,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $content Задать ID конкретной иконки из шрифта
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
+*/
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
 */
 /* line 50, Form/s_*.png */
 .Form-sprite, .Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon, .Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
@@ -621,6 +678,44 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $font-size Размер иконки. Фактически это размер шрифта
 */
 /*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
+*/
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
+*/
+/*
 * Перебитие css-правил из metro ui css
 ***/
 /* line 12, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/_MetroUICss_Override.scss */
@@ -896,6 +991,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $content Задать ID конкретной иконки из шрифта
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
+*/
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
 */
 /* line 3, E:/Projects/Exchange/MLMExchange/MLMExchange/Content/sass/lib/Admin.Blocks/_AdminBlock.scss */
 .b-ab {
@@ -1414,6 +1528,25 @@ html, body {
 * @param $content Задать ID конкретной иконки из шрифта
 * @param $color Цвет иконки
 * @param $font-size Размер иконки. Фактически это размер шрифта
+*/
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
 */
 /* line 50, Form/s_*.png */
 .Form-sprite, .Form-s_password-fiel-lock_black, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon, .Form-s_password-fiel-lock_blue, .b-ib .b-ib__input-wrapper.b-ib__input-wrapper_input-type_password .b-ib__icon.focused {
