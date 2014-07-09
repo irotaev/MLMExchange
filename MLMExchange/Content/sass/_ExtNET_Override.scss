@@ -1,3 +1,5 @@
+@import "framework";
+
 /*
 * Override Ext.NET styles
 */
@@ -11,3 +13,16 @@
 {
   background-color: $blue_a_4;
 }
+
+//#region Buttons
+.x-btn
+{
+  &.x-btn-default-small
+  {
+    .x-btn-inner
+    {
+      font-weight: normal;
+    }
+  }
+}
+//#endregion

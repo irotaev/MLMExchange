@@ -8,7 +8,7 @@
   {
     position: relative;
 
-    padding-bottom: 100px;
+    padding-bottom: 150px;
   }
 
   .b-ucp__mc-info
@@ -51,12 +51,13 @@
   {
     position: absolute;
     right: 20px; bottom: 20px;
-    background-color: #527293;
+    background-color: #2E577C;
+    padding: 10px;
 
     .b-ucp__info
     {
       position: absolute;
-      top: 2px; right: 2px;
+      top: 5px; right: 5px;
     }
 
     .b-ucp__profit-info
@@ -68,7 +69,7 @@
 
       .b-ucp__profit-text
       {
-        font-size: $font-n;
+        font-size: $font-b;
 
         .b-ucp__profit-count
         {

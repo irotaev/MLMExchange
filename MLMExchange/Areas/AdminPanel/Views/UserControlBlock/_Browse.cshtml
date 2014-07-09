@@ -29,11 +29,21 @@ else if (ViewData["Ajax"] != null && ViewData["Ajax"] == "True")
       <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
 
       <div class="b-ucp__profit-info">
-        <span class="b-ucp__profit-text">@MLMExchange.Properties.ResourcesA.ReferalProfit: <span class="b-ucp__profit-count">1125 <i class="b-ucp__cur-icon fa fa-rub"></i></span></span>
+        <span class="b-ucp__profit-text">@MLMExchange.Properties.ResourcesA.ReferalProfit: <span class="b-ucp__profit-count">@Model.ReferalProfit <i class="b-ucp__cur-icon fa fa-rub"></i></span></span>
       </div>
 
       <div class="b-ucp__profit-actions-wrapper">
-        <button class="b-ucp__button b-button b-button_color_green-sea b-button_hover-animate_opacity pb-button_size-admin-default">@MLMExchange.Properties.ResourcesA.Button_GetProfit</button>
+        @{
+          //TODO:Rtv доработать механиз получение прибыли от рефералов
+          var getProfitButton = Html.X().Button().Height(30).Text(MLMExchange.Properties.ResourcesA.Button_GetProfit).Cls("b-ucp__button");
+          
+          if (Model.ReferalProfit < 1000)
+          {
+            getProfitButton.Disabled(true);
+          }
+          
+          @getProfitButton
+        }
       </div>
     </aside>
   </div>

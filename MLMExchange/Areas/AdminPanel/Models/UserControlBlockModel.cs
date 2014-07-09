@@ -29,6 +29,16 @@ namespace MLMExchange.Areas.AdminPanel.Models
       }
     }
 
+
+    public decimal ReferalProfit
+    {
+      get
+      {
+        //TODO:Rtv Доделать получение прибыли рефералов
+        return 0;
+      }
+    }
+
     public UserControlBlockModel Bind(Logic.User @object)
     {
       if (@object == null)
