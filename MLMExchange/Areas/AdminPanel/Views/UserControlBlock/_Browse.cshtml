@@ -13,38 +13,41 @@ else if (ViewData["Ajax"] != null && ViewData["Ajax"] == "True")
   @Html.X().ResourceManager().RenderStyles(ResourceLocationType.None).RenderScripts(ResourceLocationType.None)
 }
 
-<section class="b-ucp b-ab">
-  <header class="b-ab__title"><i class="b-ab__icon fa fa-random"></i> @MLMExchange.Properties.ResourcesA.UserControlBlock</header>
+@if (Model.IsHasUserRole)
+{ 
+  <section class="b-ucp b-ab">
+    <header class="b-ab__title"><i class="b-ab__icon fa fa-random"></i> @MLMExchange.Properties.ResourcesA.UserControlBlock</header>
 
-  <div class="b-ucp__content b-ab__content">
-    <div class="b-ucp__mc-info">
-      <div class="b-ucp-wrapper">
-        <a class="b-ucp__update-mc" href="/AdminPanel/User/AddMyCrypt">@MLMExchange.Properties.ResourcesA.Button_UpdateMyCrypt</a>
-        <span class="b-ucp__mc-count">@((Model.CurrentUser.UserRoles.First(x => (x as Logic.D_UserRole) != null) as Logic.D_UserRole).MyCryptCount)</span>
+    <div class="b-ucp__content b-ab__content">
+      <div class="b-ucp__mc-info">
+        <div class="b-ucp-wrapper">
+          <a class="b-ucp__update-mc" href="/AdminPanel/User/AddMyCrypt">@MLMExchange.Properties.ResourcesA.Button_UpdateMyCrypt</a>
+          <span class="b-ucp__mc-count">@((Model.CurrentUser.UserRoles.First(x => (x as Logic.D_UserRole) != null) as Logic.D_UserRole).MyCryptCount)</span>
+          <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
+        </div>
+      </div>
+
+      <aside class="b-ucp__referal-profit">
         <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
-      </div>
-    </div>
 
-    <aside class="b-ucp__referal-profit">
-      <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
+        <div class="b-ucp__profit-info">
+          <span class="b-ucp__profit-text">@MLMExchange.Properties.ResourcesA.ReferalProfit: <span class="b-ucp__profit-count">@Model.ReferalProfit <i class="b-ucp__cur-icon fa fa-rub"></i></span></span>
+        </div>
 
-      <div class="b-ucp__profit-info">
-        <span class="b-ucp__profit-text">@MLMExchange.Properties.ResourcesA.ReferalProfit: <span class="b-ucp__profit-count">@Model.ReferalProfit <i class="b-ucp__cur-icon fa fa-rub"></i></span></span>
-      </div>
-
-      <div class="b-ucp__profit-actions-wrapper">
-        @{
-          //TODO:Rtv доработать механиз получение прибыли от рефералов
-          var getProfitButton = Html.X().Button().Height(30).Text(MLMExchange.Properties.ResourcesA.Button_GetProfit).Cls("b-ucp__button");
+        <div class="b-ucp__profit-actions-wrapper">
+          @{
+            //TODO:Rtv доработать механиз получение прибыли от рефералов
+            var getProfitButton = Html.X().Button().Height(30).Text(MLMExchange.Properties.ResourcesA.Button_GetProfit).Cls("b-ucp__button");
           
-          if (Model.ReferalProfit < 1000)
-          {
-            getProfitButton.Disabled(true);
+            if (Model.ReferalProfit < 1000)
+            {
+              getProfitButton.Disabled(true);
+            }
+          
+            @getProfitButton
           }
-          
-          @getProfitButton
-        }
-      </div>
-    </aside>
-  </div>
-</section><!--B: User control panel-->
+        </div>
+      </aside>
+    </div>
+  </section><!--B: User control panel-->
+}

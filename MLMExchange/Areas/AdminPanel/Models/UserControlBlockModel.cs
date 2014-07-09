@@ -16,6 +16,21 @@ namespace MLMExchange.Areas.AdminPanel.Models
     private Logic.User _User;
 
     /// <summary>
+    /// Имеет ли пользователь роль пользователя системы.
+    /// Если не имеет то для него нет никакого смысла выводить блок контрольной панели пользователя.
+    /// </summary>
+    public bool IsHasUserRole
+    {
+      get
+      {
+        if (_User == null)
+          throw new BindNotCallException<Logic.User>();
+
+        return CurrentUser.UserRoles.FirstOrDefault(x => (x as Logic.D_UserRole) != null) != null;
+      }
+    }
+
+    /// <summary>
     /// Модель текущего пользователя
     /// </summary>
     public UserModel CurrentUser
