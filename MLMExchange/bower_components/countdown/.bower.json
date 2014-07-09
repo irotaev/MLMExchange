@@ -1,0 +1,15 @@
+{
+  "name": "countdown",
+  "homepage": "https://github.com/rendro/countdown",
+  "version": "1.0.1",
+  "_release": "1.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.1",
+    "commit": "c34db5a48a6571651e9cdfdd7564ad42a34df57c"
+  },
+  "_source": "git://github.com/rendro/countdown.git",
+  "_target": "~1.0.1",
+  "_originalSource": "countdown",
+  "_direct": true
+}
