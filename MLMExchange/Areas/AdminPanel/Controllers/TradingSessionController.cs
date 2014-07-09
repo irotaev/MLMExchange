@@ -48,7 +48,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       TradingSession tradingSession = (TradingSession)d_yieldSessionBill.PayerTradingSession;
 
-      if (d_yieldSessionBill.PaymentState != BillPaymentState.NA 
+      if (d_yieldSessionBill.PaymentState != BillPaymentState.WaitingPayment 
         || d_yieldSessionBill.Payer.Id != CurrentSession.Default.CurrentUser.Id 
         || tradingSession.LogicObject.State != TradingSessionStatus.NeedEnsureProfibility)
       {
@@ -68,7 +68,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         RealMoneyAmount = d_yieldSessionBill.MoneyAmount
       };
       
-      d_yieldSessionBill.PaymentState = BillPaymentState.WaitingPayment;
+      d_yieldSessionBill.PaymentState = BillPaymentState.EnoughMoney;
       ((YieldSessionBill)d_yieldSessionBill).AddPayment(payment);
 
       session.SaveOrUpdate(d_yieldSessionBill);
@@ -145,7 +145,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (d_bill == null)
         throw new UserVisible__WrongParametrException("billId");
 
-      if (d_bill.PaymentState != BillPaymentState.WaitingPayment || d_bill.PaymentAcceptor.Id != CurrentSession.Default.CurrentUser.Id)
+      if (d_bill.PaymentState != BillPaymentState.EnoughMoney || d_bill.PaymentAcceptor.Id != CurrentSession.Default.CurrentUser.Id)
         throw new UserVisible__CurrentActionAccessDenied();
 
       d_bill.PaymentState = BillPaymentState.Paid;

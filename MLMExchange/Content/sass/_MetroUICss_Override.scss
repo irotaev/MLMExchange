@@ -106,3 +106,13 @@ $metro__button_Active_Color: $blue_3;
 * {
   @include box-sizing(content-box);
 }
+
+.icon-arrow-left
+{
+  @include font-icon("\f060", rgba(0, 0, 0, 0.75), FontAwesome, 40px);
+}
+
+.icon-arrow-right
+{
+  @include font-icon("\f061", rgba(0, 0, 0, 0.75), FontAwesome, 40px);
+}

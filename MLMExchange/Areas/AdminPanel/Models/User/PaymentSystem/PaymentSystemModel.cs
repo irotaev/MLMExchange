@@ -78,7 +78,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    public string CorrespondentAccount { get; set; }
+    public string CardNumber { get; set; }
 
     /// <summary>
     /// Является ли данная система дефолтной
@@ -101,7 +101,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       KPP = @object.KPP;
       CurrentAccount = @object.CurrentAccount;
       BIK = @object.BIK;
-      CorrespondentAccount = @object.CorrespondentAccount;
+      CardNumber = @object.CardNumber;
 
       IsDefault = @object.IsDefault;
 
@@ -140,10 +140,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
 
       @object.BIK = BIK;
 
-      if (String.IsNullOrWhiteSpace(CorrespondentAccount))
-        throw new UserVisible__ArgumentNullException("CorrespondentAccount");
+      if (String.IsNullOrWhiteSpace(CardNumber))
+        throw new UserVisible__ArgumentNullException("CardNumber");
 
-      @object.CorrespondentAccount = CorrespondentAccount;
+      @object.CardNumber = CardNumber;
 
       return @object;
     }

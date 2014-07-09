@@ -68,7 +68,7 @@ namespace Logic
 
         foreach (var bill in _LogicObject.YieldSessionBills)
         {
-          billsPaid = bill.PaymentState == BillPaymentState.Paid;
+          billsPaid = bill.PaymentState == BillPaymentState.EnoughMoney;
         }
 
         return billsPaid;
@@ -143,7 +143,8 @@ namespace Logic
             Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
             PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
             PayerTradingSession = _LogicObject,
-            AcceptorTradingSession = profitSession.LogicObject
+            AcceptorTradingSession = profitSession.LogicObject,
+            PaymentState = BillPaymentState.WaitingPayment
           };
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
@@ -161,7 +162,8 @@ namespace Logic
             Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
             PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
             PayerTradingSession = _LogicObject,
-            AcceptorTradingSession = profitSession.LogicObject
+            AcceptorTradingSession = profitSession.LogicObject,
+            PaymentState = BillPaymentState.WaitingPayment
           };
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
@@ -189,10 +191,11 @@ namespace Logic
         //TODO:Rtv Добавить AcceptorTradingSession. Или подумать как решить данный вопрос
         D_YieldSessionBill ensureBill = new D_YieldSessionBill
         {
-          MoneyAmount = YieldSessionBillsNecessaryMoney(),
+          MoneyAmount = YieldSessionBillsNecessaryMoney() > 100 ? YieldSessionBillsNecessaryMoney() / 2 : YieldSessionBillsNecessaryMoney(),
           Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
           PaymentAcceptor = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_System_User>().FirstOrDefault(),
-          PayerTradingSession = _LogicObject
+          PayerTradingSession = _LogicObject,
+          PaymentState = BillPaymentState.WaitingPayment
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);

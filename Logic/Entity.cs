@@ -311,17 +311,24 @@ namespace Logic
     public virtual D_TradingSession AcceptorTradingSession { get; set; }
   }
 
+  /// <summary>
+  /// Состояние счета
+  /// </summary>
   public enum BillPaymentState : int
   {
-    NA = 0,
+    NA = 0,    
+    /// <summary>
+    /// Ожидание платежа
+    /// </summary>
+    WaitingPayment = 4,
     /// <summary>
     /// Оплачен
     /// </summary>
     Paid = 1,
     /// <summary>
-    /// Ожидание платежа
+    /// Внесено достаточно денег по счету
     /// </summary>
-    WaitingPayment = 2,
+    EnoughMoney = 2,
     /// <summary>
     /// Не оплачен
     /// </summary>
@@ -382,9 +389,9 @@ namespace Logic
     /// </summary>
     public virtual string BIK { get; set; }
     /// <summary>
-    /// Корреспондентский счет
+    /// Номер карты
     /// </summary>
-    public virtual string CorrespondentAccount { get; set; }
+    public virtual string CardNumber { get; set; }
   }
 
   /// <summary>
@@ -868,7 +875,7 @@ namespace Logic
       Map(x => x.KPP).Not.Nullable();
       Map(x => x.CurrentAccount).Not.Nullable();
       Map(x => x.BIK).Not.Nullable();
-      Map(x => x.CorrespondentAccount).Not.Nullable();
+      Map(x => x.CardNumber).Not.Nullable();
     }
   }
 

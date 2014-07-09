@@ -89,7 +89,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       ClosingSessionDateTime = @object.LogicObject.ClosingSessionDateTime;
 
       //TODO:Rtv переделать
-      foreach (var bill in @object.LogicObject.YieldSessionBills)
+      foreach (var bill in @object.LogicObject.YieldSessionBills.Where(x => x.PaymentState == BillPaymentState.WaitingPayment))
       {
         Logic.PaymentSystem defaultPaymentSystem = ((PaymentSystemGroup)bill.PaymentAcceptor.PaymentSystemGroup).GetDefaultPaymentSystem();
 
@@ -135,7 +135,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
         {
           if (_NeedProfitBills == null)
           {
-            _NeedProfitBills = _Object.GetNeedPaymentBills().Where(x => x.LogicObject.PaymentState == BillPaymentState.WaitingPayment).Select(x => new BillModel().Bind((Bill)x));
+            _NeedProfitBills = _Object.GetNeedPaymentBills().Where(x => x.LogicObject.PaymentState == BillPaymentState.EnoughMoney).Select(x => new BillModel().Bind((Bill)x));
           }
 
           return _NeedProfitBills;

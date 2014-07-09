@@ -13,21 +13,78 @@ $b-videos__video-wrapper_Border-color: #E2ECFA;
   padding: {left: 30px; right: 30px;};
   margin-bottom: 30px;
 
+
   @include with-grid-settings(2, 45%, 10%)
   {
-    position: relative;
+    //position: relative;
 
     .b-videos__video-wrapper
     {
-      @include span-columns(1);
-      @include nth-omega(2n);
-      @include box-sizing(border-box);
+      //@include span-columns(1);
+      //@include nth-omega(2n);
+      //@include box-sizing(border-box);
+      //
+      //height: 250px;
+      //border: 10px solid $b-videos__video-wrapper_Border-color;
+      //@include transition(border 0.55s);
 
-      position: relative;
-      height: 250px;
-      border: 10px solid $b-videos__video-wrapper_Border-color;
-      @include transition(border 0.55s);
       z-index: 100;
+      position: relative;
+      border-radius:4px;
+      -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+      box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+      -moz-border-radius:4px;
+
+      &:before, &:after
+      {
+        content:"";
+        position:absolute;
+        z-index:-2;
+        bottom:15px;
+        left:10px;
+        width:50%;
+        height:20%;
+        max-width:300px;
+        -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+        box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+        -webkit-transform:rotate(-3deg);
+        -moz-transform:rotate(-3deg);
+        -ms-transform:rotate(-3deg);
+        -o-transform:rotate(-3deg);
+        transform:rotate(-3deg);
+      }
+
+      &:after
+      {
+        right:10px;
+        left:auto;
+        -webkit-transform:rotate(3deg);
+        -moz-transform:rotate(3deg);
+        -ms-transform:rotate(3deg);
+        -o-transform:rotate(3deg);
+        transform:rotate(3deg);
+      }
+
+      margin-left: 20%;
+      margin-right: 20%;
+
+      .b-videos__video__controls
+      {
+        position: absolute;
+        left: 150px;
+        bottom: 150px;
+
+        &.b-videos__video__controls-left
+        {
+          float: left;
+        }
+        &.b-videos__video__controls-right
+        {
+          float: right;
+        }
+      }
 
       &:hover
       {
