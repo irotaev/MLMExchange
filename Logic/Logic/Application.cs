@@ -109,7 +109,7 @@ namespace Logic
               {
                 BankName = "Fake",
                 BIK = "123",
-                CorrespondentAccount = "123",
+                CardNumber = "123",
                 CurrentAccount = "123",
                 INN = "123",
                 IsDefault = true,
@@ -155,7 +155,7 @@ namespace Logic
               {
                 BankName = "Test bank name",
                 BIK = "123",
-                CorrespondentAccount = "123",
+                CardNumber = "123",
                 CurrentAccount = "123",
                 INN = "123",
                 IsDefault = true,
@@ -197,7 +197,7 @@ namespace Logic
               {
                 BankName = "Test bank name",
                 BIK = "123",
-                CorrespondentAccount = "123",
+                CardNumber = "123",
                 CurrentAccount = "123",
                 INN = "123",
                 IsDefault = true,
@@ -239,7 +239,7 @@ namespace Logic
               {
                 BankName = "Test bank name",
                 BIK = "123",
-                CorrespondentAccount = "123",
+                CardNumber = "123",
                 CurrentAccount = "123",
                 INN = "123",
                 IsDefault = true,

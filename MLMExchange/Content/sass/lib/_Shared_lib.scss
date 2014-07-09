@@ -201,8 +201,8 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
   {
     margin: 20px;
     overflow: hidden;
-    font-size: $font-b-b;
-    color: $grey_1;
+    font-size: $font-bb;
+    color: $blue_a_4_c2;
     text-align: center;
   }
 }
@@ -300,4 +300,79 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
 {
   border: 3px dashed $color;
   padding: 5px;
+}
+
+/*
+* Начать обёртку для листа иконок dt
+* @param $class Задать Класс обёртки
+* @param $font-family Задать шрифт, по дефолту: FontAwesome
+* @param $color Цвет иконки
+*/
+@mixin listIconStart($class, $font-family: FontAwesome, $color: $blue_a_4_c2)
+{
+  .#{$class} dt
+  {
+    padding-left: 70px !important;
+    position: relative;
+    padding: 0px 0 10px 0;
+    margin-bottom: 5px;
+    height: 75px;
+    margin-top: 10px;
+  }
+
+  .#{$class} dt:before
+  {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    font-family: FontAwesome;
+    font-size: 50px;
+    padding-top: 15px;
+    content: "";
+    color: #{$color};
+  }
+}
+
+/*
+* Вставить иконку в лист иконок dt
+* @param $class Задать Класс обёртки
+* @param $number Уникальный номер dt
+* @param $content Контент, юникод иконки
+* @param $color Кастомный цвет для иконки, по дефолту - цвета нет
+*/
+@mixin listIcon($class, $number, $content, $color: null)
+{
+  $false: null;
+
+  .#{$class} > dt:nth-child(#{$number}):before
+  {
+    content: $content;
+
+    @if $color != $false
+    {
+      color: $color;
+    }
+  }
+}
+
+/*
+* Хелпер перечисления
+* @param $numbered-element селектор элемента, к которому будет привязан счётчик
+* @param $sep Символ или буква, стоящая после цифры коунтера
+* @param $counter Элемент, куда будем вставлять счётчик
+*/
+@mixin auto-numbers($numbered-element, $sep, $counter: item){
+  $sel: ();
+  $sel: append($sel, unquote('&'), comma);
+
+  #{$sel}{
+    counter-reset: #{$counter};
+    > #{$numbered-element}{
+      &:before{
+        counter-increment: #{$counter};
+        content: counter(#{$counter}) "#{$sep} ";
+        font-size: $font-ns;
+      }
+    }
+  }
 }
