@@ -232,4 +232,4 @@ MLMExchange/Uploads
 Content/stylesheets/
 Logic/bin/
 *.css
-MLMExchange/bower_components/
+#MLMExchange/bower_components/
