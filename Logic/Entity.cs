@@ -94,6 +94,10 @@ namespace Logic
     /// </summary>
     public virtual D_UserType UserType { get; set; }
     public virtual IList<D_UserRole> UserRole { get; set; }
+    /// <summary>
+    /// Роль пользователя, являющаяся босом для данного реферала
+    /// </summary>
+    public virtual D_UserRole ReferalBossRole { get; set; }
   }
 
   /// <summary>
@@ -169,6 +173,10 @@ namespace Logic
     /// Количество my-crypt.
     /// </summary>
     public virtual long MyCryptCount { get; set; }
+    /// <summary>
+    /// Список рефералов
+    /// </summary>
+    public virtual IList<D_User> ReferalUsers { get; set; }
   }
 
   /// <summary>
@@ -739,6 +747,7 @@ namespace Logic
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
+      References(x => x.ReferalBossRole).Column("ReferalBossRoleId").Cascade.All();
 
       DiscriminateSubClassesOnColumn<D_UserType>("UserType", D_UserType.BaseUser);
       HasMany(x => x.UserRole).KeyColumn("UserId").Cascade.All();
@@ -771,6 +780,7 @@ namespace Logic
       DiscriminatorValue(RoleType.User);
 
       Map(x => x.MyCryptCount).Default("0").Not.Nullable();
+      HasMany(x => x.ReferalUsers).KeyColumn("ReferalBossRoleId").Cascade.SaveUpdate();
     }
   }
 

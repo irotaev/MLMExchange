@@ -85,9 +85,13 @@
 }
 
 <section class="pb-admin-panel" id="pb-admin-panel__ID">
-  @(X.Container().Layout(LayoutType.Border).Height(800).Items(
+  @(X.Container().Layout(LayoutType.Border).Items(
       X.Panel().ID("MainLeft_Menu").MinHeight(600).Region(Region.West).Width(236).Collapsible(true).CollapseMode(CollapseMode.Default)
         .HeaderConfig(X.PanelHeader().Height(74).Title(MLMExchange.Properties.ResourcesA.MainMenu__Header)).Content(x => MainMenu__InnerContent()),
         (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Content(x => RenderBody())
           ).RenderTo("pb-admin-panel__ID"))
+  
+  <script>
+    
+  </script>
 </section>
