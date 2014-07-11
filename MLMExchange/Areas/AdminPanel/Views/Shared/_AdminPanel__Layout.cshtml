@@ -92,8 +92,8 @@
           ).RenderTo("pb-admin-panel__ID"))
   
   <script>
-    Ext.onReady(function () {
-      Ext.getCmp('AdminPanel__MainContainer').setHeight($("#AdminPanel__CenterBlock-innerCt")[0].scrollHeight + 20);
+    require(["Lib/Site"], function (siteModule) {
+      new siteModule.AdmineArea().Initilize();
     });
   </script>
 </section>
