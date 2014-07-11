@@ -195,6 +195,9 @@
   <data name="CopyRight" xml:space="preserve">
     <value>Копирайт</value>
   </data>
+  <data name="CurrentUserId" xml:space="preserve">
+    <value>Id текущего пользователя</value>
+  </data>
   <data name="DataEmpty" xml:space="preserve">
     <value>Нет данных</value>
   </data>
@@ -335,6 +338,9 @@
   </data>
   <data name="Pay" xml:space="preserve">
     <value>Оплатить</value>
+  </data>
+  <data name="ProfitMoneyAmount" xml:space="preserve">
+    <value>Количество денег от рефералов</value>
   </data>
   <data name="ReferalProfit" xml:space="preserve">
     <value>Прибыль от рефералов</value>

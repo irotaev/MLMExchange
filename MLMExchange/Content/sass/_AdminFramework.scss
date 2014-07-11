@@ -1,3 +1,5 @@
+@import "compass/css3/text-shadow";
+
 @mixin admin-content-zone
 {
   @include clearfix;
@@ -7,4 +9,14 @@
   color: $blue_a_4_c;
 
   .b-h1 {color: $blue_a_4_c; height: 25px; line-height: 25px;}
+}
+
+/*
+* Устанавливает текст для хедера блока вместе с тенью и т.д.
+* По сути говоря, это просто красивый текст хедера
+*/
+@mixin header-text-with-shadow
+{
+  color: #522828 !important;
+  @include text-shadow(2px 2px 3px rgba(255, 255, 255, 0.1));
 }

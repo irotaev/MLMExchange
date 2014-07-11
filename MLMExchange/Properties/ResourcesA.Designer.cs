@@ -295,6 +295,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id текущего пользователя.
+        /// </summary>
+        public static string CurrentUserId {
+            get {
+                return ResourceManager.GetString("CurrentUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Нет данных.
         /// </summary>
         public static string DataEmpty {
@@ -714,6 +723,15 @@ namespace MLMExchange.Properties {
         public static string Pay {
             get {
                 return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Количество денег от рефералов.
+        /// </summary>
+        public static string ProfitMoneyAmount {
+            get {
+                return ResourceManager.GetString("ProfitMoneyAmount", resourceCulture);
             }
         }
         

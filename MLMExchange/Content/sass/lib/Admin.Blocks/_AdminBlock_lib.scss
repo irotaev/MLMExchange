@@ -19,10 +19,11 @@
     position: relative;
     height: 36px;
     background-color: $red_a_1_c;
-    color: white;
+    @include header-text-with-shadow;
     line-height: 36px;
     text-align: center;
     font-size: $font-h;
+
 
     .b-ab__icon
     {

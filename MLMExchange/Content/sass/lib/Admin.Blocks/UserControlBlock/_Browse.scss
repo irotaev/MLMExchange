@@ -3,23 +3,34 @@
 .b-ucp
 {
   margin: 50px auto 0 auto;
+  .b-ucp__info
+  {
+    font-size: $font-ns;
+    position: relative;
+    bottom: 6px;
+  }
 
   .b-ucp__content
   {
     position: relative;
 
-    padding-bottom: 150px;
+    padding: 10px 10px 150px 10px;
   }
 
-  .b-ucp__mc-info
+  .b-ucp__wrapper_1
   {
     @include clearfix;
 
-    .b-ucp-wrapper
+    .b-ucp__user-id
+    {
+      float: left;
+      position: relative;
+    }
+
+    .b-ucp-mc-info
     {
       float: right;
       position: relative;
-      padding-top: 15px;
 
       .b-ucp__update-mc
       {
@@ -34,15 +45,6 @@
       .b-ucp__mc-count
       {
         font-size: $font-h;
-
-        .b-ucp__cur-icon {font-size: $font-b;}
-      }
-
-      .b-ucp__info
-      {
-        font-size: $font-ns;
-        position: relative;
-        bottom: 6px;
       }
     }
   }
@@ -50,7 +52,7 @@
   .b-ucp__referal-profit
   {
     position: absolute;
-    right: 20px; bottom: 20px;
+    right: 10px; bottom: 10px;
     background-color: #2E577C;
     padding: 10px;
 
