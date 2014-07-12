@@ -10,7 +10,7 @@
 
 .pb-cf__form-fields-wrapper
 {
-  .pb-cf__field {margin-bottom: 30px;}
+  .pb-cf__field {margin-bottom: 20px;}
 
   .pb-cf__field_name_name, .pb-cf__field_name_title, .pb-cf__field_name_email { width: 520px; }
 
@@ -86,7 +86,9 @@
 
     .b-button.register-button
     {
-      @include span-columns(3 omega, 10);
+      width: 100%;
+      float: left;
+      margin-bottom: 15px;
       @include b-form-button;
     }
   }

@@ -376,3 +376,9 @@ $b-sb_Box-shadow: 2px 2px 3px 0 $grey_1;
     }
   }
 }
+
+@mixin list-style-disc
+{
+  color: #68696b;
+  list-style-type: disc;
+}

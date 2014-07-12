@@ -1664,6 +1664,7 @@
     <Content Include="Views\ExtNet\Index.cshtml" />
     <Content Include="Views\Shared\Account\_EditUser.cshtml" />
     <Content Include="Views\ExceptionHandler\ApplicationException.cshtml" />
+    <Content Include="Views\Contacts\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

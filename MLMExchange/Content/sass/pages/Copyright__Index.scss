@@ -1,35 +1,44 @@
 @import "../Framework";
 
 .copyright-block
-  {
-  @include span-columns(7, 12);
+{
+  @include span-columns(12, 12);
   @include box-sizing(border-box);
 
   .copyright-block__text
-    {
+  {
     font-size: $font-b;
-  }
-}
 
-.additional-info
-  {
-  @include prefix(1);
-  @include span-columns(5 omega, 12);
+    .copyright-block__header
+    {
+      text-align: center;
+      font-size: 20px;
+      margin-top: 15px;
+      margin-bottom: 15px;
 
-  .copyright-icon
-  {
-    display: block;
-    background-image: url("#{$I_D}CopyrightIndex/copyright-icon.png");
-    background-repeat: no-repeat;
-    width: 257px;
-    height: 87px;
-  }
+      &.copyright-block__header-first
+      {
+        font-size: 22px;
+        margin-top: 0;
+      }
 
-  .copyright-info
-  {
-    background: white;
-    margin-top: 15px;
-    position: relative;
-    font-size: $font-h;
+      &.copyright-block__subtitle
+      {
+        font-weight: bold;
+        font-size: 18px;
+        text-align: left;
+
+        &.copyright-block__subtitle-list
+        {
+          margin-top: 5px;
+          padding-left: 15px;
+        }
+      }
+    }
+
+    .copyright-block__list
+    {
+      @include list-style-disc();
+    }
   }
 }

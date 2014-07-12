@@ -31,7 +31,7 @@
       {
         float: left;
         position: relative;
-        width: 112px;
+        width: 105px;
         height: 100%;
 
         .pb-sb__icon
@@ -41,13 +41,33 @@
           top: 50%; left: 50%;
           width: 73px; height: 69px;
           margin: {left: -36.5px; top: -34.5px;}
-          background: url("#{$I_D}/HomeIndex/rating-icon.png");
+
+          &.pb-sb__icon-datetime
+          {
+            @include font-icon("\f073", rgb(255, 255, 255), FontAwesome, 75px);
+          }
+          &.pb-sb__icon-quote
+          {
+            @include font-icon("\f080", rgb(255, 255, 255), FontAwesome, 75px);
+          }
+          &.pb-sb__icon-profitprecent
+          {
+            @include font-icon("%", rgb(255, 255, 255), FontAwesome, 75px);
+          }
+          &.pb-sb__icon-tradingduration
+          {
+            @include font-icon("\f017", rgb(255, 255, 255), FontAwesome, 75px);
+          }
+          &.pb-sb__icon-maxmycryptcount
+          {
+            @include font-icon("\f158", rgb(255, 255, 255), FontAwesome, 75px);
+          }
         }
       }
 
       .pb-sb__value-wrapper
       {
-        margin-left: 112px;
+        margin-left: 105px;
         height: 100%;
 
         .pb-sb__value

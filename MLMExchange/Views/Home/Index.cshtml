@@ -36,12 +36,12 @@
       <div class="slider-block__cell_max">
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
-            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
+            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon pb-sb__icon-datetime"></i></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0:HH:mm}", systemSettings.BaseLogicObject.CreationDateTime)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
-            <span class="pb-sb__additional-info text">Дата: @System.DateTime.Now</span>
+            <span class="pb-sb__additional-info text">Время последнего обновления системных констант</span>
           </div>
         </section>
       </div>
@@ -50,7 +50,7 @@
       <div class="slider-block__cell_max">
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
-            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
+            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon pb-sb__icon-quote"></i></div>
             <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
           </div>
 
@@ -72,8 +72,8 @@
       <div class="slider-block__cell_max">
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
-            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
+            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon pb-sb__icon-profitprecent"></i></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0:0}", systemSettings.LogicObject.ProfitPercent)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
@@ -88,13 +88,14 @@
       <div class="slider-block__cell_min"></div>
     </div>
 
+
     <div class="slider-block__row">
       <div class="slider-block__cell_min"></div>
       <div class="slider-block__cell_max">
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
-            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
+            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon pb-sb__icon-tradingduration"></i></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0:hh\\:mm}", TimeSpan.FromHours((double)systemSettings.LogicObject.TradingSessionDuration))</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
@@ -109,13 +110,13 @@
       <div class="slider-block__cell_max">
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
-            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0} к {1}", "1", systemSettings.LogicObject.Quote)</span></div>
+            <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon pb-sb__icon-maxmycryptcount"></i></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0}", systemSettings.LogicObject.MaxMyCryptCount)</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
             <span class="pb-sb__additional-info text">
-              Сумма сделки – Максимальное количество MY-CRYPT на одну торговую сессию.
+              Максимальное количество MY-CRYPT на одну торговую сессию.
             </span>
           </div>
         </section>
@@ -132,7 +133,7 @@
     </div>
 
     <div class="slide">
-      <img src="http://forbes.kz/img/articles/a937c1a950dfe68a67b2a5f284521bcb-big.jpg" class="cover1" />
+      <img src="http://statelinesptgds.com/wp-content/uploads/2014/06/portraits-at-the-stock-exchange-4.jpg" class="cover1" />
     </div>
   </div>
 </section>

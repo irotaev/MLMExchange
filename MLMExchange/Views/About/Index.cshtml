@@ -3,6 +3,23 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+<script>
+  $(function () {
+
+    //Слайдер видео
+    $('#carousel-video').carousel({
+      auto: false,
+      height: 400,
+      period: 3000,
+      duration: 1000,
+      controls: true,
+      markers: {
+        show: false
+      }
+    });
+  })
+</script>
+
 <section class="b-sb about-block">
   <header class="b-sb__title">
     <h1 class="b-sb__text">О компании</h1>
@@ -10,9 +27,17 @@
   
   <div class="b-sb__content about-block__text">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam accumsan sodales pulvinar. Nam tincidunt tortor et dolor commodo vehicula. Cras eget scelerisque libero, sit amet consequat lectus.
-        Praesent tempor, sapien vestibulum ultricies vehicula, dolor velit gravida nulla, in porta augue tellus ac purus. Sed varius sed lacus at eleifend. Maecenas placerat augue vitae diam sollicitudin molestie.
-        Quisque euismod, ante et sagittis sagittis, orci mauris pellentesque nisl, vitae sagittis mauris dolor sed sapien. Mauris gravida libero sed dictum condimentum
+        Компания My Crypto основана в 2014 году как создатель народной биржи долговых обязательств. 
+        Она молода и только начинает свою деятельность, но руководство поставило перед собой амбициозные цели, 
+        достижение которых станет главным стимулом на обширных временных горизонтах. Компания предоставляет 
+        в пользование сайт My-Crypto.ru и расположенный на нем торговый механизм, позволяющий любому человеку вернуть 
+        обратно однажды потраченные денежные средства.
+        Небольшой (пока) коллектив нашей компании состоит из ответственных и порядочных людей, нацеленных на долгосрочный плодотворный 
+        труд во благо общества! MY-Cripto не представляет собой биржу в чистом виде, но базовые 
+        принципы биржевой деятельности положены в основу созданного штатом наших сотрудников торгового механизма. 
+        Отныне любой совершеннолетний гражданин сможет почувствовать себя настоящим биржевым трейдером и приобщиться к 
+        сложному миру финансов простым и понятным способом. Присоединяйся к нашему развивающемуся сообществу довольных жизнью людей! 
+        Продай свои долги!
       </p>
   </div>
 </section>
@@ -28,21 +53,27 @@
   </aside>
 </section>
 
-<section class="b-videos">
+<section class="b-videos" style="margin-top: 35px">
   <div class="b-videos__video-wrapper">
-    <iframe class="b-videos__video" src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
+    @*<iframe class="b-videos__video" src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
 
-    <div class="b-videos__additional-info">
-      <span class="b-videos__text text"><i>Lorem ipsum dolor</i></span>
+      <div class="b-videos__additional-info">
+        <span class="b-videos__text text"><i>Lorem ipsum dolor</i></span>
+      </div>*@
+
+    <div class="carousel" id="carousel-video">
+      <div class="slide">
+        <iframe class="b-videos__video" src="http://www.youtube.com/embed/HTvYuGWeKbE"></iframe>
+      </div>
+
+      <div class="slide">
+        <iframe class="b-videos__video" src="http://www.youtube.com/embed/jsqjnV6Nit8"></iframe>
+      </div>
+
+      <a class="controls left b-videos__video__controls-left"><i class="icon-arrow-left"></i></a>
+      <a class="controls right b-videos__video__controls-right"><i class="icon-arrow-right"></i></a>
     </div>
-  </div>
 
-  <div class="b-videos__video-wrapper">
-    <iframe class="b-videos__video" src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
-
-    <div class="b-videos__additional-info">
-      <span class="b-videos__text text"><i>Lorem ipsum dolor</i></span>
-    </div>
   </div>
 </section>
 
