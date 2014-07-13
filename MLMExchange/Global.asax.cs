@@ -31,7 +31,7 @@ namespace MLMExchange
     protected void Application_Error(object sender, EventArgs e)
     {
       Exception exception = Server.GetLastError();
-
+      
       HttpContext.Current.ClearError(); 
 
       Response.Redirect("/ExceptionHandler/ApplicationException");

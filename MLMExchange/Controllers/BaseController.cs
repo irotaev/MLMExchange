@@ -11,6 +11,7 @@ using Ext.Net.MVC;
 using Microsoft.Practices.Unity;
 using MLMExchange.Models;
 using System.Web.Http;
+using MLMExchange.Models.Error;
 
 namespace MLMExchange.Controllers
 {
@@ -157,7 +158,7 @@ namespace MLMExchange.Controllers
 
       _NHibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
       #endregion
-      
+
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
 
@@ -194,16 +195,10 @@ namespace MLMExchange.Controllers
       if (filterContext.ExceptionHandled)
         return;
 
-      //filterContext.Result = new ViewResult
-      //{
-      //  ViewName = "~/Views/Shared/Error/Application__Error.cshtml",
-      //  ViewData = new ViewDataDictionary(filterContext.Controller.ViewData)
-      //  {
-      //    Model = new MLMExchange.Models.Error.ApplicationExceptionModel { ExceptionMessage = filterContext.Exception.Message }
-      //  }
-      //};
+      HttpContext.Response.Redirect("/ExceptionHandler/ApplicationException", true);
+      TempData["Controller__Exception"] = filterContext.Exception;
 
-      //filterContext.ExceptionHandled = true;
+      filterContext.ExceptionHandled = true;
     }
   }
 }

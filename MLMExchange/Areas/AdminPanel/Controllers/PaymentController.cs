@@ -12,8 +12,7 @@ using NHibernate.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  public class BasePaymentController : BaseController, 
-    IDataObjectCustomizableController<BasePaymentModel, BaseBrowseActionSettings, BaseEditActionSettings,      MLMExchange.Areas.AdminPanel.Controllers.BasePaymentController.CustomListActionSettings>
+  public class BasePaymentController : BaseController, IDataObjectCustomizableController<BasePaymentModel, BaseBrowseActionSettings, BaseEditActionSettings,      MLMExchange.Areas.AdminPanel.Controllers.BasePaymentController.CustomListActionSettings>
   {
 
     public class CustomListActionSettings : BaseListActionSetings 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MLMExchange.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -19,7 +20,7 @@ namespace MLMExchange.Models.Error
     private string _ExceptionMessage;
 
     public string ExceptionTitle { get; set; }
-    public string ExceptionMessage
+    public virtual string ExceptionMessage
     {
       get
       {
@@ -31,5 +32,25 @@ namespace MLMExchange.Models.Error
 
       set { _ExceptionMessage = value; }
     }
+  }
+
+  /// <summary>
+  /// Ошибка контроллера
+  /// </summary>
+  public class ControllerExceptionModel : ApplicationExceptionModel
+  {
+    public ControllerExceptionModel(BaseController controller, string title = null) : base(title)
+    {
+      _Controller = controller;
+    }
+
+    public ControllerExceptionModel(BaseController controller, Exception ex, string title = null)
+      : this(controller, title)
+    {
+      _Exception = ex;
+    }
+
+    protected readonly BaseController _Controller;
+    protected readonly Exception _Exception;
   }
 }
