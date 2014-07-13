@@ -23,7 +23,7 @@ namespace Logic
     /// <summary>
     /// Получить базовый объект данных для данного логического proxy-объекта
     /// </summary>
-    D_BaseObject BaseLogicObject { get; }    
+    D_BaseObject BaseLogicObject { get; }
   }
 
   /// <summary>
@@ -75,6 +75,6 @@ namespace Logic
 
     public virtual void OnPreInsert(NHibernate.Event.PreInsertEvent @event) { }
 
-    public virtual void OnPreUpdate(NHibernate.Event.PreUpdateEvent @event) { }
+    public virtual void OnPreUpdate(NHibernate.Event.PreUpdateEvent @event) { }    
   }
 }

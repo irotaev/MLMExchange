@@ -63,9 +63,9 @@ namespace MLMExchange.Lib
         {
           bool isAccessDenied = true;
 
-          foreach(var role in currentUser.Roles)
+          foreach (var role in currentUser.Roles)
           {
-            if (_AllowedRoleTypes.Contains(role.GetType()))
+            if (_AllowedRoleTypes.Contains(((BaseObject)role).GetRealType()))
               isAccessDenied = false;
           }
 
