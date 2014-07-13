@@ -144,7 +144,7 @@
 
 /* line 13, ../../sass/pages/Contacts__Index.scss */
 .pb-cf__form-fields-wrapper .pb-cf__field {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 /* line 15, ../../sass/pages/Contacts__Index.scss */
 .pb-cf__form-fields-wrapper .pb-cf__field_name_name, .pb-cf__form-fields-wrapper .pb-cf__field_name_title, .pb-cf__form-fields-wrapper .pb-cf__field_name_email {
@@ -263,11 +263,9 @@
 }
 /* line 88, ../../sass/pages/Contacts__Index.scss */
 .pb-cf__footer-wrapper .b-button.register-button {
-  width: 275.2px;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
+  width: 100%;
+  float: left;
+  margin-bottom: 15px;
   background-color: #41C480;
   height: 40px;
   font-size: 14px;

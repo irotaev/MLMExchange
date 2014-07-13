@@ -85,21 +85,22 @@
 }
 /* line 35, ../../sass/pages/Faq__Index.scss */
 .faq-block .video-block {
-  width: 308px;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
   border: 6px solid #f15a29;
   background-color: #231F20;
   float: right;
   margin: 0 0 1em 1em;
 }
-/* line 43, ../../sass/pages/Faq__Index.scss */
+/* line 42, ../../sass/pages/Faq__Index.scss */
 .faq-block .video-block h1 {
   margin: 4px;
   font-size: 20px;
   color: white;
   text-align: center;
   vertical-align: middle;
+}
+/* line 52, ../../sass/pages/Faq__Index.scss */
+.faq-block .list-block {
+  color: #68696b;
+  list-style-type: disc;
+  margin-bottom: 5px;
 }

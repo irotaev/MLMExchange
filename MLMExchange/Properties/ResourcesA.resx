@@ -159,6 +159,12 @@
   <data name="BiddingParticipateApplication_IsBanned" xml:space="preserve">
     <value>Возможность подачи заявки на участие в торгах временно ограничена</value>
   </data>
+  <data name="BindReferalUserId" xml:space="preserve">
+    <value>Id родителя реферала</value>
+  </data>
+  <data name="BindReferalUserIdDescription" xml:space="preserve">
+    <value>Id пользователя, по отношению к которому стать рефералом</value>
+  </data>
   <data name="Button_Close" xml:space="preserve">
     <value>Закрыть</value>
   </data>

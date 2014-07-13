@@ -38,7 +38,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
 
-        if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.UserRole.FirstOrDefault().MyCryptCount))
+        if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.Roles.Where(x => (x as D_UserRole) != null).Cast<D_UserRole>().FirstOrDefault().MyCryptCount))
           throw new UserVisible__WrongParametrException("model");
 
         if (!(model.MyCryptCount <= systemSettings.LogicObject.MaxMyCryptCount))

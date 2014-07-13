@@ -7,11 +7,21 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
+using DataAnnotationsExtensions;
+using MLMExchange.Lib.Exception;
 
 namespace MLMExchange.Models.Registration
 {
-  public class UserModel : AbstractDataModel, IDataBinding<D_User, UserModel>
+  /// <summary>
+  /// Модель пользователя
+  /// </summary>
+  public class UserModel : AbstractDataModel<User, D_User, UserModel>
   {
+    public UserModel()
+    {
+      _LazyLoadProperties.Add("ReferalRoleId", false);
+    }
+
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Login { get; set; }
 
@@ -37,11 +47,46 @@ namespace MLMExchange.Models.Registration
     [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceName = "FieldEmailInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Email { get; set; }
 
+    #region ReferalRoleId
+    private long? _ReferalRoleId;
+
+    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public long? ReferalRoleId
+    {
+      get
+      {
+        if (_LazyLoadProperties["ReferalRoleId"] == true)
+        {
+          if (_Object == null)
+            throw new BindNotCallException<User>();
+
+          if (_Object.LogicObject.ReferalBossRole == null)
+          {
+            return null;
+          }
+          else
+          {
+            return _Object.LogicObject.ReferalBossRole.Id;
+          }
+        }
+        else
+        {
+          return _ReferalRoleId;
+        }
+      }
+
+      set
+      {
+        _ReferalRoleId = value;
+      }
+    }
+    #endregion
+
     public HttpPostedFileBase Photo { get; set; }
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
-    public IEnumerable<D_UserRole> UserRoles { get; set; }
+    public IEnumerable<D_AbstractRole> UserRoles { get; set; }
 
     public UserModel Bind(Logic.D_User @object)
     {
@@ -57,10 +102,7 @@ namespace MLMExchange.Models.Registration
       this.PhotoRelativePath = @object.PhotoRelativePath;
       this.Surname = @object.Surname;
 
-      IEnumerable<D_UserRole> d_userRoles = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_UserRole>().Where(x => x.User.Id == Id);
-
-      UserRoles = d_userRoles;
+      UserRoles = @object.Roles;
 
       return this;
     }
@@ -78,6 +120,16 @@ namespace MLMExchange.Models.Registration
       user.Surname = this.Surname;
       user.Patronymic = this.Patronymic;
       user.PhotoRelativePath = this.PhotoRelativePath;
+
+      if (_ReferalRoleId != null)
+      {
+        D_UserRole referalRole = _NhibernateSession.Query<D_UserRole>().Where(x => x.Id == _ReferalRoleId).FirstOrDefault();
+
+        if (referalRole == null)
+          throw new UserVisible__WrongParametrException("referalId");
+
+        user.ReferalBossRole = referalRole;
+      }
 
       if (user.PaymentSystemGroup == null)
         user.PaymentSystemGroup = new D_PaymentSystemGroup();

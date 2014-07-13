@@ -1,4 +1,6 @@
 ﻿@using MLMExchange.Lib
+@using MLMExchange.Lib.Form
+
 @model MLMExchange.Models.Registration.UserModel
 
 @{
@@ -116,6 +118,8 @@
     </div>
   </div>
 </div>
+
+@Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, "default")
 
 <div class="b-ib b-ib_content_photo">
   <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.AddPhoto</label>

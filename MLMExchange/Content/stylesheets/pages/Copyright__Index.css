@@ -57,7 +57,7 @@
 */
 /* line 4, ../../sass/pages/Copyright__Index.scss */
 .copyright-block {
-  width: 554px;
+  width: 964px;
   float: left;
   margin-right: 20px;
   display: inline;
@@ -69,28 +69,31 @@
 .copyright-block .copyright-block__text {
   font-size: 16px;
 }
-
-/* line 15, ../../sass/pages/Copyright__Index.scss */
-.additional-info {
-  padding-left: 82px;
-  width: 390px;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
+/* line 13, ../../sass/pages/Copyright__Index.scss */
+.copyright-block .copyright-block__text .copyright-block__header {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 /* line 20, ../../sass/pages/Copyright__Index.scss */
-.additional-info .copyright-icon {
-  display: block;
-  background-image: url("/Content/images/CopyrightIndex/copyright-icon.png");
-  background-repeat: no-repeat;
-  width: 257px;
-  height: 87px;
+.copyright-block .copyright-block__text .copyright-block__header.copyright-block__header-first {
+  font-size: 22px;
+  margin-top: 0;
 }
-/* line 29, ../../sass/pages/Copyright__Index.scss */
-.additional-info .copyright-info {
-  background: white;
-  margin-top: 15px;
-  position: relative;
-  font-size: 20px;
+/* line 26, ../../sass/pages/Copyright__Index.scss */
+.copyright-block .copyright-block__text .copyright-block__header.copyright-block__subtitle {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
+}
+/* line 32, ../../sass/pages/Copyright__Index.scss */
+.copyright-block .copyright-block__text .copyright-block__header.copyright-block__subtitle.copyright-block__subtitle-list {
+  margin-top: 5px;
+  padding-left: 15px;
+}
+/* line 40, ../../sass/pages/Copyright__Index.scss */
+.copyright-block .copyright-block__text .copyright-block__list {
+  color: #68696b;
+  list-style-type: disc;
 }

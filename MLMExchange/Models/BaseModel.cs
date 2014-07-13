@@ -1,9 +1,12 @@
 ﻿using Logic;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Practices.Unity;
+using NHibernate.Linq;
 
 namespace MLMExchange.Models
 {
@@ -116,6 +119,8 @@ namespace MLMExchange.Models
   /// </summary>
   public abstract class AbstractModel : ILazyLoadModel
   {
+    protected readonly ISession _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+
     public bool IsLazyLoadingDisable { get; set; }
   }
 
@@ -127,6 +132,23 @@ namespace MLMExchange.Models
   {
     protected IAbstractBaseLogicObject _Object;
 
+    #region Data lazy load
+    /// <summary>
+    /// Сюда заносятся свойства, которые необходимо подгружать посредством механизма lazy loading.
+    /// Как правило свойства заносятся в статическом конструкторе.
+    /// В формате:
+    /// key - имя свойство, которое должно быть загружено механизмом lazy loading,
+    /// value - это флаг, который показывает нужно ли свойство биндить из объекта, либо такой необходимости нет.
+    /// 
+    /// Это значит что, при вызове метода Bind, всем свойства, занесенным в данный словарь, ставится флаг true.
+    /// Значит при вызове геттера у свойства значение надо взять из объекта данных. Далее возможна такая ситуация, 
+    /// что вызывается сеттер у свойства и мы можем руками поменять флаг в словаре на false, это значит что при следующем обращении к 
+    /// геттеру свойства значение надо брать уже из другого места, например, из отдельного поля, где было сохранено новое значение,
+    /// заданное руками через сетттер свойства.
+    /// </summary>
+    protected readonly Dictionary<string, bool> _LazyLoadProperties = new Dictionary<string, bool>();
+    #endregion
+
     [HiddenInput(DisplayValue = false)]
     public long? Id { get; set; }
     /// <summary>
@@ -135,9 +157,26 @@ namespace MLMExchange.Models
     [HiddenInput(DisplayValue = false)]
     public DateTime CreationDateTime { get; set; }
 
+    #region General Bind/Unbind
+    private void GeneralBind()
+    {
+      foreach(var key in _LazyLoadProperties.Keys.ToList())
+      {
+        _LazyLoadProperties[key] = true;
+      }
+    }
+
+    private void GeneralUnbind()
+    {
+
+    }
+    #endregion
+
     #region For data objects
     public virtual AbstractDataModel Bind(D_BaseObject @object)
     {
+      GeneralBind();
+
       Id = @object.Id;
       CreationDateTime = @object.CreationDateTime;
 
@@ -146,6 +185,8 @@ namespace MLMExchange.Models
 
     public virtual D_BaseObject UnBind(D_BaseObject @object = null)
     {
+      GeneralUnbind();
+
       if (@object == null)
         throw new ArgumentOutOfRangeException("object");
 

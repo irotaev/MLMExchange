@@ -18,14 +18,14 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void AddNeedProfitBillTest()
     {
-      D_User d_Buyer = _Session.Query<D_User>().Where(x => x.Login == "newbik").FirstOrDefault();
-      D_User d_Payer = _Session.Query<D_User>().Where(x => x.Login == "irotaev").FirstOrDefault();
+      D_User d_Buyer = _NHibernaetSession.Query<D_User>().Where(x => x.Login == "newbik").FirstOrDefault();
+      D_User d_Payer = _NHibernaetSession.Query<D_User>().Where(x => x.Login == "irotaev").FirstOrDefault();
 
       if (d_Buyer == null || d_Payer == null)
         Assert.Fail();
 
-      D_TradingSession d_acceptorTradingSession = _Session.Query<D_TradingSession>().Where(x => x.BuyingMyCryptRequest.Buyer.Id == d_Buyer.Id).FirstOrDefault();
-      D_TradingSession d_payerTradingSession = _Session.Query<D_TradingSession>().Where(x => x.BuyingMyCryptRequest.Buyer.Id == d_Payer.Id).FirstOrDefault();
+      D_TradingSession d_acceptorTradingSession = _NHibernaetSession.Query<D_TradingSession>().Where(x => x.BuyingMyCryptRequest.Buyer.Id == d_Buyer.Id).FirstOrDefault();
+      D_TradingSession d_payerTradingSession = _NHibernaetSession.Query<D_TradingSession>().Where(x => x.BuyingMyCryptRequest.Buyer.Id == d_Payer.Id).FirstOrDefault();
 
       if (d_acceptorTradingSession == null || d_acceptorTradingSession.State != TradingSessionStatus.NeedProfit)
         Assert.Fail();
@@ -40,7 +40,7 @@ namespace LogicTest.DataObject
         AcceptorTradingSession = d_acceptorTradingSession
       };
 
-      _Session.SaveOrUpdate(d_bill);
+      _NHibernaetSession.SaveOrUpdate(d_bill);
       TransactionCommit();
 
       Assert.IsTrue(true);

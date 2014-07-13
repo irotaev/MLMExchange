@@ -31,6 +31,29 @@ namespace MLMExchange.Areas.AdminPanel.Models
     }
 
     /// <summary>
+    /// Id роли пользователя
+    /// </summary>
+    public long? UserRoleId
+    {
+      get
+      {
+        if (_User == null)
+          throw new BindNotCallException<Logic.User>();
+
+        Logic.D_UserRole userRole = CurrentUser.UserRoles.FirstOrDefault(x => (x as Logic.D_UserRole) != null) as Logic.D_UserRole;
+
+        if (userRole == null)
+        {
+          return null;
+        }
+        else
+        {
+          return userRole.Id;
+        }
+      }
+    }
+
+    /// <summary>
     /// Модель текущего пользователя
     /// </summary>
     public UserModel CurrentUser

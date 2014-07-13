@@ -67,7 +67,7 @@ namespace Logic
     public D_User()
     {
       Roles = new List<D_AbstractRole>();
-      UserRole = new List<D_UserRole>();
+      //UserRole = new List<D_UserRole>();
     }
 
     public virtual string Login { get; set; }
@@ -93,7 +93,7 @@ namespace Logic
     /// Тип пользователя
     /// </summary>
     public virtual D_UserType UserType { get; set; }
-    public virtual IList<D_UserRole> UserRole { get; set; }
+    //public virtual IList<D_UserRole> UserRole { get; set; }
     /// <summary>
     /// Роль пользователя, являющаяся босом для данного реферала
     /// </summary>
@@ -750,7 +750,6 @@ namespace Logic
       References(x => x.ReferalBossRole).Column("ReferalBossRoleId").Cascade.All();
 
       DiscriminateSubClassesOnColumn<D_UserType>("UserType", D_UserType.BaseUser);
-      HasMany(x => x.UserRole).KeyColumn("UserId").Cascade.All();
     }
   }
 

@@ -187,6 +187,24 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id родителя реферала.
+        /// </summary>
+        public static string BindReferalUserId {
+            get {
+                return ResourceManager.GetString("BindReferalUserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id пользователя, по отношению к которому стать рефералом.
+        /// </summary>
+        public static string BindReferalUserIdDescription {
+            get {
+                return ResourceManager.GetString("BindReferalUserIdDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Закрыть.
         /// </summary>
         public static string Button_Close {
