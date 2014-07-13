@@ -15,10 +15,10 @@
   object routValues = ViewData["RoutValues"] != null ? ViewData["RoutValues"] : new { };
 }
 
-<section class="b-rw">
-  <header class="b-rw__header">@String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.AddObject, Logic.Properties.GeneralResources.RandomWords)</header>
+<section class="b-rwe">
+  <header class="b-rwe__header">@String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.AddObject, Logic.Properties.GeneralResources.RandomWords)</header>
 
-  @using (Html.BeginForm(saveAction, saveController, routValues, saveFormMethod, new { @id = "b-rw__edit-form_ID", @class = "b-f" }))
+  @using (Html.BeginForm(saveAction, saveController, routValues, saveFormMethod, new { @id = "b-rwe__edit-form_ID", @class = "b-f" }))
   {
     @Html.ApplicationTextBoxFor(x => x.Author, Logic.Properties.GeneralResources.AuthorWords)
 
