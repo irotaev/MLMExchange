@@ -15,7 +15,7 @@ namespace MLMExchange.Models.Registration
   /// <summary>
   /// Модель пользователя
   /// </summary>
-  public class UserModel : AbstractDataModel<User, D_User, UserModel>
+  public class UserModel : AbstractDataModel<D_User, UserModel>
   {
     public UserModel()
     {
@@ -60,13 +60,13 @@ namespace MLMExchange.Models.Registration
           if (_Object == null)
             throw new BindNotCallException<User>();
 
-          if (_Object.LogicObject.ReferalBossRole == null)
+          if (_Object.ReferalBossRole == null)
           {
             return null;
           }
           else
           {
-            return _Object.LogicObject.ReferalBossRole.Id;
+            return _Object.ReferalBossRole.Id;
           }
         }
         else
