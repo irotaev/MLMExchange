@@ -1,4 +1,5 @@
 @import "lib/Form_lib";
+@import "Framework";
 @import "compass/css3/transition";
 
 $headerButton_Height: 64px;
@@ -26,8 +27,10 @@ $headerButton_Height: 64px;
       float: left;
       width: 52px;
       margin: 10px;
-      background-color: white;
       height: 52px;
+      padding: 5px;
+      background: transparent;
+      border: 1px dashed $blue_a_4_c3;
     }
 
     .login-on-block__nickname

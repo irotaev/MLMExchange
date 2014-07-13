@@ -207,7 +207,7 @@
         X.RowNumbererColumn(),
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("SellerName").Flex(1),
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerSurname).DataIndex("SellerSurname").Flex(1),
-        X.Column().Text("MyCryptCount").DataIndex("MyCryptCount").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
         X.Column().Width(170).Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Renderer("BuyingRequest__History__State__Renderer")
         )
       .Listeners(ls => ls.AfterRender.Fn = "BuyingRequest__History_AfterRender")
