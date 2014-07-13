@@ -169,10 +169,12 @@
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\BankPaymentSystemController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\ElectronicPaymentSystemController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\PaymentSystems\PaymentSystemGroupController.cs" />
+    <Compile Include="Areas\AdminPanel\Controllers\RandomWordsController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\SystemSettingsController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\TradingSessionController.cs" />
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\RandomWordsModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\UserControlBlockModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Lib\DataValidation\BooleanAttribute.cs" />
     <Compile Include="Lib\EntityLogic\AbstractEntityLogic.cs" />
     <Compile Include="Lib\EntityLogic\Logic__PaymentSystem.cs" />
+    <Compile Include="Lib\EntityLogic\Logic__RandomWords.cs" />
     <Compile Include="Lib\File.cs" />
     <Compile Include="Lib\Form\InputExtension.cs" />
     <Compile Include="Lib\Image\Image.cs" />
@@ -1608,6 +1611,7 @@
     <Content Include="Areas\AdminPanel\Views\ElectronicPaymentSystem\Edit.cshtml" />
     <Content Include="Areas\AdminPanel\Views\BasePayment\List.cshtml" />
     <Content Include="Areas\AdminPanel\Views\UserControlBlock\_Browse.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\RandomWords\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />

@@ -1,17 +1,17 @@
 @import "../Framework";
 
 .success-block
-{
+  {
   @include span-columns(12, 12);
 
   .success-message
-  {
+    {
     @include listIconStart(success-message__content , FontAwesome, $blue_a_4_c2);
 
     @include listIcon(success-message__content, 1, "\f05d");
 
     .success-message__content dt
-    {
+      {
       padding-top: 10px;
       color: $blue_a_4_c2;
     }

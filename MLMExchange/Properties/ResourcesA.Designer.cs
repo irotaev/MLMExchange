@@ -115,6 +115,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавление объекта.
+        /// </summary>
+        public static string AddObject {
+            get {
+                return ResourceManager.GetString("AddObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Добавьте фотографию.
         /// </summary>
         public static string AddPhoto {
@@ -750,6 +759,15 @@ namespace MLMExchange.Properties {
         public static string ProfitMoneyAmount {
             get {
                 return ResourceManager.GetString("ProfitMoneyAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Случайные мысли.
+        /// </summary>
+        public static string RandomWords {
+            get {
+                return ResourceManager.GetString("RandomWords", resourceCulture);
             }
         }
         

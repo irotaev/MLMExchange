@@ -158,7 +158,7 @@ namespace MLMExchange.Controllers
 
       _NHibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
       #endregion
-
+      
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
 

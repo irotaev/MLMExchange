@@ -1,0 +1,17 @@
+@import "../../../Framework";
+
+.b-rwe
+{
+  .b-rwe__header
+  {
+    margin: 15px 0;
+    font-size: $font-h;
+  }
+
+  .pb-bmc__submit-btn-wrappper
+  {
+    margin-top: 20px;
+
+    .b-btn {display: block; float: right;}
+  }
+}

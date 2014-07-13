@@ -1016,10 +1016,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /*
 * Админ панель
 */
+<<<<<<< Updated upstream
 /*
 * Устанавливает текст для хедера блока вместе с тенью и т.д.
 * По сути говоря, это просто красивый текст хедера
 */
+=======
+>>>>>>> Stashed changes
 /* line 14, ../../../../../../../../var/lib/gems/1.9.1/gems/susy-1.0.9/sass/susy/_grid.scss */
 * {
   -webkit-box-sizing: border-box;
@@ -1076,10 +1079,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 * @param $sep Символ или буква, стоящая после цифры коунтера
 * @param $counter Элемент, куда будем вставлять счётчик
 */
+<<<<<<< Updated upstream
 /*
 * Устанавливает текст для хедера блока вместе с тенью и т.д.
 * По сути говоря, это просто красивый текст хедера
 */
+=======
+>>>>>>> Stashed changes
 /* line 3, ../sass/lib/Admin.Blocks/_AdminBlock.scss */
 .b-ab {
   position: relative;
@@ -1105,7 +1111,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   font-size: 20px;
 }
+<<<<<<< Updated upstream
 /* line 29, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+=======
+/* line 28, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+>>>>>>> Stashed changes
 .b-ab .b-ab__title .b-ab__icon {
   display: block;
   position: absolute;
@@ -1114,7 +1124,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 36px;
   line-height: 40px;
 }
+<<<<<<< Updated upstream
 /* line 38, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+=======
+/* line 37, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+>>>>>>> Stashed changes
 .b-ab .b-ab__content {
   padding: 20px;
   padding-top: 0;
@@ -1403,6 +1417,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 206, ../sass/AdminArea/_AdminPanel.scss */
 .pb-admin-panel #MainLeft_Menu-placeholder .x-tool-img {
   background-color: #58c4c6;
+}
+/* line 211, ../sass/AdminArea/_AdminPanel.scss */
+.pb-admin-panel #AdminPanel__CenterBlock_Content {
+  overflow: auto;
 }
 
 /* line 16, ../sass/screen.scss */

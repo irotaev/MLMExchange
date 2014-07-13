@@ -69,6 +69,7 @@
 .copyright-block .copyright-block__text {
   font-size: 16px;
 }
+<<<<<<< Updated upstream
 /* line 13, ../../sass/pages/Copyright__Index.scss */
 .copyright-block .copyright-block__text .copyright-block__header {
   text-align: center;
@@ -96,4 +97,30 @@
 .copyright-block .copyright-block__text .copyright-block__list {
   color: #68696b;
   list-style-type: disc;
+=======
+
+/* line 15, ../../sass/pages/Copyright__Index.scss */
+.additional-info {
+  padding-left: 82px;
+  width: 390px;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+/* line 20, ../../sass/pages/Copyright__Index.scss */
+.additional-info .copyright-icon {
+  display: block;
+  background-image: url("/Content/images/CopyrightIndex/copyright-icon.png");
+  background-repeat: no-repeat;
+  width: 257px;
+  height: 87px;
+}
+/* line 29, ../../sass/pages/Copyright__Index.scss */
+.additional-info .copyright-info {
+  background: white;
+  margin-top: 15px;
+  position: relative;
+  font-size: 20px;
+>>>>>>> Stashed changes
 }

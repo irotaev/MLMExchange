@@ -267,4 +267,13 @@
   <data name="CardNumber" xml:space="preserve">
     <value>Номер карты</value>
   </data>
+  <data name="RandomWords" xml:space="preserve">
+    <value>Случайные мысли</value>
+  </data>
+  <data name="AuthorWords" xml:space="preserve">
+    <value>Автор мысли</value>
+  </data>
+  <data name="TextWords" xml:space="preserve">
+    <value>Текст мысли</value>
+  </data>
 </root>

@@ -2,7 +2,7 @@
 @import "lib/Shared";
 
 .youtube-block
-{
+  {
   width: 300px;
   height: 200px;
   border: 6px solid $orange;
@@ -11,7 +11,7 @@
   margin: 0 0 1em 1em;
 
   h1
-  {
+    {
     font-size: $font-h;
     color: white;
     text-align: center;
@@ -21,34 +21,34 @@
 }
 
 .mycrypt-exchange
-{
+  {
   @include span-columns(12 omega, 12);
 }
 
 
 .b-sb__content
-{
+  {
   position: relative;
   @include clearfix;
 }
 
 .b-tb__content
-{
+  {
   @include span-columns(11, 12);
 
   .b-tb__header
-  {
+    {
     border-bottom: 1px dashed;
     padding: 10px;
 
     .b-tb__header__text
-    {
+      {
       font-size: $font-h;
     }
   }
 
   .b-tb__listWrapper
-  {
+    {
 
     //Начинаю оборачивать dt
     @include listIconStart(b-tb__listWrapper__content, FontAwesome, $blue_a_4_c2);
@@ -97,7 +97,7 @@ $pb-scetch__scetch-box_Height_block: 367px;
 $pb-scetch__scetch-box_Bg-color: #32BFB2;
 
 .pb-scetch
-{
+  {
   position: relative;
   top: -70px; left: 90px;
   float: left;
@@ -106,35 +106,35 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
   margin-top: 60px;
 
   &.pb-scetch_orientation_right
-  {
-    .pb-scetch__scetch-box
     {
+    .pb-scetch__scetch-box
+      {
       left: auto; right: 0;
     }
 
     .pb-scetch__additional-info
-    {
-      .pb-scetch__text-block
       {
+      .pb-scetch__text-block
+        {
         text-align: left;
       }
     }
 
     .pb-scetch__additional-info
-    {
+      {
       right: auto; left: 0; top: 0;
     }
   }
 
   .pb-scetch__scetch-box
-  {
+    {
     width: $pb-scetch__scetch-box_Width;
     height: $pb-scetch__scetch-box_Height + 63px;
     position: absolute;
     top: 0; left: 0;
 
     .pb-scetch__image-box
-    {
+      {
       position: absolute;
       top: 0; left: 0;
       width: $pb-scetch__scetch-box_Width;
@@ -142,7 +142,7 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
       background-color: $pb-scetch__scetch-box_Bg-color;
 
       .pb-scetch__icon
-      {
+        {
         display: block;
         width: 100%;
         height: 100%;
@@ -150,7 +150,7 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
     }
 
     .pb-scetch__image-box img
-    {
+      {
       -webkit-filter: drop-shadow(12px 12px 25px rgba(0, 0, 0, 0.5));
       filter: url(#drop-shadow);
       -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
@@ -158,7 +158,7 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
     }
 
     .pb-scetch__text-block
-    {
+      {
       position: absolute;
       bottom: 0; left: 0;
       width: $pb-scetch__scetch-box_Width;
@@ -169,7 +169,7 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
       padding: 10px;
 
       .pb-scetch__text
-      {
+        {
         display: block;
         text-align: center;
         font-size: $font-n;
@@ -180,13 +180,13 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
   }
 
   .pb-scetch__additional-info
-  {
+    {
     position: absolute;
     bottom: 0; right: 0;
     width: 412px;
 
     .pb-scetch__text-block
-    {
+      {
       display: block;
       width: 100%;
       //height: 68px;
@@ -200,14 +200,14 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
 //#endregion
 
 .b-eb__content
-{
+  {
   position: relative;
   @include clearfix;
 
   @include span-columns(11, 12);
 
   .b-eb__centertext
-  {
+    {
     display: block;
     width: 100%;
     margin-top: 10px;
@@ -216,13 +216,13 @@ $pb-scetch__scetch-box_Bg-color: #32BFB2;
   }
 
   .b-eb__sketch
-  {
+    {
     width: 100%;
     height: 300px;
   }
 
   .b-eb__sketch img
-  {
+    {
     margin-left: auto;
     margin-right: auto;
     display: block;

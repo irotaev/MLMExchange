@@ -1,0 +1,37 @@
+﻿@using MLMExchange.Lib
+@using MLMExchange.Lib.Form
+@model MLMExchange.Areas.AdminPanel.Models.RandomWordsModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = @String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.AddObject, Logic.Properties.GeneralResources.RandomWords);
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+@{
+  string saveAction = ViewData["SaveAction"] != null ? ViewData["SaveAction"].ToString() : ViewContext.RouteData.Values["action"].ToString();
+  string saveController = ViewData["SaveController"] != null ? ViewData["SaveController"].ToString() : ViewContext.RouteData.Values["controller"].ToString();
+  FormMethod saveFormMethod = ViewData["SaveFormMethod"] != null ? ((FormMethod)ViewData["SaveFormMethod"]) : FormMethod.Post;
+  object routValues = ViewData["RoutValues"] != null ? ViewData["RoutValues"] : new { };
+}
+
+<section class="b-rwe">
+  <header class="b-rwe__header">@String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.AddObject, Logic.Properties.GeneralResources.RandomWords)</header>
+
+  @using (Html.BeginForm(saveAction, saveController, routValues, saveFormMethod, new { @id = "b-rwe__edit-form_ID", @class = "b-f" }))
+  {
+    @Html.ApplicationTextBoxFor(x => x.Author, Logic.Properties.GeneralResources.AuthorWords)
+
+    @Html.ApplicationTextBoxFor(x => x.Text, Logic.Properties.GeneralResources.TextWords)
+
+
+    <input type="submit" value="submit" style="position: absolute; top: 0; visibility: hidden;" id="b-ess__submit-btn_ID" />
+
+    <div class="pb-bmc__submit-btn-wrappper">
+      <a href="#" class="b-btn b-btn-flat-action pb-bmc__submit-btn" onclick="javascript: $('#b-ess__submit-btn_ID').click();">
+        <i class="fa fa-save fa-lg"></i>
+        @MLMExchange.Properties.ResourcesA.SaveButton
+      </a>
+    </div>
+  }
+</section><!--B: Random Words-->

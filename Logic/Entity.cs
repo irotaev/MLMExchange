@@ -701,6 +701,19 @@ namespace Logic
     Baned = 4
   }
   #endregion
+  #region RandomWords
+  public class D_RandomWords : D_BaseObject
+  {
+    /// <summary>
+    /// Автор высказывания
+    /// </summary>
+    public virtual string Author { get; set; }
+    /// <summary>
+    /// Текст высказывания
+    /// </summary>
+    public virtual string Text { get; set; }
+  }
+  #endregion
   #endregion
 
   #region Map Entity
@@ -959,6 +972,15 @@ namespace Logic
       HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).KeyColumn("TradingSessionId").Cascade.All();
       Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).Nullable();
       Map(x => x.ClosingSessionDateTime).Nullable();
+    }
+  }
+
+  public class D_RandomWords_Map : D_BaseObject_Map<D_RandomWords>
+  {
+    public D_RandomWords_Map()
+    {
+      Map(x => x.Author).Length(100).Nullable();
+      Map(x => x.Text).Length(3000).Nullable();
     }
   }
   #endregion
