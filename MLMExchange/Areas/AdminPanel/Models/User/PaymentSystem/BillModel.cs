@@ -32,6 +32,23 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     /// </summary>
     public IEnumerable<BasePaymentModel> Payments { get; set; }
     /// <summary>
+    /// Id платежей по счету
+    /// </summary>
+    public IEnumerable<long> PaymentIds
+    {
+      get
+      {
+        if (Payments == null)
+        {
+          return null;
+        }
+        else
+        {
+          return Payments.Select(x => x.Id.Value);
+        }
+      }
+    }
+    /// <summary>
     /// Состояние счета
     /// </summary>
     public BillPaymentState BillPaymentState { get; set; }

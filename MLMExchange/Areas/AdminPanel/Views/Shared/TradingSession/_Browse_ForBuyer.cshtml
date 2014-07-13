@@ -72,7 +72,7 @@
                     X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Flex(1),
                     X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Flex(1),
                     X.ImageCommandColumn().Commands(
-                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)
+                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)                      
                     )
                       .Listeners(ls =>
                       {
@@ -169,7 +169,7 @@ else if (Model.State == Logic.TradingSessionStatus.SessionInProgress)
 else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == Logic.TradingSessionStatus.ProfitConfirmation)
 {
   <script>
-    function needProfitBill__Confirm(view, commandName, record) {
+    function needProfitBill__ButtonListener(view, commandName, record) {
 
       if (commandName === "NeedProfitBill__Confirm") {
         var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
@@ -187,6 +187,36 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
             });
           }
         });
+      }
+      else if (commandName === "NeedProfitBill__ShowInformation") {
+        var loadingMask__show = function(isLoading) {
+          var loadingMask = new Ext.LoadMask(Ext.getBody(), { msg: "Please wait..." });
+          if (isLoading)
+            loadingMask.show();
+          else
+            loadingMask.hide();
+        }
+
+        loadingMask__show(true);
+
+        new Ext.Window({
+          id: "PaymentCheck__Window",
+          width: 500,
+          height: 400,
+          resizable: false,
+          modal: true,
+          title: "@MLMExchange.Properties.ResourcesA.ShowPayment",
+          loader: {
+            url: "/AdminPanel/BasePayment/List",
+            params: { PaymentSystemIds: record.data.PaymentIds, AsPartial: "True" },
+            ajaxOptions: { method: "GET" },
+            nocache: true,
+            text: "@MLMExchange.Properties.ResourcesA.Loading",
+            callback: function () {
+              loadingMask__show(false);
+            }
+          }
+        }).show();
       }
     }
   </script>
@@ -206,7 +236,8 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
               new ModelField { Name = "Id" },
               new ModelField { Name = "CreationDateTime" },
               new ModelField { Name = "User__Login", ServerMapping = "User.Login" },
-              new ModelField { Name = "MoneyAmount" }
+              new ModelField { Name = "MoneyAmount" },
+              new ModelField { Name = "PaymentIds", ServerMapping = "PaymentIds" }
           ))
             .ServerProxy(
               Html.X().AjaxProxy()
@@ -218,12 +249,13 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
             X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Width(100).Flex(1),
             X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(100).Flex(1),
             X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(100).Flex(1),
-            X.ImageCommandColumn().Commands(
+            X.ImageCommandColumn().Width(130).Commands(
+              X.ImageCommand().CommandName("NeedProfitBill__ShowInformation").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),
               X.ImageCommand().CommandName("NeedProfitBill__Confirm").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept)
             )
               .Listeners(ls =>
               {
-                ls.Command.Fn = "needProfitBill__Confirm";
+                ls.Command.Fn = "needProfitBill__ButtonListener";
               }))
           .BottomBar(
             X.PagingToolbar()
