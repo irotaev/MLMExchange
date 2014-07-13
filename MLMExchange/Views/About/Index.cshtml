@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = @MLMExchange.Properties.ResourcesA.AboutUs;
     Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var randomWords = MLMExchange.Lib.EntityLogic.Logic__RandomWords.GetRandomWord();
 }
 
 <script>
@@ -46,9 +47,10 @@
     <i class="about-icon"></i>
 
   <aside class="b-ai about-info balloon right">
-    <div class="text b-ai_text">
-      Lorem ipsum dolor, consectetur adipiscing elit. Nullam accumsan sodales pulvinar.
-      Nam tincidunt tortor et dolor commodo vehicula
+    <div class="text b-ai_text b-rw">
+      <i class="b-rw__icon"></i>
+      <p>@randomWords.Text</p>
+      <p><span class="b-rw__author">@randomWords.Author</span></p>
     </div>
   </aside>
 </section>

@@ -1,0 +1,22 @@
+@import "../framework";
+
+
+@mixin b-rw
+{
+  text-align: right !important;
+
+  .b-rw__icon
+  {
+    float: left;
+    padding: .2em .25em .15em;
+    border: dashed 0.06em rgba(207, 207, 207, 0.5);
+    margin-right: 5px;
+    border-radius: .2em;
+    @include font-icon("\f10d", $blue_a_4_c2, FontAwesome, 40px);
+  }
+
+  .b-rw__author
+  {
+    font-size: $font-nb;
+  }
+}

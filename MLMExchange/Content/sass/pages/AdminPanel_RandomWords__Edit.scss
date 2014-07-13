@@ -1,0 +1,9 @@
+@import "../Framework";
+@import "../AdminFramework";
+
+@import "../lib/Admin.Blocks/RandomWords/RandomWords_Edit";
+
+.b-rwe
+{
+  @include admin-content-zone;
+}

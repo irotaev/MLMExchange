@@ -135,6 +135,9 @@
   <data name="AddMyCryptSuccess" xml:space="preserve">
     <value>Запрос на добавление my crypt в размере {0} отправлен</value>
   </data>
+  <data name="AddObject" xml:space="preserve">
+    <value>Добавление объекта</value>
+  </data>
   <data name="AddPhoto" xml:space="preserve">
     <value>Добавьте фотографию</value>
   </data>
@@ -347,6 +350,9 @@
   </data>
   <data name="ProfitMoneyAmount" xml:space="preserve">
     <value>Количество денег от рефералов</value>
+  </data>
+  <data name="RandomWords" xml:space="preserve">
+    <value>Случайные мысли</value>
   </data>
   <data name="ReferalProfit" xml:space="preserve">
     <value>Прибыль от рефералов</value>

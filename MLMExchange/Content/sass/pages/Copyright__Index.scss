@@ -1,35 +1,35 @@
 @import "../Framework";
 
 .copyright-block
-{
+  {
   @include span-columns(12, 12);
   @include box-sizing(border-box);
 
   .copyright-block__text
-  {
+    {
     font-size: $font-b;
 
     .copyright-block__header
-    {
+      {
       text-align: center;
       font-size: 20px;
       margin-top: 15px;
       margin-bottom: 15px;
 
       &.copyright-block__header-first
-      {
+        {
         font-size: 22px;
         margin-top: 0;
       }
 
       &.copyright-block__subtitle
-      {
+        {
         font-weight: bold;
         font-size: 18px;
         text-align: left;
 
         &.copyright-block__subtitle-list
-        {
+          {
           margin-top: 5px;
           padding-left: 15px;
         }
@@ -37,7 +37,7 @@
     }
 
     .copyright-block__list
-    {
+      {
       @include list-style-disc();
     }
   }

@@ -79,6 +79,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Автор мысли.
+        /// </summary>
+        public static string AuthorWords {
+            get {
+                return ResourceManager.GetString("AuthorWords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ожидает подтверждения.
         /// </summary>
         public static string AwaitingConfirm {
@@ -421,6 +430,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Случайные мысли.
+        /// </summary>
+        public static string RandomWords {
+            get {
+                return ResourceManager.GetString("RandomWords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Продавец.
         /// </summary>
         public static string Saller {
@@ -444,6 +462,15 @@ namespace Logic.Properties {
         public static string SystemSettings {
             get {
                 return ResourceManager.GetString("SystemSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Текст мысли.
+        /// </summary>
+        public static string TextWords {
+            get {
+                return ResourceManager.GetString("TextWords", resourceCulture);
             }
         }
         

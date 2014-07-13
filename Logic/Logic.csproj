@@ -60,10 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity.cs" />
+    <Compile Include="Lib\ApplicationUnityContainer.cs" />
     <Compile Include="Lib\DataAttribute.cs" />
     <Compile Include="Lib\NHibernate.cs" />
     <Compile Include="Logic\Application.cs" />
-    <Compile Include="Lib\ApplicationUnityContainer.cs" />
     <Compile Include="Logic\AbstractLogic.cs" />
     <Compile Include="Logic\BaseObject.cs" />
     <Compile Include="Logic\Bill.cs" />
