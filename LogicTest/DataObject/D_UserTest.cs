@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NHibernate.Linq;
+using NHibernate;
+
 
 namespace LogicTest.DataObject
 {
@@ -30,15 +32,26 @@ namespace LogicTest.DataObject
 
       administratorUser.Roles.Add(new D_AdministratorRole { User = administratorUser });
 
-      _Session.SaveOrUpdate(administratorUser);
+      _NHibernaetSession.SaveOrUpdate(administratorUser);
 
-      _Session.Transaction.Commit();
+      _NHibernaetSession.Transaction.Commit();
 
-      D_AbstractRole findRole = _Session.Query<D_AbstractRole>().Where(x => x.User.Login == login).FirstOrDefault();
+      D_AbstractRole findRole = _NHibernaetSession.Query<D_AbstractRole>().Where(x => x.User.Login == login).FirstOrDefault();
 
       Assert.IsTrue(findRole != null);
 
       TransactionCommit(true);
+    }
+
+    /// <summary>
+    /// Получить рандомного поьзователя
+    /// </summary>
+    [TestMethod]
+    public void Get_Random_User()
+    {
+      D_User randomUser = _NHibernaetSession.QueryOver<D_User>().OrderByRandom().List().FirstOrDefault();
+
+      Assert.IsTrue(randomUser != null, "Не нашли рандомного пользователя");
     }
   }
 }

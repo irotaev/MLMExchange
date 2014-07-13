@@ -29,12 +29,12 @@ namespace LogicTest
 
       //TODO:Rtv переделать NHibernateConfiguration на static
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ThreadStatic);
-      _Session = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
-      _Session.BeginTransaction();
+      _NHibernaetSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+      _NHibernaetSession.BeginTransaction();
       #endregion
     }
 
-    protected readonly ISession _Session;
+    protected readonly ISession _NHibernaetSession;
 
     public static string NHibernateConnectionString { get; set; }
 
