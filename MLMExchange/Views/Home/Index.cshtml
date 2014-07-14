@@ -95,7 +95,7 @@
         <section class="pb-sb">
           <div class="pb-sb__value-wrapper">
             <div class="pb-sb__icon-wrapper"><i class="pb-sb__icon pb-sb__icon-tradingduration"></i></div>
-            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0:hh\\:mm}", TimeSpan.FromHours((double)systemSettings.LogicObject.TradingSessionDuration))</span></div>
+            <div class="pb-sb__value-wrapper"><span class="pb-sb__value text">@String.Format("{0:hh\\:mm}", TimeSpan.FromMinutes((double)systemSettings.LogicObject.TradingSessionDuration))</span></div>
           </div>
 
           <div class="pb-sb__info-wrapper">
