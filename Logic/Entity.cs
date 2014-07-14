@@ -701,8 +701,12 @@ namespace Logic
     Baned = 4
   }
   #endregion
-  #region RandomWords
-  public class D_RandomWords : D_BaseObject
+
+  #region RandomWord
+  /// <summary>
+  /// Рандомная фраза
+  /// </summary>
+  public class D_RandomWord : D_BaseObject
   {
     /// <summary>
     /// Автор высказывания
@@ -714,6 +718,7 @@ namespace Logic
     public virtual string Text { get; set; }
   }
   #endregion
+
   #endregion
 
   #region Map Entity
@@ -975,7 +980,7 @@ namespace Logic
     }
   }
 
-  public class D_RandomWords_Map : D_BaseObject_Map<D_RandomWords>
+  public class D_RandomWords_Map : D_BaseObject_Map<D_RandomWord>
   {
     public D_RandomWords_Map()
     {

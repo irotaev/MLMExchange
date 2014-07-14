@@ -11,7 +11,7 @@ using System.Web;
 
 namespace MLMExchange.Areas.AdminPanel.Models
 {
-  public class RandomWordsModel : AbstractDataModel<D_RandomWords, RandomWordsModel>
+  public class RandomWordsModel : AbstractDataModel<D_RandomWord, RandomWordsModel>
   {
     /// <summary>
     /// Автор высказывания
@@ -25,7 +25,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Text { get; set; }
 
-    public override RandomWordsModel Bind(D_RandomWords @object)
+    public override RandomWordsModel Bind(D_RandomWord @object)
     {
       base.Bind(@object);
 
@@ -35,7 +35,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       return this;
     }
 
-    public override D_RandomWords UnBind(D_RandomWords @object = null)
+    public override D_RandomWord UnBind(D_RandomWord @object = null)
     {
       var d_randomwords = base.UnBind(@object);
 

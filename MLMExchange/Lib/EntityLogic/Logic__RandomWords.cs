@@ -13,12 +13,19 @@ namespace MLMExchange.Lib.EntityLogic
   public class Logic__RandomWords  : AbstractEntityLogic
   {
 
-    public static D_RandomWords GetRandomWord()
+    public static D_RandomWord GetRandomWord()
     {
-      D_RandomWords randomwords;
+      D_RandomWord randomwords;
 
       randomwords = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<D_RandomWords>().OrderByRandom().List().FirstOrDefault();
+        .QueryOver<D_RandomWord>().OrderByRandom().List().FirstOrDefault();
+
+      if (randomwords == null)
+      {
+        randomwords = new D_RandomWord();
+        randomwords.Author = Logic.Properties.GeneralResources.AuthorWords;
+        randomwords.Text = Logic.Properties.GeneralResources.TextWords;
+      }
 
       return randomwords;
     }

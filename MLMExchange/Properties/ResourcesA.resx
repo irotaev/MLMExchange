@@ -351,6 +351,9 @@
   <data name="RandomWords" xml:space="preserve">
     <value>Случайные мысли</value>
   </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Рекомендации</value>
+  </data>
   <data name="ReferalProfit" xml:space="preserve">
     <value>Прибыль от рефералов</value>
   </data>
@@ -386,6 +389,9 @@
   </data>
   <data name="State" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="SuccessSendMessage" xml:space="preserve">
+    <value>Ваше сообщение было успешно отправлено</value>
   </data>
   <data name="SystemSettings" xml:space="preserve">
     <value>Настройки системы</value>

@@ -30,7 +30,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
         if (ModelState.IsValid)
         {
-          D_RandomWords d_randomwords = model.UnBind();
+          D_RandomWord d_randomwords = model.UnBind();
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(d_randomwords);
         }
