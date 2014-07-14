@@ -880,6 +880,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ваше сообщение было успешно отправлено.
+        /// </summary>
+        public static string SuccessSendMessage {
+            get {
+                return ResourceManager.GetString("SuccessSendMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Настройки системы.
         /// </summary>
         public static string SystemSettings {

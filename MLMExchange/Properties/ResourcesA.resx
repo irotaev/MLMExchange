@@ -390,6 +390,9 @@
   <data name="State" xml:space="preserve">
     <value>Статус</value>
   </data>
+  <data name="SuccessSendMessage" xml:space="preserve">
+    <value>Ваше сообщение было успешно отправлено</value>
+  </data>
   <data name="SystemSettings" xml:space="preserve">
     <value>Настройки системы</value>
   </data>
