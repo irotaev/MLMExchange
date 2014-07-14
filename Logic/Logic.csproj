@@ -67,6 +67,7 @@
     <Compile Include="Logic\Application.cs" />
     <Compile Include="Logic\AbstractLogic.cs" />
     <Compile Include="Logic\BaseObject.cs" />
+    <Compile Include="Logic\BiddingParticipateApplication.cs" />
     <Compile Include="Logic\Bill.cs" />
     <Compile Include="Logic\PaymentSystem.cs" />
     <Compile Include="Logic\PaymentSystemGroup.cs" />
@@ -75,6 +76,11 @@
     <Compile Include="Logic\User.cs" />
     <Compile Include="Logic\YieldSessionBill.cs" />
     <Compile Include="NHibernateConfiguration.cs" />
+    <Compile Include="Properties\PrivateResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrivateResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\GeneralResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -86,6 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\PrivateResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrivateResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\GeneralResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GeneralResources.Designer.cs</LastGenOutput>

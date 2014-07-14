@@ -31,7 +31,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
       if (actionSettings.objectId == null)
-        throw new UserVisible__ArgumentNullException("objectId");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("objectId");
 
       D_AddMyCryptTransaction transaction = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_AddMyCryptTransaction>().Where(x => x.Id == actionSettings.objectId).FirstOrDefault();

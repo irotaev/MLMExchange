@@ -10,6 +10,7 @@ using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 using MLMExchange.Lib.Exception;
 using Logic;
+using Logic.Lib;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
 {
@@ -66,7 +67,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         throw new UserVisible__WrongParametrException("id");
 
       if (bankPaymentSystem.IsDefault)
-        throw new UserVisibleException(MLMExchange.Properties.PrivateResource.Exception_SystemAlreadyDefault);
+        throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.PrivateResource.Exception_SystemAlreadyDefault);
 
       #region D_ElectronicPaymentSystem
       D_ElectronicPaymentSystem electronicDefaultPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session

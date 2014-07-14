@@ -59,7 +59,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         throw new UserVisible__WrongParametrException("id");
 
       if (electronicPaymentSystem.IsDefault)
-        throw new UserVisibleException(MLMExchange.Properties.PrivateResource.Exception_SystemAlreadyDefault);
+        throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.PrivateResource.Exception_SystemAlreadyDefault);
 
       #region D_ElectronicPaymentSystem
       D_ElectronicPaymentSystem electronicDefaultPaymentSystem = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session

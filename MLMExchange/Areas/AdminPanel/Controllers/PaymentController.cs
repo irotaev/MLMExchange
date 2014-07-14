@@ -76,7 +76,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
       if (actionSettings.objectId == null)
-        throw new UserVisible__ArgumentNullException("objectId");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("objectId");
 
       Payment payment = _NHibernateSession.Query<Payment>().Where(x => x.Id == actionSettings.objectId.Value).FirstOrDefault();
 
@@ -111,7 +111,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
       if (actionSettings.objectId == null)
-        throw new UserVisible__ArgumentNullException("objectId");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("objectId");
 
       Payment payment = _NHibernateSession.Query<Payment>().Where(x => x.Id == actionSettings.objectId.Value).FirstOrDefault();
 

@@ -538,15 +538,6 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Аргумент {0} не задан.
-        /// </summary>
-        public static string Exception_ArgumentNull {
-            get {
-                return ResourceManager.GetString("Exception_ArgumentNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Модель заполнена не верно.
         /// </summary>
         public static string Exception_ModelInvalid {

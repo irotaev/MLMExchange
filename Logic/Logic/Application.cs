@@ -98,6 +98,22 @@ namespace Logic
       }
       #endregion
 
+      #region Создаю первую SystemSettings
+      if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_SystemSettings>().Count() == 0)
+      {
+        D_SystemSettings firstSystemSettings = new D_SystemSettings
+        {
+          CheckPaymentPercent = 5,
+          Quote = 10,
+          ProfitPercent = 20,
+          TradingSessionDuration = 2,
+          MaxMyCryptCount = 10000
+        };
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);
+      }
+      #endregion
+
       #region Создаю пользователя-систему
       D_System_User d_systemUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_System_User>().FirstOrDefault();
@@ -269,23 +285,7 @@ namespace Logic
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(brokerUser);
       }
-      #endregion
-
-      #region Создаю первую SystemSettings
-      if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_SystemSettings>().Count() == 0)
-      {
-        D_SystemSettings firstSystemSettings = new D_SystemSettings
-        {
-          CheckPaymentPercent = 5,
-          Quote = 10,
-          ProfitPercent = 20,
-          TradingSessionDuration = 2,
-          MaxMyCryptCount = 10000
-        };
-
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);
-      }
-      #endregion
+      #endregion      
 #endif
     }
 

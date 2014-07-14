@@ -95,7 +95,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       D_TradingSession tradingSession = session.Query<D_TradingSession>().Where(s => s.Id == tradingSessionId).FirstOrDefault();
 
       if (tradingSession == null)
-        throw new UserVisible__ArgumentNullException("tradingSessionId");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("tradingSessionId");
 
       if (tradingSession.BuyingMyCryptRequest.Buyer.Id != CurrentSession.Default.CurrentUser.Id || tradingSession.State != TradingSessionStatus.WaitForProgressStart)
         throw new UserVisible__CurrentActionAccessDenied();
@@ -124,7 +124,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__WrongParametrException("tradingSessionId");
 
       if (!((TradingSession)d_tradingSession).TryChangeStatus(TradingSessionStatus.NeedProfit))
-        throw new UserVisibleException(MLMExchange.Properties.PrivateResource.TradingSession_Close__CantClose);
+        throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.PrivateResource.TradingSession_Close__CantClose);
 
       return null;
     }

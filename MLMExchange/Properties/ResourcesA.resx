@@ -276,9 +276,6 @@
   <data name="Exception_ApplicationException" xml:space="preserve">
     <value>Ошибка приложения</value>
   </data>
-  <data name="Exception_ArgumentNull" xml:space="preserve">
-    <value>Аргумент {0} не задан</value>
-  </data>
   <data name="Exception_ModelInvalid" xml:space="preserve">
     <value>Модель заполнена не верно</value>
   </data>

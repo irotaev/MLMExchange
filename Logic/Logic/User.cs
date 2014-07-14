@@ -22,6 +22,18 @@ namespace Logic
       return LogicObject.Roles.Any(r => r.GetType() == typeof(D_AdministratorRole));
     }
 
+    /// <summary>
+    /// Получить роль пользователя по ее типу
+    /// </summary>
+    /// <typeparam name="TRole">Тип роли</typeparam>
+    /// <returns>Роль пользователя. Null - если не найдена</returns>
+    public TRole GetRole<TRole>() where TRole : D_AbstractRole
+    {
+      TRole role = LogicObject.Roles.Where(x => ((BaseObject)x).GetRealType() == typeof(TRole)).FirstOrDefault() as TRole;
+
+      return role;
+    }
+
     public static explicit operator User(D_User dataUser)
     {
       return new User(dataUser);

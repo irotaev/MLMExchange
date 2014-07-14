@@ -9,14 +9,15 @@ using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 using MLMExchange.Areas.AdminPanel.Models.User.SalesPeople;
 using System.Collections.Generic;
+using Logic.Lib;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User
 {
   /// <summary>
   /// Модель заявки на участие в торгах
   /// </summary>
-  public class BiddingParticipateApplicationModel : AbstractDataModel<BiddingParticipateApplication, BiddingParticipateApplicationModel>, 
-    IDataBinding<BiddingParticipateApplication, BiddingParticipateApplicationModel>
+  public class BiddingParticipateApplicationModel : AbstractDataModel<D_BiddingParticipateApplication, BiddingParticipateApplicationModel>, 
+    IDataBinding<D_BiddingParticipateApplication, BiddingParticipateApplicationModel>
   {
     /// <summary>
     /// Количество my-crypt для подачи в заявку
@@ -33,7 +34,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     public BiddingParticipateApplicationState State { get; set; }
     public PaymentSystemGroupModel PaymentSystemGroupModel { get; set; }
 
-    public override BiddingParticipateApplicationModel Bind(BiddingParticipateApplication @object)
+    public override BiddingParticipateApplicationModel Bind(D_BiddingParticipateApplication @object)
     {
       base.Bind(@object);
       MyCryptCount = @object.MyCryptCount;
@@ -46,10 +47,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       return this;
     }
 
-    public override BiddingParticipateApplication UnBind(BiddingParticipateApplication @object = null)
+    public override D_BiddingParticipateApplication UnBind(D_BiddingParticipateApplication @object = null)
     {
       if (@object == null)
-        @object = new BiddingParticipateApplication();
+        @object = new D_BiddingParticipateApplication();
 
       base.UnBind(@object);
 
@@ -69,7 +70,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     /// <summary>
     /// Объект заявки на участие в торгах
     /// </summary>
-    internal BiddingParticipateApplication Object { get { return _Object; } }
+    internal D_BiddingParticipateApplication Object { get { return _Object; } }
   }
 
   /// <summary>
@@ -155,7 +156,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
         if (BiddingParticipateApplicationModel == null || BiddingParticipateApplicationModel.Object == null)
           return false;
 
-        BiddingParticipateApplication @object = BiddingParticipateApplicationModel.Object; 
+        D_BiddingParticipateApplication @object = BiddingParticipateApplicationModel.Object; 
 
         bool isBan = false;
 

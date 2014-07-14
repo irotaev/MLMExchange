@@ -7,6 +7,40 @@ using System.Threading.Tasks;
 namespace Logic.Lib
 {
   /// <summary>
+  /// Ошибка приложения
+  /// </summary>
+  public class ApplicationException : System.Exception
+  {
+    public ApplicationException() : base() { }
+    public ApplicationException(string message) : base(message) { }
+    public ApplicationException(string message, System.Exception ex) : base(message, ex) { }
+  }
+
+  /// <summary>
+  /// Ошибка приложения.
+  /// Видна пользователю.
+  /// </summary>
+  public class UserVisibleException : ApplicationException
+  {
+    public UserVisibleException() : base() { }
+    public UserVisibleException(string message) : base(message) { }
+    public UserVisibleException(string message, System.Exception ex) : base(message, ex) { }
+  }
+
+  /// <summary>
+  /// Ошибка приложения. Аргумент не задан.
+  /// Видна пользователю.
+  /// </summary>
+  public class UserVisible__ArgumentNullException : UserVisibleException
+  {
+    public UserVisible__ArgumentNullException(string argumentName)
+      : base()
+    {
+      throw new UserVisibleException(String.Format(Logic.Properties.GeneralResources.Exception_ArgumentNull, argumentName));
+    }
+  }
+
+  /// <summary>
   /// Исключение
   /// </summary>
   public static class ExceptionExtension

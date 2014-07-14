@@ -34,7 +34,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       D_Bill checkBill = buyingRequest.TradingSession.CheckBill;
 
       if (checkBill == null || checkBill.Payer.Id != CurrentSession.Default.CurrentUser.Id)
-        throw new MLMExchange.Lib.Exception.ApplicationException(String.Format("Check bill for request {0} is not set or belong to anouther user", buyingRequest));
+        throw new Logic.Lib.ApplicationException(String.Format("Check bill for request {0} is not set or belong to anouther user", buyingRequest));
 
       if (checkBill.PaymentState == BillPaymentState.Paid)
         throw new UserVisible__CurrentActionAccessDenied();
@@ -80,7 +80,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       D_Bill sallerInterestRateBill = tradingSession.SallerInterestRateBill;
 
       if (sallerInterestRateBill == null || sallerInterestRateBill.Payer.Id != CurrentSession.Default.CurrentUser.Id)
-        throw new MLMExchange.Lib.Exception.ApplicationException(String.Format("Saller interest pay bill for request {0} is not set or belong to anouther user", tradingSession));
+        throw new Logic.Lib.ApplicationException(String.Format("Saller interest pay bill for request {0} is not set or belong to anouther user", tradingSession));
 
       if (sallerInterestRateBill.PaymentState == BillPaymentState.Paid)
         throw new UserVisible__CurrentActionAccessDenied();

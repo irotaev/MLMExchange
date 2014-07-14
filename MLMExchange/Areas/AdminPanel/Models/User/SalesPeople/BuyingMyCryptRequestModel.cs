@@ -119,7 +119,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       @object = base.UnBind(@object);
 
       if (MyCryptCount == null)
-        throw new UserVisible__ArgumentNullException("MyCryptCount");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("MyCryptCount");
 
       @object.MyCryptCount = MyCryptCount.Value;
 
@@ -134,8 +134,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       @object.Buyer = MLMExchange.Lib.CurrentSession.Default.CurrentUser;
       @object.State = BuyingMyCryptRequestState.AwaitingConfirm;
 
-      BiddingParticipateApplication biddingApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>()
-        .Session.QueryOver<Logic.BiddingParticipateApplication>().Where(x => x.Seller.Id == SellerId && x.State == BiddingParticipateApplicationState.Filed).List().FirstOrDefault();
+      D_BiddingParticipateApplication biddingApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>()
+        .Session.QueryOver<Logic.D_BiddingParticipateApplication>().Where(x => x.Seller.Id == SellerId && x.State == BiddingParticipateApplicationState.Filed).List().FirstOrDefault();
 
       if (biddingApplication == null)
         throw new UserVisible__WrongParametrException("SellerId");

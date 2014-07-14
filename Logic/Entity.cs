@@ -492,7 +492,7 @@ namespace Logic
   /// <summary>
   /// Предложения продажи my-crypt
   /// </summary>
-  public class BiddingParticipateApplication : D_BaseObject
+  public class D_BiddingParticipateApplication : D_BaseObject
   {
     /// <summary>
     /// Продавец
@@ -566,7 +566,7 @@ namespace Logic
     /// <summary>
     /// Предложения продажи my-crypt, к которой прикреплена данная заявка
     /// </summary>
-    public virtual BiddingParticipateApplication BiddingParticipateApplication { get; set; }
+    public virtual D_BiddingParticipateApplication BiddingParticipateApplication { get; set; }
     /// <summary>
     /// Состояние запроса
     /// </summary>
@@ -627,7 +627,7 @@ namespace Logic
     /// <summary>
     /// Заявка на участие в торгах
     /// </summary>
-    public virtual BiddingParticipateApplication BiddingParticipateApplication { get; set; }
+    public virtual D_BiddingParticipateApplication BiddingParticipateApplication { get; set; }
     /// <summary>
     /// Запрос на покупку my-crypt
     /// </summary>
@@ -933,9 +933,9 @@ namespace Logic
     }
   }
 
-  public class BiddingParticipateApplication_Map : D_BaseObject_Map<BiddingParticipateApplication>
+  public class D_BiddingParticipateApplication_Map : D_BaseObject_Map<D_BiddingParticipateApplication>
   {
-    public BiddingParticipateApplication_Map()
+    public D_BiddingParticipateApplication_Map()
     {
       References(x => x.Seller).Not.Nullable().Column("SaylerId");
       Map(x => x.MyCryptCount).Not.Nullable();

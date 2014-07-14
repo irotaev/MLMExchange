@@ -28,7 +28,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     public ActionResult BiddingParticipateApplicationApply(BiddingParticipateApplicationModel model)
     {
       if (model.MyCryptCount == null)
-        throw new UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
+        throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
 
       ModelState.Clear();
 
@@ -44,13 +44,13 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         if (!(model.MyCryptCount <= systemSettings.LogicObject.MaxMyCryptCount))
           throw new UserVisible__WrongParametrException("model");
 
-        BiddingParticipateApplication biddingApplication = model.UnBind((BiddingParticipateApplication)null);
+        D_BiddingParticipateApplication biddingApplication = model.UnBind((D_BiddingParticipateApplication)null);
 
         _NHibernateSession.SaveOrUpdate(biddingApplication);
       }
       else
       {
-        throw new UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
+        throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
       }
 
       return Redirect(Request.UrlReferrer.ToString());
@@ -172,6 +172,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       tradingSession.SallerInterestRateBill.PaymentState = BillPaymentState.Paid;
       tradingSession.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Closed;
+      ((BiddingParticipateApplication)tradingSession.BiddingParticipateApplication).WriteOfBuyedMyCrypt();
 
       tradingSession.State = TradingSessionStatus.NeedEnsureProfibility;
 

@@ -46,7 +46,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
       PaymentSystemGroupModel model = new PaymentSystemGroupModel().Bind((PaymentSystemGroup)paymentSystemGroup);
 
       if (paymentSystemGroup == null)
-        throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
+        throw new Logic.Lib.ApplicationException("This user has no payment system group");
 
       if (actionSettings.IsRequireSallerInterestRatePayment != null)
       {
@@ -112,7 +112,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         .Query<D_User>().Where(x => x.Id == CurrentSession.Default.CurrentUser.Id).Select(x => x.PaymentSystemGroup).FirstOrDefault();
 
         if (paymentSystemGroup == null)
-          throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
+          throw new Logic.Lib.ApplicationException("This user has no payment system group");
 
         D_BankPaymentSystem bankPaymentSystem = model.UnBind();
         bankPaymentSystem.PaymentSystemGroup = paymentSystemGroup;
@@ -144,7 +144,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
         .Query<D_User>().Where(x => x.Id == CurrentSession.Default.CurrentUser.Id).Select(x => x.PaymentSystemGroup).FirstOrDefault();
 
         if (paymentSystemGroup == null)
-          throw new MLMExchange.Lib.Exception.ApplicationException("This user has no payment system group");
+          throw new Logic.Lib.ApplicationException("This user has no payment system group");
 
         D_ElectronicPaymentSystem electronicPaymentSystem = model.UnBind();
         electronicPaymentSystem.PaymentSystemGroup = paymentSystemGroup;
@@ -154,7 +154,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers.PaymentSystems
       }
       else
       {
-        throw new UserVisible__ArgumentNullException("model");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("model");
       }
 
       if (!Request.IsAjaxRequest())

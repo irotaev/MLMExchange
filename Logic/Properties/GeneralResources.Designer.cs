@@ -277,6 +277,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Аргумент {0} не задан.
+        /// </summary>
+        public static string Exception_ArgumentNull {
+            get {
+                return ResourceManager.GetString("Exception_ArgumentNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ИНН.
         /// </summary>
         public static string INN {

@@ -121,27 +121,27 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       @object.BankName = BankName;
 
       if (String.IsNullOrWhiteSpace(INN))
-        throw new UserVisible__ArgumentNullException("INN");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("INN");
 
       @object.INN = INN;
 
       if (String.IsNullOrWhiteSpace(KPP))
-        throw new UserVisible__ArgumentNullException("KPP");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("KPP");
 
       @object.KPP = KPP;
 
       if (String.IsNullOrWhiteSpace(CurrentAccount))
-        throw new UserVisible__ArgumentNullException("CurrentAccount");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("CurrentAccount");
 
       @object.CurrentAccount = CurrentAccount;
 
       if (String.IsNullOrWhiteSpace(BIK))
-        throw new UserVisible__ArgumentNullException("BIK");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("BIK");
 
       @object.BIK = BIK;
 
       if (String.IsNullOrWhiteSpace(CardNumber))
-        throw new UserVisible__ArgumentNullException("CardNumber");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("CardNumber");
 
       @object.CardNumber = CardNumber;
 
@@ -187,7 +187,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
       @object.ElectronicName = ElectronicName;
 
       if (String.IsNullOrWhiteSpace(PurseNumber))
-        throw new UserVisible__ArgumentNullException("PurseNumber");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("PurseNumber");
 
       @object.PurseNumber = PurseNumber;
 

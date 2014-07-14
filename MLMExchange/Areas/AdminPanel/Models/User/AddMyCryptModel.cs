@@ -71,7 +71,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       base.UnBind(@object);
 
       if (MyCryptCount == null)
-        throw new UserVisible__ArgumentNullException("MyCryptCount");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("MyCryptCount");
 
       @object.MyCryptCount = MyCryptCount.Value;
       @object.Comment = Comment;

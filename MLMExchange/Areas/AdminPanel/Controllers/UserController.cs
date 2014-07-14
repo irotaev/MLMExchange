@@ -25,7 +25,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
       if (actionSettings.objectId == null)
-        throw new UserVisible__ArgumentNullException("objerctId");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("objerctId");
 
       D_User user = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_User>().Where(x => x.Id == actionSettings.objectId).FirstOrDefault();
@@ -129,8 +129,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Заявка на продажу my-crypt
       model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
 
-      BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
+      D_BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<D_BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
                                                             && x.State != BiddingParticipateApplicationState.NA
                                                             && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
       if (biddingParticipateApplication == null)
@@ -219,8 +219,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Заполняю активных продавцов
       model.ActiveSales = new List<BiddingParticipateApplicationModel>();
 
-      IList<BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<BiddingParticipateApplication>()
+      IList<D_BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_BiddingParticipateApplication>()
         .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
 
       foreach (var biddingApplication in biddingApplications)
@@ -291,7 +291,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       }
       else
       {
-        throw new UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
+        throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
       }
 
       return Redirect(Request.UrlReferrer.ToString());

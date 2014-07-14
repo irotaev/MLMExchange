@@ -276,4 +276,7 @@
   <data name="TextWords" xml:space="preserve">
     <value>Текст мысли</value>
   </data>
+  <data name="Exception_ArgumentNull" xml:space="preserve">
+    <value>Аргумент {0} не задан</value>
+  </data>
 </root>
