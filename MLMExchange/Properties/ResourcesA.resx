@@ -354,6 +354,9 @@
   <data name="RandomWords" xml:space="preserve">
     <value>Случайные мысли</value>
   </data>
+  <data name="Recommendations" xml:space="preserve">
+    <value>Рекомендации</value>
+  </data>
   <data name="ReferalProfit" xml:space="preserve">
     <value>Прибыль от рефералов</value>
   </data>

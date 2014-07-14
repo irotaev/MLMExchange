@@ -772,6 +772,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Рекомендации.
+        /// </summary>
+        public static string Recommendations {
+            get {
+                return ResourceManager.GetString("Recommendations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Прибыль от рефералов.
         /// </summary>
         public static string ReferalProfit {
