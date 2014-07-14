@@ -20,6 +20,13 @@ namespace MLMExchange.Lib.EntityLogic
       randomwords = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<D_RandomWords>().OrderByRandom().List().FirstOrDefault();
 
+      if (randomwords == null)
+      {
+        randomwords = new D_RandomWords();
+        randomwords.Author = Logic.Properties.GeneralResources.AuthorWords;
+        randomwords.Text = Logic.Properties.GeneralResources.TextWords;
+      }
+
       return randomwords;
     }
   }
