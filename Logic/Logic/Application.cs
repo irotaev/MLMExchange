@@ -302,15 +302,19 @@ namespace Logic
           {
             Thread thread = new Thread(() =>
             {
-              Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ThreadStatic);
-              Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
+              try
+              {
+                Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ThreadStatic);
+                Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
 
-              new TradingSessionList().EnsureProfibilityOfTradingSessions();
+                new TradingSessionList().EnsureProfibilityOfTradingSessions();
 
-              var nhibernateManager = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<Logic.INHibernateManager>();
-              nhibernateManager.Session.Transaction.Commit();
-              nhibernateManager.Session.Transaction.Dispose();
-              nhibernateManager.Session.Dispose();
+                var nhibernateManager = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<Logic.INHibernateManager>();
+                nhibernateManager.Session.Transaction.Commit();
+                nhibernateManager.Session.Transaction.Dispose();
+                nhibernateManager.Session.Dispose();
+              }
+              catch (Exception) { }
             });
 
             thread.Start();
