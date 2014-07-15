@@ -655,7 +655,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Логоти.
+        ///   Looks up a localized string similar to Главная.
         /// </summary>
         public static string Logo {
             get {
