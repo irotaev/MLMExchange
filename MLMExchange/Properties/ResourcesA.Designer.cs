@@ -304,7 +304,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Панель управления.
+        ///   Looks up a localized string similar to Рынок.
         /// </summary>
         public static string ControlPanel {
             get {

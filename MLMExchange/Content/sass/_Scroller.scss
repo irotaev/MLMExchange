@@ -1,0 +1,19 @@
+@import "Framework";
+@import "compass/css3/transition";
+
+#b-scroll
+{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  width: 64px;
+  height: 50px;
+  @include font-icon("\f106", $blue_a_4_c2, FontAwesome, 40px);
+}
+
+#b-scroll:hover
+{
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}

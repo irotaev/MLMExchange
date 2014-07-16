@@ -5,14 +5,18 @@
   <meta name="viewport" content="width=device-width" />
   <title>@ViewBag.Title</title>
 
+  <!--#region share-иконоки pluso-->
   <meta property="og:title" content="MyCryt Биржа" />
   <meta property="og:description" content="Биржа – это организационный, постоянно функционирующий по определенным правилам, оптовый рынок однородных товаров по ценам, официально установленным на основе спроса и предложения." />
   <meta property="og:url" content="@String.Format("{0}{1}", @Request.Url.GetLeftPart(UriPartial.Authority), "/")" />
   <meta property="og:image" content="/Content/images/images/LogoForShareIcons.png" />
-
   <meta name="title" content="MyCryt Биржа" />
   <meta name="description" content="Биржа – это организационный, постоянно функционирующий по определенным правилам, оптовый рынок однородных товаров по ценам, официально установленным на основе спроса и предложения." />
   <link rel="image_src" href="/Content/images/images/LogoForShareIcons.png" />
+  <!--#endregion-->
+
+  <link rel="shortcut icon" href="/Content/images/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/Content/images/images/favicon.ico" type="image/x-icon" />
 
   <!--Инициализация HTML5 элементов для IE (версия ниже 9)-->
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
@@ -99,6 +103,18 @@
     });
   </script>
   <!--#endregion-->
+
+  <!--#region Скроллинг вверх-->
+  <script>
+    $(function () {
+      requirejs(["Lib/Scroll"], function (Scroll) {
+        $("#b-scroll").scrollTopNow();
+      });
+    });
+  </script>
+  <!--#endregion-->
+
+  <a href="#top" id="b-scroll"></a>
 
   <div class="main-wrapper">
 

@@ -264,7 +264,10 @@
     line-height: 15pt;
     letter-spacing: .02em;
 
-    @include auto-numbers(dt, ". ", span);
+    dt
+    {
+      @include font-icon("\f101", $blue_a_4_c2, FontAwesome, 12px);
+    }
   }
 }
 
