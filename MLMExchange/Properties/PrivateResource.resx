@@ -148,7 +148,7 @@
     <value>Ожидание подтверждения оплаты продавцом</value>
   </data>
   <data name="WaitingUserResponse" xml:space="preserve">
-    <value>Ожидание отклика пользователей</value>
+    <value>Ожидание заявки на покупку</value>
   </data>
   <data name="PayYieldTradingSession" xml:space="preserve">
     <value>Оплата доходности торговой сессии</value>
