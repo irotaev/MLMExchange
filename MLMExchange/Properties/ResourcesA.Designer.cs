@@ -961,6 +961,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Рынок.
+        /// </summary>
+        public static string Wounds {
+            get {
+                return ResourceManager.GetString("Wounds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to На это действие у вас нету соответствующих прав.
         /// </summary>
         public static string YouDontHaveAccessToThisAction {

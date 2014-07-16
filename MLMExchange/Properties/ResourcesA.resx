@@ -417,6 +417,9 @@
   <data name="UserView" xml:space="preserve">
     <value>Просмотр пользователя</value>
   </data>
+  <data name="Wounds" xml:space="preserve">
+    <value>Рынок</value>
+  </data>
   <data name="YouDontHaveAccessToThisAction" xml:space="preserve">
     <value>На это действие у вас нету соответствующих прав</value>
   </data>
