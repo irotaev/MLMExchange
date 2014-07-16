@@ -192,4 +192,16 @@
   <data name="YourCurrentMyCryptBalance" xml:space="preserve">
     <value>Ваш текущий балас my-crypt</value>
   </data>
+  <data name="AddMyCrypt_AlreadySended_H1" xml:space="preserve">
+    <value>Запрос на пополнение my crypt уже отправлен</value>
+  </data>
+  <data name="AddMyCrypt__AlreadySended_Description" xml:space="preserve">
+    <value>Вы можете отправить только один запрос на пополнение my crypt</value>
+  </data>
+  <data name="AddMyCrypt__RequestAdditionalInfo" xml:space="preserve">
+    <value>Дополнительная информация по запросу</value>
+  </data>
+  <data name="UserController__AddMyCrypt_AlreadySended_Title" xml:space="preserve">
+    <value>Запрос уже существует</value>
+  </data>
 </root>

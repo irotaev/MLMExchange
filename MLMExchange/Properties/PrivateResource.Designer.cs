@@ -61,6 +61,33 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Вы можете отправить только один запрос на пополнение my crypt.
+        /// </summary>
+        public static string AddMyCrypt__AlreadySended_Description {
+            get {
+                return ResourceManager.GetString("AddMyCrypt__AlreadySended_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дополнительная информация по запросу.
+        /// </summary>
+        public static string AddMyCrypt__RequestAdditionalInfo {
+            get {
+                return ResourceManager.GetString("AddMyCrypt__RequestAdditionalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запрос на пополнение my crypt уже отправлен.
+        /// </summary>
+        public static string AddMyCrypt_AlreadySended_H1 {
+            get {
+                return ResourceManager.GetString("AddMyCrypt_AlreadySended_H1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Количество запрашиваемых my-crypt.
         /// </summary>
         public static string AddMyCryptConfirmAmpount {
@@ -219,6 +246,15 @@ namespace MLMExchange.Properties {
         public static string UnApprovedTransactionList {
             get {
                 return ResourceManager.GetString("UnApprovedTransactionList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запрос уже существует.
+        /// </summary>
+        public static string UserController__AddMyCrypt_AlreadySended_Title {
+            get {
+                return ResourceManager.GetString("UserController__AddMyCrypt_AlreadySended_Title", resourceCulture);
             }
         }
         

@@ -1,5 +1,9 @@
 @import "../framework";
 @import "../AdminFramework";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+
+@import "../lib/Admin.Blocks/AddMyCryptTransaction/UnApprovedTransactionList";
 
 .pb-amc
 {
@@ -41,5 +45,129 @@
 
     font-family: "Segoe UI";
     font-style: italic;
+  }
+}
+
+.pb-as
+{
+  position: relative;
+  padding: 15px;
+  z-index: 1;
+
+  .pb-as__background-image
+  {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    margin-left: -200px;
+    width: 540px;
+    height: 494px;
+    background-image: url("#{$I_D}AddMyCrypt/icon__request-sended.png");
+    @include opacity(0.1);
+    z-index: -1;
+  }
+
+  .pb-as__hedaer
+  {
+    @include clearfix;
+    z-index: 10;
+
+    .pb-as__title
+    {
+      float: left;
+
+      .pb-as__text
+      {
+        position: relative;
+        font-size: $font-h;
+        color: $red_a_1_c !important;
+      }
+
+      .pb-as__info-icon
+      {
+        position: relative;
+        bottom: 5px;
+        font-size: $font-s;
+      }
+    }
+
+    .pb-as__date-wrapper
+    {
+      float: right;
+
+      .pb-as__date
+      {
+        font-size: $font-nb;
+        color: $color_green_sea_c !important;
+      }
+    }
+  }
+
+  .pb-as__additional-info-wrapper
+  {
+    margin-top: 20px;
+    padding: 5px;
+    cursor: default;
+    z-index: 10;
+
+    &:hover
+    {
+      background-color: $blue_a_4_c3;
+
+      .pb-as__show-request-info
+      {
+        color: $blue_a_4_c !important;
+
+        .pb-as__question-icon
+        {
+          @include rotate(90deg);
+        }
+      }
+
+      .pb-as__additional-info-wrapper
+      {
+        display: block;
+        @include opacity(1);
+      }
+    }
+
+    .pb-as__show-request-info
+    {
+      display: block;
+      position: relative;
+      height: 30px; line-height: 30px;
+      font-size: $font-n;
+
+      .pb-as__question-icon
+      {
+        position: relative;
+        margin-left: 2px;
+        top: 1px;
+        @include transition(all 0.25s linear);
+      }
+    }
+
+    .pb-as__additional-info-wrapper
+    {
+      display: none;
+      padding: 5px;
+      @include opacity(0);
+      @include transition(opacity 0.15s linear);
+
+      .pb-as__additional-info-table
+      {
+        width: 100%;
+
+        td
+        {
+          width: 50%;
+          margin-top: 10px;
+          color: $blue_a_4_c !important;
+        }
+        td:first-child {margin-top: 0;}
+        td:nth-child(1) {width: 70%}
+        td:nth-child(2) {width: 30%}
+      }
+    }
   }
 }

@@ -1,0 +1,41 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.User.AddMyCryptModel
+
+@{
+  ViewBag.Title = @MLMExchange.Properties.PrivateResource.UserController__AddMyCrypt_AlreadySended_Title;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="pb-as">
+  <div class="pb-as__background-image"></div>
+
+  <header class="pb-as__hedaer">
+    <div class="pb-as__title">
+      <span class="pb-as__text">@MLMExchange.Properties.PrivateResource.AddMyCrypt_AlreadySended_H1</span>
+      <i class="pb-as__info-icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.AddMyCrypt__AlreadySended_Description" data-ot-style="BlackStyle"></i>
+    </div>
+
+    <div class="pb-as__date-wrapper">
+      <span class="pb-as__date">@Model.CreationDateTime.ToLocalTime().ToString("dd.mm.yyyy HH:mm")</span>
+    </div>
+  </header>
+
+  <div class="pb-as__additional-info-wrapper">
+    <span class="pb-as__show-request-info">@MLMExchange.Properties.PrivateResource.AddMyCrypt__RequestAdditionalInfo <i class="pb-as__question-icon fa fa-angle-right"></i></span>
+
+    <div class="pb-as__additional-info-wrapper">
+      @*<table class="pb-as__additional-info-table">
+        <tr>
+          <td>@Logic.Properties.GeneralResources.CreationDateTime</td>
+          <td>@Model.CreationDateTime</td>
+
+          <td>@Logic.Properties.GeneralResources.CreationDateTime</td>
+          <td>@Model.</td>
+
+          <td>@Logic.Properties.GeneralResources.CreationDateTime</td>
+          <td>@Model.CreationDateTime</td>
+        </tr>
+      </table>*@
+      @Html.Partial("~/Areas/AdminPanel/Views/AddMyCryptTransaction/Browse.cshtml", Model, new ViewDataDictionary { { "AsPartial", "True" } })
+    </div>
+  </div>
+</section><!--PB: Already sended-->

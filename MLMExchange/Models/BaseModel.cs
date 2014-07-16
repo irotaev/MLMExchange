@@ -12,6 +12,14 @@ namespace MLMExchange.Models
 {
   #region Интерфейсы
   /// <summary>
+  /// Интерфейс абстрактной модели.
+  /// </summary>
+  public interface IAbstractModel
+  {
+
+  }
+
+  /// <summary>
   /// Модель, позволяющая использовать "лейзи-лоадинг".
   /// Лайзи-лоадинг позволяет загружать свойства в момент досптупа к ним, 
   /// тем самым выигрывается производительность там, где при обращении к свойству происходит 
@@ -64,7 +72,7 @@ namespace MLMExchange.Models
   /// </summary>
   public interface IDataBinding<TObject, out TModel>
     where TObject : D_BaseObject
-    where TModel : AbstractModel
+    where TModel : class, IAbstractModel
   {
     /// <summary>
     /// Биндинг в web-модель. Прокси-биндинг
@@ -117,7 +125,7 @@ namespace MLMExchange.Models
   /// <summary>
   /// Базовая модель.
   /// </summary>
-  public abstract class AbstractModel : ILazyLoadModel
+  public abstract class AbstractModel : ILazyLoadModel, IAbstractModel
   {
     protected readonly ISession _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
 
@@ -225,7 +233,7 @@ namespace MLMExchange.Models
   /// <typeparam name="TModel">Тип модели</typeparam>
   public abstract class AbstractDataModel<TObject, TModel> : AbstractDataModel, IDataBinding<TObject, TModel>
     where TObject : D_BaseObject, new()
-    where TModel : AbstractModel
+    where TModel : class, IAbstractModel
   {
     new protected TObject _Object;
 

@@ -90,6 +90,12 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     {
       ModelState.Clear();
 
+      D_AddMyCryptTransaction sendedTransaction = _NHibernateSession.Query<D_AddMyCryptTransaction>().Where(x => x.User.Id == CurrentSession.Default.CurrentUser.Id)
+        .FirstOrDefault();
+
+      if (sendedTransaction != null)
+        return View("AddMyCrypt_AlreadySended", new AddMyCryptModel().Bind(sendedTransaction));
+
       if (ControllerContext.HttpContext.Request.HttpMethod == "POST")
       {
         if (ModelState.IsValid)
@@ -107,7 +113,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           addMyCryptTransaction.User = CurrentSession.Default.CurrentUser;
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(addMyCryptTransaction);
-          //transaction.Commit();
 
           return View("_AddMyCrypt_Success", model);
         }

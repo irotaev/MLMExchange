@@ -175,6 +175,7 @@
     <Compile Include="Areas\AdminPanel\Controllers\UserController.cs" />
     <Compile Include="Areas\AdminPanel\Models\PaymentModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\RandomWordsModel.cs" />
+    <Compile Include="Areas\AdminPanel\Models\RoleModels.cs" />
     <Compile Include="Areas\AdminPanel\Models\UserControlBlockModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
@@ -527,6 +528,7 @@
     <Content Include="Content\Fonts\FontAwesome\fontawesome-webfont.svg" />
     <Content Include="Content\images\AboutIndex\about-icon.png" />
     <Content Include="Content\images\AccountRegister\register-icon.png" />
+    <Content Include="Content\images\AddMyCrypt\icon__request-sended.png" />
     <Content Include="Content\images\ContactsIndex\contacts-icon.png" />
     <Content Include="Content\images\ContactsIndex\email-icon.png" />
     <Content Include="Content\images\CopyrightIndex\copyright-icon.png" />
@@ -705,6 +707,7 @@
     <Content Include="Content\Fonts\FontAwesome\fontawesome-webfont.ttf" />
     <Content Include="Content\Fonts\FontAwesome\fontawesome-webfont.woff" />
     <Content Include="Content\Fonts\FontAwesome\FontAwesome.otf" />
+    <Content Include="Areas\AdminPanel\Views\User\AddMyCrypt_AlreadySended.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />

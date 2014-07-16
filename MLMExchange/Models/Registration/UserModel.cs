@@ -9,6 +9,7 @@ using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 using DataAnnotationsExtensions;
 using MLMExchange.Lib.Exception;
+using MLMExchange.Areas.AdminPanel.Models;
 
 namespace MLMExchange.Models.Registration
 {
@@ -87,6 +88,34 @@ namespace MLMExchange.Models.Registration
     public string PhotoRelativePath { get; set; }
 
     public IEnumerable<D_AbstractRole> UserRoles { get; set; }
+
+    /// <summary>
+    /// Получить роль для текущего пользователя.
+    /// Если данной роли у пользователя нету, то вернет null.
+    /// </summary>
+    /// <typeparam name="TRoleModel"></typeparam>
+    /// <returns></returns>
+    public TRoleModel GetUserRole<TRoleModel>()
+      where TRoleModel : class, MLMExchange.Areas.AdminPanel.Models.IAbstractRoleModel
+    {
+      if (_Object == null)
+        throw new BindNotCallException<User>();
+
+      Type roleModelType = typeof(TRoleModel);
+
+      //TODO:Rtv дореализовать все роли
+      if (roleModelType == typeof(UserRoleModel))
+      {
+        D_UserRole role = ((User)_Object).GetRole<D_UserRole>();
+
+        if (role == null)
+          return null;
+
+        return new UserRoleModel().Bind(role) as TRoleModel;
+      }
+
+      return null;
+    }
 
     public UserModel Bind(Logic.D_User @object)
     {
