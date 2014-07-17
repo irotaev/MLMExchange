@@ -139,7 +139,7 @@
     <value>Оплатить комиссионный сбор продавца</value>
   </data>
   <data name="RequirePayInterestRateToSaller" xml:space="preserve">
-    <value>Необходимо оплатит процентную ставку продавцу, в размере {0}</value>
+    <value>Необходимо оплатить стоимость МС продавцу согласно котировки 1 к {0}, в размере {1} руб.</value>
   </data>
   <data name="WaitingSellerInterestRatePayment" xml:space="preserve">
     <value>Ожидание оплаты продавцу</value>

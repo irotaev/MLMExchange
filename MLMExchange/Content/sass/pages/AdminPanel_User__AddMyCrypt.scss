@@ -63,7 +63,7 @@
     width: 540px;
     height: 494px;
     background-image: url("#{$I_D}AddMyCrypt/icon__request-sended.png");
-    @include opacity(0.1);
+    @include opacity(0.2);
     z-index: -1;
   }
 
@@ -80,7 +80,7 @@
       {
         position: relative;
         font-size: $font-h;
-        color: $red_a_1_c !important;
+        color: $red_a_1 !important;
       }
 
       .pb-as__info-icon

@@ -45,6 +45,7 @@
         resultTag += stateTag;
 
         var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.RequirePayInterestRateToSaller,
+          "\" + record.data.SystemSettings_Quote + \"",
           "\" + record.data.SallerInterestRateBill__MoneyAmount + \"")))</div>";
           resultTag += messageTag;
 
@@ -189,7 +190,7 @@
           new ModelField { Name = "SellerName", ServerMapping = "Seller.Name" },
           new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
           new ModelField { Name = "MyCryptCount" },
-          new ModelField { Name = "LocalisedStateDisplayName" },          
+          new ModelField { Name = "LocalisedStateDisplayName" },
           new ModelField { Name = "IsCheckBillPaid" },
           new ModelField { Name = "IsSellerInterestRatePaid" },
           new ModelField { Name = "IsSellerInterestRatePaid_NeedSubstantialMoney" },
@@ -197,7 +198,8 @@
           new ModelField { Name = "State" },
           new ModelField { Name = "Id" },
           new ModelField { Name = "CheckBill__MoneyAmount", ServerMapping = "CheckBill.MoneyAmount" },
-          new ModelField { Name = "SallerInterestRateBill__MoneyAmount", ServerMapping = "SallerInterestRateBill.MoneyAmount" }
+          new ModelField { Name = "SallerInterestRateBill__MoneyAmount", ServerMapping = "SallerInterestRateBill.MoneyAmount" },
+          new ModelField { Name = "SystemSettings_Quote", ServerMapping = "SystemSettings.Quote" }
       ))
       .ServerProxy(
                     Html.X().AjaxProxy()

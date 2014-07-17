@@ -80,6 +80,20 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     public bool IsSellerInterestRatePaid { get; private set; }
 
     /// <summary>
+    /// Настройки системы
+    /// </summary>
+    public SystemSettingsModel SystemSettings
+    {
+      get
+      {
+        if (_Object == null)
+          throw new BindNotCallException<BuyingMyCryptRequest>();
+
+        return new SystemSettingsModel().Bind(_Object.SystemSettings);
+      }
+    }
+
+    /// <summary>
     /// Локализированное имя состояния заявки
     /// </summary>
     public string LocalisedStateDisplayName { get { return State.ToLocal(); } }
@@ -142,7 +156,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 
       @object.BiddingParticipateApplication = biddingApplication;
 
-      @object.SystemSettings = SystemSettings.GetCurrentSestemSettings().LogicObject;
+      @object.SystemSettings = Logic.SystemSettings.GetCurrentSestemSettings().LogicObject;
 
       return @object;
     }
