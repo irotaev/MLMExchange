@@ -66,10 +66,12 @@ namespace Logic
   {
     public D_User()
     {
+      DisplayId = Guid.NewGuid();
       Roles = new List<D_AbstractRole>();
       //UserRole = new List<D_UserRole>();
     }
 
+    public virtual Guid DisplayId { get; set; }
     public virtual string Login { get; set; }
     public virtual string PasswordHash { get; set; }
     public virtual string Name { get; set; }
@@ -821,6 +823,7 @@ namespace Logic
   {
     public D_User_Map()
     {
+      Map(x => x.DisplayId).Not.Nullable();
       Map(x => x.Login).Not.Nullable().Length(100);
       Map(x => x.PasswordHash).Not.Nullable().Length(200);
       Map(x => x.Name).Nullable().Length(100);
