@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
+using Logic.Lib;
 
 namespace Logic
 {
@@ -15,6 +16,71 @@ namespace Logic
     public static explicit operator TradingSession(D_TradingSession dataTradingSession)
     {
       return new TradingSession(dataTradingSession);
+    }
+
+    /// <summary>
+    /// Открытие торговой сессии
+    /// </summary>
+    /// <param name="buyingMyCryptRequest">Заявка на покупку MC</param>
+    public static D_TradingSession OpenTradingSession(BuyingMyCryptRequest buyingMyCryptRequest)
+    {
+      if (buyingMyCryptRequest == null)
+        throw new ArgumentNullException("buyingMyCryptRequest");
+
+      if (buyingMyCryptRequest.BiddingParticipateApplication == null)
+        throw new Logic.Lib.ApplicationException("Не задано свойство BiddingParticipateApplication у заявки на покупку MC");
+
+      if (buyingMyCryptRequest.SystemSettings == null)
+        throw new Logic.Lib.ApplicationException("Не задано своство SystemSettings у заявки на покупку MC");
+
+      #region Создание торговой сессии
+      D_TradingSession tradingSession = new D_TradingSession
+      {
+        BuyingMyCryptRequest = buyingMyCryptRequest,
+        BiddingParticipateApplication = buyingMyCryptRequest.BiddingParticipateApplication,
+        State = TradingSessionStatus.Open
+      };
+      #endregion
+
+      #region Счет проверочного платежа
+      D_Bill checkBill = new D_Bill
+      {
+        MoneyAmount = ((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount(),
+        PaymentState = BillPaymentState.WaitingPayment,
+        Payer = tradingSession.BuyingMyCryptRequest.Buyer
+      };
+
+      tradingSession.CheckBill = checkBill;
+      #endregion
+
+      #region Счет сбора продавцу
+      D_Bill sallerInterestRateBill = new D_Bill
+      {
+        MoneyAmount = ((TradingSession)tradingSession).CalculateSallerInterestRateMoneyAmount(),
+        Payer = tradingSession.BuyingMyCryptRequest.Buyer,
+        PaymentState = BillPaymentState.WaitingPayment
+      };
+
+      tradingSession.SallerInterestRateBill = sallerInterestRateBill;
+      #endregion
+
+      buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;
+      buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;
+
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
+
+      #region Перевожу все остальные заявки на покупку для данной заявки на продажу в стату отменено
+      List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
+        .Where(x => x.Id != buyingMyCryptRequest.Id && x.BiddingParticipateApplication.Id == buyingMyCryptRequest.BiddingParticipateApplication.Id).ToList();
+
+      foreach (var request in buyingMyCryptRequests)
+      {
+        request.State = BuyingMyCryptRequestState.Denied;
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+      }
+      #endregion
+
+      return tradingSession;
     }
 
     /// <summary>
@@ -53,7 +119,7 @@ namespace Logic
     /// <returns></returns>
     public decimal CalculateBuyerProfit()
     {
-      return LogicObject.BuyingMyCryptRequest.MyCryptCount + (LogicObject.BuyingMyCryptRequest.MyCryptCount * (LogicObject.SystemSettings.ProfitPercent / 100));
+      return (LogicObject.BuyingMyCryptRequest.MyCryptCount * (LogicObject.SystemSettings.ProfitPercent / 100));
     }
 
     #region Обеспечение доходности торговой сессии
@@ -100,7 +166,7 @@ namespace Logic
     /// <returns>Количество денег</returns>
     private decimal BuyerProfitNecessaryMoney()
     {
-      decimal necessaryMoney = CalculateBuyerProfit();
+      decimal necessaryMoney = LogicObject.BuyingMyCryptRequest.MyCryptCount + CalculateBuyerProfit();
 
       IEnumerable<D_YieldSessionBill> d_bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
           .Query<D_YieldSessionBill>().Where(x => x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
@@ -171,11 +237,11 @@ namespace Logic
 
           if (profitSession.TryChangeStatus(TradingSessionStatus.ProfitConfirmation))
           {
-            _NhibernateSession.SaveOrUpdate(profitSession.LogicObject);
+            _NHibernateSession.SaveOrUpdate(profitSession.LogicObject);
           }
           else
           {
-            _NhibernateSession.Delete(ensureBill);
+            _NHibernateSession.Delete(ensureBill);
           }
 
           isBillAdded = true;
@@ -264,6 +330,8 @@ namespace Logic
             if (GetNeedPaymentBills().All(x => x.LogicObject.PaymentState == BillPaymentState.Paid))
             {
               LogicObject.State = TradingSessionStatus.Closed;
+
+              ((User)LogicObject.BuyingMyCryptRequest.Buyer).TryPayRefererProfit(LogicObject);
               return true;
             }
           }

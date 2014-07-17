@@ -39,19 +39,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (checkBill.PaymentState == BillPaymentState.Paid)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      Payment checkPayment = new Payment
-      {
-        RealMoneyAmount = checkBill.MoneyAmount,
-        Payer = CurrentSession.Default.CurrentUser,
-        Bill = checkBill
-      };
-
-      ((Bill)checkBill).AddPayment(checkPayment);
-
-      //TODO:Rtv Прикрепить платежную систему
-      checkBill.PaymentState = BillPaymentState.Paid;
-
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(checkBill);
+      ((Bill)checkBill).PayCheckBill(CurrentSession.Default.CurrentUser);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());
@@ -90,16 +78,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (paymentSystem == null)
         throw new UserVisible__WrongParametrException("paymentSystemGuid");
 
-      //TODO:Rtv Прикрепить платежную систему
-      Payment sallerInterestRatePayment = new Payment
-      {
-        RealMoneyAmount = sallerInterestRateBill.MoneyAmount,
-        Payer = CurrentSession.Default.CurrentUser,
-        PaymentSystem = paymentSystem,
-        Bill = sallerInterestRateBill
-      };
-
-      ((Bill)sallerInterestRateBill).AddPayment(sallerInterestRatePayment);
+      ((Bill)sallerInterestRateBill).PaySellerInterestBill(CurrentSession.Default.CurrentUser, paymentSystem);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());

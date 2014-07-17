@@ -279,4 +279,7 @@
   <data name="Exception_ArgumentNull" xml:space="preserve">
     <value>Аргумент {0} не задан</value>
   </data>
+  <data name="Exception_PropertieNotSet" xml:space="preserve">
+    <value>Свойство {0} не задано. Невозможно продолжить операцию</value>
+  </data>
 </root>

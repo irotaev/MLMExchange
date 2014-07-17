@@ -47,6 +47,9 @@
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
@@ -60,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractTest.cs" />
+    <Compile Include="DataObject\BiddingParticipateApplicationTest.cs" />
+    <Compile Include="DataObject\BuyingMyCryptRequestTest.cs" />
     <Compile Include="DataObject\D_UserTest.cs" />
     <Compile Include="DataObject\TradingSessionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

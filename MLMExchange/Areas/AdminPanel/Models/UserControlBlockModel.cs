@@ -67,13 +67,17 @@ namespace MLMExchange.Areas.AdminPanel.Models
       }
     }
 
-
+    /// <summary>
+    /// Прибыль по подконтрольным рефералам
+    /// </summary>
     public decimal ReferalProfit
     {
       get
       {
-        //TODO:Rtv Доделать получение прибыли рефералов
-        return 0;
+        if (_User == null)
+          throw new BindNotCallException<Logic.User>();
+
+        return _User.CalculateTotalReferalProfit();
       }
     }
 

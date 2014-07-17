@@ -56,11 +56,11 @@ namespace Logic
       if (dataObject == null)
         throw new ArgumentNullException("logicObject");
 
+      _NHibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
       _LogicObject = dataObject;
-      _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
     }
 
-    protected readonly ISession _NhibernateSession;
+    protected readonly ISession _NHibernateSession;
     protected readonly TDataObject _LogicObject;
 
     public TDataObject LogicObject { get { return _LogicObject; } }

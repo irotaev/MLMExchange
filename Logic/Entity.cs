@@ -89,15 +89,15 @@ namespace Logic
     /// Роли пользователя в системе
     /// </summary>
     public virtual IList<D_AbstractRole> Roles { get; set; }
-    /// <summary>
-    /// Тип пользователя
-    /// </summary>
-    public virtual D_UserType UserType { get; set; }
+    ///// <summary>
+    ///// Тип пользователя
+    ///// </summary>
+    //public virtual D_UserType UserType { get; set; }
     //public virtual IList<D_UserRole> UserRole { get; set; }
     /// <summary>
     /// Роль пользователя, являющаяся босом для данного реферала
     /// </summary>
-    public virtual D_UserRole ReferalBossRole { get; set; }
+    public virtual D_UserRole RefererRole { get; set; }
   }
 
   /// <summary>
@@ -177,6 +177,10 @@ namespace Logic
     /// Список рефералов
     /// </summary>
     public virtual IList<D_User> ReferalUsers { get; set; }
+    /// <summary>
+    /// Профиты, которые принес данный реферал своему рефереру
+    /// </summary>
+    public virtual IList<D_ReferalProfit> RefererProfits { get; set; }
   }
 
   /// <summary>
@@ -209,6 +213,27 @@ namespace Logic
     {
       RoleType = Logic.RoleType.Administrator;
     }
+  }
+  #endregion
+
+  #region Операции с рефералами
+  /// <summary>
+  /// Профит с рефералов
+  /// </summary>
+  public class D_ReferalProfit : D_BaseObject
+  {
+    /// <summary>
+    /// Роль пользователя, от которой идет профит
+    /// </summary>
+    public virtual D_UserRole UserRole { get; set; }
+    /// <summary>
+    /// Профит по торговой сессии для реферера
+    /// </summary>
+    public virtual decimal RefererProfit { get; set; }
+    /// <summary>
+    /// Торговая сессия с которой идет профит
+    /// </summary>
+    public virtual D_TradingSession TradingSession { get; set; }
   }
   #endregion
 
@@ -782,7 +807,7 @@ namespace Logic
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
-      References(x => x.ReferalBossRole).Column("ReferalBossRoleId").Cascade.All();
+      References(x => x.RefererRole).Column("RefererRoleId").Cascade.All();
 
       DiscriminateSubClassesOnColumn<D_UserType>("UserType", D_UserType.BaseUser);
     }
@@ -814,7 +839,8 @@ namespace Logic
       DiscriminatorValue(RoleType.User);
 
       Map(x => x.MyCryptCount).Default("0").Not.Nullable();
-      HasMany(x => x.ReferalUsers).KeyColumn("ReferalBossRoleId").Cascade.SaveUpdate();
+      HasMany(x => x.ReferalUsers).KeyColumn("RefererRoleId").Cascade.SaveUpdate();
+      HasMany(x => x.RefererProfits).KeyColumn("UserRoleId").Cascade.SaveUpdate();
     }
   }
 
@@ -943,6 +969,18 @@ namespace Logic
   }
   #endregion
 
+  #region Операции с рефералами
+  public class D_ReferalProfit_Map : D_BaseObject_Map<D_ReferalProfit>
+  {
+    public D_ReferalProfit_Map()
+    {
+      References(x => x.UserRole).Column("UserRoleId").Not.Nullable().Cascade.SaveUpdate();
+      Map(x => x.RefererProfit).Default("0").Not.Nullable();
+      References(x => x.TradingSession).Column("TradingSessionId").Not.Nullable();
+    }
+  }
+  #endregion
+
   public class D_AddMyCryptTransaction_Map : D_BaseObject_Map<D_AddMyCryptTransaction>
   {
     public D_AddMyCryptTransaction_Map()
@@ -978,7 +1016,7 @@ namespace Logic
       Map(x => x.Comment).Nullable().Length(3000);
       Map(x => x.State).CustomType<BuyingMyCryptRequestState>();
       HasOne(x => x.TradingSession).PropertyRef(x => x.BuyingMyCryptRequest).Cascade.SaveUpdate();
-      References(x => x.SystemSettings).Not.Nullable().Column("SystemSettingsId");
+      References(x => x.SystemSettings).Not.Nullable().Column("SystemSettingsId").Cascade.SaveUpdate();
     }
   }
 

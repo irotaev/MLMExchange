@@ -286,6 +286,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Свойство {0} не задано. Невозможно продолжить операцию.
+        /// </summary>
+        public static string Exception_PropertieNotSet {
+            get {
+                return ResourceManager.GetString("Exception_PropertieNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ИНН.
         /// </summary>
         public static string INN {

@@ -71,9 +71,11 @@
     <Compile Include="Logic\Bill.cs" />
     <Compile Include="Logic\PaymentSystem.cs" />
     <Compile Include="Logic\PaymentSystemGroup.cs" />
+    <Compile Include="Logic\ReferalProfit.cs" />
     <Compile Include="Logic\SystemSettings.cs" />
     <Compile Include="Logic\TradingSession.cs" />
     <Compile Include="Logic\User.cs" />
+    <Compile Include="Logic\UserRoles.cs" />
     <Compile Include="Logic\YieldSessionBill.cs" />
     <Compile Include="NHibernateConfiguration.cs" />
     <Compile Include="Properties\PrivateResources.Designer.cs">

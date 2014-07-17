@@ -15,6 +15,80 @@ namespace LogicTest.DataObject
   public class D_UserTest : AbstractTest
   {
     /// <summary>
+    /// Создать тестового пользователя
+    /// </summary>
+    /// <param name="roles">Роли пользователя</param>
+    /// <param name="isSaveObject">Сохронять ли объект</param>
+    /// <returns>Тестовый пользователь</returns>
+    public static D_User CreateUser(IList<D_AbstractRole> roles, bool isSaveObject = true)
+    {
+      if (roles == null)
+        throw new TestException("Не переданы роли. Невозможно создать пользователя");
+
+      string postfix = Guid.NewGuid().ToString();
+
+      D_User testUser = new D_User
+      {
+        Email = "test_email@email.com",
+        Login = "TestUser_" + postfix,
+        Name = "TestUser_Name_" + postfix,
+        PasswordHash = _DefaultUserPassword,
+        Patronymic = "TestUser_Patronymic_" + postfix,
+        Surname = "TestUser_Surname_" + postfix
+      };
+
+      foreach (var role in roles)
+      {
+        if (role is D_UserRole)
+        {
+          ((D_UserRole)role).MyCryptCount = 100000;
+        }
+
+        role.User = testUser;
+        testUser.Roles.Add(role);
+      }
+
+      #region PaymentSystemGroup
+      testUser.PaymentSystemGroup = new D_PaymentSystemGroup { User = testUser };
+      testUser.PaymentSystemGroup.BankPaymentSystems.Add(new D_BankPaymentSystem
+      {
+        BankName = "TestBankSystem_" + postfix,
+        BIK = "123",
+        CardNumber = "123",
+        CurrentAccount = "123",
+        INN = "123",
+        IsDefault = true,
+        KPP = "123",
+        UserName = "System",
+        UserPatronymic = "System",
+        UserSurname = "System"
+      });
+      testUser.PaymentSystemGroup.ElectronicPaymentSystems.Add(new D_ElectronicPaymentSystem
+      {
+        ElectronicName = "TestElectoronicSystem_" + postfix,
+        PurseNumber = "123",
+        IsDefault = false
+      });
+      #endregion
+
+      if (isSaveObject)
+        _NHibernaetSession.SaveOrUpdate(testUser);
+
+      return testUser;
+    }
+
+    /// <summary>
+    /// Создать тестового пользователя.
+    /// Пользователя создастся с единственной ролью пользователя. 
+    /// </summary>
+    /// <param name="isSaveObject">Сохронять ли объект</param>
+    /// <returns>Тестовый пользователь</returns>
+    public static D_User CreateUser(bool isSaveObject = true)
+    {
+      return CreateUser(new List<D_AbstractRole>() { new D_UserRole() }, isSaveObject);
+    }
+
+    /// <summary>
     /// Создать пользователя с ролью администратора
     /// </summary>
     [TestMethod]

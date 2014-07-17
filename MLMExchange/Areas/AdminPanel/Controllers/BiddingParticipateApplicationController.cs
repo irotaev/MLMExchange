@@ -90,8 +90,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult Accept(long buyingMyCryptRequestId)
     {
-      BuyingMyCryptRequest buyingMyCryptRequest = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Id == buyingMyCryptRequestId).List().FirstOrDefault();
+      BuyingMyCryptRequest buyingMyCryptRequest = _NHibernateSession.QueryOver<BuyingMyCryptRequest>().Where(x => x.Id == buyingMyCryptRequestId).List().FirstOrDefault();
 
       if (buyingMyCryptRequest == null)
         throw new UserVisible__WrongParametrException("biddingParticipateApplicationId");
@@ -102,52 +101,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (buyingMyCryptRequest.State != BuyingMyCryptRequestState.AwaitingConfirm)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      #region Создание торговой сессии
-      D_TradingSession tradingSession = new D_TradingSession
-      {
-        BuyingMyCryptRequest = buyingMyCryptRequest,
-        BiddingParticipateApplication = buyingMyCryptRequest.BiddingParticipateApplication,
-        State = TradingSessionStatus.Open
-      };
-      #endregion
-
-      #region Счет проверочного платежа
-      D_Bill checkBill = new D_Bill
-      {
-        MoneyAmount = ((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount(),
-        PaymentState = BillPaymentState.WaitingPayment,
-        Payer = tradingSession.BuyingMyCryptRequest.Buyer
-      };
-
-      tradingSession.CheckBill = checkBill;
-      #endregion
-
-      #region Счет сбора продавцу
-      D_Bill sallerInterestRateBill = new D_Bill
-      {
-        MoneyAmount = ((TradingSession)tradingSession).CalculateSallerInterestRateMoneyAmount(),
-        Payer = tradingSession.BuyingMyCryptRequest.Buyer,
-        PaymentState = BillPaymentState.WaitingPayment
-      };
-
-      tradingSession.SallerInterestRateBill = sallerInterestRateBill;
-      #endregion
-
-      buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;
-      buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;
-
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
-
-      #region Перевожу все остальные заявки на покупку для данной заявки на продажу в стату отменено
-      List<BuyingMyCryptRequest> buyingMyCryptRequests = _NHibernateSession.Query<BuyingMyCryptRequest>()
-        .Where(x => x.Id != buyingMyCryptRequest.Id && x.BiddingParticipateApplication.Id == buyingMyCryptRequest.BiddingParticipateApplication.Id).ToList();
-
-      foreach (var request in buyingMyCryptRequests)
-      {
-        request.State = BuyingMyCryptRequestState.Denied;
-        _NHibernateSession.SaveOrUpdate(buyingMyCryptRequest);
-      }
-      #endregion
+      TradingSession.OpenTradingSession(buyingMyCryptRequest);
 
       return Redirect(Request.UrlReferrer.ToString());
     }

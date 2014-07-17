@@ -35,5 +35,44 @@ namespace Logic
     {
       return new Bill(dataBaseObject);
     }
+
+    /// <summary>
+    /// Оплатить проверочный платеж    
+    /// <param name="payer">Плательщик</param>
+    /// </summary>
+    public void PayCheckBill(D_User payer)
+    {
+      Payment checkPayment = new Payment
+      {
+        RealMoneyAmount = LogicObject.MoneyAmount,
+        Payer = payer,
+        Bill = LogicObject
+      };
+
+      AddPayment(checkPayment);
+
+      //TODO:Rtv Прикрепить платежную систему
+      LogicObject.PaymentState = BillPaymentState.Paid;
+
+      _NHibernateSession.SaveOrUpdate(LogicObject);
+    }
+
+    /// <summary>
+    /// Заплатить комиссионный платеж продавцу
+    /// <param name="payer">Плательщик</param>
+    /// <param name="paymentSystem">Платежная система продавца</param>
+    /// </summary>
+    public void PaySellerInterestBill(D_User payer, D_PaymentSystem paymentSystem)
+    {
+      Payment sallerInterestRatePayment = new Payment
+      {
+        RealMoneyAmount = LogicObject.MoneyAmount,
+        Payer = payer,
+        PaymentSystem = paymentSystem,
+        Bill = LogicObject
+      };
+
+      AddPayment(sallerInterestRatePayment);
+    }
   }
 }

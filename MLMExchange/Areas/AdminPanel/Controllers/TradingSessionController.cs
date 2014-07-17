@@ -61,17 +61,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (d_paymentSystem == null)
         throw new UserVisible__WrongParametrException("paymentSystemId");
 
-      Payment payment = new Payment
-      {
-        Payer = CurrentSession.Default.CurrentUser,
-        PaymentSystem = d_paymentSystem,
-        RealMoneyAmount = d_yieldSessionBill.MoneyAmount
-      };
-      
-      d_yieldSessionBill.PaymentState = BillPaymentState.EnoughMoney;
-      ((YieldSessionBill)d_yieldSessionBill).AddPayment(payment);
-
-      session.SaveOrUpdate(d_yieldSessionBill);
+      ((YieldSessionBill)d_yieldSessionBill).PayYieldSessionBill(d_paymentSystem);
 
       if (!Request.IsAjaxRequest())
         return Redirect(Request.UrlReferrer.ToString());

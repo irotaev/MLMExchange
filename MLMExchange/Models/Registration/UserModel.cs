@@ -61,13 +61,13 @@ namespace MLMExchange.Models.Registration
           if (_Object == null)
             throw new BindNotCallException<User>();
 
-          if (_Object.ReferalBossRole == null)
+          if (_Object.RefererRole == null)
           {
             return null;
           }
           else
           {
-            return _Object.ReferalBossRole.Id;
+            return _Object.RefererRole.Id;
           }
         }
         else
@@ -157,7 +157,7 @@ namespace MLMExchange.Models.Registration
         if (referalRole == null)
           throw new UserVisible__WrongParametrException("referalId");
 
-        user.ReferalBossRole = referalRole;
+        user.RefererRole = referalRole;
       }
 
       if (user.PaymentSystemGroup == null)
