@@ -107,8 +107,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         BuyingMyCryptRequest = buyingMyCryptRequest,
         BiddingParticipateApplication = buyingMyCryptRequest.BiddingParticipateApplication,
-        State = TradingSessionStatus.Open,
-        SystemSettings = SystemSettings.GetCurrentSestemSettings().LogicObject
+        State = TradingSessionStatus.Open
       };
       #endregion
 

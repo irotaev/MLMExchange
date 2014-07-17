@@ -575,6 +575,10 @@ namespace Logic
     /// Торговая сессия
     /// </summary>
     public virtual D_TradingSession TradingSession { get; set; }
+    /// <summary>
+    /// Системные настройки, привязаннные к запросу на покупку
+    /// </summary>
+    public virtual D_SystemSettings SystemSettings { get; set; }
   }
 
   public enum BuyingMyCryptRequestState : int
@@ -655,7 +659,20 @@ namespace Logic
     /// <summary>
     /// Системные настройки, привязанные к данной торговой сессии
     /// </summary>
-    public virtual D_SystemSettings SystemSettings { get; set; }
+    public virtual D_SystemSettings SystemSettings
+    {
+      get
+      {
+        if (BuyingMyCryptRequest != null)
+        {
+          return BuyingMyCryptRequest.SystemSettings;
+        }
+        else
+        {
+          return null;
+        }
+      }
+    }
     /// <summary>
     /// Дата последнего добавления счета роботом-поисковиком, который ищет пользователей 
     /// для удовлетворения доходности текущей торговой сессии.
@@ -961,6 +978,7 @@ namespace Logic
       Map(x => x.Comment).Nullable().Length(3000);
       Map(x => x.State).CustomType<BuyingMyCryptRequestState>();
       HasOne(x => x.TradingSession).PropertyRef(x => x.BuyingMyCryptRequest).Cascade.SaveUpdate();
+      References(x => x.SystemSettings).Not.Nullable().Column("SystemSettingsId");
     }
   }
 
@@ -972,7 +990,6 @@ namespace Logic
       References(x => x.BuyingMyCryptRequest).Column("BuyingMyCryptRequestId").Not.Nullable().Unique().Cascade.All();
       References(x => x.CheckBill).Column("CheckBillId").Not.Nullable().Cascade.All();
       References(x => x.SallerInterestRateBill).Column("SallerInterestRateBillId").Not.Nullable().Cascade.All();
-      References(x => x.SystemSettings).Not.Nullable();
       Map(x => x.State).CustomType<TradingSessionStatus>();
       HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).KeyColumn("TradingSessionId").Cascade.All();
       Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).Nullable();

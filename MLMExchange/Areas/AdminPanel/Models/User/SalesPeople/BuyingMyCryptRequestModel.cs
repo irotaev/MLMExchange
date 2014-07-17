@@ -58,7 +58,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     [HiddenInput(DisplayValue = false)]
     public bool IsCheckBillPaid { get; set; }
 
-    /// <summary>
+    /// <summary> 
     /// Необходимо ли довнести деньги по счету
     /// </summary>
     public bool IsSellerInterestRatePaid_NeedSubstantialMoney { get; private set; }
@@ -141,6 +141,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
         throw new UserVisible__WrongParametrException("SellerId");
 
       @object.BiddingParticipateApplication = biddingApplication;
+
+      @object.SystemSettings = SystemSettings.GetCurrentSestemSettings().LogicObject;
 
       return @object;
     }
