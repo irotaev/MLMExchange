@@ -457,6 +457,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Список прибылей от рефералов.
+        /// </summary>
+        public static string RefererProfits {
+            get {
+                return ResourceManager.GetString("RefererProfits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Продавец.
         /// </summary>
         public static string Saller {

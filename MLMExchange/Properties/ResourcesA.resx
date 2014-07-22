@@ -357,6 +357,9 @@
   <data name="ReferalProfit" xml:space="preserve">
     <value>Прибыль от рефералов</value>
   </data>
+  <data name="RefererProfitTotalCountFromReferal" xml:space="preserve">
+    <value>Общая прибыль от реферала</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Зарегистрироваться</value>
   </data>

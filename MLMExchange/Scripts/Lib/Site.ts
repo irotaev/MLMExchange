@@ -19,6 +19,24 @@ export class App
   {
 
   }
+
+  /**
+   * Инициализировать заново tooltip
+   * @param $container Контейнер где искать tooltyip'ы. Если не задан, то будет взят body
+   */
+  public static ReinitializeTooltip($container: JQuery = null): void
+  {
+    var $ = (<any>window).$Sync;
+
+    $container = $container || $("body");
+
+    $.each($container.find("[data-ot]"), function (index, element)
+    {
+      var $element = $(element);
+
+      $element.opentip($element.data("ot"), { style: $element.data("ot-style") });
+    });
+  }
 }
 
 /**
@@ -34,5 +52,5 @@ export class AdmineArea
       Ext.getCmp('AdminPanel__MainContainer').setHeight($("#AdminPanel__CenterBlock-innerCt")[0].scrollHeight + 20);
     });
     //#endregion
-  }
+  }  
 }

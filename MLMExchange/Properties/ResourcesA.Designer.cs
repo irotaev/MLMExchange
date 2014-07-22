@@ -781,6 +781,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Общая прибыль от реферала.
+        /// </summary>
+        public static string RefererProfitTotalCountFromReferal {
+            get {
+                return ResourceManager.GetString("RefererProfitTotalCountFromReferal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Зарегистрироваться.
         /// </summary>
         public static string Register {

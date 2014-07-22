@@ -16,6 +16,23 @@ define(["require", "exports", "jquery"], function(require, exports) {
         */
         App.ApplySiteSettings = function () {
         };
+
+        /**
+        * Инициализировать заново tooltip
+        * @param $container Контейнер где искать tooltyip'ы. Если не задан, то будет взят body
+        */
+        App.ReinitializeTooltip = function ($container) {
+            if (typeof $container === "undefined") { $container = null; }
+            var $ = window.$Sync;
+
+            $container = $container || $("body");
+
+            $.each($container.find("[data-ot]"), function (index, element) {
+                var $element = $(element);
+
+                $element.opentip($element.data("ot"), { style: $element.data("ot-style") });
+            });
+        };
         return App;
     })();
     exports.App = App;

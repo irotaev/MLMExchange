@@ -168,6 +168,11 @@ $default-layout_Bg-color: $blue_a_4;
               @include font-icon("\e026", $blue_a_4_c2, "Dripicons", 25px);
             }
 
+            &.pb-mm__icon__referals-info
+            {
+              @include font-icon("\f0c0", $blue_a_4_c2, "FontAwesome", 25px);
+            }
+
             &.pb-mm__icon__mycryptTransaction
             {
               @include font-icon("\e035", $blue_a_4_c2, "Dripicons", 25px);

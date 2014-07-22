@@ -282,4 +282,7 @@
   <data name="Exception_PropertieNotSet" xml:space="preserve">
     <value>Свойство {0} не задано. Невозможно продолжить операцию</value>
   </data>
+  <data name="RefererProfits" xml:space="preserve">
+    <value>Список прибылей от рефералов</value>
+  </data>
 </root>

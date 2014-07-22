@@ -1,0 +1,33 @@
+@import "../Framework";
+@import "../AdminFramework";
+
+@import "../lib/Admin.Blocks/ExtJs_Grid";
+
+#b-ri__grid
+{
+  width: 700px;
+  margin: {left: auto; right: auto;}
+
+  .b-x__header-wrapper
+  {
+    .b-ri__referals-total-profit-wrapper
+    {
+      float: right;
+      position: relative;
+
+      * {color: #692400 !important;}
+      .b-ri__total-count
+      {
+        font-size: 20px;
+
+        .b-ri__icon {font-size: 14px;}
+      }
+      & > .b-ri__icon
+      {
+        position: relative;
+        font-size: 13px;
+        top: -8px;
+      }
+    }
+  }
+}

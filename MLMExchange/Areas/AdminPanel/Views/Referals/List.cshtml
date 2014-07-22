@@ -1,0 +1,79 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@using MLMExchange.Areas.AdminPanel.Models.PaymentSystem
+@using MLMExchange.Areas.AdminPanel.Views.PaymentSystemGroup
+@using MLMExchange.Areas.AdminPanel.Models
+
+@model ReferalListModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = @MLMExchange.Properties.PrivateResource.MyReferals;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+else
+{
+  @Html.X().ResourceManager().RenderStyles(ResourceLocationType.None).RenderScripts(ResourceLocationType.None)
+}
+
+@{
+  var X = Html.X();
+}
+
+<section class="b-ri">
+  <div class="b-ri__grid-wrapper" id="b-ri__grid-wrapper_ID">
+    <script>
+      function riGrid__Afterrender() {
+        require(['jquery', 'Lib/Site'], function ($, module) {
+          module.App.ReinitializeTooltip($(".b-ri"));
+        });
+      }
+    </script>
+
+    @(X.GridPanel().ID("b-ri__grid")
+    .MinHeight(200)
+    .Layout(LayoutType.Fit)
+    .HeaderConfig(X.PanelHeader().Html(
+      @<div class="b-x__header-wrapper">
+         <div class="b-x__wrapper">
+           <i class="b-x__icon fa fa-group"></i>
+           <span class="b-x__text">@MLMExchange.Properties.PrivateResource.MyReferals</span>
+
+           <div class="b-ri__referals-total-profit-wrapper">
+             <span class="b-ri__total-count">
+               @Model.RefererTotalProfit.ToString("F")
+               <i class="b-ri__icon fa fa-rub"></i>
+             </span>
+             <i class="b-ri__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.ProfitFromAllReferals" data-ot-style="BlackStyle"></i>
+           </div>
+         </div>
+       </div>
+    ))
+    .Border(false)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(Model.Referals)
+      .Model(X.Model().Fields(
+          new ModelField { Name = "Referal__Name", ServerMapping = "Referal.Name" },
+          new ModelField { Name = "Referal__Sername", ServerMapping = "Referal.Surname" },
+          new ModelField { Name = "RefererTotalrofit" }
+      )))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Referal__Name").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.Surname).DataIndex("Referal__Sername").Flex(1),
+        X.Column().Text(MLMExchange.Properties.ResourcesA.RefererProfitTotalCountFromReferal).DataIndex("RefererTotalrofit").Flex(1),
+        X.ImageCommandColumn().Commands(
+        //X.ImageCommand().CommandName("Denied").Icon(Icon.Decline).Text(MLMExchange.Properties.ResourcesA.Denied),
+        //X.ImageCommand().CommandName("Accept").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept)
+        )
+        .Listeners(ls =>
+        {
+          ls.Command.Handler = String.Format("commandClickHandler(command, record);");
+        }))
+       .Listeners(x => x.AfterRender.Fn = "riGrid__Afterrender")
+       .RenderTo("b-ri__grid-wrapper_ID"))
+  </div>
+</section><!--B: referal info-->

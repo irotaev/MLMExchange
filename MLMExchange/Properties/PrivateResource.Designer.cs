@@ -151,6 +151,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Мои рефералы.
+        /// </summary>
+        public static string MyReferals {
+            get {
+                return ResourceManager.GetString("MyReferals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Необходимо внести проверочный платеж в размере {0}.
         /// </summary>
         public static string NeedCheckPayment {
@@ -192,6 +201,15 @@ namespace MLMExchange.Properties {
         public static string PayYieldTradingSession {
             get {
                 return ResourceManager.GetString("PayYieldTradingSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Общая прибыль со всех рефералов.
+        /// </summary>
+        public static string ProfitFromAllReferals {
+            get {
+                return ResourceManager.GetString("ProfitFromAllReferals", resourceCulture);
             }
         }
         

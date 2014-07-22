@@ -20,6 +20,32 @@
       text-align: center;
       height: 20px; line-height: 10px;
     }
+
+    .b-x__header-wrapper
+    {
+      .b-x__text, .b-x__icon
+      {
+        @include header-text-with-shadow;
+      }
+
+      .b-x__wrapper
+      {
+        @include clearfix;
+
+        .b-x__icon
+        {
+          float: left;
+          padding-right: 10px;
+        }
+
+        .b-x__text
+        {
+          float: left;
+          font-size: $font-h;
+          height: 20px; line-height: 10px;
+        }
+      }
+    }
   }
 
   .x-panel-body-default {background-color: white;}
