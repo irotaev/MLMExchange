@@ -136,7 +136,7 @@
     <value>Платеж не подтвержден</value>
   </data>
   <data name="PaySellerInterestRatePayment" xml:space="preserve">
-    <value>Оплатить комиссионный сбор продавца</value>
+    <value>Оплатить</value>
   </data>
   <data name="RequirePayInterestRateToSaller" xml:space="preserve">
     <value>Необходимо оплатить стоимость МС продавцу согласно котировки 1 к {0}, в размере {1} руб.</value>

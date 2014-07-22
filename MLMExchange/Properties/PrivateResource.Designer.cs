@@ -187,7 +187,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оплатить комиссионный сбор продавца.
+        ///   Looks up a localized string similar to Оплатить.
         /// </summary>
         public static string PaySellerInterestRatePayment {
             get {
