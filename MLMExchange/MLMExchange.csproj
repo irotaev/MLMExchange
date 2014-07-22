@@ -780,12 +780,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logic\Logic.csproj">
-      <Project>{c2bce3f7-3976-4f25-a60d-4dd4206feeb5}</Project>
-      <Name>Logic</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\PrivateResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PrivateResource.Designer.cs</LastGenOutput>
@@ -802,6 +796,12 @@
     <TypeScriptCompile Include="Scripts\Lib\Site.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{c2bce3f7-3976-4f25-a60d-4dd4206feeb5}</Project>
+      <Name>Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -210,6 +210,9 @@
   <data name="ProfitFromAllReferals" xml:space="preserve">
     <value>Общая прибыль со всех рефералов</value>
   </data>
+  <data name="YieldSessionBill__WaitingForConfirmation" xml:space="preserve">
+    <value>Ожидание подтверждения платежа</value>
+  </data>
   <data name="YouCantBuyMCNow" xml:space="preserve">
     <value>В текущее время вы не можете покупать MC. Т.к. уже открыта торговая сессия.</value>
   </data>

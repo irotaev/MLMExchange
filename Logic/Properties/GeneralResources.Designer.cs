@@ -169,6 +169,51 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Внесено достаточное количество денег.
+        /// </summary>
+        public static string BillPaymentStat__EnoughMoney {
+            get {
+                return ResourceManager.GetString("BillPaymentStat__EnoughMoney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Счет не оплачен.
+        /// </summary>
+        public static string BillPaymentStat__NotPaid {
+            get {
+                return ResourceManager.GetString("BillPaymentStat__NotPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Счет оплачен.
+        /// </summary>
+        public static string BillPaymentStat__Paid {
+            get {
+                return ResourceManager.GetString("BillPaymentStat__Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ожидает оплаты.
+        /// </summary>
+        public static string BillPaymentStat__WaitingPayment {
+            get {
+                return ResourceManager.GetString("BillPaymentStat__WaitingPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Состояние счета.
+        /// </summary>
+        public static string BillPaymentState {
+            get {
+                return ResourceManager.GetString("BillPaymentState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Покупатель.
         /// </summary>
         public static string Buyer {

@@ -344,6 +344,7 @@ namespace Logic
     public virtual D_TradingSession AcceptorTradingSession { get; set; }
   }
 
+  #region BillPaymentState
   /// <summary>
   /// Состояние счета
   /// </summary>
@@ -367,6 +368,28 @@ namespace Logic
     /// </summary>
     NotPaid = 3
   }
+  
+  public static class BillPaymentStateExtensions
+  {
+    public static string GetLocalDisplayName(this BillPaymentState state)
+    {
+      switch(state)
+      {
+        case BillPaymentState.EnoughMoney:
+          return Logic.Properties.GeneralResources.BillPaymentStat__EnoughMoney;        
+        case BillPaymentState.NotPaid:
+          return Logic.Properties.GeneralResources.BillPaymentStat__NotPaid;
+        case BillPaymentState.Paid:
+          return Logic.Properties.GeneralResources.BillPaymentStat__Paid;
+        case BillPaymentState.WaitingPayment:
+          return Logic.Properties.GeneralResources.BillPaymentStat__WaitingPayment;
+        case BillPaymentState.NA:
+        default:
+          return Logic.Properties.GeneralResources.NA;
+      }
+    }
+  }
+  #endregion
 
   /// <summary>
   /// Тип счета

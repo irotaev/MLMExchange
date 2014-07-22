@@ -89,22 +89,25 @@ namespace MLMExchange.Areas.AdminPanel.Models
       ClosingSessionDateTime = @object.LogicObject.ClosingSessionDateTime;
 
       //TODO:Rtv переделать
-      foreach (var bill in @object.LogicObject.YieldSessionBills.Where(x => x.PaymentState == BillPaymentState.WaitingPayment))
+      foreach (var bill in @object.LogicObject.YieldSessionBills)
       {
         Logic.PaymentSystem defaultPaymentSystem = ((PaymentSystemGroup)bill.PaymentAcceptor.PaymentSystemGroup).GetDefaultPaymentSystem();
 
         YieldSessionPaymentAcceptor paymentAcceptor = new YieldSessionPaymentAcceptor
         {
-          DefaultPaymentSystem = defaultPaymentSystem != null ? defaultPaymentSystem.GetType().Name : "TODO: доработать",
+          DefaultPaymentSystem = defaultPaymentSystem != null ? Logic.PaymentSystem.GetDisplayName(defaultPaymentSystem) : MLMExchange.Properties.ResourcesA.DefaultPaymentSystemNotSet,
           MoneyAmount = bill.MoneyAmount,
           UserId = bill.PaymentAcceptor.Id,
           UserLogin = bill.PaymentAcceptor.Login,
-          YieldTradingSessionBillId = bill.Id
+          YieldTradingSessionBillId = bill.Id,
+          BillState = bill.PaymentState,
+          BillStateAsString = bill.PaymentState == BillPaymentState.EnoughMoney ? MLMExchange.Properties.PrivateResource.YieldSessionBill__WaitingForConfirmation
+            : bill.PaymentState.GetLocalDisplayName()
         };
 
         _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
       }
-
+      
       #region Задание типа текущего пользователя, по отношению к торговой сессии
       if (@object.LogicObject.BuyingMyCryptRequest != null && @object.LogicObject.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)
         _CurrentUserTypes.Add(TradingSessionCurrentUserType.Buyer);
@@ -163,6 +166,14 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Дефолтная платежная система
     /// </summary>
     public string DefaultPaymentSystem { get; set; }
+    /// <summary>
+    /// Состояние платежа
+    /// </summary>
+    public string BillStateAsString { get; set; }
+    /// <summary>
+    /// Состояние платежа
+    /// </summary>
+    public BillPaymentState BillState { get; set; }
     public long YieldTradingSessionBillId { get; set; }
   }
 

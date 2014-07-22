@@ -35,6 +35,19 @@
         }).show();
       }
     }
+
+    function TradingSession__PayYieldTradingSession_CommandColumnRenderer(grid, command, record, row) {
+      console.log(arguments);
+
+      if (record.data.BillState == "WaitingPayment")
+      {
+        command.disabled = false;
+      }
+      else 
+      {
+        command.disabled = true;
+      }
+    }
   </script>
 
   <div class="b-ts__pay-yield-trading-session">
@@ -59,7 +72,9 @@
                       new ModelField { Name = "UserLogin" },
                       new ModelField { Name = "MoneyAmount" },
                       new ModelField { Name = "DefaultPaymentSystem" },
-                      new ModelField { Name = "YieldTradingSessionBillId" }
+                      new ModelField { Name = "YieldTradingSessionBillId" },
+                      new ModelField { Name = "BillStateAsString" },
+                      new ModelField { Name = "BillState" }
                   ))
                     .ServerProxy(
                       Html.X().AjaxProxy()
@@ -68,12 +83,15 @@
                   )
                   .ColumnModel(
                     X.RowNumbererColumn(),
-                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Flex(1),
-                    X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Flex(1),
-                    X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Flex(1),
+                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Width(120),
+                    X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(120),
+                    X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Width(115),
+                    X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillStateAsString").Width(150),
                     X.ImageCommandColumn().Commands(
-                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)                      
+                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)
                     )
+                      .Width(100)
+                      .PrepareCommand("TradingSession__PayYieldTradingSession_CommandColumnRenderer")
                       .Listeners(ls =>
                       {
                         ls.Command.Fn = "YieldTradingSession__Listener";
@@ -99,7 +117,7 @@ else if (Model.State == Logic.TradingSessionStatus.WaitForProgressStart)
       });
     }
   </script>
-  
+
   <div class="b-ts__open-trading-session">
     <div class="b-ts__message">
       @MLMExchange.Properties.PrivateResource.IsTradingSessionShouldBeOpen
@@ -176,8 +194,7 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
         var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Accept)";
 
         Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
-          if (btn == "yes")
-          {
+          if (btn == "yes") {
             $.ajax({
               url: "/TradingSession/ConfirmNeedProfitBill",
               data: { 'billId': record.data.Id },
@@ -189,7 +206,7 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
         });
       }
       else if (commandName === "NeedProfitBill__ShowInformation") {
-        var loadingMask__show = function(isLoading) {
+        var loadingMask__show = function (isLoading) {
           var loadingMask = new Ext.LoadMask(Ext.getBody(), { msg: "Please wait..." });
           if (isLoading)
             loadingMask.show();

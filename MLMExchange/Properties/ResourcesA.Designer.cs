@@ -340,6 +340,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дефолтная платежная система не задана.
+        /// </summary>
+        public static string DefaultPaymentSystemNotSet {
+            get {
+                return ResourceManager.GetString("DefaultPaymentSystemNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дефолтная система.
         /// </summary>
         public static string DefaultSystem {

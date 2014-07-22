@@ -134,7 +134,7 @@ namespace Logic
 
         foreach (var bill in _LogicObject.YieldSessionBills)
         {
-          billsPaid = bill.PaymentState == BillPaymentState.EnoughMoney;
+          billsPaid = bill.PaymentState == BillPaymentState.Paid;
         }
 
         return billsPaid;

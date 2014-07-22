@@ -285,4 +285,19 @@
   <data name="RefererProfits" xml:space="preserve">
     <value>Список прибылей от рефералов</value>
   </data>
+  <data name="BillPaymentState" xml:space="preserve">
+    <value>Состояние счета</value>
+  </data>
+  <data name="BillPaymentStat__EnoughMoney" xml:space="preserve">
+    <value>Внесено достаточное количество денег</value>
+  </data>
+  <data name="BillPaymentStat__NotPaid" xml:space="preserve">
+    <value>Счет не оплачен</value>
+  </data>
+  <data name="BillPaymentStat__Paid" xml:space="preserve">
+    <value>Счет оплачен</value>
+  </data>
+  <data name="BillPaymentStat__WaitingPayment" xml:space="preserve">
+    <value>Ожидает оплаты</value>
+  </data>
 </root>

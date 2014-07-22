@@ -331,6 +331,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ожидание подтверждения платежа.
+        /// </summary>
+        public static string YieldSessionBill__WaitingForConfirmation {
+            get {
+                return ResourceManager.GetString("YieldSessionBill__WaitingForConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to В текущее время вы не можете покупать MC. Т.к. уже открыта торговая сессия..
         /// </summary>
         public static string YouCantBuyMCNow {

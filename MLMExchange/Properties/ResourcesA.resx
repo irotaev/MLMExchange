@@ -210,6 +210,9 @@
   <data name="DataEmpty" xml:space="preserve">
     <value>Нет данных</value>
   </data>
+  <data name="DefaultPaymentSystemNotSet" xml:space="preserve">
+    <value>Дефолтная платежная система не задана</value>
+  </data>
   <data name="DefaultSystem" xml:space="preserve">
     <value>Дефолтная система</value>
   </data>
