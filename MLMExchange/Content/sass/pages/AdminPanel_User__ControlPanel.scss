@@ -107,4 +107,16 @@
       text-align: center;
     }
   }
+
+  .pb-bpa__sell-mc-disabled
+  {
+    display: block;
+    margin-top: 10px;
+    font-size: $font-b !important;
+
+    .pb-bpa__icon
+    {
+      color: $orange2;
+    }
+  }
 }

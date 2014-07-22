@@ -14,39 +14,40 @@
   <header class="b-ab__title"><i class="b-ab__icon fa fa-usd"></i> @Logic.Properties.GeneralResources.TradingSession</header>
 
   <div class="b-ab__content b-ts__content">
-    @if (Model.State == Logic.TradingSessionStatus.NA)
-    {
-      <div class="b-text b-ts__text b-ts__session-not-opened-text">
-        @MLMExchange.Properties.PrivateResource.TradingSessionNotOpened
-      </div>
-    }
-    else
-    {
-      <div class="b-ts__message-wrapper">
-        @if (Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
-        {
-          <div class="b-text b-ts__text b-ts__waiting-seller-interest-rate-payment">
-            @MLMExchange.Properties.PrivateResource.WaitingSellerInterestRatePayment
-          </div>
-        }
-
-        @if (Model.CheckBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
-        {
-          <div class="b-text b-ts__text b-ts__waiting-check-payment">
-            @MLMExchange.Properties.PrivateResource.WaitingCheckPayment
-          </div>
-        }
-      </div>
-
-      if (Model.CurrentUserTypes.ToList().Exists(x => x == MLMExchange.Areas.AdminPanel.Models.TradingSessionCurrentUserType.Buyer))
+      @if (Model.State == Logic.TradingSessionStatus.NA)
       {
-        @Html.Partial("TradingSession/_Browse_ForBuyer", Model)
+        <div class="b-text b-ts__text b-ts__session-not-opened-text">
+          @MLMExchange.Properties.PrivateResource.TradingSessionNotOpened
+        </div>
       }
-
-      if (Model.CurrentUserTypes.ToList().Exists(x => x == MLMExchange.Areas.AdminPanel.Models.TradingSessionCurrentUserType.Seller))
+      else
       {
-        // Пока нет необходимости показывать что-либо продавцу
-        //@Html.Partial("TradingSession/_Browse_ForSeller", Model)
+        <div class="b-ts__message-wrapper">
+          @if (Model.SallerInterestRateBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
+          {
+            <div class="b-text b-ts__text b-ts__waiting-seller-interest-rate-payment">
+              @MLMExchange.Properties.PrivateResource.WaitingSellerInterestRatePayment
+            </div>
+          }
+
+          @if (Model.CheckBill.BillPaymentState == Logic.BillPaymentState.WaitingPayment)
+          {
+            <div class="b-text b-ts__text b-ts__waiting-check-payment">
+              @MLMExchange.Properties.PrivateResource.WaitingCheckPayment
+            </div>
+          }
+        </div>
+
+        if (Model.CurrentUserTypes.ToList().Exists(x => x == MLMExchange.Areas.AdminPanel.Models.TradingSessionCurrentUserType.Buyer))
+        {
+          @Html.Partial("TradingSession/_Browse_ForBuyer", Model)
+        }
+
+        if (Model.CurrentUserTypes.ToList().Exists(x => x == MLMExchange.Areas.AdminPanel.Models.TradingSessionCurrentUserType.Seller))
+        {
+          // Пока нет необходимости показывать что-либо продавцу
+          //@Html.Partial("TradingSession/_Browse_ForSeller", Model)
+        }
       }
     }
   </div>

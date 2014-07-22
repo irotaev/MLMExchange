@@ -16,6 +16,10 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     /// Продавцы, у которых можно купить my-crypt
     /// </summary>
     public List<BiddingParticipateApplicationModel> ActiveSales { get; set; }
+    /// <summary>
+    /// Запрещено ли текущему пользователю покупать MC
+    /// </summary>
+    public bool IsCurrentUserBuyMCDisabled { get; set; }
 
     /// <summary>
     /// Заявки, на которые данный пользователь откликнулся

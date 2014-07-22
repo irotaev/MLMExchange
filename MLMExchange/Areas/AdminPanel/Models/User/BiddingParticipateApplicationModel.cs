@@ -169,6 +169,11 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       }
     }
 
+    /// <summary>
+    /// Запрещено ли текущему пользователю продавать MC
+    /// </summary>
+    public bool IsCurrentUserSellMCDisabled { get; set; }
+
     public BiddingParticipateApplicationModel BiddingParticipateApplicationModel { get; set; }
 
     public BiddingParticipateApplicationBuyerFoundModel BiddingParticipateApplicationBuyerFoundModel { get; set; }

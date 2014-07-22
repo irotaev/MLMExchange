@@ -133,7 +133,12 @@
   };
 </script>
 
-@{var selesPeopleGrid = X.GridPanel().ID("SalesPeople__Grid")
+@{
+  AbstractComponent buyMCContainer;
+
+  if (!Model.IsCurrentUserBuyMCDisabled)
+  {
+    buyMCContainer = X.GridPanel().ID("SalesPeople__Grid")
     .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
     .Layout(LayoutType.Fit)
     .Height(375)
@@ -174,7 +179,16 @@
           X.PagingToolbar()
             .Plugins(X.ProgressBarPager())
         );
-
+  }
+  else
+  {
+    buyMCContainer = X.Container().Html(
+      @<div class="b-brp">
+        <span class="b-brp__message"><i class="b-brp__icon fa fa-exclamation-triangle"></i> @MLMExchange.Properties.PrivateResource.YouCantBuyMCNow</span>
+      </div>
+    );
+  }
+  
   var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
     .Title(MLMExchange.Properties.PrivateResource.BuyingMyCryptRequestHistory)
     .Layout(LayoutType.Fit)
@@ -220,7 +234,7 @@
 }
 
 @{
-(ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(selesPeopleGrid, buyingRequestHistoryGrid);
+  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(buyMCContainer, buyingRequestHistoryGrid);
 }
 
 

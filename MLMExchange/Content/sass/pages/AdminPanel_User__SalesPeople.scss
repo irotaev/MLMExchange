@@ -17,6 +17,25 @@
   }
 }
 
+.b-brp
+{
+  margin: 10px;
+
+  .b-brp__message
+  {
+    display: block;
+    text-align: center;
+    font-size: $font-b;
+
+    .b-brp__icon
+    {
+      font-size: $font-b;
+      color: $orange2;
+      margin-right: 5px;
+    }
+  }
+}
+
 #BuyingRequest__History
 {
   margin-top: 30px;

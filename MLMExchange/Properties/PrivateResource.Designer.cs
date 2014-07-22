@@ -331,6 +331,24 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to В текущее время вы не можете покупать MC. Т.к. уже открыта торговая сессия..
+        /// </summary>
+        public static string YouCantBuyMCNow {
+            get {
+                return ResourceManager.GetString("YouCantBuyMCNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В текущее время вы не можете продавать MC. Т.к. уже открыта торговая сессия..
+        /// </summary>
+        public static string YouCantSellMCNow {
+            get {
+                return ResourceManager.GetString("YouCantSellMCNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ваш текущий балас my-crypt.
         /// </summary>
         public static string YourCurrentMyCryptBalance {
