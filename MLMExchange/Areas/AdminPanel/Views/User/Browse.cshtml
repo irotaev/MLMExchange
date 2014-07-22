@@ -1,7 +1,9 @@
 ﻿@model MLMExchange.Models.Registration.UserModel
-@{
-    ViewBag.Title = Logic.Properties.GeneralResources.User;
-    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = Logic.Properties.GeneralResources.User;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
 }
 
 <section class="b-ui">
