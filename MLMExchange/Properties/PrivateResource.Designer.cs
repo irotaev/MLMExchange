@@ -295,7 +295,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ожидание оплаты продавцу.
+        ///   Looks up a localized string similar to Ожидание оплаты от покупателя.
         /// </summary>
         public static string WaitingSellerInterestRatePayment {
             get {

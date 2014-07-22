@@ -142,7 +142,7 @@
     <value>Необходимо оплатить стоимость МС продавцу согласно котировки 1 к {0}, в размере {1} руб.</value>
   </data>
   <data name="WaitingSellerInterestRatePayment" xml:space="preserve">
-    <value>Ожидание оплаты продавцу</value>
+    <value>Ожидание оплаты от покупателя</value>
   </data>
   <data name="WaitingSellerInterestRatePayment_Accept" xml:space="preserve">
     <value>Ожидание подтверждения оплаты продавцом</value>
