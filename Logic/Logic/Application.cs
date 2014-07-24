@@ -157,7 +157,7 @@ namespace Logic
 
 #if DEBUG
       #region Создаю тестовых пользователей системы
-      if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_User>().Where(x => x.Login == "irotaev" || x.Login == "newbik").Count() == 0)
+      if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_User>().Where(x => x.Login == "leader" || x.Login == "broker" || x.Login == "tester").Count() == 0)
       {
         D_User leaderUser = new D_User
         {

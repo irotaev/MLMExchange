@@ -26,12 +26,12 @@ define(["require", "exports", "jquery"], function(require, exports) {
 
             var openCallback = function () {
                 var openAdditionalInfoWrapperCallback = function () {
-                    $arrow.removeClass("b-ab__open-icon_rotate_0").addClass("b-ab__open-icon_rotate_180");
-
                     $additionalInfoContent.animate({ height: $additionalInfoContent[0].scrollHeight }, "slow", function () {
                         $arrow.one("click", closeCallback);
                     });
                 };
+
+                $arrow.removeClass("b-ab__open-icon_rotate_0").addClass("b-ab__open-icon_rotate_180");
 
                 if (contentOuterStartHeight < additionalInfoFullHeight) {
                     $content.animate({ height: additionalInfoFullHeight }, "slow", openAdditionalInfoWrapperCallback);

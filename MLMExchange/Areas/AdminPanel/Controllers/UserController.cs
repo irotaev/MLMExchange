@@ -33,6 +33,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (user == null)
         throw new UserVisible__WrongParametrException("objectId");
 
+      if (Request.IsAjaxRequest())
+        ViewData["AsPartial"] = "True";
+
       return View(new UserModel().Bind(user));
     }
 
