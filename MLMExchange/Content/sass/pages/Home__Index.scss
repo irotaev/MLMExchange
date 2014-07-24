@@ -211,6 +211,11 @@
         @include font-icon("\f024", $blue_a_4_c2, FontAwesome, 70px);
       }
     }
+
+    .home-block__list
+    {
+      @include list-style-disc();
+    }
   }
 
   .home-block__right
@@ -259,7 +264,10 @@
     line-height: 15pt;
     letter-spacing: .02em;
 
-    @include auto-numbers(dt, ". ", span);
+    dt
+    {
+      @include font-icon("\f101sosial-buttons__outer-wrapper", $blue_a_4_c2, FontAwesome, 12px);
+    }
   }
 }
 

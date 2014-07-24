@@ -739,6 +739,7 @@
     <Content Include="Scripts\Lib\Form.js" />
     <Content Include="Scripts\Lib\JQuery.Validation\Boolean.Extension.ValidationAdapter.js" />
     <Content Include="Scripts\Lib\Menu\AdminMainMenu.js" />
+    <Content Include="Scripts\Lib\Scroll.js" />
     <Content Include="Scripts\Lib\Site.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\require.js" />
@@ -795,6 +796,7 @@
     <TypeScriptCompile Include="Scripts\Lib\Controls\AdminBlock\AdminBlock.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Form.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Menu\AdminMainMenu.ts" />
+    <TypeScriptCompile Include="Scripts\Lib\Scroll.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Site.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />

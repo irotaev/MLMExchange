@@ -52,6 +52,14 @@
           {
             @include font-icon("\f17e", $grey_4, FontAwesome, 40px);
           }
+          &.pb-cf__icon__google
+          {
+            @include font-icon("\f0d4", $grey_4, FontAwesome, 40px);
+          }
+          &.pb-cf__icon__odnoklasniki
+            {
+            @include font-icon("\f0e6", $grey_4, FontAwesome, 40px);
+          }
         }
 
         .pb-cf__text
@@ -81,7 +89,7 @@
 
     .pb-cf__additional-info-vk
     {
-      @include span-columns(3 omega, 10);
+      float: right;
     }
 
     .b-button.register-button

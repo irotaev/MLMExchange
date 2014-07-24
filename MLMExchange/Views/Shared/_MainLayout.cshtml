@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width" />
   <title>@ViewBag.Title</title>
 
+  <!--#region share-иконоки pluso-->
+  <meta property="og:title" content="MyCryt Биржа" />
+  <meta property="og:description" content="Биржа – это организационный, постоянно функционирующий по определенным правилам, оптовый рынок однородных товаров по ценам, официально установленным на основе спроса и предложения." />
+  <meta property="og:url" content="@String.Format("{0}{1}", @Request.Url.GetLeftPart(UriPartial.Authority), "/")" />
+  <meta property="og:image" content="/Content/images/images/LogoForShareIcons.png" />
+  <meta name="title" content="MyCryt Биржа" />
+  <meta name="description" content="Биржа – это организационный, постоянно функционирующий по определенным правилам, оптовый рынок однородных товаров по ценам, официально установленным на основе спроса и предложения." />
+  <link rel="image_src" href="/Content/images/images/LogoForShareIcons.png" />
+  <!--#endregion-->
+
+  <link rel="shortcut icon" href="/Content/images/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/Content/images/images/favicon.ico" type="image/x-icon" />
+
   <!--Инициализация HTML5 элементов для IE (версия ниже 9)-->
   @if (Context.Request.Browser.Type.Contains("IE") || Context.Request.Browser.Type.Contains("InternetExplorer"))
   {
@@ -91,6 +104,18 @@
   </script>
   <!--#endregion-->
 
+  <!--#region Скроллинг вверх-->
+  <script>
+    $(function () {
+      requirejs(["Lib/Scroll"], function (Scroll) {
+        $("#b-scroll").scrollTopNow();
+      });
+    });
+  </script>
+  <!--#endregion-->
+
+  <a href="#top" id="b-scroll"></a>
+
   <div class="main-wrapper">
 
     <section class="main-changable-content clearfix">
@@ -155,11 +180,26 @@
 
     <div class="main-footer">
       <div class="sosial-buttons__outer-wrapper">
-        <div class="sosial-buttons__inner-wrapper">
+        @*<div class="sosial-buttons__inner-wrapper">
           <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon twitter"></i></div>
           <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon facebook"></i></div>
           <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
-        </div>
+        </div>*@
+
+        @*<script type="text/javascript">
+          (function () {
+            if (window.pluso) if (typeof window.pluso.start == "function") return;
+            if (window.ifpluso == undefined) {
+              window.ifpluso = 1;
+              var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+              s.type = 'text/javascript'; s.charset = 'UTF-8'; s.async = true;
+              s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
+              var h = d[g]('body')[0];
+              h.appendChild(s);
+            }
+          })();
+        </script>
+        <div class="pluso" data-background="transparent" data-options="big,round,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email"></div>*@
       </div>
 
       <hr class="b-hr" />

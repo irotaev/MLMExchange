@@ -199,7 +199,7 @@
     <value>Контакты</value>
   </data>
   <data name="ControlPanel" xml:space="preserve">
-    <value>Панель управления</value>
+    <value>Рынок</value>
   </data>
   <data name="CopyRight" xml:space="preserve">
     <value>Копирайт</value>
@@ -316,7 +316,7 @@
     <value>Загрузка</value>
   </data>
   <data name="Logo" xml:space="preserve">
-    <value>Логоти</value>
+    <value>Главная</value>
   </data>
   <data name="MainMenu__Header" xml:space="preserve">
     <value>Меню</value>
