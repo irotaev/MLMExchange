@@ -728,6 +728,7 @@ namespace Logic
     public virtual DateTime? DateLastYieldTradingSessionUnsureSearchRobotAddBill { get; set; }
   }
 
+  #region TradingSessionStatus
   public enum TradingSessionStatus : int
   {
     NA = 0,
@@ -765,6 +766,37 @@ namespace Logic
     /// </summary>
     Baned = 4
   }
+
+  public static class TradingSessionStatusExtensioon
+  {
+    public static string GetDisplayName(this TradingSessionStatus state)
+    {
+      switch(state)
+      {
+        case TradingSessionStatus.Baned:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__Baned;
+        case TradingSessionStatus.Closed:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__Closed;
+        case TradingSessionStatus.NeedEnsureProfibility:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__NeedEnsureProfibility;
+        case TradingSessionStatus.NeedProfit:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__NeedProfit;
+        case TradingSessionStatus.Open:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__Open;
+        case TradingSessionStatus.ProfitConfirmation:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__ProfitConfirmation;
+        case TradingSessionStatus.SessionInProgress:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__SessionInProgress;
+        case TradingSessionStatus.WaitForProgressStart:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__WaitForProgressStart;
+        case TradingSessionStatus.NA:
+        default:
+          return Logic.Properties.GeneralResources.TradingSessionStatus__NA;
+      }
+    }
+  }
+  #endregion
+
   #endregion
 
   #region RandomWord

@@ -565,6 +565,96 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Состояние торговой сессии.
+        /// </summary>
+        public static string TradingSessionState {
+            get {
+                return ResourceManager.GetString("TradingSessionState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Забанена.
+        /// </summary>
+        public static string TradingSessionStatus__Baned {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__Baned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Закрыта.
+        /// </summary>
+        public static string TradingSessionStatus__Closed {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не открыта.
+        /// </summary>
+        public static string TradingSessionStatus__NA {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__NA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Необходимо обеспечить доходность.
+        /// </summary>
+        public static string TradingSessionStatus__NeedEnsureProfibility {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__NeedEnsureProfibility", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ожидание прибыли для покупателя.
+        /// </summary>
+        public static string TradingSessionStatus__NeedProfit {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__NeedProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Открыта.
+        /// </summary>
+        public static string TradingSessionStatus__Open {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подтвержление прибыли покупателем.
+        /// </summary>
+        public static string TradingSessionStatus__ProfitConfirmation {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__ProfitConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to В режиме ожидания.
+        /// </summary>
+        public static string TradingSessionStatus__SessionInProgress {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__SessionInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ожидание старта.
+        /// </summary>
+        public static string TradingSessionStatus__WaitForProgressStart {
+            get {
+                return ResourceManager.GetString("TradingSessionStatus__WaitForProgressStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Номер транзакции.
         /// </summary>
         public static string TransactionNumber {

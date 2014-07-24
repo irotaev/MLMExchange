@@ -1,0 +1,24 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.AdditionalInfo
+
+<section class="b-ts__additional-info-block">
+  @if (Model.State != Logic.TradingSessionStatus.NA)
+  { 
+    <span class="b-ts__start-date">@Model.StartDateTime.Value.ToString("MM.dd.yyyy HH:mm")</span>
+  }
+  
+  <table class="b-ts__info-table">
+    <tr class="b-ts__state">
+      <td>@Logic.Properties.GeneralResources.TradingSessionState</td>
+      <td>@Model.StateAsString</td>
+    </tr>
+
+    @if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == Logic.TradingSessionStatus.ProfitConfirmation)
+    {
+      <tr class="b-ts__remaining-buyer-profit-total-count">
+        <td>@MLMExchange.Properties.PrivateResource.TradingSession__RemainingProfitMoneyTotalCount</td>
+        <td>@Model.RemainingProfitMoneyTotalCount.ToString("F")</td>
+      </tr>
+    }
+  </table>
+
+</section>

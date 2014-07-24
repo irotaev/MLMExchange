@@ -300,4 +300,34 @@
   <data name="BillPaymentStat__WaitingPayment" xml:space="preserve">
     <value>Ожидает оплаты</value>
   </data>
+  <data name="TradingSessionState" xml:space="preserve">
+    <value>Состояние торговой сессии</value>
+  </data>
+  <data name="TradingSessionStatus__Baned" xml:space="preserve">
+    <value>Забанена</value>
+  </data>
+  <data name="TradingSessionStatus__Closed" xml:space="preserve">
+    <value>Закрыта</value>
+  </data>
+  <data name="TradingSessionStatus__NA" xml:space="preserve">
+    <value>Не открыта</value>
+  </data>
+  <data name="TradingSessionStatus__NeedEnsureProfibility" xml:space="preserve">
+    <value>Необходимо обеспечить доходность</value>
+  </data>
+  <data name="TradingSessionStatus__NeedProfit" xml:space="preserve">
+    <value>Ожидание прибыли для покупателя</value>
+  </data>
+  <data name="TradingSessionStatus__Open" xml:space="preserve">
+    <value>Открыта</value>
+  </data>
+  <data name="TradingSessionStatus__ProfitConfirmation" xml:space="preserve">
+    <value>Подтвержление прибыли покупателем</value>
+  </data>
+  <data name="TradingSessionStatus__SessionInProgress" xml:space="preserve">
+    <value>В режиме ожидания</value>
+  </data>
+  <data name="TradingSessionStatus__WaitForProgressStart" xml:space="preserve">
+    <value>Ожидание старта</value>
+  </data>
 </root>

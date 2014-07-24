@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NHibernate.Linq;
 using NHibernate.Proxy;
+using Microsoft.Practices.Unity;
 
 namespace LogicTest.DataObject
 {
@@ -44,7 +45,7 @@ namespace LogicTest.DataObject
 
       _NHibernaetSession.SaveOrUpdate(systemSettings);
 
-      BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, 1000);
+      BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, 1000);      
 
       D_TradingSession d_tradingSession = TradingSession.OpenTradingSession(buyingRequest);
 
@@ -120,6 +121,13 @@ namespace LogicTest.DataObject
 
       ((YieldSessionBill)tradingSession.YieldSessionBills.FirstOrDefault())
         .PayYieldSessionBill(acceptedTradingSession.BuyingMyCryptRequest.Buyer.PaymentSystemGroup.BankPaymentSystems.FirstOrDefault());
+
+      _NHibernaetSession.Transaction.Commit();
+      _NHibernaetSession.BeginTransaction();
+
+      // Покупатель подтверждает оплату счета. Т.е. он увидел деньги по этому счету
+      ((YieldSessionBill)tradingSession.YieldSessionBills.FirstOrDefault()).TryChangePaymentState(BillPaymentState.Paid);
+      tradingSession.State = TradingSessionStatus.WaitForProgressStart;
 
       _NHibernaetSession.SaveOrUpdate(tradingSession);
 

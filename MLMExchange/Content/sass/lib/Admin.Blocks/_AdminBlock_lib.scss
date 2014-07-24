@@ -1,5 +1,29 @@
 @import "../../framework";
 @import "../../AdminFramework";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+
+@mixin b-ts__additional-info-block
+{
+  .b-ts__start-date
+  {
+    display: table;
+    text-shadow: 1px 1px 1px hsla(0, 24%, 80%, 0.14);
+    color: #660A0A !important;
+    font-size: $font-b;
+    margin-bottom: 10px;
+  }
+
+  .b-ts__info-table
+  {
+    width: 100%;
+
+    td {width: 50%; margin-top: 10px;}
+    td:first-child {margin-top: 0;}
+    td:nth-child(odd) {width: 60%;}
+    td:nth-child(even) {width: 40%}
+  }
+}
 
 @mixin b-ab
 {
@@ -36,8 +60,64 @@
 
   .b-ab__content
   {
+    position: relative;
     padding: 20px; padding-top: 0;
     border: 10px solid $red_a_1_c;
     background-color: $blue_a_4_c3;
+
+    &:hover
+    {
+      .b-ab__additional-info-wrapper .b-ab__open-icon.b-ab__open-icon_rotate_0
+      {
+        display: block;
+      }
+    }
+
+    .b-ab__additional-info-wrapper
+    {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      z-index: 1000;
+
+      .b-ab__open-icon
+      {
+        position: absolute;
+        right: 10px;
+        top: -45px;
+        width: 50px;
+        height: 46px;
+        background: url("#{$I_D}Controls/AdminBlock/additional-info-arrow.png") center no-repeat;
+        cursor: pointer;
+
+        &.b-ab__open-icon_rotate_0
+        {
+          display: none;
+        }
+
+        &.b-ab__open-icon_rotate_180
+        {
+          display: block;
+          @include transform(rotate(180deg));
+        }
+      }
+
+      .b-ab__ai-content
+      {
+        height: 0;
+        overflow: hidden;
+        background-color: #8B3F3F;
+
+        * {color: #AFA5A5 !important;}
+
+        .b-ab__wrapper
+        {
+          padding: 5px;
+
+          .b-ts__additional-info-block {@include  b-ts__additional-info-block;}
+        }
+      }
+    }
   }
 }

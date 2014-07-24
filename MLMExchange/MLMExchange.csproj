@@ -711,6 +711,7 @@
     <Content Include="Content\Fonts\FontAwesome\FontAwesome.otf" />
     <Content Include="Areas\AdminPanel\Views\User\AddMyCrypt_AlreadySended.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Referals\List.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\TradingSession\_AdditionalInfoBlock.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -791,6 +792,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Framework\RequireJs\config.ts" />
+    <TypeScriptCompile Include="Scripts\Lib\Controls\AdminBlock\AdminBlock.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Form.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Menu\AdminMainMenu.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Site.ts" />

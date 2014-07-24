@@ -131,11 +131,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       ControlPanelModel model = new ControlPanelModel();
 
-      D_TradingSession openTradingSession = _NHibernateSession.Query<D_TradingSession>()
-        .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
-              || x.BuyingMyCryptRequest.SellerUser.Id == CurrentSession.Default.CurrentUser.Id)).FirstOrDefault();
+      D_TradingSession openBuyerTradingSession = _NHibernateSession.Query<D_TradingSession>()
+        .Where(x => x.State != TradingSessionStatus.Closed && x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id).FirstOrDefault();
 
-      if (openTradingSession == null)
+      if (openBuyerTradingSession == null)
       {
         #region Заявка на продажу my-crypt
         model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();

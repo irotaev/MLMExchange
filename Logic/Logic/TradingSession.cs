@@ -164,7 +164,7 @@ namespace Logic
     /// Рассчитывается, лучше вызывать минимальное число раз
     /// </summary>
     /// <returns>Количество денег</returns>
-    private decimal BuyerProfitNecessaryMoney()
+    public decimal BuyerProfitNecessaryMoney()
     {
       decimal necessaryMoney = LogicObject.BuyingMyCryptRequest.MyCryptCount + CalculateBuyerProfit();
 

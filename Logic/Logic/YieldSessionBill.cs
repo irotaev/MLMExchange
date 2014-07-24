@@ -20,11 +20,18 @@ namespace Logic
       return new YieldSessionBill(dataBaseObject);
     }
 
-    public override void AddPayment(Payment payment)
+    public override bool TryChangePaymentState(BillPaymentState state)
     {
-      base.AddPayment(payment);
+      bool result = base.TryChangePaymentState(state);
 
-      ((TradingSession)_LogicObject.PayerTradingSession).TryChangeStatus(TradingSessionStatus.WaitForProgressStart);
+      switch(state)
+      {
+        case BillPaymentState.Paid:
+          ((TradingSession)_LogicObject.PayerTradingSession).TryChangeStatus(TradingSessionStatus.WaitForProgressStart);
+          break;
+      }
+
+      return result;
     }
 
     /// <summary>

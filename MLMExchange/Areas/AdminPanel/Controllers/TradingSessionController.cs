@@ -138,7 +138,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (d_bill.PaymentState != BillPaymentState.EnoughMoney || d_bill.PaymentAcceptor.Id != CurrentSession.Default.CurrentUser.Id)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      d_bill.PaymentState = BillPaymentState.Paid;
+      ((YieldSessionBill)d_bill).TryChangePaymentState(BillPaymentState.Paid);
       ((TradingSession)d_bill.AcceptorTradingSession).TryChangeStatus(TradingSessionStatus.Closed);
 
       _NHibernateSession.SaveOrUpdate(d_bill);

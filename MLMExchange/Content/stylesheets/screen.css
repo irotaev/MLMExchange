@@ -1086,15 +1086,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 415px;
   margin-bottom: 50px;
 }
-/* line 11, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 35, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab.b-ab_customise_full-custom {
   width: auto;
 }
-/* line 14, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 38, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab.b-ab_customise_full-custom .b-ab__content {
   padding: 0;
 }
-/* line 18, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 42, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__title {
   position: relative;
   height: 36px;
@@ -1105,7 +1105,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   font-size: 20px;
 }
-/* line 29, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 53, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__title .b-ab__icon {
   display: block;
   position: absolute;
@@ -1114,12 +1114,91 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   height: 36px;
   line-height: 40px;
 }
-/* line 38, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+/* line 62, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
 .b-ab .b-ab__content {
+  position: relative;
   padding: 20px;
   padding-top: 0;
   border: 10px solid #973f36;
   background-color: #353f59;
+}
+/* line 71, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content:hover .b-ab__additional-info-wrapper .b-ab__open-icon.b-ab__open-icon_rotate_0 {
+  display: block;
+}
+/* line 77, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+/* line 85, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__open-icon {
+  position: absolute;
+  right: 10px;
+  top: -45px;
+  width: 50px;
+  height: 46px;
+  background: url("/Content/images/Controls/AdminBlock/additional-info-arrow.png") center no-repeat;
+  cursor: pointer;
+}
+/* line 95, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__open-icon.b-ab__open-icon_rotate_0 {
+  display: none;
+}
+/* line 100, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__open-icon.b-ab__open-icon_rotate_180 {
+  display: block;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 107, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content {
+  height: 0;
+  overflow: hidden;
+  background-color: #8B3F3F;
+}
+/* line 112, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content * {
+  color: #AFA5A5 !important;
+}
+/* line 115, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper {
+  padding: 5px;
+}
+/* line 9, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper .b-ts__additional-info-block .b-ts__start-date {
+  display: table;
+  text-shadow: 1px 1px 1px rgba(216, 192, 192, 0.14);
+  color: #660A0A !important;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+/* line 18, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper .b-ts__additional-info-block .b-ts__info-table {
+  width: 100%;
+}
+/* line 21, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper .b-ts__additional-info-block .b-ts__info-table td {
+  width: 50%;
+  margin-top: 10px;
+}
+/* line 22, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper .b-ts__additional-info-block .b-ts__info-table td:first-child {
+  margin-top: 0;
+}
+/* line 23, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper .b-ts__additional-info-block .b-ts__info-table td:nth-child(odd) {
+  width: 60%;
+}
+/* line 24, ../sass/lib/Admin.Blocks/_AdminBlock_lib.scss */
+.b-ab .b-ab__content .b-ab__additional-info-wrapper .b-ab__ai-content .b-ab__wrapper .b-ts__additional-info-block .b-ts__info-table td:nth-child(even) {
+  width: 40%;
 }
 
 /* line 14, ../sass/AdminArea/_AdminPanel.scss */

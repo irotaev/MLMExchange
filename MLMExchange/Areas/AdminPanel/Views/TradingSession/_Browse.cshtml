@@ -49,5 +49,23 @@
           //@Html.Partial("TradingSession/_Browse_ForSeller", Model)
         }
       }
-  </div>
+
+    <aside class="b-ab__additional-info-wrapper">
+      <i class="b-ab__open-icon b-ab__open-icon_rotate_0"></i>
+
+      <div class="b-ab__ai-content">
+        <div class="b-ab__wrapper">
+          @Html.Partial("~/Areas/AdminPanel/Views/TradingSession/_AdditionalInfoBlock.cshtml", Model.AdditionalInfo)
+        </div>
+      </div>
+    </aside>
+    </div>  
+
+  <script>
+    require(["jquery", "Lib/Controls/AdminBlock/AdminBlock"], function ($, module) {
+      $(function () {
+        new module.AdminBlock($(".b-ts.b-ab"));
+      });
+    });    
+  </script>
 </section><!--B: Trading session-->

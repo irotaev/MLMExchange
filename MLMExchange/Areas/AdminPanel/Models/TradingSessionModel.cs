@@ -69,6 +69,33 @@ namespace MLMExchange.Areas.AdminPanel.Models
     public DateTime? ClosingSessionDateTime { get; set; }
 
     /// <summary>
+    /// Дополнительная информация по ТС
+    /// </summary>
+    public AdditionalInfo AdditionalInfo
+    {
+      get
+      {
+        AdditionalInfo info = new AdditionalInfo
+        {
+          State = State,
+          StateAsString = State.GetDisplayName()
+        };
+
+        if (State != TradingSessionStatus.NA)
+        {
+          info.StartDateTime = CreationDateTime;
+        }
+
+        if (_Object != null)
+        {
+          info.RemainingProfitMoneyTotalCount = _Object.BuyerProfitNecessaryMoney();
+        }
+
+        return info;
+      }
+    }
+
+    /// <summary>
     /// Оплачены ли счета доходности торговой сессии
     /// </summary>
     public bool IsYieldSessionBillsPaid { get; private set; }
@@ -107,7 +134,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
         _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
       }
-      
+
       #region Задание типа текущего пользователя, по отношению к торговой сессии
       if (@object.LogicObject.BuyingMyCryptRequest != null && @object.LogicObject.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)
         _CurrentUserTypes.Add(TradingSessionCurrentUserType.Buyer);
@@ -150,6 +177,37 @@ namespace MLMExchange.Areas.AdminPanel.Models
       }
     }
   }
+
+  #region AdditionalInfo
+  /// <summary>
+  /// Профит покупателя
+  /// </summary>
+  public interface IBuyerProfitAdditionalInfo
+  {
+    /// <summary>
+    /// Общее количество оставшихся денег для внесения на уплату профита покупателя
+    /// </summary>
+    decimal RemainingProfitMoneyTotalCount { get; }
+  }
+
+  /// <summary>
+  /// Дополнительная информация по торговой сессии
+  /// </summary>
+  public class AdditionalInfo : IBuyerProfitAdditionalInfo
+  {
+    /// <summary>
+    /// Дата начала сессии
+    /// </summary>
+    public DateTime? StartDateTime { get; set; }
+    /// <summary>
+    /// Состояние ТС строкой
+    /// </summary>
+    public string StateAsString { get; set; }
+    public TradingSessionStatus State { get; set; }
+
+    public decimal RemainingProfitMoneyTotalCount { get; set; }
+  }
+  #endregion
 
   /// <summary>
   /// Пользователь, принимающий комиссионный платеж

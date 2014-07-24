@@ -25,6 +25,18 @@ namespace Logic
     {
       _LogicObject.GetPaymentList().Add(payment);
     }
+
+    /// <summary>
+    /// Попытаться поменять статус счета. 
+    /// </summary>
+    /// <param name="state">Новый статус</param>
+    /// <returns>True - в случаи удачи, false - в случаи неудачи</returns>
+    public virtual bool TryChangePaymentState(BillPaymentState state)
+    {
+      LogicObject.PaymentState = state;
+
+      return true;
+    }
   }
 
   public class Bill : Bill<D_Bill>

@@ -241,6 +241,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Оставшееся количество денег, которое необходимо выставить покупателям, для удовлетворения текущей прибыли по сесии.
+        /// </summary>
+        public static string TradingSession__RemainingProfitMoneyTotalCount {
+            get {
+                return ResourceManager.GetString("TradingSession__RemainingProfitMoneyTotalCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Невозможно закрыть сессию, скорее всего время ожидания торговой сессии не истекло.
         /// </summary>
         public static string TradingSession_Close__CantClose {

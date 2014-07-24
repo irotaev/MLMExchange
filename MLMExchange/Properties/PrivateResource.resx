@@ -210,6 +210,9 @@
   <data name="ProfitFromAllReferals" xml:space="preserve">
     <value>Общая прибыль со всех рефералов</value>
   </data>
+  <data name="TradingSession__RemainingProfitMoneyTotalCount" xml:space="preserve">
+    <value>Оставшееся количество денег, которое необходимо выставить покупателям, для удовлетворения текущей прибыли по сесии</value>
+  </data>
   <data name="YieldSessionBill__WaitingForConfirmation" xml:space="preserve">
     <value>Ожидание подтверждения платежа</value>
   </data>

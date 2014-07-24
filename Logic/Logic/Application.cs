@@ -289,6 +289,7 @@ namespace Logic
 #endif
     }
 
+    #region Авторегуляция системы
     /// <summary>
     /// Запустить процесс обеспечения доходности торговым сессиям.
     /// Процесс запускается в отдельном потоке.
@@ -308,6 +309,7 @@ namespace Logic
                 Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.BeginTransaction();
 
                 new TradingSessionList().EnsureProfibilityOfTradingSessions();
+                ApproveFakeYieldTradingSessionBills();
 
                 var nhibernateManager = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<Logic.INHibernateManager>();
                 nhibernateManager.Session.Transaction.Commit();
@@ -325,5 +327,21 @@ namespace Logic
 
       tradingSessionEnsureThread.Start();
     }
+
+    /// <summary>
+    /// Поддтверждение "фейковый" платежей доходности торговой сессии
+    /// </summary>
+    private void ApproveFakeYieldTradingSessionBills()
+    {
+      IEnumerable<D_YieldSessionBill> bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_YieldSessionBill>().Where(x => x.PaymentAcceptor.Login == "system_user" && x.PaymentState == BillPaymentState.EnoughMoney);
+
+      bills.ForEach(x => 
+        {
+          ((YieldSessionBill)x).TryChangePaymentState(BillPaymentState.Paid);
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(x);
+        });
+    }
+    #endregion
   }
 }
