@@ -313,6 +313,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Невозможно изменить реферера после регистрации. Данная опция доступна только при регистрации..
+        /// </summary>
+        public static string UserModel__Exception_CantChangeRefererRoleAfterRegistration {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_CantChangeRefererRoleAfterRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ожидание проверочного платежа системе.
         /// </summary>
         public static string WaitingCheckPayment {

@@ -78,6 +78,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           user = model.UnBind(user);
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
+
+          model.Bind(user);
         }
       }
 

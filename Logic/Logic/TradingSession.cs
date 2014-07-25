@@ -70,13 +70,28 @@ namespace Logic
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
 
       #region Перевожу все остальные заявки на покупку для данной заявки на продажу в стату отменено
-      List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
-        .Where(x => x.Id != buyingMyCryptRequest.Id && x.BiddingParticipateApplication.Id == buyingMyCryptRequest.BiddingParticipateApplication.Id).ToList();
-
-      foreach (var request in buyingMyCryptRequests)
       {
-        request.State = BuyingMyCryptRequestState.Denied;
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+        List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
+          .Where(x => x.Id != buyingMyCryptRequest.Id && x.BiddingParticipateApplication.Id == buyingMyCryptRequest.BiddingParticipateApplication.Id).ToList();
+
+        foreach (var request in buyingMyCryptRequests)
+        {
+          request.State = BuyingMyCryptRequestState.Denied;
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+        }
+      }
+      #endregion
+
+      #region Отменяю все заявки на покупку для других сессий, связанные с данным покупателем
+      {
+        List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
+          .Where(x => x.Id != buyingMyCryptRequest.Id && x.State == BuyingMyCryptRequestState.AwaitingConfirm && x.Buyer.Id == buyingMyCryptRequest.Buyer.Id).ToList();
+
+        foreach (var request in buyingMyCryptRequests)
+        {
+          request.State = BuyingMyCryptRequestState.Denied;
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+        }
       }
       #endregion
 

@@ -177,6 +177,9 @@ namespace MLMExchange.Models.Registration
 
       if (_ReferalRoleId != null)
       {
+        if (user.Id != 0)
+          throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.PrivateResource.UserModel__Exception_CantChangeRefererRoleAfterRegistration);
+
         D_UserRole referalRole = _NhibernateSession.Query<D_UserRole>().Where(x => x.Id == _ReferalRoleId).FirstOrDefault();
 
         if (referalRole == null)

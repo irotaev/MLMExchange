@@ -72,7 +72,7 @@ namespace MLMExchange.Lib.Form
       bool isNeedBtnClear = true;
 
       object readonlyAttr;
-      if (additionalAttributes.TryGetValue("readonly", out readonlyAttr))
+      if (additionalAttributes.TryGetValue("readonly", out readonlyAttr) || additionalAttributes.TryGetValue("disabled", out readonlyAttr))
         isNeedBtnClear = false;
 
       return isNeedBtnClear;
@@ -93,6 +93,9 @@ namespace MLMExchange.Lib.Form
       Expression<Func<TModel, TProperty>> fieldExpression, string fieldDisplatyName, string fieldDiscription = null, string formStyle = "blue", string value = null, IDictionary<string, object> additionalAttributes = null)
     {
       string inputBlockTag_InnerHtml = htmlHelper.CustomValidationMessageFor(fieldExpression).ToString();
+
+      if (additionalAttributes == null)
+        additionalAttributes = new Dictionary<string, object>();
 
       Dictionary<string, object> additionalParams = new Dictionary<string, object>(additionalAttributes)
       {
@@ -123,6 +126,9 @@ namespace MLMExchange.Lib.Form
     public static MvcHtmlString ApplicationTextBoxFor<TModel>(this HtmlHelper<TModel> htmlHelper, string fieldName, string fieldDisplatyName, string fieldDiscription = null, string formStyle = "blue", string value = null, IDictionary<string, object> additionalAttributes = null)
     {
       string inputBlockTag_InnerHtml = String.Empty;
+
+      if (additionalAttributes == null)
+        additionalAttributes = new Dictionary<string, object>();
 
       Dictionary<string, object> additionalParams = new Dictionary<string, object>(additionalAttributes)
       {

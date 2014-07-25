@@ -3,20 +3,33 @@
 <section class="b-ts__additional-info-block">
   @if (Model.State != Logic.TradingSessionStatus.NA)
   { 
-    <span class="b-ts__start-date">@Model.StartDateTime.Value.ToString("MM.dd.yyyy HH:mm")</span>
+    <span class="b-ts__start-date">@Model.StartDateTime.Value.ToLocalTime().ToString("MM.dd.yyyy HH:mm")</span>
   }
   
   <table class="b-ts__info-table">
-    <tr class="b-ts__state">
+    <tr class="b-ts__info-row b-ts__state">
       <td>@Logic.Properties.GeneralResources.TradingSessionState</td>
       <td>@Model.StateAsString</td>
     </tr>
 
     @if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == Logic.TradingSessionStatus.ProfitConfirmation)
     {
-      <tr class="b-ts__remaining-buyer-profit-total-count">
+      <tr class="b-ts__info-row b-ts__remaining-buyer-profit-total-count">
         <td>@MLMExchange.Properties.PrivateResource.TradingSession__RemainingProfitMoneyTotalCount</td>
         <td>@Model.RemainingProfitMoneyTotalCount.ToString("F")</td>
+      </tr>
+    }
+    
+    @if (Model.State != Logic.TradingSessionStatus.NA)
+    {
+      <tr class="b-ts__info-row b-ts__info-row_content-type_profit-percent">
+        <td>@Logic.Properties.GeneralResources.ProfitPercent</td>
+        <td>@(String.Format(Logic.Properties.GeneralResources.Systemsettings__ProfitPercent_DisplayString, Model.ProfitPersent.ToString("F")))</td>
+      </tr>
+
+      <tr class="b-ts__info-row b-ts__info-row_content-type_quote">
+        <td>@Logic.Properties.GeneralResources.Quote</td>
+        <td>@(String.Format(Logic.Properties.GeneralResources.Systemsettings__Quote_DisplayString, Model.Quote))</td>
       </tr>
     }
   </table>

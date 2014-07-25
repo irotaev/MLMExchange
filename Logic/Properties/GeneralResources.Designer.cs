@@ -538,6 +538,24 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} %.
+        /// </summary>
+        public static string Systemsettings__ProfitPercent_DisplayString {
+            get {
+                return ResourceManager.GetString("Systemsettings__ProfitPercent_DisplayString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1 к {0}.
+        /// </summary>
+        public static string Systemsettings__Quote_DisplayString {
+            get {
+                return ResourceManager.GetString("Systemsettings__Quote_DisplayString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Текст мысли.
         /// </summary>
         public static string TextWords {

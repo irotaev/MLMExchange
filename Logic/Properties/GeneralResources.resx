@@ -330,4 +330,10 @@
   <data name="TradingSessionStatus__WaitForProgressStart" xml:space="preserve">
     <value>Ожидание старта</value>
   </data>
+  <data name="Systemsettings__ProfitPercent_DisplayString" xml:space="preserve">
+    <value>{0} %</value>
+  </data>
+  <data name="Systemsettings__Quote_DisplayString" xml:space="preserve">
+    <value>1 к {0}</value>
+  </data>
 </root>

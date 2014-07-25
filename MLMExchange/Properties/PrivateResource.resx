@@ -228,4 +228,7 @@
   <data name="GetUserRefererUrl" xml:space="preserve">
     <value>Получить реферальный url</value>
   </data>
+  <data name="UserModel__Exception_CantChangeRefererRoleAfterRegistration" xml:space="preserve">
+    <value>Невозможно изменить реферера после регистрации. Данная опция доступна только при регистрации.</value>
+  </data>
 </root>

@@ -18,8 +18,7 @@
   {
     width: 100%;
 
-    td {width: 50%; margin-top: 10px;}
-    td:first-child {margin-top: 0;}
+    tr {width: 50%; height: 25px;}
     td:nth-child(odd) {width: 60%;}
     td:nth-child(even) {width: 40%}
   }
@@ -69,7 +68,7 @@
     {
       .b-ab__additional-info-wrapper .b-ab__open-icon.b-ab__open-icon_rotate_0
       {
-        display: block;
+        @include opacity(1);
       }
     }
 
@@ -90,15 +89,16 @@
         height: 46px;
         background: url("#{$I_D}Controls/AdminBlock/additional-info-arrow.png") center no-repeat;
         cursor: pointer;
+        @include transition(all 0.25s linear);
 
         &.b-ab__open-icon_rotate_0
         {
-          display: none;
+          @include opacity(0);
         }
 
         &.b-ab__open-icon_rotate_180
         {
-          display: block;
+          @include opacity(1);
           @include transform(rotate(180deg));
         }
       }

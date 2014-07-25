@@ -134,7 +134,7 @@ else if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
   if (Model.ReferalRoleId != null)
   { 
     @Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
-      additionalAttributes: new Dictionary<string, object> { { "readonly", "readonly" } })
+      additionalAttributes: new Dictionary<string, object> { { "disabled", "disabled" } })
   }
 }
 

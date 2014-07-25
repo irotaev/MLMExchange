@@ -84,6 +84,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
         if (State != TradingSessionStatus.NA)
         {
           info.StartDateTime = CreationDateTime;
+          info.ProfitPersent = _Object.LogicObject.SystemSettings.ProfitPercent;
+          info.Quote = _Object.LogicObject.SystemSettings.Quote;
         }
 
         if (_Object != null)
@@ -180,6 +182,21 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
   #region AdditionalInfo
   /// <summary>
+  /// Дополнительная информация по торговой сессии
+  /// </summary>
+  public interface ITradingSessionAdditionalInfo
+  {
+    /// <summary>
+    /// Пройент доходности
+    /// </summary>
+    decimal ProfitPersent { get; }
+    /// <summary>
+    /// Котировка
+    /// </summary>
+    decimal Quote { get; }
+  }
+
+  /// <summary>
   /// Профит покупателя
   /// </summary>
   public interface IBuyerProfitAdditionalInfo
@@ -193,7 +210,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
   /// <summary>
   /// Дополнительная информация по торговой сессии
   /// </summary>
-  public class AdditionalInfo : IBuyerProfitAdditionalInfo
+  public class AdditionalInfo : ITradingSessionAdditionalInfo, IBuyerProfitAdditionalInfo
   {
     /// <summary>
     /// Дата начала сессии
@@ -204,8 +221,9 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// </summary>
     public string StateAsString { get; set; }
     public TradingSessionStatus State { get; set; }
-
     public decimal RemainingProfitMoneyTotalCount { get; set; }
+    public decimal ProfitPersent { get; set; }
+    public decimal Quote { get; set; }
   }
   #endregion
 

@@ -22,7 +22,7 @@ define(["require", "exports", "jquery"], function(require, exports) {
             var $content = this._Wrapper.find(".b-ab__content");
             var contentOuterStartHeight = $content.outerHeight();
 
-            var additionalInfoFullHeight = $additionalInfoContent.outerHeight() + $arrow.outerHeight() + 50;
+            var additionalInfoFullHeight = $additionalInfoContent[0].scrollHeight + $arrow.outerHeight() + 40;
 
             var openCallback = function () {
                 var openAdditionalInfoWrapperCallback = function () {
@@ -42,12 +42,11 @@ define(["require", "exports", "jquery"], function(require, exports) {
 
             var closeCallback = function () {
                 var closeAdditionalInfoWrapperCallback = function () {
+                    $arrow.removeClass("b-ab__open-icon_rotate_180").addClass("b-ab__open-icon_rotate_0");
                     $arrow.one("click", openCallback);
                 };
 
                 $additionalInfoContent.animate({ height: 0 }, "slow", function () {
-                    $arrow.removeClass("b-ab__open-icon_rotate_180").addClass("b-ab__open-icon_rotate_0");
-
                     if (contentOuterStartHeight != $content.outerHeight()) {
                         $content.animate({ height: contentOuterStartHeight }, "slow", closeAdditionalInfoWrapperCallback);
                     } else {
@@ -56,7 +55,9 @@ define(["require", "exports", "jquery"], function(require, exports) {
                 });
             };
 
-            $arrow.one("click", openCallback);
+            $arrow.one("click", closeCallback);
+
+            openCallback();
         };
         return AdminBlock;
     })();
