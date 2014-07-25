@@ -10,6 +10,7 @@ using NHibernate.Linq;
 using MLMExchange.Areas.AdminPanel.Models.User.SalesPeople;
 using System.Collections.Generic;
 using Logic.Lib;
+using System.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User
 {
@@ -139,7 +140,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   /// <summary>
   /// Модель отображает все возмоджные состояния заявки на участие в торгах
   /// </summary>
-  public class BiddingParticipateApplicationStateModel :
+  public class BiddingParticipateApplicationStateModel : AbstractModel,
     IBiddingParticipateApplicationNotFiledModel,
     IBiddingParticipateApplicationFiledModel,
     IBiddingParticipateApplicationBuyerFoundModel,
@@ -170,9 +171,35 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     }
 
     /// <summary>
-    /// Запрещено ли текущему пользователю продавать MC
+    /// Запрещено ли текущему пользователю продавать MC.
+    /// Использовать аккуратно, прямое обращение к базе без кэширования.
     /// </summary>
-    public bool IsCurrentUserSellMCDisabled { get; set; }
+    public bool IsCurrentUserBiddingParticipateApplicationBlockDisabled
+    {
+      get
+      {
+        D_TradingSession openBuyerTradingSession =  _NhibernateSession.Query<D_TradingSession>()
+          .Where(x => x.State != TradingSessionStatus.Closed && x.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id).FirstOrDefault();
+
+        if (openBuyerTradingSession == null)
+          return false;
+
+        // Случай, когда продавец и покупатель совпадают
+        if (openBuyerTradingSession.BuyingMyCryptRequest.Buyer.Id == openBuyerTradingSession.BuyingMyCryptRequest.SellerUser.Id)
+        {
+          if (openBuyerTradingSession.BiddingParticipateApplication.State == BiddingParticipateApplicationState.Closed)
+          {
+            return true;
+          }
+          else
+          {
+            return false;
+          }
+        }
+
+        return true;
+      }
+    }
 
     public BiddingParticipateApplicationModel BiddingParticipateApplicationModel { get; set; }
 

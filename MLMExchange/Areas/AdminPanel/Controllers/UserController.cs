@@ -134,75 +134,63 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       ControlPanelModel model = new ControlPanelModel();
 
-      D_TradingSession openBuyerTradingSession = _NHibernateSession.Query<D_TradingSession>()
-        .Where(x => x.State != TradingSessionStatus.Closed && x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
-          && x.BuyingMyCryptRequest.Buyer.Id != x.BuyingMyCryptRequest.SellerUser.Id).FirstOrDefault();
+      #region Заявка на продажу my-crypt
+      model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
 
-      if (openBuyerTradingSession == null)
+      D_BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<D_BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
+                                                            && x.State != BiddingParticipateApplicationState.NA
+                                                            && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
+      if (biddingParticipateApplication == null)
       {
-        #region Заявка на продажу my-crypt
-        model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
-
-        D_BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .QueryOver<D_BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
-                                                              && x.State != BiddingParticipateApplicationState.NA
-                                                              && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
-        if (biddingParticipateApplication == null)
-        {
-          model.BiddingParticipateApplicationStateModel.State = ApplicationState.NotFiled;
-          model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel();
-        }
-        else if (biddingParticipateApplication.TradingSession != null && biddingParticipateApplication.TradingSession.State == TradingSessionStatus.Baned)
-        {
-          model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel().Bind(biddingParticipateApplication);
-        }
-        else
-        {
-          BuyingMyCryptRequest acceptedBuyinMyCryptRequest = biddingParticipateApplication.BuyingMyCryptRequests.Where(x => x.State == BuyingMyCryptRequestState.Accepted).FirstOrDefault();
-
-          if (acceptedBuyinMyCryptRequest != null)
-          {
-            model.BiddingParticipateApplicationStateModel.State = ApplicationState.Accepted;
-            model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationAcceptedModel = new BiddingParticipateApplicationAcceptedModel
-            {
-              Buyer = new UserModel().Bind(acceptedBuyinMyCryptRequest.Buyer),
-              IsSellerInterestRate_NeedSubstantialMoney = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney,
-              TradingSessionId = acceptedBuyinMyCryptRequest.TradingSession.Id,
-              PaymentIds = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.Select(x => x.Id)
-            };
-          }
-          else
-          {
-            IList<BuyingMyCryptRequest> buyingMyCryptRequests = biddingParticipateApplication.BuyingMyCryptRequests.Where(x => x.State == BuyingMyCryptRequestState.AwaitingConfirm).ToList();
-
-            if (buyingMyCryptRequests == null || buyingMyCryptRequests.Count == 0)
-            {
-              model.BiddingParticipateApplicationStateModel.State = ApplicationState.ExpectsBuyers;
-            }
-            else
-            {
-              model.BiddingParticipateApplicationStateModel.State = ApplicationState.BuyerFound;
-              model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel = new BiddingParticipateApplicationBuyerFoundModel
-              {
-                BuyRequests = new List<BuyingMyCryptRequestModel>()
-              };
-
-              foreach (var request in buyingMyCryptRequests)
-              {
-                BuyingMyCryptRequestModel buyRequest = new BuyingMyCryptRequestModel().Bind(request);
-
-                model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel.BuyRequests.Add(buyRequest);
-              }
-            }
-          }
-        }
-        #endregion
+        model.BiddingParticipateApplicationStateModel.State = ApplicationState.NotFiled;
+        model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel();
+      }
+      else if (biddingParticipateApplication.TradingSession != null && biddingParticipateApplication.TradingSession.State == TradingSessionStatus.Baned)
+      {
+        model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationModel = new BiddingParticipateApplicationModel().Bind(biddingParticipateApplication);
       }
       else
       {
-        model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
-        model.BiddingParticipateApplicationStateModel.IsCurrentUserSellMCDisabled = true;
+        BuyingMyCryptRequest acceptedBuyinMyCryptRequest = biddingParticipateApplication.BuyingMyCryptRequests.Where(x => x.State == BuyingMyCryptRequestState.Accepted).FirstOrDefault();
+
+        if (acceptedBuyinMyCryptRequest != null)
+        {
+          model.BiddingParticipateApplicationStateModel.State = ApplicationState.Accepted;
+          model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationAcceptedModel = new BiddingParticipateApplicationAcceptedModel
+          {
+            Buyer = new UserModel().Bind(acceptedBuyinMyCryptRequest.Buyer),
+            IsSellerInterestRate_NeedSubstantialMoney = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.IsNeedSubstantialMoney,
+            TradingSessionId = acceptedBuyinMyCryptRequest.TradingSession.Id,
+            PaymentIds = acceptedBuyinMyCryptRequest.TradingSession.SallerInterestRateBill.Payments.Select(x => x.Id)
+          };
+        }
+        else
+        {
+          IList<BuyingMyCryptRequest> buyingMyCryptRequests = biddingParticipateApplication.BuyingMyCryptRequests.Where(x => x.State == BuyingMyCryptRequestState.AwaitingConfirm).ToList();
+
+          if (buyingMyCryptRequests == null || buyingMyCryptRequests.Count == 0)
+          {
+            model.BiddingParticipateApplicationStateModel.State = ApplicationState.ExpectsBuyers;
+          }
+          else
+          {
+            model.BiddingParticipateApplicationStateModel.State = ApplicationState.BuyerFound;
+            model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel = new BiddingParticipateApplicationBuyerFoundModel
+            {
+              BuyRequests = new List<BuyingMyCryptRequestModel>()
+            };
+
+            foreach (var request in buyingMyCryptRequests)
+            {
+              BuyingMyCryptRequestModel buyRequest = new BuyingMyCryptRequestModel().Bind(request);
+
+              model.BiddingParticipateApplicationStateModel.BiddingParticipateApplicationBuyerFoundModel.BuyRequests.Add(buyRequest);
+            }
+          }
+        }
       }
+      #endregion
 
       #region TradingSession
       {
