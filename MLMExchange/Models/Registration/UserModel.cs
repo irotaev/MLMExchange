@@ -113,6 +113,7 @@ namespace MLMExchange.Models.Registration
     public string PhotoRelativePath { get; set; }
 
     public IEnumerable<D_AbstractRole> UserRoles { get; set; }
+    public string DisplayName { get; set; }
 
     /// <summary>
     /// Получить роль для текущего пользователя.
@@ -157,6 +158,8 @@ namespace MLMExchange.Models.Registration
       this.Surname = @object.Surname;
 
       UserRoles = @object.Roles;
+
+      DisplayName = String.Format("{0} {1}", Name, Surname);
 
       return this;
     }
