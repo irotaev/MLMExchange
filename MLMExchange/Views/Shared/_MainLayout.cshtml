@@ -29,7 +29,7 @@
   @if (!Context.Request.Browser.Type.Contains("IE") && !Context.Request.Browser.Type.Contains("InternetExplorer"))
   {
     <script src="~/Scripts/jquery-2.0.3.min.js"></script>
-    
+
     <!--Т.к. может затерется JQuery из requirejs-->
     <script>
       window.$Sync = $;
@@ -38,7 +38,7 @@
 
   <!--MS unobstractive validation-->
   <!--#region JQuery.Validation-->
-  <script src="~/Scripts/jquery.validate.min.js"></script>  
+  <script src="~/Scripts/jquery.validate.min.js"></script>
   <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
   <script src="~/Scripts/Lib/JQuery.Validation/Boolean.Extension.ValidationAdapter.js"></script>
   <!--#endregion-->
@@ -78,9 +78,9 @@
 
   <link href="~/Content/MetroUICSS/min/metro-bootstrap.min.css" rel="stylesheet" />
   <link href="~/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="~/bower_components/Buttons/css/buttons.css" rel="stylesheet" />  
+  <link href="~/bower_components/Buttons/css/buttons.css" rel="stylesheet" />
   <link href="~/Content/stylesheets/screen.css" rel="stylesheet" />
-  <link href="~/bower_components/opentip/css/opentip.css" rel="stylesheet" />  
+  <link href="~/bower_components/opentip/css/opentip.css" rel="stylesheet" />
   <link href="~/bower_components/jquery-icheck/skins/square/green.css" rel="stylesheet" />
   @(new MLMExchange.Lib.ViewStyle(ViewContext).RenderPrivatePageStyle())
 
@@ -88,7 +88,7 @@
   {
     <link href="~/Content/stylesheets/IE_lt_9.css" rel="stylesheet" />
   }
-</head>  
+</head>
 
 <!--class metro is require for metro ui-->
 <body class="metro b-a">
@@ -103,7 +103,6 @@
     });
   </script>
   <!--#endregion-->
-
   <!--#region Скроллинг вверх-->
   <script>
     $(function () {
@@ -158,14 +157,14 @@
                 }
                 else
                 {
-                  <img src="/@MLMExchange.Lib.Image.Image.UploadRelativeDir/@(new MLMExchange.Lib.Image.Image(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath).Crop(52, 52).FullName)" 
+                  <img src="/@MLMExchange.Lib.Image.Image.UploadRelativeDir/@(new MLMExchange.Lib.Image.Image(MLMExchange.Lib.CurrentSession.Default.CurrentUser.PhotoRelativePath).Crop(52, 52).FullName)"
                        class="login-on-block__avatar" alt="Alternate Text" />
                 }
                 <div class="login-on-block__nickname">@MLMExchange.Lib.CurrentSession.Default.CurrentUser.Name @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Surname @MLMExchange.Lib.CurrentSession.Default.CurrentUser.Patronymic</div>
                 <a href="/account/logout"><div class="login-on-block__exit"></div></a>
                 @if (((Logic.User)MLMExchange.Lib.CurrentSession.Default.CurrentUser).IsAdministratorRoleExsists())
-                { 
-                 <div class="login-on-block__adminMode">@MLMExchange.Properties.ResourcesA.AdministartorMode</div>
+                {
+                  <div class="login-on-block__adminMode">@MLMExchange.Properties.ResourcesA.AdministartorMode</div>
                 }
               </div>
             }
@@ -181,25 +180,25 @@
     <div class="main-footer">
       <div class="sosial-buttons__outer-wrapper">
         @*<div class="sosial-buttons__inner-wrapper">
-          <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon twitter"></i></div>
-          <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon facebook"></i></div>
-          <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
-        </div>*@
+            <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon twitter"></i></div>
+            <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon facebook"></i></div>
+            <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
+          </div>*@
 
-        <script type="text/javascript">
-          (function () {
-            if (window.pluso) if (typeof window.pluso.start == "function") return;
-            if (window.ifpluso == undefined) {
-              window.ifpluso = 1;
-              var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-              s.type = 'text/javascript'; s.charset = 'UTF-8'; s.async = true;
-              s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
-              var h = d[g]('body')[0];
-              h.appendChild(s);
-            }
-          })();
-        </script>
-        <div class="pluso" data-background="transparent" data-options="big,round,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email"></div>
+        @*<script type="text/javascript">
+            (function () {
+              if (window.pluso) if (typeof window.pluso.start == "function") return;
+              if (window.ifpluso == undefined) {
+                window.ifpluso = 1;
+                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                s.type = 'text/javascript'; s.charset = 'UTF-8'; s.async = true;
+                s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
+                var h = d[g]('body')[0];
+                h.appendChild(s);
+              }
+            })();
+          </script>
+          <div class="pluso" data-background="transparent" data-options="big,round,line,horizontal,nocounter,theme=06" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email"></div>*@
       </div>
 
       <hr class="b-hr" />

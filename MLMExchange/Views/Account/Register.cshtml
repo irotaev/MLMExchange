@@ -4,6 +4,7 @@
 @{
   ViewBag.Title = @MLMExchange.Properties.ResourcesA.Registration;
   Layout = "~/Views/Shared/_MainLayout.cshtml";
+  var randomWords = MLMExchange.Lib.EntityLogic.Logic__RandomWords.GetRandomWord();
 }
 
 <section class="b-sb registration-block">
@@ -25,9 +26,10 @@
   <i class="registration-icon"></i>
 
   <article class="b-ai register-info balloon right">
-    <div class="text b-ai_text">
-      Cras eget scelerisque libero,
-      sit amet consequat lectus. Praesent tempor, sapien vestibulum ultricies vehicula, dolor velit
+    <div class="text b-ai_text b-rw">
+      <i class="b-rw__icon"></i>
+      <p>@randomWords.Text</p>
+      <p><span class="b-rw__author">@randomWords.Author</span></p>
     </div>
   </article>
 </section>

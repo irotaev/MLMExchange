@@ -1,14 +1,10 @@
 @import "../Framework";
+@import "../lib/RandomWords";
 
 .registration-block
 {
   @include span-columns(7, 12);
   @include box-sizing(border-box);
-
-  .text
-  {
-
-  }
 
   .registration-form
   {

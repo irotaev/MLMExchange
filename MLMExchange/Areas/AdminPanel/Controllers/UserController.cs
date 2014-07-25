@@ -135,7 +135,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       ControlPanelModel model = new ControlPanelModel();
 
       D_TradingSession openBuyerTradingSession = _NHibernateSession.Query<D_TradingSession>()
-        .Where(x => x.State != TradingSessionStatus.Closed && x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id).FirstOrDefault();
+        .Where(x => x.State != TradingSessionStatus.Closed && x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
+          && x.BuyingMyCryptRequest.Buyer.Id != x.BuyingMyCryptRequest.SellerUser.Id).FirstOrDefault();
 
       if (openBuyerTradingSession == null)
       {
@@ -237,7 +238,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       D_TradingSession openTradingSession = _NHibernateSession.Query<D_TradingSession>()
         .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
-              || x.BuyingMyCryptRequest.SellerUser.Id == CurrentSession.Default.CurrentUser.Id)).FirstOrDefault();
+              || (x.BuyingMyCryptRequest.SellerUser.Id == CurrentSession.Default.CurrentUser.Id && x.State != TradingSessionStatus.Open))).FirstOrDefault();
 
       if (openTradingSession == null)
       {

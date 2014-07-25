@@ -484,14 +484,6 @@
     <Content Include="bower_components\jquery-icheck\skins\square\yellow.css" />
     <Content Include="bower_components\jquery-icheck\skins\square\yellow.png" />
     <Content Include="bower_components\jquery-icheck\skins\square\_all.css" />
-    <Content Include="bower_components\jquery\AUTHORS.txt" />
-    <Content Include="bower_components\jquery\Gruntfile.js" />
-    <Content Include="bower_components\jquery\jquery-migrate.js" />
-    <Content Include="bower_components\jquery\jquery-migrate.min.js" />
-    <Content Include="bower_components\jquery\jquery.js" />
-    <Content Include="bower_components\jquery\jquery.min.js" />
-    <Content Include="bower_components\jquery\MIT-LICENSE.txt" />
-    <Content Include="bower_components\jquery\src\.jshintrc" />
     <Content Include="bower_components\jquery\src\ajax.js" />
     <Content Include="bower_components\jquery\src\ajax\jsonp.js" />
     <Content Include="bower_components\jquery\src\ajax\script.js" />
@@ -505,17 +497,13 @@
     <Content Include="bower_components\jquery\src\deprecated.js" />
     <Content Include="bower_components\jquery\src\dimensions.js" />
     <Content Include="bower_components\jquery\src\effects.js" />
-    <Content Include="bower_components\jquery\src\event-alias.js" />
     <Content Include="bower_components\jquery\src\event.js" />
-    <Content Include="bower_components\jquery\src\exports.js" />
     <Content Include="bower_components\jquery\src\intro.js" />
     <Content Include="bower_components\jquery\src\manipulation.js" />
     <Content Include="bower_components\jquery\src\offset.js" />
     <Content Include="bower_components\jquery\src\outro.js" />
     <Content Include="bower_components\jquery\src\queue.js" />
     <Content Include="bower_components\jquery\src\serialize.js" />
-    <Content Include="bower_components\jquery\src\sizzle-jquery.js" />
-    <Content Include="bower_components\jquery\src\support.js" />
     <Content Include="bower_components\jquery\src\traversing.js" />
     <Content Include="bower_components\opentip\css\opentip.css" />
     <Content Include="bower_components\opentip\files\close-button-angle.png" />
@@ -533,6 +521,7 @@
     <Content Include="Content\images\AddMyCrypt\icon__request-sended.png" />
     <Content Include="Content\images\ContactsIndex\contacts-icon.png" />
     <Content Include="Content\images\ContactsIndex\email-icon.png" />
+    <Content Include="Content\images\Controls\AdminBlock\additional-info-arrow.png" />
     <Content Include="Content\images\CopyrightIndex\copyright-icon.png" />
     <Content Include="Content\images\Error\base_error_icon.png" />
     <Content Include="Content\images\FaqIndex\arrow.png" />
@@ -552,10 +541,18 @@
     <Content Include="Content\images\Header\LoginArea\login-area-arrow.png" />
     <Content Include="Content\images\Header\logo.png" />
     <Content Include="Content\images\HomeIndex\home-icon.png" />
+    <Content Include="Content\images\HomeIndex\image12_964Х300.jpg" />
+    <Content Include="Content\images\HomeIndex\image13_964Х300.jpg" />
+    <Content Include="Content\images\HomeIndex\image14_964Х300.jpg" />
+    <Content Include="Content\images\HomeIndex\image3_964Х300.jpg" />
+    <Content Include="Content\images\HomeIndex\image6_964Х300.jpg" />
     <Content Include="Content\images\HomeIndex\rating-icon.png" />
     <Content Include="Content\images\images\background.jpg" />
+    <Content Include="Content\images\images\favicon.ico" />
     <Content Include="Content\images\images\Form-s454a2ec0f1.png" />
+    <Content Include="Content\images\images\LogoForShareIcons.png" />
     <Content Include="Content\images\MycryptIndex\get-money-scetch.png" />
+    <Content Include="Content\images\MycryptIndex\Logo.png" />
     <Content Include="Content\images\MycryptIndex\mycrypt-icon.png" />
     <Content Include="Content\images\MycryptIndex\register-scetch.png" />
     <Content Include="Content\images\MycryptIndex\sketch-1.png" />
@@ -563,6 +560,9 @@
     <Content Include="Content\images\MycryptIndex\sketch-3.png" />
     <Content Include="Content\images\MycryptIndex\sketch-4.png" />
     <Content Include="Content\images\MycryptIndex\trade-scetch.png" />
+    <Content Include="Content\MetroUICSS\fonts\iconFont.dev.svg" />
+    <Content Include="Content\MetroUICSS\fonts\iconFont.svg" />
+    <Content Include="Content\MetroUICSS\fonts\metroSysIcons.svg" />
     <Content Include="Content\MetroUICSS\min\iconFont.min.css" />
     <Content Include="Content\MetroUICSS\min\jquery.widjet.min.js" />
     <Content Include="Content\MetroUICSS\min\metro-bootstrap-responsive.min.css" />
@@ -576,6 +576,7 @@
     <Content Include="Content\stylesheets\pages\AdminPanel_BankPayment__Browse.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_PaymentSystemGroup__Browse.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_RandomWords__Edit.css" />
+    <Content Include="Content\stylesheets\pages\AdminPanel_Referals__List.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_SystemSettings__Edit.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_User__AddMyCrypt.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_User__Browse.css" />
@@ -668,17 +669,6 @@
     <Content Include="bower_components\jquery-icheck\bower.json" />
     <Content Include="bower_components\jquery-icheck\icheck.jquery.json" />
     <Content Include="bower_components\jquery\.bower.json" />
-    <Content Include="bower_components\jquery\.editorconfig" />
-    <Content Include="bower_components\jquery\.gitattributes" />
-    <Content Include="bower_components\jquery\.gitignore" />
-    <Content Include="bower_components\jquery\.gitmodules" />
-    <Content Include="bower_components\jquery\.jshintrc" />
-    <Content Include="bower_components\jquery\component.json" />
-    <Content Include="bower_components\jquery\composer.json" />
-    <Content Include="bower_components\jquery\CONTRIBUTING.md" />
-    <Content Include="bower_components\jquery\jquery.min.map" />
-    <Content Include="bower_components\jquery\package.json" />
-    <Content Include="bower_components\jquery\README.md" />
     <Content Include="bower_components\opentip\.gitignore" />
     <Content Include="bower_components\opentip\.travis.yml" />
     <Content Include="bower_components\opentip\bower.json" />
@@ -712,6 +702,12 @@
     <Content Include="Areas\AdminPanel\Views\User\AddMyCrypt_AlreadySended.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Referals\List.cshtml" />
     <Content Include="Areas\AdminPanel\Views\TradingSession\_AdditionalInfoBlock.cshtml" />
+    <Content Include="Content\MetroUICSS\fonts\iconFont.eot" />
+    <Content Include="Content\MetroUICSS\fonts\iconFont.json" />
+    <Content Include="Content\MetroUICSS\fonts\iconFont.ttf" />
+    <Content Include="Content\MetroUICSS\fonts\iconFont.woff" />
+    <Content Include="Content\MetroUICSS\fonts\metroSysIcons.ttf" />
+    <Content Include="Content\MetroUICSS\fonts\metroSysIcons.woff" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -736,6 +732,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\Lib\Controls\AdminBlock\AdminBlock.js" />
     <Content Include="Scripts\Lib\Form.js" />
     <Content Include="Scripts\Lib\JQuery.Validation\Boolean.Extension.ValidationAdapter.js" />
     <Content Include="Scripts\Lib\Menu\AdminMainMenu.js" />
@@ -744,6 +741,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\Images\0b1447c7-47ab-4d43-aee2-82f69357ccfc_.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -775,8 +773,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="bower_components\jquery\src\sizzle\" />
-    <Folder Include="Scripts\Private\" />
-    <Folder Include="Uploads\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
