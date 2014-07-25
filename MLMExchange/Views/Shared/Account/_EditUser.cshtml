@@ -131,8 +131,11 @@
 }
 else if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
 {
-  @Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
-    additionalAttributes: new Dictionary<string, object> { { "readonly", "readonly" } })
+  if (Model.ReferalRoleId != null)
+  { 
+    @Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
+      additionalAttributes: new Dictionary<string, object> { { "readonly", "readonly" } })
+  }
 }
 
 <div class="b-ib b-ib_content_photo">
