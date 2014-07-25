@@ -1,0 +1,26 @@
+﻿@model MLMExchange.Areas.AdminPanel.Models.RandomWordsModel
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = Logic.Properties.GeneralResources.RandomWords;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+
+<section class="b-arb">
+  <header class="b-arb__header">
+    <p class="b-arb__text">@MLMExchange.Properties.ResourcesA.UserInfo_Short ( @Model.Id )</p>
+  </header>
+  <div class="b-arb__details">
+    <div class="b-arb__details__date">
+      <span>@Logic.Properties.GeneralResources.CreationDateTime: @Model.CreationDateTime</span>
+    </div>
+
+    <div class="b-arb__details__text">
+      <p>@Model.Text</p>
+    </div>
+
+    <div class="b-arb__details__author">
+      <span>@Model.Author</span>
+    </div>
+  </div>
+</section>

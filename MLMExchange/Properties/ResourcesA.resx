@@ -222,6 +222,9 @@
   <data name="Denied" xml:space="preserve">
     <value>Отклонить</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
   <data name="EditObject" xml:space="preserve">
     <value>Редактирование объекта</value>
   </data>
@@ -278,6 +281,9 @@
   </data>
   <data name="Exception_ApplicationException" xml:space="preserve">
     <value>Ошибка приложения</value>
+  </data>
+  <data name="Exception_LoginFaield" xml:space="preserve">
+    <value>Данная пара Логин - Пароль не найдены</value>
   </data>
   <data name="Exception_ModelInvalid" xml:space="preserve">
     <value>Модель заполнена не верно</value>
@@ -395,6 +401,9 @@
   </data>
   <data name="State" xml:space="preserve">
     <value>Статус</value>
+  </data>
+  <data name="SuccessAccountRegister" xml:space="preserve">
+    <value>Поздравляем, Вы успешно зарегистрированы</value>
   </data>
   <data name="SuccessSendMessage" xml:space="preserve">
     <value>Ваше сообщение было успешно отправлено</value>

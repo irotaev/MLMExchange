@@ -36,6 +36,10 @@ namespace MLMExchange.Controllers
           Session.Add("Login", loginUser.Login);
           Session.Add("Authorized", true);
         }
+        else
+        {
+          throw new Logic.Lib.UserVisibleException(String.Format("{0}{1}",MLMExchange.Properties.ResourcesA.Exception_LoginFaield, "!"));
+        }
       }
 
       return Redirect("/AdminPanel/User/ControlPanel");
@@ -71,10 +75,16 @@ namespace MLMExchange.Controllers
           user.Roles.Add(new D_UserRole { User = user });
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(user);
+          return Redirect("/Account/Success");
         }
       }
 
       return View(userModel);
+    }
+
+    public ActionResult Success()
+    {
+      return View();
     }
   }
 }

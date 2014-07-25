@@ -11,7 +11,7 @@ using System.Web;
 
 namespace MLMExchange.Areas.AdminPanel.Models
 {
-  public class RandomWordsModel : AbstractDataModel<D_RandomWord, RandomWordsModel>
+  public class RandomWordsModel : AbstractDataModel<D_RandomWord, RandomWordsModel>, IDataBinding<D_RandomWord, RandomWordsModel>
   {
     /// <summary>
     /// Автор высказывания
@@ -27,6 +27,9 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
     public override RandomWordsModel Bind(D_RandomWord @object)
     {
+      if (@object == null)
+        throw new ArgumentNullException("object");
+
       base.Bind(@object);
 
       Author = @object.Author;
@@ -37,19 +40,20 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
     public override D_RandomWord UnBind(D_RandomWord @object = null)
     {
-      var d_randomwords = base.UnBind(@object);
+      if (@object == null)
+        @object = new D_RandomWord();
+
+      base.UnBind(@object);
 
       if (Author == null)
-        throw new ArgumentNullException("Author");
-
-      d_randomwords.Author = Author.ToString();
+        throw new Logic.Lib.UserVisible__ArgumentNullException("Author");
+      @object.Author = Author;
 
       if (Text == null)
-        throw new ArgumentNullException("Text");
+        throw new Logic.Lib.UserVisible__ArgumentNullException("Text");
+      @object.Text = Text;
 
-      d_randomwords.Text = Text.ToString();
-
-      return d_randomwords;
+      return @object;
     }
   }
 }

@@ -708,6 +708,8 @@
     <Content Include="Content\MetroUICSS\fonts\iconFont.woff" />
     <Content Include="Content\MetroUICSS\fonts\metroSysIcons.ttf" />
     <Content Include="Content\MetroUICSS\fonts\metroSysIcons.woff" />
+    <Content Include="Areas\AdminPanel\Views\RandomWords\List.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\RandomWords\Browse.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -769,6 +771,7 @@
     <Content Include="Views\Shared\Account\_EditUser.cshtml" />
     <Content Include="Views\ExceptionHandler\ApplicationException.cshtml" />
     <Content Include="Views\Contacts\Success.cshtml" />
+    <Content Include="Views\Account\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

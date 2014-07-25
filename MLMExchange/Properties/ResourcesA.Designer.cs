@@ -376,6 +376,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Изменить.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Редактирование объекта.
         /// </summary>
         public static string EditObject {
@@ -543,6 +552,15 @@ namespace MLMExchange.Properties {
         public static string Exception_ApplicationException {
             get {
                 return ResourceManager.GetString("Exception_ApplicationException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Данная пара Логин - Пароль не найдены.
+        /// </summary>
+        public static string Exception_LoginFaield {
+            get {
+                return ResourceManager.GetString("Exception_LoginFaield", resourceCulture);
             }
         }
         
@@ -894,6 +912,15 @@ namespace MLMExchange.Properties {
         public static string State {
             get {
                 return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поздравляем, Вы успешно зарегистрированы.
+        /// </summary>
+        public static string SuccessAccountRegister {
+            get {
+                return ResourceManager.GetString("SuccessAccountRegister", resourceCulture);
             }
         }
         

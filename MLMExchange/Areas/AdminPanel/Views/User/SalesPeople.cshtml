@@ -149,7 +149,7 @@
       .PageSize(10)
       .DataSource(Model.ActiveSales)
       .Model(X.Model().Fields(
-          new ModelField { Name = "Seller", ServerMapping = "Seller.Name" },
+          new ModelField { Name = "Seller", ServerMapping = "DisplayName" },
           new ModelField { Name = "MyCryptCount" },
           new ModelField { Name = "SellerUser__Id", ServerMapping = "Seller.Id" },
           new ModelField { Name = "BasePaymentSystenName", ServerMapping = "PaymentSystemGroupModel.DefaultPaymentSystemDisplayName" }
