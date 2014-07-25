@@ -93,8 +93,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     {
       ModelState.Clear();
 
-      D_AddMyCryptTransaction sendedTransaction = _NHibernateSession.Query<D_AddMyCryptTransaction>().Where(x => x.User.Id == CurrentSession.Default.CurrentUser.Id)
-        .FirstOrDefault();
+      D_AddMyCryptTransaction sendedTransaction = _NHibernateSession.Query<D_AddMyCryptTransaction>().Where(x => x.User.Id == CurrentSession.Default.CurrentUser.Id 
+        && x.State == AddMyCryptTransactionState.NA).FirstOrDefault();
 
       if (sendedTransaction != null)
         return View("AddMyCrypt_AlreadySended", new AddMyCryptModel().Bind(sendedTransaction));
@@ -224,33 +224,22 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     {
       SalesPeopleModel model = new SalesPeopleModel();
 
-      D_TradingSession openTradingSession = _NHibernateSession.Query<D_TradingSession>()
-        .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
-              || (x.BuyingMyCryptRequest.SellerUser.Id == CurrentSession.Default.CurrentUser.Id && x.State != TradingSessionStatus.Open))).FirstOrDefault();
+      #region Заполняю активных продавцов
+      model.ActiveSales = new List<BiddingParticipateApplicationModel>();
 
-      if (openTradingSession == null)
+      IList<D_BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_BiddingParticipateApplication>()
+        .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
+
+      foreach (var biddingApplication in biddingApplications)
       {
-        #region Заполняю активных продавцов
-        model.ActiveSales = new List<BiddingParticipateApplicationModel>();
+        BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
 
-        IList<D_BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_BiddingParticipateApplication>()
-          .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
+        biddingApplicationModel.Bind(biddingApplication);
 
-        foreach (var biddingApplication in biddingApplications)
-        {
-          BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
-
-          biddingApplicationModel.Bind(biddingApplication);
-
-          model.ActiveSales.Add(biddingApplicationModel);
-        }
-        #endregion
+        model.ActiveSales.Add(biddingApplicationModel);
       }
-      else
-      {
-        model.IsCurrentUserBuyMCDisabled = true;
-      }
+      #endregion
 
       #region Заполняю историю заявок, на которые откликнулс данный пользователь
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
