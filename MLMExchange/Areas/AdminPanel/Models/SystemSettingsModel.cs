@@ -18,7 +18,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
     /// Процент проверочного платежа
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [Range(typeof(Decimal), "0", "100", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public decimal? CheckPaymentPercent { get; set; }
 
     /// <summary>
