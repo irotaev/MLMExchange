@@ -124,6 +124,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Реферальный url текущего пользователя.
+        /// </summary>
+        public static string CurrentUserRefererUrl {
+            get {
+                return ResourceManager.GetString("CurrentUserRefererUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не выбрана платежная система по умолчанию.
         /// </summary>
         public static string DefaultPaymentSystemNotSet {
@@ -138,6 +147,15 @@ namespace MLMExchange.Properties {
         public static string Exception_SystemAlreadyDefault {
             get {
                 return ResourceManager.GetString("Exception_SystemAlreadyDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Получить реферальный url.
+        /// </summary>
+        public static string GetUserRefererUrl {
+            get {
+                return ResourceManager.GetString("GetUserRefererUrl", resourceCulture);
             }
         }
         

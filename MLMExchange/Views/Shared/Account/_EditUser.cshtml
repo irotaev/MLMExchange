@@ -119,7 +119,21 @@
   </div>
 </div>
 
-@Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type)
+@if (ViewData["Usage"] != null && ViewData["Usage"] == "Register")
+{
+  long? refererId = MLMExchange.Models.Registration.UserModel.GetRefererRoleIdFromRequest(Request);
+  
+  if (refererId != null)
+  { 
+    @Html.ApplicationTextBoxFor("ReferalRoleId", MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
+      refererId.ToString(), new Dictionary<string, object> { { "readonly", "readonly" } })
+  }
+}
+else if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
+{
+  @Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
+    additionalAttributes: new Dictionary<string, object> { { "readonly", "readonly" } })
+}
 
 <div class="b-ib b-ib_content_photo">
   <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.AddPhoto</label>

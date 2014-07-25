@@ -116,6 +116,17 @@
     @include placeholder {color: white;};
   }
 
+  //#region Readonly
+  .b-ib__input[readonly="readonly"]
+  {
+    background-color: #F3F4F6;
+  }
+  .b-ib__input.b-ib__input_type_blue[readonly="readonly"]
+  {
+    background-color: #6D6D74;
+  }
+  //#endregion
+
   // Для полей с иконками
   .b-ib__input-wrapper
   {

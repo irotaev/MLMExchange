@@ -25,6 +25,14 @@
     {
       float: left;
       position: relative;
+
+      .b-ucp__user-id-link
+      {
+        color: $blue_a_4_c2 !important;
+        text-decoration: underline;
+
+        &:hover {text-decoration: none;}
+      }
     }
 
     .b-ucp-mc-info

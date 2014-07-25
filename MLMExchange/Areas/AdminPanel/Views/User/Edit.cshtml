@@ -18,7 +18,8 @@
     {
       @Html.Partial("~/Views/Shared/Account/_EditUser.cshtml", Model, new ViewDataDictionary
       {
-        new KeyValuePair<string, object>("Type", "blue")
+        new KeyValuePair<string, object>("Type", "blue"),
+        new KeyValuePair<string, object>("Usage", "Edit")
       })
 
       <input style="position: absolute; visibility: hidden;" id="edit-user__submit-btn"

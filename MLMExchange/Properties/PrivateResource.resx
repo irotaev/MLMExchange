@@ -222,4 +222,10 @@
   <data name="YouCantSellMCNow" xml:space="preserve">
     <value>В текущее время вы не можете продавать MC. Т.к. уже открыта торговая сессия.</value>
   </data>
+  <data name="CurrentUserRefererUrl" xml:space="preserve">
+    <value>Реферальный url текущего пользователя</value>
+  </data>
+  <data name="GetUserRefererUrl" xml:space="preserve">
+    <value>Получить реферальный url</value>
+  </data>
 </root>

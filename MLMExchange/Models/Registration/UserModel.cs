@@ -81,6 +81,31 @@ namespace MLMExchange.Models.Registration
         _ReferalRoleId = value;
       }
     }
+
+    /// <summary>
+    /// Получить Id реферера из запроса
+    /// </summary>
+    public static long? GetRefererRoleIdFromRequest(HttpRequestBase request)
+    {
+      if (request == null)
+        throw new Logic.Lib.ApplicationException("request is null");
+
+      long? refererId = null;
+
+      {
+        var keys = request.QueryString.GetValues("RefererId");
+        if (keys != null && keys.Length >= 1)
+        {
+          long id;
+          if (Int64.TryParse(keys[0], out id))
+          {
+            refererId = id;
+          }
+        }
+      }
+
+      return refererId;
+    }
     #endregion
 
     public HttpPostedFileBase Photo { get; set; }

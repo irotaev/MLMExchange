@@ -3,6 +3,10 @@
 
 @model MLMExchange.Areas.AdminPanel.Models.UserControlBlockModel
 
+@{
+  var X = Html.X();
+}
+
 @if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
 {
   ViewBag.Title = MLMExchange.Properties.ResourcesA.BankPayment;
@@ -16,12 +20,32 @@ else if (ViewData["Ajax"] != null && ViewData["Ajax"] == "True")
 @if (Model.IsHasUserRole)
 { 
   <section class="b-ucp b-ab">
+    <script>
+      function openGetRefererUrlWindow() {
+        var popUpWindow = Ext.create('widget.window', {
+          title: "@MLMExchange.Properties.PrivateResource.CurrentUserRefererUrl",
+          autoWidth: true,
+          autoHeight: true,
+          maximizable: false,
+          bodyPadding: '10px',
+          closeAction: 'hide',
+          resizable: false,
+          html: "@(Url.Action("Register", "Account", new { area = "", RefererId = Model.UserRoleId }, Request.Url.Scheme))"
+        });
+
+        popUpWindow.show();
+      }
+    </script>
+  
     <header class="b-ab__title"><i class="b-ab__icon fa fa-random"></i> @MLMExchange.Properties.ResourcesA.UserControlBlock</header>
 
     <div class="b-ucp__content b-ab__content">
       <div class="b-ucp__wrapper_1">
         <div class="b-ucp__user-id">
-          <span class="b-ucp__user-id-text">ID: @Model.UserRoleId</span>
+          <span class="b-ucp__user-id-text">
+            <a href="#" class="b-ucp__user-id-link" title="@MLMExchange.Properties.PrivateResource.GetUserRefererUrl" onclick="javascript: openGetRefererUrlWindow();">ID:</a>
+             @Model.UserRoleId
+          </span>
           <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.ResourcesA.CurrentUserId" data-ot-style="BlackStyle"></i>
         </div>
 
