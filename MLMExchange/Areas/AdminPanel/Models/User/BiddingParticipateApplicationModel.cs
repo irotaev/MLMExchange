@@ -36,9 +36,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     public BiddingParticipateApplicationState State { get; set; }
     public PaymentSystemGroupModel PaymentSystemGroupModel { get; set; }
 
-    private string _DisplayName = String.Empty;
-    public string DisplayName { get { return _DisplayName; } }
-
     public override BiddingParticipateApplicationModel Bind(D_BiddingParticipateApplication @object)
     {
       base.Bind(@object);
@@ -47,7 +44,6 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
       State = @object.State;
 
       Seller = new UserModel().Bind(@object.Seller);
-      _DisplayName = String.Format("{0} {1}", Seller.Name, Seller.Surname);
       PaymentSystemGroupModel = new PaymentSystemGroupModel().Bind((PaymentSystemGroup)@object.Seller.PaymentSystemGroup);
 
       return this;
