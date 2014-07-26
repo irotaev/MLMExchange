@@ -28,24 +28,35 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     {
       get
       {
-        D_TradingSession openTradingSession = _NhibernateSession.Query<D_TradingSession>()
-          .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id || x.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)).FirstOrDefault();
-
-        if (openTradingSession == null)
-          return false;
-
-        // Если покупатель и продавец одно лицо
-        if (openTradingSession.BuyingMyCryptRequest.SellerUser.Id == openTradingSession.BuyingMyCryptRequest.Buyer.Id)
-          return true;
-
-        // Если у продавца уже закрылась заявка на продажу
-        if (openTradingSession.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id
-          && openTradingSession.BiddingParticipateApplication.State == BiddingParticipateApplicationState.Closed)
+        Func<D_TradingSession, bool> checkTSForDisabled = (D_TradingSession session) =>
         {
-          return false;
+          if (session == null)
+            return false;
+
+          // Если покупатель и продавец одно лицо
+          if (session.BuyingMyCryptRequest.SellerUser.Id == session.BuyingMyCryptRequest.Buyer.Id)
+            return true;
+
+          // Если у продавца уже закрылась заявка на продажу
+          if (session.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id
+            && session.BiddingParticipateApplication.State == BiddingParticipateApplicationState.Closed)
+          {
+            return false;
+          }
+
+          return true;
+        };
+
+        IEnumerable<D_TradingSession> openTradingSessions = _NhibernateSession.Query<D_TradingSession>()
+          .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id || x.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id));
+
+        foreach(var session in openTradingSessions)
+        {
+          if (checkTSForDisabled(session))
+            return true;
         }
 
-        return true;
+        return false;
       }
     }
 
