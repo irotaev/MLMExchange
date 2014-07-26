@@ -89,7 +89,10 @@ namespace Logic
         {
           Login = "administrator_irotaev",
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
-          PaymentSystemGroup = new D_PaymentSystemGroup()
+          PaymentSystemGroup = new D_PaymentSystemGroup(),
+          Email = "irotaev@gmail.com",
+          PhoneNumber = "+00000000001",
+          Name = "Андрей"
         };
 
         adminUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = adminUser } };
@@ -146,7 +149,9 @@ namespace Logic
         {
           Login = "system_user",
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
-          PaymentSystemGroup = paymentSystemGroup
+          PaymentSystemGroup = paymentSystemGroup,
+          Email = "systemuser@nomail.mail",
+          PhoneNumber = "+00000000000"
         };
 
         d_systemUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = d_systemUser } };
@@ -194,7 +199,8 @@ namespace Logic
           Name = "Андрей",
           Surname = "Ротаев",
           Patronymic = "Валерьевич",
-          Email = "irotaev@gmail.com",
+          Email = "leader@gmail.com",
+          PhoneNumber = "+00000000010"
         };
 
         leaderUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = leaderUser, MyCryptCount = 10000 }, new D_LeaderRole { User = leaderUser } };
@@ -236,7 +242,8 @@ namespace Logic
           Name = "Ньюбик",
           Surname = "Петрович",
           Patronymic = "Семенов",
-          Email = "newbik@gmail.com"
+          Email = "newbik@gmail.com",
+          PhoneNumber = "+00000000020"
         };
 
         testerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = testerUser, MyCryptCount = 5000 }, new D_TesterRole { User = testerUser } };
@@ -278,7 +285,8 @@ namespace Logic
           Name = "Брокерович",
           Surname = "Алексей",
           Patronymic = "Михайлович",
-          Email = "broker@gmail.com"
+          Email = "broker@gmail.com",
+          PhoneNumber = "+0000000030"
         };
 
         brokerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = brokerUser, MyCryptCount = 7000 }, new D_BrokerRole { User = brokerUser } };

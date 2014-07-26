@@ -71,11 +71,15 @@ namespace MLMExchange.Controllers
           #endregion
 
           D_User user = userModel.UnBind();
+          userModel.Validate(this.ModelState);
 
-          user.Roles.Add(new D_UserRole { User = user });
+          if (this.ModelState.IsValid)
+          {
+            user.Roles.Add(new D_UserRole { User = user });
 
-          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(user);
-          return Redirect("/Account/Success");
+            Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(user);
+            return Redirect("/Account/Success");
+          }
         }
       }
 

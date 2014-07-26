@@ -46,11 +46,15 @@ $green-dark: #27AE60;
 $body_BgColor: #4B73A5;
 
   //Admin colors
-  $blue_a_4: #394264;
-  $blue_a_4_c: #BEBECF;
-  $blue_a_4_c2: #7B87AF;
-  $blue_a_4_c3: #353F59;
-  $blue_a_4_c3_c: #2F374B;
+  //$blue_a_4: #394264;
+$blue_a_4: #f7f7f7;
+  $blue_a_4_c: rgba(72, 79, 102, 0.79);
+//$blue_a_4_c2: #7B87AF;
+$blue_a_4_c2: $blue_a_4_c;
+  //$blue_a_4_c3: #353F59;
+$blue_a_4_c3: #ffffff;
+  //$blue_a_4_c3_c: #2F374B;
+$blue_a_4_c3_c: #a7b3c0;
 
   $blue_a_5: #007a9f;
 

@@ -267,6 +267,9 @@
   <data name="EnterPatronymic" xml:space="preserve">
     <value>Введите отчество</value>
   </data>
+  <data name="EnterPhoneNumber" xml:space="preserve">
+    <value>Введите номер телефона</value>
+  </data>
   <data name="EnterSurname" xml:space="preserve">
     <value>Введите фамилию</value>
   </data>
@@ -329,6 +332,9 @@
   </data>
   <data name="MakeObjectDefault" xml:space="preserve">
     <value>Сделать объект по-умолчанию</value>
+  </data>
+  <data name="Model_Exception_FiledIsEmpty" xml:space="preserve">
+    <value>Поле не заполнено</value>
   </data>
   <data name="Model__Exception_BindNotCall" xml:space="preserve">
     <value>Не вызван метод биндинга для конкретного типа объекта данных: {0}. Тем самым невозможно использовать свойства модели,связанные со свойствами конкретного объекта данных.</value>
@@ -422,6 +428,18 @@
   </data>
   <data name="UserInfo_Short" xml:space="preserve">
     <value>Пол. информация</value>
+  </data>
+  <data name="UserModel__Exception_EmailExists" xml:space="preserve">
+    <value>Пользователь с таким email уже существует</value>
+  </data>
+  <data name="UserModel__Exception_FieldPhoneNumberInvalid" xml:space="preserve">
+    <value>Неправильно заполнен телефонный номер</value>
+  </data>
+  <data name="UserModel__Exception_LoginExists" xml:space="preserve">
+    <value>Пользователь с таким логином уже существует</value>
+  </data>
+  <data name="UserModel__Exception_PhoneNumberExists" xml:space="preserve">
+    <value>Пользователь с таким номером телефона уже существует</value>
   </data>
   <data name="UserPhoto" xml:space="preserve">
     <value>Фотография пользователя</value>

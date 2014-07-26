@@ -118,17 +118,17 @@ $default-layout_Bg-color: $blue_a_4;
       {
         position: relative;
         height: 50px;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid $blue_a_4_c;
         @include transition(background-color 0.15s linear);
 
         &.pb-mm__menu-item-wrapper-active
         {
-          background-color: #4d5777;
+          background-color: $blue_a_4_c3;
         }
 
         &:hover
         {
-          background-color: #4D5777;
+          background-color: $blue_a_4_c3;
 
           .pb-mm__icon-wrapper .pb-mm__icon:before {color: #A0AABC;}
         }
@@ -202,7 +202,7 @@ $default-layout_Bg-color: $blue_a_4;
           margin-left: 50px;
           text-align: center;
           text-size: $font-b;
-          color: #BEBECF;
+          color: $blue_a_4_c;
           font-family: Lato !important;
         }
       }

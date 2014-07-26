@@ -123,7 +123,7 @@
   margin-right: 5px;
   border-radius: .2em;
 }
-/* line 98, ../../sass/_framework.scss */
+/* line 102, ../../sass/_framework.scss */
 .b-rw .b-rw__icon:before {
   font-family: FontAwesome;
   content: "\f10d";
@@ -138,7 +138,7 @@
   line-height: 1em;
   -webkit-font-smoothing: antialiased;
   font-size: 40px;
-  color: #7b87af;
+  color: rgba(72, 79, 102, 0.79);
 }
 /* line 19, ../../sass/lib/_RandomWords_lib.scss */
 .b-rw .b-rw__author {

@@ -48,6 +48,11 @@ namespace MLMExchange.Models.Registration
     [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceName = "FieldEmailInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Email { get; set; }
 
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){9,}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
+      (MLMExchange.Properties.ResourcesA))]
+    public string PhoneNumber { get; set; }
+
     #region ReferalRoleId
     private long? _ReferalRoleId;
 
@@ -156,12 +161,62 @@ namespace MLMExchange.Models.Registration
       this.Patronymic = @object.Patronymic;
       this.PhotoRelativePath = @object.PhotoRelativePath;
       this.Surname = @object.Surname;
+      this.PhoneNumber = @object.PhoneNumber;
 
       UserRoles = @object.Roles;
 
       DisplayName = String.Format("{0} {1}", Name, Surname);
 
       return this;
+    }
+
+    /// <summary>
+    /// Валидация.
+    /// </summary>
+    /// <param name="modelState">Объект состояния модели</param>
+    public void Validate(ModelStateDictionary modelState)
+    {
+      #region Login
+      if (!String.IsNullOrEmpty(Login))
+      {
+        bool exists = _NhibernateSession.Query<D_User>().Any(x => x.Login == Login);
+
+        if (exists)
+          modelState.AddModelError("Login", MLMExchange.Properties.ResourcesA.UserModel__Exception_LoginExists);
+      }
+      else 
+      {
+        modelState.AddModelError("Login", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
+      }
+      #endregion
+
+      #region Email
+      if (!String.IsNullOrEmpty(Email))
+      {
+        bool exists = _NhibernateSession.Query<D_User>().Any(x => x.Email == Email);
+
+        if (exists)
+          modelState.AddModelError("Email", MLMExchange.Properties.ResourcesA.UserModel__Exception_EmailExists);
+      }
+      else
+      {
+        modelState.AddModelError("Email", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
+      }
+      #endregion
+
+      #region PhoneNumber
+      if (!String.IsNullOrEmpty(PhoneNumber))
+      {
+        bool exists = _NhibernateSession.Query<D_User>().Any(x => x.PhoneNumber == PhoneNumber);
+
+        if (exists)
+          modelState.AddModelError("PhoneNumber", MLMExchange.Properties.ResourcesA.UserModel__Exception_PhoneNumberExists);
+      }
+      else
+      {
+        modelState.AddModelError("PhoneNumber", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
+      }
+      #endregion
     }
 
     #region UnBind
@@ -177,6 +232,7 @@ namespace MLMExchange.Models.Registration
       user.Surname = this.Surname;
       user.Patronymic = this.Patronymic;
       user.PhotoRelativePath = this.PhotoRelativePath;
+      user.PhoneNumber = this.PhoneNumber;
 
       if (_ReferalRoleId != null)
       {

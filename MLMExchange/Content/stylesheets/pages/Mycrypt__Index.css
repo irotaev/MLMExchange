@@ -165,7 +165,7 @@
   margin: 20px;
   overflow: hidden;
   font-size: 18px;
-  color: #7b87af;
+  color: rgba(72, 79, 102, 0.79);
   text-align: center;
 }
 
@@ -252,7 +252,7 @@
 
 /* line 9, ../../sass/lib/_Shared.scss */
 .b-image {
-  border: 3px dashed #7b87af;
+  border: 3px dashed rgba(72, 79, 102, 0.79);
   padding: 5px;
 }
 
@@ -331,7 +331,7 @@
   font-size: 50px;
   padding-top: 15px;
   content: "";
-  color: #7b87af;
+  color: rgba(72, 79, 102, 0.79);
 }
 /* line 348, ../../sass/lib/_Shared_lib.scss */
 .b-tb__content .b-tb__listWrapper .b-tb__listWrapper__content > dt:nth-child(1):before {

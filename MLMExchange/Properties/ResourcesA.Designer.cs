@@ -511,6 +511,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Введите номер телефона.
+        /// </summary>
+        public static string EnterPhoneNumber {
+            get {
+                return ResourceManager.GetString("EnterPhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введите фамилию.
         /// </summary>
         public static string EnterSurname {
@@ -705,6 +714,15 @@ namespace MLMExchange.Properties {
         public static string Model__Exception_BindNotCall {
             get {
                 return ResourceManager.GetString("Model__Exception_BindNotCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Поле не заполнено.
+        /// </summary>
+        public static string Model_Exception_FiledIsEmpty {
+            get {
+                return ResourceManager.GetString("Model_Exception_FiledIsEmpty", resourceCulture);
             }
         }
         
@@ -975,6 +993,42 @@ namespace MLMExchange.Properties {
         public static string UserInfo_Short {
             get {
                 return ResourceManager.GetString("UserInfo_Short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь с таким email уже существует.
+        /// </summary>
+        public static string UserModel__Exception_EmailExists {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_EmailExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильно заполнен телефонный номер.
+        /// </summary>
+        public static string UserModel__Exception_FieldPhoneNumberInvalid {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_FieldPhoneNumberInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь с таким логином уже существует.
+        /// </summary>
+        public static string UserModel__Exception_LoginExists {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_LoginExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь с таким номером телефона уже существует.
+        /// </summary>
+        public static string UserModel__Exception_PhoneNumberExists {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_PhoneNumberExists", resourceCulture);
             }
         }
         

@@ -336,4 +336,7 @@
   <data name="Systemsettings__Quote_DisplayString" xml:space="preserve">
     <value>1 к {0}</value>
   </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
 </root>

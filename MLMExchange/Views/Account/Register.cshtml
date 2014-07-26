@@ -15,7 +15,8 @@
   <div class="b-sb__content registration-form" id="registration-form">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
     {
-      @Html.Partial("~/Views/Shared/Account/_EditUser.cshtml", Model, new ViewDataDictionary { { "Usage", "Register" } })
+      Html.ViewData.Add("Usage", "Register");
+      @Html.Partial("~/Views/Shared/Account/_EditUser.cshtml", Model, Html.ViewData)
 
       <input class="b-button register-button b-button_hover-animate_opacity" type="submit" value=@MLMExchange.Properties.ResourcesA.Register />
     }
