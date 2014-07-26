@@ -1,0 +1,20 @@
+@import "../framework";
+
+
+@mixin pb-ss
+{
+  @include span-columns(12, 12);
+
+  .pb-ss__message
+  {
+    @include listIconStart(pb-ss__message_content , FontAwesome, $blue_a_4_c2);
+
+    @include listIcon(pb-ss__message_content, 1, "\f05d");
+
+    pb-ss__message_content dt
+    {
+      padding-top: 10px;
+      color: $blue_a_4_c2;
+    }
+  }
+}

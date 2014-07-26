@@ -1,0 +1,89 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+.b-arl
+  {
+  .b-arl__transaction-info-wrapper
+    {
+    @include clearfix;
+
+    .b-arl__mycrypt-confirmation-photo-wrapper
+      {
+      .b-arl__mycrypt-confirmation-photo {width: 332px;}
+      float: left;
+      margin-right: 20px;
+    }
+
+    .b-arl__comment-wrapper
+      {
+      width: 264px;
+      float: left;
+
+      .b-arl__header
+        {
+        font-size: $font-h;
+      }
+
+      .b-arl__content
+        {
+        margin-top: 15px;
+        border-left: 3px solid $color_grean_sea;
+        padding-left: 5px;
+      }
+    }
+  }
+
+  .b-arl__my-cypt-confirm-amount
+    {
+    margin: 20px 0;
+
+    .b-arl__text
+      {
+      font-size: $font-bb;
+    }
+
+    .b-arl__amount {font-size: $font-h; color: $blue_2 !important;}
+  }
+
+  .b-arl__br
+    {
+    @include b-hr($color_grean_sea, false, $blue_a_4);
+  }
+
+  .b-arl__request-initiator-wrapper
+    {
+    .b-arl__header {font-size: $font-h; margin-bottom: 15px;}
+
+    .b-arl__additional-info
+      {
+      @include clearfix;
+
+      .b-arl__photo-wrapper
+        {
+        float: left;
+        margin-right: 20px;
+      }
+
+      .b-arl__user-info-wrapper
+        {
+        width: 250px;
+        float: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-bottom: 5px;
+
+        * {font-size: $font-n;}
+
+        .b-arl__login
+          {
+          margin-top: 5px;
+          a
+            {
+            color: white !important; text-decoration: underline;
+            &:hover {text-decoration: none;}
+          }
+        }
+      }
+    }
+  }
+}

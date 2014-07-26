@@ -8,7 +8,7 @@
   Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
   var X = Html.X();
 }
-<script>
+<script data-app-script='true'>
   function BuyMyCrypt__PopUpWindow__AfterRender(commandArguments) {
     //#region Дефолтные параметры для формы
     require(["jquery", "Lib/Form"], function ($, formModule) {
@@ -17,6 +17,37 @@
     //#endregion
 
     $(".pb-bmc #SellerId").val(commandArguments.SellerUser__Id);
+  }
+
+  function SalesPeopleActiveSales__Grid__CommandClickHandler(command, record) {
+    console.log(command);
+    console.log(record);
+
+    if (command == "ShowUserInfo")
+    {
+      new Ext.Window({
+        id: "SalesPeople_ShwoUserInfo__Window",
+        width: 800,
+        height: 600,
+        modal: true,
+        resizable: false,
+        title: "@MLMExchange.Properties.ResourcesA.Information",
+        autoScroll: true,
+        autoLoad: {
+          url: "/AdminPanel/User/Browse",
+          params: { objectId: record.data.SellerUser__Id, AsPartial: true },
+          nocache: true,
+          text: "@MLMExchange.Properties.ResourcesA.Loading",
+          callback: function () {
+            $.each($("#SalesPeople_ShwoUserInfo__Window").find("script[data-app-script='true']"), function (index, element) {
+              var scriptTag = $(document.createElement('script')).text($(element).text());
+
+              $(scriptTag).appendTo($("body"));
+            });
+          }
+        }
+      }).show();
+    }
   }
 
   function BuyingRequest__History__State__Renderer(value, metaData, record, row, col, store, gridView) {
@@ -35,7 +66,7 @@
           .html("<i class='pb-br__icon fa fa-money'></i>@MLMExchange.Properties.ResourcesA.Pay");
 
         resultTag += imageLinkTag[0].outerHTML;
-        
+
         resultTag += "</div>";
 
         return resultTag;
@@ -47,13 +78,13 @@
         var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.RequirePayInterestRateToSaller,
           "\" + record.data.SystemSettings_Quote + \"",
           "\" + record.data.SallerInterestRateBill__MoneyAmount + \"")))</div>";
-          resultTag += messageTag;
+        resultTag += messageTag;
 
-          var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_pay-saller-interest-rate").attr("href", "#")
-              .attr("data-request-id", record.data.Id)
-              .attr("data-seller-id", record.data.SellerId)
-              .attr("data-trade-session-id", record.data.TradeSessionId)
-              .html("<i class='pb-br__icon fa fa-money'></i> @MLMExchange.Properties.ResourcesA.Pay");
+        var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_pay-saller-interest-rate").attr("href", "#")
+            .attr("data-request-id", record.data.Id)
+            .attr("data-seller-id", record.data.SellerId)
+            .attr("data-trade-session-id", record.data.TradeSessionId)
+            .html("<i class='pb-br__icon fa fa-money'></i> @MLMExchange.Properties.ResourcesA.Pay");
 
         resultTag += imageLinkTag[0].outerHTML;
 
@@ -72,16 +103,15 @@
         return resultTag;
       }
       else if (Boolean(record.data.IsSellerInterestRatePaid) === true) {
-          var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
-          resultTag += stateTag;
+        var resultTag = "<div class='pb-br__content' id='pb-br__content_ID'>";
+        resultTag += stateTag;
 
-          resultTag += "</div>";
+        resultTag += "</div>";
 
-          return resultTag;
+        return resultTag;
       }
     }
-    else 
-    {
+    else {
       return stateTag;
     }
   }
@@ -91,8 +121,8 @@
 
     view.on('refresh', function () {
       //#region Обработчик события нажатия кнопки Оплатить проверочный платеж
-        $(".pb-br__image-link_action_check-payment").on("click", function () {
-        
+      $(".pb-br__image-link_action_check-payment").on("click", function () {
+
         $.ajax({
           url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
           async: false,
@@ -103,30 +133,30 @@
       //#endregion
 
       //#region Обработчик события нажатия кнопки Оплатить процентную ставку продавцу
-        $(".pb-br__image-link_action_pay-saller-interest-rate").on("click", function () {
-            var sellerId = $(this).data("seller-id");
-            var tradeSessionId = $(this).data("trade-session-id");
+      $(".pb-br__image-link_action_pay-saller-interest-rate").on("click", function () {
+        var sellerId = $(this).data("seller-id");
+        var tradeSessionId = $(this).data("trade-session-id");
 
-            new Ext.Window({
-                id: "PaySellerInterestRate__Window",
-                width: 800,
-                height: 800,
-                modal: true,
-                title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
-                autoLoad: {
-                    url: "/AdminPanel//PaymentSystemGroup/Browse",
-                    params: { ForUserId: sellerId, IsRequireSallerInterestRatePayment: true, TradeSessionId: tradeSessionId },
-                    nocache: true,
-                    text: "@MLMExchange.Properties.ResourcesA.Loading",
-                    callback: function () {
-                        $.each($("#PaySellerInterestRate__Window").find("script[data-app-script='true']"), function (index, element) {
-                            var scriptTag = $(document.createElement('script')).text($(element).text());
+        new Ext.Window({
+          id: "PaySellerInterestRate__Window",
+          width: 800,
+          height: 800,
+          modal: true,
+          title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
+          autoLoad: {
+            url: "/AdminPanel//PaymentSystemGroup/Browse",
+            params: { ForUserId: sellerId, IsRequireSallerInterestRatePayment: true, TradeSessionId: tradeSessionId },
+            nocache: true,
+            text: "@MLMExchange.Properties.ResourcesA.Loading",
+            callback: function () {
+              $.each($("#PaySellerInterestRate__Window").find("script[data-app-script='true']"), function (index, element) {
+                var scriptTag = $(document.createElement('script')).text($(element).text());
 
-                            $(scriptTag).appendTo($("body"));
-                        });
-                    }
-                }
-            }).show();
+                $(scriptTag).appendTo($("body"));
+              });
+            }
+          }
+        }).show();
       });
       //#endregion
     }, this);
@@ -149,7 +179,7 @@
       .PageSize(10)
       .DataSource(Model.ActiveSales)
       .Model(X.Model().Fields(
-          new ModelField { Name = "Seller", ServerMapping = "Seller.Name" },
+          new ModelField { Name = "Seller", ServerMapping = "Seller.DisplayName" },
           new ModelField { Name = "MyCryptCount" },
           new ModelField { Name = "SellerUser__Id", ServerMapping = "Seller.Id" },
           new ModelField { Name = "BasePaymentSystenName", ServerMapping = "PaymentSystemGroupModel.DefaultPaymentSystemDisplayName" }
@@ -161,12 +191,14 @@
         X.Column().Text(Logic.Properties.GeneralResources.PaymentSystem).DataIndex("BasePaymentSystenName").Flex(1),
         X.ImageCommandColumn().Commands(
 
-          X.ImageCommand().CommandName("BuyMyCrypt").Icon(Icon.Accept).Text("Купить")
-          //X.ImageCommand().CommandName("ShwoUserInfo").Icon(Icon.Information).Text("Инфо")
-        )
+          X.ImageCommand().CommandName("BuyMyCrypt").Icon(Icon.Accept).Text("Купить"),
+          X.ImageCommand().CommandName("ShowUserInfo").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information)
+        ).Width(120)
         .Listeners(ls =>
         {
-          ls.Command.Handler = "var commandArguments = arguments; " + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title(@MLMExchange.Properties.ResourcesA.BuyMyCrypt)
+          ls.Command.Handler = "var commandArguments = arguments;" +
+            "if(commandArguments[1] == 'BuyMyCrypt') {"
+            + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title(@MLMExchange.Properties.ResourcesA.BuyMyCrypt)
              .Content(x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
                 new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyingMyCryptRequestModel()))
             .CloseAction(CloseAction.Destroy)
@@ -174,7 +206,11 @@
             .Listeners(w_ls =>
             {
               w_ls.AfterRender.Handler = "BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
-            }).ToScript();
+            }).ToScript()
+          + "}else if(commandArguments[1] == 'ShowUserInfo') {" +
+          "SalesPeopleActiveSales__Grid__CommandClickHandler(commandArguments[1], commandArguments[2]); }";
+
+          //ls.Command.Handler = String.Format("SalesPeopleActiveSales__Grid__CommandClickHandler(command, record);");
         }))
         .BottomBar(
           X.PagingToolbar()

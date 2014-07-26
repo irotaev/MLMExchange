@@ -10,48 +10,54 @@ using System.Web;
 namespace MLMExchange.Areas.AdminPanel.Models
 {
   /// <summary>
-  /// Модель системных настроек
+  /// Модель системных настроек.
   /// </summary>
   public class SystemSettingsModel : AbstractDataModel<D_SystemSettings, SystemSettingsModel>
   {
     /// <summary>
-    /// Процент проверочного платежа
+    /// Процент проверочного платежа.
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Range(typeof(Decimal), "0", "999", ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:n2}")]
     public decimal? CheckPaymentPercent { get; set; }
 
     /// <summary>
     /// Котировка
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Range(typeof(Int32), "0", "999", ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public int? Quote { get; set; }
 
     /// <summary>
     /// Длительность торговой сессии.
-    /// Измеряется в часах
+    /// Измеряется в минутах.
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Range(typeof(Decimal), "0", "9999", ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:F}")]
     public decimal? TradingSessionDuration { get; set; }
 
     /// <summary>
-    /// Процент доходности для продавца. Измеряется в процентах
+    /// Процент доходности для продавца. Измеряется в процентах.
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [Range(typeof(Decimal), "0", "999", ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:F}")]
     public decimal? ProfitPercent { get; set; }
 
     /// <summary>
-    /// Максимальное колличество mycrypto при заказе
+    /// Максимальное колличество mycrypto при заказе.
     /// </summary>
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [Integer(ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [DataType(DataType.Text)]
+    [Range(typeof(Int64), "0", "9999999", ErrorMessageResourceName = "FieldFilledInvalid_IntegerOnly", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0}")]
     public long? MaxMyCryptCount { get; set; }
 
     public override SystemSettingsModel Bind(D_SystemSettings @object)
     {
-      base.Bind(@object);
+      base.Bind(@object);     
 
       CheckPaymentPercent = @object.CheckPaymentPercent;
       Quote = @object.Quote;

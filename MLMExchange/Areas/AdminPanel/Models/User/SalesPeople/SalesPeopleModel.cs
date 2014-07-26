@@ -29,8 +29,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
       get
       {
         D_TradingSession openTradingSession = _NhibernateSession.Query<D_TradingSession>()
-          .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id
-              || x.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)).FirstOrDefault();
+          .Where(x => x.State != TradingSessionStatus.Closed && (x.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id || x.BuyingMyCryptRequest.SellerUser.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)).FirstOrDefault();
 
         if (openTradingSession == null)
           return false;

@@ -40,11 +40,15 @@ namespace Logic
 
       if (paymentSystem.LogicObject is D_BankPaymentSystem)
       {
-        return Logic.Properties.GeneralResources.BankPaymentSystem;
+        //return Logic.Properties.GeneralResources.BankPaymentSystem;
+        return Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_BankPaymentSystem>().Where(x => x.Id == paymentSystem.LogicObject.Id).FirstOrDefault().BankName.ToString();
       }
       else if (paymentSystem.LogicObject is D_ElectronicPaymentSystem)
       {
-        return Logic.Properties.GeneralResources.ElectronicPaymentSystem;
+        //return Logic.Properties.GeneralResources.ElectronicPaymentSystem;
+        return Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_ElectronicPaymentSystem>().Where(x => x.Id == paymentSystem.LogicObject.Id).FirstOrDefault().ElectronicName.ToString();
       }
       else
       {

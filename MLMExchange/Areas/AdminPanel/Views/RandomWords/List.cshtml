@@ -1,0 +1,117 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@model IEnumerable<MLMExchange.Areas.AdminPanel.Models.RandomWordsModel>
+
+@{
+    ViewBag.Title = "RandomWordsList";
+    Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+    
+    var X = Html.X();
+}
+
+<script data-app-script='true'>
+  function RandomWrodsList__Gird__CommandHandler(command, record) {
+    console.log(command);
+    console.log(record);
+
+    if (command == "GetRandomWords") {
+      new Ext.Window({
+        id: "RandomWordsList_GetRandomWords__Window",
+        width: 400,
+        height: 400,
+        modal: true,
+        title: "@Logic.Properties.GeneralResources.RandomWords",
+        autoScroll: true,
+        autoLoad: {
+          url: "/AdminPanel/RandomWords/Browse",
+          params: { objectId: record.data.Id, AsPartial: true },
+          nocache: true,
+          text: "@MLMExchange.Properties.ResourcesA.Loading",
+          callback: function () {
+            $.each($("#RandomWordsList_GetRandomWords__Window").find("script[data-app-script='true']"), function (index, element) {
+              var scriptTag = $(document.createElement('script')).text($(element).text());
+
+              $(scriptTag).appendTo($("body"));
+            });
+          }
+        }
+      }).show();
+    }
+    else if (command == "Edit") {
+      new Ext.Window({
+        id: "RandomWordsList_Edit__Window",
+        width: 400,
+        height: 400,
+        modal: true,
+        title: "@Logic.Properties.GeneralResources.RandomWords",
+        autoScroll: true,
+        autoLoad: {
+          url: "/AdminPanel/RandomWords/Edit",
+          method : "GET",
+          params: { objectId: record.data.Id, AsPartial: true },
+          timeout: 60,
+          text: "@MLMExchange.Properties.ResourcesA.Loading",
+          callback: function () {
+            $.each($("#RandomWordsList_Edit__Window").find("script[data-app-script='true']"), function (index, element) {
+              var scriptTag = $(document.createElement('script')).text($(element).text());
+
+              $(scriptTag).appendTo($("body"));
+            });
+          }
+        }
+      }).show();
+    }
+    else if (command == "Delete") {
+      var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Delete)";
+
+      Ext.MessageBox.confirm("@MLMExchange.Properties.ResourcesA.ConfirmActionTitle", confirmMessage, function (btn) {
+        if (btn == "yes")
+        {
+          $.ajax({
+            url: "/RandomWords/Delete?wordsId=" + record.data.Id,
+            type: "POST"
+          }).done(function() {
+            window.location.reload();
+          });
+        }
+      });
+    }
+  }
+</script>
+
+@{
+  var randomWordsGrid = X.GridPanel()
+    .ID("RandomWordsList__Gird")
+    .Layout(LayoutType.Fit)
+    .Title(MLMExchange.Properties.ResourcesA.RandomWords)
+    .Border(false)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(Model)
+      .Model(X.Model().Fields(
+          new ModelField { Name = "Id", ServerMapping = "Id" },
+          new ModelField { Name = "CreationDateTime", ServerMapping = "CreationDateTime" },
+          new ModelField { Name = "Author", ServerMapping = "Author" },
+          new ModelField { Name = "Text", ServerMapping = "Text" }
+      )))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.AuthorWords).DataIndex("Author").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.TextWords).DataIndex("Text").Flex(1),
+        X.ImageCommandColumn().Commands(
+          X.ImageCommand().CommandName("GetRandomWords").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),
+          X.ImageCommand().CommandName("Edit").Icon(Icon.ApplicationEdit).Text(MLMExchange.Properties.ResourcesA.Edit),
+          X.ImageCommand().CommandName("Delete").Icon(Icon.Delete).Text(MLMExchange.Properties.ResourcesA.Delete)
+          ).Width(150)
+          .Listeners(ls =>
+          {
+            ls.Command.Handler = String.Format("RandomWrodsList__Gird__CommandHandler(command, record);");
+          }));
+}
+
+@{
+  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(randomWordsGrid);
+}

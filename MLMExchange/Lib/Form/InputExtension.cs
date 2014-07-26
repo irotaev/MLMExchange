@@ -106,7 +106,7 @@ namespace MLMExchange.Lib.Form
       if (value != null)
         additionalParams.Add("value", value);
 
-      string textBoxForAsString = htmlHelper.TextBoxFor(fieldExpression, additionalParams).ToString();
+      string textBoxForAsString = htmlHelper.EditorFor(fieldExpression, new { htmlAttributes = additionalParams }).ToString();
 
       return RenderApplicationTextBoxFor(inputBlockTag_InnerHtml, textBoxForAsString, fieldDisplatyName, fieldDiscription, formStyle, IsNeedBtnClear(additionalParams));
     }

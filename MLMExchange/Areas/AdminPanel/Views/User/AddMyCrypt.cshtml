@@ -57,8 +57,7 @@
         @Html.TextBoxFor(x => x.Image, new { type = "file", placeholder = @MLMExchange.Properties.ResourcesA.AddPhoto, @class = "b-ib__input b-ib_choose-file b-ib__input_type_blue" })
 
         <i class="b-ib__file-preview b-ib__file-preview_type_blue">
-          <img class="b-ib__image" src="@(!String.IsNullOrEmpty(Model.ImageRelativePath)
-            ? "/" + MLMExchange.Lib.Image.Image.UploadRelativeDir + "/" + (new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).Crop(206, 212).FullName) : String.Empty)" />
+          <img class="b-ib__image" src="/Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "NoPhoto.png").Crop(206, 212).FullName)" />
         </i>
 
         <input class="b-button b-button_color_green-sea b-button_hover-animate_opacity b-ib_file-chooser b-ib_file-chooser_type_blue"
