@@ -247,7 +247,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
 
       IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
+        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id && x.State == BuyingMyCryptRequestState.NA).List();
 
       foreach (var request in buyingMyCryptRequestsHistory)
       {
