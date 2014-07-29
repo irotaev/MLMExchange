@@ -529,6 +529,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Скайп.
+        /// </summary>
+        public static string Skype {
+            get {
+                return ResourceManager.GetString("Skype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Фамилия.
         /// </summary>
         public static string Surname {
