@@ -40,8 +40,10 @@ namespace MLMExchange.Models.Registration
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Name { get; set; }
 
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Surname { get; set; }
 
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Patronymic { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
@@ -52,6 +54,10 @@ namespace MLMExchange.Models.Registration
     [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){9,}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
       (MLMExchange.Properties.ResourcesA))]
     public string PhoneNumber { get; set; }
+
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [StringLength(32, MinimumLength = 6, ErrorMessageResourceName = "UserModel__Exception_SkypeInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Skype { get; set; }
 
     #region ReferalRoleId
     private long? _ReferalRoleId;
@@ -162,6 +168,7 @@ namespace MLMExchange.Models.Registration
       this.PhotoRelativePath = @object.PhotoRelativePath;
       this.Surname = @object.Surname;
       this.PhoneNumber = @object.PhoneNumber;
+      this.Skype = @object.Skype;
 
       UserRoles = @object.Roles;
 
@@ -217,6 +224,20 @@ namespace MLMExchange.Models.Registration
         modelState.AddModelError("PhoneNumber", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
       }
       #endregion
+
+      #region Skype
+      if (!String.IsNullOrEmpty(Skype))
+      {
+        bool exists = _NhibernateSession.Query<D_User>().Any(x => x.Skype == Skype);
+
+        if (exists)
+          modelState.AddModelError("Skype", MLMExchange.Properties.ResourcesA.UserModel__Exception_SkypeExists);
+      }
+      else
+      {
+        modelState.AddModelError("Skype", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
+      }
+      #endregion
     }
 
     #region UnBind
@@ -233,6 +254,7 @@ namespace MLMExchange.Models.Registration
       user.Patronymic = this.Patronymic;
       user.PhotoRelativePath = this.PhotoRelativePath;
       user.PhoneNumber = this.PhoneNumber;
+      user.Skype = this.Skype;
 
       if (_ReferalRoleId != null)
       {

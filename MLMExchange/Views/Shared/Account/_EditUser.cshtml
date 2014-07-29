@@ -119,6 +119,8 @@
   </div>
 </div>
 
+@Html.ApplicationTextBoxFor(x => x.Skype, MLMExchange.Properties.ResourcesA.EnterSkype, @MLMExchange.Properties.ResourcesA.EnterSkype, type)
+
 @Html.ApplicationTextBoxFor(x => x.PhoneNumber, MLMExchange.Properties.ResourcesA.EnterPhoneNumber, @MLMExchange.Properties.ResourcesA.EnterPhoneNumber, type)
 
 @if (ViewData["Usage"] != null && ViewData["Usage"] == "Register")

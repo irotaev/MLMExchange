@@ -92,7 +92,8 @@ namespace Logic
           PaymentSystemGroup = new D_PaymentSystemGroup(),
           Email = "irotaev@gmail.com",
           PhoneNumber = "+00000000001",
-          Name = "Андрей"
+          Name = "Андрей",
+          Skype = "adminka99"
         };
 
         adminUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = adminUser } };
@@ -151,7 +152,8 @@ namespace Logic
           PasswordHash = "5a2d812ea05692ed5a25cc4b88d4dd14", // Пароль: 12345678
           PaymentSystemGroup = paymentSystemGroup,
           Email = "systemuser@nomail.mail",
-          PhoneNumber = "+00000000000"
+          PhoneNumber = "+00000000000",
+          Skype = "systemskype"
         };
 
         d_systemUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = d_systemUser } };
@@ -200,6 +202,7 @@ namespace Logic
           Surname = "Ротаев",
           Patronymic = "Валерьевич",
           Email = "leader@gmail.com",
+          Skype = "andryshka228",
           PhoneNumber = "+00000000010"
         };
 
@@ -243,7 +246,8 @@ namespace Logic
           Surname = "Петрович",
           Patronymic = "Семенов",
           Email = "newbik@gmail.com",
-          PhoneNumber = "+00000000020"
+          PhoneNumber = "+00000000020",
+          Skype = "newbik99rus"
         };
 
         testerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = testerUser, MyCryptCount = 5000 }, new D_TesterRole { User = testerUser } };
@@ -286,7 +290,8 @@ namespace Logic
           Surname = "Алексей",
           Patronymic = "Михайлович",
           Email = "broker@gmail.com",
-          PhoneNumber = "+0000000030"
+          PhoneNumber = "+0000000030",
+          Skype = "brokerlalka123"
         };
 
         brokerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = brokerUser, MyCryptCount = 7000 }, new D_BrokerRole { User = brokerUser } };
