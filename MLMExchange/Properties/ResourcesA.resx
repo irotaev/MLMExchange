@@ -270,6 +270,9 @@
   <data name="EnterPhoneNumber" xml:space="preserve">
     <value>Введите номер телефона</value>
   </data>
+  <data name="EnterSkype" xml:space="preserve">
+    <value>Введите Skype-логин</value>
+  </data>
   <data name="EnterSurname" xml:space="preserve">
     <value>Введите фамилию</value>
   </data>
@@ -300,6 +303,15 @@
   <data name="FAQ" xml:space="preserve">
     <value>Вопросы</value>
   </data>
+  <data name="FieldCharCountNotRequired_10" xml:space="preserve">
+    <value>Общее количество символов 10</value>
+  </data>
+  <data name="FieldCharCountNotRequired_20" xml:space="preserve">
+    <value>Общее количество символов 20</value>
+  </data>
+  <data name="FieldCharCountNotRequired_9" xml:space="preserve">
+    <value>Общее количество символов 9</value>
+  </data>
   <data name="FieldEmailInvalid" xml:space="preserve">
     <value>Неправильно заполнено поле email</value>
   </data>
@@ -314,6 +326,9 @@
   </data>
   <data name="FieldMinCharCountNotRequired_8" xml:space="preserve">
     <value>Минимальное количество символов 8</value>
+  </data>
+  <data name="FieldRangeCharCountNotRequired_16_18" xml:space="preserve">
+    <value>Минимальное 16, максимальное 18 символов</value>
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>Главная страница</value>
@@ -440,6 +455,12 @@
   </data>
   <data name="UserModel__Exception_PhoneNumberExists" xml:space="preserve">
     <value>Пользователь с таким номером телефона уже существует</value>
+  </data>
+  <data name="UserModel__Exception_SkypeExists" xml:space="preserve">
+    <value>Пользователь с таким скайпом уже существует</value>
+  </data>
+  <data name="UserModel__Exception_SkypeInvalid" xml:space="preserve">
+    <value>Неправильно заполнен Skype-логин</value>
   </data>
   <data name="UserPhoto" xml:space="preserve">
     <value>Фотография пользователя</value>
