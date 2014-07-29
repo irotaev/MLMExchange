@@ -29,12 +29,13 @@ namespace LogicTest.DataObject
 
       D_User testUser = new D_User
       {
-        Email = "test_email@email.com",
+        Email = postfix.Substring(0, 20) + "@email.com",
         Login = "TestUser_" + postfix,
         Name = "TestUser_Name_" + postfix,
         PasswordHash = _DefaultUserPassword,
         Patronymic = "TestUser_Patronymic_" + postfix,
-        Surname = "TestUser_Surname_" + postfix
+        Surname = "TestUser_Surname_" + postfix,
+        PhoneNumber = "+" + postfix.Substring(0, 10)
       };
 
       foreach (var role in roles)

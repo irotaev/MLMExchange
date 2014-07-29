@@ -8,7 +8,7 @@ $main-footer_Height: 280px;
 
   @include _with-grid-settings(10)
   {
-    .sosial-buttons__outer-wrapper {@include span-columns(3, 10); float: right; margin-bottom: 30px; @include clearfix;}
+    .sosial-buttons__outer-wrapper {@include span-columns(omega 3, 10); margin-bottom: 30px; @include clearfix;}
 
     .sosial-buttons__inner-wrapper {
       position: relative;

@@ -18,7 +18,7 @@ namespace LogicTest.DataObject
     /// Создать торговую сессию в состоянии открыта
     /// </summary>
     /// <returns>Созданная торговая сессия</returns>
-    public static D_TradingSession CreateTradingSession_State_Open()
+    public static D_TradingSession CreateTradingSession_State_Open(ulong biddingMyCryptCount = 2000, ulong buyingRequestMyCryptCount = 1000)
     {
       D_User seller = D_UserTest.CreateUser();
       D_User buyer = D_UserTest.CreateUser(false);
@@ -32,20 +32,20 @@ namespace LogicTest.DataObject
       _NHibernaetSession.SaveOrUpdate(seller);
       _NHibernaetSession.SaveOrUpdate(buyer);
 
-      D_BiddingParticipateApplication participateApplication = BiddingParticipateApplicationTest.CreateBiddingParticipateApplication(seller, 2000);
+      D_BiddingParticipateApplication participateApplication = BiddingParticipateApplicationTest.CreateBiddingParticipateApplication(seller, (long)biddingMyCryptCount);
 
       D_SystemSettings systemSettings = new D_SystemSettings
       {
-        CheckPaymentPercent = 5,
+        CheckPaymentPercent = 3,
         MaxMyCryptCount = 10000,
-        ProfitPercent = 10,
-        Quote = 10,
-        TradingSessionDuration = 0.1m
+        ProfitPercent = 13,
+        Quote = 7,
+        TradingSessionDuration = 0.1m // Не менять. Настроин поток синхронизации.
       };
 
       _NHibernaetSession.SaveOrUpdate(systemSettings);
 
-      BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, 1000);      
+      BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, (long)buyingRequestMyCryptCount);      
 
       D_TradingSession d_tradingSession = TradingSession.OpenTradingSession(buyingRequest);
 
@@ -104,7 +104,7 @@ namespace LogicTest.DataObject
         throw new TestException("Торговая сессия может быть переведена в состояние 'WaitProgressStart' только из состояния 'Need ensure profibility'");
 
       D_TradingSession acceptedTradingSession = TradingSessionTest.CreateTradingSession_State_Open();
-      acceptedTradingSession.State = TradingSessionStatus.NeedProfit;
+      acceptedTradingSession.State = TradingSessionStatus.ProfitConfirmation;
 
       _NHibernaetSession.SaveOrUpdate(acceptedTradingSession);
 
@@ -149,17 +149,28 @@ namespace LogicTest.DataObject
       return tradingSession;
     }
 
-    public static D_TradingSession ChangeState_To_ProfitConfirmation(D_TradingSession tradingSession)
+    public static D_TradingSession ChangeState_To_NeedProfit(D_TradingSession tradingSession)
     {
       if (tradingSession == null)
         throw new TestParametrNullException("tradingSession");
 
       if (tradingSession.State != TradingSessionStatus.SessionInProgress)
-        throw new TestException("Торговая сессия может быть переведена в состояние 'NeedProfit и ProfitConfirmation' только из состояния 'SessionInProgress'");
+        throw new TestException("Торговая сессия может быть переведена в состояние 'NeedProfit' только из состояния 'SessionInProgress'");
 
       System.Threading.Thread.Sleep((int)(tradingSession.SystemSettings.TradingSessionDuration * 60 * 1000));
 
-      ((TradingSession)tradingSession).TryChangeStatus(TradingSessionStatus.NeedProfit);      
+      ((TradingSession)tradingSession).TryChangeStatus(TradingSessionStatus.NeedProfit);
+
+      return tradingSession;
+    }
+
+    public static D_TradingSession ChangeState_To_ProfitConfirmation(D_TradingSession tradingSession)
+    {
+      if (tradingSession == null)
+        throw new TestParametrNullException("tradingSession");
+
+      if (tradingSession.State != TradingSessionStatus.NeedProfit)
+        throw new TestException("Торговая сессия может быть переведена в состояние 'ProfitConfirmation' только из состояния 'NeedProfit'");
 
       D_TradingSession payerProfitSession = TradingSessionTest.CreateTradingSession_State_Open();
 
@@ -247,6 +258,22 @@ namespace LogicTest.DataObject
     }
 
     [TestMethod]
+    public void ChangeState_To_NeedProfit_Test()
+    {
+      D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
+
+      d_tradingSession = ChangeState_To_NeedEnsureProfibility(d_tradingSession);
+
+      d_tradingSession = ChangeState_To_WaitForProgressStart(d_tradingSession);
+
+      d_tradingSession = ChangeState_To_SessionInProgress(d_tradingSession);
+
+      d_tradingSession = ChangeState_To_NeedProfit(d_tradingSession);
+
+      TransactionCommit();
+    }
+
+    [TestMethod]
     public void ChangeState_To_ProfitConfirmation_Test()
     {
       D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
@@ -256,6 +283,8 @@ namespace LogicTest.DataObject
       d_tradingSession = ChangeState_To_WaitForProgressStart(d_tradingSession);
 
       d_tradingSession = ChangeState_To_SessionInProgress(d_tradingSession);
+
+      d_tradingSession = ChangeState_To_NeedProfit(d_tradingSession);
 
       d_tradingSession = ChangeState_To_ProfitConfirmation(d_tradingSession);
 

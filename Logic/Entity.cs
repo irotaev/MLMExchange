@@ -826,7 +826,7 @@ namespace Logic
   {
     public D_BaseObject_Map()
     {
-      Id(x => x.Id).GeneratedBy.HiLo("10").CustomType<Int64>();
+      Id(x => x.Id).GeneratedBy.HiLo("1000").CustomType<Int64>();
 
       Map(x => x.CreationDateTime).Not.Nullable();
     }
@@ -836,7 +836,7 @@ namespace Logic
   {
     public D_Application_Map()
     {
-      Map(x => x.MoneyReserv);
+      Map(x => x.MoneyReserv).Precision(10).Scale(5);
     }
   }
 
@@ -844,10 +844,10 @@ namespace Logic
   {
     public D_SystemSettings_Map()
     {
-      Map(x => x.CheckPaymentPercent).Not.Nullable();
+      Map(x => x.CheckPaymentPercent).Precision(5).Scale(3).Not.Nullable();
       Map(x => x.Quote).Not.Nullable();
-      Map(x => x.ProfitPercent).Not.Nullable();
-      Map(x => x.TradingSessionDuration).Not.Nullable();
+      Map(x => x.ProfitPercent).Precision(5).Scale(3).Not.Nullable();
+      Map(x => x.TradingSessionDuration).Precision(5).Scale(3).Not.Nullable();
       Map(x => x.MaxMyCryptCount).Not.Nullable();
     }
   }
@@ -867,7 +867,7 @@ namespace Logic
       Map(x => x.PhoneNumber).Not.Nullable().Unique().Length(50);
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
-      References(x => x.RefererRole).Column("RefererRoleId").Cascade.All();
+      References(x => x.RefererRole).Column("RefererRoleId").Cascade.SaveUpdate();
 
       DiscriminateSubClassesOnColumn<D_UserType>("UserType", D_UserType.BaseUser);
     }
@@ -886,7 +886,7 @@ namespace Logic
   {
     public D_AbstractRole_Map()
     {
-      References(x => x.User).Column("UserId").Cascade.All();
+      References(x => x.User).Column("UserId").Cascade.SaveUpdate();
 
       DiscriminateSubClassesOnColumn<RoleType>("RoleType", RoleType.User);
     }
@@ -898,7 +898,7 @@ namespace Logic
     {
       DiscriminatorValue(RoleType.User);
 
-      Map(x => x.MyCryptCount).Default("0").Not.Nullable();
+      Map(x => x.MyCryptCount).Precision(10).Scale(5).Default("0").Not.Nullable();
       HasMany(x => x.ReferalUsers).KeyColumn("RefererRoleId").Cascade.SaveUpdate();
       HasMany(x => x.RefererProfits).KeyColumn("UserRoleId").Cascade.SaveUpdate();
     }
@@ -945,7 +945,7 @@ namespace Logic
     public Payment_Map()
     {
       References(x => x.Payer).Column("UserId").Not.Nullable();
-      Map(x => x.RealMoneyAmount).Not.Nullable();
+      Map(x => x.RealMoneyAmount).Precision(10).Scale(5).Not.Nullable();
       References(x => x.PaymentSystem).Column("PaymentSystemId").Nullable();
       References(x => x.Bill).Column("BillId").Nullable().Cascade.SaveUpdate();
     }
@@ -959,9 +959,9 @@ namespace Logic
     {
       References(x => x.PaymentAcceptor).Column("PaymentAcceptorId");
       References(x => x.Payer).Column("PayerId");
-      Map(x => x.MoneyAmount).Nullable();
+      Map(x => x.MoneyAmount).Precision(10).Scale(5).Nullable();
       Map(x => x.PaymentState).CustomType<BillPaymentState>();
-      HasMany<Payment>(x => x.Payments).KeyColumn("BillId").Cascade.SaveUpdate();
+      HasMany<Payment>(x => x.Payments).KeyColumn("BillId").Cascade.All();
 
       DiscriminateSubClassesOnColumn<BillType>("BillType", BillType.BaseBill);
     }
@@ -1022,8 +1022,8 @@ namespace Logic
   {
     public PaymentSystemGroup_Map()
     {
-      HasMany<D_BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
-      HasMany<D_ElectronicPaymentSystem>(x => x.ElectronicPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.All();
+      HasMany<D_BankPaymentSystem>(x => x.BankPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.SaveUpdate();
+      HasMany<D_ElectronicPaymentSystem>(x => x.ElectronicPaymentSystems).KeyColumn("PaymentSystemGroupId").Cascade.SaveUpdate();
       HasOne(x => x.User).PropertyRef(x => x.PaymentSystemGroup).Cascade.SaveUpdate();
     }
   }
@@ -1035,7 +1035,7 @@ namespace Logic
     public D_ReferalProfit_Map()
     {
       References(x => x.UserRole).Column("UserRoleId").Not.Nullable().Cascade.SaveUpdate();
-      Map(x => x.RefererProfit).Default("0").Not.Nullable();
+      Map(x => x.RefererProfit).Precision(10).Scale(5).Default("0").Not.Nullable();
       References(x => x.TradingSession).Column("TradingSessionId").Not.Nullable();
     }
   }
@@ -1060,7 +1060,7 @@ namespace Logic
       References(x => x.Seller).Not.Nullable().Column("SaylerId");
       Map(x => x.MyCryptCount).Not.Nullable();
       Map(x => x.State).CustomType<BiddingParticipateApplicationState>();
-      HasMany<BuyingMyCryptRequest>(x => x.BuyingMyCryptRequests).KeyColumn("BiddingParticipateApplicationId").Inverse().Cascade.All();
+      HasMany<BuyingMyCryptRequest>(x => x.BuyingMyCryptRequests).KeyColumn("BiddingParticipateApplicationId").Inverse().Cascade.SaveUpdate();
       HasOne(x => x.TradingSession).PropertyRef(x => x.BiddingParticipateApplication).Cascade.SaveUpdate();
     }
   }

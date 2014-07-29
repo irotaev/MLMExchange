@@ -13,6 +13,8 @@ namespace Logic
   {
     public TradingSession(D_TradingSession tradingSession) : base(tradingSession) { }
 
+    private static object _Locker = new { };
+
     public static explicit operator TradingSession(D_TradingSession dataTradingSession)
     {
       return new TradingSession(dataTradingSession);
@@ -138,6 +140,14 @@ namespace Logic
     }
 
     #region Обеспечение доходности торговой сессии
+    private decimal RoundBillMoneyAmount(decimal moneyAmount)
+    {
+      moneyAmount = moneyAmount >= 0 ? moneyAmount : 0;
+      moneyAmount = moneyAmount != 0 ? Math.Floor(moneyAmount) + 1 : 0;
+
+      return moneyAmount;
+    }
+
     /// <summary>
     /// Оплачены ли счета доходности торговой сессии
     /// </summary>
@@ -145,14 +155,13 @@ namespace Logic
     {
       get
       {
-        bool billsPaid = true;
-
         foreach (var bill in _LogicObject.YieldSessionBills)
         {
-          billsPaid = bill.PaymentState == BillPaymentState.Paid;
+          if (bill.PaymentState != BillPaymentState.Paid)
+            return false;
         }
 
-        return billsPaid;
+        return true;
       }
     }
 
@@ -169,6 +178,8 @@ namespace Logic
       {
         necessaryMoney -= yieldBill.MoneyAmount;
       }
+
+      necessaryMoney = RoundBillMoneyAmount(necessaryMoney);
 
       return necessaryMoney;
     }
@@ -191,6 +202,8 @@ namespace Logic
         necessaryMoney -= bill.MoneyAmount;
       }
 
+      necessaryMoney = RoundBillMoneyAmount(necessaryMoney);
+
       return necessaryMoney;
     }
 
@@ -203,92 +216,95 @@ namespace Logic
       if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility || YieldSessionBillsNecessaryMoney() == 0)
         return;
 
-      // Добавлен ли счет на оплату доходности торговой сессии
-      bool isBillAdded = false;
-
-      List<D_TradingSession> d_profitTradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).ToList();
-
-      foreach (var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
+      lock (_Locker)
       {
-        // Важен пересчет оставшейся суммы для обеспечения доходности сессии, т.к. 
-        // может добавится счет в счета на обеспечение доходности текущей сессии
-        decimal yieldSessionBullNecessaryMoney = YieldSessionBillsNecessaryMoney();
-        decimal buyerProfitNecasseryMoney = profitSession.BuyerProfitNecessaryMoney();
+        // Добавлен ли счет на оплату доходности торговой сессии
+        bool isBillAdded = false;
 
-        if (yieldSessionBullNecessaryMoney <= buyerProfitNecasseryMoney)
+        List<D_TradingSession> d_profitTradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+          .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).ToList();
+
+        foreach (var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
         {
-          D_YieldSessionBill ensureBill = new D_YieldSessionBill
+          // Важен пересчет оставшейся суммы для обеспечения доходности сессии, т.к. 
+          // может добавится счет в счета на обеспечение доходности текущей сессии
+          decimal yieldSessionBillNecessaryMoney = YieldSessionBillsNecessaryMoney();
+          decimal buyerProfitNecasseryMoney = profitSession.BuyerProfitNecessaryMoney();
+
+          if (yieldSessionBillNecessaryMoney <= buyerProfitNecasseryMoney)
           {
-            MoneyAmount = yieldSessionBullNecessaryMoney,
-            Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
-            PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
-            PayerTradingSession = _LogicObject,
-            AcceptorTradingSession = profitSession.LogicObject,
-            PaymentState = BillPaymentState.WaitingPayment
-          };
+            D_YieldSessionBill ensureBill = new D_YieldSessionBill
+            {
+              MoneyAmount = yieldSessionBillNecessaryMoney,
+              Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
+              PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
+              PayerTradingSession = _LogicObject,
+              AcceptorTradingSession = profitSession.LogicObject,
+              PaymentState = BillPaymentState.WaitingPayment
+            };
 
-          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
+            Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
 
-          _LogicObject.YieldSessionBills.Add(ensureBill);
-          isBillAdded = true;
+            _LogicObject.YieldSessionBills.Add(ensureBill);
+            isBillAdded = true;
 
-          break;
-        }
-        else
-        {
-          D_YieldSessionBill ensureBill = new D_YieldSessionBill
-          {
-            MoneyAmount = buyerProfitNecasseryMoney,
-            Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
-            PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
-            PayerTradingSession = _LogicObject,
-            AcceptorTradingSession = profitSession.LogicObject,
-            PaymentState = BillPaymentState.WaitingPayment
-          };
-
-          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
-          _LogicObject.YieldSessionBills.Add(ensureBill);
-
-          if (profitSession.TryChangeStatus(TradingSessionStatus.ProfitConfirmation))
-          {
-            _NHibernateSession.SaveOrUpdate(profitSession.LogicObject);
+            break;
           }
           else
           {
-            _NHibernateSession.Delete(ensureBill);
-          }
+            D_YieldSessionBill ensureBill = new D_YieldSessionBill
+            {
+              MoneyAmount = buyerProfitNecasseryMoney,
+              Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
+              PaymentAcceptor = profitSession.LogicObject.BuyingMyCryptRequest.Buyer,
+              PayerTradingSession = _LogicObject,
+              AcceptorTradingSession = profitSession.LogicObject,
+              PaymentState = BillPaymentState.WaitingPayment
+            };
 
+            Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
+            _LogicObject.YieldSessionBills.Add(ensureBill);
+
+            if (profitSession.TryChangeStatus(TradingSessionStatus.ProfitConfirmation))
+            {
+              _NHibernateSession.SaveOrUpdate(profitSession.LogicObject);
+            }
+            else
+            {
+              _NHibernateSession.Delete(ensureBill);
+            }
+
+            isBillAdded = true;
+          }
+        }
+
+        #region Добавляю счета на оплату ДТС на имя системы (если поисковик долго не может найти реальных пользователей)
+        if (!isBillAdded
+            &&
+            ((LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
+            || (LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill == null && LogicObject.CreationDateTime < DateTime.UtcNow.AddSeconds(-30))))
+        {
+          //TODO:Rtv Добавить AcceptorTradingSession. Или подумать как решить данный вопрос
+          D_YieldSessionBill ensureBill = new D_YieldSessionBill
+          {
+            MoneyAmount = YieldSessionBillsNecessaryMoney(),
+            Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
+            PaymentAcceptor = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_System_User>().FirstOrDefault(),
+            PayerTradingSession = _LogicObject,
+            PaymentState = BillPaymentState.WaitingPayment
+          };
+
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
+          _LogicObject.YieldSessionBills.Add(ensureBill);
           isBillAdded = true;
         }
+        #endregion
+
+        if (isBillAdded)
+          LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill = DateTime.UtcNow;
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(LogicObject);
       }
-
-      #region Добавляю счета на оплату ДТС на имя системы (если поисковик долго не может найти реальных пользователей)
-      if (!isBillAdded
-          &&
-          ((LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddSeconds(-30))
-          || (LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill == null && LogicObject.CreationDateTime < DateTime.UtcNow.AddSeconds(-30))))
-      {
-        //TODO:Rtv Добавить AcceptorTradingSession. Или подумать как решить данный вопрос
-        D_YieldSessionBill ensureBill = new D_YieldSessionBill
-        {
-          MoneyAmount = YieldSessionBillsNecessaryMoney(),
-          Payer = _LogicObject.BuyingMyCryptRequest.Buyer,
-          PaymentAcceptor = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_System_User>().FirstOrDefault(),
-          PayerTradingSession = _LogicObject,
-          PaymentState = BillPaymentState.WaitingPayment
-        };
-
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
-        _LogicObject.YieldSessionBills.Add(ensureBill);
-        isBillAdded = true;
-      }
-      #endregion
-
-      if (isBillAdded)
-        LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill = DateTime.UtcNow;
-
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(LogicObject);
     }
     #endregion
 
