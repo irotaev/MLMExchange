@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using NHibernate.Linq;
-using System.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 {

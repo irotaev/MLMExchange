@@ -520,6 +520,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Введите Skype-логин.
+        /// </summary>
+        public static string EnterSkype {
+            get {
+                return ResourceManager.GetString("EnterSkype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введите фамилию.
         /// </summary>
         public static string EnterSurname {
@@ -1029,6 +1038,24 @@ namespace MLMExchange.Properties {
         public static string UserModel__Exception_PhoneNumberExists {
             get {
                 return ResourceManager.GetString("UserModel__Exception_PhoneNumberExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь с таким скайпом уже существует.
+        /// </summary>
+        public static string UserModel__Exception_SkypeExists {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_SkypeExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильно заполнен Skype-логин.
+        /// </summary>
+        public static string UserModel__Exception_SkypeInvalid {
+            get {
+                return ResourceManager.GetString("UserModel__Exception_SkypeInvalid", resourceCulture);
             }
         }
         

@@ -79,6 +79,7 @@ namespace Logic
     public virtual string Patronymic { get; set; }
     public virtual string Email { get; set; }
     public virtual string PhoneNumber { get; set; }
+    public virtual string Skype { get; set; }
     /// <summary>
     /// Относительный путь к фото пользователя
     /// </summary>
@@ -865,6 +866,7 @@ namespace Logic
       Map(x => x.Email).Not.Nullable().Unique().Length(100);
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
       Map(x => x.PhoneNumber).Not.Nullable().Unique().Length(50);
+      Map(x => x.Skype).Not.Nullable().Unique().Length(32);
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
       References(x => x.RefererRole).Column("RefererRoleId").Cascade.SaveUpdate();

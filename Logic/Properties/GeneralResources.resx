@@ -339,4 +339,7 @@
   <data name="PhoneNumber" xml:space="preserve">
     <value>Телефон</value>
   </data>
+  <data name="Skype" xml:space="preserve">
+    <value>Скайп</value>
+  </data>
 </root>
