@@ -67,6 +67,7 @@
     <Compile Include="DataObject\BuyingMyCryptRequestTest.cs" />
     <Compile Include="DataObject\D_UserTest.cs" />
     <Compile Include="DataObject\TradingSessionTest.cs" />
+    <Compile Include="Logic\SsmsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

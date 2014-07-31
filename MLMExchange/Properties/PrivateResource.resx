@@ -231,4 +231,16 @@
   <data name="UserModel__Exception_CantChangeRefererRoleAfterRegistration" xml:space="preserve">
     <value>Невозможно изменить реферера после регистрации. Данная опция доступна только при регистрации.</value>
   </data>
+  <data name="AccountNeedConfirmation" xml:space="preserve">
+    <value>Аккаунт требует подтверждения</value>
+  </data>
+  <data name="AccountConfirmation__Info" xml:space="preserve">
+    <value>Вам был отправлен ключ для подтверждения аккаунта по смс на номер ({0}). Введите данный ключ в поле для подтверждения аккаунта.</value>
+  </data>
+  <data name="AccountConfirm__Exception_YourAccountAlreadyConfirmed" xml:space="preserve">
+    <value>Ваш аккаунт уже подтвержден</value>
+  </data>
+  <data name="AccountRegister__Sms_ActivationCode" xml:space="preserve">
+    <value>Kod dlia activacii accaynta: {0}</value>
+  </data>
 </root>

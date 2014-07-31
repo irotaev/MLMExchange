@@ -120,4 +120,7 @@
   <data name="Exception__BiddingParticipateApplication_NotEnoughtMyCryptForWriteOut" xml:space="preserve">
     <value>Недостаточно текущих my-crypt {0} для списания со счета. Необходимо {1}</value>
   </data>
+  <data name="Ssms__Exception_ServerResponseParse" xml:space="preserve">
+    <value>Во время парсинга серверного ответа произошла ошибка: {0}</value>
+  </data>
 </root>

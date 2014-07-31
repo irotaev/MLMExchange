@@ -61,6 +61,42 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ваш аккаунт уже подтвержден.
+        /// </summary>
+        public static string AccountConfirm__Exception_YourAccountAlreadyConfirmed {
+            get {
+                return ResourceManager.GetString("AccountConfirm__Exception_YourAccountAlreadyConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вам был отправлен ключ для подтверждения аккаунта по смс на номер ({0}). Введите данный ключ в поле для подтверждения аккаунта..
+        /// </summary>
+        public static string AccountConfirmation__Info {
+            get {
+                return ResourceManager.GetString("AccountConfirmation__Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Аккаунт требует подтверждения.
+        /// </summary>
+        public static string AccountNeedConfirmation {
+            get {
+                return ResourceManager.GetString("AccountNeedConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kod dlia activacii accaynta: {0}.
+        /// </summary>
+        public static string AccountRegister__Sms_ActivationCode {
+            get {
+                return ResourceManager.GetString("AccountRegister__Sms_ActivationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вы можете отправить только один запрос на пополнение my crypt.
         /// </summary>
         public static string AddMyCrypt__AlreadySended_Description {

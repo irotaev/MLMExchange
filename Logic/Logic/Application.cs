@@ -93,7 +93,9 @@ namespace Logic
           Email = "irotaev@gmail.com",
           PhoneNumber = "+00000000001",
           Name = "Андрей",
-          Skype = "adminka99"
+          Skype = "adminka99",
+          ConfirmationCode = "000000",
+          IsUserRegistrationConfirm = true
         };
 
         adminUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = adminUser } };
@@ -153,7 +155,9 @@ namespace Logic
           PaymentSystemGroup = paymentSystemGroup,
           Email = "systemuser@nomail.mail",
           PhoneNumber = "+00000000000",
-          Skype = "systemskype"
+          Skype = "systemskype",
+          ConfirmationCode = "000000",
+          IsUserRegistrationConfirm = true
         };
 
         d_systemUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = d_systemUser } };
@@ -203,7 +207,9 @@ namespace Logic
           Patronymic = "Валерьевич",
           Email = "leader@gmail.com",
           Skype = "andryshka228",
-          PhoneNumber = "+00000000010"
+          PhoneNumber = "+00000000010",
+          ConfirmationCode = "000000",
+          IsUserRegistrationConfirm = true
         };
 
         leaderUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = leaderUser, MyCryptCount = 10000 }, new D_LeaderRole { User = leaderUser } };
@@ -247,7 +253,9 @@ namespace Logic
           Patronymic = "Семенов",
           Email = "newbik@gmail.com",
           PhoneNumber = "+00000000020",
-          Skype = "newbik99rus"
+          Skype = "newbik99rus",
+          ConfirmationCode = "000000",
+          IsUserRegistrationConfirm = true
         };
 
         testerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = testerUser, MyCryptCount = 5000 }, new D_TesterRole { User = testerUser } };
@@ -291,7 +299,9 @@ namespace Logic
           Patronymic = "Михайлович",
           Email = "broker@gmail.com",
           PhoneNumber = "+0000000030",
-          Skype = "brokerlalka123"
+          Skype = "brokerlalka123",
+          ConfirmationCode = "000000",
+          IsUserRegistrationConfirm = true
         };
 
         brokerUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = brokerUser, MyCryptCount = 7000 }, new D_BrokerRole { User = brokerUser } };

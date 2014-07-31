@@ -214,6 +214,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Подтвердить.
+        /// </summary>
+        public static string Button_Apply {
+            get {
+                return ResourceManager.GetString("Button_Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Закрыть.
         /// </summary>
         public static string Button_Close {
@@ -291,6 +300,15 @@ namespace MLMExchange.Properties {
         public static string ConfirmActionTitle {
             get {
                 return ResourceManager.GetString("ConfirmActionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неправильно указан код подтверждения.
+        /// </summary>
+        public static string ConfirmationCodeIncorrect {
+            get {
+                return ResourceManager.GetString("ConfirmationCodeIncorrect", resourceCulture);
             }
         }
         
@@ -619,6 +637,33 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Общее количество символов 10.
+        /// </summary>
+        public static string FieldCharCountNotRequired_10 {
+            get {
+                return ResourceManager.GetString("FieldCharCountNotRequired_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Общее количество символов 20.
+        /// </summary>
+        public static string FieldCharCountNotRequired_20 {
+            get {
+                return ResourceManager.GetString("FieldCharCountNotRequired_20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Общее количество символов 9.
+        /// </summary>
+        public static string FieldCharCountNotRequired_9 {
+            get {
+                return ResourceManager.GetString("FieldCharCountNotRequired_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Неправильно заполнено поле email.
         /// </summary>
         public static string FieldEmailInvalid {
@@ -660,6 +705,24 @@ namespace MLMExchange.Properties {
         public static string FieldMinCharCountNotRequired_8 {
             get {
                 return ResourceManager.GetString("FieldMinCharCountNotRequired_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Минимальное 16, максимальное 18 символов.
+        /// </summary>
+        public static string FieldRangeCharCountNotRequired_16_18 {
+            get {
+                return ResourceManager.GetString("FieldRangeCharCountNotRequired_16_18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Минимальное 6 символов, максимальное 20 символов.
+        /// </summary>
+        public static string FieldRangeCharCountNotRequired_6_20 {
+            get {
+                return ResourceManager.GetString("FieldRangeCharCountNotRequired_6_20", resourceCulture);
             }
         }
         
@@ -984,6 +1047,15 @@ namespace MLMExchange.Properties {
         public static string UserAgreement {
             get {
                 return ResourceManager.GetString("UserAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подтверждение пользователя.
+        /// </summary>
+        public static string UserConfirmation {
+            get {
+                return ResourceManager.GetString("UserConfirmation", resourceCulture);
             }
         }
         

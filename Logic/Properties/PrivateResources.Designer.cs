@@ -68,5 +68,14 @@ namespace Logic.Properties {
                 return ResourceManager.GetString("Exception__BiddingParticipateApplication_NotEnoughtMyCryptForWriteOut", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Во время парсинга серверного ответа произошла ошибка: {0}.
+        /// </summary>
+        public static string Ssms__Exception_ServerResponseParse {
+            get {
+                return ResourceManager.GetString("Ssms__Exception_ServerResponseParse", resourceCulture);
+            }
+        }
     }
 }

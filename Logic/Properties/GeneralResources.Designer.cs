@@ -241,6 +241,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Код подтверждения.
+        /// </summary>
+        public static string ConfirmationCode {
+            get {
+                return ResourceManager.GetString("ConfirmationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Корреспондентский счет.
         /// </summary>
         public static string CorrespondentAccount {

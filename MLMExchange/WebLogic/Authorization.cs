@@ -28,21 +28,6 @@ namespace MLMExchange.Lib
 
     private readonly List<Type> _AllowedRoleTypes = new List<Type>();
 
-    ///// <summary>
-    ///// Задать с каким типом роли можно авторизоваться
-    ///// </summary>
-    //public Type RoleType
-    //{
-    //  get { return _RoleType; }
-    //  set
-    //  {
-    //    if (!value.IsSubclassOf(typeof(D_AbstractRole)))
-    //      throw new ArgumentOutOfRangeException("RoleType");
-
-    //    _RoleType = value;
-    //  }
-    //}
-
     public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       base.OnActionExecuting(filterContext);
@@ -57,6 +42,14 @@ namespace MLMExchange.Lib
         {
           filterContext.Result = new System.Web.Mvc.RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
               new { controller = "Account", action = "Register", area = "" }
+            ));
+        }
+        else if (!currentUser.IsUserRegistrationConfirm 
+          && (string)filterContext.Controller.ControllerContext.RouteData.Values["action"] != "Confirm"
+          && (string)filterContext.Controller.ControllerContext.RouteData.Values["controller"] != "Account")
+        {
+          filterContext.Result = new System.Web.Mvc.RedirectToRouteResult(new System.Web.Routing.RouteValueDictionary(
+              new { controller = "Account", action = "Confirm", area = "" }
             ));
         }
         else if (_AllowedRoleTypes.Count > 0)

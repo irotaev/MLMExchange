@@ -1,0 +1,46 @@
+@import "../Framework";
+
+.b-ac
+{
+  position: relative;
+  min-height: 100px;
+  margin: 10px;
+  padding-left: 50px;
+
+  .b-ac__block-icon
+  {
+    position: absolute;
+    top: 0; left: 0;
+    font-size: 90px;
+    color: $orange2;
+    @include opacity(0.2);
+  }
+
+  .b-ac__content-wrapper
+  {
+    margin-left: 20px;
+  }
+
+  .b-ac__title
+  {
+    .b-ac__text
+    {
+      font-size: 24px;
+      color: $orange2;
+      font-weight: bold;
+    }
+  }
+
+  .b-ac__info-message
+  {
+    display: block;
+    margin: 20px 0;
+    color: $blue_a_4_c;
+  }
+
+  .b-ac__confirm-button
+  {
+    margin-top: 15px !important;
+    float: right;
+  }
+}

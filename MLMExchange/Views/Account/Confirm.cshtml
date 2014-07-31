@@ -1,0 +1,30 @@
+﻿@using MLMExchange.Lib
+@using MLMExchange.Lib.Form
+
+@model MLMExchange.Models.Registration.ConfirmModel
+
+@{
+  ViewBag.Title = @MLMExchange.Properties.PrivateResource.AccountNeedConfirmation;
+  Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="b-ac">
+  <header class="b-ac__title">
+    <h1 class="b-ac__text">@MLMExchange.Properties.PrivateResource.AccountNeedConfirmation</h1>
+  </header>
+  <i class="b-ac__block-icon fa fa-exclamation"></i>
+
+  <div class="b-ac__content-wrapper">
+    <span class="b-ac__info-message">
+      @(String.Format(MLMExchange.Properties.PrivateResource.AccountConfirmation__Info, Model.PhoneNumber))
+    </span>
+
+    @using (Html.BeginForm())
+    {
+      @(Html.ApplicationTextBoxFor(x => x.ConfirmationCode, Logic.Properties.GeneralResources.ConfirmationCode,
+      String.Format(MLMExchange.Properties.PrivateResource.AccountConfirmation__Info, Model.PhoneNumber), "default"))
+
+      <input class="b-button register-button b-button_hover-animate_opacity b-ac__confirm-button" type="submit" value="@MLMExchange.Properties.ResourcesA.Button_Apply" />
+    }
+  </div>
+</section><!--B: Account confirmation-->

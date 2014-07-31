@@ -59,6 +59,22 @@ namespace MLMExchange.Models.Registration
     [StringLength(32, MinimumLength = 6, ErrorMessageResourceName = "UserModel__Exception_SkypeInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Skype { get; set; }
 
+    [HiddenInput(DisplayValue = false)]
+    public bool IsUserRegistrationConfirm
+    {
+      get
+      {
+        if (_Object != null)
+        {
+          return _Object.IsUserRegistrationConfirm;
+        }
+        else
+        {
+          return false;
+        }
+      }
+    }
+
     #region ReferalRoleId
     private long? _ReferalRoleId;
 

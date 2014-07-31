@@ -342,4 +342,7 @@
   <data name="Skype" xml:space="preserve">
     <value>Скайп</value>
   </data>
+  <data name="ConfirmationCode" xml:space="preserve">
+    <value>Код подтверждения</value>
+  </data>
 </root>

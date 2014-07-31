@@ -84,6 +84,14 @@ namespace Logic
     /// Относительный путь к фото пользователя
     /// </summary>
     public virtual string PhotoRelativePath { get; set; }
+    /// <summary>
+    /// Код подтверждения регистрации пользователя
+    /// </summary>
+    public virtual string ConfirmationCode { get; set; }
+    /// <summary>
+    /// Подтверждена ли регистрация пользователя
+    /// </summary>
+    public virtual bool IsUserRegistrationConfirm { get; set; }
     //public virtual IList<Payment> Payments { get; set; }
     /// <summary>
     /// Группа платежных систем
@@ -867,6 +875,8 @@ namespace Logic
       Map(x => x.PhotoRelativePath).Nullable().Length(200);
       Map(x => x.PhoneNumber).Not.Nullable().Unique().Length(50);
       Map(x => x.Skype).Not.Nullable().Unique().Length(32);
+      Map(x => x.ConfirmationCode).Not.Nullable().Length(20);
+      Map(x => x.IsUserRegistrationConfirm).Default("0").Not.Nullable();
       References(x => x.PaymentSystemGroup).Column("PaymentSystemGroupId").Unique().Cascade.All();
       HasMany(x => x.Roles).KeyColumn("UserId").Cascade.All();
       References(x => x.RefererRole).Column("RefererRoleId").Cascade.SaveUpdate();

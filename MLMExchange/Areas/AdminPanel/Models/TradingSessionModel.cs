@@ -167,7 +167,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
         {
           if (_NeedProfitBills == null)
           {
-            _NeedProfitBills = _Object.GetNeedPaymentBills().Where(x => x.LogicObject.PaymentState == BillPaymentState.EnoughMoney).Select(x => new BillModel().Bind((Bill)x));
+            _NeedProfitBills = _Object.GetNeedPaymentBills().Select(x => new BillModel().Bind((Bill)x));
           }
 
           return _NeedProfitBills;

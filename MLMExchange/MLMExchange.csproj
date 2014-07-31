@@ -217,6 +217,7 @@
     <Compile Include="Models\ContactMessageModel.cs" />
     <Compile Include="Models\Error\ApplicationExceptionModel.cs" />
     <Compile Include="Models\ExtNetModel.cs" />
+    <Compile Include="Models\Registration\ConfirmModel.cs" />
     <Compile Include="Properties\PrivateResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -792,6 +793,7 @@
     <Content Include="Views\ExceptionHandler\ApplicationException.cshtml" />
     <Content Include="Views\Contacts\Success.cshtml" />
     <Content Include="Views\Account\Success.cshtml" />
+    <Content Include="Views\Account\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -35,7 +35,10 @@ namespace LogicTest.DataObject
         PasswordHash = _DefaultUserPassword,
         Patronymic = "TestUser_Patronymic_" + postfix,
         Surname = "TestUser_Surname_" + postfix,
-        PhoneNumber = "+" + postfix.Substring(0, 10)
+        PhoneNumber = "+" + postfix.Substring(0, 10),
+        Skype = "Skype__" + postfix.Substring(0, 10),
+        ConfirmationCode = postfix.Substring(0, 6),
+        IsUserRegistrationConfirm = true
       };
 
       foreach (var role in roles)
