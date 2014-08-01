@@ -1,0 +1,33 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+.b-arb
+{
+  margin: 20px;
+
+  .b-arb__header
+    {
+    .b-arb__text
+      {
+      font-size: $font-bb !important;
+    }
+  }
+
+  .b-arb__details
+    {
+    .b-arb__details__date
+      {
+      margin-bottom: 5px;
+    }
+
+    .b-arb__details__text
+      {
+      float: left;
+    }
+
+    .b-arb__details__author
+      {
+      float: right;
+    }
+  }
+}

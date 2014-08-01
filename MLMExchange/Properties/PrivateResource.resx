@@ -273,4 +273,7 @@
   <data name="FieldRangeCharCountNotRequired_16_18" xml:space="preserve">
     <value>Минимальное 16, максимальное 18 символов</value>
   </data>
+  <data name="RandomWords__Add" xml:space="preserve">
+    <value>Добавить мысль</value>
+  </data>
 </root>

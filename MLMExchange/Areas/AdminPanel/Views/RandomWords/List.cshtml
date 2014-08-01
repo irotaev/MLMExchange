@@ -1,6 +1,6 @@
 ﻿@using Ext.Net
 @using Ext.Net.MVC
-@model IEnumerable<MLMExchange.Areas.AdminPanel.Models.RandomWordsModel>
+@model IList<MLMExchange.Areas.AdminPanel.Models.RandomWordsModel>
 
 @{
     ViewBag.Title = "RandomWordsList";
@@ -10,15 +10,38 @@
 }
 
 <script data-app-script='true'>
+  function addWord(btn) {
+
+    new Ext.Window({
+      id: "RandomWordsList_Add__Window",
+      width: 600,
+      height: 300,
+      modal: true,
+      title: "@Logic.Properties.GeneralResources.RandomWords",
+      autoScroll: true,
+      autoLoad: {
+        url: "/AdminPanel/RandomWords/Add",
+        params: { AsPartial: true, Method: "GET" },
+        timeout: 60,
+        text: "@MLMExchange.Properties.ResourcesA.Loading",
+        callback: function () {
+          $.each($("#RandomWordsList_Edit__Window").find("script[data-app-script='true']"), function (index, element) {
+            var scriptTag = $(document.createElement('script')).text($(element).text());
+
+            $(scriptTag).appendTo($("body"));
+          });
+        }
+      }
+    }).show();
+  }
+
   function RandomWrodsList__Gird__CommandHandler(command, record) {
-    console.log(command);
-    console.log(record);
 
     if (command == "GetRandomWords") {
       new Ext.Window({
         id: "RandomWordsList_GetRandomWords__Window",
         width: 400,
-        height: 400,
+        height: 300,
         modal: true,
         title: "@Logic.Properties.GeneralResources.RandomWords",
         autoScroll: true,
@@ -38,7 +61,7 @@
       }).show();
     }
     else if (command == "Edit") {
-      new Ext.Window({
+      @*new Ext.Window({
         id: "RandomWordsList_Edit__Window",
         width: 400,
         height: 400,
@@ -47,9 +70,10 @@
         autoScroll: true,
         autoLoad: {
           url: "/AdminPanel/RandomWords/Edit",
-          method : "GET",
-          params: { objectId: record.data.Id, AsPartial: true },
+          params: { objectId: record.data.Id, AsPartial: true, Method: "GET" },
           timeout: 60,
+          mode: 'iframe',
+          method: 'GET',
           text: "@MLMExchange.Properties.ResourcesA.Loading",
           callback: function () {
             $.each($("#RandomWordsList_Edit__Window").find("script[data-app-script='true']"), function (index, element) {
@@ -59,7 +83,8 @@
             });
           }
         }
-      }).show();
+      }).show();*@
+      console.log("Edit");
     }
     else if (command == "Delete") {
       var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.ResourcesA.Delete)";
@@ -80,11 +105,14 @@
 </script>
 
 @{
-  var randomWordsGrid = X.GridPanel()
+  var randomWordsGrid = (X.GridPanel()
     .ID("RandomWordsList__Gird")
     .Layout(LayoutType.Fit)
     .Title(MLMExchange.Properties.ResourcesA.RandomWords)
     .Border(false)
+    .TopBarItem(
+                Html.X().Button().Text(MLMExchange.Properties.PrivateResource.RandomWords__Add).Handler("addWord").Scale(ButtonScale.Medium)
+                )
     .Store(
       X.Store()
       .RemotePaging(true)
@@ -109,6 +137,12 @@
           .Listeners(ls =>
           {
             ls.Command.Handler = String.Format("RandomWrodsList__Gird__CommandHandler(command, record);");
+          }))
+          .BottomBar(
+                    X.PagingToolbar()
+                      .Plugins(X.ProgressBarPager())
+                  )
+          .DirectEvents(ev => {
           }));
 }
 

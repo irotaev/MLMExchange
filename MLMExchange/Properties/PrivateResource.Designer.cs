@@ -313,6 +313,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавить мысль.
+        /// </summary>
+        public static string RandomWords__Add {
+            get {
+                return ResourceManager.GetString("RandomWords__Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Инициатор запроса.
         /// </summary>
         public static string RequestUser {

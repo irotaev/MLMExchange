@@ -14,7 +14,7 @@ using MLMExchange.Lib;
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
   [Auth(typeof(D_AdministratorRole))]
-  public class RandomWordsController : BaseController, IDataObjectCustomizableController<RandomWordsModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
+  public class RandomWordsController : BaseController, IDataObjectCustomizableController<RandomWordsModel, BaseBrowseActionSettings, MLMExchange.Areas.AdminPanel.Controllers.RandomWordsController.CustomEditActionSettings, BaseListActionSetings>
   {
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
@@ -36,11 +36,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return View(new RandomWordsModel().Bind(randomWords));
     }
 
-    public ActionResult Edit(RandomWordsModel model, BaseEditActionSettings actionSettings)
+    public ActionResult Add(RandomWordsModel model, CustomEditActionSettings actionSettings)
     {
       ModelState.Clear();
 
-      if (ControllerContext.HttpContext.Request.HttpMethod == "POST")
+      if (actionSettings.Method != "GET")
       {
         TryUpdateModel<RandomWordsModel>(model);
 
@@ -48,16 +48,43 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         {
           D_RandomWord d_randomwords = model.UnBind();
 
-          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(d_randomwords);
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(d_randomwords);
+
         }
       }
-      else
+
+      if (actionSettings.AsPartial != null)
       {
-        D_RandomWord modelLogic = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        if (actionSettings.AsPartial.Value)
+          ViewData["AsPartial"] = "True";
+      }
+
+      return View(model);
+    }
+
+    public ActionResult Edit(RandomWordsModel model, CustomEditActionSettings actionSettings)
+    {
+      ModelState.Clear();
+
+      D_RandomWord d_randomwords = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_RandomWord>().Where(x => x.Id == actionSettings.objectId).FirstOrDefault();
 
-        if (modelLogic != null)
-          model.Bind(modelLogic);
+      if (model.Id == null)
+      {
+        model.Bind(d_randomwords);
+      }
+      else if (actionSettings.Method != "GET")
+      {
+        TryUpdateModel<RandomWordsModel>(model);
+
+        if (ModelState.IsValid)
+        {
+          d_randomwords = model.UnBind(d_randomwords);
+
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(d_randomwords);
+
+          model.Bind(d_randomwords);
+        }
       }
 
       if (actionSettings.AsPartial != null)
@@ -71,10 +98,21 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
     public ActionResult List(BaseListActionSetings actionSettings)
     {
-      IEnumerable<RandomWordsModel> wordsModel = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_RandomWord>().Where(x => x.Id != null).Select(x => new RandomWordsModel().Bind(x));
+      IList<D_RandomWord> wordsModel = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<D_RandomWord>().Where(x => x.Id != null).List();
 
-      return View(wordsModel);
+      List<RandomWordsModel> randomWordsList = new List<RandomWordsModel>();
+
+      foreach (var words in wordsModel)
+      {
+        RandomWordsModel randomWordsModel = new RandomWordsModel();
+        
+        randomWordsModel.Bind(words);
+
+        randomWordsList.Add(randomWordsModel);
+      }
+
+      return View(randomWordsList);
     }
 
     [HttpPost]
@@ -94,6 +132,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       else
         return null;
     }
-  }
 
+    public class CustomEditActionSettings : BaseEditActionSettings
+    {
+      public string Method { get; set; }
+    }
+  }
 }
