@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MLMExchange.Models;
 using MLMExchange.Lib;
+using Logic.Lib;
 
 namespace MLMExchange.Controllers
 {
@@ -23,7 +24,19 @@ namespace MLMExchange.Controllers
     [HttpPost]
     public ActionResult SendMail(ContactMessageModel contactModel)
     {
-      Mail mail = new Mail(contactModel.EMail, contactModel.UserName, contactModel.Title, contactModel.Text);
+      if (String.IsNullOrEmpty(contactModel.UserName))
+        throw new UserVisible__ArgumentNullException("UserName");
+
+      if (String.IsNullOrEmpty(contactModel.Email))
+        throw new UserVisible__ArgumentNullException("EMail");
+
+      if (String.IsNullOrEmpty(contactModel.Title))
+        throw new UserVisible__ArgumentNullException("Title");
+
+      if (String.IsNullOrEmpty(contactModel.Text))
+        throw new UserVisible__ArgumentNullException("Text");
+
+      Mail mail = new Mail(contactModel.Email, contactModel.UserName, contactModel.Title, contactModel.Text);
       mail.SendMailMessage();
       return Redirect("/Contacts/Success");
     }

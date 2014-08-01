@@ -828,6 +828,40 @@ namespace Logic
   }
   #endregion
 
+  #region ResetPassword
+  public class D_ResetPassword : D_BaseObject
+  {
+    public virtual D_User User { get; set; }
+    /// <summary>
+    /// Секретный ключ
+    /// </summary>
+    public virtual string HashCode { get; set; }
+    /// <summary>
+    /// Статус заявки
+    /// </summary>
+    public virtual ResetPasswordState State { get; set; }
+  }
+  #endregion
+
+  /// <summary>
+  /// Статус заявки на восстановление пароля
+  /// </summary>
+  public enum ResetPasswordState : int
+  { 
+    /// <summary>
+    /// Не подтверждённый статус
+    /// </summary>
+    NotConfirmed = 0,
+    /// <summary>
+    /// Заявка была отправлена
+    /// </summary>
+    Sended = 1,
+    /// <summary>
+    /// Подтвержденна
+    /// </summary>
+    Confirmed = 2
+  }
+
   #endregion
 
   #region Map Entity
@@ -1113,6 +1147,16 @@ namespace Logic
     {
       Map(x => x.Author).Length(100).Nullable();
       Map(x => x.Text).Length(3000).Nullable();
+    }
+  }
+
+  public class D_ResetPassword_Map : D_BaseObject_Map<D_ResetPassword>
+  {
+    public D_ResetPassword_Map()
+    {
+      References(x => x.User).Column("UserId").Not.Nullable();
+      Map(x => x.HashCode).Not.Nullable();
+      Map(x => x.State).CustomType<ResetPasswordState>();
     }
   }
   #endregion

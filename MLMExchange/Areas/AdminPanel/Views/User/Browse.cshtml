@@ -1,10 +1,40 @@
-п»ї@model MLMExchange.Models.Registration.UserModel
+@model MLMExchange.Models.Registration.UserModel
 
 @if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
 {
   ViewBag.Title = Logic.Properties.GeneralResources.User;
   Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
 }
+
+<script data-app-script='true'>
+
+  function ShowPaymentSystems($sellerId)
+  {
+    new Ext.Window({
+      id: "ShowPaymentSystems__Window",
+      width: 800,
+      height: 600,
+      modal: true,
+      autoScroll: true,
+      title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
+      autoLoad: {
+        url: "/AdminPanel//PaymentSystemGroup/Browse",
+        params: { ForUserId: $sellerId },
+        nocache: true,
+        text: "@MLMExchange.Properties.ResourcesA.Loading",
+        callback: function () {
+          $.each($("#ShowPaymentSystems__Window").find("script[data-app-script='true']"), function (index, element) {
+            var scriptTag = $(document.createElement('script')).text($(element).text());
+
+            $(scriptTag).appendTo($("body"));
+          });
+        }
+      }
+    }).show();
+  }
+</script>
+
+
 
 <section class="b-ui">
   <header class="b-ui__header">
@@ -66,5 +96,7 @@
       <span class="b-ui__details-ltext">@Logic.Properties.GeneralResources.Skype</span>
       <span class="b-ui__details-rtext">@Model.Skype</span>
     </div>
+
+    <button style="float: left;display: block;width: 100%; margin-top: 5px;" onclick="ShowPaymentSystems(@Model.Id)">Показать платёжные системы</button>
   </div>
 </section><!--B: User info-->

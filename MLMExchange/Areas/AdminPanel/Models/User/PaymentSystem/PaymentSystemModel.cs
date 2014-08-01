@@ -61,23 +61,28 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     public string BankName { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [StringLength(10, MinimumLength = 10, ErrorMessageResourceName = "FieldCharCountNotRequired_10", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [StringLength(10, MinimumLength = 10, ErrorMessageResourceName = "FieldCharCountNotRequired_10", ErrorMessageResourceType = typeof(MLMExchange.Properties.PrivateResource))]
+    [RegularExpression("^[0-9]+$", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string INN { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [StringLength(9, MinimumLength = 9, ErrorMessageResourceName = "FieldCharCountNotRequired_9", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [StringLength(9, MinimumLength = 9, ErrorMessageResourceName = "FieldCharCountNotRequired_9", ErrorMessageResourceType = typeof(MLMExchange.Properties.PrivateResource))]
+    [RegularExpression("^[0-9]+$", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string KPP { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [StringLength(20, MinimumLength = 20, ErrorMessageResourceName = "FieldCharCountNotRequired_20", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [StringLength(20, MinimumLength = 20, ErrorMessageResourceName = "FieldCharCountNotRequired_20", ErrorMessageResourceType = typeof(MLMExchange.Properties.PrivateResource))]
+    [RegularExpression("^[0-9]+$", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string CurrentAccount { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [StringLength(9, MinimumLength = 9, ErrorMessageResourceName = "UserModel__Exception_SkypeInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [StringLength(9, MinimumLength = 9, ErrorMessageResourceName = "FieldCharCountNotRequired_9", ErrorMessageResourceType = typeof(MLMExchange.Properties.PrivateResource))]
+    [RegularExpression("^[0-9]+$", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string BIK { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [StringLength(18, MinimumLength = 16, ErrorMessageResourceName = "FieldRangeCharCountNotRequired_16_18", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    [StringLength(18, MinimumLength = 16, ErrorMessageResourceName = "FieldRangeCharCountNotRequired_16_18", ErrorMessageResourceType = typeof(MLMExchange.Properties.PrivateResource))]
+    [RegularExpression("^[0-9]+$", ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string CardNumber { get; set; }
 
     /// <summary>

@@ -15,7 +15,8 @@ namespace MLMExchange.Models
     public string UserName { get; set; }
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    public string EMail { get; set; }
+    [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceName = "FieldEmailInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string Email { get; set; }
 
     public string Title { get; set; }
 

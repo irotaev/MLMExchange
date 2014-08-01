@@ -187,6 +187,51 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Общее количество символов 10.
+        /// </summary>
+        public static string FieldCharCountNotRequired_10 {
+            get {
+                return ResourceManager.GetString("FieldCharCountNotRequired_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Общее количество символов 20.
+        /// </summary>
+        public static string FieldCharCountNotRequired_20 {
+            get {
+                return ResourceManager.GetString("FieldCharCountNotRequired_20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Общее количество символов 9.
+        /// </summary>
+        public static string FieldCharCountNotRequired_9 {
+            get {
+                return ResourceManager.GetString("FieldCharCountNotRequired_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Минимальное количество символов 8.
+        /// </summary>
+        public static string FieldMinCharCountNotRequired_8 {
+            get {
+                return ResourceManager.GetString("FieldMinCharCountNotRequired_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Минимальное 16, максимальное 18 символов.
+        /// </summary>
+        public static string FieldRangeCharCountNotRequired_16_18 {
+            get {
+                return ResourceManager.GetString("FieldRangeCharCountNotRequired_16_18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Получить реферальный url.
         /// </summary>
         public static string GetUserRefererUrl {
@@ -282,6 +327,51 @@ namespace MLMExchange.Properties {
         public static string RequirePayInterestRateToSaller {
             get {
                 return ResourceManager.GetString("RequirePayInterestRateToSaller", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Забыли пароль?.
+        /// </summary>
+        public static string ResetPasswordClickButton {
+            get {
+                return ResourceManager.GetString("ResetPasswordClickButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Шучу, не забыл.
+        /// </summary>
+        public static string ResetPasswordClickButton__Out {
+            get {
+                return ResourceManager.GetString("ResetPasswordClickButton__Out", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Восстановление пароля - {0}.
+        /// </summary>
+        public static string ResetPasswordMailSubject {
+            get {
+                return ResourceManager.GetString("ResetPasswordMailSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ваш новый пароль: {0}.
+        /// </summary>
+        public static string ResetPasswordMailText {
+            get {
+                return ResourceManager.GetString("ResetPasswordMailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to На вашу почту пришёл новый пароль.
+        /// </summary>
+        public static string SuccessAccountResetPassword {
+            get {
+                return ResourceManager.GetString("SuccessAccountResetPassword", resourceCulture);
             }
         }
         

@@ -147,6 +147,13 @@ namespace MLMExchange.Controllers
       //ViewData["AdminPanel__CenterBlock"] = 
     }
 
+    public enum RedirectType : int 
+    {
+      SuccessRegister = 0,
+      SuccessResetPassword = 1,
+      SuccessActivated = 3
+    }
+
     protected override void Initialize(System.Web.Routing.RequestContext requestContext)
     {
       base.Initialize(requestContext);
@@ -165,6 +172,13 @@ namespace MLMExchange.Controllers
       TryUpdateModel<LoginModel>(loginModel);
 
       ViewBag.LoginModel = loginModel;
+      #endregion
+
+      #region Модель восстановления пароля
+      ResetPasswordModel resetModel = new ResetPasswordModel();
+      TryUpdateModel<ResetPasswordModel>(resetModel);
+
+      ViewBag.ResetPasswordModel = resetModel;
       #endregion
 
       #region Добавляю данные в ViewData

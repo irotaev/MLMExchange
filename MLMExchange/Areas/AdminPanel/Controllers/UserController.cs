@@ -105,6 +105,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         if (ModelState.IsValid)
         {
+          if (model.Image == null)
+            throw new Logic.Lib.UserVisible__ArgumentNullException("Image");
+
           #region Сохраняю фото
           if (model.Image != null)
           {

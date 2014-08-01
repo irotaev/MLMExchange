@@ -35,10 +35,10 @@
             <button class="btn-clear"></button>
           </div>
 
-          <div class="b-ib pb-cf__field pb-cf__field_name_email input-control text">
-            @Html.CustomValidationMessageFor(x => x.EMail)
+          <div class="b-ib pb-cf__field pb-cf__field_name_name input-control text">
+            @Html.CustomValidationMessageFor(x => x.Email)
             <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterEmail</label>
-            @Html.TextBoxFor(x => x.EMail, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterEmail, @class = "b-ib__input" })
+            @Html.TextBoxFor(x => x.Email, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterEmail, @class = "b-ib__input" })
             <button class="btn-clear"></button>
           </div>
 
