@@ -121,6 +121,14 @@
   </script>
   <!--#endregion-->
 
+  <script>
+    require(["jquery", "Lib/LoginForm"], function ($, module) {
+      $(function () {
+        new module.LoginForm($("#MainLayout__LoginForm"), $("#MainLayout__ResetPasswordForm"));
+      });
+    });
+  </script>
+
   <a href="#top" id="b-scroll"></a>
 
   <div class="main-wrapper">
@@ -145,8 +153,21 @@
             {
               <div class="b-button b-button_hover-animate_border-bottom enter-button">
                 <div class="pb-text">@MLMExchange.Properties.ResourcesA.Enter</div>
+                
+                <div class="login-section">
+                  <div class="login-area-arrow"></div>
 
-                @{Html.RenderPartial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel);}
+                  <div class="login-enter-area">
+                    <div id="MainLayout__LoginForm">
+                      @Html.Partial("_LoginForm", (MLMExchange.Models.Registration.LoginModel)ViewBag.LoginModel)
+                    </div>
+
+                    <div id="MainLayout__ResetPasswordForm" style="display: none;">
+                      @Html.Partial("_ResetPasswordForm", (MLMExchange.Models.Registration.ResetPasswordModel)ViewBag.ResetPasswordModel)
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
               <a href="/Account/Register">
@@ -190,7 +211,7 @@
         <div class="sosial-buttons__inner-wrapper">
             <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon twitter"></i></div>
             <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button"><i class="icon facebook"></i></div>
-            <div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div>
+            <a href="https://vk.com/mycrypto" target="_blank"><div class="b-button b-button_color_light-grey b-button_hover-animate_border-bottom sosial-button sosial-button_location_last"><i class="icon vkontakte"></i></div></a>
           </div>
 
         @*<script type="text/javascript">

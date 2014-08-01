@@ -243,4 +243,37 @@
   <data name="AccountRegister__Sms_ActivationCode" xml:space="preserve">
     <value>Kod dlia activacii accaynta: {0}</value>
   </data>
+  <data name="ResetPasswordMailSubject" xml:space="preserve">
+    <value>Восстановление пароля - {0}</value>
+  </data>
+  <data name="ResetPasswordMailText" xml:space="preserve">
+    <value>Ваш новый пароль: {0}</value>
+  </data>
+  <data name="SuccessAccountResetPassword" xml:space="preserve">
+    <value>На вашу почту пришёл новый пароль</value>
+  </data>
+  <data name="ResetPasswordClickButton" xml:space="preserve">
+    <value>Забыли пароль?</value>
+  </data>
+  <data name="ResetPasswordClickButton__Out" xml:space="preserve">
+    <value>Шучу, не забыл</value>
+  </data>
+  <data name="FieldCharCountNotRequired_10" xml:space="preserve">
+    <value>Общее количество символов 10</value>
+  </data>
+  <data name="FieldCharCountNotRequired_20" xml:space="preserve">
+    <value>Общее количество символов 20</value>
+  </data>
+  <data name="FieldCharCountNotRequired_9" xml:space="preserve">
+    <value>Общее количество символов 9</value>
+  </data>
+  <data name="FieldMinCharCountNotRequired_8" xml:space="preserve">
+    <value>Минимальное количество символов 8</value>
+  </data>
+  <data name="FieldRangeCharCountNotRequired_16_18" xml:space="preserve">
+    <value>Минимальное 16, максимальное 18 символов</value>
+  </data>
+  <data name="RandomWords__Add" xml:space="preserve">
+    <value>Добавить мысль</value>
+  </data>
 </root>

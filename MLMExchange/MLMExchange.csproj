@@ -70,6 +70,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -115,10 +116,8 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -218,10 +217,16 @@
     <Compile Include="Models\Error\ApplicationExceptionModel.cs" />
     <Compile Include="Models\ExtNetModel.cs" />
     <Compile Include="Models\Registration\ConfirmModel.cs" />
+    <Compile Include="Models\Registration\ResetPasswordModel.cs" />
     <Compile Include="Properties\PrivateResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PrivateResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ResourcesA1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourcesA.resx</DependentUpon>
     </Compile>
     <Compile Include="Views\AbstarctViewSetting.cs" />
     <Compile Include="WebLogic\Authorization.cs" />
@@ -507,18 +512,6 @@
     <Content Include="bower_components\jquery\src\serialize.js" />
     <Content Include="bower_components\jquery\src\traversing.js" />
     <Content Include="bower_components\opentip\css\opentip.css" />
-    <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.min.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-jquery.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-jquery.min.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-native-excanvas.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-native-excanvas.min.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-native.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-native.min.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-prototype-excanvas.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-prototype-excanvas.min.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-prototype.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-prototype.min.js" />
     <Content Include="bower_components\opentip\files\close-button-angle.png" />
     <Content Include="bower_components\opentip\files\tests.png" />
     <Content Include="bower_components\opentip\index.js" />
@@ -729,7 +722,7 @@
     <Content Include="Content\MetroUICSS\fonts\metroSysIcons.woff" />
     <Content Include="Areas\AdminPanel\Views\RandomWords\List.cshtml" />
     <Content Include="Areas\AdminPanel\Views\RandomWords\Browse.cshtml" />
-    <Content Include="bower_components\opentip\downloads\readme.md" />
+    <Content Include="Areas\AdminPanel\Views\RandomWords\Add.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -764,7 +757,9 @@
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Images\0b1447c7-47ab-4d43-aee2-82f69357ccfc_.jpg" />
-    <Content Include="Uploads\Images\anonymous-user.png" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -773,9 +768,6 @@
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Views\Web.config">
-      <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
@@ -793,7 +785,8 @@
     <Content Include="Views\ExceptionHandler\ApplicationException.cshtml" />
     <Content Include="Views\Contacts\Success.cshtml" />
     <Content Include="Views\Account\Success.cshtml" />
-    <Content Include="Views\Account\Confirm.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Shared\_ResetPasswordForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -806,16 +799,19 @@
     <EmbeddedResource Include="Properties\PrivateResource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>PrivateResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\ResourcesA.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourcesA.Designer.cs</LastGenOutput>
+      <LastGenOutput>ResourcesA1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Framework\RequireJs\config.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Controls\AdminBlock\AdminBlock.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Form.ts" />
+    <TypeScriptCompile Include="Scripts\Lib\LoginForm.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Menu\AdminMainMenu.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Scroll.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Site.ts" />

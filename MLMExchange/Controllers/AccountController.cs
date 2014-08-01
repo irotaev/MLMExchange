@@ -11,6 +11,7 @@ using MLMExchange.Lib;
 using NHibernate.Linq;
 using Microsoft.Practices.Unity;
 using Logic.Lib;
+using System.Threading.Tasks;
 
 namespace MLMExchange.Controllers
 {
@@ -54,6 +55,54 @@ namespace MLMExchange.Controllers
       }
 
       return Redirect("/AdminPanel/User/ControlPanel");
+    }
+
+    [HttpPost]
+    public ActionResult ResetPassword(string redirectUrl = null)
+    {
+      ModelState.Clear();
+
+      ResetPasswordModel model = new ResetPasswordModel();
+      TryUpdateModel<ResetPasswordModel>(model);
+
+      if (model.Email == null)
+        throw new Logic.Lib.UserVisible__ArgumentNullException("Email");
+
+
+      if(ModelState.IsValid)
+      {
+        D_ResetPassword passwordResetDataModel = new ResetPasswordDataModel().UnBind();
+
+        D_User user = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.
+          Query<D_User>().Where(x => x.Email == model.Email).FirstOrDefault();
+
+        if (user == null)
+          throw new Logic.Lib.UserVisibleException("Нет такого пользователя с данным E-Mail");
+
+        string newPassword = Guid.NewGuid().ToString("N").Substring(0, 8);
+        passwordResetDataModel.User = user;
+        passwordResetDataModel.HashCode = Md5Hasher.ConvertStringToHash(newPassword);
+        passwordResetDataModel.State = ResetPasswordState.Sended;
+        user.PasswordHash = Md5Hasher.ConvertStringToHash(newPassword);
+
+        Mail message = new Mail(Mail.supportEmail, Mail.supportEmail,
+                                String.Format(MLMExchange.Properties.PrivateResource.ResetPasswordMailSubject, MLMExchange.Properties.ResourcesA.MyCryptPage),
+                                String.Format(MLMExchange.Properties.PrivateResource.ResetPasswordMailText, newPassword),
+                                user.Email);
+        Task.Factory.StartNew(() => {
+          message.SendMailMessage();
+        });
+
+        if (message.State == Mail.MailState.Error)
+          throw new Logic.Lib.ApplicationException();
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(passwordResetDataModel);
+      }
+
+      return RedirectToAction("Success", "Account", new { 
+        Type = RedirectType.SuccessResetPassword
+      });
     }
 
     public ActionResult LogOut()
@@ -109,6 +158,7 @@ namespace MLMExchange.Controllers
       return View(userModel);
     }
 
+
     [Auth]
     public ActionResult Confirm(ConfirmModel model)
     {
@@ -134,7 +184,10 @@ namespace MLMExchange.Controllers
 
             _NHibernateSession.SaveOrUpdate(CurrentSession.Default.CurrentUser);
 
-            return Redirect("/Account/Success");
+            return RedirectToAction("Success", "Account", new
+            {
+              Type = RedirectType.SuccessRegister
+            });
           }
           else
           {
@@ -146,8 +199,21 @@ namespace MLMExchange.Controllers
       return View(model);
     }
 
-    public ActionResult Success()
+    public ActionResult Success(RedirectType Type)
     {
+      switch (Type)
+      { 
+        case RedirectType.SuccessRegister:
+          ViewBag.TextSuccess = String.Format("{0}{1}", MLMExchange.Properties.ResourcesA.SuccessAccountRegister, "!");
+          break;
+        case RedirectType.SuccessResetPassword:
+          ViewBag.TextSuccess = String.Format("{0}{1}", MLMExchange.Properties.PrivateResource.SuccessAccountResetPassword, "!");
+          break;
+        case RedirectType.SuccessActivated:
+          ViewBag.TextSuccess = "Hey, what's up?";
+          break;
+      }
+
       return View();
     }
   }

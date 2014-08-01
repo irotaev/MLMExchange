@@ -179,4 +179,18 @@ $headerButton_Height: 64px;
        }
      }
   }
+
+  .b-ib__swapper
+  {
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    .b-ib__swapper__button
+      {
+      float: right;
+      display: inline;
+      cursor: pointer;
+      color: #fff;
+    }
+  }
 }

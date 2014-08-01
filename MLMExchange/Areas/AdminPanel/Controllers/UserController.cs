@@ -16,6 +16,7 @@ using NHibernate.Linq;
 using MLMExchange.Areas.AdminPanel.Models;
 using System.Collections;
 using Ext.Net.MVC;
+using MLMExchange.Lib.Image;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
@@ -105,6 +106,14 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         if (ModelState.IsValid)
         {
+          // TODO: Пересмотреть валидацию фото
+          #region Валидация фото
+
+          Image.Validation imageValidation = new Image.Validation(model.Image);
+          imageValidation.ValidateImage();
+
+          #endregion
+
           #region Сохраняю фото
           if (model.Image != null)
           {

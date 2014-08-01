@@ -6,7 +6,6 @@
 {
   position: relative;
   top: -110px;
-}
 
 .pb-cf__form-fields-wrapper
 {
@@ -57,9 +56,14 @@
             @include font-icon("\f0d4", $grey_4, FontAwesome, 40px);
           }
           &.pb-cf__icon__odnoklasniki
-            {
+          {
             @include font-icon("\f0e6", $grey_4, FontAwesome, 40px);
           }
+          &.pb-cf__icon__vk
+          {
+            @include font-icon("\f189", $grey_4, FontAwesome, 40px);
+          }
+        }
         }
 
         .pb-cf__text
