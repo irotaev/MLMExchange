@@ -39,12 +39,10 @@
     function TradingSession__PayYieldTradingSession_CommandColumnRenderer(grid, command, record, row) {
       console.log(arguments);
 
-      if (record.data.BillState == "WaitingPayment")
-      {
+      if (record.data.BillState == "WaitingPayment") {
         command.disabled = false;
       }
-      else 
-      {
+      else {
         command.disabled = true;
       }
     }
@@ -236,6 +234,21 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
         }).show();
       }
     }
+
+    function tradingSession_TradingSessionProfitPayment_Grid__BillPaymentStateRenderer(value, metaData, record, row, col, store, gridView) {
+      var $paymentState = $("<span></span>").addClass("b-ts__bill-payment-state").addClass("b-ts__bill-payment-state_value-type_" + record.data.BillPaymentState.toLowerCase());
+      $paymentState.text(value);
+
+      return $paymentState[0].outerHTML;
+    }
+
+    function TradingSession_TradingSessionProfitPayment_Grid__PrepareCommand(grid, command, record, row) {
+      if (command.command == "NeedProfitBill__Confirm") {
+        if (record.data.BillPaymentState != "EnoughMoney") {
+          command.disabled = true;
+        }
+      }
+    }
   </script>
 
   <div class="b-text b-ts__text b-ts__session-need-profit" id="b-ts__session-need-profit_ID">
@@ -252,6 +265,8 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
           .Model(X.Model().Fields(
               new ModelField { Name = "Id" },
               new ModelField { Name = "CreationDateTime" },
+              new ModelField { Name = "BillPaymentState" },
+              new ModelField { Name = "BillPaymentStateAsString" },
               new ModelField { Name = "User__Login", ServerMapping = "User.Login" },
               new ModelField { Name = "MoneyAmount" },
               new ModelField { Name = "PaymentIds", ServerMapping = "PaymentIds" }
@@ -264,12 +279,15 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
           .ColumnModel(
             X.RowNumbererColumn(),
             X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Width(100).Flex(1),
-            X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(100).Flex(1),
+            X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(50).Flex(1),
+            X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillPaymentStateAsString").Width(50).Flex(1)
+                .Renderer("tradingSession_TradingSessionProfitPayment_Grid__BillPaymentStateRenderer"),
             X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(100).Flex(1),
             X.ImageCommandColumn().Width(130).Commands(
               X.ImageCommand().CommandName("NeedProfitBill__ShowInformation").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),
               X.ImageCommand().CommandName("NeedProfitBill__Confirm").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept)
             )
+              .PrepareCommand("TradingSession_TradingSessionProfitPayment_Grid__PrepareCommand")
               .Listeners(ls =>
               {
                 ls.Command.Fn = "needProfitBill__ButtonListener";

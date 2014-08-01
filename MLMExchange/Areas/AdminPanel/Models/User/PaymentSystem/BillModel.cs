@@ -52,6 +52,16 @@ namespace MLMExchange.Areas.AdminPanel.Models.PaymentSystem
     /// Состояние счета
     /// </summary>
     public BillPaymentState BillPaymentState { get; set; }
+    /// <summary>
+    /// Состояние счета строкой
+    /// </summary>
+    public string BillPaymentStateAsString
+    {
+      get
+      {
+        return BillPaymentState.GetLocalDisplayName();
+      }
+    }
     
     public override BillModel Bind(Bill @object)
     {

@@ -120,3 +120,16 @@
     }
   }
 }
+
+// Грид сессии в состоянии "ожидает прибыли" и "подтверждение прибыли". Прибыль ТС
+#b-ts__session-need-profit_ID
+{
+  .b-ts__bill-payment-state
+  {
+    &.b-ts__bill-payment-state_value-type_na {}
+    &.b-ts__bill-payment-state_value-type_waitingpayment {color: $color_text__warning_color !important; }
+    &.b-ts__bill-payment-state_value-type_paid {color: $color_green_sea_c !important;}
+    &.b-ts__bill-payment-state_value-type_enoughmoney {color: $blue_a_4_c !important;}
+    &.b-ts__bill-payment-state_value-type_notpaid {color: $orange2 !important;}
+  }
+}
