@@ -21,10 +21,12 @@ export class LoginForm
   {
     var $buttonLogin = $loginWrapper.find("span.b-ib__swapper__button");
     var $buttonReset = $resetWrapper.find("span.b-ib__swapper__button");
+    var $changebleContent = $(".login-enter-area");
 
     var startCallback = function ()
     {
       $resetWrapper.fadeOut('slow', function () {
+        $changebleContent.animate({ height: 250 }, 'slow');
         $loginWrapper.fadeIn('slow');
         $buttonLogin.one("click", stopCallback);
       });
@@ -39,6 +41,7 @@ export class LoginForm
     {
       $loginWrapper.fadeOut('slow', function ()
       {
+        $changebleContent.animate({ height: 185 }, 'slow');
         $resetWrapper.fadeIn('slow');
         $buttonReset.one("click", startCallback);
       });

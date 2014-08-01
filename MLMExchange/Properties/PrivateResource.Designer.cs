@@ -322,6 +322,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Реферальная ссылка.
+        /// </summary>
+        public static string RefererUrl {
+            get {
+                return ResourceManager.GetString("RefererUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Инициатор запроса.
         /// </summary>
         public static string RequestUser {

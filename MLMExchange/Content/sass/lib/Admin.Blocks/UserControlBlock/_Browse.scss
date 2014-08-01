@@ -35,6 +35,21 @@
       }
     }
 
+    .b-ucp__user-referal
+    {
+      float: left;
+
+      .b-ucp__user-referal-link
+      {
+        display: block;
+        background-color: rgba(247, 247, 247, 1);
+        border: 1px solid #DDDDDD;
+        border-radius: 5px;
+        padding: 5px;
+        margin-top: 5px;
+      }
+    }
+
     .b-ucp-mc-info
     {
       float: right;

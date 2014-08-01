@@ -35,6 +35,24 @@ else if (ViewData["Ajax"] != null && ViewData["Ajax"] == "True")
 
         popUpWindow.show();
       }
+
+      $(function () {
+        $('.b-ucp__user-referal-link').click(function () {
+          var range, selection;
+
+          if (window.getSelection && document.createRange) {
+            selection = window.getSelection();
+            range = document.createRange();
+            range.selectNodeContents($(this)[0]);
+            selection.removeAllRanges();
+            selection.addRange(range);
+          } else if (document.selection && document.body.createTextRange) {
+            range = document.body.createTextRange();
+            range.moveToElementText($(this)[0]);
+            range.select();
+          }
+        });
+      });
     </script>
   
     <header class="b-ab__title"><i class="b-ab__icon fa fa-random"></i> @MLMExchange.Properties.ResourcesA.UserControlBlock</header>
@@ -53,6 +71,15 @@ else if (ViewData["Ajax"] != null && ViewData["Ajax"] == "True")
           <a class="b-ucp__update-mc" href="/AdminPanel/User/AddMyCrypt">@MLMExchange.Properties.ResourcesA.Button_UpdateMyCrypt</a>
           <span class="b-ucp__mc-count">@((Model.CurrentUser.UserRoles.First(x => (x as Logic.D_UserRole) != null) as Logic.D_UserRole).MyCryptCount)</span>
           <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.YourCurrentMyCryptBalance" data-ot-style="BlackStyle"></i>
+        </div>
+
+        <div class="b-ucp__user-referal">
+          @MLMExchange.Properties.PrivateResource.RefererUrl: <i class="b-ucp__info fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.CurrentUserRefererUrl" data-ot-style="BlackStyle"></i>
+          <div class="b-ucp__user-referal-link">
+            <span>
+              @(Url.Action("Register", "Account", new { area = "", RefererId = Model.UserRoleId }, Request.Url.Scheme))
+            </span>
+          </div>
         </div>
       </div>
 

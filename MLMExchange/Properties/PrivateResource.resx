@@ -276,4 +276,7 @@
   <data name="RandomWords__Add" xml:space="preserve">
     <value>Добавить мысль</value>
   </data>
+  <data name="RefererUrl" xml:space="preserve">
+    <value>Реферальная ссылка</value>
+  </data>
 </root>
