@@ -24,7 +24,7 @@
   </header>
 
   <div class="b-sb__content">
-    @using (Html.BeginForm("SendMail", "Contacts", FormMethod.Post, new { @class = "b-f" }))
+    @using (Html.BeginForm("Index", "Contacts", FormMethod.Post, new { @class = "b-f" }))
     {
       <section class="pb-cf">
         <div class="pb-cf__form-fields-wrapper">
@@ -63,7 +63,7 @@
             <div class="pb-cf__additional-info-wrapper">
               <div class="pb-cf__item">
                 <i class="pb-cf__icon pb-cf__icon__email"></i>
-                <span class="pb-cf__text text">notes@my-crypt.com</span>
+                <a href="mailto:notes@my-crypt.com?Subject=Hey, Admin" target="_top"><span class="pb-cf__text text pb-cf__text__clickable">notes@my-crypt.com</span></a>
               </div>
 
               <div class="pb-cf__item">
@@ -73,17 +73,21 @@
 
               <div class="pb-cf__item">
                 <i class="pb-cf__icon pb-cf__icon__skype"></i>
-                <a href="#room1"><span class="pb-cf__text text pb-cf__text__clickable">#room1</span></a>
-                <a href="#room2"><span class="pb-cf__text text pb-cf__text__clickable">#room2</span></a>
-                <a href="#room3"><span class="pb-cf__text text pb-cf__text__clickable">#room3</span></a>
+                <a href="skype:?chat&blob=Qsl8X9OJXWBpOjInk2IGYK_UwB94qoLrs-PSuyooQw8RFPEPmsxyqxI7BvHMZS5bjI0ua9CDbQ"><span class="pb-cf__text text pb-cf__text__clickable">#room1</span></a>
+                <a href="skype:?chat&blob=4axarD-31YwRcNNWxvilydbf4pLXd7UwQ6YKTkMVJKQB8XrL81FBUV8IryHG9rf--CaBFvKxKk3-OWRnXg"><span class="pb-cf__text text pb-cf__text__clickable">#room2</span></a>
+                <a href="skype:?chat&blob=dVwZATK6vaWj1Fht3reqGP_OV8DISU7rPNVi-8Wg9PZGu9XWUyhVA0L2xroUVakV62lq8Jr6HK14mGHxRQ"><span class="pb-cf__text text pb-cf__text__clickable">#room3</span></a>
               </div>
               <div class="pb-cf__item">
                 <i class="pb-cf__icon pb-cf__icon__google"></i>
-                <a href="https://plus.google.com/communities/117618579845158330089"><span class="pb-cf__text text pb-cf__text__clickable">Google+</span></a>
+                <a href="https://plus.google.com/communities/117618579845158330089" target="_blank"><span class="pb-cf__text text pb-cf__text__clickable">Google+</span></a>
               </div>
               <div class="pb-cf__item">
                 <i class="pb-cf__icon pb-cf__icon__odnoklasniki"></i>
-                <a href="http://www.odnoklassniki.ru/mycrypto"><span class="pb-cf__text text pb-cf__text__clickable">Однокласники</span></a>
+                <a href="http://www.odnoklassniki.ru/mycrypto" target="_blank"><span class="pb-cf__text text pb-cf__text__clickable">Одноклассники</span></a>
+              </div>
+              <div class="pb-cf__item">
+                <i class="pb-cf__icon pb-cf__icon__vk"></i>
+                <a href="https://vk.com/mycrypto" target="_blank"><span class="pb-cf__text text pb-cf__text__clickable">VK</span></a>
               </div>
             </div>
 

@@ -124,6 +124,9 @@
           new ModelField { Name = "Author", ServerMapping = "Author" },
           new ModelField { Name = "Text", ServerMapping = "Text" }
       )))
+      .DirectEvents(ev => {
+        ev.ItemDblClick.Before = "http://localhost:53552/AdminPanel/RandomWords/Edit";
+      })
       .ColumnModel(
         X.RowNumbererColumn(),
         X.Column().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Flex(1),
@@ -142,7 +145,8 @@
                     X.PagingToolbar()
                       .Plugins(X.ProgressBarPager())
                   )
-          .DirectEvents(ev => {
+          .DirectEvents(ev =>
+          {
           }));
 }
 

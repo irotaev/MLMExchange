@@ -151,7 +151,8 @@ namespace MLMExchange.Controllers
     {
       SuccessRegister = 0,
       SuccessResetPassword = 1,
-      SuccessActivated = 3
+      SuccessActivated = 3,
+      SuccessSendMail = 4
     }
 
     protected override void Initialize(System.Web.Routing.RequestContext requestContext)

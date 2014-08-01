@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using MLMExchange.Areas.AdminPanel.Models;
 
 namespace MLMExchange.Models
 {
   /// <summary>
   /// Модель сообщения контакта
   /// </summary>
-  public class ContactMessageModel
+  public class ContactMessageModel : AbstractModel
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string UserName { get; set; }
