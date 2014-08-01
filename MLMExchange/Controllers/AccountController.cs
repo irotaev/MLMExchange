@@ -131,7 +131,7 @@ namespace MLMExchange.Controllers
           #endregion
 
           D_User user = userModel.UnBind();
-          userModel.Validate(this.ModelState);
+          userModel.RegistrationValidate(this.ModelState);
 
           if (this.ModelState.IsValid)
           {

@@ -57,6 +57,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult Edit(UserModel model, BaseEditActionSettings actionSettings)
     {
+      ModelState.Clear();
+
       Logic.D_User user = CurrentSession.Default.CurrentUser;
 
       if (model.Id == null)
@@ -65,6 +67,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       }
       else if (ControllerContext.HttpContext.Request.HttpMethod == "POST")
       {
+        TryUpdateModel<UserModel>(model);
+
         if (ModelState.IsValid)
         {
           #region Сохраняю фото
@@ -76,14 +80,19 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           }
           #endregion
 
-          user = model.UnBind(user);
+          model.EditValidate(ModelState, user);
 
-          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
+          if (ModelState.IsValid)
+          {
+            user = model.UnBind(user);
+
+            Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
+          }
 
           model.Bind(user);
         }
       }
-
+      model.PhoneNumber = "434343";
       return View(model);
     }
 

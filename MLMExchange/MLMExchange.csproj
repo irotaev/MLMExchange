@@ -223,7 +223,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrivateResource.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\ResourcesA1.Designer.cs">
+    <Compile Include="Properties\ResourcesA.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesA.resx</DependentUpon>
@@ -239,11 +239,6 @@
     <Compile Include="Models\Registration\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs" />
-    <Compile Include="Properties\ResourcesA.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ResourcesA.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Ext.NET.MVC\BREAKING_CHANGES.txt" />
@@ -803,8 +798,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\ResourcesA.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ResourcesA1.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <LastGenOutput>ResourcesA.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

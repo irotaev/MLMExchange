@@ -19,7 +19,21 @@
 
     <div class="b-ib__input-content">
       <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterLogin</label>
-      @Html.TextBoxFor(x => x.Login, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterLogin, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
+      @{
+        Dictionary<string, object> login_additionalAttributes = new Dictionary<string,object>
+        {
+          { "type", "text" },
+          { "placeholder", @MLMExchange.Properties.ResourcesA.EnterLogin },
+          { "class", String.Format("b-ib__input b-ib__input_type_{0}", type) }
+        };
+
+        if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
+        {
+          login_additionalAttributes.Add("readonly", "readonly");
+        }
+      }
+
+      @Html.TextBoxFor(x => x.Login, login_additionalAttributes)
       <button class="btn-clear"></button>
     </div>
   </div>
@@ -48,7 +62,7 @@
       <i class="b-ib__info-icon fa fa-question"></i>
     </div>
 
-    <div class="b-ib__input-content">      
+    <div class="b-ib__input-content">
       <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation</label>
       @Html.PasswordFor(x => x.PasswordConfirmation, new { placeholder = @MLMExchange.Properties.ResourcesA.EnterPasswordConfirmation, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
     </div>
@@ -63,7 +77,7 @@
       <i class="b-ib__info-icon fa fa-question"></i>
     </div>
 
-    <div class="b-ib__input-content">      
+    <div class="b-ib__input-content">
       <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterName</label>
       @Html.TextBoxFor(x => x.Name, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterName, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
       <button class="btn-clear"></button>
@@ -79,7 +93,7 @@
       <i class="b-ib__info-icon fa fa-question"></i>
     </div>
 
-    <div class="b-ib__input-content">      
+    <div class="b-ib__input-content">
       <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterSurname</label>
       @Html.TextBoxFor(x => x.Surname, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterSurname, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
       <button class="btn-clear"></button>
@@ -95,7 +109,7 @@
       <i class="b-ib__info-icon fa fa-question"></i>
     </div>
 
-    <div class="b-ib__input-content">      
+    <div class="b-ib__input-content">
       <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterPatronymic</label>
       @Html.TextBoxFor(x => x.Patronymic, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterPatronymic, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
       <button class="btn-clear"></button>
@@ -111,7 +125,7 @@
       <i class="b-ib__info-icon fa fa-question"></i>
     </div>
 
-    <div class="b-ib__input-content">      
+    <div class="b-ib__input-content">
       <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.EnterEmail</label>
       @Html.TextBoxFor(x => x.Email, new { type = "text", placeholder = @MLMExchange.Properties.ResourcesA.EnterEmail, @class = String.Format("b-ib__input b-ib__input_type_{0}", @type) })
       <button class="btn-clear"></button>
@@ -121,14 +135,26 @@
 
 @Html.ApplicationTextBoxFor(x => x.Skype, MLMExchange.Properties.ResourcesA.EnterSkype, @MLMExchange.Properties.ResourcesA.EnterSkype, type)
 
-@Html.ApplicationTextBoxFor(x => x.PhoneNumber, MLMExchange.Properties.ResourcesA.EnterPhoneNumber, @MLMExchange.Properties.ResourcesA.EnterPhoneNumber, type)
+<!--#region Phone number-->
+@{
+  var phoneNumber_additionalAttributes = (new Dictionary<string, object>());
+
+  if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
+  {
+    phoneNumber_additionalAttributes.Add("readonly", "readonly");
+  }
+
+  @Html.ApplicationTextBoxFor(x => x.PhoneNumber, MLMExchange.Properties.ResourcesA.EnterPhoneNumber, @MLMExchange.Properties.ResourcesA.EnterPhoneNumber, type, null, phoneNumber_additionalAttributes)
+}
+<!--#endregion-->
+
 
 @if (ViewData["Usage"] != null && ViewData["Usage"] == "Register")
 {
   long? refererId = MLMExchange.Models.Registration.UserModel.GetRefererRoleIdFromRequest(Request);
-  
+
   if (refererId != null)
-  { 
+  {
     @Html.ApplicationTextBoxFor("ReferalRoleId", MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
       refererId.ToString(), new Dictionary<string, object> { { "readonly", "readonly" } })
   }
@@ -136,9 +162,9 @@
 else if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
 {
   if (Model.ReferalRoleId != null)
-  { 
+  {
     @Html.ApplicationTextBoxFor(x => x.ReferalRoleId, MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
-      additionalAttributes: new Dictionary<string, object> { { "disabled", "disabled" } })
+      additionalAttributes: new Dictionary<string, object> { { "readonly", "readonly" } })
   }
 }
 

@@ -121,7 +121,7 @@
   {
     background-color: #F3F4F6;
   }
-  .b-ib__input.b-ib__input_type_blue[disabled="disabled"]
+  .b-ib__input.b-ib__input_type_blue[readonly="readonly"], .b-ib__input.b-ib__input_type_blue[disabled="disabled"]
   {
     background-color: #6D6D74;
   }

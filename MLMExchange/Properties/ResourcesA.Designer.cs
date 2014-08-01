@@ -790,6 +790,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Запрещено изменять поле: {0}.
+        /// </summary>
+        public static string Model__Exception_PermissionDeniedForFieldChanging {
+            get {
+                return ResourceManager.GetString("Model__Exception_PermissionDeniedForFieldChanging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Поле не заполнено.
         /// </summary>
         public static string Model_Exception_FiledIsEmpty {

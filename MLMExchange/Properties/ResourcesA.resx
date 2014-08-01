@@ -363,6 +363,9 @@
   <data name="Model__Exception_BindNotCall" xml:space="preserve">
     <value>Не вызван метод биндинга для конкретного типа объекта данных: {0}. Тем самым невозможно использовать свойства модели,связанные со свойствами конкретного объекта данных.</value>
   </data>
+  <data name="Model__Exception_PermissionDeniedForFieldChanging" xml:space="preserve">
+    <value>Запрещено изменять поле: {0}</value>
+  </data>
   <data name="MyCryptCount" xml:space="preserve">
     <value>Колличество MyCrypt</value>
   </data>

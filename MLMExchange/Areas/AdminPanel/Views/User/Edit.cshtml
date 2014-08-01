@@ -16,11 +16,10 @@
   <div class="pb-eu__edit-zone">
     @using (Html.BeginForm("Edit", "/User/", FormMethod.Post, new { enctype = "multipart/form-data", @class = "b-f" }))
     {
-      @Html.Partial("~/Views/Shared/Account/_EditUser.cshtml", Model, new ViewDataDictionary
-      {
-        new KeyValuePair<string, object>("Type", "blue"),
-        new KeyValuePair<string, object>("Usage", "Edit")
-      })
+      Html.ViewData.Add("Type", "blue");
+      Html.ViewData.Add("Usage", "Edit");
+      
+      @Html.Partial("~/Views/Shared/Account/_EditUser.cshtml", Model, Html.ViewData)
 
       <input style="position: absolute; visibility: hidden;" id="edit-user__submit-btn"
              class="b-button b-button_color_green-sea register-button b-button_hover-animate_opacity pb-eu__submit-btn b-button_size-admin-default" type="submit" value=@MLMExchange.Properties.ResourcesA.SaveButton />

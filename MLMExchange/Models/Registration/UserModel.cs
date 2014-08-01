@@ -194,10 +194,10 @@ namespace MLMExchange.Models.Registration
     }
 
     /// <summary>
-    /// Валидация.
+    /// Валидация для регистрации пользователя
     /// </summary>
     /// <param name="modelState">Объект состояния модели</param>
-    public void Validate(ModelStateDictionary modelState)
+    public void RegistrationValidate(ModelStateDictionary modelState)
     {
       #region Login
       if (!String.IsNullOrEmpty(Login))
@@ -252,6 +252,35 @@ namespace MLMExchange.Models.Registration
       else
       {
         modelState.AddModelError("Skype", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
+      }
+      #endregion
+    }
+
+    /// <summary>
+    /// Валидация для редактирования пользователя
+    /// </summary>
+    /// <param name="modelState">Объект состояния модели</param>
+    /// <param name="user">Пользователь уровня данных для валидации биндинга</param>
+    public void EditValidate(ModelStateDictionary modelState, D_User user)
+    {
+      #region Login
+      {
+        if (Login != user.Login)
+          modelState.AddModelError("Login", String.Format(MLMExchange.Properties.ResourcesA.Model__Exception_PermissionDeniedForFieldChanging, Logic.Properties.GeneralResources.Login));
+      }
+      #endregion
+
+      #region PhoneNumber
+      {
+        if (PhoneNumber != user.PhoneNumber)
+          modelState.AddModelError("PhoneNumber", String.Format(MLMExchange.Properties.ResourcesA.Model__Exception_PermissionDeniedForFieldChanging, Logic.Properties.GeneralResources.PhoneNumber));
+      }
+      #endregion
+
+      #region ReferalRole
+      {
+        if (_ReferalRoleId != null && (user.RefererRole == null || _ReferalRoleId != user.RefererRole.Id))
+          modelState.AddModelError("ReferalRoleId", String.Format(MLMExchange.Properties.ResourcesA.Model__Exception_PermissionDeniedForFieldChanging, MLMExchange.Properties.ResourcesA.BindReferalUserId));
       }
       #endregion
     }
