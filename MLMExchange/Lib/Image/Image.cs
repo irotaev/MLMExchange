@@ -5,6 +5,8 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Web;
+// TODO: Переделать
+using Logic.Lib;
 
 namespace MLMExchange.Lib.Image
 {
@@ -141,6 +143,55 @@ namespace MLMExchange.Lib.Image
       /// Разрешение изображения
       /// </summary>
       public string Extension { get { return !String.IsNullOrEmpty(FullName) ? Path.GetExtension(FullName) : null; } }
+    }
+
+    public class Validation
+    { 
+      private HttpPostedFileBase _Image { get; set; }
+      /// <summary>
+      /// Максимальная ширина
+      /// </summary>
+      private int _maxWidth { get; set; }
+      /// <summary>
+      /// Максимальная высота
+      /// </summary>
+      private int _maxHeight { get; set; }
+      /// <summary>
+      /// Доступные форматы для загрузки
+      /// </summary>
+      protected string[] valideFormats = new string[] { ".jpg", ".png", ".gif", ".jpeg" };
+      protected const int maxWidthConst = 1920;
+      protected const int maxHeightConst = 1280;
+
+      public Validation(HttpPostedFileBase Image)
+      {
+        _Image = Image;
+        _maxWidth = maxWidthConst;
+        _maxHeight = maxHeightConst;
+      }
+
+      public Validation(HttpPostedFileBase Image, int maxWidth, int maxHeight)
+      {
+        _Image = Image;
+        _maxWidth = maxWidth;
+        _maxHeight = maxHeight;
+      }
+
+      private bool isValideSizeof { get { return _Image.ContentLength >= 1 * _maxWidth * _maxHeight ? true : false; } }
+      private bool isValieFormat { get { return valideFormats.Any(x => _Image.FileName.EndsWith(x, StringComparison.OrdinalIgnoreCase)); } }
+      private bool isFileImageType { get { return _Image.ContentType.Contains("image"); } }
+
+      public void ValidateImage()
+      {
+        if (!isFileImageType)
+          throw new UserVisibleException("Файл не является картинкой");
+
+        if (!isValieFormat)
+          throw new UserVisibleException("Неправильный формат изображения");
+
+        if (isValideSizeof)
+          throw new UserVisibleException("Рамер фото больше допустимого");
+      }
     }
   }
 }

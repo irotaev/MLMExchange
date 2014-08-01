@@ -54,7 +54,7 @@
 
       <div class="b-ib b-ib_content_photo">
         <label class="b-ib__label">@MLMExchange.Properties.ResourcesA.AddPhoto</label>
-        @Html.TextBoxFor(x => x.Image, new { type = "file", placeholder = @MLMExchange.Properties.ResourcesA.AddPhoto, @class = "b-ib__input b-ib_choose-file b-ib__input_type_blue" })
+        @Html.TextBoxFor(x => x.Image, new { type = "file", @accept = "image/x-png, image/gif, image/jpeg", placeholder = @MLMExchange.Properties.ResourcesA.AddPhoto, @class = "b-ib__input b-ib_choose-file b-ib__input_type_blue" })
 
         <i class="b-ib__file-preview b-ib__file-preview_type_blue">
           <img class="b-ib__image" src="/Content/images/Form/@(new MLMExchange.Lib.Image.Image("Content/images/Form/", "NoPhoto.png").Crop(206, 212).FullName)" />
