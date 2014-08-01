@@ -575,6 +575,7 @@
     <Content Include="Content\stylesheets\ie.css" />
     <Content Include="Content\stylesheets\IE_lt_9.css" />
     <Content Include="Content\stylesheets\pages\About__Index.css" />
+    <Content Include="Content\stylesheets\pages\Account__Confirm.css" />
     <Content Include="Content\stylesheets\pages\Account__Register.css" />
     <Content Include="Content\stylesheets\pages\Account__Success.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_AddMyCryptTransaction__UnApprovedTransactionList.css" />
