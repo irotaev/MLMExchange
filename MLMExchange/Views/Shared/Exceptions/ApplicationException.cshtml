@@ -13,10 +13,8 @@
       <h1 class="b-sb__text">@MLMExchange.Properties.ResourcesA.ErrorLog</h1>
     </header>
 
-    <div class="b-sb__content about-block__text">
-      <p>
-        @(MvcHtmlString.Create(Model.ExceptionMessage))
-      </p>
+    <div class="b-sb__content pb-ae__content about-block__text">
+      @(MvcHtmlString.Create(Model.ExceptionMessage))
     </div>
   </aside>
 </section><!--PB: Application exception-->
