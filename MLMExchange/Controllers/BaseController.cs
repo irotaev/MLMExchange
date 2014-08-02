@@ -12,6 +12,7 @@ using Microsoft.Practices.Unity;
 using MLMExchange.Models;
 using System.Web.Http;
 using MLMExchange.Models.Error;
+using Logic.Lib;
 
 namespace MLMExchange.Controllers
 {
@@ -147,7 +148,7 @@ namespace MLMExchange.Controllers
       //ViewData["AdminPanel__CenterBlock"] = 
     }
 
-    public enum RedirectType : int 
+    public enum RedirectType : int
     {
       SuccessRegister = 0,
       SuccessResetPassword = 1,
@@ -166,7 +167,7 @@ namespace MLMExchange.Controllers
 
       _NHibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
       #endregion
-      
+
       #region Модель для логина
       LoginModel loginModel = new LoginModel();
 
@@ -210,10 +211,23 @@ namespace MLMExchange.Controllers
       if (filterContext.ExceptionHandled)
         return;
 
-      HttpContext.Response.Redirect("/ExceptionHandler/ApplicationException", true);
-      TempData["Controller__Exception"] = filterContext.Exception;
+      //HttpContext.Response.Redirect("/ExceptionHandler/ApplicationException", true);
+      //TempData["Controller__Exception"] = filterContext.Exception;
 
       filterContext.ExceptionHandled = true;
+
+      #region Отображение ошибки
+      var model = new ApplicationExceptionModel();
+
+      if (filterContext.Exception != null)
+      {
+        model.ExceptionMessage = filterContext.Exception.GetAllExceptionTreeLog("<br/><br/>");
+      }
+
+      System.Web.HttpContext.Current.ClearError();
+
+      PartialView("~/Views/Shared/Exceptions/ApplicationException.cshtml", model).ExecuteResult(this.ControllerContext);
+      #endregion
     }
   }
 }

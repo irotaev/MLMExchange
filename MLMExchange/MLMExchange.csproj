@@ -783,6 +783,8 @@
     <Content Include="Views\Account\Success.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Shared\_ResetPasswordForm.cshtml" />
+    <Content Include="Views\Account\Confirm.cshtml" />
+    <Content Include="Views\Shared\Exceptions\ApplicationException.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
