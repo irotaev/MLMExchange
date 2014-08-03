@@ -38,8 +38,8 @@ namespace LogicTest.DataObject
       {
         CheckPaymentPercent = 3,
         MaxMyCryptCount = 10000,
-        ProfitPercent = 13,
-        Quote = 7,
+        ProfitPercent = 15,
+        Quote = 8,
         TradingSessionDuration = 0.1m // Не менять. Настроин поток синхронизации.
       };
 

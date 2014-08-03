@@ -484,7 +484,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Введите количество едениц my-crypt.
+        ///   Looks up a localized string similar to Введите количество единиц my-crypt.
         /// </summary>
         public static string EnterMyCryptCount {
             get {

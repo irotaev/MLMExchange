@@ -259,7 +259,7 @@
     <value>Введите текст сообщения</value>
   </data>
   <data name="EnterMyCryptCount" xml:space="preserve">
-    <value>Введите количество едениц my-crypt</value>
+    <value>Введите количество единиц my-crypt</value>
   </data>
   <data name="EnterName" xml:space="preserve">
     <value>Введите имя</value>

@@ -507,6 +507,18 @@
     <Content Include="bower_components\jquery\src\serialize.js" />
     <Content Include="bower_components\jquery\src\traversing.js" />
     <Content Include="bower_components\opentip\css\opentip.css" />
+    <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.min.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-jquery.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-jquery.min.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-native-excanvas.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-native-excanvas.min.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-native.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-native.min.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-prototype-excanvas.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-prototype-excanvas.min.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-prototype.js" />
+    <Content Include="bower_components\opentip\downloads\opentip-prototype.min.js" />
     <Content Include="bower_components\opentip\files\close-button-angle.png" />
     <Content Include="bower_components\opentip\files\tests.png" />
     <Content Include="bower_components\opentip\index.js" />
@@ -719,6 +731,7 @@
     <Content Include="Areas\AdminPanel\Views\RandomWords\List.cshtml" />
     <Content Include="Areas\AdminPanel\Views\RandomWords\Browse.cshtml" />
     <Content Include="Areas\AdminPanel\Views\RandomWords\Add.cshtml" />
+    <Content Include="bower_components\opentip\downloads\readme.md" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -752,7 +765,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Uploads\Images\0b1447c7-47ab-4d43-aee2-82f69357ccfc_.jpg" />
+    <Content Include="Uploads\Images\anonymous-user.png" />
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>

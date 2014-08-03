@@ -340,7 +340,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Необходимо оплатить стоимость МС продавцу согласно котировки 1 к {0}, в размере {1} руб..
+        ///   Looks up a localized string similar to Необходимо оплатить стоимость МС продавцу согласно котировке 1 к {0}, в размере {1} руб..
         /// </summary>
         public static string RequirePayInterestRateToSaller {
             get {

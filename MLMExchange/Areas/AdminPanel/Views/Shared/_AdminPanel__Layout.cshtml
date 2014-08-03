@@ -104,7 +104,7 @@
   @(X.Container().Layout(LayoutType.Border).ID("AdminPanel__MainContainer").Height(800).Items(
       X.Panel().ID("MainLeft_Menu").MinHeight(600).Region(Region.West).Width(236).Collapsible(true).CollapseMode(CollapseMode.Default)
         .HeaderConfig(X.PanelHeader().Height(74).Title(MLMExchange.Properties.ResourcesA.MainMenu__Header)).Content(x => MainMenu__InnerContent()),
-        (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Content(x => RenderBody())
+        (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).AutoScroll(true).Content(x => RenderBody())
           ).RenderTo("pb-admin-panel__ID"))
   
   <script>

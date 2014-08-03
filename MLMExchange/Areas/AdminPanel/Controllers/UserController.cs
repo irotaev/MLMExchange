@@ -92,7 +92,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           model.Bind(user);
         }
       }
-      model.PhoneNumber = "434343";
+      
       return View(model);
     }
 
@@ -265,7 +265,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
 
       IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id && x.State == BuyingMyCryptRequestState.NA).List();
+        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
 
       foreach (var request in buyingMyCryptRequestsHistory)
       {
