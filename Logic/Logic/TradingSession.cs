@@ -155,6 +155,9 @@ namespace Logic
     {
       get
       {
+        if (YieldSessionBillsNecessaryMoney() > 0)
+          return false;
+
         foreach (var bill in _LogicObject.YieldSessionBills)
         {
           if (bill.PaymentState != BillPaymentState.Paid)
