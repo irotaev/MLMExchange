@@ -64,7 +64,7 @@
     <Compile Include="Lib\DataAttribute.cs" />
     <Compile Include="Lib\Exception.cs" />
     <Compile Include="Lib\NHibernate.cs" />
-    <Compile Include="Lib\Ssms.cs" />
+    <Compile Include="Lib\Sms_Epochta.cs" />
     <Compile Include="Logic\Application.cs" />
     <Compile Include="Logic\AbstractLogic.cs" />
     <Compile Include="Logic\BaseObject.cs" />
