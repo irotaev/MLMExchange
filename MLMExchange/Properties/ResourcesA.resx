@@ -135,6 +135,9 @@
   <data name="AddMyCryptSuccess" xml:space="preserve">
     <value>Запрос на добавление my crypt в размере {0} отправлен</value>
   </data>
+  <data name="AddMyCrypt__TermsAgreed" xml:space="preserve">
+    <value>Примите соглашение</value>
+  </data>
   <data name="AddObject" xml:space="preserve">
     <value>Добавление объекта</value>
   </data>

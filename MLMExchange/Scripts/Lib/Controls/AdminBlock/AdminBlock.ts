@@ -30,7 +30,7 @@ export class AdminBlock
     var $content = this._Wrapper.find(".b-ab__content");
     var contentOuterStartHeight = $content.outerHeight();
 
-    var additionalInfoFullHeight = $additionalInfoContent[0].scrollHeight + $arrow.outerHeight() + 40;
+    var additionalInfoFullHeight = $additionalInfoContent[0].scrollHeight + $arrow.outerHeight() + 100;
 
     var openCallback = function () 
     {

@@ -106,6 +106,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Примите соглашение.
+        /// </summary>
+        public static string AddMyCrypt__TermsAgreed {
+            get {
+                return ResourceManager.GetString("AddMyCrypt__TermsAgreed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Запрос на добавление my crypt в размере {0} отправлен.
         /// </summary>
         public static string AddMyCryptSuccess {
