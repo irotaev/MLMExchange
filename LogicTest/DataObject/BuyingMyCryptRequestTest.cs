@@ -30,7 +30,8 @@ namespace LogicTest.DataObject
         MyCryptCount = myCryptCount,
         SellerUser = participateApplication.Seller,
         BiddingParticipateApplication = participateApplication,
-        SystemSettings = systemSettings
+        SystemSettings = systemSettings,
+        State = BuyingMyCryptRequestState.AwaitingConfirm
       };
 
       return request;
@@ -49,10 +50,10 @@ namespace LogicTest.DataObject
         biddingApplication,
          new D_SystemSettings
           {
-            CheckPaymentPercent = 5,
+            CheckPaymentPercent = 5.5m,
             MaxMyCryptCount = 2000,
             ProfitPercent = 7,
-            Quote = 10,
+            Quote = 13,
             TradingSessionDuration = 0.1m
           },
         800);

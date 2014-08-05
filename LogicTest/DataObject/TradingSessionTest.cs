@@ -224,7 +224,6 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void ChangeState_To_NeedEnsureProfibility_Test()
     {
-
       D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
 
       d_tradingSession = ChangeState_To_NeedEnsureProfibility(d_tradingSession);
