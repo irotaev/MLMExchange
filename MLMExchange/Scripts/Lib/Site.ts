@@ -49,7 +49,9 @@ export class AdmineArea
     //#region НАстройка высоты главного контейнера admin панели
     Ext.onReady(function ()
     {
-      Ext.getCmp('AdminPanel__MainContainer').setHeight($("#AdminPanel__CenterBlock-innerCt")[0].scrollHeight + 20);
+      var scrollHeight = $("#AdminPanel__CenterBlock-innerCt")[0].scrollHeight;
+      Ext.getCmp('AdminPanel__MainContainer').setHeight(scrollHeight + 20);
+      $("#AdminPanel__CenterBlock_Content").height(scrollHeight).css("overflow-y", "auto");
     });
     //#endregion
   }  
