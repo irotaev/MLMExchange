@@ -946,7 +946,7 @@ namespace Logic
 
       Map(x => x.MyCryptCount).Precision(10).Scale(5).Default("0").Not.Nullable();
       HasMany(x => x.ReferalUsers).KeyColumn("RefererRoleId").Cascade.SaveUpdate();
-      HasMany(x => x.RefererProfits).KeyColumn("UserRoleId").Cascade.SaveUpdate();
+      HasMany(x => x.RefererProfits).KeyColumn("UserRoleId").Cascade.All();
     }
   }
 

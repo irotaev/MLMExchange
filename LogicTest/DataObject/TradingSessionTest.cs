@@ -45,7 +45,7 @@ namespace LogicTest.DataObject
 
       _NHibernaetSession.SaveOrUpdate(systemSettings);
 
-      BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, (long)buyingRequestMyCryptCount);      
+      BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, (long)buyingRequestMyCryptCount);
 
       D_TradingSession d_tradingSession = TradingSession.OpenTradingSession(buyingRequest);
 
@@ -81,7 +81,7 @@ namespace LogicTest.DataObject
         throw new TestException("Торговая сессия может быть переведена в состояние 'Need ensure profibility' только из состояния open");
 
       ((Bill)tradingSession.CheckBill).PayCheckBill(tradingSession.BuyingMyCryptRequest.Buyer);
-      ((Bill)tradingSession.SallerInterestRateBill).PaySellerInterestBill(tradingSession.BuyingMyCryptRequest.Buyer, 
+      ((Bill)tradingSession.SallerInterestRateBill).PaySellerInterestBill(tradingSession.BuyingMyCryptRequest.Buyer,
         tradingSession.BuyingMyCryptRequest.SellerUser.PaymentSystemGroup.BankPaymentSystems.FirstOrDefault());
 
       tradingSession.SallerInterestRateBill.PaymentState = BillPaymentState.Paid;
@@ -108,7 +108,7 @@ namespace LogicTest.DataObject
 
       _NHibernaetSession.SaveOrUpdate(acceptedTradingSession);
 
-      tradingSession.YieldSessionBills.Add(new D_YieldSessionBill 
+      tradingSession.YieldSessionBills.Add(new D_YieldSessionBill
       {
         //TODO:Rtv доделать
         AcceptorTradingSession = acceptedTradingSession,
@@ -224,12 +224,16 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void ChangeState_To_NeedEnsureProfibility_Test()
     {
+
       D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
 
       d_tradingSession = ChangeState_To_NeedEnsureProfibility(d_tradingSession);
 
+      System.Diagnostics.Trace.WriteLine(String.Format("Логин покупателя: {0}", d_tradingSession.BuyingMyCryptRequest.Buyer.Login));
+      System.Diagnostics.Trace.WriteLine(String.Format("Логин продавца: {0}", d_tradingSession.BuyingMyCryptRequest.SellerUser.Login));
+
       TransactionCommit();
-    }    
+    }
 
     [TestMethod]
     public void ChangeState_To_WaitForProgressStart()
@@ -287,6 +291,26 @@ namespace LogicTest.DataObject
       d_tradingSession = ChangeState_To_NeedProfit(d_tradingSession);
 
       d_tradingSession = ChangeState_To_ProfitConfirmation(d_tradingSession);
+
+      TransactionCommit();
+    }
+
+    [TestMethod]
+    public void Delete_All_Session()
+    {
+      List<D_TradingSession> tradingSessions = _NHibernaetSession.Query<D_TradingSession>().ToList();
+
+      foreach (var session in tradingSessions)
+      {
+        session.YieldSessionBills.ForEach(x => { x.AcceptorTradingSession = null; x.PayerTradingSession = null; _NHibernaetSession.SaveOrUpdate(x); });
+        session.YieldSessionBills.Clear();
+
+        _NHibernaetSession.Save(session);
+        _NHibernaetSession.Transaction.Commit();
+        _NHibernaetSession.BeginTransaction();
+
+        _NHibernaetSession.Delete(session);
+      }
 
       TransactionCommit();
     }

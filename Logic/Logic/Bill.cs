@@ -49,6 +49,19 @@ namespace Logic
     }
 
     /// <summary>
+    /// Округлить сумму денег
+    /// </summary>
+    /// <param name="moneyAmount">Сумма денег</param>
+    /// <returns>Округленная сумма</returns>
+    public static decimal RoundBillMoneyAmount(decimal moneyAmount)
+    {
+      moneyAmount = moneyAmount >= 0 ? moneyAmount : 0;
+      moneyAmount = moneyAmount != 0 ? Math.Floor(moneyAmount) + 1 : 0;
+
+      return moneyAmount;
+    }
+
+    /// <summary>
     /// Оплатить проверочный платеж    
     /// <param name="payer">Плательщик</param>
     /// </summary>

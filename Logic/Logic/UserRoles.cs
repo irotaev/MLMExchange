@@ -46,6 +46,8 @@ namespace Logic
         profitCount += profit.RefererProfit;
       }
 
+      profitCount = Bill.RoundBillMoneyAmount(profitCount);
+
       return profitCount;
     }
   }

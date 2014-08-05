@@ -13,15 +13,7 @@ namespace Logic
   {
     public TradingSession(D_TradingSession tradingSession) : base(tradingSession) { }
 
-    private static object _Locker = new { };
-
-    private decimal RoundBillMoneyAmount(decimal moneyAmount)
-    {
-      moneyAmount = moneyAmount >= 0 ? moneyAmount : 0;
-      moneyAmount = moneyAmount != 0 ? Math.Floor(moneyAmount) + 1 : 0;
-
-      return moneyAmount;
-    }
+    private static object _Locker = new { };    
 
     public static explicit operator TradingSession(D_TradingSession dataTradingSession)
     {
@@ -128,7 +120,7 @@ namespace Logic
     {
       decimal moneyAmount = (LogicObject.SystemSettings.CheckPaymentPercent / 100) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
 
-      return RoundBillMoneyAmount(moneyAmount);
+      return Bill.RoundBillMoneyAmount(moneyAmount);
     }
 
     /// <summary>
@@ -139,7 +131,7 @@ namespace Logic
     {
       decimal moneyAmount = (1m / LogicObject.SystemSettings.Quote) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
 
-      return RoundBillMoneyAmount(moneyAmount);
+      return Bill.RoundBillMoneyAmount(moneyAmount);
     }
 
     /// <summary>
@@ -186,7 +178,7 @@ namespace Logic
         necessaryMoney -= yieldBill.MoneyAmount;
       }
 
-      necessaryMoney = RoundBillMoneyAmount(necessaryMoney);
+      necessaryMoney = Bill.RoundBillMoneyAmount(necessaryMoney);
 
       return necessaryMoney;
     }
@@ -209,7 +201,7 @@ namespace Logic
         necessaryMoney -= bill.MoneyAmount;
       }
 
-      necessaryMoney = RoundBillMoneyAmount(necessaryMoney);
+      necessaryMoney = Bill.RoundBillMoneyAmount(necessaryMoney);
 
       return necessaryMoney;
     }
