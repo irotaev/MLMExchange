@@ -16,12 +16,12 @@ namespace MLMExchange.Areas.AdminPanel.Models
   public class UserRolesModel : AbstractDataModel
   {
 
-    public static Paging<UserModel> UserPaging(StoreRequestParameters parameters)
+    public static List<UserModel> UserPaging(StoreRequestParameters parameters)
     {
       return UserPaging(parameters.Start, parameters.Limit, parameters.SimpleSort, parameters.SimpleSortDirection, null);
     }
 
-    public static Paging<UserModel> UserPaging(int start, int limit, string sort, SortDirection dir, string filter)
+    public static List<UserModel> UserPaging(int start, int limit, string sort, SortDirection dir, string filter)
     {
       List<UserModel> userList = UserRoles.GetUsersWithPaging(start, limit).Select(x => new UserModel().Bind(x)).ToList();
 
@@ -32,7 +32,10 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
       List<UserModel> rangePlants = (start < 0 || limit < 0) ? userList : userList.GetRange(start, limit);
 
-      return new Paging<UserModel>(rangePlants, userList.Count);
+      // Тут, Кузь, есть кругавая зависимость объектов, она не сериализуется. Надо ее выкинуть в частной сероиализации, я потом напишу базовый конвертер
+      rangePlants.ForEach(x => x.UserRoles = new List<D_AbstractRole>());
+
+      return rangePlants;
     }
   }
 }

@@ -127,6 +127,7 @@ namespace MLMExchange.Models
   /// </summary>
   public abstract class AbstractModel : ILazyLoadModel, IAbstractModel
   {
+    [NonSerialized]
     protected readonly ISession _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
 
     public bool IsLazyLoadingDisable { get; set; }
@@ -138,6 +139,7 @@ namespace MLMExchange.Models
   /// </summary>
   public abstract class AbstractDataModel : AbstractModel, IDataModel, IDataBinding<D_BaseObject, AbstractDataModel>
   {
+    [NonSerialized]
     protected IAbstractBaseLogicObject _Object;
 
     #region Data lazy load
@@ -154,6 +156,7 @@ namespace MLMExchange.Models
     /// геттеру свойства значение надо брать уже из другого места, например, из отдельного поля, где было сохранено новое значение,
     /// заданное руками через сетттер свойства.
     /// </summary>
+    [NonSerialized]    
     protected readonly Dictionary<string, bool> _LazyLoadProperties = new Dictionary<string, bool>();
     #endregion
 
@@ -235,6 +238,7 @@ namespace MLMExchange.Models
     where TObject : D_BaseObject, new()
     where TModel : class, IAbstractModel
   {
+    [NonSerialized]
     new protected TObject _Object;
 
     public virtual TModel Bind(TObject @object)

@@ -18,9 +18,17 @@
     .Border(false)
     .Store(
       X.Store()
+        .Model(
+                        Html.X().Model()
+                            .Fields(
+                                Html.X().ModelField().Name("Id"),
+                                Html.X().ModelField().Name("CreationDateTime"),
+                                Html.X().ModelField().Name("Login")
+                            )
+                    )
       .Proxy(Html.X().AjaxProxy()
-                        .Url(Url.Action("Paginate"))
-                        .Reader(Html.X().JsonReader().Root("Data")))
+                            .Url(Url.Action("Paginate"))
+                            .Reader(Html.X().JsonReader().Root("data")))
       .RemotePaging(true)
       .RemoteSort(false)
       .PageSize(10))
