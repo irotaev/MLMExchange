@@ -59,12 +59,12 @@ namespace Logic
     /// <param name="limit">Число пользователей</param>
     /// <param name="totalCount">Общее количество пользователей</param>
     /// <returns>Список пользователей</returns>
-    public static List<D_User> GetUsers(int start, int limit, out int totalCount)
+    public static List<T> GetUsers<T>(int start, int limit, out int totalCount)
     {
-      List<D_User> userList = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_User>().Skip(start).Take(limit).ToList();
+      List<T> userList = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<T>().Skip(start).Take(limit).ToList();
 
-      totalCount = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.QueryOver<D_User>().RowCount();
+      totalCount = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<T>().Count();
 
       return userList;
     }

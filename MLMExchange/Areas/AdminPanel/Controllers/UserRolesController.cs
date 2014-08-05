@@ -43,7 +43,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       int limit = parameters.Limit;
 
       int totalUserCount;
-      List<UserModel> userModelList = UserRoleList.GetUsers(start, limit, out totalUserCount).Select(x =>
+      List<UserModel> userModelList = UserRoleList.GetUsers<D_User>(start, limit, out totalUserCount).Select(x =>
         {
           UserModel model = new UserModel().Bind(x);
           model.UserRoles = new List<D_AbstractRole>();

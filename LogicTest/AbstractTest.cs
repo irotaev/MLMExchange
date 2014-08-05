@@ -22,7 +22,8 @@ namespace LogicTest
 
       #region Инициализирую сессию NHibernate
       //Logic.NHibernateConfiguration.ConnectionString = @"Data Source=192.168.1.8\SQLEXPRESS;Initial Catalog=mlm_exchange;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=masterkey;MultipleActiveResultSets=True";
-      Logic.NHibernateConfiguration.ConnectionString = @"Data Source=IROTAEV-PC\SQLEXPRESS;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      //Logic.NHibernateConfiguration.ConnectionString = @"Data Source=IROTAEV-PC\SQLEXPRESS;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      Logic.NHibernateConfiguration.ConnectionString = @"Data Source=SUPER_MEN4iG-PC;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
 
       //TODO:Rtv переделать NHibernateConfiguration на static
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().TryOpenSession(SessionStorageType.ThreadStatic);

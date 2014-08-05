@@ -50,6 +50,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(d_randomwords);
 
+          return RedirectToAction("List", "RandomWords");
         }
       }
 
