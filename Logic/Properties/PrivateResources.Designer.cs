@@ -70,6 +70,24 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ошибка соединения с сервером. {0}. {1}.
+        /// </summary>
+        public static string Sms_Epochta__Exception_ServerREquestFailed {
+            get {
+                return ResourceManager.GetString("Sms_Epochta__Exception_ServerREquestFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ошибка сгенерированная сервером. Код {0}. Описание {1}.
+        /// </summary>
+        public static string Sms_Epochta__Exception_ServerResponseFailed {
+            get {
+                return ResourceManager.GetString("Sms_Epochta__Exception_ServerResponseFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Во время парсинга серверного ответа произошла ошибка: {0}.
         /// </summary>
         public static string Ssms__Exception_ServerResponseParse {

@@ -120,6 +120,12 @@
   <data name="Exception__BiddingParticipateApplication_NotEnoughtMyCryptForWriteOut" xml:space="preserve">
     <value>Недостаточно текущих my-crypt {0} для списания со счета. Необходимо {1}</value>
   </data>
+  <data name="Sms_Epochta__Exception_ServerREquestFailed" xml:space="preserve">
+    <value>Ошибка соединения с сервером. {0}. {1}</value>
+  </data>
+  <data name="Sms_Epochta__Exception_ServerResponseFailed" xml:space="preserve">
+    <value>Ошибка сгенерированная сервером. Код {0}. Описание {1}</value>
+  </data>
   <data name="Ssms__Exception_ServerResponseParse" xml:space="preserve">
     <value>Во время парсинга серверного ответа произошла ошибка: {0}</value>
   </data>
