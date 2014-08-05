@@ -8,17 +8,20 @@ using MLMExchange.Areas.AdminPanel.Models;
 using Logic;
 using Ext.Net;
 using Ext.Net.MVC;
+using MLMExchange.Lib;
+using MLMExchange.Models.Registration;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
-  public class UserRolesController : BaseController, IDataObjectCustomizableController<UserRolesModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
+  [Auth(typeof(D_AdministratorRole))]
+  public class UserRoleController : BaseController, IDataObjectCustomizableController<UserRoleModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
   {
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
       throw new NotImplementedException();
     }
 
-    public ActionResult Edit(UserRolesModel model, BaseEditActionSettings actionSettings)
+    public ActionResult Edit(UserRoleModel model, BaseEditActionSettings actionSettings)
     {
       throw new NotImplementedException();
     }
@@ -28,23 +31,29 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return View();
     }
 
-    public ActionResult Paginate(StoreRequestParameters parameters)
+    #region AllUserGrid__Paginate
+    /// <summary>
+    /// Пагинация для грида всех пользователей  
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    public ActionResult AllUserGrid__Paginate(StoreRequestParameters parameters)
     {
-      var output = this.Store(UserRolesModel.UserPaging(parameters));
+      int start = parameters.Start;
+      int limit = parameters.Limit;
 
-      return output;
+      int totalUserCount;
+      List<UserModel> userModelList = UserRoleList.GetUsers(start, limit, out totalUserCount).Select(x =>
+        {
+          UserModel model = new UserModel().Bind(x);
+          model.UserRoles = new List<D_AbstractRole>();
+          return model;
+        }).ToList();
+
+      Paging<UserModel> pageModelList = new Paging<UserModel>(userModelList, totalUserCount);
+
+      return this.Store(pageModelList);
     }
-
-    public ActionResult GetUsers(int start = 0, int limit = 15)
-    {
-      int counter = _NHibernateSession.QueryOver<D_User>().RowCount();
-
-      return Json(new {
-        totalUsers = counter,
-        startUsers = start,
-        limitUsers = limit
-      }, JsonRequestBehavior.AllowGet);
-    }
+    #endregion
   }
-
 }

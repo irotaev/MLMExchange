@@ -50,12 +50,21 @@ namespace Logic
     }
   }
 
-  public class UserRoles
+  public class UserRoleList
   {
-    public static List<D_User> GetUsersWithPaging(int start, int limit)
+    /// <summary>
+    /// Получить пользователей
+    /// </summary>
+    /// <param name="start">Начальный номер</param>
+    /// <param name="limit">Число пользователей</param>
+    /// <param name="totalCount">Общее количество пользователей</param>
+    /// <returns>Список пользователей</returns>
+    public static List<D_User> GetUsers(int start, int limit, out int totalCount)
     {
       List<D_User> userList = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_User>().Skip(start).Take(limit).ToList();
+
+      totalCount = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.QueryOver<D_User>().RowCount();
 
       return userList;
     }

@@ -16,18 +16,19 @@
     .Title(MLMExchange.Properties.ResourcesA.RandomWords)
     .Frame(true)
     .Border(false)
+    .Height(500)
     .Store(
       X.Store()
         .Model(
-                        Html.X().Model()
-                            .Fields(
-                                Html.X().ModelField().Name("Id"),
-                                Html.X().ModelField().Name("CreationDateTime"),
-                                Html.X().ModelField().Name("Login")
-                            )
-                    )
+           Html.X().Model()
+           .Fields(
+             Html.X().ModelField().Name("Id"),
+             Html.X().ModelField().Name("CreationDateTime"),
+             Html.X().ModelField().Name("Login")
+            )
+        )
       .Proxy(Html.X().AjaxProxy()
-                            .Url(Url.Action("Paginate"))
+                            .Url(Url.Action("AllUserGrid__Paginate"))
                             .Reader(Html.X().JsonReader().Root("data")))
       .RemotePaging(true)
       .RemoteSort(false)

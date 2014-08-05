@@ -179,7 +179,6 @@
     <Compile Include="Areas\AdminPanel\Models\ReferalModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\RoleModels.cs" />
     <Compile Include="Areas\AdminPanel\Models\UserControlBlockModel.cs" />
-    <Compile Include="Areas\AdminPanel\Models\UserRolesModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemGroupModel.cs" />
@@ -736,7 +735,7 @@
     <Content Include="bower_components\opentip\downloads\readme.md" />
     <Content Include="Areas\AdminPanel\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AdminPanel\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\AdminPanel\Views\UserRoles\List.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\UserRole\List.cshtml" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />

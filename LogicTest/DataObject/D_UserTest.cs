@@ -98,27 +98,24 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void CreateAdministratorRoleUser()
     {
-      string login = "TestUser_" + Guid.NewGuid();
+      D_User adminUser = CreateUser(new List<D_AbstractRole> { new D_AdministratorRole() });
 
-      D_User administratorUser = new D_User
-        {
-          Login = login,
-          PasswordHash = "25d55ad283aa400af464c76d713c07ad", // Пароль: 12345678
-          Name = "TestUser",
-          PaymentSystemGroup = new D_PaymentSystemGroup()
-        };
+      Assert.IsTrue(adminUser != null, "Пользователь не создан");
 
-      administratorUser.Roles.Add(new D_AdministratorRole { User = administratorUser });
+      TransactionCommit();
+    }
 
-      _NHibernaetSession.SaveOrUpdate(administratorUser);
+    [TestMethod]
+    public void Create_Many_Users()
+    {
+      const uint maxUserCount = 300;
 
-      _NHibernaetSession.Transaction.Commit();
+      for(uint index = 1; index < maxUserCount; index++)
+      {
+        D_User d_user = CreateUser();
+      }
 
-      D_AbstractRole findRole = _NHibernaetSession.Query<D_AbstractRole>().Where(x => x.User.Login == login).FirstOrDefault();
-
-      Assert.IsTrue(findRole != null);
-
-      TransactionCommit(true);
+      TransactionCommit();
     }
 
     /// <summary>
