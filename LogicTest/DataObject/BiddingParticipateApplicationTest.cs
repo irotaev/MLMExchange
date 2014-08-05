@@ -22,12 +22,27 @@ namespace LogicTest.DataObject
       D_BiddingParticipateApplication participateApplication = new D_BiddingParticipateApplication
       {
         MyCryptCount = myCryptCount,
-        Seller = seller
+        Seller = seller,
+        State = BiddingParticipateApplicationState.Filed
       };
 
       //_NHibernaetSession.Save(participateApplication);
 
       return participateApplication;
+    }
+
+    [TestMethod]
+    public void CreateBiddingParticipateApplicationRequest()
+    {
+      D_User seller = D_UserTest.CreateUser();
+
+      D_BiddingParticipateApplication biddingRequest = CreateBiddingParticipateApplication(seller, 1300);
+
+      Assert.IsTrue(biddingRequest != null, "Заявка не была создана");
+
+      _NHibernaetSession.Save(biddingRequest);
+
+      TransactionCommit();
     }
   }
 }

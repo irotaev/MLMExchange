@@ -18,18 +18,16 @@
       height: 300,
       modal: true,
       title: "@Logic.Properties.GeneralResources.RandomWords",
-      autoScroll: true,
+      autoScroll: true,      
       autoLoad: {
         url: "/AdminPanel/RandomWords/Add",
         params: { AsPartial: true, Method: "GET" },
         timeout: 60,
         text: "@MLMExchange.Properties.ResourcesA.Loading",
         callback: function () {
-          $.each($("#RandomWordsList_Edit__Window").find("script[data-app-script='true']"), function (index, element) {
-            var scriptTag = $(document.createElement('script')).text($(element).text());
-
-            $(scriptTag).appendTo($("body"));
-          });
+          require(["jquery", "Lib/Form"], function ($, formModule) {
+              new formModule.Form($("#RandomWordsList_Add__Window form")).ReBindAll();
+            });
         }
       }
     }).show();
@@ -61,6 +59,18 @@
       }).show();
     }
     else if (command == "Edit") {
+      //Rtv: 
+      //
+      //loader: {
+      //  url: "/AdminPanel/BasePayment/List",
+      //  params: { PaymentSystemIds: record.data.PaymentIds, AsPartial: "True" },
+      //  ajaxOptions: { method: "GET" },
+      //  nocache: true,
+      //  text: "@MLMExchange.Properties.ResourcesA.Loading",
+      //  callback: function () {
+      //    loadingMask__show(false);
+      //  }
+      //}
       @*new Ext.Window({
         id: "RandomWordsList_Edit__Window",
         width: 400,
@@ -110,6 +120,7 @@
     .Layout(LayoutType.Fit)
     .Title(MLMExchange.Properties.ResourcesA.RandomWords)
     .Border(false)
+    .Height(400)
     .TopBarItem(
                 Html.X().Button().Text(MLMExchange.Properties.PrivateResource.RandomWords__Add).Handler("addWord").Scale(ButtonScale.Medium)
                 )
@@ -129,7 +140,7 @@
       })
       .ColumnModel(
         X.RowNumbererColumn(),
-        X.Column().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Flex(1),
+        X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Flex(1),
         X.Column().Text(Logic.Properties.GeneralResources.AuthorWords).DataIndex("Author").Flex(1),
         X.Column().Text(Logic.Properties.GeneralResources.TextWords).DataIndex("Text").Flex(1),
         X.ImageCommandColumn().Commands(

@@ -35,5 +35,33 @@ namespace LogicTest.DataObject
 
       return request;
     }
+
+    [TestMethod]
+    public void CreateBuyingRequest()
+    {
+      D_User buyer = D_UserTest.CreateUser();
+      D_User seller = D_UserTest.CreateUser();
+
+      D_BiddingParticipateApplication biddingApplication = BiddingParticipateApplicationTest.CreateBiddingParticipateApplication(seller, 1200);
+
+      BuyingMyCryptRequest request = CreateBuyingMyCryptRequest(
+        buyer,
+        biddingApplication,
+         new D_SystemSettings
+          {
+            CheckPaymentPercent = 5,
+            MaxMyCryptCount = 2000,
+            ProfitPercent = 7,
+            Quote = 10,
+            TradingSessionDuration = 0.1m
+          },
+        800);
+
+      _NHibernaetSession.Save(request);
+
+      TransactionCommit();
+
+      Assert.IsTrue(request != null, "Заявка не была создана");
+    }
   }
 }

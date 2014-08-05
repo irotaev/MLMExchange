@@ -38,8 +38,6 @@
     }
 
     function TradingSession__PayYieldTradingSession_CommandColumnRenderer(grid, command, record, row) {
-      console.log(arguments);
-
       if (record.data.BillState == "WaitingPayment") {
         command.disabled = false;
       }
