@@ -15,6 +15,14 @@ namespace Logic
 
     private static object _Locker = new { };
 
+    private decimal RoundBillMoneyAmount(decimal moneyAmount)
+    {
+      moneyAmount = moneyAmount >= 0 ? moneyAmount : 0;
+      moneyAmount = moneyAmount != 0 ? Math.Floor(moneyAmount) + 1 : 0;
+
+      return moneyAmount;
+    }
+
     public static explicit operator TradingSession(D_TradingSession dataTradingSession)
     {
       return new TradingSession(dataTradingSession);
@@ -118,7 +126,9 @@ namespace Logic
     /// <returns>Количество денег</returns>
     public decimal CalculateCheckPaymentMoneyAmount()
     {
-      return (LogicObject.SystemSettings.CheckPaymentPercent / 100) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
+      decimal moneyAmount = (LogicObject.SystemSettings.CheckPaymentPercent / 100) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
+
+      return RoundBillMoneyAmount(moneyAmount);
     }
 
     /// <summary>
@@ -127,7 +137,9 @@ namespace Logic
     /// <returns>Количество денег</returns>
     public decimal CalculateSallerInterestRateMoneyAmount()
     {
-      return (1m / LogicObject.SystemSettings.Quote) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
+      decimal moneyAmount = (1m / LogicObject.SystemSettings.Quote) * LogicObject.BuyingMyCryptRequest.MyCryptCount;
+
+      return RoundBillMoneyAmount(moneyAmount);
     }
 
     /// <summary>
@@ -140,14 +152,6 @@ namespace Logic
     }
 
     #region Обеспечение доходности торговой сессии
-    private decimal RoundBillMoneyAmount(decimal moneyAmount)
-    {
-      moneyAmount = moneyAmount >= 0 ? moneyAmount : 0;
-      moneyAmount = moneyAmount != 0 ? Math.Floor(moneyAmount) + 1 : 0;
-
-      return moneyAmount;
-    }
-
     /// <summary>
     /// Оплачены ли счета доходности торговой сессии
     /// </summary>

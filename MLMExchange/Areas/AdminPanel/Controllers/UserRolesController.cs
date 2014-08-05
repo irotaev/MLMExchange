@@ -30,9 +30,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
     public ActionResult Paginate(StoreRequestParameters parameters)
     {
-      return this.Store(UserRolesModel.UserPaging(parameters));
+      var output = this.Store(UserRolesModel.UserPaging(parameters));
 
-      //return new JsonResult { Data = Newtonsoft.Json.JsonConvert.SerializeObject(UserRolesModel.UserPaging(parameters)), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+      return output;
     }
 
     public ActionResult GetUsers(int start = 0, int limit = 15)
