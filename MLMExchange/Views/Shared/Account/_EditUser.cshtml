@@ -145,9 +145,14 @@
   }
 
   @Html.ApplicationTextBoxFor(x => x.PhoneNumber, MLMExchange.Properties.ResourcesA.EnterPhoneNumber, @MLMExchange.Properties.ResourcesA.EnterPhoneNumber, type, null, phoneNumber_additionalAttributes)
+    
 }
+<script>
+  $(function () {
+    $(".b-ib__input[name='PhoneNumber']").mask("7 (999) 999-99-99")
+  });
+</script>
 <!--#endregion-->
-
 
 @if (ViewData["Usage"] != null && ViewData["Usage"] == "Register")
 {

@@ -485,6 +485,7 @@
     <Content Include="bower_components\jquery-icheck\skins\square\yellow.css" />
     <Content Include="bower_components\jquery-icheck\skins\square\yellow.png" />
     <Content Include="bower_components\jquery-icheck\skins\square\_all.css" />
+    <Content Include="bower_components\jquery.maskedinput\jquery.maskedinput.min.js" />
     <Content Include="bower_components\jquery\src\ajax.js" />
     <Content Include="bower_components\jquery\src\ajax\jsonp.js" />
     <Content Include="bower_components\jquery\src\ajax\script.js" />
@@ -509,7 +510,6 @@
     <Content Include="bower_components\opentip\css\opentip.css" />
     <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.js" />
     <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.min.js" />
-    <Content Include="bower_components\opentip\downloads\opentip-jquery.js" />
     <Content Include="bower_components\opentip\downloads\opentip-jquery.min.js" />
     <Content Include="bower_components\opentip\downloads\opentip-native-excanvas.js" />
     <Content Include="bower_components\opentip\downloads\opentip-native-excanvas.min.js" />
@@ -833,6 +833,9 @@
       <Project>{c2bce3f7-3976-4f25-a60d-4dd4206feeb5}</Project>
       <Name>Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

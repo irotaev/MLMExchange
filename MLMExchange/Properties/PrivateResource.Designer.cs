@@ -88,7 +88,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kod dlia activacii accaynta: {0}.
+        ///   Looks up a localized string similar to Kod dlia activacii accaynta {0}: {1}.
         /// </summary>
         public static string AccountRegister__Sms_ActivationCode {
             get {

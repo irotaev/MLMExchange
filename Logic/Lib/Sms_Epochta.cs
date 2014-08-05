@@ -129,6 +129,19 @@ namespace Logic.Lib
         get { return Encoding.UTF8; }
       }
     }
+
+    #region Generate sms code
+    public const ushort SmsCodeLength = 6;
+
+    /// <summary>
+    /// Сгенерировать код
+    /// </summary>
+    /// <returns>Код. Примерно 6 символов</returns>
+    public static string GenerateSmsCode()
+    {
+      return Guid.NewGuid().ToString("n").Substring(0, SmsCodeLength);
+    }
+    #endregion
   }
 
   #region Exceptions

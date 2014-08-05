@@ -50,10 +50,31 @@ namespace MLMExchange.Models.Registration
     [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessageResourceName = "FieldEmailInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Email { get; set; }
 
+    #region Phone number
+    private string _PhoneNumber;
+
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){9,}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
-      (MLMExchange.Properties.ResourcesA))]
-    public string PhoneNumber { get; set; }
+    //[RegularExpression(@"^\s*\+?\s*([0-9][\s-]*){9,}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
+    //  (MLMExchange.Properties.ResourcesA))]
+    [RegularExpression(@"^7 \([0-9]{3}\) [0-9]{3}\-[0-9]{2}\-[0-9]{2}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
+    (MLMExchange.Properties.ResourcesA))]
+    public string PhoneNumber
+    {
+      get
+      {
+        return _PhoneNumber;
+      }
+      set
+      {
+        string phoneNumber = new String(value.Where(Char.IsDigit).ToArray());
+
+        if (String.IsNullOrWhiteSpace(phoneNumber))
+          throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.UserModel__Exception_FieldPhoneNumberInvalid);
+
+        _PhoneNumber = phoneNumber;
+      }
+    }
+    #endregion
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [StringLength(32, MinimumLength = 6, ErrorMessageResourceName = "UserModel__Exception_SkypeInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
@@ -207,7 +228,7 @@ namespace MLMExchange.Models.Registration
         if (exists)
           modelState.AddModelError("Login", MLMExchange.Properties.ResourcesA.UserModel__Exception_LoginExists);
       }
-      else 
+      else
       {
         modelState.AddModelError("Login", MLMExchange.Properties.ResourcesA.Model_Exception_FiledIsEmpty);
       }
@@ -297,7 +318,7 @@ namespace MLMExchange.Models.Registration
       user.Name = this.Name;
       user.Surname = this.Surname;
       user.Patronymic = this.Patronymic;
-      user.PhotoRelativePath = this.PhotoRelativePath;
+      user.PhotoRelativePath = this.PhotoRelativePath;      
       user.PhoneNumber = this.PhoneNumber;
       user.Skype = this.Skype;
 

@@ -131,5 +131,40 @@ namespace LogicTest.DataObject
 
       Assert.IsTrue(randomUser != null, "Не нашли рандомного пользователя");
     }
+
+    /// <summary>
+    /// Удаление пользователя из базы
+    /// </summary>
+    [TestMethod]
+    public void Delete_User()
+    {
+      // Логин пользователя, которого удаляю
+      const string userLogin = "jimmy";
+
+      D_User d_user = _NHibernaetSession.Query<D_User>().Where(x => x.Login == userLogin).FirstOrDefault();
+
+      if (d_user == null)
+        Assert.Fail("Такого пользователя не существует в базе");
+
+      _NHibernaetSession.Delete(d_user);
+
+      TransactionCommit();
+    }
+
+    [TestMethod]
+    public void Delete_User_By_PhoneNumber()
+    {
+      // Телефон пользователя, которого удаляю
+      const string userPhoneNumber = "79164289256";
+        
+      D_User d_user = _NHibernaetSession.Query<D_User>().Where(x => x.PhoneNumber == userPhoneNumber).FirstOrDefault();
+
+      if (d_user == null)
+        Assert.Fail("Такого пользователя не существует в базе");
+
+      _NHibernaetSession.Delete(d_user);
+
+      TransactionCommit();
+    }
   }
 }

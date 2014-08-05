@@ -141,8 +141,8 @@ namespace MLMExchange.Controllers
 #if DEBUG
             user.ConfirmationCode = "tester";
 #else 
-            user.ConfirmationCode = Ssms.GenerateSmsCode();
-            new Ssms().SendMessage(String.Format(MLMExchange.Properties.PrivateResource.AccountRegister__Sms_ActivationCode, user.ConfirmationCode), user.PhoneNumber);
+            user.ConfirmationCode = Sms_Epochta.GenerateSmsCode();
+            new Sms_Epochta(user.PhoneNumber).SendMessage(String.Format(MLMExchange.Properties.PrivateResource.AccountRegister__Sms_ActivationCode, user.Login, user.ConfirmationCode));
 #endif
             #endregion
 
@@ -157,7 +157,6 @@ namespace MLMExchange.Controllers
 
       return View(userModel);
     }
-
 
     [Auth]
     public ActionResult Confirm(ConfirmModel model)

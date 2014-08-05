@@ -9,7 +9,7 @@ using NHibernate;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace LogicTest
-{
+{  
   /// <summary>
   /// Базовый тест
   /// </summary>

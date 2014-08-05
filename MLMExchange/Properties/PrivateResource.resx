@@ -241,7 +241,7 @@
     <value>Ваш аккаунт уже подтвержден</value>
   </data>
   <data name="AccountRegister__Sms_ActivationCode" xml:space="preserve">
-    <value>Kod dlia activacii accaynta: {0}</value>
+    <value>Kod dlia activacii accaynta {0}: {1}</value>
   </data>
   <data name="ResetPasswordMailSubject" xml:space="preserve">
     <value>Восстановление пароля - {0}</value>
