@@ -1,0 +1,51 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@model MLMExchange.Models.Registration.UserModel
+
+@{
+  ViewBag.Title = "UserRolesList";
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+
+  var X = Html.X();
+}
+
+@{
+  var userRolesGrid = (X.GridPanel()
+    .ID("UserRolesList__Gird")
+    .Layout(LayoutType.Fit)
+    .Title(MLMExchange.Properties.ResourcesA.RandomWords)
+    .Frame(true)
+    .Border(false)
+    .Store(
+      X.Store()
+      .Proxy(Html.X().AjaxProxy()
+                        .Url(Url.Action("Paginate"))
+                        .Reader(Html.X().JsonReader().Root("Data")))
+      .RemotePaging(true)
+      .RemoteSort(false)
+      .PageSize(10))
+      .ColumnModel(
+        X.RowNumbererColumn(),
+        X.Column().DataIndex(Model, m => m.CreationDateTime).Text(Logic.Properties.GeneralResources.CreationDateTime).Flex(1),
+        X.Column().DataIndex(Model, m => m.Login).Text(Logic.Properties.GeneralResources.Login).Flex(1),
+        X.ImageCommandColumn().Commands(
+          X.ImageCommand().CommandName("GetRandomWords").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),
+          X.ImageCommand().CommandName("Edit").Icon(Icon.ApplicationEdit).Text(MLMExchange.Properties.ResourcesA.Edit),
+          X.ImageCommand().CommandName("Delete").Icon(Icon.Delete).Text(MLMExchange.Properties.ResourcesA.Delete)
+          ).Width(150)
+          .Listeners(ls =>
+          {
+            //ls.Command.Handler = String.Format("RandomWrodsList__Gird__CommandHandler(command, record);");
+          }))
+          .BottomBar(
+                X.PagingToolbar()
+                    .DisplayInfo(true)
+                    .DisplayMsg("Displaying plants {0} - {1} of {2}")
+                    .EmptyMsg("No plants to display")
+            ));
+}
+
+@{
+  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(userRolesGrid);
+}
+

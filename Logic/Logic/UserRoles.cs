@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NHibernate.Linq;
+using Microsoft.Practices.Unity;
 
 namespace Logic
 {
@@ -45,6 +47,17 @@ namespace Logic
       }
 
       return profitCount;
+    }
+  }
+
+  public class UserRoles
+  {
+    public static List<D_User> GetUsersWithPaging(int start, int limit)
+    {
+      List<D_User> userList = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_User>().Skip(start).Take(limit).ToList();
+
+      return userList;
     }
   }
 }

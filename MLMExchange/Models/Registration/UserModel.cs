@@ -16,6 +16,7 @@ namespace MLMExchange.Models.Registration
   /// <summary>
   /// Модель пользователя
   /// </summary>
+  [Serializable]
   public class UserModel : AbstractDataModel<D_User, UserModel>
   {
     public UserModel()

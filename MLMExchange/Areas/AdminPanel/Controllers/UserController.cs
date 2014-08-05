@@ -292,7 +292,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
 
       return Json(new { data = "data" });
-      //return this.Store(buyingMyCryptRequestsHistory);
+      return this.Store(buyingMyCryptRequestsHistory);
     }
     #endregion
 
