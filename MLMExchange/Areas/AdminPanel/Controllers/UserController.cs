@@ -264,8 +264,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Заполняю историю заявок, на которые откликнулс данный пользователь
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
 
-      IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
+      IOrderedEnumerable<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List().OrderBy(x => x.CreationDateTime);
 
       foreach (var request in buyingMyCryptRequestsHistory)
       {
