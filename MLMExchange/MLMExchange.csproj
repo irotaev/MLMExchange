@@ -217,6 +217,7 @@
     <Compile Include="Models\ContactMessageModel.cs" />
     <Compile Include="Models\Error\ApplicationExceptionModel.cs" />
     <Compile Include="Models\ExtNetModel.cs" />
+    <Compile Include="Models\OuterPaymentSystem\PerfectMoneyModel.cs" />
     <Compile Include="Models\Registration\ConfirmModel.cs" />
     <Compile Include="Models\Registration\ResetPasswordModel.cs" />
     <Compile Include="Properties\PrivateResource.Designer.cs">
@@ -242,6 +243,7 @@
     <Compile Include="Properties\Resources.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="3721316.txt" />
     <Content Include="App_Readme\Ext.NET.MVC\BREAKING_CHANGES.txt" />
     <Content Include="App_Readme\Ext.NET.MVC\CHANGELOG.txt" />
     <Content Include="App_Readme\Ext.NET.MVC\LICENSE.txt" />
@@ -801,6 +803,7 @@
     <Content Include="Views\Shared\_ResetPasswordForm.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Views\Shared\Exceptions\ApplicationException.cshtml" />
+    <Content Include="Areas\AdminPanel\Views\Shared\OuterPaymentSystem\_PerfectMoney_Browse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

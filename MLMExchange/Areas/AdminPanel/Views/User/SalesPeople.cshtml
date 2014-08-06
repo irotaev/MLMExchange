@@ -23,8 +23,7 @@
     console.log(command);
     console.log(record);
 
-    if (command == "ShowUserInfo")
-    {
+    if (command == "ShowUserInfo") {
       new Ext.Window({
         id: "SalesPeople_ShwoUserInfo__Window",
         width: 800,
@@ -123,12 +122,36 @@
       //#region Обработчик события нажатия кнопки Оплатить проверочный платеж
       $(".pb-br__image-link_action_check-payment").on("click", function () {
 
-        $.ajax({
-          url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
-          async: false,
-          type: "POST"
-        })
-        .done(function () { window.location.reload(); });
+        //$.ajax({
+        //  url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
+        //  async: false,
+        //  type: "POST"
+        //})
+        //.done(function () { window.location.reload(); });
+
+        new Ext.Window({
+          id: "PayCheckBill__Window",
+          width: 600,          
+          modal: true,
+          autoScroll: true,
+          title: "@MLMExchange.Properties.PrivateResource.PayChechBillTitle",
+          autoLoad: {
+            url: "/BuyingMyCryptRequest/CheckPayment",
+            params: { buyingMyCryptRequestId: $(this).data("request-id") },
+            nocache: true,
+            text: "@MLMExchange.Properties.ResourcesA.Loading",
+            callback: function () {
+              $.each($("#PayCheckBill__Window").find("script[data-app-script='true']"), function (index, element) {
+                var scriptTag = $(document.createElement('script')).text($(element).text());
+
+                $(scriptTag).appendTo($("body"));
+              });
+              require(["jquery", "Lib/Form"], function($, formModule) {
+                new formModule.Form($("#PayCheckBill__Window").find("form")).ReBindAll();
+              });
+            }
+          }
+        }).show();
       });
       //#endregion
 

@@ -67,9 +67,22 @@ namespace Logic
     /// </summary>
     public void PayCheckBill(D_User payer)
     {
+      decimal moneyAmount;
+      PayCheckBill(payer, out moneyAmount);
+    }
+
+    /// <summary>
+    /// Оплатить проверочный платеж    
+    /// <param name="payer">Плательщик</param>
+    /// <param name="moneyAmount">Количество денег</param>
+    /// </summary>
+    public void PayCheckBill(D_User payer, out decimal moneyAmount)
+    {
+      moneyAmount = LogicObject.MoneyAmount;
+
       Payment checkPayment = new Payment
       {
-        RealMoneyAmount = LogicObject.MoneyAmount,
+        RealMoneyAmount = moneyAmount,
         Payer = payer,
         Bill = LogicObject
       };

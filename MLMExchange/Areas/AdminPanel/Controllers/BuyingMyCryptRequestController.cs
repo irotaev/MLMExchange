@@ -10,12 +10,14 @@ using Microsoft.Practices.Unity;
 using NHibernate.Linq;
 using MLMExchange.Lib.Exception;
 using MLMExchange.Lib.EntityLogic;
+using MLMExchange.Models.OuterPaymentSystem;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
   [Auth]
   public class BuyingMyCryptRequestController : BaseController
   {
+    #region CheckPayment
     /// <summary>
     /// Проверочный платеж
     /// </summary>
@@ -36,16 +38,46 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (checkBill == null || checkBill.Payer.Id != CurrentSession.Default.CurrentUser.Id)
         throw new Logic.Lib.ApplicationException(String.Format("Check bill for request {0} is not set or belong to anouther user", buyingRequest));
 
-      if (checkBill.PaymentState == BillPaymentState.Paid)
+      if (checkBill.PaymentState != BillPaymentState.WaitingPayment)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      ((Bill)checkBill).PayCheckBill(CurrentSession.Default.CurrentUser);
+      //((Bill)checkBill).PayCheckBill(CurrentSession.Default.CurrentUser);
 
-      if (!Request.IsAjaxRequest())
-        return Redirect(Request.UrlReferrer.ToString());
-      else
+      //if (!Request.IsAjaxRequest())
+      //  return Redirect(Request.UrlReferrer.ToString());
+      //else
+      //  return null;
+
+      string checkPaymentConfirmUrl = String.Format("{0}/BuyingMyCryptRequest/CheckPaymentConfirm", Request.Url.GetLeftPart(UriPartial.Authority));
+
+      PerfectMoneyModel model = new PerfectMoneyModel
+      {
+        NoPaymentUrl = checkPaymentConfirmUrl,
+        PaymentUrl = checkPaymentConfirmUrl,
+        PayeeAccount = Logic.Lib.PaymentSystem.PerfectMoney.PayeeCheckBillAccount,
+        PayeeName = Logic.Lib.PaymentSystem.PerfectMoney.PayeeName,
+        PaymentUrlMethod = "POST",
+        NoPaymentUrlMethod = "POST",
+#if DEBUG
+        PaymentAmount = 0.01m,
+#else
+        PaymentAmount = checkBill.MoneyAmount,
+#endif
+        PaymentId = checkBill.Id.ToString(),
+        PaymentUnit = Logic.Lib.PaymentSystem.PerfectMoney.PaymentCheckBillUnits
+      };
+
+      return View("~/Areas/AdminPanel/Views/Shared/OuterPaymentSystem/_PerfectMoney_Browse.cshtml", model);
+    }
+
+    [HttpPost]
+    public ActionResult CheckPaymentConfirm()
+    {
+      object ff = 44;
+
         return null;
     }
+    #endregion
 
     /// <summary>
     /// Оплатить комиссионый сбор пордавцу

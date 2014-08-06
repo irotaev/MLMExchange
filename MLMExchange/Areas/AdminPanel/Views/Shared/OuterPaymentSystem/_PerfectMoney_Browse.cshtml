@@ -1,0 +1,34 @@
+﻿@using MLMExchange.Lib
+@using MLMExchange.Lib.Form
+@model MLMExchange.Models.OuterPaymentSystem.PerfectMoneyModel
+
+<section class="b-omps">
+  <header class="b-omps__redirect-info">
+    @MLMExchange.Properties.PrivateResource.CheckPayment__NowYouWouldRedirectToPaymentSystem
+  </header>
+
+  <form action="@Logic.Lib.PaymentSystem.PerfectMoney.PaymentSystemAPIUrl" method="POST" id="b-omps-form_ID">
+    @Html.HiddenFor(x => x.PayeeAccount, new { Name = "PAYEE_ACCOUNT" })
+    @Html.HiddenFor(x => x.PayeeName, new { Name = "PAYEE_NAME" })
+    @Html.HiddenFor(x => x.PaymentId, new { Name = "PAYMENT_ID" })
+    @Html.HiddenFor(x => x.PaymentAmount, new { Name = "PAYMENT_AMOUNT" })
+    @Html.HiddenFor(x => x.PaymentUnit, new { Name = "PAYMENT_UNITS" })
+    @Html.HiddenFor(x => x.StatusUrl, new { Name = "STATUS_URL" })
+    @Html.HiddenFor(x => x.PaymentUrl, new { Name = "PAYMENT_URL" })
+    @Html.HiddenFor(x => x.PaymentUrlMethod, new { Name = "PAYMENT_URL_METHOD" })
+    @Html.HiddenFor(x => x.NoPaymentUrl, new { Name = "NOPAYMENT_URL" })
+    @Html.HiddenFor(x => x.SuggestedMemo, new { Name = "SUGGESTED_MEMO" })
+    @Html.HiddenFor(x => x.NoPaymentUrlMethod, new { Name = "NOPAYMENT_URL_METHOD" })
+
+    <input type="submit" value="submit" style="position: absolute; top: 0; left: 0; visibility: hidden" />
+  </form>
+
+  <script data-app-script='true'>
+    $(function () {
+      setTimeout(function() {
+        $("#b-omps-form_ID").submit();
+      }, 2000);
+    });
+  </script>
+
+</section><!--B: Outer money payment system-->

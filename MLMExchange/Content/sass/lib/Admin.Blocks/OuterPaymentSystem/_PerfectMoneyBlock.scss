@@ -1,0 +1,14 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+.b-omps
+{
+  padding: 10px;
+
+  .b-omps__redirect-info
+  {
+    padding: 20px;
+    font-size: $font-h;
+    text-align: center;
+  }
+}

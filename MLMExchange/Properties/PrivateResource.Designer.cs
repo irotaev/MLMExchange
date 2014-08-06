@@ -160,6 +160,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Сейчас вы будите перенаправлены на платежную систему.
+        /// </summary>
+        public static string CheckPayment__NowYouWouldRedirectToPaymentSystem {
+            get {
+                return ResourceManager.GetString("CheckPayment__NowYouWouldRedirectToPaymentSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Реферальный url текущего пользователя.
         /// </summary>
         public static string CurrentUserRefererUrl {
@@ -264,6 +273,15 @@ namespace MLMExchange.Properties {
         public static string NeedCheckPayment {
             get {
                 return ResourceManager.GetString("NeedCheckPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оплатить проверочный платеж.
+        /// </summary>
+        public static string PayChechBillTitle {
+            get {
+                return ResourceManager.GetString("PayChechBillTitle", resourceCulture);
             }
         }
         
