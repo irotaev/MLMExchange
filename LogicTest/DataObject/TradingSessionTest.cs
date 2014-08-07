@@ -164,7 +164,7 @@ namespace LogicTest.DataObject
       return tradingSession;
     }
 
-    public static D_TradingSession ChangeState_To_ProfitConfirmation(D_TradingSession tradingSession)
+    public static D_TradingSession ChangeState_To_ProfitConfirmation(D_TradingSession tradingSession, ushort profitBillCount = 10)
     {
       if (tradingSession == null)
         throw new TestParametrNullException("tradingSession");
@@ -176,18 +176,15 @@ namespace LogicTest.DataObject
 
       #region Создание платежей на прибыль текущей сессии
       decimal buyerProfit = tradingSession.BuyingMyCryptRequest.MyCryptCount + ((TradingSession)tradingSession).CalculateBuyerProfit();
-      decimal modulor = buyerProfit % 2;
-      decimal divisionResult = buyerProfit / 2;
 
-      for (uint index = 1; index <= 3; index++)
+      decimal billMoneyAmount = Bill.RoundBillMoneyAmount(buyerProfit / profitBillCount);
+
+      for (uint index = 1; index <= 10; index++)
       {
-        if (index == 3 && modulor == 0)
-          continue;
-
         D_YieldSessionBill yieldSessionBill = new D_YieldSessionBill
         {
           AcceptorTradingSession = tradingSession,
-          MoneyAmount = index == 3 ? modulor : divisionResult,
+          MoneyAmount = billMoneyAmount,
           Payer = payerProfitSession.BuyingMyCryptRequest.Buyer,
           PayerTradingSession = payerProfitSession,
           PaymentAcceptor = tradingSession.BuyingMyCryptRequest.Buyer,
@@ -198,7 +195,7 @@ namespace LogicTest.DataObject
         {
           Bill = yieldSessionBill,
           PaymentSystem = payerProfitSession.BuyingMyCryptRequest.Buyer.PaymentSystemGroup.BankPaymentSystems.FirstOrDefault(),
-          RealMoneyAmount = index == 3 ? modulor : divisionResult,
+          RealMoneyAmount = billMoneyAmount,
           Payer = payerProfitSession.BuyingMyCryptRequest.Buyer
         });
 
