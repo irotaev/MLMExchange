@@ -1,4 +1,5 @@
-﻿using MLMExchange.Models;
+﻿using MLMExchange.Lib;
+using MLMExchange.Models;
 using MLMExchange.Models.Registration;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,23 @@ namespace MLMExchange.Areas.AdminPanel.Models
       get
       {
         return Referals.Sum(x => x.RefererTotalrofit);
+      }
+    }
+
+    public long? UserReferalId
+    {
+      get 
+      {
+        Logic.D_User user = CurrentSession.Default.CurrentUser;
+
+        if (user == null)
+        {
+          return null;
+        }
+        else
+        {
+          return user.Id;
+        }
       }
     }
   }

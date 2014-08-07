@@ -28,10 +28,18 @@ else
           module.App.ReinitializeTooltip($(".b-ri"));
         });
       }
+
+      function GetReferalUrl(userId)
+      {
+        var referalUrl = "@(Url.Action("Register", "Account", new { area = "", RefererId = Model.UserReferalId }, Request.Url.Scheme))";
+
+        prompt("@(String.Format("{0}{1}", MLMExchange.Properties.PrivateResource.RefererUrl, ":"))", referalUrl);
+      }
     </script>
 
     @(X.GridPanel().ID("b-ri__grid")
-    .MinHeight(200)
+    .MinHeight(400)
+    .MaxHeight(600)
     .Layout(LayoutType.Fit)
     .HeaderConfig(X.PanelHeader().Html(
       @<div class="b-x__header-wrapper">
@@ -49,6 +57,8 @@ else
          </div>
        </div>
     ))
+    .TopBarItem(
+      Html.X().Button().Text(MLMExchange.Properties.PrivateResource.GetUserRefererUrl).Scale(ButtonScale.Medium).Handler("GetReferalUrl();"))
     .Border(false)
     .Store(
       X.Store()
@@ -74,6 +84,10 @@ else
           ls.Command.Handler = String.Format("commandClickHandler(command, record);");
         }))
        .Listeners(x => x.AfterRender.Fn = "riGrid__Afterrender")
-       .RenderTo("b-ri__grid-wrapper_ID"))
+       .RenderTo("b-ri__grid-wrapper_ID")
+       .BottomBar(
+        X.PagingToolbar()
+          .Plugins(X.ProgressBarPager())
+          ))
   </div>
 </section><!--B: referal info-->
