@@ -14,6 +14,7 @@ using MLMExchange.Areas.AdminPanel.Models.PaymentSystem;
 
 namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
 {
+  [Serializable]
   public class BuyingMyCryptRequestModel : AbstractDataModel<BuyingMyCryptRequest, BuyingMyCryptRequestModel>
   {
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]

@@ -7,6 +7,43 @@
   var X = Html.X();
 }
 
+<script>
+  function ShowUserInfo(userId) {
+    new Ext.Window({
+      id: "TradingSession_ShwoUserInfo__Window",
+      width: 800,
+      height: 400,
+      modal: true,
+      resizable: false,
+      title: "@MLMExchange.Properties.ResourcesA.Information",
+      autoScroll: true,
+      autoLoad: {
+        url: "/AdminPanel/User/Browse",
+        params: { objectId: userId, AsPartial: true },
+        nocache: true,
+        text: "@MLMExchange.Properties.ResourcesA.Loading",
+        callback: function () {
+          $.each($("#TradingSession_ShwoUserInfo__Window").find("script[data-app-script='true']"), function (index, element) {
+            var scriptTag = $(document.createElement('script')).text($(element).text());
+
+            $(scriptTag).appendTo($("body"));
+          });
+        }
+      }
+    }).show();
+  }
+
+  function TradingSession_All_Grid__DisplayNameRenderer(value, metaData, record, row, col, store, gridView) {
+    console.log(record);
+
+    var $displayName = $("<a></a>").css({ "border-bottom" : "1px dashed #dfdfdf", "cursor" : "pointer" }).attr("onclick", "ShowUserInfo(" + record.data.Seller__Id + ");");
+
+    $displayName.text(value);
+
+    return $displayName[0].outerHTML;
+  }
+</script>
+
 @if (Model.State == Logic.TradingSessionStatus.NeedEnsureProfibility)
 {
   <script>
@@ -73,14 +110,14 @@
                       new ModelField { Name = "BillStateAsString" },
                       new ModelField { Name = "BillState" }
                   ))
-                    .ServerProxy(
-                      Html.X().AjaxProxy()
-                          .Url(Url.Action("GetData"))
-                      )
+                    .Proxy(Html.X().AjaxProxy()
+                            .Url(Url.Action("GridTradingSession__Paginate"))
+                            .Reader(Html.X().JsonReader().Root("data")))
                   )
                   .ColumnModel(
                     X.RowNumbererColumn(),
-                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Width(120),
+                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Width(120)
+                      .Renderer("TradingSession_All_Grid__DisplayNameRenderer"),
                     X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(120),
                     X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Width(115),
                     X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillStateAsString").Width(150),
@@ -267,19 +304,20 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
               new ModelField { Name = "CreationDateTime" },
               new ModelField { Name = "BillPaymentState" },
               new ModelField { Name = "BillPaymentStateAsString" },
-              new ModelField { Name = "User__Login", ServerMapping = "User.Login" },
+              new ModelField { Name = "User__Login", Mapping = "User.Login" },
+              new ModelField { Name = "UserId", Mapping = "User.Id" },
               new ModelField { Name = "MoneyAmount" },
-              new ModelField { Name = "PaymentIds", ServerMapping = "PaymentIds" }
+              new ModelField { Name = "PaymentIds", Mapping = "PaymentIds" }
           ))
-            .ServerProxy(
-              Html.X().AjaxProxy()
-                  .Url(Url.Action("GetData"))
-              )
+              .Proxy(Html.X().AjaxProxy()
+                                .Url(Url.Action("GridTradingSessionNeedProfit__Paginate"))
+                              .Reader(Html.X().JsonReader().Root("data")))
           )
           .ColumnModel(
             X.RowNumbererColumn(),
             X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Width(100).Flex(1),
-            X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(50).Flex(1),
+            X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(50).Flex(1)
+                .Renderer("TradingSession_All_Grid__DisplayNameRenderer"),
             X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillPaymentStateAsString").Width(50).Flex(1)
                 .Renderer("tradingSession_TradingSessionProfitPayment_Grid__BillPaymentStateRenderer"),
             X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(100).Flex(1),

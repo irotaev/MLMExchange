@@ -18,6 +18,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   /// <summary>
   /// Модель заявки на участие в торгах
   /// </summary>
+  [Serializable]
   public class BiddingParticipateApplicationModel : AbstractDataModel<D_BiddingParticipateApplication, BiddingParticipateApplicationModel>, 
     IDataBinding<D_BiddingParticipateApplication, BiddingParticipateApplicationModel>
   {

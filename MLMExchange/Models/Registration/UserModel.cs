@@ -10,6 +10,7 @@ using NHibernate.Linq;
 using DataAnnotationsExtensions;
 using MLMExchange.Lib.Exception;
 using MLMExchange.Areas.AdminPanel.Models;
+using Newtonsoft.Json;
 
 namespace MLMExchange.Models.Registration
 {
@@ -161,6 +162,7 @@ namespace MLMExchange.Models.Registration
     [HiddenInput(DisplayValue = false)]
     public string PhotoRelativePath { get; set; }
 
+    [JsonIgnore]
     public IEnumerable<D_AbstractRole> UserRoles { get; set; }
     public string DisplayName { get; set; }
 

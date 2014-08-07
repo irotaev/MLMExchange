@@ -34,8 +34,8 @@
       .RemoteSort(false)
       .PageSize(10))
       .ColumnModel(
-        X.RowNumbererColumn(),
-        X.Column().DataIndex(Model, m => m.CreationDateTime).Text(Logic.Properties.GeneralResources.CreationDateTime).Flex(1),
+        X.RowNumbererColumn().Width(30).MaxWidth(50).Resizable(true),
+        X.DateColumn().DataIndex(Model, m => m.CreationDateTime).Text(Logic.Properties.GeneralResources.CreationDateTime).Format("dd.m.Y H:i:s").Flex(1),
         X.Column().DataIndex(Model, m => m.Login).Text(Logic.Properties.GeneralResources.Login).Flex(1),
         X.ImageCommandColumn().Commands(
           X.ImageCommand().CommandName("GetRandomWords").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),

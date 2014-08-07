@@ -17,6 +17,8 @@ using MLMExchange.Areas.AdminPanel.Models;
 using System.Collections;
 using Ext.Net.MVC;
 using MLMExchange.Lib.Image;
+using Ext.Net;
+using MLMExchange.Areas.AdminPanel.Models.PaymentSystem;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
@@ -118,7 +120,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
           // TODO: Пересмотреть валидацию фото
           #region Валидация фото
 
-          Image.Validation imageValidation = new Image.Validation(model.Image);
+          MLMExchange.Lib.Image.Image.Validation imageValidation = new MLMExchange.Lib.Image.Image.Validation(model.Image);
           imageValidation.ValidateImage();
 
           #endregion
@@ -234,6 +236,60 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return View(model);
     }
 
+    #region Пагинация Controlpanel
+    public ActionResult GridTradingSession__Paginate(StoreRequestParameters parameters)
+    {
+      int start = parameters.Start;
+      int limit = parameters.Limit;
+      int totalCount;
+
+      TradingSessionModel model = new Models.TradingSessionModel();
+
+      D_TradingSession tradingSession = _NHibernateSession.Query<D_TradingSession>()
+          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
+                      && x.State != TradingSessionStatus.NA
+                      && x.State != TradingSessionStatus.Closed)
+          .FirstOrDefault();
+
+      List<YieldSessionPaymentAcceptor> yeildAccepterModels = new List<YieldSessionPaymentAcceptor>();
+
+      if (tradingSession != null)
+        yeildAccepterModels.AddRange(TradingSessionModel.GetYieldSessionPaymentAcceptors((TradingSession)tradingSession, (uint?)start, (uint?)limit));
+
+      totalCount = model.YieldSessionPaymentAcceptors.Count();
+
+      Paging<YieldSessionPaymentAcceptor> pageModelList = new Paging<YieldSessionPaymentAcceptor>(yeildAccepterModels, totalCount);
+
+      return this.Store(pageModelList);
+    }
+
+    public ActionResult GridTradingSessionNeedProfit__Paginate(StoreRequestParameters parameters)
+    {
+      int start = parameters.Start;
+      int limit = parameters.Limit;
+      int totalCount;
+
+      TradingSessionModel model = new TradingSessionModel();
+
+      D_TradingSession tradingSession = _NHibernateSession.Query<D_TradingSession>()
+          .Where(x => x.BuyingMyCryptRequest.Buyer.Id == CurrentSession.Default.CurrentUser.Id
+                      && x.State != TradingSessionStatus.NA
+                      && x.State != TradingSessionStatus.Closed)
+          .FirstOrDefault();
+
+      List<BillModel> needProfitBillsList = new List<BillModel>();
+
+      if (tradingSession != null)
+        needProfitBillsList.AddRange(TradingSessionModel.GetNeedProfitBills((TradingSession)tradingSession, (uint?)start, (uint?)limit));
+
+      totalCount = needProfitBillsList.Count();
+
+      Paging<BillModel> pageNeedProfitBillsList = new Paging<BillModel>(needProfitBillsList, totalCount);
+
+      return this.Store(pageNeedProfitBillsList);
+    }
+    #endregion
+
     #region SalesPeople
     /// <summary>
     /// Продавцы
@@ -247,53 +303,101 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       #region Заполняю активных продавцов
       model.ActiveSales = new List<BiddingParticipateApplicationModel>();
 
-      IList<D_BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_BiddingParticipateApplication>()
-        .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
+      //IList<D_BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      //  .Query<D_BiddingParticipateApplication>()
+      //  .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
 
-      foreach (var biddingApplication in biddingApplications)
-      {
-        BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
+      //foreach (var biddingApplication in biddingApplications)
+      //{
+      //  BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
 
-        biddingApplicationModel.Bind(biddingApplication);
+      //  biddingApplicationModel.Bind(biddingApplication);
 
-        model.ActiveSales.Add(biddingApplicationModel);
-      }
+      //  model.ActiveSales.Add(biddingApplicationModel);
+      //}
       #endregion
 
       #region Заполняю историю заявок, на которые откликнулс данный пользователь
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
 
-      IOrderedEnumerable<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List().OrderBy(x => x.CreationDateTime);
+      //IOrderedEnumerable<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+      //  .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List().OrderBy(x => x.CreationDateTime);
 
-      foreach (var request in buyingMyCryptRequestsHistory)
-      {
-        BuyingMyCryptRequestModel buyingRequestModel = new BuyingMyCryptRequestModel();
+      //foreach (var request in buyingMyCryptRequestsHistory)
+      //{
+      //  BuyingMyCryptRequestModel buyingRequestModel = new BuyingMyCryptRequestModel();
 
-        buyingRequestModel.Bind(request);
+      //  buyingRequestModel.Bind(request);
 
-        model.HistoryApplication.Add(buyingRequestModel);
-      }
+      //  model.HistoryApplication.Add(buyingRequestModel);
+      //}
       #endregion
 
       return View(model);
     }
 
+    #region Пагинация SalesPeople
     /// <summary>
     /// Получить историю заявок, на которые откликнулся пользователь.
     /// Используется Ext.NET
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    public ActionResult GetApplicationsHistory()
+    public ActionResult ActiveSalesGrid__Paginate(StoreRequestParameters parameters)
     {
-      IList<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List();
+      int start = parameters.Start;
+      int limit = parameters.Limit;
 
-      return Json(new { data = "data" });
-      return this.Store(buyingMyCryptRequestsHistory);
+      int totalCount;
+
+      IList<D_BiddingParticipateApplication> biddingApplicationList = _NHibernateSession.Query<D_BiddingParticipateApplication>()
+        .Where(x => x.State == BiddingParticipateApplicationState.Filed && 
+               x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id))
+        .Skip(start).Take(limit).ToList();
+
+      totalCount = _NHibernateSession.Query<D_BiddingParticipateApplication>().Count();
+
+      List<BiddingParticipateApplicationModel> activeSalesList = biddingApplicationList.Select(x =>
+      {
+        BiddingParticipateApplicationModel model = new BiddingParticipateApplicationModel().Bind(x);
+        return model;
+      }).ToList();
+
+      Paging<BiddingParticipateApplicationModel> activeSalesPaging = new Paging<BiddingParticipateApplicationModel>(activeSalesList, totalCount);
+
+      return this.Store(activeSalesPaging);
     }
+
+    /// <summary>
+    /// Получить историю покупок
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    [HttpGet]
+    public ActionResult HistoryApplicationGrid__Paginate(StoreRequestParameters parameters)
+    {
+      int start = parameters.Start;
+      int limit = parameters.Limit;
+
+      int totalCount;
+
+      IOrderedEnumerable<BuyingMyCryptRequest> byuingRequstsList = _NHibernateSession.QueryOver<BuyingMyCryptRequest>()
+        .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).Skip(start).Take(limit).List().OrderBy(x => x.CreationDateTime);
+
+      totalCount = _NHibernateSession.Query<BuyingMyCryptRequest>().Count();
+
+      List<BuyingMyCryptRequestModel> requestsList = byuingRequstsList.Select(x =>
+        {
+          BuyingMyCryptRequestModel model = new BuyingMyCryptRequestModel().Bind(x);
+          return model;
+        }).ToList();
+
+      Paging<BuyingMyCryptRequestModel> requestsPaging = new Paging<BuyingMyCryptRequestModel>(requestsList, totalCount);
+
+      return this.Store(requestsPaging);
+    }
+    #endregion
+
     #endregion
 
     /// <summary>

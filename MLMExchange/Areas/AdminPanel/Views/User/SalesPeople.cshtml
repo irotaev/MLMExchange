@@ -16,7 +16,33 @@
     });
     //#endregion
 
-    $(".pb-bmc #SellerId").val(commandArguments.SellerUser__Id);
+    $(".pb-bmc #SellerId").val(commandArguments.Seller__Id);
+  }
+
+  function ShowUserInfo(record)
+  {
+    new Ext.Window({
+      id: "SalesPeople_ShwoUserInfo__Window",
+      width: 800,
+      height: 400,
+      modal: true,
+      resizable: false,
+      title: "@MLMExchange.Properties.ResourcesA.Information",
+      autoScroll: true,
+      autoLoad: {
+        url: "/AdminPanel/User/Browse",
+        params: { objectId: record, AsPartial: true },
+        nocache: true,
+        text: "@MLMExchange.Properties.ResourcesA.Loading",
+        callback: function () {
+          $.each($("#SalesPeople_ShwoUserInfo__Window").find("script[data-app-script='true']"), function (index, element) {
+            var scriptTag = $(document.createElement('script')).text($(element).text());
+
+            $(scriptTag).appendTo($("body"));
+          });
+        }
+      }
+    }).show();
   }
 
   function SalesPeopleActiveSales__Grid__CommandClickHandler(command, record) {
@@ -34,7 +60,7 @@
         autoScroll: true,
         autoLoad: {
           url: "/AdminPanel/User/Browse",
-          params: { objectId: record.data.SellerUser__Id, AsPartial: true },
+          params: { objectId: record.data.Seller__Id, AsPartial: true },
           nocache: true,
           text: "@MLMExchange.Properties.ResourcesA.Loading",
           callback: function () {
@@ -81,7 +107,7 @@
 
         var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_pay-saller-interest-rate").attr("href", "#")
             .attr("data-request-id", record.data.Id)
-            .attr("data-seller-id", record.data.SellerId)
+            .attr("data-seller-id", record.data.Seller__Id)
             .attr("data-trade-session-id", record.data.TradeSessionId)
             .html("<i class='pb-br__icon fa fa-money'></i> @MLMExchange.Properties.ResourcesA.Pay");
 
@@ -185,6 +211,16 @@
       //#endregion
     }, this);
   };
+
+  function SalesPeople_All_Grid__DisplayNameRenderer(value, metaData, record, row, col, store, gridView)
+  {
+
+    var $displayName = $("<a></a>").css({ "border-bottom": "1px dashed #dfdfdf", "cursor": "pointer" }).attr("onclick", "ShowUserInfo(" + record.data.Seller__Id + ");");
+
+    $displayName.text(value);
+
+    return $displayName[0].outerHTML;
+  }
 </script>
 
 @{
@@ -202,15 +238,22 @@
       .RemotePaging(true)
       .PageSize(10)
       .DataSource(Model.ActiveSales)
-      .Model(X.Model().Fields(
-          new ModelField { Name = "Seller", ServerMapping = "Seller.DisplayName" },
-          new ModelField { Name = "MyCryptCount" },
-          new ModelField { Name = "SellerUser__Id", ServerMapping = "Seller.Id" },
-          new ModelField { Name = "BasePaymentSystenName", ServerMapping = "PaymentSystemGroupModel.DefaultPaymentSystemDisplayName" }
-      )))
+      .Model(X.Model()
+           .Fields(
+             new ModelField { Name = "Id" },
+             new ModelField { Name = "Seller__Id", Mapping = "Seller.Id" },
+             new ModelField { Name = "Seller__DisplayName", Mapping = "Seller.DisplayName" },
+             new ModelField { Name = "MyCryptCount" },
+             new ModelField { Name = "BasePaymentSystenName", Mapping = "PaymentSystemGroupModel.DefaultPaymentSystemDisplayName" }
+            )
+        )
+      .Proxy(Html.X().AjaxProxy()
+                            .Url(Url.Action("ActiveSalesGrid__Paginate"))
+                            .Reader(Html.X().JsonReader().Root("data"))))
       .ColumnModel(
         X.RowNumbererColumn(),
-        X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Seller").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Seller__DisplayName").Flex(1)
+          .Renderer("SalesPeople_All_Grid__DisplayNameRenderer"),
         X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
         X.Column().Text(Logic.Properties.GeneralResources.PaymentSystem).DataIndex("BasePaymentSystenName").Flex(1),
         X.ImageCommandColumn().Commands(
@@ -261,9 +304,8 @@
       .PageSize(10)
       .DataSource(Model.HistoryApplication)
       .Model(X.Model().Fields(
-          new ModelField { Name = "SellerId", ServerMapping = "Seller.Id" },
-          new ModelField { Name = "SellerName", ServerMapping = "Seller.Name" },
-          new ModelField { Name = "SellerSurname", ServerMapping = "Seller.Surname" },
+          new ModelField { Name = "Seller__Id", Mapping = "Seller.Id" },
+          new ModelField { Name = "Seller__DisplayName", Mapping = "Seller.DisplayName" },
           new ModelField { Name = "MyCryptCount" },
           new ModelField { Name = "LocalisedStateDisplayName" },
           new ModelField { Name = "IsCheckBillPaid" },
@@ -272,18 +314,17 @@
           new ModelField { Name = "TradeSessionId" },
           new ModelField { Name = "State" },
           new ModelField { Name = "Id" },
-          new ModelField { Name = "CheckBill__MoneyAmount", ServerMapping = "CheckBill.MoneyAmount" },
-          new ModelField { Name = "SallerInterestRateBill__MoneyAmount", ServerMapping = "SallerInterestRateBill.MoneyAmount" },
-          new ModelField { Name = "SystemSettings_Quote", ServerMapping = "SystemSettings.Quote" }
+          new ModelField { Name = "CheckBill__MoneyAmount", Mapping = "CheckBill.MoneyAmount" },
+          new ModelField { Name = "SallerInterestRateBill__MoneyAmount", Mapping = "SallerInterestRateBill.MoneyAmount" },
+          new ModelField { Name = "SystemSettings_Quote", Mapping = "SystemSettings.Quote" }
       ))
-      .ServerProxy(
-                    Html.X().AjaxProxy()
-                        .Url(Url.Action("GetApplicationsHistory"))
-                ))
+      .Proxy(Html.X().AjaxProxy()
+                     .Url(Url.Action("HistoryApplicationGrid__Paginate"))
+                     .Reader(Html.X().JsonReader().Root("data"))))
       .ColumnModel(
         X.RowNumbererColumn(),
-        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("SellerName").Flex(1),
-        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerSurname).DataIndex("SellerSurname").Flex(1),
+        X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("Seller__DisplayName").Flex(1)
+            .Renderer("SalesPeople_All_Grid__DisplayNameRenderer"),
         X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
         X.Column().Width(170).Text(MLMExchange.Properties.ResourcesA.State).DataIndex("State").Renderer("BuyingRequest__History__State__Renderer")
         )

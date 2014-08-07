@@ -117,25 +117,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       IsYieldSessionBillsPaid = @object.IsYieldSessionBillsPaid;
       ClosingSessionDateTime = @object.LogicObject.ClosingSessionDateTime;
 
-      //TODO:Rtv переделать
-      foreach (var bill in @object.LogicObject.YieldSessionBills)
-      {
-        Logic.PaymentSystem defaultPaymentSystem = ((PaymentSystemGroup)bill.PaymentAcceptor.PaymentSystemGroup).GetDefaultPaymentSystem();
-
-        YieldSessionPaymentAcceptor paymentAcceptor = new YieldSessionPaymentAcceptor
-        {
-          DefaultPaymentSystem = defaultPaymentSystem != null ? Logic.PaymentSystem.GetDisplayName(defaultPaymentSystem) : MLMExchange.Properties.ResourcesA.DefaultPaymentSystemNotSet,
-          MoneyAmount = bill.MoneyAmount,
-          UserId = bill.PaymentAcceptor.Id,
-          UserLogin = bill.PaymentAcceptor.Login,
-          YieldTradingSessionBillId = bill.Id,
-          BillState = bill.PaymentState,
-          BillStateAsString = bill.PaymentState == BillPaymentState.EnoughMoney ? MLMExchange.Properties.PrivateResource.YieldSessionBill__WaitingForConfirmation
-            : bill.PaymentState.GetLocalDisplayName()
-        };
-
-        _YieldSessionPaymentAcceptors.Add(paymentAcceptor);
-      }
+      _YieldSessionPaymentAcceptors.AddRange(GetYieldSessionPaymentAcceptors(null, null));
 
       #region Задание типа текущего пользователя, по отношению к торговой сессии
       if (@object.LogicObject.BuyingMyCryptRequest != null && @object.LogicObject.BuyingMyCryptRequest.Buyer.Id == MLMExchange.Lib.CurrentSession.Default.CurrentUser.Id)
@@ -177,6 +159,76 @@ namespace MLMExchange.Areas.AdminPanel.Models
           return null;
         }
       }
+    }
+
+    public static IEnumerable<BillModel> GetNeedProfitBills(TradingSession tradingsession, uint? startIndex, uint? count)
+    {
+      if (tradingsession == null)
+        throw new ArgumentNullException("tradingsession");
+
+      IEnumerable<BillModel> needProfitBills = tradingsession.GetNeedPaymentBills().Select(x => new BillModel().Bind((Bill)x));
+
+      if (startIndex != null && count != null)
+        needProfitBills = needProfitBills.Skip((int)startIndex).Take((int)count);
+
+      return needProfitBills;
+    }
+
+    public IEnumerable<BillModel> GetNeedProfitBills(uint? startIndex, uint? count)
+    {
+      if (_Object == null)
+        throw new BindNotCallException<TradingSession>();
+
+      return GetNeedProfitBills(_Object, startIndex, count);
+    }
+
+    /// <summary>
+    /// Получить модели получателей платежей доходности торговой сессии
+    /// </summary>
+    /// <param name="startIndex"></param>
+    /// <param name="count"></param>
+    /// <param name="tradingSession">Объект торговой сессии</param>
+    /// <returns></returns>
+    public static List<YieldSessionPaymentAcceptor> GetYieldSessionPaymentAcceptors(TradingSession tradingSession, uint? startIndex, uint? count)
+    {
+      if (tradingSession == null)
+        throw new ArgumentNullException("tradingSession");
+
+      List<YieldSessionPaymentAcceptor> yieldSessionPaymentAcceptorList = new List<YieldSessionPaymentAcceptor>();
+
+      IEnumerable<D_YieldSessionBill> yeldSessionBills = tradingSession.LogicObject.YieldSessionBills;
+
+      if (startIndex != null && count != null)
+        yeldSessionBills = yeldSessionBills.Skip((int)startIndex).Take((int)count);
+
+      foreach (var bill in yeldSessionBills)
+      {
+        Logic.PaymentSystem defaultPaymentSystem = ((PaymentSystemGroup)bill.PaymentAcceptor.PaymentSystemGroup).GetDefaultPaymentSystem();
+
+        YieldSessionPaymentAcceptor paymentAcceptor = new YieldSessionPaymentAcceptor
+        {
+          DefaultPaymentSystem = defaultPaymentSystem != null ? Logic.PaymentSystem.GetDisplayName(defaultPaymentSystem) : MLMExchange.Properties.ResourcesA.DefaultPaymentSystemNotSet,
+          MoneyAmount = bill.MoneyAmount,
+          UserId = bill.PaymentAcceptor.Id,
+          UserLogin = bill.PaymentAcceptor.Login,
+          YieldTradingSessionBillId = bill.Id,
+          BillState = bill.PaymentState,
+          BillStateAsString = bill.PaymentState == BillPaymentState.EnoughMoney ? MLMExchange.Properties.PrivateResource.YieldSessionBill__WaitingForConfirmation
+            : bill.PaymentState.GetLocalDisplayName()
+        };
+
+        yieldSessionPaymentAcceptorList.Add(paymentAcceptor);
+      }
+
+      return yieldSessionPaymentAcceptorList;
+    }
+
+    public List<YieldSessionPaymentAcceptor> GetYieldSessionPaymentAcceptors(uint? startIndex, uint? count)
+    {
+      if (_Object == null)
+        throw new BindNotCallException<TradingSession>();
+
+      return GetYieldSessionPaymentAcceptors(_Object, startIndex, count);
     }
   }
 
