@@ -10,6 +10,8 @@ using NHibernate.Linq;
 using Logic;
 using MLMExchange.Lib.Exception;
 using MLMExchange.Lib;
+using Ext.Net;
+using Ext.Net.MVC;
 
 namespace MLMExchange.Areas.AdminPanel.Controllers
 {
@@ -22,10 +24,39 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// <returns></returns>
     public ActionResult UnApprovedTransactionList()
     {
-      IEnumerable<AddMyCryptModel> model = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_AddMyCryptTransaction>().Where(x => x.State == AddMyCryptTransactionState.NA).Select(x => new AddMyCryptModel().Bind(x));
+      IList<D_AddMyCryptTransaction> transactionModelList = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .QueryOver<D_AddMyCryptTransaction>().Where(x => x.State == AddMyCryptTransactionState.NA).List();
 
-      return View(model);
+      List<AddMyCryptModel> transactionList = new List<AddMyCryptModel>();
+
+      foreach (var transactions in transactionModelList)
+      {
+        AddMyCryptModel addMyCryptModel = new AddMyCryptModel();
+
+        addMyCryptModel.Bind(transactions);
+
+        transactionList.Add(addMyCryptModel);
+      }
+
+      return View(transactionList);
+    }
+
+    public ActionResult UnApprovedTransactionGrid__Paginate(StoreRequestParameters parametrs)
+    {
+      IList<D_AddMyCryptTransaction> unApprovedTransactionList = _NHibernateSession.QueryOver<D_AddMyCryptTransaction>()
+        .Where(x => x.State == AddMyCryptTransactionState.NA).Skip(parametrs.Start).Take(parametrs.Limit).List();
+
+      int count = _NHibernateSession.Query<D_AddMyCryptTransaction>().Where(x => x.State == AddMyCryptTransactionState.NA).Count();
+
+      List<AddMyCryptModel> transactionList = unApprovedTransactionList.Select(x =>
+        {
+          AddMyCryptModel model = new AddMyCryptModel().Bind(x);
+          return model;
+        }).ToList();
+
+      Paging<AddMyCryptModel> transactionPaging = new Paging<AddMyCryptModel>(transactionList, count);
+
+      return this.Store(transactionPaging);
     }
 
     public ActionResult Browse(BaseBrowseActionSettings actionSettings)
