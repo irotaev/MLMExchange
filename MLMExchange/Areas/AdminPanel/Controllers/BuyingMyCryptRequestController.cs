@@ -41,13 +41,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (checkBill.PaymentState != BillPaymentState.WaitingPayment)
         throw new UserVisible__CurrentActionAccessDenied();
 
-      //((Bill)checkBill).PayCheckBill(CurrentSession.Default.CurrentUser);
-
-      //if (!Request.IsAjaxRequest())
-      //  return Redirect(Request.UrlReferrer.ToString());
-      //else
-      //  return null;
-
       string checkPaymentConfirmUrl = String.Format("{0}/BuyingMyCryptRequest/CheckPaymentConfirm", Request.Url.GetLeftPart(UriPartial.Authority));
 
       PerfectMoneyModel model = new PerfectMoneyModel
@@ -64,18 +57,50 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         PaymentAmount = checkBill.MoneyAmount,
 #endif
         PaymentId = checkBill.Id.ToString(),
-        PaymentUnit = Logic.Lib.PaymentSystem.PerfectMoney.PaymentCheckBillUnits
+        PaymentUnit = Logic.Lib.PaymentSystem.PerfectMoney.PaymentCheckBillUnits,
+        AdditionalFields = new Dictionary<string, string> { { "BillId", checkBill.Id.ToString() } }
       };
 
       return View("~/Areas/AdminPanel/Views/Shared/OuterPaymentSystem/_PerfectMoney_Browse.cshtml", model);
     }
 
+    [Auth(null, IsNeedSkipAuthorisation = true)]
     [HttpPost]
     public ActionResult CheckPaymentConfirm()
     {
-      object ff = 44;
+      string v2Hash = Request.Params.GetValues("V2_HASH").FirstOrDefault();
 
-        return null;
+      if (v2Hash == null)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      string confirmV2Hash = Logic.Lib.PaymentSystem.PerfectMoney.GenerateV2Hash(
+        Request.Params.GetValues("PAYMENT_ID").FirstOrDefault(),
+        Request.Params.GetValues("PAYEE_ACCOUNT").FirstOrDefault(),
+        Request.Params.GetValues("PAYMENT_AMOUNT").FirstOrDefault(),
+        Request.Params.GetValues("PAYMENT_UNITS").FirstOrDefault(),
+        Request.Params.GetValues("PAYMENT_BATCH_NUM").FirstOrDefault(),
+        Request.Params.GetValues("PAYER_ACCOUNT").FirstOrDefault(),
+        Request.Params.GetValues("TIMESTAMPGMT").FirstOrDefault());
+
+      if (v2Hash != confirmV2Hash)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      if (String.IsNullOrWhiteSpace(Request.Params.GetValues("BillId").FirstOrDefault()))
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      long billId = Convert.ToInt64(Request.Params.GetValues("BillId").FirstOrDefault());
+
+      D_Bill bill = _NHibernateSession.Query<D_Bill>().Where(x => x.Id == billId).FirstOrDefault();
+
+      if (bill == null)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      if (bill.PaymentState != BillPaymentState.WaitingPayment)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      ((Bill)bill).PayCheckBill(CurrentSession.Default.CurrentUser);
+
+      return Redirect(Url.Action("SalesPeople", "User", new { area = "AdminPanel" }));
     }
     #endregion
 

@@ -19,5 +19,13 @@ namespace LogicTest
 
       Assert.IsTrue(result != null, "Ответ от сервера не получен");
     }
+
+    [TestMethod]
+    public void Check_Hash_Generator()
+    {
+      string hash = PerfectMoney.GenerateV2Hash("A-554d", "U5305686", "5.12", "USD", "6577", "434343", "85003133456");
+
+      Assert.AreEqual(hash, "047F54EE13797E15DFDA5D679B70BEFE", "Неправильно посчитан hash. Не совпадает с тем, что на сайте: https://www.perfectmoney.is/acct/md5check.html");
+    }
   }
 }

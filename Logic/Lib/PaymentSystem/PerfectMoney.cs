@@ -11,15 +11,25 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Logic.Lib.PaymentSystem
 {
   public class PerfectMoney
   {
+    static PerfectMoney()
+    {
+      MD5 md5 = MD5.Create();
+      _AlternatePassphraseHash = md5.CreateHash("6pG4zNxQN4g75yWzBblpiTCyP").ToUpper();
+    }
+
     public const string PayeeCheckBillAccount = "U5305686";
     public const string PaymentCheckBillUnits = "USD";
     public const string PayeeName = "My-crypto";
-    public const string PaymentSystemAPIUrl = "https://perfectmoney.is/api/step1.asp";
+    public const string PaymentSystemAPIUrl = "https://perfectmoney.is/api/step1.asp";    
+
+    private static readonly string _AlternatePassphraseHash;    
 
     public PerfectMoney()
     {
@@ -196,6 +206,57 @@ namespace Logic.Lib.PaymentSystem
           "endyear", end.Year.ToString(),
           "AccountID", accountId,
           "PassPhrase", passPhrase);
+    }
+
+    /// <summary>
+    /// Посчитать V2HASH хэш для платежа
+    /// </summary>
+    /// <param name="PAYEE_ACCOUNT"></param>
+    /// <param name="PAYMENT_ID"></param>
+    /// <param name="PAYMENT_AMOUNT"></param>
+    /// <param name="PAYMENT_UNITS"></param>
+    /// <param name="PAYMENT_BATCH_NUM"></param>
+    /// <param name="PAYER_ACCOUNT"></param>
+    /// <param name="TIMESTAMPGMT"></param>
+    /// <returns></returns>
+    public static string GenerateV2Hash(string PAYMENT_ID, string PAYEE_ACCOUNT, string PAYMENT_AMOUNT, string PAYMENT_UNITS, string PAYMENT_BATCH_NUM, string PAYER_ACCOUNT, string TIMESTAMPGMT)
+    {
+      MD5 md5 = MD5.Create();
+
+      string v2StringToHash = String.Format("{0}:{1}:{2}:{3}:{4}:{5}:{6}:{7}",
+        !String.IsNullOrWhiteSpace(PAYMENT_ID) ? PAYMENT_ID : "NULL",
+        PAYEE_ACCOUNT,
+        PAYMENT_AMOUNT,
+        PAYMENT_UNITS,
+        PAYMENT_BATCH_NUM,
+        PAYER_ACCOUNT,
+        _AlternatePassphraseHash,
+        TIMESTAMPGMT);
+
+      string resultHash = md5.CreateHash(v2StringToHash).ToUpper();
+
+      return resultHash;
+    }
+  }
+
+  public static class MD5Extension
+  {
+    /// <summary>
+    /// Создать MD5 кэш
+    /// </summary>
+    /// <param name="md5"></param>
+    /// <param name="value">Строка из которой создать хэш</param>
+    /// <returns>Захешированная строка</returns>
+    public static string CreateHash(this MD5 md5, string value)
+    {
+      byte[] alternatePassphraseHashBytes = md5.ComputeHash(System.Text.Encoding.UTF8.GetBytes(value));
+
+      StringBuilder sBuilder = new StringBuilder();
+
+      for (uint index = 0; index < alternatePassphraseHashBytes.Length; index++)
+        sBuilder.Append(alternatePassphraseHashBytes[index].ToString("x2"));
+
+      return sBuilder.ToString();
     }
   }
 }

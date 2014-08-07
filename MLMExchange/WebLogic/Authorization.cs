@@ -22,15 +22,28 @@ namespace MLMExchange.Lib
     /// <param name="allowedRoles">Роли, которым открыт доступ</param>
     public AuthAttribute(params Type[] allowedRoles)
     {
-      if (allowedRoles.Length > 0)
+      if (allowedRoles != null && allowedRoles.Length > 0)
         _AllowedRoleTypes.AddRange(allowedRoles);
     }
 
     private readonly List<Type> _AllowedRoleTypes = new List<Type>();
 
+    /// <summary>
+    /// Флаг, показывающий надо ли пропустить авторизацию для подконтрольных элементов.
+    /// 
+    /// <example>
+    /// Аттрибут авторизации стоит на контроллере, но для некоторых действий нужно пропустить авторизацию,
+    /// то на эти действия устанавливается аттрибут авторизации с данным флагом.
+    /// </example>
+    /// </summary>
+    public bool IsNeedSkipAuthorisation { get; set; }
+
     public override void OnActionExecuting(ActionExecutingContext filterContext)
     {
       base.OnActionExecuting(filterContext);
+
+      if (IsNeedSkipAuthorisation)
+        return;
 
       BaseController baseController = filterContext.Controller as BaseController;
 

@@ -19,5 +19,10 @@ namespace MLMExchange.Models.OuterPaymentSystem
     public string NoPaymentUrl { get; set; }
     public string NoPaymentUrlMethod { get; set; }
     public string SuggestedMemo { get; set; }
+
+    /// <summary>
+    /// Дополнительные поля
+    /// </summary>
+    public Dictionary<string, string> AdditionalFields { get; set; }
   }
 }

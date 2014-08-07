@@ -20,13 +20,21 @@
     @Html.HiddenFor(x => x.SuggestedMemo, new { Name = "SUGGESTED_MEMO" })
     @Html.HiddenFor(x => x.NoPaymentUrlMethod, new { Name = "NOPAYMENT_URL_METHOD" })
 
+    @if (Model.AdditionalFields != null)
+    {
+      for(var item in Model.AdditionalFields)
+      {
+        <div></div>
+      }
+    }
+
     <input type="submit" value="submit" style="position: absolute; top: 0; left: 0; visibility: hidden" />
   </form>
 
   <script data-app-script='true'>
     $(function () {
       setTimeout(function() {
-        $("#b-omps-form_ID").submit();
+        //$("#b-omps-form_ID").submit();
       }, 2000);
     });
   </script>
