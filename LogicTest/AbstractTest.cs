@@ -21,8 +21,8 @@ namespace LogicTest
       Logic.Lib.ApplicationUnityContainer.UnityContainer.RegisterType<Logic.INHibernateManager, Logic.NHibernateManager>();
 
       #region Инициализирую сессию NHibernate
-      //Logic.NHibernateConfiguration.ConnectionString = @"Data Source=192.168.1.8\SQLEXPRESS;Initial Catalog=mlm_exchange;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=masterkey;MultipleActiveResultSets=True";
-      Logic.NHibernateConfiguration.ConnectionString = @"Data Source=IROTAEV-PC\SQLEXPRESS;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+      Logic.NHibernateConfiguration.ConnectionString = @"Data Source=192.168.1.8\SQLEXPRESS;Initial Catalog=mlm_exchange;Integrated Security=False;Persist Security Info=True;User ID=sa;Password=masterkey;MultipleActiveResultSets=True";
+      //Logic.NHibernateConfiguration.ConnectionString = @"Data Source=IROTAEV-PC\SQLEXPRESS;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       //Logic.NHibernateConfiguration.ConnectionString = @"Data Source=SUPER_MEN4iG-PC;Initial Catalog=mc_exchange;Integrated Security = SSPI;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
       //Logic.NHibernateConfiguration.ConnectionString = "Data Source=gladiolus.arvixe.com;Initial Catalog=mc_exchange8;Integrated Security=False;Persist Security Info=True;User ID=Rtv;Password=rtvrtvrtv;MultipleActiveResultSets=True";
 
