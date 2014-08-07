@@ -42,10 +42,11 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
 
       string checkPaymentConfirmUrl = String.Format("{0}/BuyingMyCryptRequest/CheckPaymentConfirm", Request.Url.GetLeftPart(UriPartial.Authority));
+      string checkPaymentFailUrl = String.Format("{0}/Use/SalesPeople", Request.Url.GetLeftPart(UriPartial.Authority));
 
       PerfectMoneyModel model = new PerfectMoneyModel
       {
-        NoPaymentUrl = checkPaymentConfirmUrl,
+        NoPaymentUrl = checkPaymentFailUrl,
         PaymentUrl = checkPaymentConfirmUrl,
         PayeeAccount = Logic.Lib.PaymentSystem.PerfectMoney.PayeeCheckBillAccount,
         PayeeName = Logic.Lib.PaymentSystem.PerfectMoney.PayeeName,

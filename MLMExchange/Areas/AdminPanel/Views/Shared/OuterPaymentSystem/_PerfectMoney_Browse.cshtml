@@ -19,12 +19,13 @@
     @Html.HiddenFor(x => x.NoPaymentUrl, new { Name = "NOPAYMENT_URL" })
     @Html.HiddenFor(x => x.SuggestedMemo, new { Name = "SUGGESTED_MEMO" })
     @Html.HiddenFor(x => x.NoPaymentUrlMethod, new { Name = "NOPAYMENT_URL_METHOD" })
+    @Html.HiddenFor(x => x.BaggagedFields, new { Name = "BAGGAGE_FIELDS" })
 
     @if (Model.AdditionalFields != null)
     {
-      for(var item in Model.AdditionalFields)
+      foreach(var item in Model.AdditionalFields)
       {
-        <div></div>
+        @Html.Hidden(item.Key, item.Value)
       }
     }
 
@@ -34,7 +35,7 @@
   <script data-app-script='true'>
     $(function () {
       setTimeout(function() {
-        //$("#b-omps-form_ID").submit();
+        $("#b-omps-form_ID").submit();
       }, 2000);
     });
   </script>

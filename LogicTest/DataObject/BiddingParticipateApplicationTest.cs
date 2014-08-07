@@ -26,8 +26,6 @@ namespace LogicTest.DataObject
         State = BiddingParticipateApplicationState.Filed
       };
 
-      //_NHibernaetSession.Save(participateApplication);
-
       return participateApplication;
     }
 

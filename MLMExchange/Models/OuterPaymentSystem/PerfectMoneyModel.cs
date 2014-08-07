@@ -8,6 +8,11 @@ namespace MLMExchange.Models.OuterPaymentSystem
 {
   public class PerfectMoneyModel : AbstractModel
   {    
+    public PerfectMoneyModel()
+    {
+      AdditionalFields = new Dictionary<string, string>();
+    }
+
     public string PayeeAccount { get; set; }
     public string PayeeName { get; set; }
     public string PaymentId { get; set; }
@@ -19,6 +24,16 @@ namespace MLMExchange.Models.OuterPaymentSystem
     public string NoPaymentUrl { get; set; }
     public string NoPaymentUrlMethod { get; set; }
     public string SuggestedMemo { get; set; }
+    public string BaggagedFields
+    {
+      get
+      {
+        if (AdditionalFields.Count == 0)
+          return String.Empty;
+
+        return String.Join(" ", AdditionalFields.Select(x => x.Key));
+      }
+    }
 
     /// <summary>
     /// Дополнительные поля

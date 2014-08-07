@@ -97,6 +97,19 @@ namespace Logic
       }
       #endregion
 
+      #region Для пользователя, подающего заявку на покупку, если имеется заявка на продажу, перевожу ее в статус отменено
+      {
+        D_BiddingParticipateApplication biddingApp = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_BiddingParticipateApplication>()
+          .Where(x => x.Seller.Id == buyingMyCryptRequest.Buyer.Id && x.State == BiddingParticipateApplicationState.Filed).FirstOrDefault();
+
+        if (biddingApp != null)
+        {
+          biddingApp.State = BiddingParticipateApplicationState.Cancelled;
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(biddingApp);
+        }
+      }
+      #endregion
+
       return tradingSession;
     }
 

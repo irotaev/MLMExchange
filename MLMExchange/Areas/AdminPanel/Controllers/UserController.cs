@@ -300,38 +300,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     {
       SalesPeopleModel model = new SalesPeopleModel();
 
-      #region Заполняю активных продавцов
       model.ActiveSales = new List<BiddingParticipateApplicationModel>();
-
-      //IList<D_BiddingParticipateApplication> biddingApplications = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-      //  .Query<D_BiddingParticipateApplication>()
-      //  .Where(x => x.State == BiddingParticipateApplicationState.Filed && x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id)).ToList();
-
-      //foreach (var biddingApplication in biddingApplications)
-      //{
-      //  BiddingParticipateApplicationModel biddingApplicationModel = new BiddingParticipateApplicationModel();
-
-      //  biddingApplicationModel.Bind(biddingApplication);
-
-      //  model.ActiveSales.Add(biddingApplicationModel);
-      //}
-      #endregion
-
-      #region Заполняю историю заявок, на которые откликнулс данный пользователь
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
-
-      //IOrderedEnumerable<BuyingMyCryptRequest> buyingMyCryptRequestsHistory = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-      //  .QueryOver<BuyingMyCryptRequest>().Where(x => x.Buyer.Id == CurrentSession.Default.CurrentUser.Id).List().OrderBy(x => x.CreationDateTime);
-
-      //foreach (var request in buyingMyCryptRequestsHistory)
-      //{
-      //  BuyingMyCryptRequestModel buyingRequestModel = new BuyingMyCryptRequestModel();
-
-      //  buyingRequestModel.Bind(request);
-
-      //  model.HistoryApplication.Add(buyingRequestModel);
-      //}
-      #endregion
 
       return View(model);
     }
