@@ -256,7 +256,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (tradingSession != null)
         yeildAccepterModels.AddRange(TradingSessionModel.GetYieldSessionPaymentAcceptors((TradingSession)tradingSession, (uint?)start, (uint?)limit));
 
-      totalCount = model.YieldSessionPaymentAcceptors.Count();
+      totalCount = yeildAccepterModels.Count();
 
       Paging<YieldSessionPaymentAcceptor> pageModelList = new Paging<YieldSessionPaymentAcceptor>(yeildAccepterModels, totalCount);
 
@@ -325,13 +325,29 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
                x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id))
         .Skip(start).Take(limit).ToList();
 
-      totalCount = _NHibernateSession.Query<D_BiddingParticipateApplication>().Count();
-
       List<BiddingParticipateApplicationModel> activeSalesList = biddingApplicationList.Select(x =>
       {
         BiddingParticipateApplicationModel model = new BiddingParticipateApplicationModel().Bind(x);
         return model;
       }).ToList();
+
+      if (!String.IsNullOrEmpty(parameters.SimpleSort))
+      {
+        activeSalesList.Sort(delegate(BiddingParticipateApplicationModel x, BiddingParticipateApplicationModel y)
+        {
+          object a;
+          object b;
+
+          int direction = parameters.SimpleSortDirection == SortDirection.DESC ? -1 : 1;
+
+          a = x.GetType().GetProperty(parameters.SimpleSort).GetValue(x, null);
+          b = y.GetType().GetProperty(parameters.SimpleSort).GetValue(y, null);
+
+          return CaseInsensitiveComparer.Default.Compare(a, b) * direction;
+        });
+      }
+
+      totalCount = activeSalesList.Count();
 
       Paging<BiddingParticipateApplicationModel> activeSalesPaging = new Paging<BiddingParticipateApplicationModel>(activeSalesList, totalCount);
 
@@ -354,13 +370,29 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       IOrderedEnumerable<BuyingMyCryptRequest> byuingRequstsList = _NHibernateSession.QueryOver<BuyingMyCryptRequest>()
         .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).Skip(start).Take(limit).List().OrderBy(x => x.CreationDateTime);
 
-      totalCount = _NHibernateSession.Query<BuyingMyCryptRequest>().Count();
-
       List<BuyingMyCryptRequestModel> requestsList = byuingRequstsList.Select(x =>
         {
           BuyingMyCryptRequestModel model = new BuyingMyCryptRequestModel().Bind(x);
           return model;
-        }).ToList();
+        }).OrderBy(x => x.CreationDateTime).ToList();
+
+      if (!String.IsNullOrEmpty(parameters.SimpleSort))
+      {
+        requestsList.Sort(delegate(BuyingMyCryptRequestModel x, BuyingMyCryptRequestModel y)
+        {
+          object a;
+          object b;
+
+          int direction = parameters.SimpleSortDirection == SortDirection.DESC ? -1 : 1;
+
+          a = x.GetType().GetProperty(parameters.SimpleSort).GetValue(x, null);
+          b = y.GetType().GetProperty(parameters.SimpleSort).GetValue(y, null);
+
+          return CaseInsensitiveComparer.Default.Compare(a, b) * direction;
+        });
+      }
+
+      totalCount = requestsList.Count();
 
       Paging<BuyingMyCryptRequestModel> requestsPaging = new Paging<BuyingMyCryptRequestModel>(requestsList, totalCount);
 
