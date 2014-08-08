@@ -30,7 +30,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
     public ActionResult List(BaseListActionSetings actionSettings)
     {
-      ReferalListModel model = new ReferalListModel();
+      ReferalListModel model = new ReferalListModel().Bind((User)CurrentSession.Default.CurrentUser);
 
       IEnumerable<D_User> referals = _NHibernateSession.Query<D_User>().Where(x => x.RefererRole.Id == ((User)CurrentSession.Default.CurrentUser).GetRole<D_UserRole>().Id);
 

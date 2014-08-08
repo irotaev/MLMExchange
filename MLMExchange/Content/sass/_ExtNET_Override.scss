@@ -17,6 +17,8 @@
 //#region Buttons
 .x-btn
 {
+  border-radius: 0px;
+
   &.x-btn-default-small
   {
     .x-btn-inner
@@ -24,5 +26,11 @@
       font-weight: normal;
     }
   }
+}
+
+.b-btn .x-btn-inner
+{
+  font-weight: normal !important;
+  color: #ffffff !important;
 }
 //#endregion

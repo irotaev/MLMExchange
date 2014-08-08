@@ -26,8 +26,10 @@ namespace MLMExchange.Areas.AdminPanel.Models
   /// <summary>
   /// Модель списка рефералов
   /// </summary>
-  public class ReferalListModel : AbstractModel
+  public class ReferalListModel : AbstractModel, ILogicDataGetter<Logic.User, ReferalListModel>
   {
+    private Logic.User _user;
+
     public ReferalListModel()
     {
       Referals = new List<ReferalModel>();
@@ -49,17 +51,42 @@ namespace MLMExchange.Areas.AdminPanel.Models
     {
       get 
       {
-        Logic.D_User user = CurrentSession.Default.CurrentUser;
+        if (_user == null)
+          throw new BindNotCallException<Logic.User>();
 
-        if (user == null)
+        Logic.D_UserRole userRole =  GetCurrentUser().UserRoles.FirstOrDefault(x => (x as Logic.D_UserRole) != null) as Logic.D_UserRole;
+
+        if (userRole == null)
         {
           return null;
         }
         else
         {
-          return user.Id;
+          return userRole.Id;
         }
       }
+    }
+
+    /// <summary>
+    /// Получить пользователя из логики
+    /// </summary>
+    /// <returns></returns>
+    public UserModel GetCurrentUser()
+    {
+        if (_user == null)
+          throw new BindNotCallException<Logic.User>();
+
+        return new UserModel().Bind(_user.LogicObject);
+    }
+
+    public ReferalListModel Bind(Logic.User @object)
+    {
+      if (@object == null)
+        throw new ArgumentNullException("@object");
+
+      _user = @object;
+
+      return this;
     }
   }
 }

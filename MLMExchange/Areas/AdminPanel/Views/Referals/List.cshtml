@@ -57,8 +57,10 @@ else
          </div>
        </div>
     ))
+    //TODO: Доделать
     .TopBarItem(
-      Html.X().Button().Text(MLMExchange.Properties.PrivateResource.GetUserRefererUrl).Scale(ButtonScale.Medium).Handler("GetReferalUrl();"))
+      X.Button().Text("<span style='color: white !important;'>" + MLMExchange.Properties.PrivateResource.GetUserRefererUrl + "</span>").Scale(ButtonScale.Medium)
+        .Handler("GetReferalUrl();").Cls("b-btn b-btn-flat-action"))
     .Border(false)
     .Store(
       X.Store()
