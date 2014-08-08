@@ -238,6 +238,8 @@
       .ID("SalesPeople__Store")
       .RemotePaging(true)
       .PageSize(10)
+      .RemoteSort(true)
+      .SorterFor(Model.ActiveSales, m => m.CreationDateTime, Ext.Net.SortDirection.ASC)
       .DataSource(Model.ActiveSales)
       .Model(X.Model()
            .Fields(
@@ -303,6 +305,8 @@
       .ID("BuyingRequest__Store")
       .RemotePaging(true)
       .PageSize(10)
+      .RemoteSort(true)
+      .SorterFor(Model.ActiveSales, m => m.CreationDateTime, Ext.Net.SortDirection.ASC)
       .DataSource(Model.HistoryApplication)
       .Model(X.Model().Fields(
           new ModelField { Name = "Seller__Id", Mapping = "Seller.Id" },

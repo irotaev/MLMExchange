@@ -46,13 +46,13 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       IList<D_AddMyCryptTransaction> unApprovedTransactionList = _NHibernateSession.QueryOver<D_AddMyCryptTransaction>()
         .Where(x => x.State == AddMyCryptTransactionState.NA).Skip(parametrs.Start).Take(parametrs.Limit).List();
 
-      int count = _NHibernateSession.Query<D_AddMyCryptTransaction>().Where(x => x.State == AddMyCryptTransactionState.NA).Count();
-
       List<AddMyCryptModel> transactionList = unApprovedTransactionList.Select(x =>
         {
           AddMyCryptModel model = new AddMyCryptModel().Bind(x);
           return model;
         }).ToList();
+
+      int count = transactionList.Count();
 
       Paging<AddMyCryptModel> transactionPaging = new Paging<AddMyCryptModel>(transactionList, count);
 

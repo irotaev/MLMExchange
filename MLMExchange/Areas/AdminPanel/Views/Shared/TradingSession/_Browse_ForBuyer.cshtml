@@ -8,7 +8,7 @@
 }
 
 <script>
-  function ShowUserInfo(userId) {
+  function ShowUserInfo($userId) {
     new Ext.Window({
       id: "TradingSession_ShwoUserInfo__Window",
       width: 800,
@@ -19,7 +19,7 @@
       autoScroll: true,
       autoLoad: {
         url: "/AdminPanel/User/Browse",
-        params: { objectId: userId, AsPartial: true },
+        params: { objectId: $userId, AsPartial: true },
         nocache: true,
         text: "@MLMExchange.Properties.ResourcesA.Loading",
         callback: function () {
@@ -36,7 +36,7 @@
   function TradingSession_All_Grid__DisplayNameRenderer(value, metaData, record, row, col, store, gridView) {
     console.log(record);
 
-    var $displayName = $("<a></a>").css({ "border-bottom" : "1px dashed #dfdfdf", "cursor" : "pointer" }).attr("onclick", "ShowUserInfo(" + record.data.Seller__Id + ");");
+    var $displayName = $("<a></a>").css({ "border-bottom": "1px dashed #dfdfdf", "cursor": "pointer" }).attr("onclick", "ShowUserInfo(" + record.data.User__Id + ");");
 
     $displayName.text(value);
 
@@ -59,7 +59,7 @@
           title: "@Logic.Properties.GeneralResources.PaymentSystemGroup",
           autoLoad: {
             url: "/AdminPanel/PaymentSystemGroup/Browse",
-            params: { ForUserId: record.data.UserId, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: record.data.YieldTradingSessionBillId },
+            params: { ForUserId: record.data.User__Id, IsRequiredYieldSessionBillPayment: true, YieldTradingSessionBillId: record.data.YieldTradingSessionBillId },
             nocache: true,
             text: "@MLMExchange.Properties.ResourcesA.Loading",
             callback: function () {
@@ -102,8 +102,8 @@
                   .PageSize(10)
                   .DataSource(Model.YieldSessionPaymentAcceptors)
                   .Model(X.Model().Fields(
-                      new ModelField { Name = "UserId" },
-                      new ModelField { Name = "UserLogin" },
+                      new ModelField { Name = "User__Id", Mapping = "UserId" },
+                      new ModelField { Name = "User__Login", Mapping = "UserLogin" },
                       new ModelField { Name = "MoneyAmount" },
                       new ModelField { Name = "DefaultPaymentSystem" },
                       new ModelField { Name = "YieldTradingSessionBillId" },
@@ -116,7 +116,7 @@
                   )
                   .ColumnModel(
                     X.RowNumbererColumn(),
-                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("UserLogin").Width(120)
+                    X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(120)
                       .Renderer("TradingSession_All_Grid__DisplayNameRenderer"),
                     X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(120),
                     X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Width(115),
@@ -305,7 +305,7 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
               new ModelField { Name = "BillPaymentState" },
               new ModelField { Name = "BillPaymentStateAsString" },
               new ModelField { Name = "User__Login", Mapping = "User.Login" },
-              new ModelField { Name = "UserId", Mapping = "User.Id" },
+              new ModelField { Name = "User__Id", Mapping = "User.Id" },
               new ModelField { Name = "MoneyAmount" },
               new ModelField { Name = "PaymentIds", Mapping = "PaymentIds" }
           ))
