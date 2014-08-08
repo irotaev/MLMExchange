@@ -279,6 +279,12 @@
   <data name="EnterPhoneNumber" xml:space="preserve">
     <value>Введите номер телефона</value>
   </data>
+  <data name="EnterPhoneNumberAsMasked" xml:space="preserve">
+    <value>Тел. номер. Пример +[  7] (916) 123-45-67</value>
+  </data>
+  <data name="EnterPhoneNumberAsMaskedDescription" xml:space="preserve">
+    <value>Введите номер мобильного телефона. Формат ввода +[код региона] (999) 999-99-99. Код региона может быть задан от одной до трех цифр. Пример ввода: +[383] (999) 123-45-67, +[ 83] (999) 123-45-67, +[  7] (999) 123-45-67</value>
+  </data>
   <data name="EnterSkype" xml:space="preserve">
     <value>Введите Skype-логин</value>
   </data>

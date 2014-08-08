@@ -211,11 +211,6 @@ namespace MLMExchange.Controllers
       if (filterContext.ExceptionHandled)
         return;
 
-      //HttpContext.Response.Redirect("/ExceptionHandler/ApplicationException", true);
-      //TempData["Controller__Exception"] = filterContext.Exception;
-
-      filterContext.ExceptionHandled = true;
-
       #region Отображение ошибки
       var model = new ApplicationExceptionModel();
 
@@ -226,8 +221,16 @@ namespace MLMExchange.Controllers
 
       System.Web.HttpContext.Current.ClearError();
 
-      PartialView("~/Views/Shared/Exceptions/ApplicationException.cshtml", model).ExecuteResult(this.ControllerContext);
+      filterContext.Result = new ViewResult
+      {
+        ViewName = "~/Views/Shared/Exceptions/ApplicationException.cshtml",
+        ViewData = new ViewDataDictionary(filterContext.Controller.ViewData) { Model = model }
+      };
+
+      //PartialView("~/Views/Shared/Exceptions/ApplicationException.cshtml", model).ExecuteResult(this.ControllerContext);
       #endregion
+
+      filterContext.ExceptionHandled = true;
     }
   }
 }

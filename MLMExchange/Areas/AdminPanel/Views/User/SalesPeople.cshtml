@@ -147,17 +147,10 @@
     view.on('refresh', function () {
       //#region Обработчик события нажатия кнопки Оплатить проверочный платеж
       $(".pb-br__image-link_action_check-payment").on("click", function () {
-
-        //$.ajax({
-        //  url: "/BuyingMyCryptRequest/CheckPayment/?buyingMyCryptRequestId=" + $(this).data("request-id"),
-        //  async: false,
-        //  type: "POST"
-        //})
-        //.done(function () { window.location.reload(); });
-
         new Ext.Window({
           id: "PayCheckBill__Window",
-          width: 600,          
+          width: 600,
+          minHeight: 100,
           modal: true,
           autoScroll: true,
           title: "@MLMExchange.Properties.PrivateResource.PayChechBillTitle",
@@ -172,9 +165,17 @@
 
                 $(scriptTag).appendTo($("body"));
               });
-              require(["jquery", "Lib/Form"], function($, formModule) {
-                new formModule.Form($("#PayCheckBill__Window").find("form")).ReBindAll();
-              });
+
+              var $form = $("#PayCheckBill__Window").find("form");
+
+              if ($form.length > 0) {
+                require(["jquery", "Lib/Form"], function ($, formModule) {
+                  new formModule.Form($("#PayCheckBill__Window").find("form")).ReBindAll();
+                });
+              }
+              else {
+                setTimeout(function () { window.location.reload(); }, 2000);
+              }
             }
           }
         }).show();

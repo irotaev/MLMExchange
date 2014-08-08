@@ -52,15 +52,15 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         PayeeName = Logic.Lib.PaymentSystem.PerfectMoney.PayeeName,
         PaymentUrlMethod = "POST",
         NoPaymentUrlMethod = "POST",
-#if DEBUG
-        PaymentAmount = 0.01m,
-#else
         PaymentAmount = checkBill.MoneyAmount,
-#endif
         PaymentId = checkBill.Id.ToString(),
         PaymentUnit = Logic.Lib.PaymentSystem.PerfectMoney.PaymentCheckBillUnits,
         AdditionalFields = new Dictionary<string, string> { { "BillId", checkBill.Id.ToString() } }
       };
+
+#if DEBUG
+      ((Bill)checkBill).PayCheckBill(CurrentSession.Default.CurrentUser);
+#endif
 
       return View("~/Areas/AdminPanel/Views/Shared/OuterPaymentSystem/_PerfectMoney_Browse.cshtml", model);
     }
@@ -69,6 +69,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     [HttpPost]
     public ActionResult CheckPaymentConfirm()
     {
+#if !DEBUG
       string v2Hash = Request.Params.GetValues("V2_HASH").FirstOrDefault();
 
       if (v2Hash == null)
@@ -85,6 +86,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       if (v2Hash != confirmV2Hash)
         throw new UserVisible__CurrentActionAccessDenied();
+#endif
 
       if (String.IsNullOrWhiteSpace(Request.Params.GetValues("BillId").FirstOrDefault()))
         throw new UserVisible__CurrentActionAccessDenied();

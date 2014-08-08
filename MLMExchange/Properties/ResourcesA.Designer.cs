@@ -547,6 +547,24 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Тел. номер. Пример +[  7] (916) 123-45-67.
+        /// </summary>
+        public static string EnterPhoneNumberAsMasked {
+            get {
+                return ResourceManager.GetString("EnterPhoneNumberAsMasked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введите номер мобильного телефона. Формат ввода +[код региона] (999) 999-99-99. Код региона может быть задан от одной до трех цифр. Пример ввода: +[383] (999) 123-45-67, +[ 83] (999) 123-45-67, +[  7] (999) 123-45-67.
+        /// </summary>
+        public static string EnterPhoneNumberAsMaskedDescription {
+            get {
+                return ResourceManager.GetString("EnterPhoneNumberAsMaskedDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введите Skype-логин.
         /// </summary>
         public static string EnterSkype {
