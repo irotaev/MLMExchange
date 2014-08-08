@@ -1,0 +1,56 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@model List<MLMExchange.Models.Registration.UserModel>
+
+@{
+  ViewBag.Title = Logic.Properties.GeneralResources.Users;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+
+  var X = Html.X();
+}
+
+@{
+  var transactionGrid = X.GridPanel()
+    .ID("AdministratorUserList__Grid")
+    .Layout(LayoutType.Fit)
+    .Title(Logic.Properties.GeneralResources.Users)
+    .Border(false)
+    .MinHeight(400)
+    .Store(
+      X.Store()
+      .RemotePaging(true)
+      .PageSize(10)
+      .DataSource(Model)
+      .Model(X.Model().Fields(
+          new ModelField { Name = "Id" },
+          new ModelField { Name = "CreationDateTime" },
+          new ModelField { Name = "Login" },
+          new ModelField { Name = "Skype" },
+          new ModelField { Name = "IsUserRegistrationConfirm" }
+      ))
+      .Proxy(Html.X().AjaxProxy()
+                            .Url(Url.Action("List__Paginator"))
+                            .Reader(Html.X().JsonReader().Root("data"))))
+      .ColumnModel(
+        X.RowNumbererColumn().MaxWidth(50).Width(30).Resizable(true),
+        X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Flex(1).Format("dd-m-yyyy HH:i:s"),
+        X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("Login").Flex(1),
+        X.Column().Text(Logic.Properties.GeneralResources.Skype).DataIndex("Skype").Flex(1),
+        X.BooleanColumn().Text(Logic.Properties.GeneralResources.IsUserRegistrationConfirm).DataIndex("IsUserRegistrationConfirm").Flex(1),
+        X.ImageCommandColumn().Commands(
+          X.ImageCommand().CommandName("GetAdditionalInformation").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),
+          X.ImageCommand().CommandName("Accept").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept),
+          X.ImageCommand().CommandName("Denied").Icon(Icon.Decline).Text(MLMExchange.Properties.ResourcesA.Denied)
+        ).Width(150)
+        .Listeners(ls =>
+        {
+          //ls.Command.Handler = String.Format("UnApprovedTransactionList__Grid__CommandClickHandler(command, record);");
+        }))
+        .BottomBar(
+          X.PagingToolbar()
+            .Plugins(X.ProgressBarPager()));
+}
+
+@{
+  (ViewData["AdminPanel__CenterBlock"] as Panel.Builder).Items(transactionGrid);
+}

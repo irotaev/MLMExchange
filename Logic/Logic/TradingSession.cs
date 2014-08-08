@@ -104,7 +104,7 @@ namespace Logic
 
         if (biddingApp != null)
         {
-          biddingApp.State = BiddingParticipateApplicationState.Cancelled;
+          biddingApp.State = BiddingParticipateApplicationState.Closed;
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(biddingApp);
         }
       }

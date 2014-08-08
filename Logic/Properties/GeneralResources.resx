@@ -345,4 +345,10 @@
   <data name="ConfirmationCode" xml:space="preserve">
     <value>Код подтверждения</value>
   </data>
+  <data name="IsUserRegistrationConfirm" xml:space="preserve">
+    <value>Подтверждена ди регистрация пользователя</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Пользователи</value>
+  </data>
 </root>

@@ -358,6 +358,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Подтверждена ди регистрация пользователя.
+        /// </summary>
+        public static string IsUserRegistrationConfirm {
+            get {
+                return ResourceManager.GetString("IsUserRegistrationConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to КПП.
         /// </summary>
         public static string KPP {
@@ -732,6 +741,15 @@ namespace Logic.Properties {
         public static string UserPatronymic {
             get {
                 return ResourceManager.GetString("UserPatronymic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователи.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
             }
         }
         

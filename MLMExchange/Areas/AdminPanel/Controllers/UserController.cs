@@ -25,7 +25,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
   [Auth(typeof(D_AdministratorRole), typeof(D_UserRole))]
   public class UserController : BaseController, IDataObjectCustomizableController<UserModel, BaseBrowseActionSettings, BaseEditActionSettings, BaseListActionSetings>
   {
-    public ActionResult Browse(BaseBrowseActionSettings actionSettings)
+    public virtual ActionResult Browse(BaseBrowseActionSettings actionSettings)
     {
       if (actionSettings.objectId == null)
         throw new Logic.Lib.UserVisible__ArgumentNullException("objerctId");
@@ -42,7 +42,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return View(new UserModel().Bind(user));
     }
 
-    public ActionResult List(BaseListActionSetings actionSettings)
+    public virtual ActionResult List(BaseListActionSetings actionSettings)
     {
       List<UserModel> model = new List<UserModel>();
 
@@ -57,7 +57,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     /// </summary>
     /// <param name="model">Модель пользователя</param>
     /// <returns></returns>
-    public ActionResult Edit(UserModel model, BaseEditActionSettings actionSettings)
+    public virtual ActionResult Edit(UserModel model, BaseEditActionSettings actionSettings)
     {
       ModelState.Clear();
 

@@ -31,6 +31,14 @@
         </nav>
       </a>
       
+      <a href="@Url.Action("List", "User", new { area = "AdministratorPanel" })">
+        <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_user-list">
+          <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon pb-mm__icon__user-list"></i></div>
+
+          <span class="pb-mm__text-wrapper">@Logic.Properties.GeneralResources.Users</span>
+        </nav>
+      </a>
+      
       <a href="@Url.Action("Edit", "SystemSettings", new { area = "AdminPanel" })">
         <nav class="pb-mm__menu-item-wrapper pb-mm__menu-item-wrapper_to_system-settings-edit">
           <div class="pb-mm__icon-wrapper"><i class="pb-mm__icon pb-mm__icon__systemSettings"></i></div>
