@@ -208,8 +208,16 @@ namespace MLMExchange.Controllers
 
     protected override void OnException(ExceptionContext filterContext)
     {
+      if (filterContext == null)
+        throw new ArgumentNullException("filterContext");
+
+      #if DEBUG
       if (filterContext.ExceptionHandled)
         return;
+      #else
+        if (!filterContext.ExceptionHandled)
+        return;
+      #endif
 
       #region Отображение ошибки
       var model = new ApplicationExceptionModel();
@@ -231,6 +239,8 @@ namespace MLMExchange.Controllers
       #endregion
 
       filterContext.ExceptionHandled = true;
+      filterContext.HttpContext.Response.Clear();
+      filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
     }
   }
 }
