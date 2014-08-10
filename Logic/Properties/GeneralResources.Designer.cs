@@ -286,6 +286,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Системный пользователь по умолчанию.
+        /// </summary>
+        public static string DefaultSystemUser {
+            get {
+                return ResourceManager.GetString("DefaultSystemUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Отклонен.
         /// </summary>
         public static string Denied {

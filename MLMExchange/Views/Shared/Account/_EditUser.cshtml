@@ -156,12 +156,22 @@
 
 @if (ViewData["Usage"] != null && ViewData["Usage"] == "Register")
 {
-  long? refererId = MLMExchange.Models.Registration.UserModel.GetRefererRoleIdFromRequest(Request);
+  bool isDefaultSystemUser;
+  long? referer = MLMExchange.Models.Registration.UserModel.GetRefererRoleIdFromRequest(Request, out isDefaultSystemUser);
 
-  if (refererId != null)
+  if (referer != null)
   {
-    @Html.ApplicationTextBoxFor("ReferalRoleId", MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
-      refererId.ToString(), new Dictionary<string, object> { { "readonly", "readonly" } })
+    if (isDefaultSystemUser)
+    { 
+      @*@Html.ApplicationTextBoxFor("ReferalRoleId", MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
+        referer.ToString(), new Dictionary<string, object> { { "readonly", "readonly" }, { "type", "hidden" } })*@
+      @Html.Hidden("ReferalRoleId", referer.ToString(), new Dictionary<string, object> { { "readonly", "readonly" } })
+    }
+    else
+    {
+      @Html.ApplicationTextBoxFor("ReferalRoleId", MLMExchange.Properties.ResourcesA.BindReferalUserId, MLMExchange.Properties.ResourcesA.BindReferalUserIdDescription, type,
+      referer.ToString(), new Dictionary<string, object> { { "readonly", "readonly" } })
+    }
   }
 }
 else if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")

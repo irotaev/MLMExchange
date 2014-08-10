@@ -133,12 +133,13 @@ namespace MLMExchange.Models.Registration
     /// <summary>
     /// Получить Id реферера из запроса
     /// </summary>
-    public static long? GetRefererRoleIdFromRequest(HttpRequestBase request)
+    public static long? GetRefererRoleIdFromRequest(HttpRequestBase request, out bool isDefaultSystemUser)
     {
       if (request == null)
         throw new Logic.Lib.ApplicationException("request is null");
 
       long? refererId = null;
+      isDefaultSystemUser = false;
 
       {
         var keys = request.QueryString.GetValues("RefererId");
@@ -149,6 +150,15 @@ namespace MLMExchange.Models.Registration
           {
             refererId = id;
           }
+        }
+        else
+        {
+          UserModel userModel = new UserModel().Bind(Logic.SystemSettings.GetCurrentSestemSettings().LogicObject.DefaultSystemUser);
+
+          D_UserRole userRole = userModel.UserRoles.FirstOrDefault(x => (x as D_UserRole) != null) as D_UserRole;
+
+          refererId = userRole.Id;
+          isDefaultSystemUser = true;
         }
       }
 

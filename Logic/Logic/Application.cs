@@ -104,22 +104,6 @@ namespace Logic
       }
       #endregion
 
-      #region Создаю первую SystemSettings
-      if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_SystemSettings>().Count() == 0)
-      {
-        D_SystemSettings firstSystemSettings = new D_SystemSettings
-        {
-          CheckPaymentPercent = 5,
-          Quote = 10,
-          ProfitPercent = 20,
-          TradingSessionDuration = 2,
-          MaxMyCryptCount = 10000
-        };
-
-        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);
-      }
-      #endregion
-
       #region Создаю пользователя-систему
       D_System_User d_systemUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Query<D_System_User>().FirstOrDefault();
@@ -160,9 +144,26 @@ namespace Logic
           IsUserRegistrationConfirm = true
         };
 
-        d_systemUser.Roles = new List<D_AbstractRole> { new D_AdministratorRole { User = d_systemUser } };
+        d_systemUser.Roles = new List<D_AbstractRole> { new D_UserRole { User = d_systemUser, MyCryptCount = 10000000 }, new D_AdministratorRole { User = d_systemUser } };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(d_systemUser);
+      }
+      #endregion
+
+      #region Создаю первую SystemSettings
+      if (Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_SystemSettings>().Count() == 0)
+      {
+        D_SystemSettings firstSystemSettings = new D_SystemSettings
+        {
+          CheckPaymentPercent = 5,
+          Quote = 10,
+          ProfitPercent = 20,
+          TradingSessionDuration = 2,
+          MaxMyCryptCount = 10000,
+          DefaultSystemUser = _NHibernateSession.Query<D_User>().Where(x => x.Login == "system_user").FirstOrDefault()
+        };
+
+        Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);
       }
       #endregion
 

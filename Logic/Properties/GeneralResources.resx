@@ -351,4 +351,7 @@
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>
   </data>
+  <data name="DefaultSystemUser" xml:space="preserve">
+    <value>Системный пользователь по умолчанию</value>
+  </data>
 </root>

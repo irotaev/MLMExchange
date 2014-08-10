@@ -1,6 +1,7 @@
 ﻿using DataAnnotationsExtensions;
 using Logic;
 using MLMExchange.Models;
+using MLMExchange.Models.Registration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -55,6 +56,14 @@ namespace MLMExchange.Areas.AdminPanel.Models
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0}")]
     public long? MaxMyCryptCount { get; set; }
 
+    /// <summary>
+    /// Дефолтный системный пользователь
+    /// </summary>
+    internal UserModel DefaultSystemUser { get; set; }
+
+    public string DefaultSystemUserName { get; set; }
+
+
     public override SystemSettingsModel Bind(D_SystemSettings @object)
     {
       base.Bind(@object);     
@@ -64,6 +73,8 @@ namespace MLMExchange.Areas.AdminPanel.Models
       TradingSessionDuration = @object.TradingSessionDuration;
       MaxMyCryptCount = @object.MaxMyCryptCount;
       ProfitPercent = @object.ProfitPercent;
+      DefaultSystemUser = new UserModel().Bind(@object.DefaultSystemUser);
+      DefaultSystemUserName = DefaultSystemUser.Login;
 
       return this;
     }
