@@ -162,6 +162,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       D_BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<D_BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
                                                             && x.State != BiddingParticipateApplicationState.NA
+                                                            && x.State != BiddingParticipateApplicationState.Recalled
                                                             && x.State != BiddingParticipateApplicationState.Closed).List().FirstOrDefault();
       if (biddingParticipateApplication == null)
       {
@@ -322,7 +323,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       IList<D_BiddingParticipateApplication> biddingApplicationList = _NHibernateSession.Query<D_BiddingParticipateApplication>()
         .Where(x => x.State == BiddingParticipateApplicationState.Filed && 
-               x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id))
+               x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id 
+                 || (r.State == BuyingMyCryptRequestState.Recalled)))
         .Skip(start).Take(limit).ToList();
 
       List<BiddingParticipateApplicationModel> activeSalesList = biddingApplicationList.Select(x =>

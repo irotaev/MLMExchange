@@ -21,7 +21,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     public List<BiddingParticipateApplicationModel> ActiveSales { get; set; }
     /// <summary>
     /// Запрещено ли текущему пользователю покупать MC.
-    /// ИСпользовать аккуратно. Прямое обращение к базе без кэширования.
+    /// Использовать аккуратно. Прямое обращение к базе без кэширования.
     /// </summary>
     public bool IsCurrentUserBuyMCDisabled
     {

@@ -353,5 +353,35 @@
   </data>
   <data name="DefaultSystemUser" xml:space="preserve">
     <value>Системный пользователь по умолчанию</value>
+    </data>
+  <data name="Recalled" xml:space="preserve">
+    <value>Отозвано</value>
+  </data>
+  <data name="UserRoleList" xml:space="preserve">
+    <value>Список ролей пользователя</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="DisplayNameNotSet" xml:space="preserve">
+    <value>Отображаемое имя не задано</value>
+  </data>
+  <data name="RoleList" xml:space="preserve">
+    <value>Список ролей</value>
+  </data>
+  <data name="RoleType_Administrator" xml:space="preserve">
+    <value>Роль администратора</value>
+  </data>
+  <data name="RoleType_Broker" xml:space="preserve">
+    <value>Роль брокера</value>
+  </data>
+  <data name="RoleType_Leader" xml:space="preserve">
+    <value>Роль лидера</value>
+  </data>
+  <data name="RoleType_Tester" xml:space="preserve">
+    <value>Роль тестера</value>
+  </data>
+  <data name="RoleType_User" xml:space="preserve">
+    <value>Роль пользователя</value>
   </data>
 </root>

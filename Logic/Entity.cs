@@ -153,6 +153,7 @@ namespace Logic
     public virtual RoleType RoleType { get; set; }
   }
 
+  #region RoleType
   /// <summary>
   /// Тип роли
   /// </summary>
@@ -177,14 +178,73 @@ namespace Logic
     /// <summary>
     /// Пользователь системы. Брокер.
     /// </summary>
-    Broker = 4
+    Broker = 4    
   }
+
+  public static class RoleTypeExtension
+  {
+    public static string GetDisplayName(this RoleType roleType)
+    {
+      string result = Logic.Properties.GeneralResources.DisplayNameNotSet;
+
+      switch(roleType)
+      {
+        case RoleType.Administrator:
+          result = Logic.Properties.GeneralResources.RoleType_Administrator;
+          break;
+        case RoleType.Broker:
+          result = Logic.Properties.GeneralResources.RoleType_Broker;
+          break;
+        case RoleType.Leader:
+          result = Logic.Properties.GeneralResources.RoleType_Leader;
+          break;
+        case RoleType.Tester:
+          result = Logic.Properties.GeneralResources.RoleType_Tester;
+          break;
+        case RoleType.User:
+          result = Logic.Properties.GeneralResources.RoleType_User;
+          break;
+      }
+
+      return result;
+    }
+    
+    public static IEnumerable<_RoleKeyValuePair> GetValueTypePairs(this RoleType roleType)
+    {
+      List<_RoleKeyValuePair> pairs = new List<_RoleKeyValuePair>();
+
+      foreach(var value in Enum.GetValues(typeof(RoleType)))
+      {
+        pairs.Add(new _RoleKeyValuePair((int)value, ((RoleType)value).GetDisplayName()));
+      }
+
+      return pairs;
+    }
+
+    public struct _RoleKeyValuePair
+    {
+      public _RoleKeyValuePair(int key, string value)
+      {
+        Key = key;
+        Value = value;
+      }
+
+      public readonly int Key;
+      public readonly string Value;
+    }
+  }
+  #endregion
 
   /// <summary>
   /// Роль пользователя системы. Участник.
   /// </summary>
   public class D_UserRole : D_AbstractRole
   {
+    public D_UserRole()
+    {
+      RoleType = Logic.RoleType.User;
+    }
+
     /// <summary>
     /// Количество my-crypt.
     /// </summary>
@@ -204,6 +264,10 @@ namespace Logic
   /// </summary>
   public class D_LeaderRole : D_AbstractRole
   {
+    public D_LeaderRole()
+    {
+      RoleType = Logic.RoleType.Leader;
+    }
   }
 
   /// <summary>
@@ -211,6 +275,10 @@ namespace Logic
   /// </summary>
   public class D_TesterRole : D_AbstractRole
   {
+    public D_TesterRole()
+    {
+      RoleType = Logic.RoleType.Tester;
+    }
   }
 
   /// <summary>
@@ -218,6 +286,10 @@ namespace Logic
   /// </summary>
   public class D_BrokerRole : D_AbstractRole
   {
+    public D_BrokerRole()
+    {
+      RoleType = Logic.RoleType.Broker;
+    }
   }
 
   /// <summary>
@@ -591,9 +663,9 @@ namespace Logic
     /// </summary>
     Filed = 1,
     /// <summary>
-    /// Отменена заявка
+    /// Отозвана заявка
     /// </summary>
-    Cancelled = 2,
+    Recalled = 2,
     /// <summary>
     /// Принят запрос от покупателя
     /// </summary>
@@ -601,7 +673,7 @@ namespace Logic
     /// <summary>
     /// Закрыта
     /// </summary>
-    Closed = 4
+    Closed = 4,    
   }
   #endregion
 
@@ -662,7 +734,11 @@ namespace Logic
     /// <summary>
     /// Принят
     /// </summary>
-    Accepted = 3
+    Accepted = 3,
+    /// <summary>
+    /// Отозвана
+    /// </summary>
+    Recalled = 4
   }
 
   public static class BuyingMyCryptRequestStateExtension
@@ -677,6 +753,8 @@ namespace Logic
           return Logic.Properties.GeneralResources.AwaitingConfirm;
         case BuyingMyCryptRequestState.Accepted:
           return Logic.Properties.GeneralResources.Accepted;
+        case BuyingMyCryptRequestState.Recalled:
+          return Logic.Properties.GeneralResources.Recalled;
         case BuyingMyCryptRequestState.NA:
         default:
           return Logic.Properties.GeneralResources.NA;

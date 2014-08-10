@@ -127,8 +127,23 @@ namespace MLMExchange.Models
   /// </summary>
   public abstract class AbstractModel : ILazyLoadModel, IAbstractModel
   {
-    [NonSerialized]
     protected readonly ISession _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
+
+    #region Text resources    
+    protected readonly Dictionary<string, object> _TextResources = new Dictionary<string, object>();
+
+    /// <summary>
+    /// Текстовые ресурсы, поставляемые с данной моделью.
+    /// Используются при отрисовки модели на клиенте, когда используется технология REST/FULL REST.
+    /// </summary>
+    public Dictionary<string, object> TextResources
+    {
+      get
+      {
+        return _TextResources;
+      }
+    }
+    #endregion
 
     public bool IsLazyLoadingDisable { get; set; }
   }
@@ -156,7 +171,6 @@ namespace MLMExchange.Models
     /// геттеру свойства значение надо брать уже из другого места, например, из отдельного поля, где было сохранено новое значение,
     /// заданное руками через сетттер свойства.
     /// </summary>
-    [NonSerialized]    
     protected readonly Dictionary<string, bool> _LazyLoadProperties = new Dictionary<string, bool>();
     #endregion
 
@@ -235,7 +249,7 @@ namespace MLMExchange.Models
   /// <typeparam name="TObject">Тип объекта данных</typeparam>
   /// <typeparam name="TModel">Тип модели</typeparam>
   public abstract class AbstractDataModel<TObject, TModel> : AbstractDataModel, IDataBinding<TObject, TModel>
-    where TObject : D_BaseObject, new()
+    where TObject : D_BaseObject
     where TModel : class, IAbstractModel
   {
     [NonSerialized]
@@ -252,9 +266,6 @@ namespace MLMExchange.Models
 
     public virtual TObject UnBind(TObject @object = null)
     {
-      if (@object == null)
-        @object = new TObject();
-
       return (TObject)base.UnBind(@object);
     }
   }

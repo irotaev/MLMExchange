@@ -1,0 +1,28 @@
+﻿@using Ext.Net
+@using Ext.Net.MVC
+@model List<MLMExchange.Areas.AdminPanel.Models.IAbstractRoleModel>
+
+@if (ViewData["AsPartial"] == null || ViewData["AsPartial"] != "True")
+{
+  ViewBag.Title = Logic.Properties.GeneralResources.UserRoleList;
+  Layout = "~/Areas/AdminPanel/Views/Shared/_AdminPanel__Layout.cshtml";
+}
+else
+{
+  @Html.X().ResourceManager().RenderStyles(ResourceLocationType.None).RenderScripts(ResourceLocationType.None)
+}
+
+<script>
+  reuqry(["Views/AdministratorPanel_User__List"], function (pageModule) {
+    new pageModule.Page().Init();
+  });
+</script>
+
+<section class="b-url">
+  @*@foreach(var role in Model)
+  {
+    <div>@role.ToString()</div>
+  }*@
+</section><!--B: User role list-->
+
+

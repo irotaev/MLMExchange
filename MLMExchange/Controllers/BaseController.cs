@@ -220,20 +220,39 @@ namespace MLMExchange.Controllers
       #endif
 
       #region Отображение ошибки
+      if (!Request.IsAjaxRequest())
+      {
       var model = new ApplicationExceptionModel();
 
       if (filterContext.Exception != null)
       {
         model.ExceptionMessage = filterContext.Exception.GetAllExceptionTreeLog("<br/><br/>");
       }
-
+      
       System.Web.HttpContext.Current.ClearError();
 
-      filterContext.Result = new ViewResult
+      
+        filterContext.Result = new ViewResult
+        {
+          ViewName = "~/Views/Shared/Exceptions/ApplicationException.cshtml",
+          ViewData = new ViewDataDictionary(filterContext.Controller.ViewData) { Model = model }
+        };
+      }
+      else
       {
-        ViewName = "~/Views/Shared/Exceptions/ApplicationException.cshtml",
-        ViewData = new ViewDataDictionary(filterContext.Controller.ViewData) { Model = model }
-      };
+        filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.InternalServerError;
+        filterContext.Result = new JsonResult
+        {
+          JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+          Data = new
+          {
+            filterContext.Exception.Message
+#if DEBUG
+            ,filterContext.Exception.StackTrace
+#endif
+          }
+        };
+      }
 
       //PartialView("~/Views/Shared/Exceptions/ApplicationException.cshtml", model).ExecuteResult(this.ControllerContext);
       #endregion

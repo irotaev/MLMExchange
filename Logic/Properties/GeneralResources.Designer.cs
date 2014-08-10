@@ -304,6 +304,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отображаемое имя не задано.
+        /// </summary>
+        public static string DisplayNameNotSet {
+            get {
+                return ResourceManager.GetString("DisplayNameNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Электронная.
         /// </summary>
         public static string Electronic {
@@ -538,11 +547,83 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отозвано.
+        /// </summary>
+        public static string Recalled {
+            get {
+                return ResourceManager.GetString("Recalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Список прибылей от рефералов.
         /// </summary>
         public static string RefererProfits {
             get {
                 return ResourceManager.GetString("RefererProfits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Список ролей.
+        /// </summary>
+        public static string RoleList {
+            get {
+                return ResourceManager.GetString("RoleList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роли.
+        /// </summary>
+        public static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль администратора.
+        /// </summary>
+        public static string RoleType_Administrator {
+            get {
+                return ResourceManager.GetString("RoleType_Administrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль брокера.
+        /// </summary>
+        public static string RoleType_Broker {
+            get {
+                return ResourceManager.GetString("RoleType_Broker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль лидера.
+        /// </summary>
+        public static string RoleType_Leader {
+            get {
+                return ResourceManager.GetString("RoleType_Leader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль тестера.
+        /// </summary>
+        public static string RoleType_Tester {
+            get {
+                return ResourceManager.GetString("RoleType_Tester", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Роль пользователя.
+        /// </summary>
+        public static string RoleType_User {
+            get {
+                return ResourceManager.GetString("RoleType_User", resourceCulture);
             }
         }
         
@@ -750,6 +831,15 @@ namespace Logic.Properties {
         public static string UserPatronymic {
             get {
                 return ResourceManager.GetString("UserPatronymic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Список ролей пользователя.
+        /// </summary>
+        public static string UserRoleList {
+            get {
+                return ResourceManager.GetString("UserRoleList", resourceCulture);
             }
         }
         

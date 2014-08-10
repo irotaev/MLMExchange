@@ -23,9 +23,16 @@ namespace MLMExchange.Areas.AdminPanel.Models
   /// <typeparam name="TModel">Тип конкрентной модели</typeparam>
   /// </summary>
   public abstract class AbstractRoleModel<TDataRole, TModel> : AbstractDataModel<TDataRole, TModel>, IAbstractRoleModel
-    where TDataRole : D_AbstractRole, new()
+    where TDataRole : D_AbstractRole
     where TModel : class, IAbstractRoleModel
   {
+    public AbstractRoleModel()
+    {
+      _LazyLoadProperties.Add("User", false);
+    }
+
+    private UserModel _User;
+
     /// <summary>
     /// Пользователь, к которому прекреплена роль.
     /// </summary>
@@ -33,12 +40,67 @@ namespace MLMExchange.Areas.AdminPanel.Models
     {
       get
       {
-        if (_Object == null)
-          throw new BindNotCallException<D_AbstractRole>();
+        if (_LazyLoadProperties["User"])
+        {
+          if (_Object == null)
+            throw new BindNotCallException<D_AbstractRole>();
 
-        return new UserModel().Bind(_Object.User);
+          _User = new UserModel().Bind(_Object.User);
+          _LazyLoadProperties["User"] = false;
+        }
+
+        return _User;
       }
     }
+  }
+
+  public class BaseRoleModel : AbstractRoleModel<D_AbstractRole, BaseRoleModel>
+  {
+    public BaseRoleModel()
+    {
+      _LazyLoadProperties.Add("RoleType", false);
+
+      _TextResources.Add("DeleteRole", MLMExchange.Properties.ResourcesA.Button_Remove);
+      _TextResources.Add("Roles", Logic.Properties.GeneralResources.RoleList);
+      _TextResources.Add("AddRole", MLMExchange.Properties.ResourcesA.AddRole);
+      _TextResources.Add("AllRoleTypePairs", new RoleType().GetValueTypePairs());
+    }
+
+    #region RoleType
+    private RoleType _RoleType;
+    public RoleType RoleType
+    {
+      get
+      {
+        if (_LazyLoadProperties["RoleType"])
+        {
+          if (_Object == null)
+            throw new BindNotCallException<D_AbstractRole>();
+
+          _RoleType = _Object.RoleType;
+          _LazyLoadProperties["RoleType"] = false;
+        }
+
+        return _RoleType;
+      }
+
+      set { _RoleType = value; }
+    }
+    public string RoleTypeDisplayName
+    {
+      get
+      {
+        return _RoleType.GetDisplayName();
+      }
+    }
+    public string RoleTypeAsString
+    {
+      get
+      {
+        return Enum.GetName(typeof(RoleType), _RoleType);
+      }
+    }
+    #endregion
   }
 
   /// <summary>

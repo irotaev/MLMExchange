@@ -9,6 +9,16 @@
   var X = Html.X();
 }
 
+<script>  
+  function AdministratorUserList__Grid__RolesClickHandler(grid, command, record) {
+    if (command === "ShowRoles") {
+      require(["Views/AdministratorPanel_User__List"], function (rolesModule) {
+        new rolesModule.RoleListTemplate(record.data.Id);
+      });         
+    }
+  }
+</script>
+
 @{
   var transactionGrid = X.GridPanel()
     .ID("AdministratorUserList__Grid")
@@ -38,14 +48,12 @@
         X.Column().Text(Logic.Properties.GeneralResources.Skype).DataIndex("Skype").Flex(1),
         X.BooleanColumn().Text(Logic.Properties.GeneralResources.IsUserRegistrationConfirm).DataIndex("IsUserRegistrationConfirm").Flex(1),
         X.ImageCommandColumn().Commands(
-          X.ImageCommand().CommandName("GetAdditionalInformation").Icon(Icon.Information).Text(MLMExchange.Properties.ResourcesA.Information),
-          X.ImageCommand().CommandName("Accept").Icon(Icon.Accept).Text(MLMExchange.Properties.ResourcesA.Accept),
-          X.ImageCommand().CommandName("Denied").Icon(Icon.Decline).Text(MLMExchange.Properties.ResourcesA.Denied)
+          X.ImageCommand().CommandName("ShowRoles").Icon(Icon.Information).Text(Logic.Properties.GeneralResources.Roles)
         ).Width(150)
-        .Listeners(ls =>
-        {
-          //ls.Command.Handler = String.Format("UnApprovedTransactionList__Grid__CommandClickHandler(command, record);");
-        }))
+          .Listeners(ls =>
+          {
+            ls.Command.Fn = "AdministratorUserList__Grid__RolesClickHandler";
+          }))
         .BottomBar(
           X.PagingToolbar()
             .Plugins(X.ProgressBarPager()));

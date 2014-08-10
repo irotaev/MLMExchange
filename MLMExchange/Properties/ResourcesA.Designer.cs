@@ -142,6 +142,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Добавить роль.
+        /// </summary>
+        public static string AddRole {
+            get {
+                return ResourceManager.GetString("AddRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Режим администратора.
         /// </summary>
         public static string AdministartorMode {
@@ -259,6 +268,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Удалить.
+        /// </summary>
+        public static string Button_Remove {
+            get {
+                return ResourceManager.GetString("Button_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пополнить.
         /// </summary>
         public static string Button_UpdateMyCrypt {
@@ -273,6 +291,15 @@ namespace MLMExchange.Properties {
         public static string BuyMyCrypt {
             get {
                 return ResourceManager.GetString("BuyMyCrypt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Запрещено удалять роль типа &quot;Роль администратора&quot;.
+        /// </summary>
+        public static string CanNotRemoveAdministratorRolFromUser {
+            get {
+                return ResourceManager.GetString("CanNotRemoveAdministratorRolFromUser", resourceCulture);
             }
         }
         
@@ -1083,6 +1110,15 @@ namespace MLMExchange.Properties {
         public static string UserAgreement {
             get {
                 return ResourceManager.GetString("UserAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пользователь уже имеет данный тип роли.
+        /// </summary>
+        public static string UserAlreadyContainsThisRoleType {
+            get {
+                return ResourceManager.GetString("UserAlreadyContainsThisRoleType", resourceCulture);
             }
         }
         

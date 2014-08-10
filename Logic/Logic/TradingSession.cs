@@ -13,7 +13,7 @@ namespace Logic
   {
     public TradingSession(D_TradingSession tradingSession) : base(tradingSession) { }
 
-    private static object _Locker = new { };    
+    private static object _Locker = new { };
 
     public static explicit operator TradingSession(D_TradingSession dataTradingSession)
     {
@@ -66,12 +66,20 @@ namespace Logic
       tradingSession.SallerInterestRateBill = sallerInterestRateBill;
       #endregion
 
-      buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;
-      buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;
+      #region Для продавца, все заявки на покупку в статусе ожидает подтверждение переводятся в состояние "Отозвано"
+      {
+        List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
+          .Where(x => x.State == BuyingMyCryptRequestState.AwaitingConfirm && x.Buyer.Id == buyingMyCryptRequest.SellerUser.Id).ToList();
 
-      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
+        foreach (var request in buyingMyCryptRequests)
+        {
+          request.State = BuyingMyCryptRequestState.Recalled;
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
+        }
+      }
+      #endregion
 
-      #region Перевожу все остальные заявки на покупку для данной заявки на продажу в стату отменено
+      #region Для продавца, перевожу все заявки на покупку для данной заявки продажи в состояние "Отменено"
       {
         List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
           .Where(x => x.Id != buyingMyCryptRequest.Id && x.BiddingParticipateApplication.Id == buyingMyCryptRequest.BiddingParticipateApplication.Id).ToList();
@@ -84,31 +92,33 @@ namespace Logic
       }
       #endregion
 
-      #region Отменяю все заявки на покупку для других сессий, связанные с данным покупателем
+      #region Для покупателя, все его заявки на покупку, которые ожидают подтверждения, перевожу в состояние "Отклонено"
       {
         List<BuyingMyCryptRequest> buyingMyCryptRequests = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<BuyingMyCryptRequest>()
           .Where(x => x.Id != buyingMyCryptRequest.Id && x.State == BuyingMyCryptRequestState.AwaitingConfirm && x.Buyer.Id == buyingMyCryptRequest.Buyer.Id).ToList();
 
         foreach (var request in buyingMyCryptRequests)
         {
-          request.State = BuyingMyCryptRequestState.Denied;
+          request.State = BuyingMyCryptRequestState.Recalled;
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(buyingMyCryptRequest);
         }
       }
       #endregion
 
-      #region Для пользователя, подающего заявку на покупку, если имеется заявка на продажу, перевожу ее в статус отменено
+      #region Для покупателя, если имеется заявка на продажу, перевожу ее в статус "Отозвано"
       {
         D_BiddingParticipateApplication biddingApp = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Query<D_BiddingParticipateApplication>()
           .Where(x => x.Seller.Id == buyingMyCryptRequest.Buyer.Id && x.State == BiddingParticipateApplicationState.Filed).FirstOrDefault();
 
         if (biddingApp != null)
-        {
-          biddingApp.State = BiddingParticipateApplicationState.Closed;
-          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(biddingApp);
-        }
+          ((BiddingParticipateApplication)biddingApp).TryChangeState(BiddingParticipateApplicationState.Recalled);
       }
       #endregion
+
+      buyingMyCryptRequest.State = BuyingMyCryptRequestState.Accepted;
+      buyingMyCryptRequest.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Accepted;
+
+      Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(tradingSession);
 
       return tradingSession;
     }

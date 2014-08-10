@@ -54,6 +54,7 @@ namespace Logic
 
   public class UserRoleList
   {
+    //TODO:Кузя перенести. Этот метод не относится к списку ролей
     /// <summary>
     /// Получить пользователей
     /// </summary>

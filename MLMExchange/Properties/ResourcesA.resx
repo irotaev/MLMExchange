@@ -144,6 +144,9 @@
   <data name="AddPhoto" xml:space="preserve">
     <value>Добавьте фотографию</value>
   </data>
+  <data name="AddRole" xml:space="preserve">
+    <value>Добавить роль</value>
+  </data>
   <data name="AdministartorMode" xml:space="preserve">
     <value>Режим администратора</value>
   </data>
@@ -183,11 +186,17 @@
   <data name="Button_Open" xml:space="preserve">
     <value>Открыть</value>
   </data>
+  <data name="Button_Remove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="Button_UpdateMyCrypt" xml:space="preserve">
     <value>Пополнить</value>
   </data>
   <data name="BuyMyCrypt" xml:space="preserve">
     <value>Покупка My Crypt</value>
+  </data>
+  <data name="CanNotRemoveAdministratorRolFromUser" xml:space="preserve">
+    <value>Запрещено удалять роль типа "Роль администратора"</value>
   </data>
   <data name="Comment" xml:space="preserve">
     <value>Комментарий</value>
@@ -458,6 +467,9 @@
   </data>
   <data name="UserAgreement" xml:space="preserve">
     <value>Пользовательское соглашение</value>
+  </data>
+  <data name="UserAlreadyContainsThisRoleType" xml:space="preserve">
+    <value>Пользователь уже имеет данный тип роли</value>
   </data>
   <data name="UserConfirmation" xml:space="preserve">
     <value>Подтверждение пользователя</value>
