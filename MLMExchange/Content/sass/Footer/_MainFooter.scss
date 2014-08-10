@@ -8,7 +8,7 @@ $main-footer_Height: 280px;
 
   @include _with-grid-settings(10)
   {
-    .sosial-buttons__outer-wrapper {@include span-columns(omega 3, 10); margin-bottom: 30px; @include clearfix;}
+    .sosial-buttons__outer-wrapper {@include span-columns(omega 5, 10); margin-bottom: 30px; @include clearfix;}
 
     .sosial-buttons__inner-wrapper {
       position: relative;
@@ -29,15 +29,23 @@ $main-footer_Height: 280px;
           display: block;
 
           &.twitter {
-            background: url("/Content/sass/Footer/twitter.png") center no-repeat;
+            background: url("/Content/sass/Footer/icons/tweet.png") center no-repeat;
           }
 
           &.facebook {
-            background: url("/Content/sass/Footer/facebook.png") center no-repeat;
+            background: url("/Content/sass/Footer/icons/facebook.png") center no-repeat;
           }
 
           &.vkontakte {
-            background: url("/Content/sass/Footer/vkontakte.png") center no-repeat;
+            background: url("/Content/sass/Footer/icons/vkontakte.png") center no-repeat;
+          }
+
+          &.odnoklasniki{
+            background: url("/Content/sass/Footer/icons/odnoklasniki.png") center no-repeat;
+          }
+
+          &.googleplus{
+            background: url("/Content/sass/Footer/icons/googleplus.png") center no-repeat;
           }
         }
 
