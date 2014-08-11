@@ -600,6 +600,7 @@
     <Content Include="Content\stylesheets\pages\Account__Confirm.css" />
     <Content Include="Content\stylesheets\pages\Account__Register.css" />
     <Content Include="Content\stylesheets\pages\Account__Success.css" />
+    <Content Include="Content\stylesheets\pages\AdministratorPanel_User__List.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_AddMyCryptTransaction__UnApprovedTransactionList.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_BankPayment__Browse.css" />
     <Content Include="Content\stylesheets\pages\AdminPanel_PaymentSystemGroup__Browse.css" />

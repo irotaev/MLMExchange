@@ -821,10 +821,14 @@ namespace Logic
       }
     }
     /// <summary>
-    /// Дата последнего добавления счета роботом-поисковиком, который ищет пользователей 
+    /// Дата последнего добавления счета на обеспечение доходности роботом-поисковиком, который ищет пользователей 
     /// для удовлетворения доходности текущей торговой сессии.
     /// </summary>
     public virtual DateTime? DateLastYieldTradingSessionUnsureSearchRobotAddBill { get; set; }
+    /// <summary>
+    /// Дата последнего добавления счета на прибыль ТС, находящейся в состоянии ожидания прибыли
+    /// </summary>
+    public virtual DateTime? DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill { get; set; }
   }
 
   #region TradingSessionStatus
@@ -1226,6 +1230,7 @@ namespace Logic
       Map(x => x.State).CustomType<TradingSessionStatus>();
       HasMany<D_YieldSessionBill>(x => x.YieldSessionBills).KeyColumn("TradingSessionId").Cascade.All();
       Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).Nullable();
+      Map(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill).Nullable();
       Map(x => x.ClosingSessionDateTime).Nullable();
     }
   }

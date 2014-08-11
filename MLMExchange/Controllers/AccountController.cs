@@ -139,7 +139,7 @@ namespace MLMExchange.Controllers
 
             #region Отправка смс
 #if DEBUG
-            user.ConfirmationCode = "tester";
+            user.ConfirmationCode = "pre_release";
 #else 
             user.ConfirmationCode = Sms_Epochta.GenerateSmsCode();
             new Sms_Epochta(user.PhoneNumber).SendMessage(String.Format(MLMExchange.Properties.PrivateResource.AccountRegister__Sms_ActivationCode, user.Login, user.ConfirmationCode));

@@ -244,7 +244,7 @@ namespace Logic
         bool isBillAdded = false;
 
         List<D_TradingSession> d_profitTradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).ToList();
+          .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).OrderBy(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill).ToList();
 
         foreach (var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
         {
@@ -268,6 +268,8 @@ namespace Logic
             Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(ensureBill);
 
             _LogicObject.YieldSessionBills.Add(ensureBill);
+
+            profitSession.LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill = DateTime.UtcNow;
             isBillAdded = true;
 
             break;
@@ -296,6 +298,7 @@ namespace Logic
               _NHibernateSession.Delete(ensureBill);
             }
 
+            profitSession.LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill = DateTime.UtcNow;
             isBillAdded = true;
           }
         }
@@ -411,7 +414,7 @@ namespace Logic
     internal void EnsureProfibilityOfTradingSessions()
     {
       List<D_TradingSession> d_tradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedEnsureProfibility).OrderBy(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddBill).ToList();
+        .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedEnsureProfibility).ToList();
 
       foreach (var tradingSession in d_tradingSessions.Select(x => (TradingSession)x))
       {
