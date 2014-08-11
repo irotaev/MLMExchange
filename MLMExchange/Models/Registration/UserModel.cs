@@ -56,7 +56,7 @@ namespace MLMExchange.Models.Registration
     private string _PhoneNumber;
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [RegularExpression(@"^\+\[[0-9\s]{1,3}\] \([0-9]{3}\) [0-9]{3}\-[0-9]{2}\-[0-9]{2}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
+    [RegularExpression(@"^\+\[[1-9_\s][0-9_\s]{2}\] \([0-9]{3}\) [0-9]{3}\-[0-9]{2}\-[0-9]{2}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
     (MLMExchange.Properties.ResourcesA))]
     public string PhoneNumber
     {
