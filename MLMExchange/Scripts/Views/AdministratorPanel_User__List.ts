@@ -57,8 +57,6 @@ export class RoleListTemplate
 
   private ShowRolesList__Window(): void
   {
-    var html = this.RenderRoleListTemplate(this._RolesStore.data.items.map(function (el) { return el.data; }));
-
     this._ListWindow = new Ext.Window({
       id: "AdministratorUserList_Grid__ShowRoles_Window",
       width: 600,
@@ -67,7 +65,7 @@ export class RoleListTemplate
       resizable: false,
       title: this._RolesStore.data.items[0].data.TextResources.Roles,
       autoScroll: true,
-      html: html,
+      //html: html,
       closeAction: 'hide',
       listeners : {
          afterrender: () => {
@@ -92,7 +90,11 @@ export class RoleListTemplate
       }
     });
 
-    this._ListWindow.items.add(this.CreateAddNewRoleButton());
+    var roleList = Ext.create('CustomRoleListContainer')
+    roleList.Roles = this._RolesStore.data.items.map(function (el) { return el.data; });
+    roleList.Button = this.CreateAddNewRoleButton();
+    this._ListWindow.items.add(roleList);
+    //this._ListWindow.items.add();
     this._ListWindow.show();
   }
 
@@ -132,27 +134,39 @@ export class RoleListTemplate
 
     return btn;
   }
+}
 
-  public RenderRoleListTemplate(roles): string
+Ext.define('CustomRoleListContainer',
   {
-    var tpl = new Ext.XTemplate(
-      '<div class="b-rl">',
+    extend: 'Ext.container.Container',
+    layout: 'fit',
+    Roles: undefined,
+    Button: undefined,
+    listeners: {
+      beforerender: function () {
+        var tpl = new Ext.XTemplate(
+          '<div class="b-rl">',
 
-      '<tpl for=".">',
-        '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">',
+          '<div id="b-rl__button-place"></div>',
+
+          '<tpl for=".">',
+          '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">',
           '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>',
 
           '<div class="b-rl__actions">',
-            '<span class="b-rl__action b-rl__action_function_delete">{TextResources.DeleteRole}</span>',
+          '<span class="b-rl__action b-rl__action_function_delete">{TextResources.DeleteRole}</span>',
           '</div>',
-        '</div>',
-      '</tpl>',
+          ' </div>',
+          '</tpl>',
 
-      '</div>'
-      );
+          '</div>'
+          );
 
-    var result = tpl.apply(roles);
-
-    return result;
-  }
-}
+        this.html = tpl.apply(this.Roles);
+      },
+      afterrender: function () {
+        if (this.Button)
+          this.Button.render('b-rl__button-place');
+      }
+    }
+  });

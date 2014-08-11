@@ -47,10 +47,6 @@ define(["require", "exports", "jquery"], function(require, exports) {
         }
         RoleListTemplate.prototype.ShowRolesList__Window = function () {
             var _this = this;
-            var html = this.RenderRoleListTemplate(this._RolesStore.data.items.map(function (el) {
-                return el.data;
-            }));
-
             this._ListWindow = new Ext.Window({
                 id: "AdministratorUserList_Grid__ShowRoles_Window",
                 width: 600,
@@ -59,7 +55,7 @@ define(["require", "exports", "jquery"], function(require, exports) {
                 resizable: false,
                 title: this._RolesStore.data.items[0].data.TextResources.Roles,
                 autoScroll: true,
-                html: html,
+                //html: html,
                 closeAction: 'hide',
                 listeners: {
                     afterrender: function () {
@@ -84,7 +80,14 @@ define(["require", "exports", "jquery"], function(require, exports) {
                 }
             });
 
-            this._ListWindow.items.add(this.CreateAddNewRoleButton());
+            var roleList = Ext.create('CustomRoleListContainer');
+            roleList.Roles = this._RolesStore.data.items.map(function (el) {
+                return el.data;
+            });
+            roleList.Button = this.CreateAddNewRoleButton();
+            this._ListWindow.items.add(roleList);
+
+            //this._ListWindow.items.add();
             this._ListWindow.show();
         };
 
@@ -122,16 +125,26 @@ define(["require", "exports", "jquery"], function(require, exports) {
 
             return btn;
         };
-
-        RoleListTemplate.prototype.RenderRoleListTemplate = function (roles) {
-            var tpl = new Ext.XTemplate('<div class="b-rl">', '<tpl for=".">', '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">', '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>', '<div class="b-rl__actions">', '<span class="b-rl__action b-rl__action_function_delete">{TextResources.DeleteRole}</span>', '</div>', '</div>', '</tpl>', '</div>');
-
-            var result = tpl.apply(roles);
-
-            return result;
-        };
         return RoleListTemplate;
     })();
     exports.RoleListTemplate = RoleListTemplate;
+
+    Ext.define('CustomRoleListContainer', {
+        extend: 'Ext.container.Container',
+        layout: 'fit',
+        Roles: undefined,
+        Button: undefined,
+        listeners: {
+            beforerender: function () {
+                var tpl = new Ext.XTemplate('<div class="b-rl">', '<div id="b-rl__button-place"></div>', '<tpl for=".">', '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">', '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>', '<div class="b-rl__actions">', '<span class="b-rl__action b-rl__action_function_delete">{TextResources.DeleteRole}</span>', '</div>', ' </div>', '</tpl>', '</div>');
+
+                this.html = tpl.apply(this.Roles);
+            },
+            afterrender: function () {
+                if (this.Button)
+                    this.Button.render('b-rl__button-place');
+            }
+        }
+    });
 });
 //# sourceMappingURL=AdministratorPanel_User__List.js.map
