@@ -9,7 +9,7 @@
   {
     display: table;
     text-shadow: 1px 1px 1px hsla(0, 24%, 80%, 0.14);
-    color: #660A0A !important;
+    color: #FFFFFF !important;
     font-size: $font-b;
     margin-bottom: 10px;
   }
@@ -41,7 +41,7 @@
   {
     position: relative;
     height: 36px;
-    background-color: $red_a_1_c;
+    background-color: $lime_1;
     @include header-text-with-shadow;
     line-height: 36px;
     text-align: center;
@@ -61,7 +61,7 @@
   {
     position: relative;
     padding: 20px; padding-top: 0;
-    border: 10px solid $red_a_1_c;
+    border: 10px solid $lime_1;
     background-color: $blue_a_4_c3;
 
     &:hover
@@ -107,9 +107,9 @@
       {
         height: 0;
         overflow: hidden;
-        background-color: #8B3F3F;
+        background-color: #62a6a7;
 
-        * {color: #AFA5A5 !important;}
+        * {color: #F3F3F3 !important;}
 
         .b-ab__wrapper
         {

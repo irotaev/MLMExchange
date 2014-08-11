@@ -1,7 +1,7 @@
 @import "../../framework";
 @import "../../AdminFramework";
 
-@mixin custom-extjs-grid($margin: 10px, $border: 10px solid $red_a_1_c)
+@mixin custom-extjs-grid($margin: 10px, $border: 10px solid $lime_1)
 {
   margin: $margin;
   border: $border;
@@ -10,7 +10,7 @@
 
   .x-panel-header-default
   {
-    background-color: $red_a_1_c;
+    background-color: $lime_1;
 
     .x-header-text
     {

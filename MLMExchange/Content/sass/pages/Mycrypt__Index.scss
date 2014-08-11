@@ -54,7 +54,7 @@
     @include listIconStart(b-tb__listWrapper__content, FontAwesome, $blue_a_4_c2);
 
     //#region Заполняю иконки
-    @include listIcon(b-tb__listWrapper__content, 1, "\f19c");
+    @include listIcon(b-tb__listWrapper__content, 1, '\f19c');
     @include listIcon(b-tb__listWrapper__content, 2, "\f136");
     @include listIcon(b-tb__listWrapper__content, 3, "\f0cc");
     @include listIcon(b-tb__listWrapper__content, 4, "\f007");

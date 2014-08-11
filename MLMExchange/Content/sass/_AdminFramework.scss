@@ -17,6 +17,6 @@
 */
 @mixin header-text-with-shadow
 {
-  color: #522828 !important;
+  color: #F3F3F3 !important;
   @include text-shadow(2px 2px 3px rgba(255, 255, 255, 0.1));
 }

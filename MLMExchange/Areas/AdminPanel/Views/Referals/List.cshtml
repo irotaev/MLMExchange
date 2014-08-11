@@ -44,9 +44,10 @@ else
     .HeaderConfig(X.PanelHeader().Html(
       @<div class="b-x__header-wrapper">
          <div class="b-x__wrapper">
-           <i class="b-x__icon fa fa-group"></i>
-           <span class="b-x__text">@MLMExchange.Properties.PrivateResource.MyReferals</span>
-
+             <i class="b-x__icon fa fa-sitemap"></i>
+             <div class="b-x__center">
+                 <span class="b-x__text">@MLMExchange.Properties.PrivateResource.MyReferals</span>
+             </div>
            <div class="b-ri__referals-total-profit-wrapper">
              <span class="b-ri__total-count">
                @Model.RefererTotalProfit.ToString("F")
