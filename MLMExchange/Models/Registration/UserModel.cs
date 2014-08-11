@@ -333,6 +333,10 @@ namespace MLMExchange.Models.Registration
 
         user.RefererRole = referalRole;
       }
+      else
+      {
+        user.RefererRole = ((Logic.User)Application.Instance.CurrentSystemSettings.LogicObject.RootReferer).GetRole<D_UserRole>();
+      }
 
       if (user.PaymentSystemGroup == null)
         user.PaymentSystemGroup = new D_PaymentSystemGroup();

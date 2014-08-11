@@ -403,6 +403,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Пользователь с таким логином не найден.
+        /// </summary>
+        public static string RootRefererLogin_UserNotFind {
+            get {
+                return ResourceManager.GetString("RootRefererLogin_UserNotFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to На вашу почту пришёл новый пароль.
         /// </summary>
         public static string SuccessAccountResetPassword {

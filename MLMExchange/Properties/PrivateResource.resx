@@ -285,4 +285,7 @@
   <data name="PayChechBillTitle" xml:space="preserve">
     <value>Оплатить проверочный платеж</value>
   </data>
+  <data name="RootRefererLogin_UserNotFind" xml:space="preserve">
+    <value>Пользователь с таким логином не найден</value>
+  </data>
 </root>

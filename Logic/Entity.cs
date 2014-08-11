@@ -58,6 +58,10 @@ namespace Logic
     /// Максимальное колличество mycrypto при заказе
     /// </summary>
     public virtual long MaxMyCryptCount { get; set; }
+    /// <summary>
+    /// Реферер, на которого регистрируются пользователи, не указавшие реферера
+    /// </summary>
+    public virtual D_User RootReferer { get; set; }
   }
   #endregion
 
@@ -970,6 +974,7 @@ namespace Logic
       Map(x => x.ProfitPercent).Precision(5).Scale(3).Not.Nullable();
       Map(x => x.TradingSessionDuration).Precision(5).Scale(3).Not.Nullable();
       Map(x => x.MaxMyCryptCount).Not.Nullable();
+      References(x => x.RootReferer).Column("RootRefererId").Not.Nullable();
     }
   }
 

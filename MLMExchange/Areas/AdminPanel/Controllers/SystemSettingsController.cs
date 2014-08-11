@@ -29,17 +29,19 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         TryUpdateModel<SystemSettingsModel>(model);
 
+        model.CustomValidation(ModelState);
+
         if (ModelState.IsValid)
         {
-          D_SystemSettings d_systemSettings = model.UnBind();
-          
+          D_SystemSettings d_systemSettings = model.UnBind(new D_SystemSettings());
+
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(d_systemSettings);
         }
       }
       else
       {
         SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
-        
+
         if (systemSettings != null)
           model.Bind(systemSettings.LogicObject);
       }

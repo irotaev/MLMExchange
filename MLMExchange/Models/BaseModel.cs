@@ -36,6 +36,19 @@ namespace MLMExchange.Models
   }
 
   /// <summary>
+  /// Интерфейс частной валидации
+  /// </summary>
+  public interface ICustomValidation
+  {
+    /// <summary>
+    /// Частная валидация. 
+    /// Одно из частых применений - вызывать перед вызовом UnBind модели.
+    /// </summary>
+    /// <param name="modelState">Состоянии текущей модели. Туда заносятся ошибки</param>
+    void CustomValidation(System.Web.Mvc.ModelStateDictionary modelState, MLMExchange.Models.AbstractModel._CustomValidationSettings settings = null);
+  }
+
+  /// <summary>
   /// Интерфейс биндинга к данным. 
   /// Однонаправленый, только получение данных из объекта.
   /// Используется для получения данных из объекта в модель.
@@ -125,7 +138,7 @@ namespace MLMExchange.Models
   /// <summary>
   /// Базовая модель.
   /// </summary>
-  public abstract class AbstractModel : ILazyLoadModel, IAbstractModel
+  public abstract class AbstractModel : ILazyLoadModel, IAbstractModel, ICustomValidation
   {
     protected readonly ISession _NhibernateSession = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session;
 
@@ -146,6 +159,12 @@ namespace MLMExchange.Models
     #endregion
 
     public bool IsLazyLoadingDisable { get; set; }
+
+    #region Custom validation
+    public virtual void CustomValidation(ModelStateDictionary modelState, _CustomValidationSettings settings = null) { }
+
+    public class _CustomValidationSettings { }
+    #endregion
   }
 
   /// <summary>

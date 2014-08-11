@@ -159,7 +159,8 @@ namespace Logic
           Quote = 10,
           ProfitPercent = 20,
           TradingSessionDuration = 2,
-          MaxMyCryptCount = 10000
+          MaxMyCryptCount = 10000,
+          RootReferer = d_systemUser
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);

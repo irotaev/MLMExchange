@@ -353,7 +353,7 @@
   </data>
   <data name="DefaultSystemUser" xml:space="preserve">
     <value>Системный пользователь по умолчанию</value>
-    </data>
+  </data>
   <data name="Recalled" xml:space="preserve">
     <value>Отозвано</value>
   </data>
@@ -383,5 +383,8 @@
   </data>
   <data name="RoleType_User" xml:space="preserve">
     <value>Роль пользователя</value>
+  </data>
+  <data name="RootRefererLogin" xml:space="preserve">
+    <value>Логин базавого реферера</value>
   </data>
 </root>

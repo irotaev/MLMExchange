@@ -628,6 +628,15 @@ namespace Logic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Логин базавого реферера.
+        /// </summary>
+        public static string RootRefererLogin {
+            get {
+                return ResourceManager.GetString("RootRefererLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Продавец.
         /// </summary>
         public static string Saller {

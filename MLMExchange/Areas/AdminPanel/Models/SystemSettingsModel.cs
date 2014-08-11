@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using NHibernate.Linq;
 
 namespace MLMExchange.Areas.AdminPanel.Models
 {
@@ -56,6 +57,12 @@ namespace MLMExchange.Areas.AdminPanel.Models
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0}")]
     public long? MaxMyCryptCount { get; set; }
 
+    /// <summary>
+    /// Логин реферера на которого регистрируются новые участники, которые не выбрали реферера на которого регистрироваться
+    /// </summary>
+    [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
+    public string RootRefererLogin { get; set; }
+
     public override SystemSettingsModel Bind(D_SystemSettings @object)
     {
       base.Bind(@object);     
@@ -65,11 +72,23 @@ namespace MLMExchange.Areas.AdminPanel.Models
       TradingSessionDuration = @object.TradingSessionDuration;
       MaxMyCryptCount = @object.MaxMyCryptCount;
       ProfitPercent = @object.ProfitPercent;
+      RootRefererLogin = @object.RootReferer.Login;
 
       return this;
     }
 
-    public override D_SystemSettings UnBind(D_SystemSettings @object = null)
+    //TODO:Rtv Сделать частичным методом. Сделать интерфейс частной валидации.
+    public void CustomValidation(System.Web.Mvc.ModelStateDictionary modelState)
+    {
+      #region Root referer
+      D_User rootReferer = _NhibernateSession.Query<D_User>().Where(x => x.Login == RootRefererLogin).FirstOrDefault();
+
+      if (rootReferer == null)
+        modelState.AddModelError("RootRefererLogin", MLMExchange.Properties.PrivateResource.RootRefererLogin_UserNotFind);
+      #endregion
+    }
+
+    public override D_SystemSettings UnBind(D_SystemSettings @object)
     {
       var d_systemSettings = base.UnBind(@object);
 
@@ -88,7 +107,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
       d_systemSettings.TradingSessionDuration = TradingSessionDuration.Value;
 
-      if(MaxMyCryptCount == null)
+      if (MaxMyCryptCount == null)
         throw new ArgumentNullException("MaxMyCryptCount");
 
       d_systemSettings.MaxMyCryptCount = MaxMyCryptCount.Value;
@@ -97,6 +116,13 @@ namespace MLMExchange.Areas.AdminPanel.Models
         throw new ArgumentNullException("ProfitPercent");
 
       d_systemSettings.ProfitPercent = ProfitPercent.Value;
+
+      #region Root referer
+      {
+        D_User rootReferer = _NhibernateSession.Query<D_User>().Where(x => x.Login == RootRefererLogin).FirstOrDefault();
+        d_systemSettings.RootReferer = rootReferer;
+      }
+      #endregion
 
       return d_systemSettings;
     }
