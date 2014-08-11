@@ -587,6 +587,11 @@
     <Content Include="Content\MetroUICSS\min\metro-bootstrap.min.css" />
     <Content Include="Content\MetroUICSS\min\metro.min.js" />
     <Content Include="Content\sass\Footer\facebook.png" />
+    <Content Include="Content\sass\Footer\icons\facebook.png" />
+    <Content Include="Content\sass\Footer\icons\googleplus.png" />
+    <Content Include="Content\sass\Footer\icons\odnoklasniki.png" />
+    <Content Include="Content\sass\Footer\icons\tweet.png" />
+    <Content Include="Content\sass\Footer\icons\vkontakte.png" />
     <Content Include="Content\sass\Footer\twitter.png" />
     <Content Include="Content\sass\Footer\vkontakte.png" />
     <Content Include="Content\stylesheets\ie.css" />

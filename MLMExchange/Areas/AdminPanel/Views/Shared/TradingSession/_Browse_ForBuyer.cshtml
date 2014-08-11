@@ -315,7 +315,7 @@ else if (Model.State == Logic.TradingSessionStatus.NeedProfit || Model.State == 
           )
           .ColumnModel(
             X.RowNumbererColumn(),
-            X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Width(100).Flex(1),
+              X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Width(100).Format("dd.m.Y H:i:s").Flex(1),
             X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("User__Login").Width(50).Flex(1)
                 .Renderer("TradingSession_All_Grid__DisplayNameRenderer"),
             X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillPaymentStateAsString").Width(50).Flex(1)
