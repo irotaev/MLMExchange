@@ -159,8 +159,7 @@ namespace Logic
           Quote = 10,
           ProfitPercent = 20,
           TradingSessionDuration = 2,
-          MaxMyCryptCount = 10000,
-          DefaultSystemUser = _NHibernateSession.Query<D_User>().Where(x => x.Login == "system_user").FirstOrDefault()
+          MaxMyCryptCount = 10000
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);

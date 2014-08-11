@@ -32,13 +32,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         if (ModelState.IsValid)
         {
           D_SystemSettings d_systemSettings = model.UnBind();
-
-          D_User defaultSystemUserModel = _NHibernateSession.Query<D_User>().Where(x => x.Login == model.DefaultSystemUserName).FirstOrDefault();
-
-          if (defaultSystemUserModel == null)
-            throw new Logic.Lib.UserVisible__ArgumentNullException("DefaultSystemUserName");
-
-          d_systemSettings.DefaultSystemUser = defaultSystemUserModel;
           
           Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(d_systemSettings);
         }

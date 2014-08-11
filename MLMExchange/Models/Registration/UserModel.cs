@@ -133,32 +133,20 @@ namespace MLMExchange.Models.Registration
     /// <summary>
     /// Получить Id реферера из запроса
     /// </summary>
-    public static long? GetRefererRoleIdFromRequest(HttpRequestBase request, out bool isDefaultSystemUser)
+    public static long? GetRefererRoleIdFromRequest(HttpRequestBase request)
     {
       if (request == null)
         throw new Logic.Lib.ApplicationException("request is null");
 
       long? refererId = null;
-      isDefaultSystemUser = false;
 
+      var keys = request.QueryString.GetValues("RefererId");
+      if (keys != null && keys.Length >= 1)
       {
-        var keys = request.QueryString.GetValues("RefererId");
-        if (keys != null && keys.Length >= 1)
+        long id;
+        if (Int64.TryParse(keys[0], out id))
         {
-          long id;
-          if (Int64.TryParse(keys[0], out id))
-          {
-            refererId = id;
-          }
-        }
-        else
-        {
-          UserModel userModel = new UserModel().Bind(Logic.SystemSettings.GetCurrentSestemSettings().LogicObject.DefaultSystemUser);
-
-          D_UserRole userRole = userModel.UserRoles.FirstOrDefault(x => (x as D_UserRole) != null) as D_UserRole;
-
-          refererId = userRole.Id;
-          isDefaultSystemUser = true;
+          refererId = id;
         }
       }
 
@@ -329,7 +317,7 @@ namespace MLMExchange.Models.Registration
       user.Name = this.Name;
       user.Surname = this.Surname;
       user.Patronymic = this.Patronymic;
-      user.PhotoRelativePath = this.PhotoRelativePath;      
+      user.PhotoRelativePath = this.PhotoRelativePath;
       user.PhoneNumber = this.PhoneNumber;
       user.Skype = this.Skype;
 
