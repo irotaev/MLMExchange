@@ -346,7 +346,7 @@
     <value>Код подтверждения</value>
   </data>
   <data name="IsUserRegistrationConfirm" xml:space="preserve">
-    <value>Подтверждена ди регистрация пользователя</value>
+    <value>Подтверждена ли регистрация пользователя</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Пользователи</value>
@@ -386,5 +386,11 @@
   </data>
   <data name="RootRefererLogin" xml:space="preserve">
     <value>Логин базавого реферера</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
   </data>
 </root>

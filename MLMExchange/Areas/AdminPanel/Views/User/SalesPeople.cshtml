@@ -84,7 +84,7 @@
         resultTag += stateTag;
 
         var messageTag = "<div class='pb-br__message'>@(MvcHtmlString.Create(String.Format(MLMExchange.Properties.PrivateResource.NeedCheckPayment,
-          "\" + record.data.CheckBill__MoneyAmount + \"")))</div>";
+          "\" + record.data.CheckBill__MoneyAmount + \" руб.")))</div>";
         resultTag += messageTag;
 
         var imageLinkTag = $("<a></a>").addClass("pb-br__image-link pb-br__image-link_action_check-payment").attr("href", "#").attr("data-request-id", record.data.Id)

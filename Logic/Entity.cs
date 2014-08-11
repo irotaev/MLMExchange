@@ -15,6 +15,11 @@ namespace Logic
   {
     public virtual long Id { get; set; }
     public virtual DateTime CreationDateTime { get; set; }
+    /// <summary>
+    /// Отключен ли объект. 
+    /// Используется как эмуляция удаления, вместо реального удаления объекта из БД.
+    /// </summary>
+    public virtual bool IsDisabled { get; set; }
   }
 
   #region System
@@ -954,6 +959,7 @@ namespace Logic
       Id(x => x.Id).GeneratedBy.HiLo("1000").CustomType<Int64>();
 
       Map(x => x.CreationDateTime).Not.Nullable();
+      Map(x => x.IsDisabled).Default("0").Not.Nullable();
     }
   }
 

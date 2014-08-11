@@ -48,14 +48,6 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       return Json(Newtonsoft.Json.JsonConvert.SerializeObject(models), JsonRequestBehavior.AllowGet);
     }
 
-    [HttpPut]
-    public JsonResult UpdateAllUserRoles(BaseRoleModel models)
-    {
-      var aa = 44;
-
-      return null;
-    }
-
     #region Add user role
     [Auth(typeof(D_AdministratorRole))]
     [HttpPost]

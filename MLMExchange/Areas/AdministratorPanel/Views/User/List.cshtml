@@ -46,7 +46,11 @@
         X.DateColumn().Text(Logic.Properties.GeneralResources.CreationDateTime).DataIndex("CreationDateTime").Flex(1).Format("dd-m-yyyy HH:i:s"),
         X.Column().Text(Logic.Properties.GeneralResources.Login).DataIndex("Login").Flex(1),
         X.Column().Text(Logic.Properties.GeneralResources.Skype).DataIndex("Skype").Flex(1),
-        X.BooleanColumn().Text(Logic.Properties.GeneralResources.IsUserRegistrationConfirm).DataIndex("IsUserRegistrationConfirm").Flex(1),
+        X.BooleanColumn()
+          .TrueText(Logic.Properties.GeneralResources.Yes)
+          .FalseText(Logic.Properties.GeneralResources.No)
+          .Text(Logic.Properties.GeneralResources.IsUserRegistrationConfirm)
+          .DataIndex("IsUserRegistrationConfirm").Flex(1),
         X.ImageCommandColumn().Commands(
           X.ImageCommand().CommandName("ShowRoles").Icon(Icon.Information).Text(Logic.Properties.GeneralResources.Roles)
         ).Width(150)

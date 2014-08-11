@@ -50,7 +50,7 @@
 
       .pb-bpa__text
       {
-        font-size: $font-n; color: white !important; font-family: "Segoe UI" !important;
+        font-size: $font-n; font-family: "Segoe UI" !important;
         text-decoration: underline;
 
         &:hover {text-decoration: none;}
@@ -119,6 +119,11 @@
     {
       color: $orange2;
     }
+  }
+
+  .pb-bpa__buyer-found-wrapper
+  {
+    .x-grid {border: none;}
   }
 }
 

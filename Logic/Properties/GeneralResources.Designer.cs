@@ -376,7 +376,7 @@ namespace Logic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Подтверждена ди регистрация пользователя.
+        ///   Looks up a localized string similar to Подтверждена ли регистрация пользователя.
         /// </summary>
         public static string IsUserRegistrationConfirm {
             get {
@@ -444,6 +444,15 @@ namespace Logic.Properties {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нет.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -867,6 +876,15 @@ namespace Logic.Properties {
         public static string UserSurname {
             get {
                 return ResourceManager.GetString("UserSurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Да.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }
