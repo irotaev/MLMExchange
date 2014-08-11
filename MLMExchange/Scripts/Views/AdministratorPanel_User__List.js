@@ -39,6 +39,9 @@ define(["require", "exports", "jquery"], function(require, exports) {
                     load: function () {
                         _this.ShowRolesList__Window();
                         _this._ListWindow.toBack();
+
+                        if (_this._LoadingMask)
+                            _this._LoadingMask.hide();
                     }
                 }
             });
@@ -65,6 +68,8 @@ define(["require", "exports", "jquery"], function(require, exports) {
                             var role = _this._RolesStore.findRecord('Id', id);
 
                             _this._RolesStore.remove([role]);
+
+                            _this._LoadingMask.show();
                             _this._RolesStore.sync({
                                 success: function () {
                                     _this._RolesStore.commitChanges();
@@ -76,6 +81,8 @@ define(["require", "exports", "jquery"], function(require, exports) {
                                 }
                             });
                         });
+
+                        _this._LoadingMask = new Ext.LoadMask(Ext.get('b-rl_ID'), { msg: _this._RolesStore.data.items[0].data.TextResources.LoadingMessage });
                     }
                 }
             });
@@ -98,6 +105,8 @@ define(["require", "exports", "jquery"], function(require, exports) {
                         _this._ListWindow.clearContent();
 
                         _this._RolesStore.add({ RoleType: button._key });
+
+                        _this._LoadingMask.show();
                         _this._RolesStore.sync({
                             success: function () {
                                 _this._RolesStore.commitChanges();
@@ -120,7 +129,9 @@ define(["require", "exports", "jquery"], function(require, exports) {
 
             var btn = new Ext.Button({
                 text: this._RolesStore.data.items[0].data.TextResources.AddRole,
-                menu: buttonMenu
+                menu: buttonMenu,
+                height: 30,
+                width: 570
             });
 
             return btn;
@@ -136,7 +147,7 @@ define(["require", "exports", "jquery"], function(require, exports) {
         Button: undefined,
         listeners: {
             beforerender: function () {
-                var tpl = new Ext.XTemplate('<div class="b-rl">', '<div id="b-rl__button-place"></div>', '<tpl for=".">', '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">', '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>', '<div class="b-rl__actions">', '<span class="b-rl__action b-rl__action_function_delete">{TextResources.DeleteRole}</span>', '</div>', ' </div>', '</tpl>', '</div>');
+                var tpl = new Ext.XTemplate('<div class="b-rl" id="b-rl_ID">', '<div id="b-rl__button-place"></div>', '<tpl for=".">', '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">', '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>', '<div class="b-rl__actions">', '<span class="b-rl__action b-rl__action_function_delete"><i class="b-rl__icon fa fa-trash-o"></i>{TextResources.DeleteRole}</span>', '</div>', ' </div>', '</tpl>', '</div>');
 
                 this.html = tpl.apply(this.Roles);
             },

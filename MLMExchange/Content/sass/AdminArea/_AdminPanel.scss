@@ -58,7 +58,7 @@ $default-layout_Bg-color: $blue_a_4;
 
 .x-menu
 {
-  border-color: $red_a_1;
+  border-color: $color_grean_sea;
 
   .x-menu-item-text {font-family: "Segoe UI" !important; color: $blue_a_4_c2 !important;}
 
@@ -178,6 +178,11 @@ $default-layout_Bg-color: $blue_a_4;
             &.pb-mm__icon__mycryptTransaction
             {
               @include font-icon("\e035", $blue_a_4_c2, "Dripicons", 25px);
+            }
+
+            &.pb-mm__icon__user-list
+            {
+              @include font-icon("\f0c0", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__systemSettings

@@ -64,6 +64,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
       _TextResources.Add("Roles", Logic.Properties.GeneralResources.RoleList);
       _TextResources.Add("AddRole", MLMExchange.Properties.ResourcesA.AddRole);
       _TextResources.Add("AllRoleTypePairs", new RoleType().GetValueTypePairs());
+      _TextResources.Add("LoadingMessage", MLMExchange.Properties.ResourcesA.LoadingMessage);
     }
 
     #region RoleType

@@ -10,10 +10,11 @@ export class RoleListTemplate
   private _UserId: number;
   private _RolesStore: any;
   private _ListWindow: any;
+  private _LoadingMask: any;
 
   public constructor(userId: number)
   {    
-    this._UserId = userId;
+    this._UserId = userId;        
 
     this._RolesStore = new Ext.data.JsonStore({
       storeId: 'myStore',
@@ -43,14 +44,17 @@ export class RoleListTemplate
             this._ListWindow.doLayout();
         }
       },
-      listeners: {
+      listeners: {        
         load: () => 
         {
           this.ShowRolesList__Window();
           this._ListWindow.toBack();
+          
+          if (this._LoadingMask)    
+            this._LoadingMask.hide();      
         }
       }
-    });
+    });    
 
     this._RolesStore.load();
   }
@@ -75,6 +79,8 @@ export class RoleListTemplate
              var role = this._RolesStore.findRecord('Id', id);
 
              this._RolesStore.remove([role]);
+
+             this._LoadingMask.show();
              this._RolesStore.sync({
                success: () => {
                  this._RolesStore.commitChanges();
@@ -82,10 +88,12 @@ export class RoleListTemplate
                },
                failure: () => {
                  this._RolesStore.rejectChanges();
-                 this._RolesStore.load();
+                 this._RolesStore.load();                 
                }
              });
            });
+
+           this._LoadingMask = new Ext.LoadMask(Ext.get('b-rl_ID'), {msg: this._RolesStore.data.items[0].data.TextResources.LoadingMessage});
          }
       }
     });
@@ -106,6 +114,8 @@ export class RoleListTemplate
             this._ListWindow.clearContent();
             
             this._RolesStore.add({RoleType: button._key});
+
+            this._LoadingMask.show();
             this._RolesStore.sync({
               success: () => {
                 this._RolesStore.commitChanges();
@@ -129,7 +139,9 @@ export class RoleListTemplate
 
     var btn = new Ext.Button({
         text: this._RolesStore.data.items[0].data.TextResources.AddRole,
-        menu: buttonMenu
+        menu: buttonMenu,
+        height: 30,
+        width: 570
     });    
 
     return btn;
@@ -145,7 +157,7 @@ Ext.define('CustomRoleListContainer',
     listeners: {
       beforerender: function () {
         var tpl = new Ext.XTemplate(
-          '<div class="b-rl">',
+          '<div class="b-rl" id="b-rl_ID">',
 
           '<div id="b-rl__button-place"></div>',
 
@@ -154,7 +166,7 @@ Ext.define('CustomRoleListContainer',
           '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>',
 
           '<div class="b-rl__actions">',
-          '<span class="b-rl__action b-rl__action_function_delete">{TextResources.DeleteRole}</span>',
+          '<span class="b-rl__action b-rl__action_function_delete"><i class="b-rl__icon fa fa-trash-o"></i>{TextResources.DeleteRole}</span>',
           '</div>',
           ' </div>',
           '</tpl>',
@@ -164,9 +176,9 @@ Ext.define('CustomRoleListContainer',
 
         this.html = tpl.apply(this.Roles);
       },
-      afterrender: function () {
+      afterrender: function() {
         if (this.Button)
-          this.Button.render('b-rl__button-place');
+          this.Button.render('b-rl__button-place');        
       }
     }
   });

@@ -1,3 +1,62 @@
 @import "../../../Framework";
 @import "../../../AdminFramework";
+@import "compass/css3/transition";
 
+.b-rl
+{
+  @include box-sizing(border-box);
+  padding: 10px;
+
+  #b-rl__button-place
+  {
+    .x-btn
+    {
+      margin: 0 auto;
+    }
+  }
+
+  .b-rl__role
+  {
+    @include clearfix;
+    position: relative;
+    min-height: 60px;
+    margin: 10px 0;
+    border: 2px dashed $color_grean_sea;
+    padding: 5px;
+
+    .b-rl__role-display-name
+    {
+      font-size: $font-b;
+      font-weight: bold;
+    }
+
+    .b-rl__actions
+    {
+      position: absolute;
+      right: 10px; bottom: 10px;
+      cursor: pointer;
+
+      .b-rl__action
+      {
+        border-bottom: 1px solid transparent;
+        @include transition(all 0.25s linear);
+
+        &:hover
+        {
+          border-bottom-color: $red_2;
+        }
+
+        &.b-rl__action_function_delete
+        {
+          &, * {color: $red_2 !important;}
+        }
+
+        .b-rl__icon
+        {
+          padding-right: 5px;
+          font-size: $font-b;
+        }
+      }
+    }
+  }
+}
