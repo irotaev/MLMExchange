@@ -147,32 +147,32 @@ $default-layout_Bg-color: $blue_a_4;
           {
             &.pb-mm__icon__userinfo
             {
-              @include font-icon("\e043", $blue_a_4_c2, "Dripicons", 25px);
+              @include font-icon("\f0f6", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__browse
             {
-              @include font-icon("\e055", $blue_a_4_c2, "Dripicons", 25px);
+              @include font-icon("\f00b", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__addmycrypt
             {
-              @include font-icon("\e036", $blue_a_4_c2, "Dripicons", 25px);
+              @include font-icon("\f09d", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__controlpanel
             {
-              @include font-icon("\e027", $blue_a_4_c2, "Dripicons", 25px);
+              @include font-icon("\f080", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__salespeople
             {
-              @include font-icon("\e026", $blue_a_4_c2, "Dripicons", 25px);
+              @include font-icon("\f0c0", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__referals-info
             {
-              @include font-icon("\f0c0", $blue_a_4_c2, "FontAwesome", 25px);
+              @include font-icon("\f0e8", $blue_a_4_c2, "FontAwesome", 25px);
             }
 
             &.pb-mm__icon__mycryptTransaction
