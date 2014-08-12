@@ -47,14 +47,15 @@ else
              <i class="b-x__icon fa fa-sitemap"></i>
              <div class="b-x__center">
                  <span class="b-x__text">@MLMExchange.Properties.PrivateResource.MyReferals</span>
+
+                 <div class="b-ri__referals-total-profit-wrapper">
+                     <span class="b-ri__total-count">
+                         @Model.RefererTotalProfit.ToString("F")
+                         <i class="b-ri__icon fa fa-rub"></i>
+                     </span>
+                     <i class="b-ri__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.ProfitFromAllReferals" data-ot-style="BlackStyle"></i>
+                 </div>
              </div>
-           <div class="b-ri__referals-total-profit-wrapper">
-             <span class="b-ri__total-count">
-               @Model.RefererTotalProfit.ToString("F")
-               <i class="b-ri__icon fa fa-rub"></i>
-             </span>
-             <i class="b-ri__icon fa fa-question-circle" data-ot="@MLMExchange.Properties.PrivateResource.ProfitFromAllReferals" data-ot-style="BlackStyle"></i>
-           </div>
          </div>
        </div>
     ))
