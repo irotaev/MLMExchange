@@ -225,13 +225,21 @@
 </script>
 
 @{
-  AbstractComponent buyMCContainer;
+    AbstractComponent buyMCContainer;
 
-  if (!Model.IsCurrentUserBuyMCDisabled)
-  {
-    buyMCContainer = X.GridPanel().ID("SalesPeople__Grid")
-    .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
-    .Layout(LayoutType.Fit)
+    if (!Model.IsCurrentUserBuyMCDisabled)
+    {
+        buyMCContainer = X.GridPanel().ID("SalesPeople__Grid")
+        .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
+
+        .Layout(LayoutType.Fit)
+        .HeaderConfig(X.PanelHeader().Html(
+        @<div class="b-x__header-wrapper">
+            <div class="b-x__wrapper">
+                <i class="b-x__icon fa fa-users"></i>
+            </div>
+        </div>
+))
     .Height(375)
     .Store(
       X.Store()
@@ -266,30 +274,30 @@
         ).Width(120)
         .Listeners(ls =>
         {
-          ls.Command.Handler = "var commandArguments = arguments;" +
-            "if(commandArguments[1] == 'BuyMyCrypt') {"
-            + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title(@MLMExchange.Properties.ResourcesA.BuyMyCrypt)
-             .Content(x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
-                new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyingMyCryptRequestModel()))
-            .CloseAction(CloseAction.Destroy)
-            .Resizable(false)
-            .Listeners(w_ls =>
-            {
-              w_ls.AfterRender.Handler = "BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
-            }).ToScript()
-          + "}else if(commandArguments[1] == 'ShowUserInfo') {" +
-          "SalesPeopleActiveSales__Grid__CommandClickHandler(commandArguments[1], commandArguments[2]); }";
+            ls.Command.Handler = "var commandArguments = arguments;" +
+              "if(commandArguments[1] == 'BuyMyCrypt') {"
+              + X.Window().ID("BuyMyCrypt__PopUpWindow").Modal(true).Width(700).Height(400).Title(@MLMExchange.Properties.ResourcesA.BuyMyCrypt)
+               .Content(x => Html.Partial("~/Areas/AdminPanel/Views/User/SalesPeople/_BuyMyCrypt.cshtml",
+                  new MLMExchange.Areas.AdminPanel.Models.User.SalesPeople.BuyingMyCryptRequestModel()))
+              .CloseAction(CloseAction.Destroy)
+              .Resizable(false)
+              .Listeners(w_ls =>
+              {
+                  w_ls.AfterRender.Handler = "BuyMyCrypt__PopUpWindow__AfterRender(commandArguments[2].data);";
+              }).ToScript()
+            + "}else if(commandArguments[1] == 'ShowUserInfo') {" +
+            "SalesPeopleActiveSales__Grid__CommandClickHandler(commandArguments[1], commandArguments[2]); }";
 
-          //ls.Command.Handler = String.Format("SalesPeopleActiveSales__Grid__CommandClickHandler(command, record);");
+            //ls.Command.Handler = String.Format("SalesPeopleActiveSales__Grid__CommandClickHandler(command, record);");
         }))
         .BottomBar(
           X.PagingToolbar()
             .Plugins(X.ProgressBarPager())
         );
-  }
-  else
-  {
-    buyMCContainer = X.Container().Html(
+    }
+    else
+    {
+        buyMCContainer = X.Container().Html(
       @<div class="b-brp">
         <span class="b-brp__message"><i class="b-brp__icon fa fa-exclamation-triangle"></i> @MLMExchange.Properties.PrivateResource.YouCantBuyMCNow</span>
       </div>
@@ -299,6 +307,13 @@
   var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
     .Title(MLMExchange.Properties.PrivateResource.BuyingMyCryptRequestHistory)
     .Layout(LayoutType.Fit)
+    .HeaderConfig(X.PanelHeader().Html(
+        @<div class="b-x__header-wrapper">
+            <div class="b-x__wrapper">
+                <i class="b-x__icon fa fa-calendar"></i>
+            </div>
+        </div>
+))
     .Height(375)
     .Store(
       X.Store()
