@@ -8,10 +8,13 @@
 <section class="b-amt">
   <div class="b-amt__transaction-info-wrapper">
     <div class="b-amt__mycrypt-confirmation-photo-wrapper b-image">
-      @if(!(String.IsNullOrEmpty(Model.ImageRelativePath)))
+      @if (!(String.IsNullOrEmpty(Model.ImageRelativePath)))
       {
-        <img class="b-amt__mycrypt-confirmation-photo" alt="@MLMExchange.Properties.PrivateResource.AddMyCryptConfirmationImage"
-           src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).Crop(330, 290).FullName)" />
+        <a href="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).CurrentImage.FullName)" 
+           data-lightbox="ScreenShot-Image" data-title="@String.Format(MLMExchange.Properties.PrivateResource.UnApprovedTransactionList__RequestScreenShotUser, Model.Initiator.Login)">
+          <img src="/@(MLMExchange.Lib.Image.Image.UploadRelativeDir)/@(new MLMExchange.Lib.Image.Image(Model.ImageRelativePath).Crop(330, 290).FullName)" 
+               alt="ScreenShot-Image" />
+        </a>
       }
       else
       {

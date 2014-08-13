@@ -1,0 +1,27 @@
+/*
+* LightBox gallery override styles
+*/
+
+.lightboxOverlay
+{
+  z-index: 100000;
+}
+
+.lightbox
+{
+  z-index: 100000;
+
+  .lb-dataContainer
+  {
+    .lb-data
+    {
+      .lb-details
+      {
+        .lb-caption
+        {
+          color: #B4B4B4;
+        }
+      }
+    }
+  }
+}

@@ -288,4 +288,7 @@
   <data name="RootRefererLogin_UserNotFind" xml:space="preserve">
     <value>Пользователь с таким логином не найден</value>
   </data>
+  <data name="UnApprovedTransactionList__RequestScreenShotUser" xml:space="preserve">
+    <value>Заявочный скриншот пользователя {0}</value>
+  </data>
 </root>
