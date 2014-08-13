@@ -244,7 +244,7 @@ namespace Logic
         bool isBillAdded = false;
 
         List<D_TradingSession> d_profitTradingSessions = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).OrderBy(x => x.DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill).ToList();
+          .Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit).OrderBy(x => x.CreationDateTime).ToList();
 
         foreach (var profitSession in d_profitTradingSessions.Select(x => (TradingSession)x))
         {
