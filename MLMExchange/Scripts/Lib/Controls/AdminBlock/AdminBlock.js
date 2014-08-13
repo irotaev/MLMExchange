@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../../typings/jquery/jquery.d.ts" />
 define(["require", "exports", "jquery"], function(require, exports) {
-    /// <amd-dependency path="jquery"/>
+    /// <amd-dependency path="jquery" />
     var $ = require("jquery");
 
     /**
