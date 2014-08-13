@@ -128,5 +128,19 @@ namespace Logic
     {
       return new User(dataUser);
     }
+
+    public static int GetUserCountToStart(ushort count)
+    {
+      int counter;
+      int userCount = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
+        .Query<D_User>().Where(x => x.IsDisabled == false).Count();
+
+      counter = count - userCount;
+
+      if(counter <= 0)
+        counter = 0;
+
+      return counter;
+    }
   }
 }

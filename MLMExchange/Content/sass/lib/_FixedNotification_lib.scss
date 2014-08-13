@@ -1,0 +1,38 @@
+@import "../framework";
+
+@mixin b-fn
+{
+  position: fixed;
+  display: block;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  padding: 5px;
+  background-color: #2d89ef;
+  z-index: 10000;
+  border: 3px solid #0E89C4;
+  text-align: center;
+
+  .b-fn__header
+  {
+    .b-fn__header-content
+    {
+      color: #ffffff;
+      font-size: 24px;
+    }
+  }
+
+  .b-fn__content
+  {
+    margin-top: 5px;
+    .b-fn__content-text
+    {
+      color: #ffffff;
+    }
+
+    .b-fn__content--counter
+    {
+      font-size: 24px;
+    }
+  }
+}

@@ -191,6 +191,12 @@ namespace MLMExchange.Controllers
 
       //TODO:Rtv Переработать это место
       Logic.Application.Instance.Initiliaze();
+
+      if (Logic.Application.isTestBuild)
+      {
+        ViewBag.isTestBuild = true;
+        ViewBag.PeopleCounter = Logic.User.GetUserCountToStart(Logic.Application.UserCountToStart);
+      }
     }
 
     protected override void Dispose(bool disposing)

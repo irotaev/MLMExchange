@@ -70,26 +70,24 @@ $blue_a_4_c3_c: #a7b3c0;
 //#region Шрифты
 @font-face {
   font-family: Lato;
-  src: url("/Content/Fonts/Lato/Lato-Regular.eot");
-  src: url("/Content/Fonts/Lato/Lato-Regular.ttf");
-  src: url("/Content/Fonts/Lato/Lato-Regular.woff");
+  src: url("/Content/Fonts/Lato/Lato-Regular.eot"),
+  url("/Content/Fonts/Lato/Lato-Regular.ttf") format('truetype'),
+  url("/Content/Fonts/Lato/Lato-Regular.woff") format('woff');
 }
 
 @font-face {
   font-family: Dripicons;
-  src: url("/Content/Fonts/Dripicons/dripicons.eot");
-  src: url("/Content/Fonts/Dripicons/dripicons.ttf");
-  src: url("/Content/Fonts/Dripicons/dripicons.woff");
+  src: url("/Content/Fonts/Dripicons/dripicons.eot"),
+  url("/Content/Fonts/Dripicons/dripicons.ttf") format('truetype'),
+  url("/Content/Fonts/Dripicons/dripicons.woff") format('woff');
 }
 
 @font-face {
   font-family: FontAwesome;
-  src: url('/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0');
-  src: url('/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0') format("opentype");
-  src: url('/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0') format('truetype');
-  src: url('/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0') format('woff');
-  src: url('/Content/Fonts/FontAwesome/fontawesome-webfont.svg?v=4.1.0');
-  src: local('FontAwesome');
+  src: url('/Content/Fonts/FontAwesome/fontawesome-webfont.eot?v=4.1.0'),
+  url('/Content/Fonts/FontAwesome/FontAwesome.otf?v=4.1.0') format("opentype"),
+  url('/Content/Fonts/FontAwesome/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+  url('/Content/Fonts/FontAwesome/fontawesome-webfont.ttf?v=4.1.0') format('truetype');
 }
 
 /*

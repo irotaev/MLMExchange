@@ -141,6 +141,16 @@
   </script>
 
   <a href="#top" id="b-scroll"></a>
+  @if (ViewBag.isTestBuild)
+  {
+    <div class="b-fn">
+      <div class="b-fn__header"><h1 class="b-fn__header-content">Test Build</h1></div>
+      <div class="b-fn__content">
+        <p class="b-fn__content-text"><span>До запуска осталось:</span></p>
+        <p class="b-fn__content-text"><span class="b-fn__content--counter">@ViewBag.PeopleCounter</span> человек</p>
+      </div>
+    </div>
+  }
 
   <div class="main-wrapper">
 

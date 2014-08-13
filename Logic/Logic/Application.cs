@@ -24,11 +24,23 @@ namespace Logic
       Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .Save(d_application);
       #endregion
+
+      isTestBuild = true;
+      UserCountToStart = 500;
     }
 
     private Application(D_Application d_application) : base(d_application) { }
 
     private static bool IsInitialized;
+
+    /// <summary>
+    /// Тестовый билд
+    /// </summary>
+    public readonly static bool isTestBuild;
+    /// <summary>
+    /// Кол-во пользователей до запуска
+    /// </summary>
+    public readonly static ushort UserCountToStart;
 
     /// <summary>
     /// Получить экземпляр объекта. Реализация паттерна Синглтон
