@@ -466,6 +466,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Заявочный скриншот пользователя {0}.
+        /// </summary>
+        public static string UnApprovedTransactionList__RequestScreenShotUser {
+            get {
+                return ResourceManager.GetString("UnApprovedTransactionList__RequestScreenShotUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Запрос уже существует.
         /// </summary>
         public static string UserController__AddMyCrypt_AlreadySended_Title {

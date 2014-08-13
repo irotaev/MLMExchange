@@ -512,6 +512,32 @@
     <Content Include="bower_components\jquery\src\queue.js" />
     <Content Include="bower_components\jquery\src\serialize.js" />
     <Content Include="bower_components\jquery\src\traversing.js" />
+    <Content Include="bower_components\lightbox\.gitignore" />
+    <Content Include="bower_components\lightbox\css\lightbox.css" />
+    <Content Include="bower_components\lightbox\css\screen.css" />
+    <Content Include="bower_components\lightbox\Gruntfile.js" />
+    <Content Include="bower_components\lightbox\img\close.png" />
+    <Content Include="bower_components\lightbox\img\demopage\favicon.png" />
+    <Content Include="bower_components\lightbox\img\demopage\image-1.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\image-2.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\image-3.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\image-4.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\image-5.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\image-6.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\picture.svg" />
+    <Content Include="bower_components\lightbox\img\demopage\thumb-1.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\thumb-2.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\thumb-3.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\thumb-4.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\thumb-5.jpg" />
+    <Content Include="bower_components\lightbox\img\demopage\thumb-6.jpg" />
+    <Content Include="bower_components\lightbox\img\loading.gif" />
+    <Content Include="bower_components\lightbox\img\next.png" />
+    <Content Include="bower_components\lightbox\img\prev.png" />
+    <Content Include="bower_components\lightbox\index.html" />
+    <Content Include="bower_components\lightbox\js\jquery-1.11.0.min.js" />
+    <Content Include="bower_components\lightbox\js\lightbox.js" />
+    <Content Include="bower_components\lightbox\js\lightbox.min.js" />
     <Content Include="bower_components\opentip\css\opentip.css" />
     <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.js" />
     <Content Include="bower_components\opentip\downloads\opentip-jquery-excanvas.min.js" />
@@ -747,6 +773,27 @@
     <Content Include="Areas\AdministratorPanel\Views\web.config" />
     <Content Include="Areas\AdministratorPanel\Views\User\List.cshtml" />
     <Content Include="Areas\AdminPanel\Views\BaseUserRole\List.cshtml" />
+    <Content Include="bower_components\lightbox\bower.json" />
+    <Content Include="bower_components\lightbox\js\jquery-1.11.0.min.map" />
+    <Content Include="bower_components\lightbox\js\lightbox.min.map" />
+    <Content Include="bower_components\lightbox\package.json" />
+    <Content Include="bower_components\lightbox\README.markdown" />
+    <Content Include="bower_components\lightbox\releases\lightbox-2.7.0.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox-2.7.1.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.01.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.02.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.03.1.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.03.2.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.03.3.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.03.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.04.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.05.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.5.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.51.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.6.zip" />
+    <Content Include="bower_components\lightbox\releases\lightbox2.zip" />
+    <Content Include="bower_components\lightbox\sass\screen.sass" />
+    <Content Include="bower_components\lightbox\sass\_normalize.sass" />
     <None Include="Properties\PublishProfiles\MyCrypt.pubxml" />
     <None Include="Properties\PublishProfiles\Shared.arvixe.com.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -862,6 +909,12 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -876,7 +929,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53552/</IISUrl>
+          <IISUrl>http://localhost:38239/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
