@@ -15,6 +15,12 @@
   object routValues = ViewData["RoutValues"] != null ? ViewData["RoutValues"] : new { };
 }
 
+<script>
+  $(function () {
+    require(["Views/AdministratorPanel_User__List"], )
+  });
+</script>
+
 <section class="b-ess">
   <header class="b-ess__header">@String.Format("{0}. {1}", MLMExchange.Properties.ResourcesA.EditObject, Logic.Properties.GeneralResources.SystemSettings)</header>
 
@@ -41,4 +47,6 @@
       </a>
     </div>
   }
+
+  <section class="b-rta"></section><!-- B: Role trade access-->
 </section><!--B: Edit system settings-->

@@ -18,6 +18,42 @@ namespace Logic
     public AbstractUserRole(TDataObject dataObject) : base(dataObject) { }
   }
 
+  public class BaseRole : AbstractUserRole<D_AbstractRole>
+  {
+    #region Role type
+    /// <summary>
+    /// Получить все типы ролей в системе
+    /// </summary>
+    public static IEnumerable<_RoleType> GetAllRoleTypes()
+    {
+      List<_RoleType> roleTypes = new List<_RoleType>();
+
+      foreach (var role in Enum.GetValues(typeof(RoleType)))
+      {
+        roleTypes.Add(new _RoleType((RoleType)role, ((RoleType)role).GetDisplayName()));
+      }
+
+      return roleTypes;
+    }
+
+    /// <summary>
+    /// Тип роли
+    /// </summary>
+    [Serializable]
+    public struct _RoleType
+    {
+      public _RoleType(RoleType roleType, string roleTypeDisplayName)
+      {
+        RoleType = roleType;
+        RoleTypeDisplayName = roleTypeDisplayName;
+      }
+
+      public readonly RoleType RoleType;
+      public readonly string RoleTypeDisplayName;
+    }
+    #endregion
+  }
+
   /// <summary>
   /// Прокси-класс для роли пользователя
   /// </summary>

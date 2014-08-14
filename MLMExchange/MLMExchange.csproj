@@ -827,6 +827,7 @@
     <Content Include="Scripts\Lib\Site.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\Views\AdministratorPanel_User__List.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Images\anonymous-user.png" />
     <Content Include="Views\Web.config">
@@ -894,6 +895,7 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
     <TypeScriptCompile Include="Scripts\Views\AdministratorPanel_User__List.ts" />
+    <TypeScriptCompile Include="Scripts\Views\AdminPanel_SystemSettings__Edit.ts" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logic\Logic.csproj">
