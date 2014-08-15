@@ -20,6 +20,13 @@ namespace Logic
 
   public class BaseRole : AbstractUserRole<D_AbstractRole>
   {
+    public BaseRole(D_AbstractRole dataObject) : base(dataObject) { }
+
+    public static explicit operator BaseRole(D_AbstractRole dataBaseObject)
+    {
+      return new BaseRole(dataBaseObject);
+    }
+
     #region Role type
     /// <summary>
     /// Получить все типы ролей в системе
