@@ -81,7 +81,7 @@ namespace Logic
       StartTradingSessionsEnsureProfitabilityProcess();
       #endregion
 
-      AddAdministratorRoleUsers();
+      SetStartParameters();
 
       IsInitialized = true;
     }
@@ -89,7 +89,7 @@ namespace Logic
     /// <summary>
     /// Добавить пользователей с ролью администратора в проект
     /// </summary>
-    private void AddAdministratorRoleUsers()
+    private void SetStartParameters()
     {
       #region Создаю администраторов
       D_User adminUser = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
@@ -172,10 +172,26 @@ namespace Logic
           ProfitPercent = 20,
           TradingSessionDuration = 2,
           MaxMyCryptCount = 10000,
-          RootReferer = d_systemUser
+          RootReferer = d_systemUser,          
         };
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(firstSystemSettings);
+      }
+      #endregion
+
+      #region Задание уровней доступа для ролей системы
+      if (_NHibernateSession.Query<D_RoleTypeAccessLevel>().Count() == 0)
+      {
+        foreach (var roleType in BaseRole.GetAllRoleTypes())
+        {
+          D_RoleTypeAccessLevel accessLevel = new D_RoleTypeAccessLevel
+          {
+            RoleType = roleType.RoleType,
+            IsTradeEnable = true
+          };
+
+          Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(accessLevel);
+        }
       }
       #endregion
 

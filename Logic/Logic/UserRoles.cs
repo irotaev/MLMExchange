@@ -26,21 +26,17 @@ namespace Logic
     /// </summary>
     public static IEnumerable<_RoleType> GetAllRoleTypes()
     {
-      List<_RoleType> roleTypes = new List<_RoleType>();
-
       foreach (var role in Enum.GetValues(typeof(RoleType)))
       {
-        roleTypes.Add(new _RoleType((RoleType)role, ((RoleType)role).GetDisplayName()));
+        yield return new _RoleType((RoleType)role, ((RoleType)role).GetDisplayName());
       }
-
-      return roleTypes;
     }
 
     /// <summary>
     /// Тип роли
     /// </summary>
     [Serializable]
-    public struct _RoleType
+    public class _RoleType
     {
       public _RoleType(RoleType roleType, string roleTypeDisplayName)
       {

@@ -30,7 +30,7 @@ export class UserRoleTradeAccessBlock
           allowSingle: false
         },
         api: {
-          read: '/AdminPanel/BaseUserRole/GetAllUserRoleTypes'
+          read: '/AdminPanel/BaseUserRole/GetAllRoleTypeAccessLevels'
         },
         callback: () =>
         {

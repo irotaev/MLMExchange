@@ -158,6 +158,18 @@ namespace Logic
     public virtual RoleType RoleType { get; set; }
   }
 
+  /// <summary>
+  /// Уровень доступа для роли
+  /// </summary>
+  public class D_RoleTypeAccessLevel : D_BaseObject
+  {
+    public virtual RoleType RoleType { get; set; }
+    /// <summary>
+    /// Имеются ли права для торговли
+    /// </summary>
+    public virtual bool IsTradeEnable { get; set; }
+  }
+
   #region RoleType
   /// <summary>
   /// Тип роли
@@ -1028,6 +1040,15 @@ namespace Logic
       References(x => x.User).Column("UserId").Cascade.SaveUpdate();
 
       DiscriminateSubClassesOnColumn<RoleType>("RoleType", RoleType.User);
+    }
+  }
+
+  public class D_RoleTypeAccessLevel_Map : D_BaseObject_Map<D_RoleTypeAccessLevel>
+  {
+    public D_RoleTypeAccessLevel_Map()
+    {
+      Map(x => x.RoleType).CustomType<RoleType>().Not.Nullable().Unique();
+      Map(x => x.IsTradeEnable).Default("1").Not.Nullable();
     }
   }
 

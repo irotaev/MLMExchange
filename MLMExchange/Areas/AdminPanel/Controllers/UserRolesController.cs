@@ -54,13 +54,15 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     }
 
     /// <summary>
-    /// Получить все типы ролей системы
+    /// Получить все уровни доступа для ролей системы
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    public JsonResult GetAllUserRoleTypes()
+    public JsonResult GetAllRoleTypeAccessLevels()
     {
-      return Json(BaseRole.GetAllRoleTypes(), JsonRequestBehavior.AllowGet);
+      IEnumerable<RoleTypeAccessLevelModel> models = RoleTypeAccessLevel.GetAllRoleTypeAccessLevels().Select(x => new RoleTypeAccessLevelModel().Bind((RoleTypeAccessLevel)x));
+
+      return Json(models, JsonRequestBehavior.AllowGet);
     }
 
     #region Add user role
