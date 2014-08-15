@@ -54,7 +54,7 @@ namespace MLMExchange.Models.Registration
     private string _PhoneNumber;
 
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
-    [RegularExpression(@"^\+\[[1-9_\s][0-9_\s]{2}\] \([0-9]{3}\) [0-9]{3}\-[0-9]{2}\-[0-9]{2}$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
+    [RegularExpression(@"^(?:\+\[[1-9_\s][0-9_\s]{2}\] \([0-9]{3}\) [0-9]{3}\-[0-9]{2}\-[0-9]{2})|(?:[0-9]{10,13})$", ErrorMessageResourceName = "UserModel__Exception_FieldPhoneNumberInvalid", ErrorMessageResourceType = typeof
     (MLMExchange.Properties.ResourcesA))]
     public string PhoneNumber
     {
@@ -72,8 +72,11 @@ namespace MLMExchange.Models.Registration
         _PhoneNumber = phoneNumber;
       }
     }
+    
+
     #endregion
 
+   
     [Required(ErrorMessageResourceName = "FieldFilledInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     [StringLength(32, MinimumLength = 6, ErrorMessageResourceName = "UserModel__Exception_SkypeInvalid", ErrorMessageResourceType = typeof(MLMExchange.Properties.ResourcesA))]
     public string Skype { get; set; }
