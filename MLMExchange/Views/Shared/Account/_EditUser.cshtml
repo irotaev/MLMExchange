@@ -147,12 +147,31 @@
   @Html.ApplicationTextBoxFor(x => x.PhoneNumber, MLMExchange.Properties.ResourcesA.EnterPhoneNumberAsMasked, @MLMExchange.Properties.ResourcesA.EnterPhoneNumberAsMaskedDescription, type, null, phoneNumber_additionalAttributes)
     
 }
-<script>
-  $(function () {
-    $(".b-ib__input[name='PhoneNumber']").mask("+[sss] (999) 999-99-99")
-  });
-</script>
-<!--#endregion-->
+
+   
+@{
+   if (Model.PhoneNumber == null)
+   {
+        <script>
+        $(function ()
+            {          
+              $(".b-ib__input[name='PhoneNumber']").mask("+[sss] (999) 999-99-99");
+            }
+          )
+        </script>
+   }
+   else
+   {
+        <script>
+        $(function ()
+           {
+            $(".b-ib__input[name='PhoneNumber']").unmask();
+           }
+           )
+        </script>
+    }
+}
+ 
 
 @if (ViewData["Usage"] != null && ViewData["Usage"] == "Register")
 {
