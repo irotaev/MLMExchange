@@ -16,8 +16,12 @@
 }
 
 <script>
-  $(function () {
-    require(["Views/AdministratorPanel_User__List"], )
+  require(["jquery", "Views/AdminPanel_SystemSettings__Edit"], function ($, module) {
+    $(function () {
+      var accessBlock = new module.UserRoleTradeAccessBlock('b-rta_ID');
+
+      accessBlock.Render();
+    });
   });
 </script>
 
@@ -48,5 +52,5 @@
     </div>
   }
 
-  <section class="b-rta"></section><!-- B: Role trade access-->
+  <section class="b-rta" id="b-rta_ID"></section><!-- B: Role trade access-->
 </section><!--B: Edit system settings-->

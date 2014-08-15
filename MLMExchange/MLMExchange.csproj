@@ -180,6 +180,7 @@
     <Compile Include="Areas\AdminPanel\Models\RandomWordsModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\ReferalModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\RoleModels.cs" />
+    <Compile Include="Areas\AdminPanel\Models\RoleTypeAccessLevelModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\UserControlBlockModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\PaymentSystemModel.cs" />
     <Compile Include="Areas\AdminPanel\Models\User\PaymentSystem\BillModel.cs" />

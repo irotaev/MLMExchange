@@ -1,0 +1,55 @@
+@import "../../../Framework";
+@import "../../../AdminFramework";
+
+// Role trade access
+.b-rta
+{
+  width: 100%;
+  border: 2px solid $color_grean_sea;
+
+  .b-rta__section
+  {
+    position: relative;
+
+    .b-rta__icon
+    {
+      position: absolute;
+      top: 0; left: 0;
+      background-color: $color_grean_sea;
+      width: 45px; height: 45px;
+      text-align: center;
+      line-height: 45px;
+      color: #B5E5DC;
+    }
+
+    .b-rta__content
+    {
+      @include clearfix;
+      padding: 10px;
+
+      .x-dataview-item
+      {
+        float: left;
+        margin-top: 20px;
+        margin-left: 80px;
+
+        &:first-child {margin-top: 0;}
+
+        .b-rta__role-block
+        {
+          height: 40px;
+          line-height: 20px;
+          padding: 10px;
+          text-align: center;
+          background-color: $color_grean_sea;
+          cursor: pointer;
+
+          .b-rta__role-display-name
+          {
+            font-size: $font-h;
+          }
+        }
+      }
+    }
+  }
+}

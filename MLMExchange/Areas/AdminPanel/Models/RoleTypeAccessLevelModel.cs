@@ -18,6 +18,13 @@ namespace MLMExchange.Areas.AdminPanel.Models
         return _Object.LogicObject.RoleType.GetDisplayName();
       }
     }
+    public string RoleTypeName
+    {
+      get
+      {
+        return Enum.GetName(typeof(RoleType), _Object.LogicObject.RoleType);
+      }
+    }
     #endregion
 
     public bool? IsTradeEnabled { get; set; }

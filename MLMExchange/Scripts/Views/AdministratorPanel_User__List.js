@@ -157,5 +157,11 @@ define(["require", "exports", "jquery"], function(require, exports) {
             }
         }
     });
+
+    Ext.define('TradeAccessBlock', {
+        extend: 'Ext.dataview.DataView',
+        layout: 'fit',
+        itemTpl: new Ext.XTemplate('<div class="b-rta__role-block b-rta__role-block_role-name_{RoleTypeName}">', '<span class="b-rta__role-display-name">{RoleTypeDisplayName}</span>', '</div>')
+    });
 });
 //# sourceMappingURL=AdministratorPanel_User__List.js.map

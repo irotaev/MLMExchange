@@ -74,6 +74,7 @@
     <Compile Include="Logic\PaymentSystem.cs" />
     <Compile Include="Logic\PaymentSystemGroup.cs" />
     <Compile Include="Logic\ReferalProfit.cs" />
+    <Compile Include="Logic\RoleTypeAccessLevel.cs" />
     <Compile Include="Logic\SystemSettings.cs" />
     <Compile Include="Logic\TradingSession.cs" />
     <Compile Include="Logic\User.cs" />

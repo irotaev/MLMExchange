@@ -2,8 +2,14 @@
 @import "../AdminFramework";
 
 @import "../lib/Admin.Blocks/SystemSettings/SystemSettings_Edit";
+@import "../lib/Admin.Blocks/RoleTradeAccess/View";
 
 .b-ess
 {
  @include admin-content-zone;
+}
+
+.b-rta
+{
+  margin-top: 20px;
 }

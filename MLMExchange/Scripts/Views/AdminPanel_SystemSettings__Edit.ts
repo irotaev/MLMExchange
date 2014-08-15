@@ -10,13 +10,19 @@ $ = require("jquery");
  */
 export class UserRoleTradeAccessBlock
 {
-  constructor()
-  {
+  /**
+   * @param outerWrapperId Id внешнего блока, куда вставить данный блок
+   */
+  constructor(outerWrapperId: string)
+  {    
+    this._BlockOuterWrapperId = outerWrapperId;
+    this._BlockContentId = Ext.id();
+
     //#region Set store
     this._Store = new Ext.data.JsonStore({
       storeId: 'Roles.TradeAccessBlock.UserRoles',
 
-      fields: ['Id', 'User', 'RoleType', 'RoleTypeAsString', 'RoleTypeDisplayName', 'TextResources'],
+      fields: ['Id', 'RoleTypeName', 'RoleTypeDisplayName', 'IsTradeEnabled'],
       proxy: {
         type: 'ajax',
         actionMethods: {
@@ -39,53 +45,61 @@ export class UserRoleTradeAccessBlock
       listeners: {
         load: () => 
         {
+          var component = new Ext.Component({                                          
+            html: 
+              '<section class="b-rta__section">' +
+              '<i class="b-rta__icon fa fa-question"></i>' +
+
+              '<div class="b-rta__content" id="' + this._BlockContentId + '"></div>' +
+              '</section>'
+            ,
+            listeners:
+            {
+              afterrender: () =>
+              {
+                this._RoleAccessDataView.render(this._BlockContentId);
+              },
+            }
+          });   
+
+          component.render(this._BlockOuterWrapperId);                 
         }
       }
     });
     //#endregion
+
+    this._RoleAccessDataView = Ext.create('RoleTradeAccessDataView',
+      {
+        store: this._Store,
+        listeners: {
+          afterrender: (component) =>
+          {
+            $(component.el.dom).find(".b-rta__role-block").on("click", (event: Event) =>
+            {
+              console.log(event.currentTarget);
+            });
+          }
+        }
+      });
   }
 
   private _Store: any;
+  private _BlockOuterWrapperId: string;
+  private _RoleAccessDataView: any;
+  private _BlockContentId;
+
+  public Render(): void
+  { 
+    this._Store.load();  
+  }
 }
 
-Ext.define('Roles.TradeAccessBlock', {
-  extend: 'Ext.dataview.DataView',
-
+Ext.define('RoleTradeAccessDataView', {
+  extend: 'Ext.DataView',
+  layout: 'fit',  
+  itemTpl: new Ext.XTemplate(
+    '<div class="b-rta__role-block b-rta__role-block_role-name_{[values.RoleTypeName.toLowerCase()]}" data-role-id={Id}>',
+    '<span class="b-rta__role-display-name">{RoleTypeDisplayName}</span>',
+    '</div>'
+    )
 });
-
-Ext.define('CustomRoleListContainer',
-  {
-    extend: 'Ext.container.Container',
-    layout: 'fit',
-    Roles: undefined,
-    Button: undefined,
-    listeners: {
-      beforerender: function ()
-      {
-        var tpl = new Ext.XTemplate(
-          '<div class="b-rl" id="b-rl_ID">',
-
-          '<div id="b-rl__button-place"></div>',
-
-          '<tpl for=".">',
-          '<div class="b-rl__role b-rl__role_type_{[values.RoleTypeAsString.toLowerCase()]}" data-id="{Id}">',
-          '<div class="b-rl__role-display-name"> {RoleTypeDisplayName} </div>',
-
-          '<div class="b-rl__actions">',
-          '<span class="b-rl__action b-rl__action_function_delete"><i class="b-rl__icon fa fa-trash-o"></i>{TextResources.DeleteRole}</span>',
-          '</div>',
-          ' </div>',
-          '</tpl>',
-
-          '</div>'
-          );
-
-        this.html = tpl.apply(this.Roles);
-      },
-      afterrender: function ()
-      {
-        if (this.Button)
-          this.Button.render('b-rl__button-place');
-      }
-    }
-  });
