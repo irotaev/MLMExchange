@@ -32,6 +32,9 @@ namespace MLMExchange
     {
       Exception exception = Server.GetLastError();
 
+      Logic.Lib.Logging.NLogLogger NLogLogger = new Logic.Lib.Logging.NLogLogger();
+      NLogLogger.Fatal(exception);
+
       Server.ClearError();
       
       Response.Redirect("/ExceptionHandler/ApplicationException");

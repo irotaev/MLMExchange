@@ -54,6 +54,8 @@ namespace MLMExchange.Controllers
         }
       }
 
+      _NLogLogger.Info(String.Format("{0} has been loggin", loginModel.Login));
+
       return Redirect("/AdminPanel/User/ControlPanel");
     }
 

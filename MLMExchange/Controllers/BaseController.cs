@@ -13,6 +13,7 @@ using MLMExchange.Models;
 using System.Web.Http;
 using MLMExchange.Models.Error;
 using Logic.Lib;
+using Logic.Lib.Logging;
 
 namespace MLMExchange.Controllers
 {
@@ -143,6 +144,11 @@ namespace MLMExchange.Controllers
     /// </summary>
     protected NHibernate.ISession _NHibernateSession;
 
+    /// <summary>
+    /// Логгер NLog
+    /// </summary>
+    protected NLogLogger _NLogLogger = new NLogLogger();
+
     public BaseController()
     {
       //ViewData["AdminPanel__CenterBlock"] = 
@@ -216,6 +222,8 @@ namespace MLMExchange.Controllers
     {
       if (filterContext == null)
         throw new ArgumentNullException("filterContext");
+
+      _NLogLogger.Fatal(filterContext.Exception);
 
       #if DEBUG
       if (filterContext.ExceptionHandled)
