@@ -291,4 +291,13 @@
   <data name="UnApprovedTransactionList__RequestScreenShotUser" xml:space="preserve">
     <value>Заявочный скриншот пользователя {0}</value>
   </data>
+  <data name="RolesAccessBlock__Description" xml:space="preserve">
+    <value>Блок представляет возможность управлять правами доступа к торговым операциям для определенных ролей пользователя. Вы может отменить торговые операции и включить их соответственно выключая и включая блоки,соответствующие желаемой роли.</value>
+  </data>
+  <data name="RolesAccessBlock__Header" xml:space="preserve">
+    <value>Назначение прав доступа для ролей системы</value>
+  </data>
+  <data name="TradingOperationDisabledForCurrentRole" xml:space="preserve">
+    <value>Торговые операции ограничены для совокупности ваших ролей</value>
+  </data>
 </root>

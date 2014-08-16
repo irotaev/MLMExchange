@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LogicTest
 {
   [TestClass]
-  public class PerfectMoneyTest
+  public class PerfectMoneyTest : AbstractTest
   {
     [TestMethod]
     public void Verifire()

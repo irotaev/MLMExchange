@@ -34,6 +34,45 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       throw new NotImplementedException();
     }
 
+    #region User rile acees level
+    /// <summary>
+    /// Получить все уровни доступа для ролей системы
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    public JsonResult GetAllRoleTypeAccessLevels()
+    {
+      IEnumerable<RoleTypeAccessLevelModel> models = RoleTypeAccessLevel.GetAllRoleTypeAccessLevels().Select(x => new RoleTypeAccessLevelModel().Bind((RoleTypeAccessLevel)x));
+
+      return Json(models, JsonRequestBehavior.AllowGet);
+    }
+
+    [Auth(typeof(D_AdministratorRole))]
+    [HttpPut]
+    public void UpdateAllRoleTypeAccessLevels(List<RoleTypeAccessLevelModel> accessRoleModels)
+    {
+      ModelState.Clear();
+      TryUpdateModel<List<RoleTypeAccessLevelModel>>(accessRoleModels);
+
+      if (!ModelState.IsValid)
+        throw new UserVisible__CurrentActionAccessDenied();
+
+      foreach(var model in accessRoleModels)
+      {
+        if (model.IsTradeEnabled == null)
+          continue;
+
+        D_RoleTypeAccessLevel accessLevel = _NHibernateSession.Query<D_RoleTypeAccessLevel>().Where(x => x.Id == model.Id).FirstOrDefault();
+
+        if (accessLevel == null)
+          throw new UserVisible__WrongParametrException("roleId");
+
+        if (!((RoleTypeAccessLevel)accessLevel).TryChangeAccessLevel(model.IsTradeEnabled.Value))
+          throw new UserVisibleException(MLMExchange.Properties.ResourcesA.UpdateAllRoleTypeAccessLevels__Exception_CannotChangeLevel);
+      }
+    }
+    #endregion
+
     /// <summary>
     /// Получить все роли для конкретного пользователя
     /// </summary>
@@ -51,19 +90,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       models.AddRange(user.Roles.Select(x => new BaseRoleModel().Bind(x)));
 
       return Json(Newtonsoft.Json.JsonConvert.SerializeObject(models), JsonRequestBehavior.AllowGet);
-    }
-
-    /// <summary>
-    /// Получить все уровни доступа для ролей системы
-    /// </summary>
-    /// <returns></returns>
-    [HttpGet]
-    public JsonResult GetAllRoleTypeAccessLevels()
-    {
-      IEnumerable<RoleTypeAccessLevelModel> models = RoleTypeAccessLevel.GetAllRoleTypeAccessLevels().Select(x => new RoleTypeAccessLevelModel().Bind((RoleTypeAccessLevel)x));
-
-      return Json(models, JsonRequestBehavior.AllowGet);
-    }
+    }    
 
     #region Add user role
     [Auth(typeof(D_AdministratorRole))]

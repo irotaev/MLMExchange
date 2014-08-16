@@ -60,6 +60,11 @@ namespace MLMExchange.Areas.AdminPanel.Models.User.SalesPeople
     }
 
     /// <summary>
+    /// Имеется ли возможность совершать торговые операции
+    /// </summary>
+    public bool IsTradeEnable { get; set; }
+
+    /// <summary>
     /// Заявки, на которые данный пользователь откликнулся
     /// </summary>
     public List<BuyingMyCryptRequestModel> HistoryApplication { get; set; }

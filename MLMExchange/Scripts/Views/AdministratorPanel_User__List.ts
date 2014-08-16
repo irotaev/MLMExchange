@@ -69,7 +69,6 @@ export class RoleListTemplate
       resizable: false,
       title: this._RolesStore.data.items[0].data.TextResources.Roles,
       autoScroll: true,
-      //html: html,
       closeAction: 'hide',
       listeners : {
          afterrender: () => {

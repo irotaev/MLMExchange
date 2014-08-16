@@ -1,5 +1,6 @@
 @import "../../../Framework";
 @import "../../../AdminFramework";
+@import "compass/css3/transition";
 
 // Role trade access
 .b-rta
@@ -10,6 +11,16 @@
   .b-rta__section
   {
     position: relative;
+
+    .b-rta__header
+    {
+      height: 35px; line-height: 35px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: $font-h;
+      color: $grey_2 !important;
+      font-weight: bold;
+    }
 
     .b-rta__icon
     {
@@ -26,6 +37,7 @@
     {
       @include clearfix;
       padding: 10px;
+      min-height: 70px;
 
       .x-dataview-item
       {
@@ -37,16 +49,71 @@
 
         .b-rta__role-block
         {
+          position: relative;
           height: 40px;
           line-height: 20px;
           padding: 10px;
           text-align: center;
-          background-color: $color_grean_sea;
           cursor: pointer;
+          @include transition(all 0.15s linear);
+          border: 1px dashed transparent;
+
+          &.b-rta__role-block_role-name_user
+          {
+            background-color: #D35400;
+          }
+          &.b-rta__role-block_role-name_administrator
+          {
+            background-color: #D24D57;
+          }
+          &.b-rta__role-block_role-name_leader
+          {
+            background-color: #52B3D9;
+          }
+          &.b-rta__role-block_role-name_tester
+          {
+            background-color: #3A539B;
+          }
+          &.b-rta__role-block_role-name_broker
+          {
+            background-color: #34495E;
+          }
+
+          &.b-rta__role-block_state_false
+          {
+            border-color: white;
+            background-color: $grey_4;
+
+            .b-rta__disabled-icon {display: block; }
+
+            &:hover
+            {
+              background-color: rgba(18, 66, 16, 0.43);
+              .b-rta__disabled-icon {display: none;}
+            }
+          }
+
+          &:hover
+          {
+            .b-rta__disabled-icon {display: block; }
+            background-color: $grey_4;
+          }
+
+          .b-rta__disabled-icon
+          {
+            display: none;
+            position: absolute;
+            height: 25px; width: 25px;
+            top: 50%; left: 50%;
+            margin-top: -12.5px; margin-left: -12.5px;
+            font-size: 30px;
+            @include opacity(0.1);
+          }
 
           .b-rta__role-display-name
           {
             font-size: $font-h;
+            color: white !important;
           }
         }
       }

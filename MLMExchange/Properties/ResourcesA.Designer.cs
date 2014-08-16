@@ -1105,6 +1105,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Невозможно изменить уровень доступа для данной роли.
+        /// </summary>
+        public static string UpdateAllRoleTypeAccessLevels__Exception_CannotChangeLevel {
+            get {
+                return ResourceManager.GetString("UpdateAllRoleTypeAccessLevels__Exception_CannotChangeLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Загрузить.
         /// </summary>
         public static string Upload {

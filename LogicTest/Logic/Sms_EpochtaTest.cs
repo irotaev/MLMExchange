@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace LogicTest
 {
   [TestClass]
-  public class Sms_EpochtaTest
+  public class Sms_EpochtaTest : AbstractTest
   {
     [TestMethod]
     public void Send_Single_Sms()

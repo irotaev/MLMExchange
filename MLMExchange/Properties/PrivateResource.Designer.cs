@@ -403,6 +403,24 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Блок представляет возможность управлять правами доступа к торговым операциям для определенных ролей пользователя. Вы может отменить торговые операции и включить их соответственно выключая и включая блоки,соответствующие желаемой роли..
+        /// </summary>
+        public static string RolesAccessBlock__Description {
+            get {
+                return ResourceManager.GetString("RolesAccessBlock__Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Назначение прав доступа для ролей системы.
+        /// </summary>
+        public static string RolesAccessBlock__Header {
+            get {
+                return ResourceManager.GetString("RolesAccessBlock__Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Пользователь с таким логином не найден.
         /// </summary>
         public static string RootRefererLogin_UserNotFind {
@@ -417,6 +435,15 @@ namespace MLMExchange.Properties {
         public static string SuccessAccountResetPassword {
             get {
                 return ResourceManager.GetString("SuccessAccountResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Торговые операции ограничены для совокупности ваших ролей.
+        /// </summary>
+        public static string TradingOperationDisabledForCurrentRole {
+            get {
+                return ResourceManager.GetString("TradingOperationDisabledForCurrentRole", resourceCulture);
             }
         }
         

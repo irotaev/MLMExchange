@@ -114,6 +114,7 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
   public interface IBaseBiddingParticipateApplicationModel
   {
     ApplicationState State { get; }
+    bool IsTradeEnabled { get;  }
   }
 
   public interface IBiddingParticipateApplicationNotFiledModel : IBaseBiddingParticipateApplicationModel
@@ -210,6 +211,8 @@ namespace MLMExchange.Areas.AdminPanel.Models.User
     public ApplicationState State { get; set; }
 
     public BiddingParticipateApplicationAcceptedModel BiddingParticipateApplicationAcceptedModel { get; set; }
+
+    public bool IsTradeEnabled { get; set; }
   }
 
   public enum ApplicationState : int

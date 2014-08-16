@@ -227,7 +227,20 @@
 }
 
 @{
-  if (castedModel.IsCurrentUserBiddingParticipateApplicationBlockDisabled)
+  if (!castedModel.IsTradeEnabled)
+  {
+    <section class="pb-bpa b-ab">
+      <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>
+
+      <div class="b-ab__content pb-bpa__content">
+        <span class="pb-bpa__sell-mc-disabled">
+          <i class="pb-bpa__icon fa fa-exclamation-triangle"></i>
+          @MLMExchange.Properties.PrivateResource.TradingOperationDisabledForCurrentRole
+        </span>
+      </div>
+    </section><!--B: Bindding participate application-->
+  }
+  else if (castedModel.IsCurrentUserBiddingParticipateApplicationBlockDisabled)
   {
     <section class="pb-bpa b-ab">
       <header class="b-ab__title"><i class="b-ab__icon fa fa-tasks"></i>@Logic.Properties.GeneralResources.BiddingParticipateApplication</header>

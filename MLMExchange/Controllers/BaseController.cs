@@ -190,7 +190,7 @@ namespace MLMExchange.Controllers
       #endregion
 
       //TODO:Rtv Переработать это место
-      //Logic.Application.Instance.Initiliaze();
+      Logic.Application.Instance.Initiliaze();
 
       //if (Logic.Application.isTestBuild)
       //{

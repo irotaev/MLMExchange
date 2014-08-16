@@ -27,6 +27,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     [HttpPost]
     public ActionResult BiddingParticipateApplicationApply(BiddingParticipateApplicationModel model)
     {
+      if (!RoleTypeAccessLevel.IsUserHasAccessToTradeSystem(CurrentSession.Default.CurrentUser))
+        throw new UserVisible__CurrentActionAccessDenied();
+
       if (model.MyCryptCount == null)
         throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.Exception_ModelInvalid);
 

@@ -619,7 +619,7 @@ namespace Logic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Роль тестера.
+        ///   Looks up a localized string similar to Роль тестестировщика.
         /// </summary>
         public static string RoleType_Tester {
             get {

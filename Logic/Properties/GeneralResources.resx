@@ -379,7 +379,7 @@
     <value>Роль лидера</value>
   </data>
   <data name="RoleType_Tester" xml:space="preserve">
-    <value>Роль тестера</value>
+    <value>Роль тестестировщика</value>
   </data>
   <data name="RoleType_User" xml:space="preserve">
     <value>Роль пользователя</value>

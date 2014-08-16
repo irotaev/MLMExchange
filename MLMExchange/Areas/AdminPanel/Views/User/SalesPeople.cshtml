@@ -227,19 +227,27 @@
 @{
     AbstractComponent buyMCContainer;
 
-    if (!Model.IsCurrentUserBuyMCDisabled)
+    if (!Model.IsTradeEnable)
+    {
+      buyMCContainer = X.Container().Html(
+        @<div class="b-brp">
+          <span class="b-brp__message"><i class="b-brp__icon fa fa-exclamation-triangle"></i> @MLMExchange.Properties.PrivateResource.TradingOperationDisabledForCurrentRole</span>
+        </div>
+      );
+    }
+    else if (!Model.IsCurrentUserBuyMCDisabled)
     {
         buyMCContainer = X.GridPanel().ID("SalesPeople__Grid")
         .Title(MLMExchange.Properties.ResourcesA.SalesPeople)
 
         .Layout(LayoutType.Fit)
         .HeaderConfig(X.PanelHeader().Html(
-        @<div class="b-x__header-wrapper">
-            <div class="b-x__wrapper">
-                <i class="b-x__icon fa fa-users"></i>
-            </div>
-        </div>
-))
+          @<div class="b-x__header-wrapper">
+              <div class="b-x__wrapper">
+                  <i class="b-x__icon fa fa-users"></i>
+              </div>
+          </div>
+        ))
     .Height(375)
     .Store(
       X.Store()
@@ -297,12 +305,12 @@
     }
     else
     {
-        buyMCContainer = X.Container().Html(
-      @<div class="b-brp">
-        <span class="b-brp__message"><i class="b-brp__icon fa fa-exclamation-triangle"></i> @MLMExchange.Properties.PrivateResource.YouCantBuyMCNow</span>
-      </div>
-    );
-  }
+      buyMCContainer = X.Container().Html(
+        @<div class="b-brp">
+          <span class="b-brp__message"><i class="b-brp__icon fa fa-exclamation-triangle"></i> @MLMExchange.Properties.PrivateResource.YouCantBuyMCNow</span>
+        </div>
+      );
+    }
   
   var buyingRequestHistoryGrid = X.GridPanel().ID("BuyingRequest__History")
     .Title(MLMExchange.Properties.PrivateResource.BuyingMyCryptRequestHistory)

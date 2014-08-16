@@ -465,6 +465,9 @@
   <data name="SystemSettings" xml:space="preserve">
     <value>Настройки системы</value>
   </data>
+  <data name="UpdateAllRoleTypeAccessLevels__Exception_CannotChangeLevel" xml:space="preserve">
+    <value>Невозможно изменить уровень доступа для данной роли</value>
+  </data>
   <data name="Upload" xml:space="preserve">
     <value>Загрузить</value>
   </data>

@@ -157,7 +157,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       ControlPanelModel model = new ControlPanelModel();
 
       #region Заявка на продажу my-crypt
-      model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel();
+      model.BiddingParticipateApplicationStateModel = new BiddingParticipateApplicationStateModel
+        {
+          IsTradeEnabled = RoleTypeAccessLevel.IsUserHasAccessToTradeSystem(CurrentSession.Default.CurrentUser)
+        };
 
       D_BiddingParticipateApplication biddingParticipateApplication = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
         .QueryOver<D_BiddingParticipateApplication>().Where(x => x.Seller.Id == CurrentSession.Default.CurrentUser.Id
@@ -299,7 +302,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     [HttpGet]
     public ActionResult SalesPeople()
     {
-      SalesPeopleModel model = new SalesPeopleModel();
+      SalesPeopleModel model = new SalesPeopleModel
+        {
+          IsTradeEnable = RoleTypeAccessLevel.IsUserHasAccessToTradeSystem(CurrentSession.Default.CurrentUser)
+        };
 
       model.ActiveSales = new List<BiddingParticipateApplicationModel>();
       model.HistoryApplication = new List<BuyingMyCryptRequestModel>();
@@ -412,6 +418,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     [HttpPost]
     public ActionResult BuyMyCrypt(BuyingMyCryptRequestModel model)
     {
+      if (!RoleTypeAccessLevel.IsUserHasAccessToTradeSystem(CurrentSession.Default.CurrentUser))
+        throw new UserVisible__CurrentActionAccessDenied();
+
       ModelState.Clear();
 
       TryUpdateModel<BuyingMyCryptRequestModel>(model);

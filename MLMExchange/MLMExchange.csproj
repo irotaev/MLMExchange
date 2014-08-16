@@ -204,6 +204,7 @@
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyCryptController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -800,6 +801,7 @@
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\Framework\RequireJs\config.js" />
+    <Content Include="Scripts\Framework\Resource\TextResource.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
     <Content Include="Scripts\html5shiv-printshiv.min.js" />
     <Content Include="Scripts\html5shiv.js" />
@@ -829,6 +831,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\Views\AdministratorPanel_User__List.js" />
+    <Content Include="Scripts\Views\AdminPanel_SystemSettings__Edit.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Uploads\Images\anonymous-user.png" />
     <Content Include="Views\Web.config">
@@ -887,6 +890,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Framework\RequireJs\config.ts" />
+    <TypeScriptCompile Include="Scripts\Framework\Resource\TextResource.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Controls\AdminBlock\AdminBlock.ts" />
     <TypeScriptCompile Include="Scripts\Lib\Form.ts" />
     <TypeScriptCompile Include="Scripts\Lib\LoginForm.ts" />
@@ -932,7 +936,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:38239/</IISUrl>
+          <IISUrl>http://localhost:10300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
