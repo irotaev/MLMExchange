@@ -49,6 +49,9 @@
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -63,6 +66,8 @@
     <Compile Include="Lib\ApplicationUnityContainer.cs" />
     <Compile Include="Lib\DataAttribute.cs" />
     <Compile Include="Lib\Exception.cs" />
+    <Compile Include="Lib\Logging\LogBuilder.cs" />
+    <Compile Include="Lib\Logging\Logging.cs" />
     <Compile Include="Lib\NHibernate.cs" />
     <Compile Include="Lib\PaymentSystem\PerfectMoney.cs" />
     <Compile Include="Lib\Sms_Epochta.cs" />
