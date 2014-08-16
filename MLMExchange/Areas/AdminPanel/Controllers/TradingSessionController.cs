@@ -70,6 +70,35 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
     }
 
     /// <summary>
+    /// Заменить счет по уплате доходности ТС
+    /// <param name="yieldSessionBillId">Id счета</param>
+    /// </summary>
+    [HttpPost]
+    public void ChangeYieldSessionBill(long yieldSessionBillId)
+    {
+      if (!Request.IsAjaxRequest())
+        throw new UserVisible__ActionAjaxOnlyException();
+
+      D_YieldSessionBill d_yieldSessionBill = _NHibernateSession.Query<D_YieldSessionBill>().Where(x => x.Id == yieldSessionBillId).FirstOrDefault();
+
+      if (d_yieldSessionBill == null)
+        throw new UserVisible__WrongParametrException("yieldSessionBillId");
+
+      TradingSession tradingSession = (TradingSession)d_yieldSessionBill.PayerTradingSession;
+
+      if (d_yieldSessionBill.PaymentState != BillPaymentState.WaitingPayment
+        || d_yieldSessionBill.Payer.Id != CurrentSession.Default.CurrentUser.Id
+        || tradingSession.LogicObject.State != TradingSessionStatus.NeedEnsureProfibility)
+      {
+        throw new UserVisible__CurrentActionAccessDenied();
+      }
+
+      d_yieldSessionBill.IsReplacedByPayer = true;
+
+      _NHibernateSession.SaveOrUpdate(d_yieldSessionBill);
+    }
+
+    /// <summary>
     /// Перевести сессию в состояние "исполняется"
     /// </summary>
     /// <param name="tradingSessionId">Id торговой сессии</param>

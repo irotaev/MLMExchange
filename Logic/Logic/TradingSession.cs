@@ -130,7 +130,7 @@ namespace Logic
     public IEnumerable<Bill> GetNeedPaymentBills()
     {
       IList<D_YieldSessionBill> bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-        .Query<D_YieldSessionBill>().Where(x => x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
+        .Query<D_YieldSessionBill>().Where(x => !x.IsReplacedByPayer && x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
 
       return bills.Select(x => (Bill)x);
     }
@@ -177,7 +177,7 @@ namespace Logic
         if (YieldSessionBillsNecessaryMoney() > 0)
           return false;
 
-        foreach (var bill in _LogicObject.YieldSessionBills)
+        foreach (var bill in _LogicObject.YieldSessionBills.Where(x => !((YieldSessionBill)x).IsReplaced()))
         {
           if (bill.PaymentState != BillPaymentState.Paid)
             return false;
@@ -196,7 +196,7 @@ namespace Logic
     {
       decimal necessaryMoney = LogicObject.BuyingMyCryptRequest.MyCryptCount - CalculateCheckPaymentMoneyAmount() - CalculateSallerInterestRateMoneyAmount();
 
-      foreach (var yieldBill in LogicObject.YieldSessionBills)
+      foreach (var yieldBill in LogicObject.YieldSessionBills.Where(x => !((YieldSessionBill)x).IsReplaced()))
       {
         necessaryMoney -= yieldBill.MoneyAmount;
       }
@@ -217,7 +217,7 @@ namespace Logic
       decimal necessaryMoney = LogicObject.BuyingMyCryptRequest.MyCryptCount + CalculateBuyerProfit();
 
       IEnumerable<D_YieldSessionBill> d_bills = Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session
-          .Query<D_YieldSessionBill>().Where(x => x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
+          .Query<D_YieldSessionBill>().Where(x => !x.IsReplacedByPayer && x.AcceptorTradingSession.Id == LogicObject.Id && x.PaymentAcceptor.Id == LogicObject.BuyingMyCryptRequest.Buyer.Id).ToList();
 
       foreach (var bill in d_bills)
       {

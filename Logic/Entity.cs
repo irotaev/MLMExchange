@@ -447,6 +447,11 @@ namespace Logic
     /// Торговая сессия того, кто принемает платеж
     /// </summary>
     public virtual D_TradingSession AcceptorTradingSession { get; set; }
+
+    /// <summary>
+    /// Счет заменен на другой покупателем
+    /// </summary>
+    public virtual bool IsReplacedByPayer { get; set; }
   }
 
   #region BillPaymentState
@@ -1135,6 +1140,7 @@ namespace Logic
 
       References(x => x.PayerTradingSession).Column("PayerTradingSessionId").Nullable().Cascade.SaveUpdate();
       References(x => x.AcceptorTradingSession).Column("AcceptorTradingSessionId").Nullable().Cascade.SaveUpdate();
+      Map(x => x.IsReplacedByPayer).Default("0").Not.Nullable();
     }
   }
   #endregion

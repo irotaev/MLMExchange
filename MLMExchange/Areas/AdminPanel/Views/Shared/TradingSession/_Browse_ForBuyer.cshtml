@@ -71,7 +71,24 @@
             }
           }
         }).show();
+      } else if (commandName === "YieldTradingSessionBill_ReplaceBill") {
+        var confirmTitle = "@MLMExchange.Properties.ResourcesA.ConfirmActionTitle";
+        var confirmMessage = "@String.Format(MLMExchange.Properties.ResourcesA.ConfirmActionMessage, MLMExchange.Properties.PrivateResource.ChangeBill)";
+
+        Ext.MessageBox.confirm(confirmTitle, confirmMessage, function (btn) {
+          if (btn === 'yes') {
+            $.ajax({
+              url: "/TradingSession/ChangeYieldSessionBill",
+              type: "POST",
+              data: { yieldSessionBillId: record.data.YieldTradingSessionBillId },
+              success: function () {
+                window.location.reload();
+              }
+            });
+          }
+        });
       }
+
     }
 
     function TradingSession__PayYieldTradingSession_CommandColumnRenderer(grid, command, record, row) {
@@ -120,11 +137,12 @@
                       .Renderer("TradingSession_All_Grid__DisplayNameRenderer"),
                     X.Column().Text(Logic.Properties.GeneralResources.MoneyAmount).DataIndex("MoneyAmount").Width(120),
                     X.Column().Text(Logic.Properties.GeneralResources.DefaultPaymentSystem).DataIndex("DefaultPaymentSystem").Width(115),
-                    X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillStateAsString").Width(150),
+                    X.Column().Text(Logic.Properties.GeneralResources.BillPaymentState).DataIndex("BillStateAsString").Width(130),
                     X.ImageCommandColumn().Commands(
-                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay)
+                      X.ImageCommand().CommandName("YieldTradingSessionBill_Pay").Icon(Icon.Money).Text(MLMExchange.Properties.ResourcesA.Pay),
+                      X.ImageCommand().CommandName("YieldTradingSessionBill_ReplaceBill").Icon(Icon.ArrowRefresh).Text(MLMExchange.Properties.PrivateResource.ChangeBill)
                     )
-                      .Width(100)
+                      .Width(150)
                       .PrepareCommand("TradingSession__PayYieldTradingSession_CommandColumnRenderer")
                       .Listeners(ls =>
                       {

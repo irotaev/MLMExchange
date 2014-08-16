@@ -300,4 +300,7 @@
   <data name="TradingOperationDisabledForCurrentRole" xml:space="preserve">
     <value>Торговые операции ограничены для совокупности ваших ролей</value>
   </data>
+  <data name="ChangeBill" xml:space="preserve">
+    <value>Заменить счет</value>
+  </data>
 </root>

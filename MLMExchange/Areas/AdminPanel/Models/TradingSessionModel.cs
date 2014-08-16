@@ -196,7 +196,7 @@ namespace MLMExchange.Areas.AdminPanel.Models
 
       List<YieldSessionPaymentAcceptor> yieldSessionPaymentAcceptorList = new List<YieldSessionPaymentAcceptor>();
 
-      IEnumerable<D_YieldSessionBill> yeldSessionBills = tradingSession.LogicObject.YieldSessionBills;
+      IEnumerable<D_YieldSessionBill> yeldSessionBills = tradingSession.LogicObject.YieldSessionBills.Where(x => !((YieldSessionBill)x).IsReplaced());
 
       if (startIndex != null && count != null)
         yeldSessionBills = yeldSessionBills.Skip((int)startIndex).Take((int)count);
