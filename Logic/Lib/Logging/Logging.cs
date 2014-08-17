@@ -58,7 +58,7 @@ namespace Logic.Lib.Logging
 
     public NLogLogger() 
     {
-      _Logger = LogManager.GetCurrentClassLogger();
+      _Logger = LogManager.GetCurrentClassLogger();      
     }
 
     public void Info(string message)

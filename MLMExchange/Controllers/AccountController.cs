@@ -52,9 +52,7 @@ namespace MLMExchange.Controllers
         {
           throw new Logic.Lib.UserVisibleException(String.Format("{0}{1}", MLMExchange.Properties.ResourcesA.Exception_LoginFaield, "!"));
         }
-      }
-
-      _NLogLogger.Info(String.Format("{0} has been loggin", loginModel.Login));
+      }      
 
       return Redirect("/AdminPanel/User/ControlPanel");
     }

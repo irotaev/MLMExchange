@@ -5,11 +5,11 @@
 <section class="b-omps">
   <header class="b-omps__redirect-info">
     <!--Это только для дебага-->
-    В режиме теста будет произведен автоплатеж. Пожалуйста подождите, это займет несколько секунд.
-    @*@MLMExchange.Properties.PrivateResource.CheckPayment__NowYouWouldRedirectToPaymentSystem*@
+    @*В режиме теста будет произведен автоплатеж. Пожалуйста подождите, это займет несколько секунд.*@
+    @MLMExchange.Properties.PrivateResource.CheckPayment__NowYouWouldRedirectToPaymentSystem
   </header>
 
-  @*<form action="@Logic.Lib.PaymentSystem.PerfectMoney.PaymentSystemAPIUrl" method="POST" id="b-omps-form_ID">
+  <form action="@Logic.Lib.PaymentSystem.PerfectMoney.PaymentSystemAPIUrl" method="POST" id="b-omps-form_ID">
     @Html.HiddenFor(x => x.PayeeAccount, new { Name = "PAYEE_ACCOUNT" })
     @Html.HiddenFor(x => x.PayeeName, new { Name = "PAYEE_NAME" })
     @Html.HiddenFor(x => x.PaymentId, new { Name = "PAYMENT_ID" })
@@ -40,6 +40,6 @@
         $("#b-omps-form_ID").submit();
       }, 2000);
     });
-  </script>*@
+  </script>
 
 </section><!--B: Outer money payment system-->

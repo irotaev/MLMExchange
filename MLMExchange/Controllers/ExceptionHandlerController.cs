@@ -15,15 +15,11 @@ namespace MLMExchange.Controllers
   {
     public ActionResult ApplicationException()
     {
+      Logic.Application.NLogLogger.Info("Заход в контроллер ошибок (ExceptionHandlerController)");
       var model = new ApplicationExceptionModel();
 
-      #region Обработка ошибки
-      Exception ex = TempData["Controller__Exception"] as Exception;
-
-      if (ex != null)
-      {
-        model.ExceptionMessage = ex.GetAllExceptionTreeLog("<br/><br/>");
-      }
+      #region Обработка ошибки      
+      model.ExceptionMessage = MLMExchange.Properties.PrivateResource.Application__Exception_ServerException;
 
       System.Web.HttpContext.Current.ClearError();
       #endregion

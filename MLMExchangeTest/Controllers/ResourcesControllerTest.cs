@@ -34,14 +34,16 @@ namespace MLMExchangeTest.Controllers
       controller.ControllerContext = new ControllerContext(context.Object, new System.Web.Routing.RouteData(), controller);
 
       var response = controller.GetTextResources(
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "MLMExchange", ResourceNamespace = "PrivateResource", ResourceId = "PayYieldTradingSession" },
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "MLMExchange", ResourceNamespace = "ResourcesA", ResourceId = "AddMyCrypt" },
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "GeneralResources", ResourceId = "ElectronicName" },
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "PrivateResources", ResourceId = "Ssms__Exception_ServerResponseParse" },
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic_fake", ResourceNamespace = "PrivateResources", ResourceId = "Ssms__Exception_ServerResponseParse" },
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "PrivateResources_fake", ResourceId = "Ssms__Exception_ServerResponseParse" },
-        new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "PrivateResources", ResourceId = "Fake_0" }
-        );
+        new List<ResourcesController._TextResourceRequest>
+        {
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "MLMExchange", ResourceNamespace = "PrivateResource", ResourceId = "PayYieldTradingSession" },
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "MLMExchange", ResourceNamespace = "ResourcesA", ResourceId = "AddMyCrypt" },
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "GeneralResources", ResourceId = "ElectronicName" },
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "PrivateResources", ResourceId = "Ssms__Exception_ServerResponseParse" },
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic_fake", ResourceNamespace = "PrivateResources", ResourceId = "Ssms__Exception_ServerResponseParse" },
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "PrivateResources_fake", ResourceId = "Ssms__Exception_ServerResponseParse" },
+          new ResourcesController._TextResourceRequest { ProjectNamespace = "Logic", ResourceNamespace = "PrivateResources", ResourceId = "Fake_0" }
+        });
 
       Assert.IsTrue(response != null && response.Data != null, "Выдан пустой ответ");
       Assert.IsTrue(((List<ResourcesController._TextResourceResponse>)response.Data).ElementAt(0).ResourceValue != null, "Не получено зеначение по задонному Id ресурса");

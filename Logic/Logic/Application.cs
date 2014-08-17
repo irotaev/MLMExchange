@@ -26,12 +26,14 @@ namespace Logic
       #endregion
 
       isTestBuild = true;
-      UserCountToStart = 500;
+      UserCountToStart = 500;      
     }
 
     private Application(D_Application d_application) : base(d_application) { }
 
     private static bool IsInitialized;
+
+    public readonly static Logic.Lib.Logging.NLogLogger NLogLogger = new Lib.Logging.NLogLogger();
 
     /// <summary>
     /// Тестовый билд

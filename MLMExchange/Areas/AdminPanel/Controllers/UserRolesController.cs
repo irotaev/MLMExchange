@@ -34,7 +34,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       throw new NotImplementedException();
     }
 
-    #region User rile acees level
+    #region User role access level
     /// <summary>
     /// Получить все уровни доступа для ролей системы
     /// </summary>

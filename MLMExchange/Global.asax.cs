@@ -30,10 +30,10 @@ namespace MLMExchange
 
     protected void Application_Error(object sender, EventArgs e)
     {
-      Exception exception = Server.GetLastError();
+      Exception exception = Server.GetLastError();      
 
-      Logic.Lib.Logging.NLogLogger NLogLogger = new Logic.Lib.Logging.NLogLogger();
-      NLogLogger.Fatal(exception);
+      Logic.Application.NLogLogger.Info("Заход в Application_Error");
+      Logic.Application.NLogLogger.Fatal(exception);
 
       Server.ClearError();
       

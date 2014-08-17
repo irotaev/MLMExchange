@@ -144,16 +144,6 @@ namespace MLMExchange.Controllers
     /// </summary>
     protected NHibernate.ISession _NHibernateSession;
 
-    /// <summary>
-    /// Логгер NLog
-    /// </summary>
-    protected NLogLogger _NLogLogger = new NLogLogger();
-
-    public BaseController()
-    {
-      //ViewData["AdminPanel__CenterBlock"] = 
-    }
-
     public enum RedirectType : int
     {
       SuccessRegister = 0,
@@ -223,37 +213,35 @@ namespace MLMExchange.Controllers
       if (filterContext == null)
         throw new ArgumentNullException("filterContext");
 
-      _NLogLogger.Fatal(filterContext.Exception);
-
-      #if DEBUG
-      if (filterContext.ExceptionHandled)
-        return;
-      #else
-        if (!filterContext.ExceptionHandled)
-        return;
-      #endif
+      Logic.Application.NLogLogger.Info("Заход в OnException");
+      Logic.Application.NLogLogger.Fatal(filterContext.Exception);
 
       #region Отображение ошибки
       if (!Request.IsAjaxRequest())
       {
-      var model = new ApplicationExceptionModel();
+        Logic.Application.NLogLogger.Info("Ошибка приложения. Не Ajax");
 
-      if (filterContext.Exception != null)
-      {
-        model.ExceptionMessage = filterContext.Exception.GetAllExceptionTreeLog("<br/><br/>");
-      }
-      
-      System.Web.HttpContext.Current.ClearError();
+        var model = new ApplicationExceptionModel();
 
-      
+        if (filterContext.Exception != null)
+        {
+          model.ExceptionMessage = filterContext.Exception.GetAllExceptionTreeLog("<br/><br/>");
+        }
+        
+        System.Web.HttpContext.Current.ClearError();        
+
         filterContext.Result = new ViewResult
         {
           ViewName = "~/Views/Shared/Exceptions/ApplicationException.cshtml",
           ViewData = new ViewDataDictionary(filterContext.Controller.ViewData) { Model = model }
         };
+
+        filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.OK;
       }
       else
       {
+        Logic.Application.NLogLogger.Info("Ошибка Ajax");
+
         filterContext.HttpContext.Response.StatusCode = (int)System.Net.HttpStatusCode.InternalServerError;
         filterContext.Result = new JsonResult
         {
@@ -266,14 +254,12 @@ namespace MLMExchange.Controllers
 #endif
           }
         };
-      }
-
-      //PartialView("~/Views/Shared/Exceptions/ApplicationException.cshtml", model).ExecuteResult(this.ControllerContext);
+      }      
       #endregion
 
+      Logic.Application.NLogLogger.Info("Ошибка перехвачена в OnException");
       filterContext.ExceptionHandled = true;
-      filterContext.HttpContext.Response.Clear();
-      filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
+      Logic.Application.NLogLogger.Info("Ошибка обработана");
     }
   }
 }

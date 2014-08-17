@@ -235,13 +235,13 @@
     <value>Аккаунт требует подтверждения</value>
   </data>
   <data name="AccountConfirmation__Info" xml:space="preserve">
-    <value>Вам был отправлен ключ для подтверждения аккаунта по смс на номер ({0}). Введите данный ключ в поле для подтверждения аккаунта.</value>
+    <value>Вам был отправлен ключ для подтверждения аккаунта по смс на номер ({0}). Введите данный ключ в поле для подтверждения аккаунта. Время ожидания смс может составить до 10 мин.</value>
   </data>
   <data name="AccountConfirm__Exception_YourAccountAlreadyConfirmed" xml:space="preserve">
     <value>Ваш аккаунт уже подтвержден</value>
   </data>
   <data name="AccountRegister__Sms_ActivationCode" xml:space="preserve">
-    <value>Kod dlia activacii accaynta {0}: {1}</value>
+    <value>Код для активации аккаунта "{0}": {1}</value>
   </data>
   <data name="ResetPasswordMailSubject" xml:space="preserve">
     <value>Восстановление пароля - {0}</value>
@@ -302,5 +302,8 @@
   </data>
   <data name="ChangeBill" xml:space="preserve">
     <value>Заменить счет</value>
+  </data>
+  <data name="Application__Exception_ServerException" xml:space="preserve">
+    <value>Произошла ошибка сервера</value>
   </data>
 </root>

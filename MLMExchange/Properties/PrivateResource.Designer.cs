@@ -70,7 +70,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вам был отправлен ключ для подтверждения аккаунта по смс на номер ({0}). Введите данный ключ в поле для подтверждения аккаунта..
+        ///   Looks up a localized string similar to Вам был отправлен ключ для подтверждения аккаунта по смс на номер ({0}). Введите данный ключ в поле для подтверждения аккаунта. Время ожидания смс может составить до 10 мин..
         /// </summary>
         public static string AccountConfirmation__Info {
             get {
@@ -88,7 +88,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kod dlia activacii accaynta {0}: {1}.
+        ///   Looks up a localized string similar to Код для активации аккаунта &quot;{0}&quot;: {1}.
         /// </summary>
         public static string AccountRegister__Sms_ActivationCode {
             get {
@@ -147,6 +147,15 @@ namespace MLMExchange.Properties {
         public static string AddMyCryptInitiatorPhoto {
             get {
                 return ResourceManager.GetString("AddMyCryptInitiatorPhoto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Произошла ошибка сервера.
+        /// </summary>
+        public static string Application__Exception_ServerException {
+            get {
+                return ResourceManager.GetString("Application__Exception_ServerException", resourceCulture);
             }
         }
         
