@@ -1141,6 +1141,15 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Превышен лимит.
+        /// </summary>
+        public static string UserBalanceLimit {
+            get {
+                return ResourceManager.GetString("UserBalanceLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Подтверждение пользователя.
         /// </summary>
         public static string UserConfirmation {

@@ -41,6 +41,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         SystemSettings systemSettings = SystemSettings.GetCurrentSestemSettings();
 
+        if (((User)MLMExchange.Lib.CurrentSession.Default.CurrentUser).isUserBalanceLimited(model.MyCryptCount.Value))
+          throw new Logic.Lib.UserVisibleException("Limit of the balance!");
+
         if (!(model.MyCryptCount <= MLMExchange.Lib.CurrentSession.Default.CurrentUser.Roles.Where(x => (x as D_UserRole) != null).Cast<D_UserRole>().FirstOrDefault().MyCryptCount))
           throw new UserVisible__WrongParametrException("MyCryptCount");
 

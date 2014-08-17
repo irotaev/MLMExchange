@@ -477,6 +477,9 @@
   <data name="UserAlreadyContainsThisRoleType" xml:space="preserve">
     <value>Пользователь уже имеет данный тип роли</value>
   </data>
+  <data name="UserBalanceLimit" xml:space="preserve">
+    <value>Превышен лимит</value>
+  </data>
   <data name="UserConfirmation" xml:space="preserve">
     <value>Подтверждение пользователя</value>
   </data>

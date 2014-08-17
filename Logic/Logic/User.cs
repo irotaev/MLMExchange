@@ -142,5 +142,108 @@ namespace Logic
 
       return counter;
     }
+
+    /// <summary>
+    /// Получить старшую роль у юзера
+    /// </summary>
+    /// <returns></returns>
+    public RoleType GetGeneralRole()
+    {
+      User user = ((User)LogicObject);
+      RoleType userRoleType;
+
+      if (user.GetRole<D_AdministratorRole>() != null)
+      {
+        userRoleType = RoleType.Administrator;
+      }
+      else if (user.GetRole<D_LeaderRole>() != null)
+      {
+        userRoleType = RoleType.Leader;
+      }
+      else if (user.GetRole<D_TesterRole>() != null)
+      {
+        userRoleType = RoleType.Tester;
+      }
+      else if (user.GetRole<D_BrokerRole>() != null)
+      {
+        userRoleType = RoleType.Broker;
+      }
+      else if (user.GetRole<D_UserRole>() != null)
+      {
+        userRoleType = RoleType.User;
+      }
+      else
+      {
+        throw new ApplicationException("У этого этого юзера нет ролей");
+      }
+
+      return userRoleType;
+    }
+
+    /// <summary>
+    /// Получить лимит баланса
+    /// </summary>
+    /// <param name="userRole"></param>
+    /// <returns></returns>
+    public decimal GetRoleLimit(RoleType userRole) 
+    {
+      //TODO:Кузя Забацать в SystemSettings
+      const decimal leaderLimit = 500000;
+      const decimal testerLimit = 400000;
+      const decimal brokerLimit = 300000;
+      const decimal userLimit = 200000;
+
+      if (userRole == RoleType.Administrator)
+      {
+        return Decimal.MaxValue;
+      }
+      else if (userRole == RoleType.Leader)
+      {
+        return leaderLimit;
+      }
+      else if (userRole == RoleType.Tester)
+      {
+        return testerLimit;
+      }
+      else if (userRole == RoleType.Broker)
+      {
+        return brokerLimit;
+      }
+      else if (userRole == RoleType.User)
+      {
+        return userLimit;
+      }
+      else
+      {
+        throw new ApplicationException("null");
+      }
+    }
+
+    /// <summary>
+    /// Получить баланс MyCryptCount
+    /// </summary>
+    /// <returns></returns>
+    public long GetMyCryptCount()
+    {
+      return LogicObject.Roles.Where(x => (x as D_UserRole) != null).Cast<D_UserRole>().FirstOrDefault().MyCryptCount;
+    }
+
+    /// <summary>
+    /// Есть ли лимит у юзера
+    /// </summary>
+    /// <param name="requestMoney"></param>
+    /// <returns></returns>
+    public bool isUserBalanceLimited(decimal requestMoney)
+    {
+      decimal validBalance = GetMyCryptCount() + requestMoney;
+
+      RoleType generalRole = GetGeneralRole();
+      decimal limitBalance = GetRoleLimit(generalRole);
+
+      if (validBalance >= limitBalance)
+        return true;
+      else
+        return false;
+    }
   }
 }

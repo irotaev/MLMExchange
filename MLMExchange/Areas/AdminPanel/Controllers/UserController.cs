@@ -117,6 +117,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       {
         if (ModelState.IsValid)
         {
+          if (((User)MLMExchange.Lib.CurrentSession.Default.CurrentUser).isUserBalanceLimited(model.MyCryptCount.Value))
+            throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.UserBalanceLimit);
+
           // TODO: Пересмотреть валидацию фото
           #region Валидация фото
 
@@ -428,6 +431,9 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       if (ModelState.IsValid)
       {
         BuyingMyCryptRequest buyingMyCryptRequest = model.UnBind(((BuyingMyCryptRequest)null));
+
+        if (((User)MLMExchange.Lib.CurrentSession.Default.CurrentUser).isUserBalanceLimited(model.MyCryptCount.Value))
+          throw new Logic.Lib.UserVisibleException(MLMExchange.Properties.ResourcesA.UserBalanceLimit);
 
         if (model.MyCryptCount > buyingMyCryptRequest.BiddingParticipateApplication.MyCryptCount)
           throw new UserVisible__WrongParametrException("model");
