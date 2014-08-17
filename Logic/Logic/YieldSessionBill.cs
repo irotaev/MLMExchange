@@ -35,6 +35,18 @@ namespace Logic
     }
 
     /// <summary>
+    /// Заменен ли счет другим счетом
+    /// </summary>
+    /// <returns></returns>
+    public bool IsReplaced()
+    {
+      if (LogicObject.IsReplacedByPayer)
+        return true;
+      else
+        return false;
+    }
+
+    /// <summary>
     /// Оплатить счет на доходность торговой сессии
     /// </summary>
     /// <param name="d_paymentSystem">Платежная система по которой, был совершен платеж</param>

@@ -40,7 +40,8 @@ namespace LogicTest.DataObject
         MaxMyCryptCount = 10000,
         ProfitPercent = 15,
         Quote = 8,
-        TradingSessionDuration = 0.1m // Не менять. Настроин поток синхронизации.
+        TradingSessionDuration = 0.1m, // Не менять. Настроин поток синхронизации.
+        RootReferer = _NHibernaetSession.Query<D_User>().Where(x => x.Login == "administrator_irotaev").First()
       };
 
       _NHibernaetSession.SaveOrUpdate(systemSettings);
@@ -48,6 +49,9 @@ namespace LogicTest.DataObject
       BuyingMyCryptRequest buyingRequest = BuyingMyCryptRequestTest.CreateBuyingMyCryptRequest(buyer, participateApplication, systemSettings, (long)buyingRequestMyCryptCount);
 
       D_TradingSession d_tradingSession = TradingSession.OpenTradingSession(buyingRequest);
+
+      _NHibernaetSession.Transaction.Commit();
+      _NHibernaetSession.BeginTransaction();
 
       _NHibernaetSession.Refresh(d_tradingSession);
 
