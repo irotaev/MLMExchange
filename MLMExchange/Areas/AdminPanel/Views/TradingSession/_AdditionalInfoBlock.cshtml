@@ -3,7 +3,7 @@
 <section class="b-ts__additional-info-block">
   @if (Model.State != Logic.TradingSessionStatus.NA)
   { 
-    <span class="b-ts__start-date">@Model.StartDateTime.Value.ToLocalTime().ToString("MM.dd.yyyy HH:mm")</span>
+    <span class="b-ts__start-date">@Model.StartDateTime.Value.ToString("MM.dd.yyyy HH:mm")</span>
   }
   
   <table class="b-ts__info-table">
