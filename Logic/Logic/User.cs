@@ -233,8 +233,10 @@ namespace Logic
     /// </summary>
     /// <param name="requestMoney"></param>
     /// <returns></returns>
-    public bool isUserBalanceLimited(decimal requestMoney)
+    public bool IsUserBalanceLimited(decimal requestMoney)
     {
+      return false;
+
       decimal validBalance = GetMyCryptCount() + requestMoney;
 
       RoleType generalRole = GetGeneralRole();

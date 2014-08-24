@@ -139,13 +139,12 @@
 @{
   var phoneNumber_additionalAttributes = (new Dictionary<string, object>());
 
-  if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
-  {
-    phoneNumber_additionalAttributes.Add("readonly", "readonly");
-  }
+  //if (ViewData["Usage"] != null && ViewData["Usage"] == "Edit")
+  //{
+  //  phoneNumber_additionalAttributes.Add("readonly", "readonly");
+  //}
 
   @Html.ApplicationTextBoxFor(x => x.PhoneNumber, MLMExchange.Properties.ResourcesA.EnterPhoneNumberAsMasked, @MLMExchange.Properties.ResourcesA.EnterPhoneNumberAsMaskedDescription, type, null, phoneNumber_additionalAttributes)
-    
 }
 
    

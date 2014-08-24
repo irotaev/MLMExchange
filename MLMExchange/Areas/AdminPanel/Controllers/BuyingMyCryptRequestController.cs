@@ -52,7 +52,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         PayeeName = Logic.Lib.PaymentSystem.PerfectMoney.PayeeName,
         PaymentUrlMethod = "POST",
         NoPaymentUrlMethod = "POST",
-        PaymentAmount = 0.01m, //checkBill.MoneyAmount,
+        PaymentAmount = checkBill.MoneyAmount,
         PaymentId = checkBill.Id.ToString(),
         PaymentUnit = Logic.Lib.PaymentSystem.PerfectMoney.PaymentCheckBillUnits,
         AdditionalFields = new Dictionary<string, string> { { "BillId", checkBill.Id.ToString() } }

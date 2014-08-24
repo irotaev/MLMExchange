@@ -47,7 +47,7 @@ namespace Logic
       #region Счет проверочного платежа
       D_Bill checkBill = new D_Bill
       {
-        MoneyAmount = ((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount(),
+        MoneyAmount = Math.Round(((TradingSession)tradingSession).CalculateCheckPaymentMoneyAmount() / 35, 2),
         PaymentState = BillPaymentState.WaitingPayment,
         Payer = tradingSession.BuyingMyCryptRequest.Buyer
       };
@@ -235,11 +235,11 @@ namespace Logic
     /// </summary>
     internal void EnsureProfibility()
     {
-      if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility || YieldSessionBillsNecessaryMoney() == 0)
-        return;
-
       lock (_Locker)
       {
+        if (LogicObject.State != TradingSessionStatus.NeedEnsureProfibility || YieldSessionBillsNecessaryMoney() == 0)
+          return;
+
         // Добавлен ли счет на оплату доходности торговой сессии
         bool isBillAdded = false;
 
