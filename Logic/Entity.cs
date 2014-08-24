@@ -999,7 +999,7 @@ namespace Logic
       Map(x => x.CheckPaymentPercent).Precision(5).Scale(3).Not.Nullable();
       Map(x => x.Quote).Not.Nullable();
       Map(x => x.ProfitPercent).Precision(5).Scale(3).Not.Nullable();
-      Map(x => x.TradingSessionDuration).Precision(5).Scale(3).Not.Nullable();
+      Map(x => x.TradingSessionDuration).Precision(8).Scale(3).Not.Nullable();
       Map(x => x.MaxMyCryptCount).Not.Nullable();
       References(x => x.RootReferer).Column("RootRefererId").Not.Nullable();
     }
