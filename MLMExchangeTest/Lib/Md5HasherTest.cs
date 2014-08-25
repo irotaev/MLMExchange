@@ -18,9 +18,9 @@ namespace MLMExchangeTest.Lib
     [TestMethod]
     public void Change_Password()
     {
-      const string newPassword = "";
+      const string newPassword = "5ggtel32x";
 
-      D_User user = _NHibernaetSession.Query<D_User>().Where(x => x.Login == "sidi").FirstOrDefault();
+      D_User user = _NHibernaetSession.Query<D_User>().Where(x => x.Email == "stasegoshin@gmail.com").FirstOrDefault();
 
       Assert.IsTrue(user != null, "Такого пользователя не существует");
 
