@@ -40,7 +40,7 @@ namespace LogicTest.DataObject
         MaxMyCryptCount = 10000,
         ProfitPercent = 15,
         Quote = 8,
-        TradingSessionDuration = 0.1m, // Не менять. Настроин поток синхронизации.
+        TradingSessionDuration = 0.01m, // Не менять. Настроин поток синхронизации.
         RootReferer = _NHibernaetSession.Query<D_User>().Where(x => x.Login == "administrator_irotaev").First()
       };
 
@@ -209,6 +209,9 @@ namespace LogicTest.DataObject
 
       ((TradingSession)tradingSession).TryChangeStatus(TradingSessionStatus.ProfitConfirmation);
 
+      payerProfitSession.State = TradingSessionStatus.Closed;
+      _NHibernaetSession.SaveOrUpdate(payerProfitSession);
+
       _NHibernaetSession.SaveOrUpdate(tradingSession);
 
       return tradingSession;
@@ -296,6 +299,42 @@ namespace LogicTest.DataObject
     }
 
     [TestMethod]
+    public void Emulate_Trade_Operation_Wuth_Many_TS()
+    {
+      List<D_TradingSession> needProfitTSs = new List<D_TradingSession>();
+      List<D_TradingSession> needEnsureTSs = new List<D_TradingSession>();
+
+      for (ushort index = 1; index <= 20; index++)
+      {
+        D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
+
+        d_tradingSession = ChangeState_To_NeedEnsureProfibility(d_tradingSession);
+
+        d_tradingSession = ChangeState_To_WaitForProgressStart(d_tradingSession);
+
+        d_tradingSession = ChangeState_To_SessionInProgress(d_tradingSession);
+
+        d_tradingSession = ChangeState_To_NeedProfit(d_tradingSession);
+
+        needProfitTSs.Add(d_tradingSession);
+      }
+
+      _NHibernaetSession.Transaction.Commit();
+      _NHibernaetSession.BeginTransaction();
+
+      for(ushort index = 1; index <= 15; index++)
+      {
+        D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
+
+        d_tradingSession = ChangeState_To_NeedEnsureProfibility(d_tradingSession);
+
+        needEnsureTSs.Add(d_tradingSession);
+      }
+
+      TransactionCommit();
+    }
+
+    [TestMethod]
     public void Delete_All_Session()
     {
       List<D_TradingSession> tradingSessions = _NHibernaetSession.Query<D_TradingSession>().ToList();
@@ -314,5 +353,16 @@ namespace LogicTest.DataObject
 
       TransactionCommit();
     }
+
+
+    #region Тесты для быстроко просмотра и манипуляции данными
+    [TestMethod]
+    public void Watch_User_Trading_Session()
+    {
+      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "jullis7").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
+
+      Assert.IsTrue(tradinSession != null);
+    }
+    #endregion
   }
 }

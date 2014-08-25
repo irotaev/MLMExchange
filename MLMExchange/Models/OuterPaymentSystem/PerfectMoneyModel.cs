@@ -16,7 +16,20 @@ namespace MLMExchange.Models.OuterPaymentSystem
     public string PayeeAccount { get; set; }
     public string PayeeName { get; set; }
     public string PaymentId { get; set; }
-    public decimal PaymentAmount { get; set; }
+
+    private decimal _PaymentAmount;
+    public decimal PaymentAmount
+    {
+      get
+      {
+        return _PaymentAmount;
+      }
+      set
+      {
+        _PaymentAmount = Math.Round(value, 2);
+      }
+    }
+
     public string PaymentUnit { get; set; }
     public string StatusUrl { get; set; }
     public string PaymentUrl { get; set; }

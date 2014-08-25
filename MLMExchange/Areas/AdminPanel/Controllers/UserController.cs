@@ -358,7 +358,10 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         });
       }
 
-      totalCount = activeSalesList.Count();
+      totalCount = _NHibernateSession.Query<D_BiddingParticipateApplication>()
+        .Where(x => x.State == BiddingParticipateApplicationState.Filed &&
+               x.BuyingMyCryptRequests.All(r => r.Buyer.Id != CurrentSession.Default.CurrentUser.Id
+                 || (r.State == BuyingMyCryptRequestState.Recalled))).Count();
 
       Paging<BiddingParticipateApplicationModel> activeSalesPaging = new Paging<BiddingParticipateApplicationModel>(activeSalesList, totalCount);
 
@@ -379,7 +382,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
       int totalCount;
 
       IOrderedEnumerable<BuyingMyCryptRequest> byuingRequstsList = _NHibernateSession.QueryOver<BuyingMyCryptRequest>()
-        .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).Skip(start).Take(limit).List().OrderBy(x => x.CreationDateTime);
+        .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).Skip(start).Take(limit).List().OrderByDescending(x => x.CreationDateTime);
 
       List<BuyingMyCryptRequestModel> requestsList = byuingRequstsList.Select(x =>
         {
@@ -403,7 +406,8 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         });
       }
 
-      totalCount = requestsList.Count();
+      totalCount = _NHibernateSession.Query<BuyingMyCryptRequest>()
+        .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).Count();
 
       Paging<BuyingMyCryptRequestModel> requestsPaging = new Paging<BuyingMyCryptRequestModel>(requestsList, totalCount);
 

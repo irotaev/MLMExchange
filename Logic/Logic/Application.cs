@@ -375,7 +375,7 @@ namespace Logic
 
             thread.Start();
 
-            System.Threading.Thread.Sleep(900000);
+            System.Threading.Thread.Sleep(2000);
           }
         });
 

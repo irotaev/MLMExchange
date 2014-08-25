@@ -280,7 +280,7 @@
     <value>Реферальная ссылка</value>
   </data>
   <data name="CheckPayment__NowYouWouldRedirectToPaymentSystem" xml:space="preserve">
-    <value>Сейчас вы будите перенаправлены на платежную систему</value>
+    <value>Сейчас вы будете перенаправлены на платежную систему</value>
   </data>
   <data name="PayChechBillTitle" xml:space="preserve">
     <value>Оплатить проверочный платеж</value>

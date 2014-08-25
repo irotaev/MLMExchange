@@ -178,7 +178,7 @@ namespace MLMExchange.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Сейчас вы будите перенаправлены на платежную систему.
+        ///   Looks up a localized string similar to Сейчас вы будете перенаправлены на платежную систему.
         /// </summary>
         public static string CheckPayment__NowYouWouldRedirectToPaymentSystem {
             get {
