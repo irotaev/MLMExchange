@@ -385,7 +385,7 @@ namespace Logic
         case TradingSessionStatus.Closed:
           if (LogicObject.State == TradingSessionStatus.ProfitConfirmation)
           {
-            if (GetNeedPaymentBills().All(x => x.LogicObject.PaymentState == BillPaymentState.Paid))
+            if (GetNeedPaymentBills().All(x => x.LogicObject.PaymentState == BillPaymentState.Paid) && BuyerProfitNecessaryMoney() == 0)
             {
               LogicObject.State = TradingSessionStatus.Closed;
 

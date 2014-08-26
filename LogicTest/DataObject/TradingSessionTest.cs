@@ -359,7 +359,7 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void Watch_User_Trading_Session()
     {
-      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "jullis7").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
+      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "Eagle").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
 
       Assert.IsTrue(tradinSession != null);
     }
