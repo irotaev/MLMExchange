@@ -34,6 +34,7 @@ namespace Logic
       return result;
     }
 
+    #region Replace bill
     /// <summary>
     /// Заменен ли счет другим счетом
     /// </summary>
@@ -45,6 +46,18 @@ namespace Logic
       else
         return false;
     }
+
+    /// <summary>
+    /// Сделать счет замененным
+    /// </summary>
+    public void SetBillToReplacedState()
+    {
+      LogicObject.IsReplacedByPayer = true;
+
+      if (LogicObject.AcceptorTradingSession.State == TradingSessionStatus.ProfitConfirmation)
+        LogicObject.AcceptorTradingSession.State = TradingSessionStatus.NeedProfit;
+    }
+    #endregion
 
     /// <summary>
     /// Оплатить счет на доходность торговой сессии
