@@ -25,4 +25,8 @@ namespace LogicTest.DataObject
       Assert.IsTrue(true);
     }
   }
+
+  public class YieldSessionBillTest : BillTest
+  {
+  }
 }

@@ -93,7 +93,7 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
         throw new UserVisible__CurrentActionAccessDenied();
       }
 
-      d_yieldSessionBill.IsReplacedByPayer = true;
+      ((YieldSessionBill)d_yieldSessionBill).SetBillToReplacedState();
 
       _NHibernateSession.SaveOrUpdate(d_yieldSessionBill);
     }

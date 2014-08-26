@@ -403,7 +403,7 @@ namespace Logic
   /// <summary>
   /// Список торговых сессий
   /// </summary>
-  internal class TradingSessionList
+  public class TradingSessionList
   {
     private static readonly object _Locker = new Object();
 
@@ -411,7 +411,7 @@ namespace Logic
     /// Обеспечить доходность торговых сессий.
     /// Выставить счета
     /// </summary>
-    internal void EnsureProfibilityOfTradingSessions()
+    public void EnsureProfibilityOfTradingSessions()
     {
       lock (_Locker)
       {

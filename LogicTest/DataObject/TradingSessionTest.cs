@@ -352,16 +352,62 @@ namespace LogicTest.DataObject
       }
 
       TransactionCommit();
-    }
+    }    
 
+    /// <summary>
+    /// Запускать только с чистой базы
+    /// </summary>
+    [TestMethod]
+    public void Set_YieldSessionBill_To_Replaced_State_And_TradingSession_Should_Get_New_Bill()
+    {
+      D_TradingSession d_acceptorTradingSession = CreateTradingSession_State_Open();
+
+      d_acceptorTradingSession = ChangeState_To_NeedEnsureProfibility(d_acceptorTradingSession);
+      d_acceptorTradingSession = ChangeState_To_WaitForProgressStart(d_acceptorTradingSession);
+      d_acceptorTradingSession = ChangeState_To_SessionInProgress(d_acceptorTradingSession);
+      d_acceptorTradingSession = ChangeState_To_NeedProfit(d_acceptorTradingSession);
+
+      _NHibernaetSession.Transaction.Commit();
+      _NHibernaetSession.BeginTransaction();
+
+      D_TradingSession d_buyingTradingSession = CreateTradingSession_State_Open(2000, 2000);
+
+      d_buyingTradingSession = ChangeState_To_NeedEnsureProfibility(d_buyingTradingSession);
+
+      _NHibernaetSession.Transaction.Commit();
+      _NHibernaetSession.BeginTransaction();
+
+      System.Threading.Thread.Sleep((int)(d_buyingTradingSession.SystemSettings.TradingSessionDuration * 60 * 1000));
+
+      new TradingSessionList().EnsureProfibilityOfTradingSessions();
+
+      Assert.IsFalse(d_acceptorTradingSession.State != TradingSessionStatus.ProfitConfirmation, "Недостаточно платежей, чтобы перевести принемающую ТС в состояние подтверждение платежей");
+
+      ((YieldSessionBill)d_buyingTradingSession.YieldSessionBills.FirstOrDefault()).SetBillToReplacedState();
+
+      Assert.IsTrue(d_acceptorTradingSession.State == TradingSessionStatus.NeedProfit, "При замене счета для ТС покупателя, принемающая ТС не перешла в состояние ждет прибыли");
+
+      new TradingSessionList().EnsureProfibilityOfTradingSessions();
+
+      System.Threading.Thread.Sleep((int)(d_buyingTradingSession.SystemSettings.TradingSessionDuration * 60 * 1000));
+
+      if (!((TradingSession)d_acceptorTradingSession).TryChangeStatus(TradingSessionStatus.ProfitConfirmation))
+        Assert.Fail("Недостаточно платежей, чтобы перевести принемающую ТС в состояние подтверждение платежей");
+    }
 
     #region Тесты для быстроко просмотра и манипуляции данными
     [TestMethod]
     public void Watch_User_Trading_Session()
     {
-      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "jullis7").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
+      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "vip14").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
 
       Assert.IsTrue(tradinSession != null);
+    }
+
+    [TestMethod]
+    public void Ensure_Trading_Session()
+    {
+      new TradingSessionList().EnsureProfibilityOfTradingSessions();
     }
     #endregion
   }
