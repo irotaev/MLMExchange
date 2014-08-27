@@ -58,7 +58,7 @@ namespace MLMExchange.Lib
     /// <summary>
     /// Пароль от SMTP
     /// </summary>
-    private const string smtpPassword = "12345678";
+    private const string smtpPassword = "k69s393130";
     /// <summary>
     /// Куда слать письмо
     /// </summary>

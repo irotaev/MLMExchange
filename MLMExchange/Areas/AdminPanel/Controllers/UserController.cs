@@ -381,14 +381,14 @@ namespace MLMExchange.Areas.AdminPanel.Controllers
 
       int totalCount;
 
-      IOrderedEnumerable<BuyingMyCryptRequest> byuingRequstsList = _NHibernateSession.QueryOver<BuyingMyCryptRequest>()
-        .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).Skip(start).Take(limit).List().OrderByDescending(x => x.CreationDateTime);
+      IList<BuyingMyCryptRequest> byuingRequstsList = _NHibernateSession.Query<BuyingMyCryptRequest>()
+        .Where(x => x.Buyer.Id == (CurrentSession.Default.CurrentUser.Id)).OrderByDescending(x => x.CreationDateTime).Skip(start).Take(limit).ToList();
 
       List<BuyingMyCryptRequestModel> requestsList = byuingRequstsList.Select(x =>
         {
           BuyingMyCryptRequestModel model = new BuyingMyCryptRequestModel().Bind(x);
           return model;
-        }).OrderBy(x => x.CreationDateTime).ToList();
+        }).OrderByDescending(x => x.CreationDateTime).ToList();
 
       if (!String.IsNullOrEmpty(parameters.SimpleSort))
       {

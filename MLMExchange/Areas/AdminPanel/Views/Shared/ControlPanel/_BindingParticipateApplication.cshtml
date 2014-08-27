@@ -90,7 +90,7 @@
           new ModelField { Name = "MyCryptCount", ServerMapping = "MyCryptCount" }
       )))
       .ColumnModel(
-        X.RowNumbererColumn(),
+        X.RowNumbererColumn().Resizable(true).Width(50),
         X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Buyer__Name").Flex(1),
         X.Column().Text(Logic.Properties.GeneralResources.Surname).DataIndex("Buyer__Sername").Flex(1),
         X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),

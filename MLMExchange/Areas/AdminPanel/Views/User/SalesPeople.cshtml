@@ -270,7 +270,7 @@
                             .Url(Url.Action("ActiveSalesGrid__Paginate"))
                             .Reader(Html.X().JsonReader().Root("data"))))
       .ColumnModel(
-        X.RowNumbererColumn(),
+        X.RowNumbererColumn().Resizable(true).Width(50),
         X.Column().Text(Logic.Properties.GeneralResources.Name).DataIndex("Seller__DisplayName").Flex(1)
           .Renderer("SalesPeople_All_Grid__DisplayNameRenderer"),
         X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
@@ -329,7 +329,7 @@
       .RemotePaging(true)
       .PageSize(10)
       .RemoteSort(true)
-      .SorterFor(Model.ActiveSales, m => m.CreationDateTime, Ext.Net.SortDirection.ASC)
+      .SorterFor(Model.ActiveSales, m => m.CreationDateTime, Ext.Net.SortDirection.DESC)
       .DataSource(Model.HistoryApplication)
       .Model(X.Model().Fields(
           new ModelField { Name = "Seller__Id", Mapping = "Seller.Id" },
@@ -350,7 +350,7 @@
                      .Url(Url.Action("HistoryApplicationGrid__Paginate"))
                      .Reader(Html.X().JsonReader().Root("data"))))
       .ColumnModel(
-        X.RowNumbererColumn(),
+        X.RowNumbererColumn().Resizable(true).Width(50),
         X.Column().Text(MLMExchange.Properties.ResourcesA.SellerName).DataIndex("Seller__DisplayName").Flex(1)
             .Renderer("SalesPeople_All_Grid__DisplayNameRenderer"),
         X.Column().Text(Logic.Properties.GeneralResources.MyCryptCount).DataIndex("MyCryptCount").Flex(1),
