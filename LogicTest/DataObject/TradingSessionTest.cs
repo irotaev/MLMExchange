@@ -399,7 +399,7 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void Watch_User_Trading_Session()
     {
-      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "vip14").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
+      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "vinil").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
 
       Assert.IsTrue(tradinSession != null);
     }
@@ -408,6 +408,15 @@ namespace LogicTest.DataObject
     public void Ensure_Trading_Session()
     {
       new TradingSessionList().EnsureProfibilityOfTradingSessions();
+    }
+
+    [TestMethod]
+    public void Get_TS_In_NeedProfitState_Where_ProfitMoneyAmount_Is_Zero()
+    {
+      List<D_TradingSession> tradingSessions = _NHibernaetSession.Query<D_TradingSession>().Where(x => x.State == TradingSessionStatus.NeedProfit)
+        .ToList();
+
+      tradingSessions = tradingSessions.Where(x => ((TradingSession)x).BuyerProfitNecessaryMoney() == 0).ToList();
     }
     #endregion
   }

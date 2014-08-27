@@ -267,6 +267,8 @@ namespace Logic
 
           _LogicObject.YieldSessionBills.Add(ensureBill);
 
+          profitSession.TryChangeStatus(TradingSessionStatus.ProfitConfirmation);
+
           profitSession.LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddProfitBill = DateTime.UtcNow;
           isBillAdded = true;
 
@@ -305,7 +307,7 @@ namespace Logic
       {
         decimal sessionProgressMinutes = Application.Instance.CurrentSystemSettings.LogicObject.TradingSessionDuration;
 
-        if (!isBillAdded
+        if (false && !isBillAdded
             &&
             ((LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill != null && LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill < DateTime.UtcNow.AddMinutes((double)-sessionProgressMinutes))
             || (LogicObject.DateLastYieldTradingSessionUnsureSearchRobotAddBill == null && LogicObject.CreationDateTime < DateTime.UtcNow.AddMinutes((double)-sessionProgressMinutes))))
@@ -385,6 +387,7 @@ namespace Logic
         case TradingSessionStatus.Closed:
           if (LogicObject.State == TradingSessionStatus.ProfitConfirmation)
           {
+            //TODO:Rtv BuyerProfitNecessaryMoney() == 0 уже можно убрать, т.к. если счета убираются, то ТС переводится в NeedProfit
             if (GetNeedPaymentBills().All(x => x.LogicObject.PaymentState == BillPaymentState.Paid) && BuyerProfitNecessaryMoney() == 0)
             {
               LogicObject.State = TradingSessionStatus.Closed;
