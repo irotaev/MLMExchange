@@ -1,0 +1,15 @@
+{
+  "name": "inputmask-multi",
+  "homepage": "https://github.com/andr-04/inputmask-multi",
+  "version": "1.0.2",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.2",
+    "commit": "a70865d31db64d0f2a77328a813f758ceedf902c"
+  },
+  "_source": "git://github.com/andr-04/inputmask-multi.git",
+  "_target": "~1.0.2",
+  "_originalSource": "inputmask-multi",
+  "_direct": true
+}
