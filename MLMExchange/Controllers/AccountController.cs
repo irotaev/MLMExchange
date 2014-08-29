@@ -38,6 +38,32 @@ namespace MLMExchange.Controllers
     }
 
     [HttpPost]
+    public void ResendPasswordToEmail(string phoneNumber)
+    {
+      if (String.IsNullOrEmpty(phoneNumber))
+        throw new UserVisible__ArgumentNullException("email");
+
+      D_User user = _NHibernateSession.Query<D_User>().Where(x => x.PhoneNumber == phoneNumber).FirstOrDefault();
+
+      if (user == null)
+        throw new UserVisible__ArgumentNullException("user");
+
+      if (user.IsUserRegistrationConfirm)
+        throw new UserVisibleException("User has already been confirmed");
+
+      using (Mail message = new Mail(Mail.supportEmail, Mail.supportEmail,
+                                String.Format(MLMExchange.Properties.PrivateResource.ResetPasswordMailSubject, MLMExchange.Properties.ResourcesA.MyCryptPage),
+                                String.Format(MLMExchange.Properties.PrivateResource.AccountRegister__Sms_ActivationCode, user.Login, user.ConfirmationCode),
+                                user.Email))
+      {
+        message.SendMailMessage();
+
+        if (message.State == Mail.MailState.Error)
+          throw new Logic.Lib.ApplicationException();
+      }
+    }
+
+    [HttpPost]
     public ActionResult Login(string redirectUrl = null)
     {
       ModelState.Clear();
@@ -79,22 +105,23 @@ namespace MLMExchange.Controllers
         if (user == null)
           throw new Logic.Lib.UserVisibleException("Нет такого пользователя с данным E-Mail");
 
+        //string newPassword = PasswordGenerator.Gengreate();
         string newPassword = Guid.NewGuid().ToString("N").Substring(0, 8);
         passwordResetDataModel.User = user;
         passwordResetDataModel.HashCode = Md5Hasher.ConvertStringToHash(newPassword);
         passwordResetDataModel.State = ResetPasswordState.Sended;
-        user.PasswordHash = Md5Hasher.ConvertStringToHash(newPassword);
+        user.PasswordHash = passwordResetDataModel.HashCode;
 
-        Mail message = new Mail(Mail.supportEmail, Mail.supportEmail,
+        using (Mail message = new Mail(Mail.supportEmail, Mail.supportEmail,
                                 String.Format(MLMExchange.Properties.PrivateResource.ResetPasswordMailSubject, MLMExchange.Properties.ResourcesA.MyCryptPage),
                                 String.Format(MLMExchange.Properties.PrivateResource.ResetPasswordMailText, newPassword),
-                                user.Email);
-        Task.Factory.StartNew(() => {
+                                user.Email))
+        {
           message.SendMailMessage();
-        });
 
-        if (message.State == Mail.MailState.Error)
-          throw new Logic.Lib.ApplicationException();
+          if (message.State == Mail.MailState.Error)
+            throw new Logic.Lib.ApplicationException();
+        }
 
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.SaveOrUpdate(user);
         Logic.Lib.ApplicationUnityContainer.UnityContainer.Resolve<INHibernateManager>().Session.Save(passwordResetDataModel);

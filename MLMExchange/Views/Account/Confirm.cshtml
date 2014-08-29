@@ -8,6 +8,26 @@
   Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
+<script type="text/javascript">
+  $(document).ready(function () {
+    var sendButton = $('#SendPasswordToEmail');
+
+    sendButton.click(function () {
+
+      $.ajax({
+        url: "/Account/ResendPasswordToEmail",
+        type: "POST",
+        data: { phoneNumber: @Model.PhoneNumber },
+        success: function () {
+          alert("Ключ отправлен на ваш e-mail");
+          //sendButton.fadeOut();
+        }
+      });
+      return false;
+    });
+  });
+</script>
+
 <section class="b-ac">
   <header class="b-ac__title">
     <h1 class="b-ac__text">@MLMExchange.Properties.PrivateResource.AccountNeedConfirmation</h1>
@@ -25,6 +45,11 @@
       String.Format(MLMExchange.Properties.PrivateResource.AccountConfirmation__Info, Model.PhoneNumber), "default"))
 
       <input class="b-button register-button b-button_hover-animate_opacity b-ac__confirm-button" type="submit" value="@MLMExchange.Properties.ResourcesA.Button_Apply" />
+
+  <a id="SendPasswordToEmail" style="float: right;
+margin-top: 29px;
+padding: 0px 5px 0px 0px;
+font-size: 12px;" href="#">Не приходит смс?</a>
     }
   </div>
 </section><!--B: Account confirmation-->

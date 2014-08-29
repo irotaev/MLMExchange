@@ -221,6 +221,7 @@
     <Compile Include="Lib\Form\InputExtension.cs" />
     <Compile Include="Lib\Image\Image.cs" />
     <Compile Include="Lib\Mail.cs" />
+    <Compile Include="Lib\PasswordGenerator.cs" />
     <Compile Include="Models\ContactMessageModel.cs" />
     <Compile Include="Models\Error\ApplicationExceptionModel.cs" />
     <Compile Include="Models\ExtNetModel.cs" />

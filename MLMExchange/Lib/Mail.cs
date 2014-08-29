@@ -8,7 +8,7 @@ using System.Web;
 
 namespace MLMExchange.Lib
 {
-  public class Mail
+  public class Mail : IDisposable
   {
     /// <summary>
     /// Конструктор MailSender'а
@@ -105,20 +105,37 @@ namespace MLMExchange.Lib
     /// </summary>
     public void SendMailMessage()
     {
-      SmtpClient smtpClient = new SmtpClient();
-      smtpClient.Credentials = new System.Net.NetworkCredential(smtpUser, smtpPassword);
-      smtpClient.Port = smtpPort;
-      smtpClient.Host = smtpHost;
+      //SmtpClient smtpClient = new SmtpClient();
+      //smtpClient.Credentials = new System.Net.NetworkCredential(smtpUser, smtpPassword);
+      //smtpClient.Port = smtpPort;
+      //smtpClient.Host = smtpHost;
 
       State = MailState.Sending;
-      smtpClient.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
-      smtpClient.Send(getMessage());
+      //smtpClient.SendCompleted += new SendCompletedEventHandler(SendCompletedCallback);
+      //smtpClient.Send(getMessage());
 
-      if (State == MailState.Error)
+      //if (State == MailState.Error)
+      //{
+      //  smtpClient.SendAsyncCancel();
+      //}
+      //smtpClient.Dispose();
+
+      Task.Run(() =>
       {
-        smtpClient.SendAsyncCancel();
+        MessageSender().Wait();
+      });
+    }
+
+    private async Task MessageSender()
+    {
+      using (var smtpClient = new SmtpClient(smtpHost))
+      {
+        smtpClient.Credentials = new System.Net.NetworkCredential(smtpUser, smtpPassword);
+        smtpClient.Port = smtpPort;
+        await smtpClient.SendMailAsync(getMessage());
+        State = MailState.Sended;
+        smtpClient.Dispose();
       }
-      smtpClient.Dispose();
     }
 
     /// <summary>
@@ -154,7 +171,6 @@ namespace MLMExchange.Lib
       // Get the unique identifier for this asynchronous operation.
       String token = (string)e.UserState;
 
-      // TODO: Внести логирование
       if (e.Cancelled)
       {
         State = MailState.Canceled;
@@ -168,6 +184,11 @@ namespace MLMExchange.Lib
         //Async send is completed
       }
       State = MailState.Sended;
+    }
+
+    public void Dispose()
+    {
+      
     }
   }
 }
