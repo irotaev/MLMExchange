@@ -322,7 +322,7 @@ namespace LogicTest.DataObject
       _NHibernaetSession.Transaction.Commit();
       _NHibernaetSession.BeginTransaction();
 
-      for(ushort index = 1; index <= 15; index++)
+      for (ushort index = 1; index <= 15; index++)
       {
         D_TradingSession d_tradingSession = CreateTradingSession_State_Open();
 
@@ -352,7 +352,7 @@ namespace LogicTest.DataObject
       }
 
       TransactionCommit();
-    }    
+    }
 
     /// <summary>
     /// Запускать только с чистой базы
@@ -399,7 +399,7 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void Watch_User_Trading_Session()
     {
-      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "pev5691").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
+      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Email == "anna.holding@mail.ru").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
 
       Assert.IsTrue(tradinSession != null);
     }
@@ -413,24 +413,38 @@ namespace LogicTest.DataObject
     [TestMethod]
     public void Close_TradeSession()
     {
-      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Login == "GOLD2014").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
+      D_TradingSession tradinSession = _NHibernaetSession.Query<D_TradingSession>().Where(t => t.BuyingMyCryptRequest.Buyer.Email == "anna.holding@mail.ru").OrderByDescending(x => x.CreationDateTime).FirstOrDefault();
 
-      IEnumerable<YieldSessionBill> yieldSessionBills = tradinSession.YieldSessionBills.Select(x => (YieldSessionBill)x).ToList();
-      IEnumerable<Bill> accepYieldSessionBills = ((TradingSession)tradinSession).GetNeedPaymentBills().ToList();
-
-      foreach (var bill in yieldSessionBills)
+      switch (tradinSession.State)
       {
-        bill.SetBillToReplacedState();
-        _NHibernaetSession.SaveOrUpdate(bill.LogicObject);
+        case TradingSessionStatus.Open:
+          if (tradinSession.CheckBill.PaymentState != BillPaymentState.WaitingPayment || tradinSession.SallerInterestRateBill.PaymentState != BillPaymentState.WaitingPayment)
+            Assert.Fail("Невозможно закрыть ТС, т.к. покупатель оплатил либо проверочный платеж, либо прибыль продавцу");
+
+          tradinSession.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Recalled;
+          tradinSession.BuyingMyCryptRequest.State = BuyingMyCryptRequestState.Recalled;
+          break;
+
+        default:
+          IEnumerable<YieldSessionBill> yieldSessionBills = tradinSession.YieldSessionBills.Select(x => (YieldSessionBill)x).ToList();
+          IEnumerable<Bill> accepYieldSessionBills = ((TradingSession)tradinSession).GetNeedPaymentBills().ToList();
+
+          foreach (var bill in yieldSessionBills)
+          {
+            bill.SetBillToReplacedState();
+            _NHibernaetSession.SaveOrUpdate(bill.LogicObject);
+          }
+
+          foreach (var bill in accepYieldSessionBills)
+          {
+            ((YieldSessionBill)bill.LogicObject).SetBillToReplacedState();
+            _NHibernaetSession.SaveOrUpdate(bill.LogicObject);
+          }
+
+          tradinSession.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Closed;
+          break;
       }
 
-      foreach (var bill in accepYieldSessionBills)
-      {
-        ((YieldSessionBill)bill.LogicObject).SetBillToReplacedState();
-        _NHibernaetSession.SaveOrUpdate(bill.LogicObject);
-      }
-
-      tradinSession.BiddingParticipateApplication.State = BiddingParticipateApplicationState.Closed;
       tradinSession.State = TradingSessionStatus.Closed;
 
       TransactionCommit();
